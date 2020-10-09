@@ -2,6 +2,7 @@ from django.db import models
 from account.models import User
 from activity.models import Category
 from django.urls import reverse
+from vacancies.models import Vacancy
 from django.contrib.contenttypes.models import ContentType
 
 
@@ -42,3 +43,7 @@ class UserGroup(models.Model):
     @staticmethod
     def content_type():
         return ContentType.objects.get(app_label='usergroups', model='usergroup')
+
+    @property
+    def vacancies(self):
+        return Vacancy.objects.filter(target_ct=UserGroup.content_type(), target_id=self.id)
