@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Termin erstellen{% endblock %}
+
+{% block content %}
+    <h1>Termin erstellen</h1>
+    <p><a href="{{ group.get_absolute_url }}">{{ group }}</a></p>
+    <p>Bitte füllen Sie folgendes Formular aus, um ein Treffen zu vereinbaren.</p>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Fertig">
+    </form>
+{% endblock %}

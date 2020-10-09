@@ -1,0 +1,41 @@
+{% load activity_filter %}
+
+<table>
+    <tr>
+        <th>Beschreibung</th>
+        <th>Ort</th>
+        <th>Geschlecht</th>
+        <th>Alter</th>
+        <th>Aktion</th>
+    </tr>
+    {% for vacancy in group.vacancies.all %}
+    {% with status=application_dict|lookup:vacancy.id %}
+        <tr>
+            <td>{{ vacancy.description }}</td>
+            <td>{{ vacancy.location_component_value }}</td>
+            <td>{{ vacancy.sex|default_if_none:"/" }}</td>
+            <td>{{ vacancy.min_age|default_if_none:"/" }} - {{ vacancy.max_age|default_if_none:"/" }}</td>
+            <td>
+                {% if user == group.admin %}
+                    <a href="{% url 'usergroups:edit_vacancy' vacancy.id %}">Bearbeiten</a> | <a href="{% url 'usergroups:delete_vacancy' vacancy.id %}">Löschen</a>
+                {% elif not is_member %}
+                    {% if not status %}
+                        <a href="{% url 'usergroups:apply_for_vacancy' vacancy.id %}">Bewerben</a>
+                    {% else %}
+                        {% if status == 'pending' %}
+                            Beworben
+                        {% elif status == 'accepted' %}
+                            Angenommen
+                        {% elif status == 'declined' %}
+                            Abgelehnt
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                {% if is_member %}
+                    <a href="{% url 'usergroups:review_vacancy' vacancy.id %}">Bewerbungen</a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endwith %}
+    {% endfor %}
+</table>

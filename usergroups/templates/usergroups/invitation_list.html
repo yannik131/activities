@@ -1,0 +1,20 @@
+{% load activity_filter %}
+
+<table>
+    <tr>
+        <th>Nutzer</th>
+        <th>Nachricht</th>
+        <th>Aktion</th>
+    </tr>
+    {% for invitation in group.invitations.all %}
+        <tr>
+            <td><a href="{{ invitation.user.get_absolute_url }}">{{ invitation.user.username }}</a></td>
+            <td>{{ invitation.message }}</td>
+            <td>
+                {% if user == group.admin %}
+                    <a href="{% url 'usergroups:delete_invitation' invitation.id %}">Löschen</a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load account_tags %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <p>Willkommen, {{ user.first_name }} {{ user.last_name }} (aka {{ user.username }}).</p>
+    <p><a href="{% url 'account:user_post_list' %}">Zu Ihren Posts...</a></p>
+    {% if user.activities.all %}
+        <p>Sie sind zurzeit Mitglied folgender Aktivitäten:</p>
+        <ul>
+            {% for activity in user.activities.all %}
+                <li><a href="{{ activity.get_absolute_url }}">{{ activity.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Sie sind zurzeit kein Mitglied einer Aktivität.</p>
+    {% endif %}
+    <h3>Neueste Aktivitäten Ihrer Freunde und Gruppen:</h3>
+    {% with actions=friend_and_group_actions %}
+    {% include 'actions/forloop.html' %}
+    {% endwith %}
+    <h3>... und auf aktivitaeten.de:</h3>
+    {% with actions=other_actions %}
+    {% include 'actions/forloop.html' %}
+    {% endwith %}
+{% endblock %}

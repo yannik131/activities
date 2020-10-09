@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}Freundschaft beendet{% endblock %}
+
+{% block content %}
+    <h1>Freundschaft beendet</h1>
+    <p>Sie haben die Freundschaft mit {{ target_user.first_name }} {{  target_user.last_name }}, aka {{ target_user.username }} beendet.</p>
+{% endblock %}

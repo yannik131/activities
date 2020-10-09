@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load activity_filter %}
+
+{% block title %}{{ activity.name }}{% endblock %}
+
+{% block content %}
+    {% if activity.image %}
+        <img src="{{ activity.image.url }}" width="200px" class="image">
+    {% endif %}
+    <h1>{{ activity.verbose }}</h1>
+    {% if activity.category %}
+        <h2><a href="{{ activity.category.get_absolute_url }}">{{ activity.category.verbose }}</a></h2>
+    {% endif %}
+    <p>{{ activity.description }}</p>
+        {% if is_member %}
+            <p>
+            Sie sind Mitglied dieser Aktivität. <a href="{% url 'activity:leave' activity.name %}">Austreten...</a>
+            </p>
+            <p><a href="{% url 'competitions:overview' activity.id %}">Turniere & Matches</a></p>
+            <h3>Suche nach Mitgliedern</h3>
+            <p>{% include 'activity/location_selection.html' %}</p>
+            {% if users %}
+                <table>
+                    <tr><th>Nutzername</th></tr>
+                    {% for u in users %}
+                        <tr><td><a href="{{ u.get_absolute_url }}">{{ u.username }}</a></td></tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <p><b>Keine.</b></p>
+            {% endif %}
+        {% else %}
+            <p>
+                Sie sind noch kein Mitglied. Falls Sie sehen wollen, wer in Ihrer Umgebung Teil dieser Aktivität ist, <a href="{% url 'activity:join' activity.name %}">treten Sie Ihr bei.</a>
+            </p>
+        {% endif %}
+    </p>
+
+    <h3>Beiträge {{ chosen_component|inim }}</h3>
+    {% include 'wall/post/post_loop.html' %}
+{% endblock %}

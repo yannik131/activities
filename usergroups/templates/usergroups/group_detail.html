@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ group.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ group }}</h1>
+    {% if user == group.admin %}
+        <h2><a href="{% url 'usergroups:edit_group' group.id %}">Bearbeiten...</a></h2>
+    {% endif %}
+    {% if is_member %}
+        <p><a href="{% url 'chat:chat_room' 'usergroups' 'usergroup' group.id %}">Zum Chat...</a></p>
+    {% endif %}
+    <p>Gruppe gehört zur <a href="{{ group.category.get_absolute_url }}">{{ group.category.verbose }}</a></p>
+    {% if group.description %}
+        <h2>Beschreibung</h2>
+        <p>{{ group.description }}</p>
+    {% endif %}
+    <h2>Mitglieder</h2>
+    <p>
+        {% for member in group.members.all %}
+            <a href="{{ member.get_absolute_url }}">{{ member.username }}</a>{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    {% if is_member %}
+        <p>Sie sind Mitglied dieser Gruppe. Wenn Sie sie wieder verlassen wollen, <a href="{% url 'usergroups:leave_group' group.id %}">klicken Sie hier.</a></p>
+    {% endif %}
+    <h2>Leerstellen</h2>
+    {% if group.vacancies.all.exists %}
+        {% include 'usergroups/vacancy_list.html' %}
+    {% else %}
+        Zurzeit gibt es keine Leerstellen. Der Administrator kann welche erstellen.
+    {% endif %}
+    {% if is_member %}
+        <h2>Einladungen</h2>
+        {% if group.invitations.all.exists %}
+            {% include 'usergroups/invitation_list.html' %}
+        {% endif %}
+    {% endif %}
+    {% if user == group.admin %}
+        <p><a href="{% url 'usergroups:create_vacancies' id=group.id  %}">Leerstellen hinzufügen</a> | <a href="{% url 'usergroups:create_invitation' id=group.id %}">Jemanden einladen</a></p>
+    {% endif %}
+    {% if is_member %}
+        <h2>Termine</h2>
+        <table>
+            <tr>
+                <th>Wann</th>
+                <th>Wo</th>
+                <th>Zusagen</th>
+                <th>Absagen</th>
+                <th>Aktion</th>
+            </tr>
+            {% for appointment in group.appointments.all %}
+                <tr>
+                    <td>{{ appointment.start_time }}</td>
+                    <td>{{ appointment.location }}</td>
+                    <td>
+                        {{ appointment.participants.all|length }}/{{ group.members.all|length }}:
+                        {% for user in appointment.participants.all %}
+                            <a href="{{ user.get_absolute_url }}">{{ user.username }}</a>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {{ appointment.cancellations.all|length }}/{{ group.members.all|length }}:
+                        {% for user in appointment.cancellations.all %}
+                            <a href="{{ user.get_absolute_url }}">{{ user.username }}</a>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% if user in appointment.participants.all %}
+                            <a href="{% url 'scheduling:cancel_confirmation' appointment.id %}">Zusage zurücknehmen</a>
+                            {% elif user in appointment.cancellations.all %}
+                                <a href="{% url 'scheduling:cancel_cancellation' appointment.id %}">Absage zurücknehmen</a>
+                            {% else %}
+                                <a href="{% url 'scheduling:confirm_appointment' appointment.id %}">Zusagen</a> | <a href="{% url 'scheduling:decline_appointment' appointment.id %}">Absagen</a>
+                        {% endif %}
+                        {% if user == group.admin %}
+                            | <a href="{% url 'scheduling:delete_appointment' appointment.id %}">Löschen</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    {% if user == group.admin %}
+        <p><a href="{% url 'scheduling:create_appointment' group.id %}">Termin erstellen</a></p>
+    {% endif %}
+    <p>Administrator: <a href="{{ group.admin.get_absolute_url }}">{{ group.admin }}</a></p>
+    <h3>Posts</h3>
+    {% if is_member %}
+        <p><a href="{% url 'wall:create_post' 'usergroups' 'usergroup' group.id %}">Post erstellen...</a></p>
+    {% endif %}
+    {% include 'wall/post/post_loop.html' %}
+{% endblock %}

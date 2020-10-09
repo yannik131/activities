@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Alle Kategorien{% endblock %}
+
+{% block content %}
+    <h1>Alle Kategorien</h1>
+    <p>Hier eine Liste aller verfügbaren Kategorien:</p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Aktivitäten</th>
+        </tr>
+        {% for category in categories %}
+            <tr>
+                <td><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></td>
+                <td>
+                    {% for activity in category.activities.all %}
+                        <a href="{{ activity.get_absolute_url }}">{{ activity.name }}</a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load activity_filter %}
+
+{% block title %}Chat-Liste{% endblock %}
+
+{% block content %}
+    <h1>Chat-Liste</h1>
+    {% for chat_room in user.chat_rooms.all %}
+        <p>
+            <a href="{{ chat_room.get_absolute_url }}">{{ chat_room.target.verbose }}</a>{% if chat_room.id in new_messages %} ({{ new_messages|lookup:chat_room.id }}){% endif %}
+        </p>
+    {% endfor %}
+{% endblock %}

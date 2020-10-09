@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ category.name }}-Gruppen{% endblock %}
+
+{% block content %}
+    <h1>{{ category.name }}-Gruppen
+    </h1>
+    <h3><a href="{% url 'usergroups:create_group' category.id %}">Gruppe erstellen...</a></h3>
+    {% include 'activity/location_selection.html' %}
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Beschreibung</th>
+            <th>Leerstellen</th>
+            <th>Ort</th>
+        </tr>
+        {% for group in groups %}
+            {% if group.public %}
+                <tr>
+                    <td><a href="{{ group.get_absolute_url }}">{{ group.name }}</a></td>
+                    <td>{{ group.description|truncatewords:30 }}</td>
+                    <td>{{ group.vacancies.all|length }}</td>
+                    <td>{{ group.admin.location }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% load activity_filter %}
+
+<p>
+    {% for value in user.location.as_dict.values %}
+    {% if value %}
+        {% if forloop.counter0 is component_index %}
+            <b>{{ value|inim }}</b>
+        {% else %}
+            <a href="?component_index={{ forloop.counter0 }}">{{ value|inim }}</a>
+        {% endif %}
+        {% if not forloop.last %}| {% endif %}
+    {% endif %}
+    {% endfor %}
+</p>

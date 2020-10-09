@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Freundschaftsanfrage abgelehnt{% endblock %}
+
+{% block content %}
+    <h1>Freundschaftsanfrage abgelehnt</h1>
+    <p>
+        Sie haben die Freundschaftsanfrage von {{ declined_user }} abgelehnt.
+    </p>
+    <p><a href="{% url 'account:friend_requests_list' %}">Zurück zur Liste geht's hier.</a></p>
+{% endblock %}

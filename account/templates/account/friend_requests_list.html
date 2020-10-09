@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Freundschaftsanfragen{% endblock %}
+
+{% block content %}
+    <h1>Eingegangene Freundschaftsanfragen</h1>
+    <table>
+        <tr><th>Nutzername</th><th>Nachricht</th><th>Status</th><th>Aktion</th></tr>
+        {% for request in received_friend_requests %}
+            <tr>
+                <td><a href="{% url 'account:detail' request.requesting_user.id %}">{{ request.requesting_user.username }}</a></td>
+                <td>{{ request.request_message }}</td>
+                <td>
+                    {% if request in changed_requests %}
+                        <b>{{ request.get_status_display }}</b>
+                    {% else %}
+                        {{ request.get_status_display }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if request.status == 'pending' %}
+                        <a href="{% url 'account:accept_request' request.id %}">Annehmen</a> <a href="{% url 'account:decline_request' request.id %}">Ablehnen</a>
+                    {% else %}
+                        <a href="{% url 'account:delete_request' request.id %}">Löschen</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h1>Gesendete Freundschaftsanfragen</h1>
+    <p><a href="{% url 'account:send_custom_friend_request' %}">Eine Anfrage an einen Nutzer senden...</a></p>
+    <table>
+        <tr><th>Nutzername</th><th>Nachricht</th><th>Status</th><th>Aktion</th></tr>
+        {% for request in sent_friend_requests %}
+            <tr>
+                <td><a href="{% url 'account:detail' request.requested_user.id %}">{{ request.requested_user.username }}</a></td>
+                <td>{{ request.request_message }}</td>
+                <td>
+                    {% if request in changed_requests %}
+                        <b>{{ request.get_status_display }}</b>
+                    {% else %}
+                        {{ request.get_status_display }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if request.status != 'declined' %}
+                        <a href="{% url 'account:delete_request' request.id %}">Löschen</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h1>Freunde</h1>
+        <ul>
+            {% for user in user.friends %}
+                <li><a href="{{ user.get_absolute_url }}">{{ user.username }}</a></li>
+            {% endfor %}
+        </ul>
+{% endblock %}

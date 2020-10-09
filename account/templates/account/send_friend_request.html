@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Freundschaftsanfrage senden{% endblock %}
+
+{% block content %}
+    <h1>Senden Sie {% if target_user %}{{ target_user.username }} {% endif %}eine Freundschaftsanfrage</h1>
+    {% if sent %}
+        <p>Die Freundschaftsanfrage wurde erfolgreich gesendet.</p>
+    {% else %}
+        <p>Schreiben Sie {% if target_user %}{{ target_user.username }} {% endif %}eine kurze Nachricht.</p>
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="submit" value="Abschicken">
+        </form>
+    {% endif %}
+{% endblock %}

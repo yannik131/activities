@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Freundschaftsanfrage angenommen{% endblock %}
+
+{% block content %}
+    <h1>Freundschaftsanfrage angenommen</h1>
+    <p>Die Freundschaftsanfrage von <a href="{{ accepted_user.get_absolute_url }}">{{ accepted_user }}</a> wurde angenommen.</p>
+    <p><a href="{% url 'account:friend_requests_list' %}">Zurück zur Liste geht's hier.</a></p>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ target }}-Chat{% endblock %}
+
+{% block content %}
+    <h1>{{ target }}-Chat</h1>
+    <p><a href="{{ target.get_absolute_url }}">{{ target.verbose }}</a></p>
+    <p>
+        Teilnehmer:
+        {% for member in room.members.all %}
+            <a href="{{ member.get_absolute_url }}">{{ member }}</a>{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    <div id="chat">
+    </div>
+    <div id="chat-input">
+        <input id="chat-message-input" type="text">
+        <input id="chat-message-submit" type="submit" value="Senden">
+    </div>
+{% endblock %}
+
+{% block domready %}
+    var url = 'ws://' + window.location.host + '/ws/chat/room/' + '{{ room.target_ct.app_label }}/{{ room.target_ct.model }}/{{ room.target_id }}/';
+    var chatSocket = new WebSocket(url);
+    var $chat = $('#chat');
+
+    chatSocket.onmessage = function(e) {
+        var data = JSON.parse(e.data);
+        if(data.type === 'load_log') {
+            $chat.html("")
+            var messages = JSON.parse(data.log)
+            var i;
+            for(i = 0; i < messages.length; i++)
+            {
+                $chat.append('<div class="message">' + messages[i] + '</div>');
+            }
+        }
+        else {
+            var message = data.message;
+            var datetime = new Date(data['datetime']).toLocaleString('de');
+
+            var isMe = data.user === '{{ request.user }}';
+            var name = isMe ? 'Sie' : data.user;
+
+            $chat.append('<div class="message">' + name + ', ' + datetime + ' Uhr: ' + message + '</div>');
+            $chat.scrollTop($chat[0].scrollHeight);
+        }
+    };
+
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    var $input = $('#chat-message-input');
+    var $submit = $('#chat-message-submit');
+
+    $submit.click(function() {
+        var message = $input.val();
+        if(message) {
+            chatSocket.send(JSON.stringify({'message': message}));
+            $input.val('');
+            $input.focus();
+        }
+    });
+
+    $input.focus();
+    $input.keyup(function(e) {
+        if (e.which == 13) {
+            $submit.click();
+        }
+    });
+{% endblock %}

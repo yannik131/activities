@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}Ausgeloggt{% endblock %}
+
+{% block content %}
+    <h1>Ausgeloggt</h1>
+    <p>Sie haben sich erfolgreich ausgeloggt. Sie können sich <a href="{% url 'account:login' %}">auch wieder einloggen.</a></p>
+{% endblock %}

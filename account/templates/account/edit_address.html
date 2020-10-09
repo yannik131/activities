@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Adresse ändern{% endblock %}
+
+{% block content %}
+    <h1>Adresse ändern</h1>
+    <p>Geben Sie hier eine neue Stadt ein.</p>
+    <form method="post">
+        {{ location_form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Ändern">
+    </form>
+    {% if sent %}
+        <p>Neue Adresse gespeichert: <b>{{ location.full_address }}</b></p>
+    {% endif %}
+{% endblock %}

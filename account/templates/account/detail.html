@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load account_tags %}
+
+{% block title %}Profil von {{ viewed_user.username }}{% endblock %}
+
+{% block content %}
+    <h1>Profil von {{ viewed_user.username }}</h1>
+    {% if viewed_user.profile_text %}
+        <p>{{ viewed_user.profile_text|linebreaks }}</p>
+    {% endif %}
+    {% if friendship %}
+        <p><a href="{% url 'chat:chat_room' 'account' 'friendship' friendship.id %}">Zum Chat...</a></p>
+        <p>Voller Name: {{ viewed_user.get_full_name }}</p>
+        <p>{{ viewed_user.username }} ist Mitglied folgender Aktivitäten:</p>
+        <table>
+            <tr><th>Name</th><th>Beschreibung</th></tr>
+            {% for activity in viewed_user.activities.all %}
+                <tr>
+                    <td><a href="{{ activity.get_absolute_url }}">{{ activity.name }}</a></td>
+                    <td>{{ activity.description }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <p>Adresse: {{ viewed_user.location.full_address }}</p>
+        <p>Neueste Aktivitäten:</p>
+        {% include 'actions/forloop.html' %}
+    <p>Sie sind mit {{ viewed_user.first_name }} {{ viewed_user.last_name }} befreundet. Falls Sie das ändern möchten, können Sie die Freundschaft <a href="{% url 'account:destroy_friendship' viewed_user.id %}">auch vernichten.</a></p>
+    {% else %}
+        Sie sind nicht mit {{ viewed_user.username }} befreundet.
+        {% if requested %}
+            Sie haben allerdings bereits eine Freundschaftsanfrage gesendet. Diese wurde entweder abgelehnt oder die Antwort steht noch aus.
+        {% else %}
+            Falls Sie das ändern möchten, schicken Sie ihm doch eine <a href="{% url 'account:send_friend_request' viewed_user.id %}">Freundschaftsanfrage.</a>
+        {% endif %}
+    {% endif %}
+    <h3>Posts</h3>
+    {% include 'wall/post/post_loop.html' %}
+{% endblock %}

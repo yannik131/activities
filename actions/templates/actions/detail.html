@@ -1,0 +1,12 @@
+<p>
+    vor {{ action.created|timesince }}:
+    <a href="{{ action.source.get_absolute_url }}">
+        {{ action.source.verbose }}
+    </a>
+    {{ action.verb }}
+    {% if action.target %}
+        <a href="{{ action.target.get_absolute_url }}">
+            {{ action.target.verbose }}
+        </a>
+    {% endif %}
+</p>

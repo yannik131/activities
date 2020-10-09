@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Account bearbeiten{% endblock %}
+
+{% block content %}
+    <h1>Account bearbeiten</h1>
+    <p>Bearbeiten Sie Ihren Account mit folgendem Formular:</p>
+    <form method="post">
+        {{ user_form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Fertig">
+    </form>
+    <p>Das sind Ihre aktuellen Addressdaten:</p>
+    <ul>
+        {% for key, value in location.items %}
+            <li>{{ key }}: <b>{% if value %}{{ value }} {% else %} Ohne {% endif %}</b></li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'account:edit_address' %}">Klicken Sie hier, falls Sie ihre Adresse ändern möchten.</a></p>
+{% endblock %}

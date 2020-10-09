@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Bewerben{% endblock %}
+
+{% block content %}
+    <h1>Auf Leerstelle bewerben</h1>
+    <p>Leerstelle gehört zur Gruppe: <a href="{{ vacancy.group.get_absolute_url }}">{{ vacancy.group.name }}</a></p>
+    <p>Beschreibung: {{ vacancy.description }}</p>
+    <p>Erzählen Sie etwas über sich:</p>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Senden">
+    </form>
+{% endblock %}

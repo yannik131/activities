@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Ihre Posts{% endblock %}
+
+{% block content %}
+    <h1>Ihre Posts</h1>
+    <h2><a href="{% url 'wall:create_post' 'account' 'user' user.id %}">Post erstellen...</a></h2>
+    <p>Die Posts sind öffentlich auf Ihrer Profilseite sichtbar.</p>
+    {% include 'wall/post/post_loop.html' %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Bewerbungen{% endblock %}
+
+{% block content %}
+    <h1>Bewerbungen</h1>
+    <p>Gehört zu <a href="{{ vacancy.group.get_absolute_url }}">{{ vacancy.group }}</a></p>
+    <h2>Leerstellenbeschreibung:</h2>
+    <p>{{ vacancy.description|linebreaks }}</p>
+    <h2>Bewerbungen</h2>
+    <table>
+        <tr>
+            <th>Nutzer</th>
+            <th>Wohnort</th>
+            <th>Nachricht</th>
+            <th>Alter (Geschlecht)</th>
+            <th>Chat</th>
+            {% if user == vacancy.group.admin %}
+                <th>Aktion</th>
+            {% endif %}
+        </tr>
+        {% for application in vacancy.applications.all %}
+            <tr>
+                <td><a href="{{ application.user.get_absolute_url }}">{{ application.user }}</a></td>
+                <td>{{ application.user.location }}</td>
+                <td>{{ application.message }}</td>
+                <td>{{ application.user.get_age }} ({{ application.user.sex }})</td>
+                <td><a href="{% url 'chat:chat_room' 'usergroups' 'application' application.id %}">Zum Chat</a></td>
+                {% if user == vacancy.group.admin %}
+                    <td>
+                        {% if application.status == 'pending' %}
+                            <a href="{% url 'usergroups:accept_application' application.id %}">Annehmen</a> | <a href="{% url 'usergroups:decline_application' application.id %}">Ablehnen</a>
+                        {% else %}
+                            <a href="{% url 'usergroups:delete_application' application.id %}">Löschen</a>
+                        {% endif %}
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

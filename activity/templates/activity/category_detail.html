@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block content %}
+    {% if category.image %}
+        <img src="{{ category.image.url }}" width="200px" class="image">
+    {% endif %}
+    <h1>{{ category.verbose }}</h1>
+    <h2><a href="{% url 'usergroups:group_list' category.id %}">Zu den Gruppen...</a></h2>
+    <p>{{ category.description|linebreaks }}</p>
+    <p>Folgende Aktivitäten gehören zu dieser Kategorie:</p>
+    <ul>
+        {% for activity in category.activities.all %}
+            <li><a href="{{ activity.get_absolute_url }}">{{ activity.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <h3>Posts in {{ chosen_component }}</h3>
+    {% include 'activity/location_selection.html' %}
+    {% include 'wall/post/post_loop.html' %}
+{% endblock %}

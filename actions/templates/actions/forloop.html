@@ -1,0 +1,5 @@
+{% for action in actions %}
+    {% include 'actions/detail.html' %}
+    {% empty %}
+        Noch keine Neuigkeiten!
+{% endfor %}

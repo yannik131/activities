@@ -1,0 +1,50 @@
+{% load static %}
+{% load account_tags %}
+{% load chat_tags %}
+{% load usergroup_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+</head>
+<body>
+{% if user.is_authenticated %}
+    <div id="sidebar">
+        <p>Ihr Nutzername: {{ user.username }}</p>
+        <p><a href="{% url 'account:home' %}">Homepage</a></p>
+        <p><a href="{% url 'activity:list' %}">Aktivitäten</a> | <a href="{% url 'activity:category_list' %}">Kategorien</a></p>
+        <p><a href="{% url 'usergroups:group_list' %}">Gruppen{% invitation_number_string user %}</a> | <a href="{% url 'chat:chat_list' %}">Chats{% new_messages_str user %}</a></p>
+        <p><a href="{% url 'account:friend_requests_list' %}">Freunde{% new_request_number_string user %}</a></p>
+        <p><a href="{% url 'account:password_change' %}">Passwort ändern</a></p>
+        <p><a href="{% url 'account:edit' %}">Account bearbeiten</a></p>
+        <p><a href="{% url 'account:logout' %}">Ausloggen</a></p>
+    </div>
+{% endif %}
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/
+js.cookie.min.js"></script>
+<script>
+    var csrftoken = Cookies.get('csrftoken');
+    function csrfSafeMethod(method) {
+        //No CSRF required
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+    $(document).ready(function() {
+        {% block domready %}
+        {% endblock %}
+    });
+</script>
+</body>
+</html>

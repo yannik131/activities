@@ -1,0 +1,51 @@
+
+8. Aktivitäten-widgets: Beste Orte, Beliebteste Inhalte
+
+Suchen... -> Bestimmt zu verwendende Kategorien/Aktivitäten
+Sortieren nach: Name | Gesamt | +Heute | +Diese Woche
+Kategorien | Aktivitäten
+Deutschland | Niedersachsen | Landkreis | Stadt
+              Nutzer
+Name Gesamt +Heute +Diese Woche
+
+3 Typen: 
+-Wettbewerbsfähig: Spiele, Sport -> Es geht um Punkte/Leistung
+    +Gruppenbildung mit Terminfindung möglich
+    +Öffentliche Treffen sind Wettkämpfe, Turniere möglich
+-Künstlerisch: Musik, Malen, Basteln, .. -> Gründen von Gruppen, Veröffentlichen von Inhalten ((Musik)Videos, Bilder), die geliked werden können
+    +Gruppenbildung mit Terminfindung möglich
+    +Öffentliche Treffen sind Konzerte
+-Konsumorientiert: Netflix, Internet, Spazieren, Wandern, .. -> Inhalte stehen im Vordergrund, Beste Orte/Inhalte zum [...] (Natur anschauen, Ruhe, ...)
+    +Keine Gruppen oder Treffen möglich
+    +Abstimmungen für beliebte Inhalte
+
+IRGENDWIE, IRGENDWO, IRGENDWANN: Activity Stream for everything on the site
+
+Ermöglicht durch Beitreten:
+    -Aktivität taucht im Newsstream auf
+    -Man kann Turniere und Matches nicht nur sehen, sondern auch mitmachen
+
+    Korrespondenz bei laufender Bewerbung
+    suche
+
+
+-Matches & Turniere
+-Interaktivität (Chat, Action, ...)
+-CSS
+
+Nutzer über neue Aktionen informieren:
+django messages
+celery
+rabbitmq
+kapitel 7 celery
+
+Spielpunkte und Tabellenpunkte unterscheiden. Spielpunkte legen Gewinner/Verlierer/Unentschieden fest. Es hängt vom
+Spiel ab, wie viele Tabellenpunkte es für jeden jeweils gibt. Möglichkeiten:
+Gewinner: +1 Punkt
+Unentschieden: +1/2 Punkt
+Verlierer: +0 Punkte
+
+Wer kann wen einladen?
+Gruppe -> Nutzer
+Match -> Nutzer ODER Gruppe
+Turnier -> Nutzer ODER Gruppe
