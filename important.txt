@@ -1,7 +1,7 @@
 
 8. Aktivitäten-widgets: Beste Orte, Beliebteste Inhalte
 
-Suchen... -> Bestimmt zu verwendende Kategorien/Aktivitäten
+Suchen in Aktivitäten | Kategorien | Gruppen | Nutzer
 Sortieren nach: Name | Gesamt | +Heute | +Diese Woche
 Kategorien | Aktivitäten
 Deutschland | Niedersachsen | Landkreis | Stadt
@@ -49,3 +49,32 @@ Wer kann wen einladen?
 Gruppe -> Nutzer
 Match -> Nutzer ODER Gruppe
 Turnier -> Nutzer ODER Gruppe
+
+Bei Gruppenmatches:
+Entweder ein Team ist fest, indem es eingeladen wurde, oder es gibt ein öffentliches Interface, über das man einem Team beitreten kann:
+
+Fußball-Match am ..., Adresse: ...
+Team 1      vs.     Team 2
+bert432             kdo332
+yannik131           lalidu33
+bogo44
+draft2
+
+(voll)              Team beitreten
+Infos: ...
+
+Schach-Match am ..., Adresse: ...
+Spieler 1   vs.     Spieler 2
+yannik131
+
+                    Match beitreten
+Infos: ...
+
+Skat-Match am ..., Adresse: ...
+yannik131
+rollo1404
+
+Match beitreten (2/4)
+Infos: ...
+
+Ihre Matches, Vacancy erstellen

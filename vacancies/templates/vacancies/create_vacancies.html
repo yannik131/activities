@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}Leerstelle bearbeiten{% endblock %}
+{% block title %}Leerstellen hinzufügen{% endblock %}
 
 {% block content %}
-    <h1>Leerstelle bearbeiten</h1>
-    <p>Gehört zur Gruppe: <a href="{{ vacancy.group.get_absolute_url }}">{{ vacancy.group }}</a></p>
+    <h1>Leerstellen zu "{{ target }}" hinzufügen</h1>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}

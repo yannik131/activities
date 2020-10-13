@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Match am {{ match }}{% endblock %}
+
+{% block content %}
+    <h1>Match am {{ match.start_time }}</h1>
+    <h2>Admin: <a href="{{ match.admin.get_absolute_url }}">{{ match.admin }}</a></h2>
+
+{% endblock %}

@@ -28,7 +28,8 @@ urlpatterns = [
     path('scheduling/', include('scheduling.urls')),
     path('chat/', include('chat.urls', namespace='chat')),
     path('wall/', include('wall.urls')),
-    path('competitions/', include('competitions.urls'))
+    path('competitions/', include('competitions.urls')),
+    path('vacancies/', include('vacancies.urls'))
 ]
 
 if settings.DEBUG:

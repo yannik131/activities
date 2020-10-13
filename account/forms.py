@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from geopy.geocoders import Nominatim
 from account.models import User
+import shared
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -43,16 +43,7 @@ class LocationForm(forms.Form):
     def clean(self):
         cleaned_data = super().clean()
         address = cleaned_data.get('address')
-        if address:
-            geolocator = Nominatim(user_agent='activities')
-            location = geolocator.geocode(address, addressdetails=True)
-            if location is None:
-                raise forms.ValidationError('Diese Adresse konnte nicht gefunden werden.')
-            elif location.raw['address'].get('city') is None:
-                raise forms.ValidationError(
-                    'Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt).')
-            else:
-                self.location = location
+        self.location = shared.get_location(address)
 
 
 class FriendRequestForm(forms.Form):

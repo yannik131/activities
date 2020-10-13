@@ -11,6 +11,9 @@
     {% if activity.category %}
         <h2><a href="{{ activity.category.get_absolute_url }}">{{ activity.category.verbose }}</a></h2>
     {% endif %}
+    {% if activity.type == 'competitive' %}
+        <h3><a href="{% url 'competitions:overview' activity.id %}">Matches & Turniere</a></h3>
+    {% endif %}
     <p>{{ activity.description }}</p>
         {% if is_member %}
             <p>

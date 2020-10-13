@@ -1,21 +1,39 @@
 from django.shortcuts import render
 from activity.models import Activity
 from account.models import Location
+from .forms import MatchForm
+from django.http import HttpResponseRedirect
+from .models import Match
 
 
 def overview(request, activity_id):
     component_index = int(request.GET.get('component_index', 3))
     chosen_component = request.user.location.get_component(Location.components[component_index])
     activity = Activity.objects.get(id=activity_id)
-    return render(request, 'competitions/overview.html', dict(activity=activity, component_index=component_index, chosen_component=chosen_component))
+    matches = Match.objects.filter(activity=activity)
+    component = Location.components[component_index]
+    matches = [match for match in matches.all() if match.public and match.vacancies.count() and match.location.equal_to(request.user.location, component)]
+    return render(request, 'competitions/overview.html', dict(activity=activity, component_index=component_index, chosen_component=chosen_component, matches=matches))
 
 
 def create_match(request, activity_id):
     activity = Activity.objects.get(id=activity_id)
+    if request.method == 'POST':
+        form = MatchForm(request.POST)
+        form.instance.activity = activity
+        form.instance.admin = request.user
+        if form.is_valid():
+            match = form.save()
+            return HttpResponseRedirect(match.get_absolute_url())
+    else:
+        form = MatchForm(initial=dict(location=request.user.location.get_component('city')))
+    return render(request, 'competitions/create_match.html', dict(form=form, activity=activity))
 
 
 def delete_match(request, match_id):
     pass
 
 
-
+def match_detail(request, match_id):
+    match = Match.objects.get(id=match_id)
+    return render(request, 'competitions/match_detail.html', dict(match=match))

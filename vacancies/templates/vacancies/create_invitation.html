@@ -3,8 +3,7 @@
 {% block title %}Einladung verschicken{% endblock %}
 
 {% block content %}
-    <h1>Nutzer in die Gruppe "{{ group.name }}" einladen</h1>
-    <p>Gruppe gehört zu: <a href="{{ group.category.get_absolute_url }}">{{ group.category.verbose }}</a></p>
+    <h1>Nutzer einladen zu: "{{ sender }}"</h1>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}

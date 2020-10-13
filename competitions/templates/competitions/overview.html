@@ -1,8 +1,27 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ activity.name }}: Turniere & Matches {% endblock %}
+{% block title %}{{ activity.name }}: Matches & Turniere {% endblock %}
 
 {% block content %}
-    <h1>{{ activity.name }}: Turniere & Matches</h1>
+    <h1>{{ activity.name }}: Matches & Turniere</h1>
     <p>{% include 'activity/location_selection.html' %}</p>
+    <h2>Turniere</h2>
+    <h2>Öffentliche Matches</h2>
+    <p>
+        <a href="{% url 'competitions:create_match' activity.id %}">Match erstellen</a>
+    </p>
+    <table>
+        <tr>
+            <th>Admin</th>
+            <th>Leerstellen</th>
+            <th>Zeitpunkt</th>
+        </tr>
+        {% for match in matches %}
+            <tr>
+                <td><a href="{{ match.admin.get_absolute_url }}">{{ match.admin }}</a></td>
+                <td>{{ match.vacancies.count }}</td>
+                <td><a href="{{ match.get_absolute_url }}">{{ match.start_time }}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

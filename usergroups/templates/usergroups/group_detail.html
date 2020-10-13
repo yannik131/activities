@@ -26,18 +26,18 @@
     {% endif %}
     <h2>Leerstellen</h2>
     {% if group.vacancies.all.exists %}
-        {% include 'usergroups/vacancy_list.html' %}
+        {% include 'vacancies/vacancy_list.html' %}
     {% else %}
         Zurzeit gibt es keine Leerstellen. Der Administrator kann welche erstellen.
     {% endif %}
     {% if is_member %}
         <h2>Einladungen</h2>
         {% if group.invitations.all.exists %}
-            {% include 'usergroups/invitation_list.html' %}
+            {% include 'vacancies/invitation_list.html' %}
         {% endif %}
     {% endif %}
     {% if user == group.admin %}
-        <p><a href="{% url 'usergroups:create_vacancies' id=group.id  %}">Leerstellen hinzufügen</a> | <a href="{% url 'usergroups:create_invitation' id=group.id %}">Jemanden einladen</a></p>
+        <p><a href="{% url 'vacancies:create_vacancies' 'usergroups' 'UserGroup' group.id %}">Leerstellen hinzufügen</a> | <a href="{% url 'vacancies:create_invitation' 'usergroups' 'UserGroup' group.id %}">Jemanden einladen</a></p>
     {% endif %}
     {% if is_member %}
         <h2>Termine</h2>

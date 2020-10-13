@@ -90,6 +90,10 @@ class InvitationForm(forms.ModelForm):
             group = instance.sender_ct.get_objects_for_this_type(id=instance.sender_id)
             if user in group.members.all():
                 raise forms.ValidationError("Dieser Nutzer befindet sich bereits in der Gruppe.")
+        if self.invite_group:
+            self.instance.target = group
+        else:
+            self.instance.target = user
         return cd
 
 

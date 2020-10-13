@@ -8,7 +8,7 @@
         <th>Alter</th>
         <th>Aktion</th>
     </tr>
-    {% for vacancy in group.vacancies.all %}
+    {% for vacancy in target.vacancies.all %}
     {% with status=application_dict|lookup:vacancy.id %}
         <tr>
             <td>{{ vacancy.description }}</td>
@@ -16,11 +16,11 @@
             <td>{{ vacancy.sex|default_if_none:"/" }}</td>
             <td>{{ vacancy.min_age|default_if_none:"/" }} - {{ vacancy.max_age|default_if_none:"/" }}</td>
             <td>
-                {% if user == group.admin %}
-                    <a href="{% url 'usergroups:edit_vacancy' vacancy.id %}">Bearbeiten</a> | <a href="{% url 'usergroups:delete_vacancy' vacancy.id %}">Löschen</a>
+                {% if user == target.admin %}
+                    <a href="{% url 'vacancies:edit_vacancy' vacancy.id %}">Bearbeiten</a> | <a href="{% url 'vacancies:delete_vacancy' vacancy.id %}">Löschen</a>
                 {% elif not is_member %}
                     {% if not status %}
-                        <a href="{% url 'usergroups:apply_for_vacancy' vacancy.id %}">Bewerben</a>
+                        <a href="{% url 'vacancies:apply_for_vacancy' vacancy.id %}">Bewerben</a>
                     {% else %}
                         {% if status == 'pending' %}
                             Beworben
@@ -32,7 +32,7 @@
                     {% endif %}
                 {% endif %}
                 {% if is_member %}
-                    <a href="{% url 'usergroups:review_vacancy' vacancy.id %}">Bewerbungen</a>
+                    <a href="{% url 'vacancies:review_vacancy' vacancy.id %}">Bewerbungen</a>
                 {% endif %}
             </td>
         </tr>

@@ -2,7 +2,7 @@ from django.db import models
 from account.models import User
 from activity.models import Category
 from django.urls import reverse
-from vacancies.models import Vacancy
+from vacancies.models import Vacancy, Invitation
 from django.contrib.contenttypes.models import ContentType
 
 
@@ -47,3 +47,7 @@ class UserGroup(models.Model):
     @property
     def vacancies(self):
         return Vacancy.objects.filter(target_ct=UserGroup.content_type(), target_id=self.id)
+
+    @property
+    def invitations(self):
+        return Invitation.objects.filter(sender_ct=UserGroup.content_type(), sender_id=self.id)
