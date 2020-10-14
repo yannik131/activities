@@ -1,6 +1,5 @@
 from django.db import models
 from usergroups.models import UserGroup
-from actions.utils import create_action
 from shared.shared import GERMAN_DATE_FMT
 
 

@@ -28,7 +28,7 @@
         </tr>
         {% for application in user.applications.all %}
             <tr>
-                <td><a href="{{ application.vacancy.group.get_absolute_url }}">{{ application.vacancy.group.name }}</a></td>
+                <td><a href="{{ application.vacancy.target.get_absolute_url }}">{{ application.vacancy.target.name }}</a></td>
                 <td>{{ application.get_status_display }}</td>
                 <td>{{ application.message }}</td>
                 <td>

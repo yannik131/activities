@@ -77,4 +77,4 @@ rollo1404
 Match beitreten (2/4)
 Infos: ...
 
-Ihre Matches, Vacancy erstellen
+Celery - Match schließen, wenn Termin vorbei, actions erstellen, Turniere eröffnen etc.

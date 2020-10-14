@@ -19,7 +19,6 @@
             <p>
             Sie sind Mitglied dieser Aktivität. <a href="{% url 'activity:leave' activity.name %}">Austreten...</a>
             </p>
-            <p><a href="{% url 'competitions:overview' activity.id %}">Turniere & Matches</a></p>
             <h3>Suche nach Mitgliedern</h3>
             <p>{% include 'activity/location_selection.html' %}</p>
             {% if users %}

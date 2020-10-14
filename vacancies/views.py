@@ -8,7 +8,6 @@ from django.contrib.contenttypes.models import ContentType
 
 @login_required
 def create_vacancies(request, app_label, model, id):
-    ContentType.get
     ct = ContentType.objects.get(app_label=app_label, model=model)
     target = ct.get_object_for_this_type(pk=id)
     if request.method == 'POST':

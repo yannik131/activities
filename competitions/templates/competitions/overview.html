@@ -12,15 +12,15 @@
     </p>
     <table>
         <tr>
+            <th>Match</th>
             <th>Admin</th>
             <th>Leerstellen</th>
-            <th>Zeitpunkt</th>
         </tr>
         {% for match in matches %}
             <tr>
+                <td><a href="{{ match.get_absolute_url }}">{{ match.start_time }}</a></td>
                 <td><a href="{{ match.admin.get_absolute_url }}">{{ match.admin }}</a></td>
                 <td>{{ match.vacancies.count }}</td>
-                <td><a href="{{ match.get_absolute_url }}">{{ match.start_time }}</a></td>
             </tr>
         {% endfor %}
     </table>

@@ -5,5 +5,21 @@
 {% block content %}
     <h1>Match am {{ match.start_time }}</h1>
     <h2>Admin: <a href="{{ match.admin.get_absolute_url }}">{{ match.admin }}</a></h2>
-
+    {% if user == match.admin %}
+        <p><a href="{% url 'competitions:delete_match' match.id %}">Match löschen</a></p>
+    {% endif %}
+    <h2>Ort: {{ match.location }}, {{ match.address }}</h2>
+    <h3>Teilnehmer</h3>
+    <ul>
+        {% for member in match.members.all %}
+            <li><a href="{{ member.get_absolute_url }}">{{ member }}</a></li>
+        {% endfor %}
+    </ul>
+    <h3>Leerstellen</h3>
+    {% if user == match.admin %}
+        <p><a href="{% url 'vacancies:create_vacancies' 'competitions' 'match' match.id %}">Leerstelle hinzufügen</a></p>
+    {% endif %}
+    {% with target=match %}
+        {% include 'vacancies/vacancy_list.html' %}
+    {% endwith %}
 {% endblock %}

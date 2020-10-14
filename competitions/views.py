@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from activity.models import Activity
-from account.models import Location
+from account.models import Location, User
 from .forms import MatchForm
-from django.http import HttpResponseRedirect
-from .models import Match
+from django.http import HttpResponseRedirect, HttpResponseForbidden
+from .models import Match, Tournament
+
+
+def user_overview(request):
+    return render(request, 'competitions/user_overview.html')
 
 
 def overview(request, activity_id):
@@ -31,9 +35,13 @@ def create_match(request, activity_id):
 
 
 def delete_match(request, match_id):
-    pass
+    match = Match.objects.get(id=match_id)
+    if request.user != match.admin:
+        return HttpResponseForbidden()
+    match.delete()
+    return HttpResponseRedirect(request.build_absolute_uri('/competitions/user_overview/'))
 
 
 def match_detail(request, match_id):
     match = Match.objects.get(id=match_id)
-    return render(request, 'competitions/match_detail.html', dict(match=match))
+    return render(request, 'competitions/match_detail.html', dict(match=match, is_member=request.user in match.members.all()))

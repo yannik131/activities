@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from account.models import User
-import shared
+from shared import shared
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -39,11 +39,6 @@ class UserEditForm(forms.ModelForm):
 
 class LocationForm(forms.Form):
     address = forms.CharField(label='Adresse')
-
-    def clean(self):
-        cleaned_data = super().clean()
-        address = cleaned_data.get('address')
-        self.location = shared.get_location(address)
 
 
 class FriendRequestForm(forms.Form):

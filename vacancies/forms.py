@@ -2,7 +2,7 @@ from django import forms
 from .models import Vacancy, Application, Invitation
 from account.models import User
 from usergroups.models import UserGroup
-from competitions.models import Match, Tournament, Opponent
+from competitions.models import Match, Tournament
 from django.contrib.contenttypes.models import ContentType
 
 
@@ -26,7 +26,7 @@ class VacancyForm(forms.ModelForm):
             if int(min_age) > int(max_age):
                 raise forms.ValidationError('Das Mindestalter muss unter dem Höchstalter liegen.')
         component = cd['location_component']
-        component_value = self.instance.group.admin.location.get_component(component)
+        component_value = self.instance.target.admin.location.get_component(component)
         if component_value is None:
             raise forms.ValidationError('Sie wohnen in einer kreisfreien Stadt. Bitte wählen Sie eine andere Komponente aus.')
         self.instance.location_component_value = component_value
@@ -68,7 +68,7 @@ class InvitationForm(forms.ModelForm):
                 raise forms.ValidationError(f"Keine Gruppe mit dem Namen {cd['group']} gefunden.")
         else:
             try:
-                user = User.objects.get(name=cd['user'])
+                user = User.objects.get(username=cd['user'])
             except User.DoesNotExist:
                 raise forms.ValidationError(f"Keinen Nutzer mit dem Nutzernamen {cd['user']} gefunden.")
         instance = self.instance
@@ -78,18 +78,12 @@ class InvitationForm(forms.ModelForm):
         else:
             target_ct = User.content_type()
             target_id = user.id
-        if Invitation.objects.filter(sender_ct=instance.sender_ct, sender_id=instance.sender_id,
-                                     target_ct=target_ct, target_id=target_id).exists():
+        if Invitation.objects.filter(sender_ct=instance.sender_ct, sender_id=instance.sender_id, target_ct=target_ct, target_id=target_id).exists():
             raise forms.ValidationError("Dieser Nutzer bzw. diese Gruppe wurde bereits eingeladen und hat entweder"\
                                         " abgelehnt oder noch nicht zugesagt.")
-        if Opponent.objects.filter(instance_ct=target_ct, instance_id=target_id,
-                                   target_ct=instance.sender_ct, target_id=instance.sender_id).exists():
-            raise forms.ValidationError("Dieser Nutzer bzw. diese Gruppe befindet sich bereits in diesem Match bzw."\
-                                        " diesem Turnier.")
-        elif not self.invite_group:
-            group = instance.sender_ct.get_objects_for_this_type(id=instance.sender_id)
-            if user in group.members.all():
-                raise forms.ValidationError("Dieser Nutzer befindet sich bereits in der Gruppe.")
+        if self.invite_group and group in self.instance.sender.groups.all() or\
+            not self.invite_group and user in self.instance.sender.members.all():
+            raise forms.ValidationError("Dieser Nutzer bzw. diese Gruppe ist bereits Mitglied.")
         if self.invite_group:
             self.instance.target = group
         else:

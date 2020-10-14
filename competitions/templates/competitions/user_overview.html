@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.username }}: Matches & Turniere {% endblock %}
+
+{% block content %}
+    <h1>{{ user.username }}: Matches & Turniere </h1>
+    <h2>Matches</h2>
+    <ul>
+        {% for match in user.matches.all %}
+            <li><a href="{{ match.activity.get_absolute_url }}">{{ match.activity }}</a>: <a href="{{ match.get_absolute_url }}">{{ match }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Turniere</h2>
+{% endblock %}

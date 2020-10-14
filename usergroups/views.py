@@ -26,11 +26,8 @@ def group_detail(request, id):
     is_in_group = request.user in group.members.all()
     if not group.public and not is_in_group:
         return HttpResponseForbidden()
-    application_dict = dict([(a.vacancy.id, a.status) for a in request.user.applications.all()])
-    if is_in_group:
-        vacancies = group.vacancies.all()
     posts = Post.objects.filter(target_ct=UserGroup.content_type(), target_id=group.id)
-    return render(request, 'usergroups/group_detail.html', dict(group=group, application_dict=application_dict, is_member=is_in_group, posts=posts))
+    return render(request, 'usergroups/group_detail.html', dict(group=group, is_member=is_in_group, posts=posts))
 
 
 @login_required

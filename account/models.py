@@ -56,7 +56,7 @@ class User(AbstractUser):
         return None
 
     def satisfies_requirements_of(self, vacancy):
-        if not self.location.equal_to(vacancy.group.admin.location, vacancy.location_component):
+        if not self.location.equal_to(vacancy.target.admin.location, vacancy.location_component):
             return False
         if vacancy.sex and self.sex != vacancy.sex:
             return False
@@ -72,6 +72,9 @@ class User(AbstractUser):
     @staticmethod
     def content_type():
         return ContentType.objects.get(app_label='account', model='user')
+
+    def application_dict(self):
+        return dict([(a.vacancy.id, a.status) for a in self.applications.all()])
 
 
 class Friendship(models.Model):

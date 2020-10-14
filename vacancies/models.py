@@ -51,7 +51,7 @@ class Vacancy(models.Model):
         return self.__str__()
 
     def get_absolute_url(self):
-        return reverse('usergroups:review_vacancy', args=[self.id])
+        return reverse('vacancies:review_vacancy', args=[self.id])
 
 
 class Application(models.Model):
@@ -64,10 +64,10 @@ class Application(models.Model):
         ordering = ('status',)
 
     def chat_allowed_for(self, user):
-        return user in [self.user] + list(self.vacancy.group.members.all())
+        return user in [self.user] + list(self.vacancy.target.members.all())
 
     def __str__(self):
         return 'Bewerbung von ' + self.user.username
 
     def verbose(self):
-        return self.__str__() + f' bei {self.vacancy.group}'
+        return self.__str__() + f' bei {self.vacancy.target}'

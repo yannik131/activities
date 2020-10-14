@@ -14,6 +14,7 @@
         <p>Ihr Nutzername: {{ user.username }}</p>
         <p><a href="{% url 'account:home' %}">Homepage</a></p>
         <p><a href="{% url 'activity:list' %}">Aktivitäten</a> | <a href="{% url 'activity:category_list' %}">Kategorien</a></p>
+        <p><a href="{% url 'competitions:user_overview' %}">Matches & Turniere</a></p>
         <p><a href="{% url 'usergroups:group_list' %}">Gruppen{% invitation_number_string user %}</a> | <a href="{% url 'chat:chat_list' %}">Chats{% new_messages_str user %}</a></p>
         <p><a href="{% url 'account:friend_requests_list' %}">Freunde{% new_request_number_string user %}</a></p>
         <p><a href="{% url 'account:password_change' %}">Passwort ändern</a></p>

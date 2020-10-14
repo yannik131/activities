@@ -10,6 +10,7 @@ from django.db.models import Q
 from usergroups.models import UserGroup
 from activity.models import Activity, Category
 from wall.models import Post
+from shared import shared
 
 
 @login_required
@@ -145,7 +146,7 @@ def register(request):
         if user_form.is_valid() and location_form.is_valid():
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data['password'])
-            new_user.location = Location.get_from_location(location_form.location)
+            new_user.location = shared.get_location(location_form.cleaned_data['address'])
             new_user.save()
             return render(request, 'account/register_done.html', {'new_user': new_user})
     else:

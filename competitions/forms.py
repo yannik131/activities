@@ -1,7 +1,6 @@
 from .models import Match
 from django import forms
-from account.models import User, Location
-import shared
+from shared import shared
 
 
 class MatchForm(forms.ModelForm):
@@ -25,9 +24,6 @@ class MatchForm(forms.ModelForm):
     def clean(self):
         cd = super().clean()
         city = cd['location']
-        try:
-            location = Location.objects.get(city=city)
-        except Location.DoesNotExist:
-            location = shared.get_location(city)
+        location = shared.get_location(city)
         self.instance.location = location
         return cd
