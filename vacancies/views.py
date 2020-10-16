@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import VacancyForm, InvitationForm, ApplicationForm
 from vacancies.models import Vacancy, Application, Invitation
+from account.models import User
 from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.contrib.contenttypes.models import ContentType
 
@@ -63,7 +64,7 @@ def delete_vacancy(request, id):
 @login_required
 def delete_invitation(request, id):
     invitation = Invitation.objects.get(id=id)
-    if request.user != invitation.target.admin:
+    if request.user != invitation.sender.admin:
         return HttpResponseForbidden()
     invitation.delete()
     return HttpResponseRedirect(invitation.target.get_absolute_url())
@@ -72,9 +73,9 @@ def delete_invitation(request, id):
 @login_required
 def accept_invitation(request, id):
     invitation = Invitation.objects.get(id=id)
-    if invitation.user != request.user:
+    if invitation.target != request.user:
         return HttpResponseForbidden()
-    invitation.target.members.add(invitation.user)
+    invitation.sender.members.add(invitation.target)
     invitation.delete()
     return HttpResponseRedirect(invitation.sender.get_absolute_url())
 
@@ -113,6 +114,7 @@ def accept_application(request, id):
     if request.user != application.vacancy.target.admin or application.status != 'pending':
         return HttpResponseForbidden()
     application.vacancy.target.members.add(application.user)
+    application.accepted = True
     application.vacancy.delete()
     return HttpResponseRedirect(application.vacancy.target.get_absolute_url())
 
@@ -137,3 +139,9 @@ def delete_application(request, id):
         elif request.user == application.user:
             return HttpResponseRedirect(request.user.get_absolute_url())
     return HttpResponseForbidden()
+
+
+@login_required
+def application_list(request):
+    invitations = Invitation.objects.filter(target_ct=User.content_type(), target_id=request.user.id)
+    return render(request, 'vacancies/application_list.html', dict(invitations=invitations))

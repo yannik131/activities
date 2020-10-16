@@ -18,40 +18,4 @@
             </tr>
         {% endfor %}
     </table>
-    <h2>Bewerbungen</h2>
-    <table>
-        <tr>
-            <th>Gruppe</th>
-            <th>Status</th>
-            <th>Nachricht</th>
-            <th>Aktion</th>
-        </tr>
-        {% for application in user.applications.all %}
-            <tr>
-                <td><a href="{{ application.vacancy.target.get_absolute_url }}">{{ application.vacancy.target.name }}</a></td>
-                <td>{{ application.get_status_display }}</td>
-                <td>{{ application.message }}</td>
-                <td>
-                    {% if application.status == 'pending' %}
-                        <a href="{% url 'usergroups:delete_application' application.id %}">Löschen</a>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-    <h2>Einladungen</h2>
-    <table>
-        <tr>
-            <th>Gruppe</th>
-            <th>Nachricht</th>
-            <th>Aktion</th>
-        </tr>
-        {% for invitation in user.group_invitations.all %}
-            <tr>
-                <td><a href="{{ invitation.group.get_absolute_url }}">{{ invitation.group.name }}</a></td>
-                <td>{{ invitation.message }}</td>
-                <td><a href="{% url 'usergroups:accept_invitation' invitation.id %}">Annehmen</a> | <a href="{% url 'usergroups:delete_invitation' invitation.id %}">Löschen</a></td>
-            </tr>
-        {% endfor %}
-    </table>
 {% endblock %}

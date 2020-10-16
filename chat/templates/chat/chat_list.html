@@ -5,9 +5,22 @@
 
 {% block content %}
     <h1>Chat-Liste</h1>
-    {% for chat_room in user.chat_rooms.all %}
+    <h2>Gruppen</h2>
+    {% for room in group_rooms %}
         <p>
-            <a href="{{ chat_room.get_absolute_url }}">{{ chat_room.target.verbose }}</a>{% if chat_room.id in new_messages %} ({{ new_messages|lookup:chat_room.id }}){% endif %}
+            <a href="{{ room.get_absolute_url }}">{{ room.target.verbose }}</a>{% if room.id in new_messages %} ({{ new_messages|lookup:room.id }}){% endif %}
+        </p>
+    {% endfor %}
+    <h2>Freunde</h2>
+    {% for room in friend_rooms %}
+        <p>
+            <a href="{{ room.get_absolute_url }}">{{ room.target.verbose }}</a>{% if room.id in new_messages %} ({{ new_messages|lookup:room.id }}){% endif %}
+        </p>
+    {% endfor %}
+    <h2>Matches</h2>
+    {% for room in match_rooms %}
+        <p>
+            <a href="{{ room.get_absolute_url }}">{{ room.target.verbose }}</a>{% if room.id in new_messages %} ({{ new_messages|lookup:room.id }}){% endif %}
         </p>
     {% endfor %}
 {% endblock %}

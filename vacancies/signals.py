@@ -23,11 +23,15 @@ def vacancy_changed(instance, created, **kwargs):
 
 @receiver(post_delete, sender=Vacancy)
 def vacancy_deleted(instance, **kwargs):
+    if instance.accepted:
+        return
     create_action(instance.target, 'hat folgende Leerstelle gelöscht: ' + str(instance))
 
 
 @receiver(post_delete, sender=Invitation)
 def invitation_deleted(instance, **kwargs):
+    if instance.target in instance.sender.members.all():
+        return
     create_action(instance.sender, 'hat eine Einladung gelöscht mit folgendem Empfänger:', instance.target)
 
 

@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden, HttpResponseRedirect
+from django.http import HttpResponseForbidden
 from .templatetags import chat_tags
-from django.utils import timezone
+from account.models import Friendship
+from usergroups.models import UserGroup
+from competitions.models import Match
 from .models import ChatRoom
 
 
@@ -24,4 +26,15 @@ def chat_room(request, app_label, model, id):
 def chat_list(request):
     new_messages = chat_tags.new_messages_dict(request.user)
     request.user.save()
-    return render(request, 'chat/chat_list.html', dict(new_messages=new_messages))
+    chat_rooms = request.user.chat_rooms.all()
+    group_rooms = []
+    friend_rooms = []
+    match_rooms = []
+    for room in chat_rooms:
+        if type(room.target) is UserGroup:
+            group_rooms.append(room)
+        elif type(room.target) is Friendship:
+            friend_rooms.append(room)
+        elif type(room.target) is Match:
+            match_rooms.append(room)
+    return render(request, 'chat/chat_list.html', dict(new_messages=new_messages, group_rooms=group_rooms, friend_rooms=friend_rooms, match_rooms=match_rooms))

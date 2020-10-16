@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Match bearbeiten{% endblock %}
+
+{% block content %}
+    <h1>{{ match }}: Bearbeiten</h1>
+    <p>
+        Nutzen Sie das folgende Formular, um das Match zu bearbeiten.
+    </p>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Fertig">
+    </form>
+{% endblock %}

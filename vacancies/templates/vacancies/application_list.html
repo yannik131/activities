@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Bewerbungen{% endblock %}
+
+{% block content %}
+    <h1>Bewerbungen</h1>
+    <table>
+        <tr>
+            <th>Ziel</th>
+            <th>Leerstelle</th>
+            <th>Text</th>
+            <th>Status</th>
+            <th>Aktion</th>
+        </tr>
+        {% for application in user.applications.all %}
+            <tr>
+                <td><a href="{{ application.vacancy.target.get_absolute_url }}">{{ application.vacancy.target }}</a></td>
+                <td>{{ application.vacancy.description }}</td>
+                <td>{{ application.text }}</td>
+                <td>{{ application.get_status_display }}</td>
+                <td>
+                    {% if application.status == 'pending' %}
+                        <a href="{% url 'vacancies:delete_application' application.id %}">Löschen</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h2>Einladungen</h2>
+    <table>
+        <tr>
+            <th>Sender</th>
+            <th>Nachricht</th>
+            <th>Aktion</th>
+        </tr>
+        {% for invitation in invitations.all %}
+            <tr>
+                <td><a href="{{ invitation.sender.get_absolute_url }}">{{ invitation.sender.verbose }}</a></td>
+                <td>{{ invitation.message }}</td>
+                <td><a href="{% url 'vacancies:accept_invitation' invitation.id %}">Annehmen</a> | <a href="{% url 'vacancies:delete_invitation' invitation.id %}">Löschen</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

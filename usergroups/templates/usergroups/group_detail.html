@@ -35,7 +35,7 @@
     {% if is_member %}
         <h2>Einladungen</h2>
         {% if group.invitations.all.exists %}
-            {% include 'vacancies/invitation_list.html' %}
+            {% include 'usergroups/invitation_list.html' %}
         {% endif %}
     {% endif %}
     {% if user == group.admin %}

@@ -6,7 +6,7 @@
     <h1>Match am {{ match.start_time }}</h1>
     <h2>Admin: <a href="{{ match.admin.get_absolute_url }}">{{ match.admin }}</a></h2>
     {% if user == match.admin %}
-        <p><a href="{% url 'competitions:delete_match' match.id %}">Match löschen</a></p>
+        <p><a href="{% url 'competitions:delete_match' match.id %}">Match löschen</a> | <a href="{% url 'competitions:edit_match' match.id %}">Bearbeiten</a></p>
     {% endif %}
     <h2>Ort: {{ match.location }}, {{ match.address }}</h2>
     <h3>Teilnehmer</h3>

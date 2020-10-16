@@ -30,6 +30,7 @@ class Vacancy(models.Model):
         ('county', 'Landkreis'),
         ('city', 'Stadt')
     )
+    accepted = models.BooleanField(default=False)
     location_component = models.CharField(max_length=40, choices=COMPONENT_CHOICES, default='city')
     location_component_value = models.CharField(max_length=40)
 
