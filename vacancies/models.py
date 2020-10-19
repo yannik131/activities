@@ -31,6 +31,7 @@ class Vacancy(models.Model):
         ('city', 'Stadt')
     )
     accepted = models.BooleanField(default=False)
+    persistent = models.BooleanField(default=False)  # If True, the vacancy won't be deleted if an application is accepted
     location_component = models.CharField(max_length=40, choices=COMPONENT_CHOICES, default='city')
     location_component_value = models.CharField(max_length=40)
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from activity.models import Activity
 from account.models import Location, User
-from .forms import MatchForm
+from .forms import MatchForm, TournamentForm
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from .models import Match, Tournament
 
@@ -57,3 +57,22 @@ def delete_match(request, match_id):
 def match_detail(request, match_id):
     match = Match.objects.get(id=match_id)
     return render(request, 'competitions/match_detail.html', dict(match=match, is_member=request.user in match.members.all()))
+
+
+def create_tournament(request, activity_id):
+    activity = Activity.objects.get(id=activity_id)
+    if request.method == 'POST':
+        form = TournamentForm(request.POST)
+        if form.is_valid():
+            form.instance.admin = request.user
+            form.instance.activity = activity
+            tournament = form.save()
+            return HttpResponseRedirect(tournament.get_absolute_url())
+    else:
+        form = TournamentForm(initial=dict(location=request.user.location.get_component('city')))
+    return render(request, 'competitions/create_tournament.html', dict(form=form, activity=activity))
+
+
+def tournament_detail(request, tournament_id):
+    tournament = Tournament.objects.get(id=tournament_id)
+    return render(request, 'competitions/tournament_detail.html', dict(tournament=tournament))

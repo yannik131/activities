@@ -11,4 +11,16 @@
         {% endfor %}
     </ul>
     <h2>Turniere</h2>
+    <h3>Verwaltete Turniere:</h3>
+    <ul>
+        {% for tournament in user.owned_tournaments.all %}
+            <li><a href="{{ tournament.get_absolute_url }}">{{ tournament }}</a></li>
+        {% endfor %}
+    </ul>
+    <h3>Als Teilnehmer:</h3>
+    <ul>
+        {% for tournament in user.tournaments.all %}
+            <li><a href="{{ tournament.get_absolute_url }}">{{ tournament }}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock %}

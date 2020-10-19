@@ -1,6 +1,6 @@
 from django.db.models.signals import m2m_changed, post_delete, post_save, pre_save
 from django.dispatch import receiver
-from .models import Match
+from .models import Match, Tournament
 from actions.utils import create_action
 from chat.models import ChatRoom
 
@@ -31,3 +31,8 @@ def match_deleted(instance, **kwargs):
     room.delete()
     if instance.public:
         create_action(instance.admin, f'hat ein Match gelöscht: {instance}', instance)
+
+
+@receiver(post_save, sender=Tournament)
+def tournament_created(instance, **kwargs):
+    pass  # create chat room

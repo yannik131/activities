@@ -78,3 +78,5 @@ Match beitreten (2/4)
 Infos: ...
 
 Celery - Match schließen, wenn Termin vorbei, actions erstellen, Turniere eröffnen etc.
+
+datetimepicker für Daten

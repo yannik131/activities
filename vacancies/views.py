@@ -115,7 +115,8 @@ def accept_application(request, id):
         return HttpResponseForbidden()
     application.vacancy.target.members.add(application.user)
     application.accepted = True
-    application.vacancy.delete()
+    if not application.vacancy.persistent:
+        application.vacancy.delete()
     return HttpResponseRedirect(application.vacancy.target.get_absolute_url())
 
 
