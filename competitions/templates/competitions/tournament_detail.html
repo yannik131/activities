@@ -4,4 +4,6 @@
 
 {% block content %}
     <h1>{{ tournament }}</h1>
+    <h2>Verwalter: <a href="{{ tournament.admin.get_absolute_url }}">{{ tournament.admin }}</a></h2>
+    <h2><a href="{% url 'competitions:edit_tournament' tournament.id %}">Bearbeiten</a></h2>
 {% endblock %}
