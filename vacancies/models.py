@@ -66,7 +66,7 @@ class Application(models.Model):
         ordering = ('status',)
 
     def chat_allowed_for(self, user):
-        return user in [self.user] + list(self.vacancy.target.members.all())
+        return user in [self.user, self.vacancy.target.admin] + list(self.vacancy.target.members.all())
 
     def __str__(self):
         return 'Bewerbung von ' + self.user.username

@@ -7,6 +7,20 @@
     <p>{% include 'activity/location_selection.html' %}</p>
     <h2>Turniere</h2>
     <p><a href="{% url 'competitions:create_tournament' activity.id %}">Turnier erstellen</a></p>
+    <table>
+        <tr>
+            <th>Turnier</th>
+            <th>Admin</th>
+            <th>Ort</th>
+        </tr>
+        {% for tournament in tournaments %}
+            <tr>
+                <td><a href="{{ tournament.get_absolute_url }}">{{ tournament.title }}</a></td>
+                <td><a href="{{ tournament.admin.get_absolute_url }}">{{ tournament.admin }}</a></td>
+                <td>{{ tournament.location }}</td>
+            </tr>
+        {% endfor %}
+    </table>
     <h2>Öffentliche Matches</h2>
     <p>
         <a href="{% url 'competitions:create_match' activity.id %}">Match erstellen</a>
@@ -16,12 +30,14 @@
             <th>Match</th>
             <th>Admin</th>
             <th>Leerstellen</th>
+            <th>Ort</th>
         </tr>
         {% for match in matches %}
             <tr>
                 <td><a href="{{ match.get_absolute_url }}">{{ match.start_time }}</a></td>
                 <td><a href="{{ match.admin.get_absolute_url }}">{{ match.admin }}</a></td>
                 <td>{{ match.vacancies.count }}</td>
+                <th>{{ match.location }}</th>
             </tr>
         {% endfor %}
     </table>

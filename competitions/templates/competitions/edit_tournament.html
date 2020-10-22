@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Turnier bearbeiten{% endblock %}
+
+{% block content %}
+    <h1>Turnier bearbeiten: {{ tournament }}</h1>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Fertig">
+    </form>
+    <h2>Mitglieder verwalten</h2>
+    {% if user not in tournament.members.all %}
+        <p><a href="{% url 'competitions:add_tournament_member' tournament.id user.id %}">Selbst beitreten</a></p>
+    {% endif %}
+    <ul>
+        {% for member in tournament.members.all %}
+            <li><a href="{{ member.get_absolute_url }}">{{ member }}</a> <a href="{% url 'competitions:remove_tournament_member' tournament.id member.id 'admin' %}">Entfernen</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

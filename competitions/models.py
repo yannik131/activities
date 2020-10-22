@@ -56,6 +56,7 @@ class Round(models.Model):
 
 
 class Tournament(models.Model):
+    title = models.CharField(max_length=100)
     admin = models.ForeignKey(User, related_name='owned_tournaments', on_delete=models.CASCADE)
     activity = models.ForeignKey(Activity, on_delete=models.CASCADE, related_name='tournaments')
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, related_name='tournaments', null=True, blank=True)
@@ -68,12 +69,22 @@ class Tournament(models.Model):
     fixed_number_of_rounds = models.PositiveSmallIntegerField(null=True, blank=True)
     format = models.TextField()
 
+    class Meta:
+        unique_together = ('title', 'location')
+
     def get_absolute_url(self):
         return reverse('competitions:tournament_detail', args=[self.id])
 
     def __str__(self):
         return f"{self.activity}-Turnier am {self.starting_time}"
 
+    def verbose(self):
+        return self.__str__()
+
     @staticmethod
     def content_type():
         return ContentType.objects.get(app_label='competitions', model='tournament')
+
+    @property
+    def vacancies(self):
+        return Vacancy.objects.filter(target_ct=Tournament.content_type(), target_id=self.id)

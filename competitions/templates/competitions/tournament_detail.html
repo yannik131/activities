@@ -4,6 +4,23 @@
 
 {% block content %}
     <h1>{{ tournament }}</h1>
+    {% if user == tournament.admin %}
+        <p><a href="{% url 'competitions:edit_tournament' tournament.id %}">Bearbeiten...</a></p>
+    {% endif %}
+    {% if tournament in user.tournaments.all %}
+        <p><a href="{% url 'competitions:remove_tournament_member' tournament.id user.id 'user' %}">Austreten...</a></p>
+    {% endif %}
     <h2>Verwalter: <a href="{{ tournament.admin.get_absolute_url }}">{{ tournament.admin }}</a></h2>
-    <h2><a href="{% url 'competitions:edit_tournament' tournament.id %}">Bearbeiten</a></h2>
+    <p>
+        Mitglieder:
+        {% for member in tournament.members.all %}
+            <a href="{{ member.get_absolute_url }}">{{ member }}</a>{% if forloop.last %}.{% else %},{% endif %}
+        {% endfor %}
+    </p>
+    {% if user == tournament.admin %}
+        <p><a href="{% url 'vacancies:create_vacancies' 'competitions' 'tournament' tournament.id %}">Leerstelle hinzufügen</a></p>
+    {% endif %}
+    {% with target=tournament %}
+        {% include 'vacancies/vacancy_list.html' %}
+    {% endwith %}
 {% endblock %}

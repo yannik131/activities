@@ -9,13 +9,14 @@ from django.contrib.contenttypes.models import ContentType
 class VacancyForm(forms.ModelForm):
     class Meta:
         model = Vacancy
-        fields = ('description', 'sex', 'min_age', 'max_age', 'location_component')
+        fields = ('description', 'sex', 'min_age', 'max_age', 'location_component', 'persistent')
         labels = {
             'description': 'Beschreibung',
             'sex': 'Geschlecht',
             'min_age': 'Mindestalter',
             'max_age': 'Höchstalter',
-            'location_component': 'Beschränken auf'
+            'location_component': 'Beschränken auf',
+            'persistent': 'Leerstelle nach Annahme einer Bewerbung nicht löschen'
         }
 
     def clean(self):

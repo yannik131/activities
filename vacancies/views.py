@@ -103,9 +103,10 @@ def apply_for_vacancy(request, id):
 @login_required
 def review_vacancy(request, id):
     vacancy = Vacancy.objects.get(id=id)
-    if request.user not in vacancy.target.members.all():
-        return HttpResponseForbidden()
-    return render(request, 'vacancies/review_vacancy.html', dict(vacancy=vacancy))
+    if request.user == vacancy.target.admin or request.user in vacancy.target.members.all():
+        return render(request, 'vacancies/review_vacancy.html', dict(vacancy=vacancy))
+    return HttpResponseForbidden()
+
 
 
 @login_required
@@ -114,9 +115,9 @@ def accept_application(request, id):
     if request.user != application.vacancy.target.admin or application.status != 'pending':
         return HttpResponseForbidden()
     application.vacancy.target.members.add(application.user)
-    application.accepted = True
     if not application.vacancy.persistent:
         application.vacancy.delete()
+    application.delete()
     return HttpResponseRedirect(application.vacancy.target.get_absolute_url())
 
 

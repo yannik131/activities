@@ -31,7 +31,7 @@
                         {% endif %}
                     {% endif %}
                 {% endif %}
-                {% if is_member %}
+                {% if is_member or user == target.admin %}
                     <a href="{% url 'vacancies:review_vacancy' vacancy.id %}">Bewerbungen</a>
                 {% endif %}
             </td>

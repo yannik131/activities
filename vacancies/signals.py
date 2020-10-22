@@ -23,8 +23,6 @@ def vacancy_changed(instance, created, **kwargs):
 
 @receiver(post_delete, sender=Vacancy)
 def vacancy_deleted(instance, **kwargs):
-    if instance.accepted:
-        return
     create_action(instance.target, 'hat folgende Leerstelle gelöscht: ' + str(instance))
 
 

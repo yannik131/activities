@@ -90,4 +90,4 @@ def kick_out(request, group_id, user_id):
     if request.user != group.admin or user not in group.members.all():
         return HttpResponseForbidden()
     group.members.remove(user)
-    return HttpResponseRedirect(group.get_absolute_url())
+    return HttpResponseRedirect(request.build_absolute_uri(f"/usergroups/edit_group/{group.id}"))

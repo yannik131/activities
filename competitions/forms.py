@@ -36,8 +36,9 @@ class TournamentForm(forms.ModelForm):
 
     class Meta:
         model = Tournament
-        fields = ['address', 'starting_time', 'application_deadline', 'max_members', 'fixed_number_of_rounds', 'format']
+        fields = ['title', 'address', 'starting_time', 'application_deadline', 'max_members', 'fixed_number_of_rounds', 'format']
         labels = {
+            'title': 'Titel des Turniers',
             'address': 'Adresse (falls das Turnier an einem einzigen Ort stattfindet, sonst leer lassen)',
             'starting_time': 'Turnierbeginn',
             'application_deadline': 'Anmeldeschluss',
