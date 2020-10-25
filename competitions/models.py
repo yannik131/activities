@@ -5,7 +5,8 @@ from activity.models import Activity
 from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
 from vacancies.models import Vacancy
-from django.contrib.postgres.fields import HStoreField
+import json
+from django.contrib.postgres.fields.hstore import HStoreField
 
 
 class Game(models.Model):
@@ -24,8 +25,7 @@ class Match(models.Model):
     round = models.ForeignKey('Round', on_delete=models.CASCADE, related_name='matches', null=True, blank=True)
     # TODO: Depending on activity this should have a more meaningful default value in the form
     public = models.BooleanField(default=True)
-    # points = HStoreField()
-    # positions = HStoreField()
+    points = HStoreField(default=dict)
     members = models.ManyToManyField(User, related_name='matches')
     groups = models.ManyToManyField(UserGroup, related_name='matches')
 
@@ -68,9 +68,17 @@ class Tournament(models.Model):
     max_members = models.PositiveSmallIntegerField(null=True, blank=True)
     fixed_number_of_rounds = models.PositiveSmallIntegerField(null=True, blank=True)
     format = models.TextField()
+    points = HStoreField(default=dict)
+    tie_breaks = HStoreField(default=dict)
 
     class Meta:
         unique_together = ('title', 'location')
+
+    def get_sorted_player_list(self):
+        players = sorted([(User.objects.get(id=str(k)), v, self.tie_breaks[k]) for (k, v) in self.points.items()],
+                         key=lambda pair: (pair[1], self.tie_breaks[str(pair[0].id)]),
+                         reverse=True)
+        return players  # figure hstorefield out!!
 
     def get_absolute_url(self):
         return reverse('competitions:tournament_detail', args=[self.id])

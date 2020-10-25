@@ -56,4 +56,4 @@ def application_saved(instance: Application, **kwargs):
 def application_deleted(instance: Application, **kwargs):
     room = ChatRoom.get_for_target(instance)
     room.delete()
-    create_action(instance.vacancy.target, f'Die Bewerbung auf die Leerstelle "{instance.vacancy}" wurde gelöscht. Bewerber:', instance.user)
+    # create_action(instance.vacancy.target, f'Die Bewerbung auf die Leerstelle "{instance.vacancy}" wurde gelöscht. Bewerber:', instance.user)

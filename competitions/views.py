@@ -118,3 +118,8 @@ def remove_tournament_member(request, tournament_id, user_id, who):
         tournament.members.remove(user)
         return HttpResponseRedirect(tournament.get_absolute_url())
 
+
+def tournament_standings(request, tournament_id):
+    tournament = Tournament.objects.get(id=tournament_id)
+    return render(request, 'competitions/full_table.html', dict(tournament=tournament, players=tournament.get_sorted_player_list()))
+

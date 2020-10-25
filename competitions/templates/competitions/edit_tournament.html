@@ -3,7 +3,7 @@
 {% block title %}Turnier bearbeiten{% endblock %}
 
 {% block content %}
-    <h1>Turnier bearbeiten: {{ tournament }}</h1>
+    <h1>Turnier bearbeiten: <a href="{{ tournament.get_absolute_url }}">{{ tournament }}</a></h1>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}

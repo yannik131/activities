@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Tabelle{% endblock %}
+
+{% block content %}
+    <h1>Tabelle</h1>
+    <table>
+        <tr>
+            <th>Rang</th>
+            <th>Nutzer</th>
+            <th>Punkte</th>
+            <th>Tie break</th>
+        </tr>
+        {% for player, score, tie_break in players %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{{ player.get_absolute_url }}">{{ player }}</a></td>
+                <td>{{ score }}</td>
+                <td>{{ tie_break }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

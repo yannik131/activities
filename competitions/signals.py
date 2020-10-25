@@ -19,6 +19,18 @@ def members_changed(instance, action, model, pk_set, **kwargs):
         room.members.remove(member)
 
 
+@receiver(m2m_changed, sender=Tournament.members.through)
+def members_changed(instance, action, model, pk_set, **kwargs):
+    id = next(iter(pk_set))
+    member = model.objects.get(id=id)
+    if action == 'post_add':
+        instance.points[str(member.id)] = 0
+    elif action == 'post_remove':
+        del instance.points[str(member.id)]
+
+    instance.save()
+
+
 @receiver(post_save, sender=Match)
 def match_created(instance, created, **kwargs):
     if created:

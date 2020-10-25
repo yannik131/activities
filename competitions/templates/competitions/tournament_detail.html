@@ -11,6 +11,7 @@
         <p><a href="{% url 'competitions:remove_tournament_member' tournament.id user.id 'user' %}">Austreten...</a></p>
     {% endif %}
     <h2>Verwalter: <a href="{{ tournament.admin.get_absolute_url }}">{{ tournament.admin }}</a></h2>
+    <h2><a href="{% url 'competitions:tournament_standings' tournament.id %}">Tabelle</a></h2>
     <p>
         Mitglieder:
         {% for member in tournament.members.all %}
