@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Spielplan Runde {{ round.number }}{% endblock %}
+
+{% block content %}
+    <h1>Spielplan Runde {{ round.number }}</h1>
+    {% if round.leftover %}
+        <p>Nutzer <a href="{{ round.leftover.get_absolute_url }}">{{ round.leftover }}</a> hat keinen Spielpartner und bekommt ein Freilos.</p>
+    {% endif %}
+    <table>
+        <tr>
+            <th>Wer</th>
+            <th>Ergebnis</th>
+        </tr>
+        {% for p1, p2 in round.matchup_players %}
+        <tr>
+            <td><a href="{{ p1.get_absolute_url }}">{{ p1 }}</a> vs. <a href="{{ p2.get_absolute_url }}">{{ p2 }}</a></td>
+            <td>Placeholder</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

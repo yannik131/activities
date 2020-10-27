@@ -15,5 +15,9 @@ urlpatterns = [
     path('edit_tournament/<int:tournament_id>/', views.edit_tournament, name='edit_tournament'),
     path('add_tournament_member/<int:tournament_id>/<int:user_id>/', views.add_tournament_member, name='add_tournament_member'),
     path('remove_tournament_member/<int:tournament_id>/<int:user_id>/<str:who>/', views.remove_tournament_member, name='remove_tournament_member'),
-    path('tournament_standings/<int:tournament_id>/', views.tournament_standings, name='tournament_standings')
+    path('tournament_standings/<int:tournament_id>/', views.tournament_standings, name='tournament_standings'),
+    path('delete_tournament/<int:tournament_id>/', views.delete_tournament, name='delete_tournament'),
+    path('game_plan/<int:tournament_id>/<int:round_number>/', views.game_plan, name='game_plan'),
+    path('generate_next_round/<int:tournament_id>/', views.generate_next_round, name='generate_next_round')
+
 ]

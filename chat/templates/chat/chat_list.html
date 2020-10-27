@@ -23,4 +23,10 @@
             <a href="{{ room.get_absolute_url }}">{{ room.target.verbose }}</a>{% if room.id in new_messages %} ({{ new_messages|lookup:room.id }}){% endif %}
         </p>
     {% endfor %}
+    <h2>Turniere</h2>
+    {% for room in tournament_rooms %}
+        <p>
+            <a href="{{ room.get_absolute_url }}">{{ room.target.verbose }}</a>{% if room.id in new_messages %} ({{ new_messages|lookup:room.id }}){% endif %}
+        </p>
+    {% endfor %}
 {% endblock %}

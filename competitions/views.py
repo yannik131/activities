@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from activity.models import Activity
 from account.models import Location, User
-from .forms import MatchForm, TournamentForm
-from django.http import HttpResponseRedirect, HttpResponseForbidden
-from .models import Match, Tournament
+from . import utils
+from .forms import MatchForm, TournamentForm, AddUserToTournamentForm
+from django.http import HttpResponseRedirect, HttpResponseForbidden, HttpResponseServerError
+from .models import Match, Tournament, Round
+from shared import shared
+from django.utils import timezone
+import datetime
 
 
 def user_overview(request):
@@ -53,7 +57,7 @@ def delete_match(request, match_id):
     if request.user != match.admin:
         return HttpResponseForbidden()
     match.delete()
-    return HttpResponseRedirect(request.build_absolute_uri('/competitions/user_overview/'))
+    return HttpResponseRedirect(match.activity.get_absolute_url())
 
 
 def match_detail(request, match_id):
@@ -71,7 +75,11 @@ def create_tournament(request, activity_id):
             tournament = form.save()
             return HttpResponseRedirect(tournament.get_absolute_url())
     else:
-        form = TournamentForm(initial=dict(title=str(activity)+"-Turnier", location=request.user.location.get_component('city')))
+        form = TournamentForm(initial=dict(
+            title=str(activity)+"-Turnier",
+            location=request.user.location.get_component('city'),
+            starting_time=(timezone.now()+datetime.timedelta(days=7)).strftime(shared.GERMAN_DATE_FMT),
+            application_deadline=(timezone.now()+datetime.timedelta(days=6)).strftime(shared.GERMAN_DATE_FMT)))
     return render(request, 'competitions/create_tournament.html', dict(form=form, activity=activity))
 
 
@@ -87,6 +95,14 @@ def edit_tournament(request, tournament_id):
     else:
         form = TournamentForm(instance=tournament, initial=dict(location=tournament.location.get_component('city')))
     return render(request, 'competitions/edit_tournament.html', dict(form=form, tournament=tournament))
+
+
+def delete_tournament(request, tournament_id):
+    tournament = Tournament.objects.get(id=tournament_id)
+    if tournament.admin != request.user:
+        return HttpResponseForbidden()
+    tournament.delete()
+    return HttpResponseRedirect(tournament.activity.get_absolute_url())
 
 
 def tournament_detail(request, tournament_id):
@@ -121,5 +137,31 @@ def remove_tournament_member(request, tournament_id, user_id, who):
 
 def tournament_standings(request, tournament_id):
     tournament = Tournament.objects.get(id=tournament_id)
-    return render(request, 'competitions/full_table.html', dict(tournament=tournament, players=tournament.get_sorted_player_list()))
+    players = utils.sorted_player_list(tournament.points, tournament.tie_breaks)
+    players = [(User.objects.get(id=int(k)), s, t) for k, s, t in players]
+    return render(request, 'competitions/full_table.html', dict(tournament=tournament, players=players))
+
+
+def game_plan(request, tournament_id, round_number):
+    tournament = Tournament.objects.get(id=tournament_id)
+    try:
+        round = tournament.rounds.get(number=round_number)
+    except Round.DoesNotExist:
+        return HttpResponseRedirect(tournament.get_absolute_url())
+    return render(request, 'competitions/game_plan.html', dict(tournament=tournament, round=round))
+
+
+def generate_next_round(request, tournament_id):
+    tournament = Tournament.objects.get(id=tournament_id)
+    if request.user != tournament.admin:
+        return HttpResponseForbidden()
+    n = 1
+    if tournament.rounds.all().exists():
+        last_round = tournament.rounds.all().last()
+        if not last_round.over:
+            return HttpResponseServerError('Es stehen noch Ergebnisse der letzten Runde offen.')
+        n = last_round.number+1
+    round = Round.objects.create(tournament=tournament, number=n)
+
+    return render(request, 'competitions/game_plan.html', dict(tournament=tournament, round=round))
 

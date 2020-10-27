@@ -4,6 +4,7 @@
 
 {% block content %}
     <h1>{{ match }}: Bearbeiten</h1>
+    <h2><a href="{% url 'competitions:delete_match' match.id %}">Match löschen</a></h2>
     <p>
         Nutzen Sie das folgende Formular, um das Match zu bearbeiten.
     </p>

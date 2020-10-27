@@ -4,14 +4,15 @@
 
 {% block content %}
     <h1>{{ tournament }}</h1>
+    <p>Anmeldeschluss: {{ tournament.application_deadline }}</p>
     {% if user == tournament.admin %}
-        <p><a href="{% url 'competitions:edit_tournament' tournament.id %}">Bearbeiten...</a></p>
-    {% endif %}
-    {% if tournament in user.tournaments.all %}
-        <p><a href="{% url 'competitions:remove_tournament_member' tournament.id user.id 'user' %}">Austreten...</a></p>
+        <p><a href="{% url 'competitions:edit_tournament' tournament.id %}">Bearbeiten...</a> | <a href="{% url 'chat:chat_room' 'competitions' 'tournament' tournament.id %}">Chat</a></p>
+        <p><a href="{% url 'competitions:generate_next_round' tournament.id %}">Nächste Runde erzeugen</a></p>
+    {% elif tournament in user.tournaments.all %}
+        <p><a href="{% url 'competitions:remove_tournament_member' tournament.id user.id 'user' %}">Austreten...</a> | <a href="{% url 'chat:chat_room' 'competitions' 'tournament' tournament.id %}">Chat</a></p>
     {% endif %}
     <h2>Verwalter: <a href="{{ tournament.admin.get_absolute_url }}">{{ tournament.admin }}</a></h2>
-    <h2><a href="{% url 'competitions:tournament_standings' tournament.id %}">Tabelle</a></h2>
+    <h2><a href="{% url 'competitions:tournament_standings' tournament.id %}">Tabelle</a> | <a href="{% url 'competitions:game_plan' tournament.id 1 %}">Spielplan</a></h2>
     <p>
         Mitglieder:
         {% for member in tournament.members.all %}

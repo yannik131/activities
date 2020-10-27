@@ -1,7 +1,7 @@
 from .models import Match, Tournament
 from django import forms
 from shared import shared
-from datetime import datetime
+from account.models import User
 
 
 class MatchForm(forms.ModelForm):
@@ -52,4 +52,16 @@ class TournamentForm(forms.ModelForm):
         self.instance.location = shared.get_location(cd['location'])
         if cd['application_deadline'] > cd['starting_time']:
             raise forms.ValidationError('Anmeldeschluss muss vor Turnierbeginn sein.')
+        return cd
+
+
+class AddUserToTournamentForm(forms.Form):
+    username = forms.CharField(label='Nutzername')
+
+    def clean(self):
+        cd = super().clean()
+        try:
+            self.user = User.objects.get(username=cd['username'])
+        except:
+            raise forms.ValidationError('Keinen Nutzer mit diesem Nutzernamen gefunden.')
         return cd

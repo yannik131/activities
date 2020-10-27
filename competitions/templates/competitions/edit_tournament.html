@@ -4,12 +4,14 @@
 
 {% block content %}
     <h1>Turnier bearbeiten: <a href="{{ tournament.get_absolute_url }}">{{ tournament }}</a></h1>
+    <h2><a href="{% url 'competitions:delete_tournament' tournament.id %}">Turnier löschen</a></h2>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
         <input type="submit" value="Fertig">
     </form>
     <h2>Mitglieder verwalten</h2>
+    <p><a href="{% url 'vacancies:create_invitation' 'competitions' 'tournament' tournament.id %}">Mitglied einladen</a></p>
     {% if user not in tournament.members.all %}
         <p><a href="{% url 'competitions:add_tournament_member' tournament.id user.id %}">Selbst beitreten</a></p>
     {% endif %}

@@ -3,6 +3,8 @@ from django.dispatch import receiver
 from .models import Match, Tournament
 from actions.utils import create_action
 from chat.models import ChatRoom
+from vacancies.models import Application
+from account.models import User
 
 
 @receiver(m2m_changed, sender=Match.members.through)
@@ -23,10 +25,15 @@ def members_changed(instance, action, model, pk_set, **kwargs):
 def members_changed(instance, action, model, pk_set, **kwargs):
     id = next(iter(pk_set))
     member = model.objects.get(id=id)
+    room = ChatRoom.get_for_target(instance)
     if action == 'post_add':
         instance.points[str(member.id)] = 0
+        instance.tie_breaks[str(member.id)] = 0
+        room.members.add(member)
     elif action == 'post_remove':
         del instance.points[str(member.id)]
+        del instance.tie_breaks[str(member.id)]
+        room.members.remove(member)
 
     instance.save()
 
@@ -47,4 +54,11 @@ def match_deleted(instance, **kwargs):
 
 @receiver(post_save, sender=Tournament)
 def tournament_created(instance, **kwargs):
-    pass  # create chat room
+    room = ChatRoom.get_for_target(instance)
+    room.members.add(instance.admin)
+
+
+@receiver(post_delete, sender=Tournament)
+def tournament_deleted(instance, **kwargs):
+    room = ChatRoom.get_for_target(instance)
+    room.delete()

@@ -4,7 +4,7 @@ from django.http import HttpResponseForbidden
 from .templatetags import chat_tags
 from account.models import Friendship
 from usergroups.models import UserGroup
-from competitions.models import Match
+from competitions.models import Match, Tournament
 from .models import ChatRoom
 
 
@@ -30,6 +30,7 @@ def chat_list(request):
     group_rooms = []
     friend_rooms = []
     match_rooms = []
+    tournament_rooms = []
     for room in chat_rooms:
         if type(room.target) is UserGroup:
             group_rooms.append(room)
@@ -37,4 +38,6 @@ def chat_list(request):
             friend_rooms.append(room)
         elif type(room.target) is Match:
             match_rooms.append(room)
-    return render(request, 'chat/chat_list.html', dict(new_messages=new_messages, group_rooms=group_rooms, friend_rooms=friend_rooms, match_rooms=match_rooms))
+        elif type(room.target) is Tournament:
+            tournament_rooms.append(room)
+    return render(request, 'chat/chat_list.html', dict(new_messages=new_messages, group_rooms=group_rooms, friend_rooms=friend_rooms, match_rooms=match_rooms, tournament_rooms=tournament_rooms))

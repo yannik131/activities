@@ -5,6 +5,8 @@ from vacancies.models import Vacancy, Application, Invitation
 from account.models import User
 from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.contrib.contenttypes.models import ContentType
+from competitions.models import Tournament
+from django.utils import timezone
 
 
 @login_required
@@ -87,6 +89,10 @@ def apply_for_vacancy(request, id):
         return HttpResponseForbidden(f'Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder Geschlecht) nicht. <a href=\"{vacancy.target.get_absolute_url()}\">Zurück</a>')
     elif request.user.applications.filter(vacancy=vacancy).exists():
         return HttpResponseForbidden('Sie haben sich bereits beworben.')
+    elif type(vacancy.target) is Tournament and vacancy.target.application_deadline < timezone.now():
+        return HttpResponseForbidden(f'Die Anmeldefrist ist bereits abgelaufen. <a href=\"{vacancy.target.get_absolute_url()}\">Zurück</a>')
+    if request.user in vacancy.target.members.all():
+        return HttpResponseForbidden('Sie sind bereits Mitglied.')
     if request.method == 'POST':
         form = ApplicationForm(request.POST)
         if form.is_valid():
@@ -106,7 +112,6 @@ def review_vacancy(request, id):
     if request.user == vacancy.target.admin or request.user in vacancy.target.members.all():
         return render(request, 'vacancies/review_vacancy.html', dict(vacancy=vacancy))
     return HttpResponseForbidden()
-
 
 
 @login_required
