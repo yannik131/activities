@@ -22,6 +22,7 @@ class UserRegistrationForm(forms.ModelForm):
         cd = self.cleaned_data
         if cd['password'] != cd['password2']:
             raise forms.ValidationError('Passwörter stimmen nicht überein!')
+
         return cd['password2']
 
 
@@ -39,6 +40,11 @@ class UserEditForm(forms.ModelForm):
 
 class LocationForm(forms.Form):
     address = forms.CharField(label='Adresse')
+
+    def clean(self):
+        cd = super().clean()
+        _ = shared.get_location(cd['address'])
+        return cd
 
 
 class FriendRequestForm(forms.Form):

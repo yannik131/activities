@@ -48,7 +48,7 @@ def application_saved(instance: Application, **kwargs):
     previous = Application.objects.filter(id=instance.id).first()
     if previous:
         if previous.status != instance.status:
-            create_action(instance.vacancy.target, f'hat den Status der Bewerbung auf die Leerstelle {instance.vacancy} auf {instance.get_status_display} geändert. Bewerber:', instance.user)
+            create_action(instance.vacancy.target, f'hat den Status der Bewerbung auf die Leerstelle {instance.vacancy} auf {instance.get_status_display()} geändert. Bewerber:', instance.user)
             ChatRoom.get_for_target(instance).delete()
 
 

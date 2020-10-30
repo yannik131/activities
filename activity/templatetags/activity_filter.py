@@ -15,3 +15,8 @@ def inim(component):
 @register.filter(name='lookup')
 def lookup(value, arg):
     return value.get(arg)
+
+
+@register.filter(name='lookup_str')
+def lookup_str(value, arg):
+    return value.get(str(arg))

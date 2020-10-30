@@ -2,12 +2,14 @@ from django.shortcuts import render
 from activity.models import Activity
 from account.models import Location, User
 from . import utils
-from .forms import MatchForm, TournamentForm, AddUserToTournamentForm
+from .forms import MatchForm, TournamentForm, make_matchup_score_form
 from django.http import HttpResponseRedirect, HttpResponseForbidden, HttpResponseServerError
 from .models import Match, Tournament, Round
 from shared import shared
+from shared.shared import add
 from django.utils import timezone
 import datetime
+import json
 
 
 def user_overview(request):
@@ -21,7 +23,7 @@ def overview(request, activity_id):
     matches = Match.objects.filter(activity=activity, public=True)
     component = Location.components[component_index]
     matches = [match for match in matches.all() if match.vacancies.count() and match.location.equal_to(request.user.location, component)]
-    tournaments = Tournament.objects.filter(activity=activity)
+    tournaments = Tournament.objects.filter(activity=activity, starting_time__gt=timezone.now())
     tournaments = [tournament for tournament in tournaments.all() if tournament.location.equal_to(request.user.location, component)]
     return render(request, 'competitions/overview.html', dict(activity=activity, component_index=component_index, chosen_component=chosen_component, matches=matches, tournaments=tournaments))
 
@@ -148,7 +150,7 @@ def game_plan(request, tournament_id, round_number):
         round = tournament.rounds.get(number=round_number)
     except Round.DoesNotExist:
         return HttpResponseRedirect(tournament.get_absolute_url())
-    return render(request, 'competitions/game_plan.html', dict(tournament=tournament, round=round))
+    return render(request, 'competitions/game_plan.html', dict(tournament=tournament, round=round, over=round.over, is_admin=request.user == tournament.admin))
 
 
 def generate_next_round(request, tournament_id):
@@ -161,7 +163,44 @@ def generate_next_round(request, tournament_id):
         if not last_round.over:
             return HttpResponseServerError('Es stehen noch Ergebnisse der letzten Runde offen.')
         n = last_round.number+1
-    round = Round.objects.create(tournament=tournament, number=n)
+    try:
+        matchups, leftover = utils.get_pairings_for(tournament.activity.name, tournament)
+    except:
+        return HttpResponseServerError('Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden.')
+    round = Round.objects.create(tournament=tournament, number=n, points=dict.fromkeys([str(k) for k in tournament.members.all().values_list('id', flat=True)], 0), matchups = json.dumps(matchups), leftover=leftover)
+    tournament.save()
+    round.save()
+    return HttpResponseRedirect(round.get_absolute_url())
 
-    return render(request, 'competitions/game_plan.html', dict(tournament=tournament, round=round))
+
+def close_round(request, round_id):
+    round = Round.objects.get(id=round_id)
+    if request.user != round.tournament.admin or round.over:
+        return HttpResponseForbidden()
+    if not round.matches_have_results():
+        return HttpResponseServerError('Es stehen noch Ergebnisse offen.')
+    for (k, v) in round.points.items():
+        add(round.tournament.points, k, v)
+    round.tournament.save()
+    round.over = True
+    round.save()
+    return HttpResponseRedirect(round.get_absolute_url())
+
+
+def change_score(request, round_id, matchup_index):
+    round = Round.objects.get(id=round_id)
+    if request.user != round.tournament.admin or round.over:
+        return HttpResponseForbidden()
+    matchup = json.loads(round.matchups)[matchup_index]
+    if request.method == 'POST':
+        form = make_matchup_score_form(matchup)(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            for id in cd:
+                round.points[id] = cd[id]
+            round.save()
+            return HttpResponseRedirect(round.get_absolute_url())
+    else:
+        form = make_matchup_score_form(matchup)
+    return render(request, 'competitions/change_score.html', dict(form=form, round=round))
 

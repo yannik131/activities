@@ -156,7 +156,7 @@ class Location(models.Model):
             country=address['country'],
             state=address['state'],
             county=address.get('county'),
-            city=address['city'])
+            city=address.get('city', address.get('town')))
         return location
 
     def get_component(self, component):

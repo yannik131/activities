@@ -67,6 +67,7 @@ class Tournament(models.Model):
     format = models.TextField()
     points = HStoreField(default=dict)
     tie_breaks = HStoreField(default=dict)
+    over = models.BooleanField(default=False)
 
     class Meta:
         unique_together = ('title', 'location')
@@ -94,33 +95,33 @@ class Tournament(models.Model):
 
 class Round(models.Model):
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.leftover = None
-        self.points = dict.fromkeys([str(k) for k in self.tournament.members.all().values_list('id', flat=True)], 0)
-        players = utils.sorted_player_list(self.tournament.points, self.tournament.tie_breaks)
-        self.matchups = json.dumps(utils.create_pairings(players, self.tournament.tie_breaks, self.tournament.points))
-        if len(players) % 2 != 0:
-            self.leftover = players[-1][0]
-        self.tournament.save()
-
     starting_time = models.DateTimeField(null=True)
     number = models.PositiveSmallIntegerField()
     tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE, related_name='rounds')
     points = HStoreField(default=dict)
-    matchups = models.JSONField(default=None)
+    matchups = models.JSONField(null=True)
+    over = models.BooleanField(default=False)
+    leftover = models.PositiveIntegerField(null=True)
 
     class Meta:
         ordering = ['number']
 
-    @property
-    def over(self):
+    def leftover_instance(self):
+        if self.leftover:
+            return User.objects.get(id=self.leftover)
+        return None
+
+    def matches_have_results(self):
         matchups = json.loads(self.matchups)
         for matchup in matchups:
-            if sum([int(self.points[user_id]) for user_id in matchup]) == 0:
-                return False
-        return True
+            for user_id in matchup:
+                if float(self.points[user_id]) != 0:
+                    return True
+        return False
 
     def matchup_players(self):
         matchups = json.loads(self.matchups)
         return [tuple(User.objects.get(id=int(k)) for k in matchup) for matchup in matchups]
+
+    def get_absolute_url(self):
+        return reverse('competitions:game_plan', args=[self.tournament.id, self.number])

@@ -55,13 +55,8 @@ class TournamentForm(forms.ModelForm):
         return cd
 
 
-class AddUserToTournamentForm(forms.Form):
-    username = forms.CharField(label='Nutzername')
-
-    def clean(self):
-        cd = super().clean()
-        try:
-            self.user = User.objects.get(username=cd['username'])
-        except:
-            raise forms.ValidationError('Keinen Nutzer mit diesem Nutzernamen gefunden.')
-        return cd
+def make_matchup_score_form(matchup):
+    fields = dict()
+    for id in matchup:
+        fields[id] = forms.IntegerField(label=User.objects.get(id=id).username, initial=0)
+    return type('MatchupScoreForm', (forms.BaseForm,), {'base_fields': fields})

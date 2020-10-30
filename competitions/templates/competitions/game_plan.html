@@ -1,22 +1,37 @@
 {% extends 'base.html' %}
+{% load activity_filter %}
 
 {% block title %}Spielplan Runde {{ round.number }}{% endblock %}
 
 {% block content %}
     <h1>Spielplan Runde {{ round.number }}</h1>
+    <p><a href="{{ round.tournament.get_absolute_url }}">{{ round.tournament }}</a>:
+        {% for round in tournament.rounds.all %}
+            <a href="{{ round.get_absolute_url }}">Runde {{ round.number }}</a>{% if not forloop.last %}| {% endif %}
+        {% endfor %}
+    </p>
     {% if round.leftover %}
-        <p>Nutzer <a href="{{ round.leftover.get_absolute_url }}">{{ round.leftover }}</a> hat keinen Spielpartner und bekommt ein Freilos.</p>
+        <p>Nutzer <a href="{{ round.leftover_instance.get_absolute_url }}">{{ round.leftover_instance }}</a> hat keinen Spielpartner und bekommt ein Freilos.</p>
     {% endif %}
     <table>
         <tr>
             <th>Wer</th>
             <th>Ergebnis</th>
         </tr>
-        {% for p1, p2 in round.matchup_players %}
+        {% for matchup in round.matchup_players %}
         <tr>
-            <td><a href="{{ p1.get_absolute_url }}">{{ p1 }}</a> vs. <a href="{{ p2.get_absolute_url }}">{{ p2 }}</a></td>
-            <td>Placeholder</td>
+            <td>
+                {% for player in matchup %}
+                    <a href="{{ player.get_absolute_url }}">{{ player }}</a>{% if not forloop.last %} - {% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                {% for player in matchup %}
+                    <b>{{ round.points|lookup_str:player.id }}</b>{% if not forloop.last %} - {% endif %}
+                {% endfor %}{% if is_admin and not over %} <a href="{% url 'competitions:change_score' round.id forloop.counter0 %}">Ändern</a>{% endif %}
+            </td>
         </tr>
         {% endfor %}
     </table>
+    <p>{% if is_admin and not round.over %}<a href="{% url 'competitions:close_round' round.id %}">Runde beenden</a>{% endif %}</p>
 {% endblock %}

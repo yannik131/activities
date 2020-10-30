@@ -1,0 +1,4 @@
+called init with pk=7
+tie_breaks_enabled={'1': '0', '2': '0'}
+tie_breaks[2] = str(int(1) + int(0))
+tie_breaks[1] = str(int(0) + int(0))

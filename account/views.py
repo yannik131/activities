@@ -170,17 +170,15 @@ def edit(request):
 @login_required
 def edit_address(request):
     sent = False
-    location = None
     if request.method == 'POST':
         location_form = LocationForm(request.POST)
         if location_form.is_valid():
-            location = Location.get_from_location(location_form.location)
-            request.user.location = location
+            request.user.location = shared.get_location(location_form.cleaned_data['address'])
             request.user.save()
             sent = True
     else:
         location_form = LocationForm()
-    return render(request, 'account/edit_address.html', {'location_form': location_form, 'sent': sent, 'location': location})
+    return render(request, 'account/edit_address.html', {'location_form': location_form, 'sent': sent})
 
 
 @login_required

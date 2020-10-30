@@ -5,6 +5,7 @@
 {% block content %}
     <h1>{{ tournament }}</h1>
     <p>Anmeldeschluss: {{ tournament.application_deadline }}</p>
+    <p>Beschreibung: {{ tournament.format }}</p>
     {% if user == tournament.admin %}
         <p><a href="{% url 'competitions:edit_tournament' tournament.id %}">Bearbeiten...</a> | <a href="{% url 'chat:chat_room' 'competitions' 'tournament' tournament.id %}">Chat</a></p>
         <p><a href="{% url 'competitions:generate_next_round' tournament.id %}">Nächste Runde erzeugen</a></p>
