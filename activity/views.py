@@ -16,10 +16,7 @@ def detail(request, name):
         if request.user.location.equal_to(user.location, Location.components[component_index]):
             users.append(user)
     chosen_component = request.user.location.get_component(Location.components[component_index])
-    posts = []
-    for post in Post.objects.filter(activity=activity):
-        if request.user.location.equal_to(post.author.location, Location.components[component_index]):
-            posts.append(post)
+    posts, page = Post.get_page(request, component_index, activity=activity)
     return render(request, 'activity/detail.html',
                   {'activity': activity,
                    'is_member': is_member,
@@ -27,19 +24,17 @@ def detail(request, name):
                    'component_index': component_index,
                    'chosen_component': chosen_component,
                    'users': users,
-                   'posts': posts})
+                   'posts': posts,
+                   'page': page})
 
 
 @login_required
 def category_detail(request, id):
     category = Category.objects.get(id=id)
-    posts = []
     component_index = int(request.GET.get('component_index', 3))
     chosen_component = request.user.location.get_component(Location.components[component_index])
-    for post in Post.objects.filter(category=category):
-        if post.author.location.equal_to(request.user.location, Location.components[component_index]):
-            posts.append(post)
-    return render(request, 'activity/category_detail.html', dict(category=category, posts=posts, chosen_component=chosen_component, component_index=component_index))
+    posts, page = Post.get_page(request, component_index, category=category)
+    return render(request, 'activity/category_detail.html', dict(category=category, posts=posts, chosen_component=chosen_component, component_index=component_index, page=page))
 
 
 @login_required

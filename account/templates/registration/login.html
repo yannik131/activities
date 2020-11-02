@@ -5,8 +5,9 @@
 {% block content %}
     <h1>Einloggen</h1>
     {% if form.errors %}
-        <p>
-            Nutzername und Passwort stimmen nicht überein. Versuch's nochmal.
+        <p>Fehler beim Einloggen: {{ form.non_field_errors }}</p>
+        <p><a href="{% url 'account:login' %}">Zurück zum Login</a></p>
+        <p>Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der Account möglicherweise gesperrt.
         </p>
     {% else %}
         <p>Bitte nutzen Sie das folgende Formular zum einloggen:</p>

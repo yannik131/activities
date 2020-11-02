@@ -37,8 +37,8 @@ def home(request):
 
 @login_required
 def user_post_list(request):
-    posts = Post.objects.filter(author=request.user, target_ct=User.content_type(), target_id=request.user.id).all()
-    return render(request, 'account/user_post_list.html', dict(posts=posts))
+    posts, page = Post.get_page(request)
+    return render(request, 'account/user_post_list.html', dict(posts=posts, page=page))
 
 
 @login_required

@@ -8,7 +8,7 @@ from itertools import chain
 
 
 class User(AbstractUser):
-    profile_text = models.TextField(null=True, blank=True) # a comment!
+    profile_text = models.TextField(null=True, blank=True)
     location = models.ForeignKey("Location", on_delete=models.CASCADE, blank=True, related_name='population')
     latest_request_check = models.DateTimeField(default=timezone.now)
     birth_year = models.PositiveSmallIntegerField()

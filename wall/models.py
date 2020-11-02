@@ -1,9 +1,10 @@
 from django.db import models
-from account.models import User
+from account.models import User, Location
 from activity.models import Activity, Category
 from usergroups.models import UserGroup
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 class Post(models.Model):
@@ -26,6 +27,29 @@ class Post(models.Model):
 
     class Meta:
         ordering = ('-created',)
+
+    @staticmethod
+    def get_page(request, component_index=None, activity=None, category=None):
+        object_list = []
+        if component_index is None:
+            object_list = Post.objects.filter(author=request.user, target_id=request.user.id, target_ct=User.content_type()).all()
+        else:
+            if activity is not None:
+                post_list = Post.objects.filter(activity=activity)
+            elif category is not None:
+                post_list = Post.objects.filter(category=category)
+            for post in post_list:
+                if request.user.location.equal_to(post.author.location, Location.components[component_index]):
+                    object_list.append(post)
+        paginator = Paginator(object_list, 3)
+        page = request.GET.get('page')
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = paginator.page(paginator.num_pages)
+        return posts, page
 
 
 class Comment(models.Model):
