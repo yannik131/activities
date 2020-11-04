@@ -6,7 +6,7 @@ ADMINS = (
     ('Yannik S.', 'yannik131@web.de'),
 )
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['myactivities.net', 'www.myactivities.net']
 
 DATABASES = {
     'default': {
