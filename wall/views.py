@@ -6,6 +6,7 @@ from .models import Post, Comment
 from account.models import User
 from usergroups.models import UserGroup
 from django.contrib.contenttypes.models import ContentType
+from shared.shared import slashify
 
 
 @login_required
@@ -33,10 +34,10 @@ def create_post(request, app_label, model, id):
 
 @login_required
 def delete_post(request, id, path):
-    post = Post.objects.get(id=id)
+    post = get_object_or_404(Post, id=id) 
     if request.user == post.author:
         post.delete()
-        return HttpResponseRedirect(request.build_absolute_uri(path))
+        return HttpResponseRedirect(request.build_absolute_uri(slashify(path)))
     return HttpResponseForbidden()
 
 
@@ -50,7 +51,7 @@ def create_comment(request, id, path):
             comment.author = request.user
             comment.post = post
             comment.save()
-            return HttpResponseRedirect(request.build_absolute_uri(path))
+            return HttpResponseRedirect(request.build_absolute_uri(slashify(path)))
     else:
         form = CommentForm()
     return render(request, 'wall/post/create_comment.html', dict(form=form))
@@ -61,5 +62,5 @@ def delete_comment(request, id, path):
     comment = get_object_or_404(Comment, id=id)
     if comment.author == request.user:
         comment.delete()
-        return HttpResponseRedirect(request.build_absolute_uri(path))
+        return HttpResponseRedirect(request.build_absolute_uri(slashify(path)))
     return HttpResponseForbidden()
