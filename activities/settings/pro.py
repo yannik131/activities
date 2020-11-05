@@ -11,7 +11,7 @@ ALLOWED_HOSTS = ['myactivities.net', 'www.myactivities.net']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'activities_pro',
+        'NAME': 'activities',
         'USER': 'postgres',
         'PASSWORD': 'password',
         'HOST': 'localhost',

@@ -47,4 +47,12 @@ def add(d, key, value):
     d[key] = str(int(d[key])+int(value))
 
 
+def slashify(path):
+    if not path.startswith('/'):
+        path = '/' + path
+    if not path.endswith('/'):
+        path = path + '/'
+    return path
+
+
 GERMAN_DATE_FMT = '%d.%m.%Y %H:%M'

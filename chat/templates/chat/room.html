@@ -42,7 +42,7 @@
             var isMe = data.user === '{{ request.user }}';
             var name = isMe ? 'Sie' : data.user;
 
-            $chat.append('<div class="message">' + name + ', ' + datetime + ' Uhr: ' + message + '</div>');
+            $chat.append('<div class="message"><b>' + name + ', ' + datetime + ' Uhr:</b> ' + message + '</div>');
             $chat.scrollTop($chat[0].scrollHeight);
         }
     };

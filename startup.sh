@@ -1,6 +1,5 @@
 #! /bin/bash
 
-redis --port 6655 &
-uwsgi -ini config/uwsgi.ini &
-daphne -u /tmp/daphne.sock activities.asgi:application &
+ps -C uwsgi -o pid= | xargs kill -9
+uwsgi --ini config/uwsgi.ini &
 nginx -s reload
