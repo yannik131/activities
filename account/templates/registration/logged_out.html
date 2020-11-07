@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Ausgeloggt{% endblock %}
+{% block title %}{% blocktrans %}Ausgeloggt{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>Ausgeloggt</h1>
-    <p>Sie haben sich erfolgreich ausgeloggt. Sie können sich <a href="{% url 'account:login' %}">auch wieder einloggen.</a></p>
+    <h1>{% blocktrans %}Ausgeloggt{% endblocktrans %}</h1>
+    <p>{% trans "Sie haben sich erfolgreich ausgeloggt. Sie können sich" %} <a href="{% url 'account:login' %}">{% blocktrans %}auch wieder einloggen.{% endblocktrans %}</a></p>
 {% endblock %}

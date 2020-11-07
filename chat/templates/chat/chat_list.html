@@ -1,29 +1,30 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load activity_filter %}
 
-{% block title %}Chat-Liste{% endblock %}
+{% block title %}{% trans "Chat-Liste" %}{% endblock %}
 
 {% block content %}
-    <h1>Chat-Liste</h1>
-    <h2>Gruppen</h2>
+    <h1>{% trans "Chat-Liste" %}</h1>
+    <h2>{% trans "Gruppen" %}</h2>
     {% for room in group_rooms %}
         <p>
             <a href="{{ room.get_absolute_url }}">{{ room.target.verbose }}</a>{% if room.id in new_messages %} ({{ new_messages|lookup:room.id }}){% endif %}
         </p>
     {% endfor %}
-    <h2>Freunde</h2>
+    <h2>{% trans "Freunde" %}</h2>
     {% for room in friend_rooms %}
         <p>
             <a href="{{ room.get_absolute_url }}">{{ room.target.verbose }}</a>{% if room.id in new_messages %} ({{ new_messages|lookup:room.id }}){% endif %}
         </p>
     {% endfor %}
-    <h2>Matches</h2>
+    <h2>{% trans "Matches" %}</h2>
     {% for room in match_rooms %}
         <p>
             <a href="{{ room.get_absolute_url }}">{{ room.target.verbose }}</a>{% if room.id in new_messages %} ({{ new_messages|lookup:room.id }}){% endif %}
         </p>
     {% endfor %}
-    <h2>Turniere</h2>
+    <h2>{% trans "Turniere" %}</h2>
     {% for room in tournament_rooms %}
         <p>
             <a href="{{ room.get_absolute_url }}">{{ room.target.verbose }}</a>{% if room.id in new_messages %} ({{ new_messages|lookup:room.id }}){% endif %}

@@ -10,6 +10,7 @@ from shared.shared import add
 from django.utils import timezone
 import datetime
 import json
+from django.utils.translation import gettext_lazy as _
 
 
 def user_overview(request):
@@ -38,7 +39,7 @@ def create_match(request, activity_id):
             match = form.save()
             return HttpResponseRedirect(match.get_absolute_url())
     else:
-        form = MatchForm(initial=dict(location=request.user.location.get_component('city')))
+        form = MatchForm(initial=dict(location=request.user.location.get_component('city'), start_time=timezone.now()))
     return render(request, 'competitions/create_match.html', dict(form=form, activity=activity))
 
 
@@ -78,7 +79,7 @@ def create_tournament(request, activity_id):
             return HttpResponseRedirect(tournament.get_absolute_url())
     else:
         form = TournamentForm(initial=dict(
-            title=str(activity)+"-Turnier",
+            title=_('{act}-Turnier').format(act=str(activity)),
             location=request.user.location.get_component('city'),
             starting_time=(timezone.now()+datetime.timedelta(days=7)).strftime(shared.GERMAN_DATE_FMT),
             application_deadline=(timezone.now()+datetime.timedelta(days=6)).strftime(shared.GERMAN_DATE_FMT)))
@@ -121,20 +122,23 @@ def add_tournament_member(request, tournament_id, user_id):
     return HttpResponseRedirect(request.build_absolute_uri(f"/competitions/edit_tournament/{tournament.id}"))
 
 
-def remove_tournament_member(request, tournament_id, user_id, who):
-    tournament = Tournament.objects.get(id=tournament_id)
+def remove_member(request, model, instance_id, user_id, who):
+    if model == "tournament":
+        instance = Tournament.objects.get(id=instance_id)
+    elif model == "match":
+        instance = Match.objects.get(id=instance_id)
     if who == 'admin':
-        if request.user != tournament.admin:
+        if request.user != instance.admin:
             return HttpResponseForbidden()
         user = User.objects.get(id=user_id)
-        tournament.members.remove(user)
-        return HttpResponseRedirect(request.build_absolute_uri(f"/competitions/edit_tournament/{tournament.id}"))
+        instance.members.remove(user)
+        return HttpResponseRedirect(request.build_absolute_uri(f"/competitions/edit_{model}/{instance.id}"))
     elif who == 'user':
         user = User.objects.get(id=user_id)
         if request.user != user:
             return HttpResponseForbidden()
-        tournament.members.remove(user)
-        return HttpResponseRedirect(tournament.get_absolute_url())
+        instance.members.remove(user)
+        return HttpResponseRedirect(instance.get_absolute_url())
 
 
 def tournament_standings(request, tournament_id):
@@ -161,12 +165,12 @@ def generate_next_round(request, tournament_id):
     if tournament.rounds.all().exists():
         last_round = tournament.rounds.all().last()
         if not last_round.over:
-            return HttpResponseServerError('Es stehen noch Ergebnisse der letzten Runde offen.')
+            return HttpResponseServerError(_('Es stehen noch Ergebnisse der letzten Runde offen.'))
         n = last_round.number+1
     try:
         matchups, leftover = utils.get_pairings_for(tournament.activity.name, tournament)
     except:
-        return HttpResponseServerError('Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden.')
+        return HttpResponseServerError(_('Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden.'))
     round = Round.objects.create(tournament=tournament, number=n, points=dict.fromkeys([str(k) for k in tournament.members.all().values_list('id', flat=True)], 0), matchups = json.dumps(matchups), leftover=leftover)
     tournament.save()
     round.save()
@@ -178,7 +182,7 @@ def close_round(request, round_id):
     if request.user != round.tournament.admin or round.over:
         return HttpResponseForbidden()
     if not round.matches_have_results():
-        return HttpResponseServerError('Es stehen noch Ergebnisse offen.')
+        return HttpResponseServerError(_('Es stehen noch Ergebnisse offen.'))
     for (k, v) in round.points.items():
         add(round.tournament.points, k, v)
     round.tournament.save()

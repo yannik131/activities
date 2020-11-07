@@ -1,5 +1,6 @@
 <p>
-    vor {{ action.created|timesince }}:
+{% load i18n %}
+    {% blocktrans with v0=action.created|timesince %}vor {{ v0 }}{% endblocktrans %}:
     <a href="{{ action.source.get_absolute_url }}">
         {{ action.source.verbose }}
     </a>

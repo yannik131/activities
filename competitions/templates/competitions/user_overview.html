@@ -1,23 +1,24 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}{{ user.username }}: Matches & Turniere {% endblock %}
+{% block title %}{% blocktrans with v0=user.username %}{{ v0 }}: Matches & Turniere{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>{{ user.username }}: Matches & Turniere </h1>
-    <h2>Matches</h2>
+    <h1>{% blocktrans with v0=user.username %}{{ v0 }}: Matches & Turniere{% endblocktrans %}</h1>
+    <h2>{% blocktrans %}Matches{% endblocktrans %}</h2>
     <ul>
         {% for match in user.matches.all %}
             <li><a href="{{ match.activity.get_absolute_url }}">{{ match.activity }}</a>: <a href="{{ match.get_absolute_url }}">{{ match }}</a></li>
         {% endfor %}
     </ul>
-    <h2>Turniere</h2>
-    <h3>Verwaltete Turniere:</h3>
+    <h2>{% blocktrans %}Turniere{% endblocktrans %}</h2>
+    <h3>{% blocktrans %}Verwaltete Turniere:{% endblocktrans %}</h3>
     <ul>
         {% for tournament in user.owned_tournaments.all %}
             <li><a href="{{ tournament.get_absolute_url }}">{{ tournament }}</a></li>
         {% endfor %}
     </ul>
-    <h3>Als Teilnehmer:</h3>
+    <h3>{% blocktrans %}Als Teilnehmer:{% endblocktrans %}</h3>
     <ul>
         {% for tournament in user.tournaments.all %}
             <li><a href="{{ tournament.get_absolute_url }}">{{ tournament }}</a></li>

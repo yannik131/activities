@@ -3,7 +3,6 @@ from account.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.urls import reverse
-from django.utils import timezone
 
 
 class ChatCheck(models.Model):

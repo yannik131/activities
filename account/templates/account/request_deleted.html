@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Freundschaftsanfrage gelöscht{% endblock %}
+{% block title %}{% blocktrans %}Freundschaftsanfrage gelöscht{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>Freundschaftsanfrage gelöscht </h1>
+    <h1>{% blocktrans %}Freundschaftsanfrage gelöscht {% endblocktrans %}</h1>
     <p>
-        Sie haben die Freundschaftsanfrage von {{ friend_request.requesting_user }} an {{ friend_request.requested_user }} mit dem Status "{{ friend_request.get_status_display }}" gelöscht.
+        {% trans "Sie haben die Freundschaftsanfrage von" %} {{ friend_request.requesting_user }} {% trans "an" %} {{ friend_request.requested_user }} {% trans "mit dem Status" %} "{{ friend_request.get_status_display }}" {% trans "gelöscht" %}.
     </p>
-    <p><a href="{% url 'account:friend_requests_list' %}">Zurück zur Liste geht's hier.</a></p>
+    <p><a href="{% url 'account:friend_requests_list' %}">{% blocktrans %}Zurück zur Liste geht's hier.{% endblocktrans %}</a></p>
 {% endblock %}

@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Registriert{% endblock %}
+{% block title %}{% blocktrans %}Registriert{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>Registriert</h1>
-    <p>Sie haben sich erfolgreich mit dem Nutzernamen {{ new_user.username }} registriert. <a href="{% url 'account:login' %}">Sie können sich jetzt einloggen.</a></p>
+    <h1>{% blocktrans %}Registriert{% endblocktrans %}</h1>
+    <p>{% blocktrans with v0=new_user.username %}Sie haben sich erfolgreich mit dem Nutzernamen {{ v0 }} registriert {% endblocktrans %}. <a href="{% url 'account:login' %}">{% blocktrans %}Sie können sich jetzt einloggen.{% endblocktrans %}</a></p>
 {% endblock %}

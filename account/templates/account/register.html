@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Registrieren{% endblock %}
+{% block title %}{% blocktrans %}Registrieren{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>Registrieren</h1>
-    <p>Sie können sich mit dem folgenden Formular registrieren. </p>
+    <h1>{% blocktrans %}Registrieren{% endblocktrans %}</h1>
+    <p>{% blocktrans %}Sie können sich mit dem folgenden Formular registrieren. {% endblocktrans %}</p>
     <form method="post">
         {{ user_form.as_p }}
-        Bitte geben Sie eine Stadt ein.
+        {% trans "Bitte geben Sie eine Stadt ein" %}.
         {{ location_form.as_p }}
         {% csrf_token %}
-        <p><input type="submit" value="Registrieren"></p>
+        <input type="submit" value="{% blocktrans %}Registrieren{% endblocktrans %}">
     </form>
 {% endblock %}

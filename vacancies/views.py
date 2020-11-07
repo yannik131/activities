@@ -7,6 +7,7 @@ from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.contrib.contenttypes.models import ContentType
 from competitions.models import Tournament
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 
 @login_required
@@ -86,13 +87,13 @@ def accept_invitation(request, id):
 def apply_for_vacancy(request, id):
     vacancy = Vacancy.objects.get(id=id)
     if not request.user.satisfies_requirements_of(vacancy):
-        return HttpResponseForbidden(f'Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder Geschlecht) nicht. <a href=\"{vacancy.target.get_absolute_url()}\">Zurück</a>')
+        return HttpResponseForbidden(_('Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder Geschlecht) nicht. <a href=\"{link}\">Zurück</a>').format(link=vacancy.target.get_absolute_url()))
     elif request.user.applications.filter(vacancy=vacancy).exists():
-        return HttpResponseForbidden('Sie haben sich bereits beworben.')
+        return HttpResponseForbidden(_('Sie haben sich bereits beworben.'))
     elif type(vacancy.target) is Tournament and vacancy.target.application_deadline < timezone.now():
-        return HttpResponseForbidden(f'Die Anmeldefrist ist bereits abgelaufen. <a href=\"{vacancy.target.get_absolute_url()}\">Zurück</a>')
+        return HttpResponseForbidden(_('Die Anmeldefrist ist bereits abgelaufen. <a href=\"{link}\">Zurück</a>').format(link=vacancy.target.get_absolute_url()))
     if request.user in vacancy.target.members.all():
-        return HttpResponseForbidden('Sie sind bereits Mitglied.')
+        return HttpResponseForbidden(_('Sie sind bereits Mitglied.'))
     if request.method == 'POST':
         form = ApplicationForm(request.POST)
         if form.is_valid():

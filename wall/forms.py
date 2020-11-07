@@ -2,6 +2,7 @@ from django import forms
 from .models import Post, Comment
 from activity.models import Activity, Category
 from shared.shared import xor_or_none, type_of
+from django.utils.translation import gettext_lazy as _
 
 
 class PostForm(forms.ModelForm):
@@ -23,16 +24,16 @@ class PostForm(forms.ModelForm):
         fields = ('message', 'category', 'activity',  'audio', 'video', 'image')
 
         labels = {
-            'message': 'Nachricht',
-            'category': 'Kategorie (erforderlich)',
-            'activity': 'Aktivität',
-            'audio': 'Audiodatei',
-            'video': 'Videodatei',
-            'image': 'Bilddatei'
+            'message': _('Nachricht'),
+            'category': _('Kategorie (erforderlich)'),
+            'activity': _('Aktivität'),
+            'audio': _('Audiodatei'),
+            'video': _('Videodatei'),
+            'image': _('Bilddatei')
         }
 
         help_texts = {
-            'message': '<..>: Link, *..*: Kursiv, **..**: Fett, ***..***: Kursiv+Fett, * ..: Liste, 1. ..; 2 ..: Liste mit Zahlen'
+            'message': _('<..>: Link, *..*: Kursiv, **..**: Fett, ***..***: Kursiv+Fett, * ..: Liste, 1. ..; 2 ..: Liste mit Zahlen')
         }
 
     def clean_media_fields(self, cd):
@@ -40,27 +41,27 @@ class PostForm(forms.ModelForm):
         video = cd.get('video')
         image = cd.get('image')
         if not xor_or_none(audio, video, image):
-            raise forms.ValidationError('Es kann nicht mehr als eine Datei hochgeladen werden.')
+            raise forms.ValidationError(_('Es kann nicht mehr als eine Datei hochgeladen werden.'))
         if audio:
             size = audio.size
             content_type = type_of(audio)
             if not content_type.startswith('audio'):
-                raise forms.ValidationError('Unbekannter Audiodateityp')
+                raise forms.ValidationError(_('Unbekannter Audiodateityp'))
         elif video:
             size = video.size
             content_type = type_of(video)
             if not content_type.startswith('video'):
-                raise forms.ValidationError('Unbekannter Videodateityp')
+                raise forms.ValidationError(_('Unbekannter Videodateityp'))
         elif image:
             size = image.size
             content_type = type_of(image)
             if not content_type.startswith('image'):
-                raise forms.ValidationError('Unbekannter Bilddateityp')
+                raise forms.ValidationError(_('Unbekannter Bilddateityp'))
         else:
             return
         if size > PostForm.MAX_UPLOAD_FILE_SIZE:
             raise forms.ValidationError(
-                f'Maximale Dateigröße: {PostForm.MAX_UPLOAD_FILE_SIZE_STR} (tatsächliche Größe: {round(size / 1000000, 2)}MB)')
+                _('Maximale Dateigröße: {size1} (tatsächliche Größe: {size2}MB)').format(size1=PostForm.MAX_UPLOAD_FILE_SIZE_STR, size2=round(size / 1000000, 2)))
         self.instance.media_mime_type = content_type
 
     def clean(self):
@@ -72,7 +73,7 @@ class PostForm(forms.ModelForm):
             activity = Activity.objects.get(name=activity)
             category = Category.objects.get(name=category)
             if activity not in category.activities.all():
-                raise forms.ValidationError('Diese Aktivität ist nicht Teil der ausgewählten Kategorie.')
+                raise forms.ValidationError(_('Diese Aktivität ist nicht Teil der ausgewählten Kategorie.'))
         return cd
 
 
@@ -82,5 +83,5 @@ class CommentForm(forms.ModelForm):
         fields = ('message',)
 
         labels = {
-            'message': 'Kommentar'
+            'message': _('Kommentar')
         }

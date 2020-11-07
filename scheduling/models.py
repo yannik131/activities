@@ -16,7 +16,7 @@ class Appointment(models.Model):
     def __str__(self):
         if self.name:
             return self.name
-        return f"Treffen am {self.start_time}"
+        return _("Treffen am {start}").format(start=self.start_time)
 
     def start_time_formatted(self):
         return self.start_time.strftime(GERMAN_DATE_FMT)

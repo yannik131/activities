@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}{{ activity.name }}: Matches & Turniere {% endblock %}
+{% block title %}{% blocktrans with v0=activity.name %}{{ v0 }}: Matches & Turniere {% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>{{ activity.name }}: Matches & Turniere</h1>
+    <h1>{% blocktrans with v0=activity.name %}{{ v0 }}: Matches & Turniere{% endblocktrans %}</h1>
     <p>{% include 'activity/location_selection.html' %}</p>
-    <h2>Turniere</h2>
-    <p><a href="{% url 'competitions:create_tournament' activity.id %}">Turnier erstellen</a></p>
+    <h2>{% blocktrans %}Turniere{% endblocktrans %}</h2>
+    <p><a href="{% url 'competitions:create_tournament' activity.id %}">{% blocktrans %}Turnier erstellen{% endblocktrans %}</a></p>
     <table>
         <tr>
-            <th>Turnier</th>
-            <th>Admin</th>
-            <th>Ort</th>
+            <th>{% blocktrans %}Turnier{% endblocktrans %}</th>
+            <th>{% blocktrans %}Admin{% endblocktrans %}</th>
+            <th>{% blocktrans %}Ort{% endblocktrans %}</th>
         </tr>
         {% for tournament in tournaments %}
             <tr>
@@ -21,16 +22,16 @@
             </tr>
         {% endfor %}
     </table>
-    <h2>Öffentliche Matches</h2>
+    <h2>{% blocktrans %}Öffentliche Matches{% endblocktrans %}</h2>
     <p>
-        <a href="{% url 'competitions:create_match' activity.id %}">Match erstellen</a>
+        <a href="{% url 'competitions:create_match' activity.id %}">{% blocktrans %}Match erstellen{% endblocktrans %}</a>
     </p>
     <table>
         <tr>
-            <th>Match</th>
-            <th>Admin</th>
-            <th>Leerstellen</th>
-            <th>Ort</th>
+            <th>{% blocktrans %}Match{% endblocktrans %}</th>
+            <th>{% blocktrans %}Admin{% endblocktrans %}</th>
+            <th>{% blocktrans %}Leerstellen{% endblocktrans %}</th>
+            <th>{% blocktrans %}Ort{% endblocktrans %}</th>
         </tr>
         {% for match in matches %}
             <tr>

@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Gruppe erstelle{% endblock %}
+{% block title %}{% trans "Gruppe erstellt" %}{% endblock %}
 
 {% block content %}
-    <h1>Gruppe "<a href="{{ group.get_absolute_url }}">{{ group.name }}</a>" erstellt</h1>
-    <p>Die Gruppe wurde erfolgreich erstellt. <a href="{{ group.category.get_absolute_url }}">Zurück...</a></p>
-    <p><a href="{% url 'usergroups:edit_group' group.id %}">Gruppe bearbeiten...</a></p>
+    <h1>{% trans "Gruppe" %} "<a href="{{ group.get_absolute_url }}">{{ group.name }}</a>" {% trans "erstellt" %}</h1>
+    <p>{% trans "Die Gruppe wurde erfolgreich erstellt" %}. <a href="{{ group.category.get_absolute_url }}">{% trans "Zurück" %}...</a></p>
+    <p><a href="{% url 'usergroups:edit_group' group.id %}">{% trans "Gruppe bearbeiten" %}...</a></p>
 {% endblock %}

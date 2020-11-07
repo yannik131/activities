@@ -1,23 +1,24 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Alle Aktivitäten{% endblock %}
+{% block title %}{% trans "Alle Aktivitäten" %}{% endblock %}
 
 {% block content %}
-    <h1>Alle Aktivitäten</h1>
+    <h1>{% trans "Alle Aktivitäten" %}</h1>
     <p>
-        Anzeige einschränken auf: <br/>
+        {% trans "Anzeige einschränken auf" %}: <br/>
         {% include 'activity/location_selection.html' %}
     </p>
-    <p>Hier eine Liste aller verfügbaren Aktivitäten:</p>
+    <p>{% trans "Hier eine Liste aller verfügbaren Aktivitäten" %}:</p>
     <table>
         <tr>
-            <th>Name</th>
-            <th>Kategorie</th>
-            <th>Mitglieder</th>
+            <th>{% trans "Name" %}</th>
+            <th>{% trans "Kategorie" %}</th>
+            <th>{% trans "Mitglieder" %}</th>
         </tr>
         {% for activity in activities %}
             <tr>
-                <td><a href="{{ activity.0.get_absolute_url }}">{{ activity.0.name }}</a>{% if activity.0 in user.activities.all %} (m) {% endif %}</td>
+                <td><a href="{{ activity.0.get_absolute_url }}">{{ activity.0.name }}</a>{% if activity.0 in user.activities.all %} ({% trans "m" %}) {% endif %}</td>
                 <td><a href="{{ activity.0.category.get_absolute_url }}">{{ activity.0.category.name }}</a></td>
                 <td>{{ activity.1 }}</td>
             </tr>

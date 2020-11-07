@@ -1,5 +1,6 @@
 {% for action in actions %}
+{% load i18n %}
     {% include 'actions/detail.html' %}
     {% empty %}
-        Noch keine Neuigkeiten!
+        {% trans "Noch keine Neuigkeiten" %}!
 {% endfor %}

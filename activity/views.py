@@ -4,12 +4,13 @@ from .models import Activity, Category
 from account.models import Location
 from wall.models import Post
 from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 
 
 @login_required
-def detail(request, name):
+def detail(request, activity_name):
     component_index = int(request.GET.get('component_index', 3))
-    activity = Activity.objects.get(name=name)
+    activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
     is_member = activity in request.user.activities.all()
     users = []
     for user in activity.members.all().exclude(username=request.user.username):
@@ -29,8 +30,8 @@ def detail(request, name):
 
 
 @login_required
-def category_detail(request, id):
-    category = Category.objects.get(id=id)
+def category_detail(request, category_name):
+    category = get_object_or_404(Category, translations__language_code=request.LANGUAGE_CODE, translations__name=category_name)
     component_index = int(request.GET.get('component_index', 3))
     chosen_component = request.user.location.get_component(Location.components[component_index])
     posts, page = Post.get_page(request, component_index, category=category)
@@ -38,15 +39,15 @@ def category_detail(request, id):
 
 
 @login_required
-def join(request, name):
-    activity = Activity.objects.get(name=name)
+def join(request, activity_name):
+    activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
     activity.members.add(request.user)
     return HttpResponseRedirect(activity.get_absolute_url())
 
 
 @login_required
-def leave(request, name):
-    activity = Activity.objects.get(name=name)
+def leave(request, activity_name):
+    activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
     activity.members.remove(request.user)
     return HttpResponseRedirect(activity.get_absolute_url())
 

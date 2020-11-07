@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Match bearbeiten{% endblock %}
+{% block title %}{% blocktrans %}Match bearbeiten{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>{{ match }}: Bearbeiten</h1>
-    <h2><a href="{% url 'competitions:delete_match' match.id %}">Match löschen</a></h2>
+    <h1>{% blocktrans with v0=match %}{{ v0 }}: Bearbeiten{% endblocktrans %}</h1>
+    <h2><a href="{% url 'competitions:delete_match' match.id %}">{% blocktrans %}Match löschen{% endblocktrans %}</a></h2>
     <p>
-        Nutzen Sie das folgende Formular, um das Match zu bearbeiten.
+        {% trans "Nutzen Sie das folgende Formular, um das Match zu bearbeiten" %}.
     </p>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <input type="submit" value="Fertig">
+        <input type="submit" value="{% blocktrans %}Fertig{% endblocktrans %}">
     </form>
+
 {% endblock %}

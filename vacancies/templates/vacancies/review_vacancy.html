@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Bewerbungen{% endblock %}
+{% block title %}{% trans "Bewerbungen" %}{% endblock %}
 
 {% block content %}
-    <h1>Bewerbungen</h1>
-    <p>Gehört zu <a href="{{ vacancy.target.get_absolute_url }}">{{ vacancy.target }}</a></p>
-    <h2>Leerstellenbeschreibung:</h2>
+    <h1>{% trans "Bewerbungen" %}</h1>
+    <p>{% trans "Gehört zu" %} <a href="{{ vacancy.target.get_absolute_url }}">{{ vacancy.target }}</a></p>
+    <h2>{% trans "Leerstellenbeschreibung" %}:</h2>
     <p>{{ vacancy.description|linebreaks }}</p>
-    <h2>Bewerbungen</h2>
+    <h2>{% trans "Bewerbungen" %}</h2>
     <table>
         <tr>
-            <th>Nutzer</th>
-            <th>Wohnort</th>
-            <th>Nachricht</th>
-            <th>Alter (Geschlecht)</th>
-            <th>Chat</th>
+            <th>{% trans "Nutzer" %}</th>
+            <th>{% trans "Wohnort" %}</th>
+            <th>{% trans "Nachricht" %}</th>
+            <th>{% trans "Alter (Geschlecht" %})</th>
+            <th>{% trans "Chat" %}</th>
             {% if user == vacancy.target.admin %}
-                <th>Aktion</th>
+                <th>{% trans "Aktion" %}</th>
             {% endif %}
         </tr>
         {% for application in vacancy.applications.all %}
@@ -25,13 +26,13 @@
                 <td>{{ application.user.location }}</td>
                 <td>{{ application.message }}</td>
                 <td>{{ application.user.get_age }} ({{ application.user.sex }})</td>
-                <td><a href="{% url 'chat:chat_room' 'vacancies' 'application' application.id %}">Zum Chat</a></td>
+                <td><a href="{% url 'chat:chat_room' 'vacancies' 'application' application.id %}">{% trans "Zum Chat" %}</a></td>
                 {% if user == vacancy.target.admin %}
                     <td>
                         {% if application.status == 'pending' %}
-                            <a href="{% url 'vacancies:accept_application' application.id %}">Annehmen</a> | <a href="{% url 'vacancies:decline_application' application.id %}">Ablehnen</a>
+                            <a href="{% url 'vacancies:accept_application' application.id %}">{% trans "Annehmen" %}</a> | <a href="{% url 'vacancies:decline_application' application.id %}">{% trans "Ablehnen" %}</a>
                         {% else %}
-                            <a href="{% url 'vacancies:delete_application' application.id %}">Löschen</a>
+                            <a href="{% url 'vacancies:delete_application' application.id %}">{% trans "Löschen" %}</a>
                         {% endif %}
                     </td>
                 {% endif %}

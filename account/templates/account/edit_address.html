@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Adresse ändern{% endblock %}
+{% block title %}{% blocktrans %}Adresse ändern{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>Adresse ändern</h1>
-    <p>Geben Sie hier eine neue Stadt ein.</p>
+    <h1>{% blocktrans %}Adresse ändern{% endblocktrans %}</h1>
+    <p>{% blocktrans %}Geben Sie hier eine neue Stadt ein.{% endblocktrans %}</p>
     <form method="post">
         {{ location_form.as_p }}
         {% csrf_token %}
-        <input type="submit" value="Ändern">
+        <input type="submit" value="{% blocktrans %}Ändern{% endblocktrans %}">
     </form>
     {% if sent %}
-        <p>Neue Adresse gespeichert: <b>{{ user.location.full_address }}</b></p>
+        <p>{% blocktrans with v0=user.location.full_address %}Neue Adresse gespeichert: <b>{{ v0 }}</b>{% endblocktrans %}</p>
     {% endif %}
 {% endblock %}

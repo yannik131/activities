@@ -4,14 +4,13 @@ from .models import Post, Comment
 from actions.utils import create_action
 from shared.shared import xor_get
 import os
-from actions.models import Action
-from account.models import User
+from django.utils.translation import gettext_lazy as _
 
 
 @receiver(post_save, sender=Post)
 def post_created(instance: Post, created, **kwargs):
     if created:
-        create_action(instance.author, Post.POST_CREATION_STRING, instance.target)
+        create_action(instance.author, _('hat etwas gepostet in:'), instance.target)
 
 
 @receiver(post_delete, sender=Post)
@@ -25,4 +24,4 @@ def post_deleted(instance: Post, **kwargs):
 @receiver(post_save, sender=Comment)
 def comment_created(instance: Comment, created, **kwargs):
     if created:
-        create_action(instance.author, Comment.COMMENT_CREATION_STRING, instance.post.target)
+        create_action(instance.author, _('hat etwas kommentiert:'), instance.post.target)

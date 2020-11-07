@@ -8,8 +8,6 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 class Post(models.Model):
-    POST_CREATION_STRING = 'hat etwas gepostet in:'
-
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     group = models.ForeignKey(UserGroup, on_delete=models.SET_NULL, related_name='posts', blank=True, null=True)
     target_ct = models.ForeignKey(ContentType, on_delete=models.CASCADE)
@@ -53,8 +51,6 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    COMMENT_CREATION_STRING = 'hat einen Post kommentiert:'
-
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     message = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')

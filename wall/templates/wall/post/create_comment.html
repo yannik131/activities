@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Kommentieren{% endblock %}
+{% block title %}{% trans "Kommentieren" %}{% endblock %}
 
 {% block content %}
-    <h1>Post kommentieren</h1>
+    <h1>{% trans "Post kommentieren" %}</h1>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <input type="submit" value="Senden">
+        <input type="submit" value="{% trans "Senden" %}">
     </form>
 {% endblock %}

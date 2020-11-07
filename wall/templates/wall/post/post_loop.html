@@ -1,9 +1,10 @@
 {% load wall_tags %}
+{% load i18n %}
 {% for post in posts %}
     <p><b><i>
-        {{ post.created }}, <a href="{{ post.category.get_absolute_url }}">{{ post.category.verbose }}</a>{% if post.activity %}: <a href="{{ post.activity.get_absolute_url }}">{{ post.activity }}</a>{% endif %}, von <a href="{{ post.author.get_absolute_url }}">{{ post.author }}</a>{% if post.group %} (<a href="{{ post.group.get_absolute_url }}">{{ post.group }}</a>){% endif %}
+        {{ post.created }}, <a href="{{ post.category.get_absolute_url }}">{{ post.category.verbose }}</a>{% if post.activity %}: <a href="{{ post.activity.get_absolute_url }}">{{ post.activity }}</a>{% endif %}, {% trans "von" %} <a href="{{ post.author.get_absolute_url }}">{{ post.author }}</a>{% if post.group %} (<a href="{{ post.group.get_absolute_url }}">{{ post.group }}</a>){% endif %}
         {% if post.author == user %}
-            <a href="{% url 'wall:delete_post' post.id request.path %}">[Löschen]</a>
+            <a href="{% url 'wall:delete_post' post.id request.path %}">{% blocktrans %}[Löschen]{% endblocktrans %}</a>
         {% endif %}</b></i>: {{ post.message|markdown }}
         {% if post.audio %}
             <audio controls>
@@ -18,12 +19,11 @@
         {% endif %}
         {% for comment in post.comments.all %}
             <br/>
-            <a href="{{ comment.author.get_absolute_url }}">{{ comment.author }}</a>, vor {{ comment.created|timesince }}{% if comment.author == user %} <a href="{% url 'wall:delete_comment' comment.id request.path %}">[Löschen]</a>{% endif %}: {{ comment.message }}
+            <a href="{{ comment.author.get_absolute_url }}">{{ comment.author }}</a>, {% blocktrans with v0=comment.created|timesince %} vor {{ v0 }}{% endblocktrans %}{% if comment.author == user %} <a href="{% url 'wall:delete_comment' comment.id request.path %}">{% blocktrans %}[Löschen]{% endblocktrans %}</a>{% endif %}: {{ comment.message }}
         {% endfor %}
-        <a href="{% url 'wall:create_comment' post.id request.path %}">Kommentieren...</a>
+        <a href="{% url 'wall:create_comment' post.id request.path %}">{% blocktrans %}Kommentieren...{% endblocktrans %}</a>
     {% empty %}
-        <b>Keine.</b>
+        <b>{% trans "Keine" %}.</b>
     </p>
 {% endfor %}
-<p></p>
 {% include "account/pagination.html" with page=posts %}

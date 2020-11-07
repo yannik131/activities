@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Ihre Posts{% endblock %}
+{% block title %}{% blocktrans %}Ihre Posts{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>Ihre Posts</h1>
-    <h2><a href="{% url 'wall:create_post' 'account' 'user' user.id %}">Post erstellen...</a></h2>
-    <p>Die Posts sind öffentlich auf Ihrer Profilseite sichtbar.</p>
+    <h1>{% blocktrans %}Ihre Posts{% endblocktrans %}</h1>
+    <h2><a href="{% url 'wall:create_post' 'account' 'user' user.id %}">{% blocktrans %}Post erstellen...{% endblocktrans %}</a></h2>
+    <p>{% blocktrans %}Die Posts sind öffentlich auf Ihrer Profilseite sichtbar.{% endblocktrans %}</p>
     {% include 'wall/post/post_loop.html' %}
 {% endblock %}

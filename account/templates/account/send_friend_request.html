@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Freundschaftsanfrage senden{% endblock %}
+{% block title %}{% blocktrans %}Freundschaftsanfrage senden{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>Senden Sie {% if target_user %}{{ target_user.username }} {% endif %}eine Freundschaftsanfrage</h1>
+    <h1>{% trans "Senden Sie" %} {% if target_user %}{{ target_user.username }} {% endif %}{% trans "eine Freundschaftsanfrage" %}</h1>
     {% if sent %}
-        <p>Die Freundschaftsanfrage wurde erfolgreich gesendet.</p>
+        <p>{% blocktrans %}Die Freundschaftsanfrage wurde erfolgreich gesendet.{% endblocktrans %}</p>
     {% else %}
-        <p>Schreiben Sie {% if target_user %}{{ target_user.username }} {% endif %}eine kurze Nachricht.</p>
+        <p>{% trans "Schreiben Sie" %} {% if target_user %}{{ target_user.username }} {% endif %}{% trans "eine kurze Nachricht" %}.</p>
         <form method="post">
             {{ form.as_p }}
             {% csrf_token %}
-            <input type="submit" value="Abschicken">
+            <input type="submit" value="{% blocktrans %}Abschicken{% endblocktrans %}">
         </form>
     {% endif %}
 {% endblock %}

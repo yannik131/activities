@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 {% load account_tags %}
 {% load chat_tags %}
 {% load usergroup_tags %}
@@ -12,16 +13,16 @@
 
 {% if user.is_authenticated %}
     <div id="sidebar">
-        <p>Ihr Nutzername: {{ user.username }}</p>
-        <p><a href="{% url 'account:home' %}">Homepage</a></p>
-        <p><a href="{% url 'activity:list' %}">Aktivitäten</a> | <a href="{% url 'activity:category_list' %}">Kategorien</a></p>
-        <p><a href="{% url 'competitions:user_overview' %}">Matches & Turniere</a></p>
-        <p><a href="{% url 'usergroups:group_list' %}">Gruppen</a> | <a href="{% url 'chat:chat_list' %}">Chats{% new_messages_str user %}</a></p>
-        <p><a href="{% url 'vacancies:application_list' %}">Bewerbungen & Einladungen {% invitation_number_string user %}</a></p>
-        <p><a href="{% url 'account:friend_requests_list' %}">Freunde{% new_request_number_string user %}</a></p>
-        <p><a href="{% url 'account:password_change' %}">Passwort ändern</a></p>
-        <p><a href="{% url 'account:edit' %}">Account bearbeiten</a></p>
-        <p><a href="{% url 'account:logout' %}">Ausloggen</a></p>
+        <p>{% blocktrans with v0=user.username %}Ihr Nutzername: {{ v0 }}{% endblocktrans %}</p>
+        <p><a href="{% url 'account:home' %}">{% blocktrans %}Homepage{% endblocktrans %}</a></p>
+        <p><a href="{% url 'activity:list' %}">{% blocktrans %}Aktivitäten{% endblocktrans %}</a> | <a href="{% url 'activity:category_list' %}">{% blocktrans %}Kategorien{% endblocktrans %}</a></p>
+        <p><a href="{% url 'competitions:user_overview' %}">{% blocktrans %}Matches & Turniere{% endblocktrans %}</a></p>
+        <p><a href="{% url 'usergroups:group_list' %}">{% blocktrans %}Gruppen{% endblocktrans %}</a> | <a href="{% url 'chat:chat_list' %}">{% trans "Chats" %}{% new_messages_str user %}</a></p>
+        <p><a href="{% url 'vacancies:application_list' %}">{% trans "Bewerbungen & Einladungen" %} {% invitation_number_string user %}</a></p>
+        <p><a href="{% url 'account:friend_requests_list' %}">{% trans "Freunde" %}{% new_request_number_string user %}</a></p>
+        <p><a href="{% url 'account:password_change' %}">{% blocktrans %}Passwort ändern{% endblocktrans %}</a></p>
+        <p><a href="{% url 'account:edit' %}">{% blocktrans %}Account bearbeiten{% endblocktrans %}</a></p>
+        <p><a href="{% url 'account:logout' %}">{% blocktrans %}Ausloggen{% endblocktrans %}</a></p>
     </div>
 {% endif %}
 <div id="content">

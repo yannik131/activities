@@ -1,55 +1,56 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}{{ group.name }}{% endblock %}
 
 {% block content %}
     <h1>{{ group }}</h1>
     {% if user == group.admin %}
-        <h2><a href="{% url 'usergroups:edit_group' group.id %}">Bearbeiten...</a></h2>
+        <h2><a href="{% url 'usergroups:edit_group' group.id %}">{% trans "Bearbeiten" %}...</a></h2>
     {% endif %}
     {% if is_member %}
-        <p><a href="{% url 'chat:chat_room' 'usergroups' 'usergroup' group.id %}">Zum Chat...</a></p>
+        <p><a href="{% url 'chat:chat_room' 'usergroups' 'usergroup' group.id %}">{% trans "Zum Chat" %}...</a></p>
     {% endif %}
-    <p>Gruppe gehört zur <a href="{{ group.category.get_absolute_url }}">{{ group.category.verbose }}</a></p>
+    <p>{% trans "Gruppe gehört zur" %} <a href="{{ group.category.get_absolute_url }}">{{ group.category.verbose }}</a></p>
     {% if group.description %}
-        <h2>Beschreibung</h2>
+        <h2>{% trans "Beschreibung" %}</h2>
         <p>{{ group.description }}</p>
     {% endif %}
-    <h2>Mitglieder</h2>
+    <h2>{% trans "Mitglieder" %}</h2>
     <p>
         {% for member in group.members.all %}
             <a href="{{ member.get_absolute_url }}">{{ member.username }}</a>{% if not forloop.last %}, {% endif %}
         {% endfor %}
     </p>
     {% if is_member %}
-        <p>Sie sind Mitglied dieser Gruppe. Wenn Sie sie wieder verlassen wollen, <a href="{% url 'usergroups:leave_group' group.id %}">klicken Sie hier.</a></p>
+        <p>{% trans "Sie sind Mitglied dieser Gruppe. Wenn Sie sie wieder verlassen wollen" %}, <a href="{% url 'usergroups:leave_group' group.id %}">{% trans "klicken Sie hier" %}.</a></p>
     {% endif %}
-    <h2>Leerstellen</h2>
+    <h2>{% trans "Leerstellen" %}</h2>
     {% if group.vacancies.all.exists %}
         {% with target=group %}
         {% include 'vacancies/vacancy_list.html' %}
         {% endwith %}
     {% else %}
-        Zurzeit gibt es keine Leerstellen. Der Administrator kann welche erstellen.
+        {% trans "Zurzeit gibt es keine Leerstellen. Der Administrator kann welche erstellen" %}.
     {% endif %}
     {% if is_member %}
-        <h2>Einladungen</h2>
+        <h2>{% trans "Einladungen" %}</h2>
         {% if group.invitations.all.exists %}
             {% include 'usergroups/invitation_list.html' %}
         {% endif %}
     {% endif %}
     {% if user == group.admin %}
-        <p><a href="{% url 'vacancies:create_vacancies' 'usergroups' 'usergroup' group.id %}">Leerstellen hinzufügen</a> | <a href="{% url 'vacancies:create_invitation' 'usergroups' 'usergroup' group.id %}">Jemanden einladen</a></p>
+        <p><a href="{% url 'vacancies:create_vacancies' 'usergroups' 'usergroup' group.id %}">{% trans "Leerstellen hinzufügen" %}</a> | <a href="{% url 'vacancies:create_invitation' 'usergroups' 'usergroup' group.id %}">{% trans "Jemanden einladen" %}</a></p>
     {% endif %}
     {% if is_member %}
-        <h2>Termine</h2>
+        <h2>{% trans "Termine" %}</h2>
         <table>
             <tr>
-                <th>Wann</th>
-                <th>Wo</th>
-                <th>Zusagen</th>
-                <th>Absagen</th>
-                <th>Aktion</th>
+                <th>{% trans "Wann" %}</th>
+                <th>{% trans "Wo" %}</th>
+                <th>{% trans "Zusagen" %}</th>
+                <th>{% trans "Absagen" %}</th>
+                <th>{% trans "Aktion" %}</th>
             </tr>
             {% for appointment in group.appointments.all %}
                 <tr>
@@ -69,14 +70,14 @@
                     </td>
                     <td>
                         {% if user in appointment.participants.all %}
-                            <a href="{% url 'scheduling:cancel_confirmation' appointment.id %}">Zusage zurücknehmen</a>
+                            <a href="{% url 'scheduling:cancel_confirmation' appointment.id %}">{% trans "Zusage zurücknehmen" %}</a>
                             {% elif user in appointment.cancellations.all %}
-                                <a href="{% url 'scheduling:cancel_cancellation' appointment.id %}">Absage zurücknehmen</a>
+                                <a href="{% url 'scheduling:cancel_cancellation' appointment.id %}">{% trans "Absage zurücknehmen" %}</a>
                             {% else %}
-                                <a href="{% url 'scheduling:confirm_appointment' appointment.id %}">Zusagen</a> | <a href="{% url 'scheduling:decline_appointment' appointment.id %}">Absagen</a>
+                                <a href="{% url 'scheduling:confirm_appointment' appointment.id %}">{% trans "Zusagen" %}</a> | <a href="{% url 'scheduling:decline_appointment' appointment.id %}">{% trans "Absagen" %}</a>
                         {% endif %}
                         {% if user == group.admin %}
-                            | <a href="{% url 'scheduling:delete_appointment' appointment.id %}">Löschen</a>
+                            | <a href="{% url 'scheduling:delete_appointment' appointment.id %}">{% trans "Löschen" %}</a>
                         {% endif %}
                     </td>
                 </tr>
@@ -84,12 +85,12 @@
         </table>
     {% endif %}
     {% if user == group.admin %}
-        <p><a href="{% url 'scheduling:create_appointment' group.id %}">Termin erstellen</a></p>
+        <p><a href="{% url 'scheduling:create_appointment' group.id %}">{% trans "Termin erstellen" %}</a></p>
     {% endif %}
-    <p>Administrator: <a href="{{ group.admin.get_absolute_url }}">{{ group.admin }}</a></p>
-    <h3>Posts</h3>
+    <p>{% trans "Administrator" %}: <a href="{{ group.admin.get_absolute_url }}">{{ group.admin }}</a></p>
+    <h3>{% trans "Posts" %}</h3>
     {% if is_member %}
-        <p><a href="{% url 'wall:create_post' 'usergroups' 'usergroup' group.id %}">Post erstellen...</a></p>
+        <p><a href="{% url 'wall:create_post' 'usergroups' 'usergroup' group.id %}">{% trans "Post erstellen" %}...</a></p>
     {% endif %}
     {% include 'wall/post/post_loop.html' %}
 {% endblock %}
