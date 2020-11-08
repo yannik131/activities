@@ -49,7 +49,7 @@ class Category(TranslatableModel):
         return _('Kategorie: {name}').format(name=self.name)
 
     def get_absolute_url(self):
-        return reverse('activity:category_detail', args=[self.id])
+        return reverse('activity:category_detail', args=[self.name])
 
     @staticmethod
     def content_type():
