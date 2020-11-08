@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Freundschaftsanfrage abgelehnt{% endblock %}
+{% block title %}{% blocktrans %}Freundschaftsanfrage abgelehnt{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>Freundschaftsanfrage abgelehnt</h1>
-    <p>
-        Sie haben die Freundschaftsanfrage von {{ declined_user }} abgelehnt.
-    </p>
-    <p><a href="{% url 'account:friend_requests_list' %}">Zurück zur Liste geht's hier.</a></p>
+    <h1>{% blocktrans %}Freundschaftsanfrage abgelehnt{% endblocktrans %}</h1>
+    <p>{% blocktrans with v0=declined_user %}Sie haben die Freundschaftsanfrage von {{ v0 }} abgelehnt.{% endblocktrans %}</p>
+    <p><a href="{% url 'account:friend_requests_list' %}">{% blocktrans %}Zurück zur Liste geht's hier.{% endblocktrans %}</a></p>
 {% endblock %}

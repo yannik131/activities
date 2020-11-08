@@ -1,12 +1,13 @@
 {% load activity_filter %}
+{% load i18n %}
 
 <table>
     <tr>
-        <th>Beschreibung</th>
-        <th>Ort</th>
-        <th>Geschlecht</th>
-        <th>Alter</th>
-        <th>Aktion</th>
+        <th>{% trans "Beschreibung" %}</th>
+        <th>{% trans "Ort" %}</th>
+        <th>{% trans "Geschlecht" %}</th>
+        <th>{% trans "Alter" %}</th>
+        <th>{% trans "Aktion" %}</th>
     </tr>
     {% for vacancy in target.vacancies.all %}
     {% with status=user.application_dict|lookup:vacancy.id %}
@@ -17,22 +18,22 @@
             <td>{{ vacancy.min_age|default_if_none:"/" }} - {{ vacancy.max_age|default_if_none:"/" }}</td>
             <td>
                 {% if user == target.admin %}
-                    <a href="{% url 'vacancies:edit_vacancy' vacancy.id %}">Bearbeiten</a> | <a href="{% url 'vacancies:delete_vacancy' vacancy.id %}">Löschen</a>
+                    <a href="{% url 'vacancies:edit_vacancy' vacancy.id %}">{% trans "Bearbeiten" %}</a> | <a href="{% url 'vacancies:delete_vacancy' vacancy.id %}">{% trans "Löschen" %}</a>
                 {% elif not is_member %}
                     {% if not status %}
-                        <a href="{% url 'vacancies:apply_for_vacancy' vacancy.id %}">Bewerben</a>
+                        <a href="{% url 'vacancies:apply_for_vacancy' vacancy.id %}">{% trans "Bewerben" %}</a>
                     {% else %}
                         {% if status == 'pending' %}
-                            Beworben
+                            {% trans "Beworben" %}
                         {% elif status == 'accepted' %}
-                            Angenommen
+                            {% trans "Angenommen" %}
                         {% elif status == 'declined' %}
-                            Abgelehnt
+                            {% trans "Abgelehnt" %}
                         {% endif %}
                     {% endif %}
                 {% endif %}
                 {% if is_member or user == target.admin %}
-                    <a href="{% url 'vacancies:review_vacancy' vacancy.id %}">Bewerbungen</a>
+                    <a href="{% url 'vacancies:review_vacancy' vacancy.id %}">{% trans "Bewerbungen" %}</a>
                 {% endif %}
             </td>
         </tr>

@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Match erstellen{% endblock %}
+{% block title %}{% blocktrans %}Match erstellen{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>{{ activity.name }}: Match erstellen</h1>
+    <h1>{% blocktrans with v0=activity.name %}{{ v0 }}: Match erstellen{% endblocktrans %}</h1>
     <p>
-        Bitte füllen Sie das folgende Formular aus, um ein Match zu erstellen.
+        {% trans "Bitte füllen Sie das folgende Formular aus, um ein Match zu erstellen" %}.
     </p>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <input type="submit" value="Fertig">
+        <input type="submit" value="{% blocktrans %}Fertig{% endblocktrans %}">
     </form>
 {% endblock %}

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load activity_filter %}
 
 {% block title %}{{ activity.name }}{% endblock %}
@@ -12,32 +13,32 @@
         <h2><a href="{{ activity.category.get_absolute_url }}">{{ activity.category.verbose }}</a></h2>
     {% endif %}
     {% if activity.type == 'competitive' %}
-        <h3><a href="{% url 'competitions:overview' activity.id %}">Matches & Turniere</a></h3>
+        <h3><a href="{% url 'competitions:overview' activity.id %}">{% trans "Matches & Turniere" %}</a></h3>
     {% endif %}
     <p>{{ activity.description }}</p>
         {% if is_member %}
             <p>
-            Sie sind Mitglied dieser Aktivität. <a href="{% url 'activity:leave' activity.name %}">Austreten...</a>
+            {% trans "Sie sind Mitglied dieser Aktivität" %}. <a href="{% url 'activity:leave' activity.name %}">{% trans "Austreten" %}...</a>
             </p>
-            <h3>Suche nach Mitgliedern</h3>
+            <h3>{% trans "Suche nach Mitgliedern" %}</h3>
             <p>{% include 'activity/location_selection.html' %}</p>
             {% if users %}
                 <table>
-                    <tr><th>Nutzername</th></tr>
+                    <tr><th>{% trans "Nutzername" %}</th></tr>
                     {% for u in users %}
                         <tr><td><a href="{{ u.get_absolute_url }}">{{ u.username }}</a></td></tr>
                     {% endfor %}
                 </table>
             {% else %}
-                <p><b>Keine.</b></p>
+                <p><b>{% trans "Keine" %}.</b></p>
             {% endif %}
         {% else %}
             <p>
-                Sie sind noch kein Mitglied. Falls Sie sehen wollen, wer in Ihrer Umgebung Teil dieser Aktivität ist, <a href="{% url 'activity:join' activity.name %}">treten Sie Ihr bei.</a>
+                {% trans "Sie sind noch kein Mitglied. Falls Sie sehen wollen, wer in Ihrer Umgebung Teil dieser Aktivität ist" %}, <a href="{% url 'activity:join' activity.name %}">{% trans "treten Sie Ihr bei" %}.</a>
             </p>
         {% endif %}
     </p>
 
-    <h3>Beiträge {{ chosen_component|inim }}</h3>
+    <h3>{% trans "Beiträge" %} {{ chosen_component|inim }}</h3>
     {% include 'wall/post/post_loop.html' %}
 {% endblock %}

@@ -4,6 +4,7 @@ from .models import UserGroup
 from vacancies.models import Vacancy, Invitation, Application
 from actions.utils import create_action
 from chat.models import ChatRoom
+from django.utils.translation import gettext_lazy as _
 
 
 @receiver(m2m_changed, sender=UserGroup.members.through)
@@ -15,12 +16,12 @@ def members_changed(instance, action, model, pk_set, **kwargs):
         for application in vacancy.applications.all():
             rooms.append(ChatRoom.get_for_target(application))
     if action == 'post_add':
-        create_action(instance, 'hat ein neues Mitglied:', member)
+        create_action(instance, _('hat ein neues Mitglied:'), member)
         for room in rooms:
             room.members.add(member)
 
     elif action == 'post_remove':
-        create_action(member, 'ist kein Mitglied mehr von:', instance)
+        create_action(member, _('ist kein Mitglied mehr von:'), instance)
         for room in rooms:
             room.members.remove(member)
 
@@ -28,7 +29,7 @@ def members_changed(instance, action, model, pk_set, **kwargs):
 @receiver(post_save, sender=UserGroup)
 def group_created(instance, created, **kwargs):
     if instance.public and created:
-        create_action(instance.admin, 'hat eine Gruppe erstellt:', instance)
+        create_action(instance.admin, _('hat eine Gruppe erstellt:'), instance)
 
 
 @receiver(pre_save, sender=UserGroup)
@@ -36,7 +37,7 @@ def group_changed(instance, **kwargs):
     previous: UserGroup = UserGroup.objects.filter(id=instance.id).first()
     if previous:
         if previous.description != instance.description:
-            create_action(instance, 'hat seine Beschreibung aktualisiert')
+            create_action(instance, _('hat seine Beschreibung aktualisiert'))
 
 
 @receiver(post_delete, sender=UserGroup)
@@ -44,56 +45,5 @@ def group_deleted(instance, **kwargs):
     room = ChatRoom.get_for_target(instance)
     room.delete()
     if instance.public:
-        create_action(instance.admin, f'hat eine Gruppe gelöscht: {instance.name}', instance)
+        create_action(instance.admin, _('hat eine Gruppe gelöscht: {name}').format(name=instance.name), instance)
 
-
-@receiver(post_save, sender=Vacancy)
-def vacancy_changed(instance, created, **kwargs):
-    if created:
-        create_action(instance.target, 'hat eine neue Leerstelle:', instance)
-    else:
-        create_action(instance.target, 'hat eine Leerstelle angepasst: ' + str(instance))
-
-
-@receiver(post_save, sender=Invitation)
-def vacancy_changed(instance, created, **kwargs):
-    if created:
-        create_action(instance.sender, 'hat jemanden eingeladen:', instance.target)
-    else:
-        create_action(instance.sender, 'hat eine Einladung verändert an:', instance.target)
-
-
-@receiver(post_delete, sender=Vacancy)
-def vacancy_deleted(instance, **kwargs):
-    create_action(instance.target, 'hat folgende Leerstelle gelöscht: ' + str(instance))
-
-
-@receiver(post_delete, sender=Invitation)
-def invitation_deleted(instance, **kwargs):
-    create_action(instance.sender, 'hat eine Einladung gelöscht mit folgendem Empfänger:', instance.target)
-
-
-@receiver(post_save, sender=Application)
-def application_created(instance: Application, created, **kwargs):
-    if created:
-        create_action(instance.user, f'hat sich auf eine Leerstelle beworben: "{instance.vacancy}", von:', instance.vacancy.target)
-        room = ChatRoom.get_for_target(instance)
-        room.members.add(instance.user)
-        for member in instance.vacancy.target.members.all():
-            room.members.add(member)
-
-
-@receiver(pre_save, sender=Application)
-def application_saved(instance: Application, **kwargs):
-    previous = Application.objects.filter(id=instance.id).first()
-    if previous:
-        if previous.status != instance.status:
-            create_action(instance.vacancy.target, f'hat den Status der Bewerbung auf die Leerstelle {instance.vacancy} auf {instance.get_status_display} geändert. Bewerber:', instance.user)
-            ChatRoom.get_for_target(instance).delete()
-
-
-@receiver(post_delete, sender=Application)
-def application_deleted(instance: Application, **kwargs):
-    room = ChatRoom.get_for_target(instance)
-    room.delete()
-    create_action(instance.vacancy.target, f'Die Bewerbung auf die Leerstelle "{instance.vacancy}" wurde gelöscht. Bewerber:', instance.user)

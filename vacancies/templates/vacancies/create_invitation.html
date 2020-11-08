@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Einladung verschicken{% endblock %}
+{% block title %}{% trans "Einladung verschicken" %}{% endblock %}
 
 {% block content %}
-    <h1>Nutzer einladen zu: "{{ sender }}"</h1>
+    <h1>{% trans "Nutzer einladen zu" %}: "{{ sender }}"</h1>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <input type="submit" value="Fertig">
+        <input type="submit" value="{% trans "Fertig" %}">
     </form>
 {% endblock %}

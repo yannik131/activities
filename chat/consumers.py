@@ -49,7 +49,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await sync_to_async(ChatLogEntry.objects.create)(
             author=self.user,
             chat_room=self.chat_room,
-            text=self.user.username + ', ' + now.strftime('%d.%m.%Y %H:%M:%S Uhr: ') + message,
+            text=self.user.username + ', ' + now.strftime('%d.%m.%Y %H:%M:%S: ') + message,
             created=now)
 
         await sync_to_async(self.update_check)()

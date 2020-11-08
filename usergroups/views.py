@@ -6,6 +6,7 @@ from .models import UserGroup
 from account.models import Location, User
 from django.http import HttpResponseForbidden, HttpResponseRedirect, HttpResponse
 from wall.models import Post
+from django.utils.translation import gettext_lazy as _
 
 
 @login_required
@@ -77,7 +78,7 @@ def leave_group(request, id):
     group = UserGroup.objects.get(id=id)
     if request.user in group.members.all():
         if request.user == group.admin:
-            return HttpResponse('Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest oder löschen Sie die Gruppe.')
+            return HttpResponse(_('Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest oder löschen Sie die Gruppe.'))
         group.members.remove(request.user)
         return HttpResponseRedirect(group.get_absolute_url())
     return HttpResponseForbidden()

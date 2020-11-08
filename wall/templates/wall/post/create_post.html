@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Posten{% endblock %}
+{% block title %}{% blocktrans %}Posten{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>Posten in <a href="{{ target.get_absolute_url }}">{{ target }}</a></h1>
-    <p>Hinweis: Bitte achten Sie bei öffentlichen Posts auf den Verzicht von vulgärer Sprache und laden Sie keine urheberrechtlich geschützten oder anstößigen Mediendateien hoch.</p>
+    <h1>{% trans "Posten in" %} <a href="{{ target.get_absolute_url }}">{{ target }}</a></h1>
+    <p>{% blocktrans %}Hinweis: Bitte achten Sie bei öffentlichen Posts auf den Verzicht von vulgärer Sprache und laden Sie keine urheberrechtlich geschützten oder anstößigen Mediendateien hoch.{% endblocktrans %}</p>
 
     <form method="post" enctype="multipart/form-data">
         {{ form.as_p }}
         {% csrf_token %}
-        <input type="submit" value="Senden">
+        <input type="submit" value="{% blocktrans %}Senden{% endblocktrans %}">
     </form>
 {% endblock %}

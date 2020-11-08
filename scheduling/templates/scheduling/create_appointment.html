@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Termin erstellen{% endblock %}
+{% block title %}{% trans "Termin erstellen" %}{% endblock %}
 
 {% block content %}
-    <h1>Termin erstellen</h1>
+    <h1>{% trans "Termin erstellen" %}</h1>
     <p><a href="{{ group.get_absolute_url }}">{{ group }}</a></p>
-    <p>Bitte füllen Sie folgendes Formular aus, um ein Treffen zu vereinbaren.</p>
+    <p>{% trans "Bitte füllen Sie folgendes Formular aus, um ein Treffen zu vereinbaren" %}.</p>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <input type="submit" value="Fertig">
+        <input type="submit" value="{% trans "Fertig" %}">
     </form>
 {% endblock %}

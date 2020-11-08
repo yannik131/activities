@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.contrib.contenttypes.models import ContentType
 from itertools import chain
+from django.utils.translation import gettext_lazy as _
 
 
 class User(AbstractUser):
@@ -101,9 +102,9 @@ class FriendRequest(models.Model):
     requesting_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_friend_requests')
     requested_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_friend_requests')
     STATUS_CHOICES = (
-        ('pending', 'Ausstehend'),
-        ('accepted', 'Angenommen'),
-        ('declined', 'Abgelehnt'),
+        ('pending', _('Ausstehend')),
+        ('accepted', _('Angenommen')),
+        ('declined', _('Abgelehnt')),
     )
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
     created = models.DateTimeField(auto_now_add=True)
@@ -138,10 +139,10 @@ class Location(models.Model):
         unique_together = [['country', 'state', 'county', 'city']]
 
     def as_dict(self):
-        return dict(Land=self.country,
-                    Bundesland=self.state,
-                    Landkreis=self.county,
-                    Stadt=self.city)
+        return {_('Land'): self.country,
+                _('Bundesland'): self.state,
+                _('Landkreis'): self.county,
+                _('Stadt'): self.city}
 
     def __str__(self):
         return self.city + ", " + self.state

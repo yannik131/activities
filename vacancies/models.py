@@ -3,6 +3,7 @@ from account.models import User, FriendRequest
 from django.urls import reverse
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+from django.utils.translation import gettext_lazy as _
 
 
 class Invitation(models.Model):
@@ -25,10 +26,10 @@ class Vacancy(models.Model):
     target_ct = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     target = GenericForeignKey('target_ct', 'target_id')  # The object that has the vacancies: Match, UserGroup, ...
     COMPONENT_CHOICES = (
-        ('country', 'Land'),
-        ('state', 'Bundesland'),
-        ('county', 'Landkreis'),
-        ('city', 'Stadt')
+        ('country', _('Land')),
+        ('state', _('Bundesland')),
+        ('county', _('Landkreis')),
+        ('city', _('Stadt'))
     )
     accepted = models.BooleanField(default=False)
     persistent = models.BooleanField(default=False)  # If True, the vacancy won't be deleted if an application is accepted
@@ -38,15 +39,15 @@ class Vacancy(models.Model):
     def __str__(self):
         msg = self.description
         if self.min_age and not self.max_age:
-            msg += f' über {self.min_age}'
+            msg += _(' über {age}').format(age=self.min_age)
         elif self.max_age and not self.min_age:
-            msg += f' unter {self.max_age}'
+            msg += _(' unter {age}').format(age=self.max_age)
         elif self.min_age and self.max_age:
-            msg += f' zwischen {self.min_age} und {self.max_age}'
+            msg += _(' zwischen {age1} und {age2}').format(age1=self.min_age, age2=self.max_age)
         if self.sex:
-            msg += f', {self.get_sex_display()}'
+            msg += _(', {sex}').format(sex=self.get_sex_display())
         else:
-            msg += ' (m/w)'
+            msg += _(' (m/w)')
         return msg
 
     def verbose(self):
@@ -69,7 +70,7 @@ class Application(models.Model):
         return user in [self.user, self.vacancy.target.admin] + list(self.vacancy.target.members.all())
 
     def __str__(self):
-        return 'Bewerbung von ' + self.user.username
+        return _('Bewerbung von {name}').format(name=self.user.username)
 
     def verbose(self):
-        return self.__str__() + f' bei {self.vacancy.target}'
+        return _('{app} bei {target}').format(app=self.__str__(), target=self.vacancy.target)

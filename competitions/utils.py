@@ -1,4 +1,5 @@
 from shared.shared import add
+from django.utils.translation import gettext_lazy as _
 
 
 def create_pairings(players, points, tie_breaks=None, team_size=2):
@@ -62,13 +63,13 @@ def swiss_pairings_danish_skat(points, team_sizes=None):
 
 
 def get_pairings_for(activity_name, tournament):
-    if activity_name == 'Schach spielen':
+    if activity_name == _('Schach spielen'):
         return swiss_pairings_danish_standard(tournament.points, tournament.tie_breaks)
-    elif activity_name == 'Doppelkopf spielen':
+    elif activity_name == _('Doppelkopf spielen'):
         return swiss_pairings_danish_skat(tournament.points, team_sizes=[4, 5])
-    elif activity_name == 'Azul spielen':
+    elif activity_name == _('Azul spielen'):
         return swiss_pairings_danish_skat(tournament.points, team_sizes=[2, 3, 4])
-    elif activity_name == 'Skat spielen':
+    elif activity_name == _('Skat spielen'):
         return swiss_pairings_danish_skat(tournament.points, team_sizes=[3, 4])
     else:
-        raise NotImplementedError('Gibts doch nicht.')
+        raise NotImplementedError(_('Gibts doch nicht.'))

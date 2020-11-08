@@ -1,23 +1,24 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Turnier bearbeiten{% endblock %}
+{% block title %}{% blocktrans %}Turnier bearbeiten{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>Turnier bearbeiten: <a href="{{ tournament.get_absolute_url }}">{{ tournament }}</a></h1>
-    <h2><a href="{% url 'competitions:delete_tournament' tournament.id %}">Turnier löschen</a></h2>
+    <h1>{% trans "Turnier bearbeiten" %}: <a href="{{ tournament.get_absolute_url }}">{{ tournament }}</a></h1>
+    <h2><a href="{% url 'competitions:delete_tournament' tournament.id %}">{% blocktrans %}Turnier löschen{% endblocktrans %}</a></h2>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <input type="submit" value="Fertig">
+        <input type="submit" value="{% blocktrans %}Fertig{% endblocktrans %}">
     </form>
-    <h2>Mitglieder verwalten</h2>
-    <p><a href="{% url 'vacancies:create_invitation' 'competitions' 'tournament' tournament.id %}">Mitglied einladen</a></p>
+    <h2>{% blocktrans %}Mitglieder verwalten{% endblocktrans %}</h2>
+    <p><a href="{% url 'vacancies:create_invitation' 'competitions' 'tournament' tournament.id %}">{% blocktrans %}Mitglied einladen{% endblocktrans %}</a></p>
     {% if user not in tournament.members.all %}
-        <p><a href="{% url 'competitions:add_tournament_member' tournament.id user.id %}">Selbst beitreten</a></p>
+        <p><a href="{% url 'competitions:add_tournament_member' tournament.id user.id %}">{% blocktrans %}Selbst beitreten{% endblocktrans %}</a></p>
     {% endif %}
     <ul>
         {% for member in tournament.members.all %}
-            <li><a href="{{ member.get_absolute_url }}">{{ member }}</a> <a href="{% url 'competitions:remove_tournament_member' tournament.id member.id 'admin' %}">Entfernen</a></li>
+            <li><a href="{{ member.get_absolute_url }}">{{ member }}</a> <a href="{% url 'competitions:remove_member' 'tournament' tournament.id member.id 'admin' %}">{% blocktrans %}Entfernen{% endblocktrans %}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

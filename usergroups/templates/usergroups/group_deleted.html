@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Gruppe gelöscht{% endblock %}
+{% block title %}{% trans "Gruppe gelöscht" %}{% endblock %}
 
 {% block content %}
-    <h1>Gruppe gelöscht</h1>
-    <p>Sie haben die Gruppe "{{ group.name }}" erfolgreich gelöscht.</p>
+    <h1>{% trans "Gruppe gelöscht" %}</h1>
+    <p>{% trans "Sie haben die Gruppe" %} "{{ group.name }}" {% trans "erfolgreich gelöscht" %}.</p>
 {% endblock %}

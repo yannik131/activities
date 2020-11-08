@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Bewerben{% endblock %}
+{% block title %}{% trans "Bewerben" %}{% endblock %}
 
 {% block content %}
-    <h1>Auf Leerstelle bewerben</h1>
-    <p>Leerstelle gehört zu: <a href="{{ vacancy.target.get_absolute_url }}">{{ vacancy.target }}</a></p>
-    <p>Beschreibung: {{ vacancy.description }}</p>
-    <p>Erzählen Sie etwas über sich:</p>
+    <h1>{% trans "Auf Leerstelle bewerben" %}</h1>
+    <p>{% trans "Leerstelle gehört zu" %}: <a href="{{ vacancy.target.get_absolute_url }}">{{ vacancy.target }}</a></p>
+    <p>{% trans "Beschreibung" %}: {{ vacancy.description }}</p>
+    <p>{% trans "Erzählen Sie etwas über sich" %}:</p>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <input type="submit" value="Senden">
+        <input type="submit" value="{% trans "Senden" %}">
     </form>
 {% endblock %}

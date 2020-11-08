@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Leerstelle bearbeiten{% endblock %}
+{% block title %}{% trans "Leerstelle bearbeiten" %}{% endblock %}
 
 {% block content %}
-    <h1>Leerstelle bearbeiten</h1>
+    <h1>{% trans "Leerstelle bearbeiten" %}</h1>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <input type="submit" value="Fertig">
+        <input type="submit" value="{% trans "Fertig" %}">
     </form>
 {% endblock %}

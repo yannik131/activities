@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load activity_filter %}
 
-{% block title %}Spielplan Runde {{ round.number }}{% endblock %}
+{% block title %}{% blocktrans with v0=round.number %}Spielplan Runde {{ v0 }}{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>Spielplan Runde {{ round.number }}</h1>
+    <h1>{% blocktrans with v0=round.number %}Spielplan Runde {{ v0 }}{% endblocktrans %}</h1>
     <p><a href="{{ round.tournament.get_absolute_url }}">{{ round.tournament }}</a>:
         {% for round in tournament.rounds.all %}
-            <a href="{{ round.get_absolute_url }}">Runde {{ round.number }}</a>{% if not forloop.last %}| {% endif %}
+            <a href="{{ round.get_absolute_url }}">{% blocktrans with v0=round.number %}Runde {{ v0 }}{% endblocktrans %}</a>{% if not forloop.last %}| {% endif %}
         {% endfor %}
     </p>
     {% if round.leftover %}
-        <p>Nutzer <a href="{{ round.leftover_instance.get_absolute_url }}">{{ round.leftover_instance }}</a> hat keinen Spielpartner und bekommt ein Freilos.</p>
+        <p>{% trans "Nutzer" %} <a href="{{ round.leftover_instance.get_absolute_url }}">{{ round.leftover_instance }}</a> {% trans "hat keinen Spielpartner und bekommt ein Freilos." %}</p>
     {% endif %}
     <table>
         <tr>
-            <th>Wer</th>
-            <th>Ergebnis</th>
+            <th>{% blocktrans %}Wer{% endblocktrans %}</th>
+            <th>{% blocktrans %}Ergebnis{% endblocktrans %}</th>
         </tr>
         {% for matchup in round.matchup_players %}
         <tr>
@@ -28,10 +29,10 @@
             <td>
                 {% for player in matchup %}
                     <b>{{ round.points|lookup_str:player.id }}</b>{% if not forloop.last %} - {% endif %}
-                {% endfor %}{% if is_admin and not over %} <a href="{% url 'competitions:change_score' round.id forloop.counter0 %}">Ändern</a>{% endif %}
+                {% endfor %}{% if is_admin and not over %} <a href="{% url 'competitions:change_score' round.id forloop.counter0 %}">{% blocktrans %}Ändern{% endblocktrans %}</a>{% endif %}
             </td>
         </tr>
         {% endfor %}
     </table>
-    <p>{% if is_admin and not round.over %}<a href="{% url 'competitions:close_round' round.id %}">Runde beenden</a>{% endif %}</p>
+    <p>{% if is_admin and not round.over %}<a href="{% url 'competitions:close_round' round.id %}">{% blocktrans %}Runde beenden{% endblocktrans %}</a>{% endif %}</p>
 {% endblock %}

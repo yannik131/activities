@@ -1,0 +1,1919 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-07 21:46+0000\n"
+"PO-Revision-Date: 2020-11-07 23:35+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#: account/forms.py:9
+msgid "Passwort"
+msgstr "Password"
+
+#: account/forms.py:11
+msgid "Passwort (erneut)"
+msgstr "Password (again)"
+
+#: account/forms.py:18 account/forms.py:36 vacancies/forms.py:14
+#: vacancies/templates/vacancies/vacancy_list.html:8
+msgid "Geschlecht"
+msgstr "Gender"
+
+#: account/forms.py:19 account/forms.py:37
+msgid "Geburtsjahr"
+msgstr "Birth year"
+
+#: account/forms.py:25
+msgid "Passwörter stimmen nicht überein!"
+msgstr "Passwords don't match!"
+
+#: account/forms.py:38
+msgid "Profiltext"
+msgstr "Profile text"
+
+#: account/forms.py:43 account/templates/account/detail.html:25
+msgid "Adresse"
+msgstr "Address"
+
+#: account/forms.py:52 account/templates/account/friend_requests_list.html:11
+#: account/templates/account/friend_requests_list.html:41
+#: usergroups/templates/usergroups/invitation_list.html:7 vacancies/forms.py:54
+#: vacancies/forms.py:98 vacancies/templates/vacancies/application_list.html:34
+#: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:27
+msgid "Nachricht"
+msgstr "Message"
+
+#: account/forms.py:58
+#, python-brace-format
+msgid ""
+"Die Nachricht darf nicht länger als 150 Zeichen sein, ist aber {l} Zeichen "
+"lang."
+msgstr ""
+"The message can't be longer than 150 characters. It's {l} characters long. "
+"Fix this."
+
+#: account/forms.py:63 account/templates/account/friend_requests_list.html:10
+#: account/templates/account/friend_requests_list.html:40
+#: activity/templates/activity/detail.html:27
+msgid "Nutzername"
+msgstr "User name"
+
+#: account/forms.py:68
+#, python-brace-format
+msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
+msgstr "There is no user with the user name {name}"
+
+#: account/models.py:105
+msgid "Ausstehend"
+msgstr "Pending"
+
+#: account/models.py:106 vacancies/templates/vacancies/vacancy_list.html:29
+msgid "Angenommen"
+msgstr "Accepted"
+
+#: account/models.py:107 vacancies/templates/vacancies/vacancy_list.html:31
+msgid "Abgelehnt"
+msgstr "Declined"
+
+#: account/models.py:142 vacancies/models.py:29
+msgid "Land"
+msgstr "Country"
+
+#: account/models.py:143 vacancies/models.py:30
+msgid "Bundesland"
+msgstr "State"
+
+#: account/models.py:144 vacancies/models.py:31
+msgid "Landkreis"
+msgstr "County"
+
+#: account/models.py:145 vacancies/models.py:32
+msgid "Stadt"
+msgstr "City"
+
+#: account/signals.py:12
+msgid "ist jetzt befreundet mit"
+msgstr "is now friends with"
+
+#: account/signals.py:20
+msgid "ist nicht mehr befreundet mit"
+msgstr "isn't friends any more with"
+
+#: account/templates/account/destroy_friendship.html:4
+#: account/templates/account/destroy_friendship.html:7
+msgid "Freundschaft beendet"
+msgstr "Friendship terminated"
+
+#: account/templates/account/destroy_friendship.html:8
+#, python-format
+msgid "Sie haben die Freundschaft mit %(name)s, aka %(username)s, beendet."
+msgstr "You terminated your friendship with %(name)s, aka %(username)s."
+
+#: account/templates/account/detail.html:5
+#, python-format
+msgid "Profil von %(viewed_user.username)s"
+msgstr "Profile of %(viewed_user.username)s"
+
+#: account/templates/account/detail.html:8
+msgid "Profil von"
+msgstr "Profile of"
+
+#: account/templates/account/detail.html:13
+#: usergroups/templates/usergroups/group_detail.html:12
+#: vacancies/templates/vacancies/review_vacancy.html:29
+msgid "Zum Chat"
+msgstr "To the chat"
+
+#: account/templates/account/detail.html:14
+msgid "Voller Name"
+msgstr "Full name"
+
+#: account/templates/account/detail.html:15
+msgid "ist Mitglied folgender Aktivitäten"
+msgstr "is a member of the following activities"
+
+#: account/templates/account/detail.html:17
+#: activity/templates/activity/activity_list.html:15
+#: activity/templates/activity/category_list.html:11 scheduling/forms.py:17
+#: usergroups/forms.py:21
+#: usergroups/templates/usergroups/category_group_list.html:13
+#: usergroups/templates/usergroups/user_group_list.html:10
+msgid "Name"
+msgstr "Name"
+
+#: account/templates/account/detail.html:17 usergroups/forms.py:22
+#: usergroups/templates/usergroups/category_group_list.html:14
+#: usergroups/templates/usergroups/group_detail.html:16
+#: usergroups/templates/usergroups/user_group_list.html:11
+#: vacancies/forms.py:13 vacancies/templates/vacancies/apply_for_vacancy.html:9
+#: vacancies/templates/vacancies/vacancy_list.html:6
+msgid "Beschreibung"
+msgstr "Description"
+
+#: account/templates/account/detail.html:26
+msgid "Neueste Aktivitäten"
+msgstr "Newest activities"
+
+#: account/templates/account/detail.html:28
+msgid "Sie sind mit"
+msgstr "You are friends with"
+
+#: account/templates/account/detail.html:28
+msgid "befreundet. Falls Sie das ändern möchten, können Sie die Freundschaft"
+msgstr ". If you want to change that,"
+
+#: account/templates/account/detail.html:28
+msgid "auch vernichten"
+msgstr "click here"
+
+#: account/templates/account/detail.html:30
+#, python-format
+msgid "Sie sind nicht mit %(user)s befreundet "
+msgstr "You aren't friends with %(user)s."
+
+#: account/templates/account/detail.html:32
+msgid ""
+"Sie haben allerdings bereits eine Freundschaftsanfrage gesendet. Diese wurde "
+"entweder abgelehnt oder die Antwort steht noch aus"
+msgstr ""
+"You've already sent a friend request. It was either declined or is still "
+"pending."
+
+#: account/templates/account/detail.html:34
+msgid "Falls Sie das ändern möchten, schicken Sie ihm doch eine"
+msgstr "If you want to change that, sent a"
+
+#: account/templates/account/detail.html:34
+msgid "Freundschaftsanfrage"
+msgstr "friend request"
+
+#: account/templates/account/detail.html:37
+#: usergroups/templates/usergroups/group_detail.html:91
+msgid "Posts"
+msgstr "Posts"
+
+#: account/templates/account/edit.html:4 account/templates/account/edit.html:7
+#: account/templates/base.html:24
+msgid "Account bearbeiten"
+msgstr "Edit account"
+
+#: account/templates/account/edit.html:8
+msgid "Bearbeiten Sie Ihren Account mit folgendem Formular:"
+msgstr "You can edit your account with the following form:"
+
+#: account/templates/account/edit.html:12
+#: competitions/templates/competitions/change_score.html:12
+#: competitions/templates/competitions/create_match.html:14
+#: competitions/templates/competitions/create_tournament.html:12
+#: competitions/templates/competitions/edit_match.html:15
+#: competitions/templates/competitions/edit_tournament.html:12
+#: scheduling/templates/scheduling/create_appointment.html:13
+#: usergroups/templates/usergroups/edit_group.html:12
+#: vacancies/templates/vacancies/create_invitation.html:11
+#: vacancies/templates/vacancies/create_vacancies.html:11
+#: vacancies/templates/vacancies/edit_vacancy.html:11
+msgid "Fertig"
+msgstr "Done"
+
+#: account/templates/account/edit.html:14
+msgid "Das sind Ihre aktuellen Addressdaten:"
+msgstr "This is your current address information:"
+
+#: account/templates/account/edit.html:17
+msgid "Ohne"
+msgstr "None"
+
+#: account/templates/account/edit.html:20
+msgid "Klicken Sie hier, falls Sie ihre Adresse ändern möchten."
+msgstr "Click here if you want to change your address."
+
+#: account/templates/account/edit_address.html:4
+#: account/templates/account/edit_address.html:7
+msgid "Adresse ändern"
+msgstr "Change address"
+
+#: account/templates/account/edit_address.html:8
+msgid "Geben Sie hier eine neue Stadt ein."
+msgstr "Enter a new city."
+
+#: account/templates/account/edit_address.html:12
+#: account/templates/registration/password_change_form.html:12
+#: account/templates/registration/password_reset_confirm.html:13
+#: competitions/templates/competitions/game_plan.html:32
+msgid "Ändern"
+msgstr "Change"
+
+#: account/templates/account/edit_address.html:15
+#, python-format
+msgid "Neue Adresse gespeichert: <b>%(v0)s</b>"
+msgstr "New address saved: <b>%(v0)s</b>"
+
+#: account/templates/account/friend_requests_list.html:4
+msgid "Freundschaftsanfragen"
+msgstr "Friend requests"
+
+#: account/templates/account/friend_requests_list.html:7
+msgid "Eingegangene Freundschaftsanfragen"
+msgstr "Received friend requests"
+
+#: account/templates/account/friend_requests_list.html:12
+#: account/templates/account/friend_requests_list.html:42
+#: vacancies/templates/vacancies/application_list.html:13
+msgid "Status"
+msgstr "Status"
+
+#: account/templates/account/friend_requests_list.html:13
+#: account/templates/account/friend_requests_list.html:43
+#: usergroups/templates/usergroups/group_detail.html:53
+#: usergroups/templates/usergroups/invitation_list.html:8
+#: vacancies/templates/vacancies/application_list.html:14
+#: vacancies/templates/vacancies/application_list.html:35
+#: vacancies/templates/vacancies/review_vacancy.html:20
+#: vacancies/templates/vacancies/vacancy_list.html:10
+msgid "Aktion"
+msgstr "Action"
+
+#: account/templates/account/friend_requests_list.html:28
+#: vacancies/templates/vacancies/application_list.html:41
+#: vacancies/templates/vacancies/review_vacancy.html:33
+msgid "Annehmen"
+msgstr "Accept"
+
+#: account/templates/account/friend_requests_list.html:28
+#: vacancies/templates/vacancies/review_vacancy.html:33
+msgid "Ablehnen"
+msgstr "Decline"
+
+#: account/templates/account/friend_requests_list.html:30
+#: account/templates/account/friend_requests_list.html:58
+#: usergroups/templates/usergroups/group_detail.html:80
+#: usergroups/templates/usergroups/invitation_list.html:16
+#: vacancies/templates/vacancies/application_list.html:24
+#: vacancies/templates/vacancies/application_list.html:41
+#: vacancies/templates/vacancies/review_vacancy.html:35
+#: vacancies/templates/vacancies/vacancy_list.html:21
+msgid "Löschen"
+msgstr "Delete"
+
+#: account/templates/account/friend_requests_list.html:36
+msgid "Gesendete Freundschaftsanfragen"
+msgstr "Sent friend requests"
+
+#: account/templates/account/friend_requests_list.html:37
+msgid "Eine Anfrage an einen Nutzer senden..."
+msgstr "Send a request to a user..."
+
+#: account/templates/account/friend_requests_list.html:64
+#: account/templates/base.html:22 chat/templates/chat/chat_list.html:15
+msgid "Freunde"
+msgstr "Friends"
+
+#: account/templates/account/home.html:5
+msgid "Home"
+msgstr "Home"
+
+#: account/templates/account/home.html:8
+#, python-format
+msgid "Willkommen, %(v0)s %(v1)s (aka %(v2)s)."
+msgstr "Welcome, %(v0)s %(v1)s (aka %(v2)s)."
+
+#: account/templates/account/home.html:9
+msgid "Zu Ihren Posts..."
+msgstr "Your posts..."
+
+#: account/templates/account/home.html:11
+msgid "Sie sind zurzeit Mitglied folgender Aktivitäten:"
+msgstr "You are currently a member of the following activities:"
+
+#: account/templates/account/home.html:18
+msgid "Sie sind zurzeit kein Mitglied einer Aktivität."
+msgstr "You aren't a member of an activity. Why don't you join one? :)"
+
+#: account/templates/account/home.html:20
+msgid "Neueste Aktivitäten Ihrer Freunde und Gruppen:"
+msgstr "News from your friends and groups:"
+
+#: account/templates/account/home.html:24
+msgid "... und auf aktivitaeten.de:"
+msgstr "... and on myactivities.net:"
+
+#: account/templates/account/pagination.html:6
+msgid "Vorige"
+msgstr "Previous"
+
+#: account/templates/account/pagination.html:9
+msgid "Seite"
+msgstr "Page"
+
+#: account/templates/account/pagination.html:9
+#: wall/templates/wall/post/post_loop.html:5
+msgid "von"
+msgstr "of"
+
+#: account/templates/account/pagination.html:12
+msgid "Nächste"
+msgstr "Next"
+
+#: account/templates/account/register.html:4
+#: account/templates/account/register.html:7
+#: account/templates/account/register.html:14
+msgid "Registrieren"
+msgstr "Register"
+
+#: account/templates/account/register.html:8
+msgid "Sie können sich mit dem folgenden Formular registrieren. "
+msgstr "Fill in the following form to register. "
+
+#: account/templates/account/register.html:11
+msgid "Bitte geben Sie eine Stadt ein"
+msgstr "Please enter a city name"
+
+#: account/templates/account/register_done.html:4
+#: account/templates/account/register_done.html:7
+msgid "Registriert"
+msgstr "Registered"
+
+#: account/templates/account/register_done.html:8
+#, python-format
+msgid "Sie haben sich erfolgreich mit dem Nutzernamen %(v0)s registriert "
+msgstr "You've successfully registered with the user name %(v0)s"
+
+#: account/templates/account/register_done.html:8
+msgid "Sie können sich jetzt einloggen."
+msgstr "You can now log in."
+
+#: account/templates/account/request_accepted.html:4
+#: account/templates/account/request_accepted.html:7
+msgid "Freundschaftsanfrage angenommen"
+msgstr "Friend request accepted"
+
+#: account/templates/account/request_accepted.html:8
+msgid "Die Freundschaftsanfrage von"
+msgstr "The friend request from"
+
+#: account/templates/account/request_accepted.html:8
+msgid "wurde angenommen"
+msgstr "was accepted"
+
+#: account/templates/account/request_accepted.html:9
+#: account/templates/account/request_declined.html:9
+#: account/templates/account/request_deleted.html:11
+msgid "Zurück zur Liste geht's hier."
+msgstr "Back to the list."
+
+#: account/templates/account/request_declined.html:4
+#: account/templates/account/request_declined.html:7
+msgid "Freundschaftsanfrage abgelehnt"
+msgstr "Friend request declined"
+
+#: account/templates/account/request_declined.html:8
+#, python-format
+msgid "Sie haben die Freundschaftsanfrage von %(v0)s abgelehnt."
+msgstr "You declined the friend request by %(v0)s."
+
+#: account/templates/account/request_deleted.html:4
+msgid "Freundschaftsanfrage gelöscht"
+msgstr "Friend request deleted"
+
+#: account/templates/account/request_deleted.html:7
+msgid "Freundschaftsanfrage gelöscht "
+msgstr "Friend request deleted "
+
+#: account/templates/account/request_deleted.html:9
+msgid "Sie haben die Freundschaftsanfrage von"
+msgstr "The friend request by"
+
+#: account/templates/account/request_deleted.html:9
+msgid "an"
+msgstr "to"
+
+#: account/templates/account/request_deleted.html:9
+msgid "mit dem Status"
+msgstr "with the status"
+
+#: account/templates/account/request_deleted.html:9
+msgid "gelöscht"
+msgstr "deleted"
+
+#: account/templates/account/send_friend_request.html:4
+msgid "Freundschaftsanfrage senden"
+msgstr "Send friend request"
+
+#: account/templates/account/send_friend_request.html:7
+msgid "Senden Sie"
+msgstr "Send"
+
+#: account/templates/account/send_friend_request.html:7
+msgid "eine Freundschaftsanfrage"
+msgstr "a friend request"
+
+#: account/templates/account/send_friend_request.html:9
+msgid "Die Freundschaftsanfrage wurde erfolgreich gesendet."
+msgstr "Successfully sent the friend request."
+
+#: account/templates/account/send_friend_request.html:11
+msgid "Schreiben Sie"
+msgstr "Write"
+
+#: account/templates/account/send_friend_request.html:11
+msgid "eine kurze Nachricht"
+msgstr "a short message"
+
+#: account/templates/account/send_friend_request.html:15
+msgid "Abschicken"
+msgstr "Send"
+
+#: account/templates/account/user_post_list.html:4
+#: account/templates/account/user_post_list.html:7
+msgid "Ihre Posts"
+msgstr "Your posts"
+
+#: account/templates/account/user_post_list.html:8
+msgid "Post erstellen..."
+msgstr "Create post..."
+
+#: account/templates/account/user_post_list.html:9
+msgid "Die Posts sind öffentlich auf Ihrer Profilseite sichtbar."
+msgstr "Posts are publicly visible on your profile page."
+
+#: account/templates/base.html:16
+#, python-format
+msgid "Ihr Nutzername: %(v0)s"
+msgstr "Your user name: %(v0)s"
+
+#: account/templates/base.html:17
+msgid "Homepage"
+msgstr "Homepage"
+
+#: account/templates/base.html:18
+#: activity/templates/activity/category_list.html:12
+msgid "Aktivitäten"
+msgstr "Activities"
+
+#: account/templates/base.html:18
+msgid "Kategorien"
+msgstr "Categories"
+
+#: account/templates/base.html:19 activity/templates/activity/detail.html:16
+msgid "Matches & Turniere"
+msgstr "Matches & Tournaments"
+
+#: account/templates/base.html:20 chat/templates/chat/chat_list.html:9
+#: usergroups/templates/usergroups/category_group_list.html:4
+#: usergroups/templates/usergroups/category_group_list.html:7
+msgid "Gruppen"
+msgstr "Groups"
+
+#: account/templates/base.html:20
+msgid "Chats"
+msgstr "Chats"
+
+#: account/templates/base.html:21
+msgid "Bewerbungen & Einladungen"
+msgstr "Applications & Invitations"
+
+#: account/templates/base.html:23
+#: account/templates/registration/password_change_form.html:4
+#: account/templates/registration/password_change_form.html:7
+#: account/templates/registration/password_reset_done.html:4
+#: account/templates/registration/password_reset_done.html:7
+msgid "Passwort ändern"
+msgstr "Change password"
+
+#: account/templates/base.html:25
+msgid "Ausloggen"
+msgstr "Log out"
+
+#: account/templates/registration/logged_out.html:4
+#: account/templates/registration/logged_out.html:7
+msgid "Ausgeloggt"
+msgstr "Logged out"
+
+#: account/templates/registration/logged_out.html:8
+msgid "Sie haben sich erfolgreich ausgeloggt. Sie können sich"
+msgstr "You've successfully logged out. You can now"
+
+#: account/templates/registration/logged_out.html:8
+msgid "auch wieder einloggen."
+msgstr "log in again."
+
+#: account/templates/registration/login.html:5
+#: account/templates/registration/login.html:26
+#: account/templates/registration/login.html:38
+msgid "Einloggen"
+msgstr "Login"
+
+#: account/templates/registration/login.html:11
+msgid "Willkommen!"
+msgstr "Welcome!"
+
+#: account/templates/registration/login.html:13
+msgid ""
+"Herzlich willkommen auf myactivities.net. Sieht alles noch ein wenig "
+"rustikal aus, funktioniert aber. Darum geht's hier: Sagen wir, Sie spielen "
+"gerne Schach und Gitarre. Sie suchen einen Gegner und eine Band, möglichst "
+"in Ihrer Stadt. Dann tun Sie folgendes:"
+msgstr ""
+"Welcome to myactivities.net. It's looking a bit functional right now, but "
+"everything's working. This is what it's about: Let's say, you like to play "
+"chess and guitar. You're looking for an opponent and a band, preferably "
+"somewhere near you. If so, you can do the following:"
+
+#: account/templates/registration/login.html:15
+msgid "Sie registrieren sich und geben die Stadt an, in der Sie wohnen."
+msgstr "You register with the city you live in."
+
+#: account/templates/registration/login.html:16
+msgid ""
+"Einmal eingeloggt, können Sie unter \"Aktivitäten\" die Aktivität \"Schach "
+"spielen\" auswählen und ihr beitreten."
+msgstr ""
+"Once logged in, select \"Activities\" and click on \"Playing Chess\". Enter "
+"the activity."
+
+#: account/templates/registration/login.html:17
+msgid ""
+"Über die Mitgliederliste finden Sie Menschen in Ihrer Stadt/Ihrem Landkreis/"
+"Ihrem Bundesland, die auch gerne Schach spielen. Falls Sie mit jemandem "
+"Kontakt aufnehmen wollen, schicken Sie dieser Person einfach eine "
+"Freundschaftsanfrage."
+msgstr ""
+"Now you can filter the member list by city/county/state and look for people "
+"in your area who like playing chess. Send a friend request to anyone you "
+"would like to chat with."
+
+#: account/templates/registration/login.html:18
+msgid ""
+"Unter \"Matches und Turniere\" finden Sie zurzeit in Ihrer Gegend "
+"stattfindende Veranstaltungen, auf die Sie sich bewerben können. Sie können "
+"auch ganz einfach eigene Matches und Turniere erstellen. In einem Turnier "
+"werden nach dem Schweizer System Spielpläne (Runden) und eine Punktetabelle "
+"mit Tie-Breaks generiert (vom Spiel abhängig)."
+msgstr ""
+"On the \"Playing Chess\" page, you can find a link to \"Matches and "
+"Tournaments\", filtered by locality. You can apply to any vacancies of these "
+"events by clicking on the event link and selecting \"Apply\" for one of the "
+"vacancies. You can also create your own matches and tournaments. Tournaments "
+"are round based and help you generate a match schedule, including a self-"
+"refreshing table with the current standings."
+
+#: account/templates/registration/login.html:19
+msgid ""
+"Die Aktivität \"Gitarre spielen\" liegt in der Kategorie \"Musik\". Auf der "
+"Kategorieseite können Sie nach Gruppen in Ihrer Umgebung suchen, die offene "
+"Leerstellen haben. Sie können auch selbst eine Gruppe gründen und so nach "
+"Musikern suchen."
+msgstr ""
+"You can find the activity \"Playing Guitar\" in the category \"Music\", "
+"which has its own site. There you can search for groups filtered by locality "
+"and apply for open vacancies. You can also create your own group, call it "
+"maybe \"Cool Band in <...>\" and create vacancies that others can apply to."
+
+#: account/templates/registration/login.html:20
+msgid ""
+"In einer Gruppe können Sie Terminabstimmungen für ein Treffen erstellen. "
+"Suchen Sie nach Mitgliedern, erzeugen Sie einfach eine Leerstelle und geben "
+"dort Bewerbungskriterien wie Alter, Wohnort oder Geschlecht an, z. B.: "
+"Bassist gesucht, Alter zwischen 20-30, Geschlecht egal, Wohnort Oldenburg."
+msgstr ""
+"Inside a group, you can easily schedule meetings and let members vote to see "
+"who can and who can't come. You can create vacancies with criteria, i. e. "
+"\"Bassist\", age between 20-30, only male, lives in same city/county/state I "
+"live in."
+
+#: account/templates/registration/login.html:21
+msgid ""
+"Jede Gruppe und jeder Nutzer kann in einer Kategorie bzw. einer Aktivität "
+"etwas posten. Die Posts sind über die jeweilige Aktivitäts- bzw. "
+"Gruppenseite zu sehen und werden dort nach Stadt/Landkreis/Bundesland "
+"gefiltert. Natürlich sind die Posts auch über die Profilseite des Nutzers "
+"bzw. der Gruppe erreichbar."
+msgstr ""
+"Every group and user can post posts linked to a category or activity. Posts "
+"are visible on the user's or group's profile page, and on the respective "
+"category or activity page as well. They can be commented and filtered by "
+"locality."
+
+#: account/templates/registration/login.html:22
+msgid ""
+"Für jede Freundschaft, jede Gruppe, jede Bewerbung, jedes Match und jedes "
+"Turnier gibt es einen eigenen Chat."
+msgstr ""
+"Every friendship, group, application, match and tournament has its own chat."
+
+#: account/templates/registration/login.html:23
+msgid ""
+"Gruppen können in jeder Kategorie gegründet werden. Matches und Turniere "
+"stehen nur bei wettkampffähigen Kategorien zur Verfügung."
+msgstr ""
+"Groups can be created in every category; matches and tournaments are "
+"available only for competitive categories such as games or sports."
+
+#: account/templates/registration/login.html:28
+msgid "Fehler beim Einloggen"
+msgstr "Error logging in"
+
+#: account/templates/registration/login.html:29
+msgid "Zurück zum Login"
+msgstr "Back to login"
+
+#: account/templates/registration/login.html:30
+msgid ""
+"Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der "
+"Account möglicherweise gesperrt."
+msgstr ""
+"Does the problem persist in spite of using the correct user name and "
+"password? Maybe your account has been banned."
+
+#: account/templates/registration/login.html:33
+msgid "Bitte nutzen Sie das folgende Formular zum einloggen:"
+msgstr "Please use the following form to log in:"
+
+#: account/templates/registration/login.html:41
+#: account/templates/registration/password_reset_form.html:7
+msgid "Passwort vergessen?"
+msgstr "Forgot your password?"
+
+#: account/templates/registration/login.html:41
+msgid "Setzen Sie Ihr Passwort hier zurück."
+msgstr "Reset your password here."
+
+#: account/templates/registration/login.html:42
+msgid "Noch keinen Account?"
+msgstr "No account yet?"
+
+#: account/templates/registration/login.html:42
+msgid "Hier registrieren."
+msgstr "Register here."
+
+#: account/templates/registration/password_change_done.html:4
+#: account/templates/registration/password_change_done.html:7
+msgid "Passwort geändert"
+msgstr "Password changed"
+
+#: account/templates/registration/password_change_done.html:8
+msgid "Ihr Passwort wurde erfolgreich geändert!"
+msgstr "Your password was changed successfully!"
+
+#: account/templates/registration/password_change_form.html:8
+msgid "Benutzen Sie folgendes Formular zum Ändern des Passworts:"
+msgstr "Please use the following form to change your password:"
+
+#: account/templates/registration/password_reset_complete.html:4
+#: account/templates/registration/password_reset_confirm.html:4
+#: account/templates/registration/password_reset_confirm.html:7
+#: account/templates/registration/password_reset_form.html:4
+msgid "Passwort zurücksetzen"
+msgstr "Reset password"
+
+#: account/templates/registration/password_reset_complete.html:7
+msgid "Passwort zurückgesetzt"
+msgstr "Password reset"
+
+#: account/templates/registration/password_reset_complete.html:8
+msgid "Ihr Passwort wurde zurückgesetzt"
+msgstr "Your password was successfully reset"
+
+#: account/templates/registration/password_reset_complete.html:8
+msgid "Sie können sich jetzt wieder einloggen."
+msgstr "You can now log in again."
+
+#: account/templates/registration/password_reset_confirm.html:9
+msgid "Bitte geben Sie das neue Passwort zweimal ein:"
+msgstr "Please type in your new password twice:"
+
+#: account/templates/registration/password_reset_confirm.html:16
+msgid ""
+"Der Link ist ungültig. Vermutlich wurde er bereits zum Zurücksetzen des "
+"Passworts verwendet. Bitte lassen Sie sich erneut einen zusenden."
+msgstr ""
+"The link is invalid. It has probably already been used to reset the "
+"password. Please request a new one."
+
+#: account/templates/registration/password_reset_done.html:8
+msgid ""
+"Sie sollten demnächst eine E-Mail mit Anweisungen zur Passwortzurücksetzung "
+"erhalten."
+msgstr ""
+"You should soon receive an email with instructions on how to reset your "
+"password."
+
+#: account/templates/registration/password_reset_done.html:9
+msgid ""
+"Sollten Sie keine E-Mail erhalten, überprüfen Sie, dass Sie die E-Mail-"
+"Adresse eingegeben haben, mit der Sie sich registriert haben."
+msgstr ""
+"In case you don't get an email, please make sure that you entered the "
+"correct email address."
+
+#: account/templates/registration/password_reset_email.html:3
+#, python-format
+msgid ""
+"Jemand hat auf myactivities.net  um eine Passwort-Zurücksetzung gebeten und "
+"folgende E-Mail angegeben: %(v0)s. Falls Sie Ihr Passwort zurücksetzen "
+"wollen, folgen Sie diesem Link:"
+msgstr ""
+"Someone requested a password reset on myactivities.net and entered your "
+"email address: %(v0)s. If you want to reset your password, follow this link:"
+
+#: account/templates/registration/password_reset_email.html:5
+#, python-format
+msgid "Falls Sie es vergessen haben sollten, Ihr Nutzername lautet: %(v0)s"
+msgstr "In case you forgot, your user name is: %(v0)s"
+
+#: account/templates/registration/password_reset_form.html:8
+msgid ""
+"Geben Sie ihre E-Mail Adresse ein, um ein neues Passwort zugeschickt zu "
+"bekommen."
+msgstr "Enter your email address to reset your password."
+
+#: account/templates/registration/password_reset_form.html:12
+#: chat/templates/chat/room.html:19
+#: vacancies/templates/vacancies/apply_for_vacancy.html:14
+#: wall/templates/wall/post/create_comment.html:11
+#: wall/templates/wall/post/create_post.html:13
+msgid "Senden"
+msgstr "Send"
+
+#: actions/templates/actions/detail.html:3
+#, python-format
+msgid "vor %(v0)s"
+msgstr "%(v0)s ago"
+
+#: actions/templates/actions/forloop.html:5
+msgid "Noch keine Neuigkeiten"
+msgstr "No news yet"
+
+#: activities/settings/base.py:137
+msgid "Deutsch"
+msgstr "German"
+
+#: activities/settings/base.py:138
+msgid "Englisch"
+msgstr "English"
+
+#: activity/models.py:18
+msgid "kompetitiv"
+msgstr "competitive"
+
+#: activity/models.py:19
+msgid "kreativ"
+msgstr "creative"
+
+#: activity/models.py:20
+msgid "konsumorientiert"
+msgstr "consumption"
+
+#: activity/models.py:28
+#, python-brace-format
+msgid "Aktivität: {name}"
+msgstr "Activity: {name}"
+
+#: activity/models.py:49
+#, python-brace-format
+msgid "Kategorie: {name}"
+msgstr "Category: {name}"
+
+#: activity/signals.py:12 activity/signals.py:28
+msgid "wurde erstellt."
+msgstr "was created"
+
+#: activity/signals.py:20
+msgid "ist einer Aktivität beigetreten:"
+msgstr "joined an activity:"
+
+#: activity/signals.py:22
+msgid "hat eine Aktivität verlassen:"
+msgstr "Left an activity:"
+
+#: activity/templates/activity/activity_list.html:4
+#: activity/templates/activity/activity_list.html:7
+msgid "Alle Aktivitäten"
+msgstr "All activities"
+
+#: activity/templates/activity/activity_list.html:9
+msgid "Anzeige einschränken auf"
+msgstr "Filter"
+
+#: activity/templates/activity/activity_list.html:12
+msgid "Hier eine Liste aller verfügbaren Aktivitäten"
+msgstr "Here's a list of all available activities"
+
+#: activity/templates/activity/activity_list.html:16
+msgid "Kategorie"
+msgstr "Category"
+
+#: activity/templates/activity/activity_list.html:17
+#: competitions/templates/competitions/tournament_detail.html:19
+#: usergroups/templates/usergroups/group_detail.html:19
+#: usergroups/templates/usergroups/user_group_list.html:12
+msgid "Mitglieder"
+msgstr "Members"
+
+#: activity/templates/activity/activity_list.html:21
+msgid "m"
+msgstr "m"
+
+#: activity/templates/activity/category_detail.html:11
+msgid "Zu den Gruppen"
+msgstr "Groups..."
+
+#: activity/templates/activity/category_detail.html:13
+msgid "Folgende Aktivitäten gehören zu dieser Kategorie"
+msgstr "The following activities belong to this category"
+
+#: activity/templates/activity/category_detail.html:19
+msgid "Posts in"
+msgstr "Posts in"
+
+#: activity/templates/activity/category_list.html:4
+#: activity/templates/activity/category_list.html:7
+msgid "Alle Kategorien"
+msgstr "All categories"
+
+#: activity/templates/activity/category_list.html:8
+msgid "Hier eine Liste aller verfügbaren Kategorien"
+msgstr "Here's a list of all available categories"
+
+#: activity/templates/activity/detail.html:21
+msgid "Sie sind Mitglied dieser Aktivität"
+msgstr "You are a member of this activity"
+
+#: activity/templates/activity/detail.html:21
+msgid "Austreten"
+msgstr "Leave"
+
+#: activity/templates/activity/detail.html:23
+msgid "Suche nach Mitgliedern"
+msgstr "Members"
+
+#: activity/templates/activity/detail.html:33
+#: wall/templates/wall/post/post_loop.html:26
+msgid "Keine"
+msgstr "None"
+
+#: activity/templates/activity/detail.html:37
+msgid ""
+"Sie sind noch kein Mitglied. Falls Sie sehen wollen, wer in Ihrer Umgebung "
+"Teil dieser Aktivität ist"
+msgstr ""
+"You aren't a member yet. If you want to see who in your area is a member"
+
+#: activity/templates/activity/detail.html:37
+msgid "treten Sie Ihr bei"
+msgstr "join"
+
+#: activity/templates/activity/detail.html:42
+msgid "Beiträge"
+msgstr "Posts"
+
+#: chat/templates/chat/chat_list.html:5 chat/templates/chat/chat_list.html:8
+msgid "Chat-Liste"
+msgstr "Chat-list"
+
+#: chat/templates/chat/chat_list.html:21
+#: competitions/templates/competitions/user_overview.html:8
+msgid "Matches"
+msgstr "Matches"
+
+#: chat/templates/chat/chat_list.html:27
+#: competitions/templates/competitions/overview.html:9
+#: competitions/templates/competitions/user_overview.html:14
+msgid "Turniere"
+msgstr "Tournaments"
+
+#: chat/templates/chat/room.html:4 chat/templates/chat/room.html:7
+#: competitions/templates/competitions/tournament_detail.html:11
+#: competitions/templates/competitions/tournament_detail.html:14
+#: vacancies/templates/vacancies/review_vacancy.html:18
+msgid "Chat"
+msgstr "Chat"
+
+#: chat/templates/chat/room.html:10
+#: competitions/templates/competitions/match_detail.html:15
+msgid "Teilnehmer"
+msgstr "Members"
+
+#: chat/views.py:17
+msgid "Diesen Chat-Room gibt es nicht mehr."
+msgstr "This chat room doesn't exist any more."
+
+#: competitions/forms.py:10 competitions/forms.py:36
+msgid "Austragungsort (Stadt)"
+msgstr "Location (city)"
+
+#: competitions/forms.py:17
+msgid "Wann findet das Match statt?"
+msgstr "When does the match start?"
+
+#: competitions/forms.py:18
+msgid "Soll das Match öffentlich unter Matches & Turniere sichtbar sein?"
+msgstr "Should the match be publicly visible?"
+
+#: competitions/forms.py:19
+msgid "Wo genau findet das Match statt?"
+msgstr "Where exactly does the match take place?"
+
+#: competitions/forms.py:20
+msgid "Bitte beschreiben Sie kurz die Spielregeln und das Format des Matches"
+msgstr "Please describe the rules and the format of the match briefly"
+
+#: competitions/forms.py:42
+msgid "Titel des Turniers"
+msgstr "Tournament title"
+
+#: competitions/forms.py:43
+msgid ""
+"Adresse (falls das Turnier an einem einzigen Ort stattfindet, sonst leer "
+"lassen)"
+msgstr ""
+"Address (in case the tournament takes place in one single location, "
+"otherwise leave blank)"
+
+#: competitions/forms.py:44
+msgid "Turnierbeginn"
+msgstr "Tournament start"
+
+#: competitions/forms.py:45
+msgid "Anmeldeschluss"
+msgstr "Deadline"
+
+#: competitions/forms.py:46
+msgid "Maximale Teilnehmeranzahl (leer lassen für kein Limit)"
+msgstr "Member limit (leave blank for no limit)"
+
+#: competitions/forms.py:47
+msgid "Rundenanzahl (leer lassen für automatische Ermittlung)"
+msgstr "Number of rounds (leave blank for automatic calculation)"
+
+#: competitions/forms.py:48
+msgid "Turnierformat und weitere Informationen"
+msgstr "Format of the tournament and other information"
+
+#: competitions/forms.py:55
+msgid "Anmeldeschluss muss vor Turnierbeginn sein."
+msgstr "The application deadline must end before the tournament starts."
+
+#: competitions/models.py:48
+#, python-brace-format
+msgid "Match am {start}"
+msgstr "Match on {start}"
+
+#: competitions/models.py:79
+#, python-brace-format
+msgid "{act}-Turnier am {stamp}"
+msgstr "{act}-tournament on {stamp}"
+
+#: competitions/signals.py:15
+msgid "hat ein neuen Mitspieler:"
+msgstr "has a new player:"
+
+#: competitions/signals.py:19
+msgid "ist kein Mitspieler mehr bei:"
+msgstr "isn't a player any more in:"
+
+#: competitions/signals.py:50
+#, python-brace-format
+msgid "hat ein Match gelöscht: {instance}"
+msgstr "deleted a match: {instance}"
+
+#: competitions/templates/competitions/change_score.html:4
+msgid "Ergebnisse eintragen"
+msgstr "Enter results"
+
+#: competitions/templates/competitions/change_score.html:7
+#, python-format
+msgid "Ergebnisse Eintragen: Runde %(v0)s"
+msgstr "Enter results: round %(v0)s"
+
+#: competitions/templates/competitions/change_score.html:8
+msgid ""
+"Nutzen Sie folgendes Formular, um die Ergebnisse des Matches einzutragen."
+msgstr "Please use the following form to enter the match results."
+
+#: competitions/templates/competitions/create_match.html:4
+#: competitions/templates/competitions/overview.html:27
+msgid "Match erstellen"
+msgstr "Create match"
+
+#: competitions/templates/competitions/create_match.html:7
+#, python-format
+msgid "%(v0)s: Match erstellen"
+msgstr "%(v0)s: Matches & Tournaments"
+
+#: competitions/templates/competitions/create_match.html:9
+msgid "Bitte füllen Sie das folgende Formular aus, um ein Match zu erstellen"
+msgstr "Please fill in the following form to create a match"
+
+#: competitions/templates/competitions/create_tournament.html:4
+#: competitions/templates/competitions/overview.html:10
+msgid "Turnier erstellen"
+msgstr "Create tournament"
+
+#: competitions/templates/competitions/create_tournament.html:7
+#, python-format
+msgid "%(v0)s: Turnier erstellen"
+msgstr "%(v0)s: Matches & Tournaments"
+
+#: competitions/templates/competitions/create_tournament.html:8
+#, python-format
+msgid ""
+"Bitte füllen Sie das folgende Formular aus, um ein Turnier in der Aktivität "
+"%(v0)s zu erstellen."
+msgstr ""
+"Please fill in the following form to create a tournament in the activity "
+"%(v0)s zu erstellen."
+
+#: competitions/templates/competitions/edit_match.html:4
+msgid "Match bearbeiten"
+msgstr "Edit match"
+
+#: competitions/templates/competitions/edit_match.html:7
+#, python-format
+msgid "%(v0)s: Bearbeiten"
+msgstr "%(v0)s: edit"
+
+#: competitions/templates/competitions/edit_match.html:8
+msgid "Match löschen"
+msgstr "Delete match"
+
+#: competitions/templates/competitions/edit_match.html:10
+msgid "Nutzen Sie das folgende Formular, um das Match zu bearbeiten"
+msgstr "Please use the following form to edit the match"
+
+#: competitions/templates/competitions/edit_tournament.html:4
+#: competitions/templates/competitions/edit_tournament.html:7
+msgid "Turnier bearbeiten"
+msgstr "Edit tournament"
+
+#: competitions/templates/competitions/edit_tournament.html:8
+msgid "Turnier löschen"
+msgstr "Delete tournament"
+
+#: competitions/templates/competitions/edit_tournament.html:14
+#: usergroups/templates/usergroups/edit_group.html:15
+msgid "Mitglieder verwalten"
+msgstr "Manage members"
+
+#: competitions/templates/competitions/edit_tournament.html:15
+msgid "Mitglied einladen"
+msgstr "Invite somebody"
+
+#: competitions/templates/competitions/edit_tournament.html:17
+msgid "Selbst beitreten"
+msgstr "Enter yourself"
+
+#: competitions/templates/competitions/edit_tournament.html:21
+#: usergroups/templates/usergroups/edit_group.html:19
+msgid "Entfernen"
+msgstr "Remove"
+
+#: competitions/templates/competitions/full_table.html:4
+#: competitions/templates/competitions/full_table.html:7
+#: competitions/templates/competitions/tournament_detail.html:17
+msgid "Tabelle"
+msgstr "Standings"
+
+#: competitions/templates/competitions/full_table.html:8
+msgid "Von"
+msgstr "Tournament"
+
+#: competitions/templates/competitions/full_table.html:11
+msgid "Rang"
+msgstr "Rank"
+
+#: competitions/templates/competitions/full_table.html:12
+#: competitions/templates/competitions/game_plan.html:15
+#: usergroups/templates/usergroups/invitation_list.html:6
+#: vacancies/templates/vacancies/review_vacancy.html:14
+msgid "Nutzer"
+msgstr "User"
+
+#: competitions/templates/competitions/full_table.html:13
+msgid "Punkte"
+msgstr "Points"
+
+#: competitions/templates/competitions/full_table.html:14
+msgid "Tie break"
+msgstr "Tie break"
+
+#: competitions/templates/competitions/game_plan.html:5
+#: competitions/templates/competitions/game_plan.html:8
+#, python-format
+msgid "Spielplan Runde %(v0)s"
+msgstr "Match schedule round %(v0)s"
+
+#: competitions/templates/competitions/game_plan.html:11
+#, python-format
+msgid "Runde %(v0)s"
+msgstr "Round %(v0)s"
+
+#: competitions/templates/competitions/game_plan.html:15
+msgid "hat keinen Spielpartner und bekommt ein Freilos."
+msgstr "doesn't have a match partner and gets a bye."
+
+#: competitions/templates/competitions/game_plan.html:19
+msgid "Wer"
+msgstr "Who"
+
+#: competitions/templates/competitions/game_plan.html:20
+msgid "Ergebnis"
+msgstr "Result"
+
+#: competitions/templates/competitions/game_plan.html:37
+msgid "Runde beenden"
+msgstr "End round"
+
+#: competitions/templates/competitions/match_detail.html:4
+#: competitions/templates/competitions/match_detail.html:7
+#, python-format
+msgid "Match am %(v0)s"
+msgstr "Match on %(v0)s"
+
+#: competitions/templates/competitions/match_detail.html:8
+#: competitions/templates/competitions/overview.html:14
+#: competitions/templates/competitions/overview.html:32
+msgid "Admin"
+msgstr "Admin"
+
+#: competitions/templates/competitions/match_detail.html:10
+#: usergroups/templates/usergroups/group_detail.html:9
+#: vacancies/templates/vacancies/vacancy_list.html:21
+msgid "Bearbeiten"
+msgstr "Edit"
+
+#: competitions/templates/competitions/match_detail.html:12
+msgid "Verlassen"
+msgstr "Leave"
+
+#: competitions/templates/competitions/match_detail.html:14
+#, python-format
+msgid "Ort: %(v0)s, %(v1)s"
+msgstr "Location: %(v0)s, %(v1)s"
+
+#: competitions/templates/competitions/match_detail.html:21
+#: competitions/templates/competitions/overview.html:33
+#: usergroups/templates/usergroups/category_group_list.html:15
+#: usergroups/templates/usergroups/group_detail.html:28
+msgid "Leerstellen"
+msgstr "Vacancies"
+
+#: competitions/templates/competitions/match_detail.html:23
+#: competitions/templates/competitions/tournament_detail.html:25
+msgid "Leerstelle hinzufügen"
+msgstr "Add vacancy"
+
+#: competitions/templates/competitions/overview.html:4
+#, python-format
+msgid "%(v0)s: Matches & Turniere "
+msgstr "%(v0)s: Matches & Tournaments "
+
+#: competitions/templates/competitions/overview.html:7
+#: competitions/templates/competitions/user_overview.html:4
+#: competitions/templates/competitions/user_overview.html:7
+#, python-format
+msgid "%(v0)s: Matches & Turniere"
+msgstr "%(v0)s: Matches & Tournaments"
+
+#: competitions/templates/competitions/overview.html:13
+msgid "Turnier"
+msgstr "Tournament"
+
+#: competitions/templates/competitions/overview.html:15
+#: competitions/templates/competitions/overview.html:34 scheduling/forms.py:19
+#: usergroups/templates/usergroups/category_group_list.html:16
+#: vacancies/templates/vacancies/vacancy_list.html:7
+msgid "Ort"
+msgstr "Location"
+
+#: competitions/templates/competitions/overview.html:25
+msgid "Öffentliche Matches"
+msgstr "Public matches"
+
+#: competitions/templates/competitions/overview.html:31
+msgid "Match"
+msgstr "Match"
+
+#: competitions/templates/competitions/tournament_detail.html:8
+#, python-format
+msgid "Anmeldeschluss: %(v0)s"
+msgstr "Deadline %(v0)s"
+
+#: competitions/templates/competitions/tournament_detail.html:9
+#, python-format
+msgid "Beschreibung: %(v0)s"
+msgstr "Description: %(v0)s"
+
+#: competitions/templates/competitions/tournament_detail.html:11
+msgid "Bearbeiten..."
+msgstr "Edit..."
+
+#: competitions/templates/competitions/tournament_detail.html:12
+msgid "Nächste Runde erzeugen"
+msgstr "Generate next round"
+
+#: competitions/templates/competitions/tournament_detail.html:14
+msgid "Austreten..."
+msgstr "Leave..."
+
+#: competitions/templates/competitions/tournament_detail.html:16
+msgid "Verwalter"
+msgstr "Admin"
+
+#: competitions/templates/competitions/tournament_detail.html:17
+msgid "Spielplan"
+msgstr "Match schedule"
+
+#: competitions/templates/competitions/user_overview.html:15
+msgid "Verwaltete Turniere:"
+msgstr "As admin:"
+
+#: competitions/templates/competitions/user_overview.html:21
+msgid "Als Teilnehmer:"
+msgstr "As member:"
+
+#: competitions/utils.py:66
+msgid "Schach spielen"
+msgstr "Playing chess"
+
+#: competitions/utils.py:68
+msgid "Doppelkopf spielen"
+msgstr "Playing Doppelkopf"
+
+#: competitions/utils.py:70
+msgid "Azul spielen"
+msgstr "Playing Azul"
+
+#: competitions/utils.py:72
+msgid "Skat spielen"
+msgstr "Playing Skat"
+
+#: competitions/utils.py:75
+msgid "Gibts doch nicht."
+msgstr "No way."
+
+#: competitions/views.py:82
+#, python-brace-format
+msgid "{act}-Turnier"
+msgstr "{act}-tournament"
+
+#: competitions/views.py:168
+msgid "Es stehen noch Ergebnisse der letzten Runde offen."
+msgstr "There are still matches without results in the last round."
+
+#: competitions/views.py:173
+msgid "Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden."
+msgstr "No teams can be formed with this number of players."
+
+#: competitions/views.py:185
+msgid "Es stehen noch Ergebnisse offen."
+msgstr "There are still matches without results."
+
+#: scheduling/forms.py:18
+msgid "Datum & Uhrzeit"
+msgstr "Date & time"
+
+#: scheduling/models.py:19
+#, python-brace-format
+msgid "Treffen am {start}"
+msgstr "Appointment on {start}"
+
+#: scheduling/signals.py:14
+#, python-brace-format
+msgid ": Jemand hat für den {stamp} zugesagt:"
+msgstr ": Someone confirmed the appointment on {stamp}:"
+
+#: scheduling/signals.py:16
+#, python-brace-format
+msgid ": Jemand hat für den {stamp} seine Zusage zurückgezogen:"
+msgstr ": Someone cancelled his conformation for the appointment on {stamp}:"
+
+#: scheduling/signals.py:24
+#, python-brace-format
+msgid ": Jemand hat für den {stamp} abgesagt:"
+msgstr ": Someone cancelled for the appointment on {stamp}:"
+
+#: scheduling/signals.py:26
+#, python-brace-format
+msgid ": Jemand hat für den {stamp} seine Absage zurückgezogen:"
+msgstr ": Someone cancelled his cancellation for the appointment on {stamp}:"
+
+#: scheduling/signals.py:32
+#, python-brace-format
+msgid "hat eine neue Terminabstimmung für den {stamp}"
+msgstr "new appointment on {stamp}"
+
+#: scheduling/signals.py:40
+#, python-brace-format
+msgid ": Der Termin am {stamp1} wurde auf den {stamp2} verlegt."
+msgstr ": Appointment on {stamp1} was moved to {stamp2}."
+
+#: scheduling/signals.py:45
+#, python-brace-format
+msgid ": Der Termin für den {stamp} wurde gelöscht."
+msgstr ": Appointment on {stamp} was deleted."
+
+#: scheduling/templates/scheduling/create_appointment.html:4
+#: scheduling/templates/scheduling/create_appointment.html:7
+#: usergroups/templates/usergroups/group_detail.html:88
+msgid "Termin erstellen"
+msgstr "Appointment"
+
+#: scheduling/templates/scheduling/create_appointment.html:9
+msgid "Bitte füllen Sie folgendes Formular aus, um ein Treffen zu vereinbaren"
+msgstr "Please fill in the following form to schedule an appointment"
+
+#: shared/shared.py:17
+msgid "Diese Adresse konnte nicht gefunden werden."
+msgstr "This address could not be found."
+
+#: shared/shared.py:19
+msgid ""
+"Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die "
+"Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
+msgstr ""
+"There is no city connected to this address. Please explicitly give the "
+"city's name (villages/districts may not be recognised)."
+
+#: usergroups/forms.py:15
+msgid "Administrator (Nutzername)"
+msgstr "Admin (user name)"
+
+#: usergroups/forms.py:23
+msgid "Öffentlich"
+msgstr "Public"
+
+#: usergroups/forms.py:34
+msgid ""
+"Der Name darf nicht länger als 30, die Beschreibung nicht länger als 150 "
+"Zeichen lang sein."
+msgstr ""
+"The name must not exceed 30 and the description not 150 characters in length."
+
+#: usergroups/forms.py:37
+msgid "Sie müssen einen Administrator auswählen."
+msgstr "You have to set an admin."
+
+#: usergroups/forms.py:41 vacancies/forms.py:73
+#, python-brace-format
+msgid "Keinen Nutzer mit dem Nutzernamen {name} gefunden."
+msgstr "No user found with user name {name}."
+
+#: usergroups/models.py:30
+#, python-brace-format
+msgid "Gruppe: {name}"
+msgstr "Group: {name}"
+
+#: usergroups/signals.py:19
+msgid "hat ein neues Mitglied:"
+msgstr "has a new member:"
+
+#: usergroups/signals.py:24
+msgid "ist kein Mitglied mehr von:"
+msgstr "left:"
+
+#: usergroups/signals.py:32
+msgid "hat eine Gruppe erstellt:"
+msgstr "created a group:"
+
+#: usergroups/signals.py:40
+msgid "hat seine Beschreibung aktualisiert"
+msgstr "updated his descriptions"
+
+#: usergroups/signals.py:48
+#, python-brace-format
+msgid "hat eine Gruppe gelöscht: {name}"
+msgstr "deleted a group: {name}"
+
+#: usergroups/templates/usergroups/category_group_list.html:9
+#: usergroups/templates/usergroups/create_group.html:4
+#: usergroups/templates/usergroups/create_group.html:7
+msgid "Gruppe erstellen"
+msgstr "Create group"
+
+#: usergroups/templates/usergroups/create_group.html:8
+#: usergroups/templates/usergroups/edit_group.html:8
+msgid "Gruppe gehört zu"
+msgstr "Group belongs to"
+
+#: usergroups/templates/usergroups/create_group.html:9
+#, python-format
+msgid ""
+"Bitte füllen Sie das folgende Formular aus, um eine Gruppe in der Kategorie "
+"%(v0)s zu erstellen"
+msgstr ""
+"Please fill in the following form to create a group in the category %(v0)s"
+
+#: usergroups/templates/usergroups/create_group.html:13
+msgid "Erstellen"
+msgstr "Create"
+
+#: usergroups/templates/usergroups/edit_group.html:4
+#: usergroups/templates/usergroups/group_created.html:9
+msgid "Gruppe bearbeiten"
+msgstr "Edit group"
+
+#: usergroups/templates/usergroups/edit_group.html:7
+msgid "Bearbeiten von"
+msgstr "Editing of"
+
+#: usergroups/templates/usergroups/edit_group.html:14
+msgid "Gruppe löschen"
+msgstr "Delete group"
+
+#: usergroups/templates/usergroups/group_created.html:4
+msgid "Gruppe erstellt"
+msgstr "Group created"
+
+#: usergroups/templates/usergroups/group_created.html:7
+msgid "Gruppe"
+msgstr "Group"
+
+#: usergroups/templates/usergroups/group_created.html:7
+msgid "erstellt"
+msgstr "created"
+
+#: usergroups/templates/usergroups/group_created.html:8
+msgid "Die Gruppe wurde erfolgreich erstellt"
+msgstr "Group was successfully created"
+
+#: usergroups/templates/usergroups/group_created.html:8
+msgid "Zurück"
+msgstr "Back"
+
+#: usergroups/templates/usergroups/group_deleted.html:4
+#: usergroups/templates/usergroups/group_deleted.html:7
+msgid "Gruppe gelöscht"
+msgstr "Group deleted"
+
+#: usergroups/templates/usergroups/group_deleted.html:8
+msgid "Sie haben die Gruppe"
+msgstr "The group"
+
+#: usergroups/templates/usergroups/group_deleted.html:8
+msgid "erfolgreich gelöscht"
+msgstr "was successfully deleted"
+
+#: usergroups/templates/usergroups/group_detail.html:14
+msgid "Gruppe gehört zur"
+msgstr "Group belongs to"
+
+#: usergroups/templates/usergroups/group_detail.html:26
+msgid "Sie sind Mitglied dieser Gruppe. Wenn Sie sie wieder verlassen wollen"
+msgstr "You are a member of this group. If you want to leave it"
+
+#: usergroups/templates/usergroups/group_detail.html:26
+msgid "klicken Sie hier"
+msgstr "click here"
+
+#: usergroups/templates/usergroups/group_detail.html:34
+msgid ""
+"Zurzeit gibt es keine Leerstellen. Der Administrator kann welche erstellen"
+msgstr "There are no vacancies at the moment. The admin can create some"
+
+#: usergroups/templates/usergroups/group_detail.html:37
+#: vacancies/templates/vacancies/application_list.html:30
+msgid "Einladungen"
+msgstr "Invitations"
+
+#: usergroups/templates/usergroups/group_detail.html:43
+#: vacancies/templates/vacancies/create_vacancies.html:4
+msgid "Leerstellen hinzufügen"
+msgstr "Add vacancy"
+
+#: usergroups/templates/usergroups/group_detail.html:43
+msgid "Jemanden einladen"
+msgstr "Invite somebody"
+
+#: usergroups/templates/usergroups/group_detail.html:46
+msgid "Termine"
+msgstr "Appointments"
+
+#: usergroups/templates/usergroups/group_detail.html:49
+msgid "Wann"
+msgstr "When"
+
+#: usergroups/templates/usergroups/group_detail.html:50
+msgid "Wo"
+msgstr "Where"
+
+#: usergroups/templates/usergroups/group_detail.html:51
+#: usergroups/templates/usergroups/group_detail.html:77
+msgid "Zusagen"
+msgstr "Confirm"
+
+#: usergroups/templates/usergroups/group_detail.html:52
+#: usergroups/templates/usergroups/group_detail.html:77
+msgid "Absagen"
+msgstr "Cancel"
+
+#: usergroups/templates/usergroups/group_detail.html:73
+msgid "Zusage zurücknehmen"
+msgstr "Cancel confirmation"
+
+#: usergroups/templates/usergroups/group_detail.html:75
+msgid "Absage zurücknehmen"
+msgstr "Cancel cancellation"
+
+#: usergroups/templates/usergroups/group_detail.html:90
+msgid "Administrator"
+msgstr "Admin"
+
+#: usergroups/templates/usergroups/group_detail.html:93
+msgid "Post erstellen"
+msgstr "Create post"
+
+#: usergroups/templates/usergroups/user_group_list.html:4
+#: usergroups/templates/usergroups/user_group_list.html:7
+msgid "Ihre Gruppen"
+msgstr "Your groups"
+
+#: usergroups/views.py:81
+msgid ""
+"Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest "
+"oder löschen Sie die Gruppe."
+msgstr "You are the admin. Set a new admin before leaving or delete the group."
+
+#: vacancies/forms.py:15
+msgid "Mindestalter"
+msgstr "Minimum age"
+
+#: vacancies/forms.py:16
+msgid "Höchstalter"
+msgstr "Maximum age"
+
+#: vacancies/forms.py:17
+msgid "Beschränken auf"
+msgstr "Restrict to"
+
+#: vacancies/forms.py:18
+msgid "Leerstelle nach Annahme einer Bewerbung nicht löschen"
+msgstr "Don't delete vacancy after accepting an application"
+
+#: vacancies/forms.py:27
+msgid "Das Mindestalter muss unter dem Höchstalter liegen."
+msgstr "The minimum age must be lower than the maximum age."
+
+#: vacancies/forms.py:31
+msgid ""
+"Sie wohnen in einer kreisfreien Stadt. Bitte wählen Sie eine andere "
+"Komponente aus."
+msgstr "You live in an independent city. Please choose a different component."
+
+#: vacancies/forms.py:68
+#, python-brace-format
+msgid "Keine Gruppe mit dem Namen {name} gefunden."
+msgstr "No group found with name {name}."
+
+#: vacancies/forms.py:82
+msgid ""
+"Dieser Nutzer bzw. diese Gruppe wurde bereits eingeladen und hat entweder "
+"abgelehnt oder noch nicht zugesagt."
+msgstr ""
+"This user or group has already been invited and either declined or has not "
+"yet accepted the invitation."
+
+#: vacancies/forms.py:85
+msgid "Dieser Nutzer bzw. diese Gruppe ist bereits Mitglied."
+msgstr "This user or group already is a member."
+
+#: vacancies/models.py:42
+#, python-brace-format
+msgid " über {age}"
+msgstr " above {age}"
+
+#: vacancies/models.py:44
+#, python-brace-format
+msgid " unter {age}"
+msgstr " below {age}"
+
+#: vacancies/models.py:46
+#, python-brace-format
+msgid " zwischen {age1} und {age2}"
+msgstr " between {age1} and {age2}"
+
+#: vacancies/models.py:48
+#, python-brace-format
+msgid ", {sex}"
+msgstr ", {sex}"
+
+#: vacancies/models.py:50
+msgid " (m/w)"
+msgstr " (m/f)"
+
+#: vacancies/models.py:73
+#, python-brace-format
+msgid "Bewerbung von {name}"
+msgstr "Application of {name}"
+
+#: vacancies/models.py:76
+#, python-brace-format
+msgid "{app} bei {target}"
+msgstr "{app} to {target}"
+
+#: vacancies/signals.py:12
+msgid "hat eine neue Leerstelle:"
+msgstr "has a new vacancy:"
+
+#: vacancies/signals.py:18
+msgid "hat jemanden eingeladen:"
+msgstr "has invited someone:"
+
+#: vacancies/signals.py:24
+#, python-brace-format
+msgid "hat sich auf eine Leerstelle beworben: \"{vacancy}\", von:"
+msgstr "applied for a vacancy: \"{vacancy}\", by:"
+
+#: vacancies/signals.py:36
+#, python-brace-format
+msgid ""
+"hat den Status der Bewerbung auf die Leerstelle {vacancy} auf {status} "
+"geändert. Bewerber:"
+msgstr "changed the application status to {vacancy} to {status}. Applicant:"
+
+#: vacancies/templates/vacancies/application_list.html:4
+#: vacancies/templates/vacancies/application_list.html:7
+#: vacancies/templates/vacancies/review_vacancy.html:4
+#: vacancies/templates/vacancies/review_vacancy.html:7
+#: vacancies/templates/vacancies/review_vacancy.html:11
+#: vacancies/templates/vacancies/vacancy_list.html:36
+msgid "Bewerbungen"
+msgstr "Applications"
+
+#: vacancies/templates/vacancies/application_list.html:10
+msgid "Ziel"
+msgstr "Target"
+
+#: vacancies/templates/vacancies/application_list.html:11
+msgid "Leerstelle"
+msgstr "Vacancy"
+
+#: vacancies/templates/vacancies/application_list.html:12
+msgid "Text"
+msgstr "Text"
+
+#: vacancies/templates/vacancies/application_list.html:33
+msgid "Sender"
+msgstr "Sender"
+
+#: vacancies/templates/vacancies/apply_for_vacancy.html:4
+#: vacancies/templates/vacancies/vacancy_list.html:24
+msgid "Bewerben"
+msgstr "Apply"
+
+#: vacancies/templates/vacancies/apply_for_vacancy.html:7
+msgid "Auf Leerstelle bewerben"
+msgstr "Apply to vacancy"
+
+#: vacancies/templates/vacancies/apply_for_vacancy.html:8
+msgid "Leerstelle gehört zu"
+msgstr "Vacancy belongs to"
+
+#: vacancies/templates/vacancies/apply_for_vacancy.html:10
+msgid "Erzählen Sie etwas über sich"
+msgstr "Say something about you"
+
+#: vacancies/templates/vacancies/create_invitation.html:4
+msgid "Einladung verschicken"
+msgstr "Send invitation"
+
+#: vacancies/templates/vacancies/create_invitation.html:7
+msgid "Nutzer einladen zu"
+msgstr "Invite user to"
+
+#: vacancies/templates/vacancies/create_vacancies.html:7
+#, python-format
+msgid "Leerstellen zu \"%(v0)s\" hinzufügen"
+msgstr "Add vacancies to \"%(v0)s\""
+
+#: vacancies/templates/vacancies/edit_vacancy.html:4
+#: vacancies/templates/vacancies/edit_vacancy.html:7
+msgid "Leerstelle bearbeiten"
+msgstr "Edit vacancy"
+
+#: vacancies/templates/vacancies/review_vacancy.html:8
+msgid "Gehört zu"
+msgstr "Belongs to"
+
+#: vacancies/templates/vacancies/review_vacancy.html:9
+msgid "Leerstellenbeschreibung"
+msgstr "Vacancy description"
+
+#: vacancies/templates/vacancies/review_vacancy.html:15
+msgid "Wohnort"
+msgstr "Location"
+
+#: vacancies/templates/vacancies/review_vacancy.html:17
+msgid "Alter (Geschlecht"
+msgstr "Age (gender)"
+
+#: vacancies/templates/vacancies/vacancy_list.html:9
+msgid "Alter"
+msgstr "Age"
+
+#: vacancies/templates/vacancies/vacancy_list.html:27
+msgid "Beworben"
+msgstr "Applied"
+
+#: vacancies/views.py:90
+#, python-brace-format
+msgid ""
+"Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder "
+"Geschlecht) nicht. <a href=\"{link}\">Zurück</a>"
+msgstr ""
+"You don't fulfill the vacancy's criteria (location, age and/or gender). <a "
+"href=\"{link}\">Back</a>"
+
+#: vacancies/views.py:92
+msgid "Sie haben sich bereits beworben."
+msgstr "You already applied to this vacancy."
+
+#: vacancies/views.py:94
+#, python-brace-format
+msgid "Die Anmeldefrist ist bereits abgelaufen. <a href=\"{link}\">Zurück</a>"
+msgstr ""
+"The application deadline has already expired. <a href=\"{link}\">Back</a>"
+
+#: vacancies/views.py:96
+msgid "Sie sind bereits Mitglied."
+msgstr "You already are a member."
+
+#: wall/forms.py:28
+msgid "Kategorie (erforderlich)"
+msgstr "Category (required)"
+
+#: wall/forms.py:29
+msgid "Aktivität"
+msgstr "Activity"
+
+#: wall/forms.py:30
+msgid "Audiodatei"
+msgstr "Audio file"
+
+#: wall/forms.py:31
+msgid "Videodatei"
+msgstr "Video file"
+
+#: wall/forms.py:32
+msgid "Bilddatei"
+msgstr "Image file"
+
+#: wall/forms.py:36
+msgid ""
+"<..>: Link, *..*: Kursiv, **..**: Fett, ***..***: Kursiv+Fett, * ..: Liste, "
+"1. ..; 2 ..: Liste mit Zahlen"
+msgstr ""
+"<..>: Link, *..*: Italic, **..**: Bold, ***..***: Italic+Bold, * ..: List, "
+"1. ..; 2 ..: Numbered list"
+
+#: wall/forms.py:44
+msgid "Es kann nicht mehr als eine Datei hochgeladen werden."
+msgstr "You can upload more than one file at once."
+
+#: wall/forms.py:49
+msgid "Unbekannter Audiodateityp"
+msgstr "Unknown audio file type."
+
+#: wall/forms.py:54
+msgid "Unbekannter Videodateityp"
+msgstr "Unknown video file type"
+
+#: wall/forms.py:59
+msgid "Unbekannter Bilddateityp"
+msgstr "Unknown image file type"
+
+#: wall/forms.py:64
+#, python-brace-format
+msgid "Maximale Dateigröße: {size1} (tatsächliche Größe: {size2}MB)"
+msgstr "Maximum file size: {size1} (actual size: {size2}MB)"
+
+#: wall/forms.py:76
+msgid "Diese Aktivität ist nicht Teil der ausgewählten Kategorie."
+msgstr "This activity is not in the selected category."
+
+#: wall/forms.py:86
+msgid "Kommentar"
+msgstr "Comment"
+
+#: wall/signals.py:13
+msgid "hat etwas gepostet in:"
+msgstr "posted something in:"
+
+#: wall/signals.py:27
+msgid "hat etwas kommentiert:"
+msgstr "commented something:"
+
+#: wall/templates/wall/post/create_comment.html:4
+msgid "Kommentieren"
+msgstr "Comment"
+
+#: wall/templates/wall/post/create_comment.html:7
+msgid "Post kommentieren"
+msgstr "Comment post"
+
+#: wall/templates/wall/post/create_post.html:4
+msgid "Posten"
+msgstr "Create post"
+
+#: wall/templates/wall/post/create_post.html:7
+msgid "Posten in"
+msgstr "Post in"
+
+#: wall/templates/wall/post/create_post.html:8
+msgid ""
+"Hinweis: Bitte achten Sie bei öffentlichen Posts auf den Verzicht von "
+"vulgärer Sprache und laden Sie keine urheberrechtlich geschützten oder "
+"anstößigen Mediendateien hoch."
+msgstr ""
+"Attention: Posts are public. Watch your language and don't upload "
+"copyrighted, offensive or inappropriate material."
+
+#: wall/templates/wall/post/post_loop.html:7
+#: wall/templates/wall/post/post_loop.html:22
+msgid "[Löschen]"
+msgstr "[Delete]"
+
+#: wall/templates/wall/post/post_loop.html:22
+#, python-format
+msgid " vor %(v0)s"
+msgstr " %(v0)s ago"
+
+#: wall/templates/wall/post/post_loop.html:24
+msgid "Kommentieren..."
+msgstr "Comment..."
+
+#~ msgid "Sie sind nicht mit"
+#~ msgstr "The user"
+
+#~ msgid "registriert"
+#~ msgstr "registered"
+
+#~ msgid "Passwort zurücksenden"
+#~ msgstr "Reset password"
+
+#, fuzzy
+#~| msgid "Leerstellen"
+#~ msgid "zu erstellen"
+#~ msgstr "Vacancies"
+
+#, fuzzy
+#~| msgid "Leerstellen"
+#~ msgid "Leerstellen zu"
+#~ msgstr "Vacancies"
+
+#, fuzzy
+#~| msgid "Leerstelle hinzufügen"
+#~ msgid "hinzufügen"
+#~ msgstr "Add vacancy"

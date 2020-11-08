@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Alle Kategorien{% endblock %}
+{% block title %}{% trans "Alle Kategorien" %}{% endblock %}
 
 {% block content %}
-    <h1>Alle Kategorien</h1>
-    <p>Hier eine Liste aller verfügbaren Kategorien:</p>
+    <h1>{% trans "Alle Kategorien" %}</h1>
+    <p>{% trans "Hier eine Liste aller verfügbaren Kategorien" %}:</p>
     <table>
         <tr>
-            <th>Name</th>
-            <th>Aktivitäten</th>
+            <th>{% trans "Name" %}</th>
+            <th>{% trans "Aktivitäten" %}</th>
         </tr>
         {% for category in categories %}
             <tr>

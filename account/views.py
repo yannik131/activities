@@ -15,6 +15,8 @@ from shared import shared
 
 @login_required
 def home(request):
+
+
     friend_ids = [u.id for u in request.user.friends()]
     user_type = User.content_type()
     group_ids = request.user.user_groups.values_list('id', flat=True)

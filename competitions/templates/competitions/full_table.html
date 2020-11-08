@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Tabelle{% endblock %}
+{% block title %}{% blocktrans %}Tabelle{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>Tabelle</h1>
-    <p>Von: <a href="{{ tournament.get_absolute_url }}">{{ tournament }}</a></p>
+    <h1>{% blocktrans %}Tabelle{% endblocktrans %}</h1>
+    <p>{% trans "Von" %}: <a href="{{ tournament.get_absolute_url }}">{{ tournament }}</a></p>
     <table>
         <tr>
-            <th>Rang</th>
-            <th>Nutzer</th>
-            <th>Punkte</th>
-            <th>Tie break</th>
+            <th>{% blocktrans %}Rang{% endblocktrans %}</th>
+            <th>{% blocktrans %}Nutzer{% endblocktrans %}</th>
+            <th>{% blocktrans %}Punkte{% endblocktrans %}</th>
+            <th>{% blocktrans %}Tie break{% endblocktrans %}</th>
         </tr>
         {% for player, score, tie_break in players %}
             <tr>

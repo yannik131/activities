@@ -2,6 +2,7 @@ import magic
 from geopy.geocoders import Nominatim
 from django.forms import ValidationError
 from account.models import Location
+from django.utils.translation import gettext_lazy as _
 
 
 def get_location(address):
@@ -13,10 +14,9 @@ def get_location(address):
     geolocator = Nominatim(user_agent='activities')
     location = geolocator.geocode(address, addressdetails=True)
     if location is None:
-        raise ValidationError('Diese Adresse konnte nicht gefunden werden.')
+        raise ValidationError(_('Diese Adresse konnte nicht gefunden werden.'))
     elif location.raw['address'].get('city', location.raw['address'].get('town')) is None:
-        raise ValidationError(
-            'Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt).')
+        raise ValidationError(_('Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt).'))
     else:
         return Location.get_from_location(location)
 

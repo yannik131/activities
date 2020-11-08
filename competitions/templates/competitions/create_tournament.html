@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Turnier erstellen{% endblock %}
+{% block title %}{% blocktrans %}Turnier erstellen{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>{{ activity }}: Turnier erstellen</h1>
-    <p>Bitte füllen Sie das folgende Formular aus, um ein Turnier in der Aktivität {{ activity }} zu erstellen.</p>
+    <h1>{% blocktrans with v0=activity %}{{ v0 }}: Turnier erstellen{% endblocktrans %}</h1>
+    <p>{% blocktrans with v0=activity %}Bitte füllen Sie das folgende Formular aus, um ein Turnier in der Aktivität {{ v0 }} zu erstellen.{% endblocktrans %}</p>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <input type="submit" value="Fertig">
+        <input type="submit" value="{% blocktrans %}Fertig{% endblocktrans %}">
     </form>
 {% endblock %}

@@ -1,23 +1,26 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Match am {{ match }}{% endblock %}
+{% block title %}{% blocktrans with v0=match %}Match am {{ v0 }}{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>Match am {{ match.start_time }}</h1>
-    <h2>Admin: <a href="{{ match.admin.get_absolute_url }}">{{ match.admin }}</a></h2>
+    <h1>{% blocktrans with v0=match.start_time %}Match am {{ v0 }}{% endblocktrans %}</h1>
+    <h2>{% trans "Admin" %}: <a href="{{ match.admin.get_absolute_url }}">{{ match.admin }}</a></h2>
     {% if user == match.admin %}
-        <p><a href="{% url 'competitions:edit_match' match.id %}">Bearbeiten</a></p>
+        <p><a href="{% url 'competitions:edit_match' match.id %}">{% blocktrans %}Bearbeiten{% endblocktrans %}</a></p>
+    {% elif match in user.matches.all %}
+        <p><a href="{% url 'competitions:remove_member' 'match' match.id user.id 'user' %}">{% trans "Verlassen" %}</a></p>
     {% endif %}
-    <h2>Ort: {{ match.location }}, {{ match.address }}</h2>
-    <h3>Teilnehmer</h3>
+    <h2>{% blocktrans with v0=match.location v1=match.address %}Ort: {{ v0 }}, {{ v1 }}{% endblocktrans %}</h2>
+    <h3>{% blocktrans %}Teilnehmer{% endblocktrans %}</h3>
     <ul>
         {% for member in match.members.all %}
             <li><a href="{{ member.get_absolute_url }}">{{ member }}</a></li>
         {% endfor %}
     </ul>
-    <h3>Leerstellen</h3>
+    <h3>{% blocktrans %}Leerstellen{% endblocktrans %}</h3>
     {% if user == match.admin %}
-        <p><a href="{% url 'vacancies:create_vacancies' 'competitions' 'match' match.id %}">Leerstelle hinzufügen</a></p>
+        <p><a href="{% url 'vacancies:create_vacancies' 'competitions' 'match' match.id %}">{% blocktrans %}Leerstelle hinzufügen{% endblocktrans %}</a></p>
     {% endif %}
     {% with target=match %}
         {% include 'vacancies/vacancy_list.html' %}

@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}{{ target }}-Chat{% endblock %}
+{% block title %}{{ target }}-{% trans "Chat" %}{% endblock %}
 
 {% block content %}
-    <h1>{{ target }}-Chat</h1>
+    <h1>{{ target }}-{% trans "Chat" %}</h1>
     <p><a href="{{ target.get_absolute_url }}">{{ target.verbose }}</a></p>
     <p>
-        Teilnehmer:
+        {% trans "Teilnehmer" %}:
         {% for member in room.members.all %}
             <a href="{{ member.get_absolute_url }}">{{ member }}</a>{% if not forloop.last %}, {% endif %}
         {% endfor %}
@@ -15,7 +16,7 @@
     </div>
     <div id="chat-input">
         <input id="chat-message-input" type="text">
-        <input id="chat-message-submit" type="submit" value="Senden">
+        <input id="chat-message-submit" type="submit" value="{% trans "Senden" %}">
     </div>
 {% endblock %}
 

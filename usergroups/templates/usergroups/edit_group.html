@@ -1,21 +1,22 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Gruppe bearbeiten{% endblock %}
+{% block title %}{% trans "Gruppe bearbeiten" %}{% endblock %}
 
 {% block content %}
-    <h1>Bearbeiten von "{{ group.name }}"</h1>
-    <p>Gruppe gehört zu: <a href="{{ group.category.get_absolute_url }}">{{ group.category.verbose }}</a></p>
+    <h1>{% trans "Bearbeiten von" %} "{{ group.name }}"</h1>
+    <p>{% trans "Gruppe gehört zu" %}: <a href="{{ group.category.get_absolute_url }}">{{ group.category.verbose }}</a></p>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <input type="submit" value="Fertig">
+        <input type="submit" value="{% trans "Fertig" %}">
     </form>
-    <p><a href="{% url 'usergroups:delete_group' group.id %}">Gruppe löschen</a></p>
-    <h2>Mitglieder verwalten</h2>
+    <p><a href="{% url 'usergroups:delete_group' group.id %}">{% trans "Gruppe löschen" %}</a></p>
+    <h2>{% trans "Mitglieder verwalten" %}</h2>
     <ul>
         {% for member in group.members.all %}
             {% if member != group.admin %}
-                <li><a href="{{ member.get_absolute_url }}">{{ member.username }}</a> <a href="{% url 'usergroups:kick_out' group.id member.id %}">Entfernen</a></li>
+                <li><a href="{{ member.get_absolute_url }}">{{ member.username }}</a> <a href="{% url 'usergroups:kick_out' group.id member.id %}">{% trans "Entfernen" %}</a></li>
             {% endif %}
         {% endfor %}
     </ul>

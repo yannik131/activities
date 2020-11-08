@@ -2,6 +2,7 @@ from django import forms
 from .models import Appointment
 from django.utils import timezone
 from shared.shared import GERMAN_DATE_FMT
+from django.utils.translation import gettext_lazy as _
 
 
 class AppointmentForm(forms.ModelForm):
@@ -13,8 +14,8 @@ class AppointmentForm(forms.ModelForm):
         model = Appointment
         fields = ('name', 'start_time', 'location')
         labels = {
-            'name': 'Name',
-            'start_time': 'Datum & Uhrzeit',
-            'location': 'Ort'
+            'name': _('Name'),
+            'start_time': _('Datum & Uhrzeit'),
+            'location': _('Ort')
         }
 

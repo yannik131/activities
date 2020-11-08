@@ -4,6 +4,7 @@ from activity.models import Category
 from django.urls import reverse
 from vacancies.models import Vacancy, Invitation
 from django.contrib.contenttypes.models import ContentType
+from django.utils.translation import gettext_lazy as _
 
 
 class UserGroup(models.Model):
@@ -26,7 +27,7 @@ class UserGroup(models.Model):
         return self.name
 
     def verbose(self):
-        return 'Gruppe: ' + self.name
+        return _('Gruppe: {name}').format(name=self.name)
 
     def save(self, *args, **kwargs):
         new = self.pk is None
