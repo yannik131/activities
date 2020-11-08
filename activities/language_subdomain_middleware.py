@@ -8,8 +8,6 @@ from django.utils import translation, timezone
 class LanguageSubdomainMiddleware(MiddlewareMixin):
 
     def process_request(self, request):
-        with open("logs/test.log", "a") as file:
-            file.write(f"{timezone.now()}: path={request.path}, domain={request.META['HTTP_HOST']}\n")
         domain = request.META['HTTP_HOST']
         language = domain.split('.')[0]
         if language not in ['en', 'de']:
