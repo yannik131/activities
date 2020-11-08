@@ -4,6 +4,9 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 
 
 class Action(models.Model):
+    """
+    TODO: Die Action speichert keinen vollen Satz, sondern nur source, target, time und WAS passiert ist: gelöscht, erstellt, beigetreten, etc. Der Text wird dann der ausgewählten Sprache entsprechend generiert statt gespeichert. Problem: Beinhaltet der Text Datumsangaben müssten diese geparsed und an die entsprechende Sprache angepasst werden. Insbesondere wenn was gelöscht wurde kann man kein Objekt speichern, sondern nur einen Titel etc.
+    """
     source_ct = models.ForeignKey(ContentType,
                                   blank=True,
                                   null=True,

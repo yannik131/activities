@@ -17,7 +17,7 @@ idna==2.6
 importlib-metadata==2.0.0
 incremental==17.5.0
 keyring==10.6.0
-keyrings" %}.alt=={% trans "3.0
+keyrings.alt==3.0
 Markdown~=3.2.2
 Pillow==8.0.1
 psycopg2==2.8.6

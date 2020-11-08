@@ -25,7 +25,7 @@ class Activity(TranslatableModel):
         return self.name
 
     def verbose(self):
-        return _('Aktivität: {name}').format(self.name)
+        return _('Aktivität: {name}').format(name=self.name)
 
     def get_absolute_url(self):
         return reverse('activity:detail', args=[self.name])
