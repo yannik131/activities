@@ -3,15 +3,17 @@ try:
 except ImportError:
     MiddlewareMixin = object
 
-from django.utils import translation
-
+from django.utils import translation, timezone
 
 class LanguageSubdomainMiddleware(MiddlewareMixin):
 
     def process_request(self, request):
+        with open("logs/test.log", "a") as file:
+            file.write(f"{timezone.now()}: path={request.path}, domain={request.META['HTTP_HOST']}\n")
         domain = request.META['HTTP_HOST']
         language = domain.split('.')[0]
-        if language == 'www':
+        if language not in ['en', 'de']:
             language = 'en'
         request.session['django_language'] = language
+        request.LANGUAGE_CODE = language
         translation.activate(language)

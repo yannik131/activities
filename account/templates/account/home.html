@@ -5,7 +5,7 @@
 {% block title %}{% blocktrans %}Home{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <p>{% blocktrans with v0=user.first_name v1=user.last_name v2=user.username %}Willkommen, {{ v0 }} {{ v1 }} (aka {{ v2 }}).{% endblocktrans %}</p>
+	<p>{% blocktrans with v0=user.first_name v1=user.last_name v2=user.username %}Willkommen, {{ v0 }} {{ v1 }} (aka {{ v2 }}).{% endblocktrans %}</p>
     <p><a href="{% url 'account:user_post_list' %}">{% blocktrans %}Zu Ihren Posts...{% endblocktrans %}</a></p>
     {% if user.activities.all %}
         <p>{% blocktrans %}Sie sind zurzeit Mitglied folgender Aktivitäten:{% endblocktrans %}</p>
