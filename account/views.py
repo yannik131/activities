@@ -15,8 +15,6 @@ from shared import shared
 
 @login_required
 def home(request):
-
-
     friend_ids = [u.id for u in request.user.friends()]
     user_type = User.content_type()
     group_ids = request.user.user_groups.values_list('id', flat=True)
@@ -85,6 +83,9 @@ def send_custom_friend_request(request):
         if form.is_valid():
             message = form.cleaned_data['message']
             user = User.objects.get(username=form.cleaned_data['username'])
+            if user == request.user:
+                return HttpResponse(
+                'Haha. Sehr lustig. Hast du nichts besseres zu tun als zu gucken ob das funktioniert? Nein? Ich auch nicht...')
             fr, created = FriendRequest.objects.get_or_create(requesting_user=request.user, requested_user=user, request_message=message)
             if not created:
                 fr.request_message = message
