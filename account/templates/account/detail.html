@@ -2,7 +2,7 @@
 {% load account_tags %}
 {% load i18n %}
 
-{% block title %}{% blocktrans with username=viewed_user.username %}Profil von {{ viewed_user.username }}{% endblocktrans %}{% endblock %}
+{% block title %}{% blocktrans with username=viewed_user.username %}Profil von {{ username }}{% endblocktrans %}{% endblock %}
 
 {% block content %}
     <h1>{% trans "Profil von" %} {{ viewed_user.username }}</h1>
