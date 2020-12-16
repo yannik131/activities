@@ -1,0 +1,13 @@
+1. Gruppe wird erstellt
+2. Benachrichtigung wird erzeugt
+3. Falls Freund online, wird Typ und Inhalt an websocket gesendet
+    3b. Ton abspielen nach Typ
+    3c. Alert im Alertfenster oben hinzufügen. Alertfenster: Scrollbar, wegklickbar, alle löschen button
+4. Online gehen: alerts werden immer geladen und angezeigt
+5. bei smartphone: drop down fürs menu UND für die alerts mit orangener zahl, die anzahl angibt
+
+profilbilder
+bilderdarstellung der aktivitäten/kategorien wie bei facebook
+suche
+alerts in separatem fenster? ist aufm handy etwas unschön
+profilbild neben oben rechts nutzernamen mit logout

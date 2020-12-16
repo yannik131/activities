@@ -5,6 +5,7 @@ from vacancies.models import Vacancy, Invitation, Application
 from actions.utils import create_action
 from chat.models import ChatRoom
 from django.utils.translation import gettext_lazy as _
+from notify.utils import notify
 
 
 @receiver(m2m_changed, sender=UserGroup.members.through)
@@ -30,6 +31,7 @@ def members_changed(instance, action, model, pk_set, **kwargs):
 def group_created(instance, created, **kwargs):
     if instance.public and created:
         create_action(instance.admin, _('hat eine Gruppe erstellt:'), instance)
+        notify(instance.admin.friends(), instance.admin, 'created', instance)
 
 
 @receiver(pre_save, sender=UserGroup)

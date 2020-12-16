@@ -1,54 +1,55 @@
 {% load static %}
 {% load i18n %}
 {% load account_tags %}
-{% load chat_tags %}
-{% load usergroup_tags %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>{% block title %}{% endblock %}</title>
-    <link href="{% static 'style.css' %}" rel="stylesheet">
+    <style>
+        {% include 'style/content.css' %}
+        {% include 'style/topmenu.css' %}
+        {% include 'style/sidemenu.css' %}
+        {% include 'style/queries.css' %}
+    </style>
+    <link rel="shortcut icon" type="image/png" href="{% static 'icons/users-and-groups-group@32px.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
 {% if user.is_authenticated %}
-    <div id="sidebar">
-        <p>{% blocktrans with v0=user.username %}Ihr Nutzername: {{ v0 }}{% endblocktrans %}</p>
-        <p><a href="{% url 'account:home' %}">{% blocktrans %}Homepage{% endblocktrans %}</a></p>
-        <p><a href="{% url 'activity:list' %}">{% blocktrans %}Aktivitäten{% endblocktrans %}</a> | <a href="{% url 'activity:category_list' %}">{% blocktrans %}Kategorien{% endblocktrans %}</a></p>
-        <p><a href="{% url 'competitions:user_overview' %}">{% blocktrans %}Matches & Turniere{% endblocktrans %}</a></p>
-        <p><a href="{% url 'usergroups:group_list' %}">{% blocktrans %}Gruppen{% endblocktrans %}</a> | <a href="{% url 'chat:chat_list' %}">{% trans "Chats" %}{% new_messages_str user %}</a></p>
-        <p><a href="{% url 'vacancies:application_list' %}">{% trans "Bewerbungen & Einladungen" %} {% invitation_number_string user %}</a></p>
-        <p><a href="{% url 'account:friend_requests_list' %}">{% trans "Freunde" %}{% new_request_number_string user %}</a></p>
-        <p><a href="{% url 'account:password_change' %}">{% blocktrans %}Passwort ändern{% endblocktrans %}</a></p>
-        <p><a href="{% url 'account:edit' %}">{% blocktrans %}Account bearbeiten{% endblocktrans %}</a></p>
-        <p><a href="{% url 'account:logout' %}">{% blocktrans %}Ausloggen{% endblocktrans %}</a></p>
+    <div class="topmenu" id="topmenu">
+        <div class="logo">
+            <a class="icon" href="javascript:void(0);" onclick="barClick()">
+                &#9776;
+            </a>
+        </div>
+        <div class="search">Suchen</div>
+        <div class="user">
+            <a href="{% url 'account:edit' %}">{{ user }}</a>
+        </div>
+    </div>
+
+    <div class="sidemenu" id="sidemenu">
+        {% include 'account/sidemenu.html' %}
+    </div>
+{% else %}
+    <div class="topmenu" id="topmenu">
+        <div class="logo">
+            <a href="{% url 'account:home' %}">myactivities.net</a>
+        </div>
     </div>
 {% endif %}
-<div id="content">
+
+<div class="content">
     {% block content %}
     {% endblock %}
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/
-js.cookie.min.js"></script>
+
 <script>
-    var csrftoken = Cookies.get('csrftoken');
-    function csrfSafeMethod(method) {
-        //No CSRF required
-        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-    }
-    $.ajaxSetup({
-        beforeSend: function(xhr, settings) {
-            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                xhr.setRequestHeader("X-CSRFToken", csrftoken);
-            }
-        }
-    });
-    $(document).ready(function() {
-        {% block domready %}
-        {% endblock %}
-    });
+    {% include 'javascript/base.js' %}
+    {% block domready %}
+    {% endblock %}
 </script>
 </body>
 </html>

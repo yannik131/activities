@@ -1,0 +1,86 @@
+body {
+    background-color: #2d2d2d;
+}
+
+#content .clicked {
+    float:right;
+    width:60%;
+    color: white;
+    font-family: "Lucida Console", monospace;
+}
+
+#content {
+    color: white;
+    font-family: "Courier New", "Lucida Console", monospace;
+}
+
+a:link {
+    color: #338ad3;
+}
+
+a:visited {
+    color: #8fe0f7;
+}
+
+a:hover {
+    color: white;
+}
+
+#login {
+    float:left;
+}
+
+.image {
+    float:center;
+    padding:10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 2px solid white;
+}
+
+th, td {
+    padding: 2%;
+    border: 2px solid white;
+}
+
+input[type=submit], a.button {
+    font-weight: bold;
+    background: #0087f7;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+input, textarea {
+    font-family: "Courier New", "Lucida Console", monospace;
+    background-color: #494949;
+    color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    vertical-align: middle;
+    outline: none;
+}
+
+input:focus, input:hover, textarea:hover, textarea:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+select {
+    font-family: "Courier New", "Lucida Console", monospace;
+    background-color: #494949;
+    border: 1px solid black;
+    outline: none;
+    color: white;
+    border-radius: 4px;
+}
+
+select:focus, select:hover {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}

@@ -1,0 +1,54 @@
+.topmenu .logo .icon {
+    display: none;
+}
+
+.topmenu {
+    display: block;
+    color: #ababab;
+    background-color: #ae3635;
+    text-decoration: none;
+    font-size: 32px;
+    font-family: "Courier New", "Lucida Console", monospace;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.topmenu .logo {
+    width: 33%;
+    float: left;
+}
+
+.topmenu .search {
+    width: 34%;
+    float: left;
+}
+
+.topmenu .user {
+    width: 33%;
+    float: right;
+}
+
+.topmenu a {
+    text-decoration: none;
+    float: right;
+}
+
+.topmenu .logo a {
+    text-decoration: none;
+    color: #ababab;
+    float: left;
+}
+
+.topmenu .logo a:hover {
+    color: white;
+}
+
+.topright {
+    position: absolute;
+    color: orange;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: "Courier New", "Lucida Console", monospace;
+}

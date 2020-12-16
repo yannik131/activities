@@ -35,6 +35,10 @@ def home(request):
     return render(request, 'account/home.html', dict(friend_and_group_actions=friend_and_group_actions, other_actions=other_actions))
 
 
+def about(request):
+    return render(request, 'account/about.html')
+
+
 @login_required
 def user_post_list(request):
     posts, page = Post.get_page(request)

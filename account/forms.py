@@ -18,6 +18,11 @@ class UserRegistrationForm(forms.ModelForm):
             'sex': _('Geschlecht'),
             'birth_year': _('Geburtsjahr'),
         }
+        help_texts = {
+            'email': _('Erforderlich für eine Passwort-Zurücksetzung.'),
+            'sex': _('Für Bewerbungen.'),
+            'birth_year': _('Altersermittlung für Bewerbungen.')
+        }
 
     def clean_password2(self):
         cd = self.cleaned_data
@@ -40,7 +45,7 @@ class UserEditForm(forms.ModelForm):
 
 
 class LocationForm(forms.Form):
-    address = forms.CharField(label=_('Adresse'))
+    address = forms.CharField(label=_('Wohnort'), help_text=_('Notwendig, um in Ihrer Nähe nach Leuten suchen zu können. Nur für Ihre Freunde sichtbar.'))
 
     def clean(self):
         cd = super().clean()

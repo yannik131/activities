@@ -11,7 +11,7 @@ class LanguageSubdomainMiddleware(MiddlewareMixin):
         domain = request.META['HTTP_HOST']
         language = domain.split('.')[0]
         if language not in ['en', 'de']:
-            language = 'en'
+            language = 'de'
         request.session['django_language'] = language
         request.LANGUAGE_CODE = language
         translation.activate(language)

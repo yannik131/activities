@@ -1,0 +1,17 @@
+@media screen and (max-width: 600px) {
+    .topmenu .logo .icon {
+        display: block;
+    }
+
+    .sidemenu {
+        display: none;
+    }
+
+    .sidemenu.clicked a {
+        display: block;
+    }
+
+    .sidemenu.clicked .alert {
+        display: block;
+    }
+}

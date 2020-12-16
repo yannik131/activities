@@ -48,6 +48,7 @@ CHANNEL_LAYERS = {
 
 INSTALLED_APPS = [
     'chat',
+    'notify',
     'account.apps.AccountConfig',
     'activity.apps.ActivityConfig',
     'actions.apps.ActionsConfig',

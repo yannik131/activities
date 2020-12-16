@@ -20,6 +20,11 @@ class User(AbstractUser):
     sex = models.CharField(max_length=1, choices=SEX_CHOICES, default='m')
     confirmed_appointments = models.ManyToManyField("scheduling.Appointment", related_name='participants')
     cancelled_appointments = models.ManyToManyField("scheduling.Appointment", related_name='cancellations')
+    channel_name = models.CharField(max_length=100, null=True)
+
+    action_strings = {
+        'created': _('hat erstellt:')
+    }
 
     def friendships(self):
         return list(chain(self.from_friendships.all(), self.to_friendships.all()))

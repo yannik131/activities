@@ -1,44 +1,30 @@
+{% extends 'base.html' %}
 {% load i18n %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{% trans "Einloggen" %}</title>
-    <link href="/static/style.css" rel="stylesheet">
-</head>
-<body>
 
-<div id="login">
-<h1>{% trans "Willkommen!" %}</h1>
-<p>
-        {% blocktrans %}Herzlich willkommen auf myactivities.net. Sieht alles noch ein wenig rustikal aus, funktioniert aber. Darum geht's hier: Sagen wir, Sie spielen gerne Schach und Gitarre. Sie suchen einen Gegner und eine Band, möglichst in Ihrer Stadt. Dann tun Sie folgendes:{% endblocktrans %}
-        <ol>
-                <li>{% blocktrans %}Sie registrieren sich und geben die Stadt an, in der Sie wohnen.{% endblocktrans %}</li>
-                <li>{% blocktrans %}Einmal eingeloggt, können Sie unter "Aktivitäten" die Aktivität "Schach spielen" auswählen und ihr beitreten.{% endblocktrans %}</li>
-                <li>{% blocktrans %}Über die Mitgliederliste finden Sie Menschen in Ihrer Stadt/Ihrem Landkreis/Ihrem Bundesland, die auch gerne Schach spielen. Falls Sie mit jemandem Kontakt aufnehmen wollen, schicken Sie dieser Person einfach eine Freundschaftsanfrage.{% endblocktrans %}</li>
-                <li>{% blocktrans %}Unter "Matches und Turniere" finden Sie zurzeit in Ihrer Gegend stattfindende Veranstaltungen, auf die Sie sich bewerben können. Sie können auch ganz einfach eigene Matches und Turniere erstellen. In einem Turnier werden nach dem Schweizer System Spielpläne (Runden) und eine Punktetabelle mit Tie-Breaks generiert (vom Spiel abhängig).{% endblocktrans %}</li>
-                <li>{% blocktrans %}Die Aktivität "Gitarre spielen" liegt in der Kategorie "Musik". Auf der Kategorieseite können Sie nach Gruppen in Ihrer Umgebung suchen, die offene Leerstellen haben. Sie können auch selbst eine Gruppe gründen und so nach Musikern suchen.{% endblocktrans %}</li>
-                <li>{% blocktrans %}In einer Gruppe können Sie Terminabstimmungen für ein Treffen erstellen. Suchen Sie nach Mitgliedern, erzeugen Sie einfach eine Leerstelle und geben dort Bewerbungskriterien wie Alter, Wohnort oder Geschlecht an, z. B.: Bassist gesucht, Alter zwischen 20-30, Geschlecht egal, Wohnort Oldenburg.{% endblocktrans %}</li>
-                <li>{% blocktrans %}Jede Gruppe und jeder Nutzer kann in einer Kategorie bzw. einer Aktivität etwas posten. Die Posts sind über die jeweilige Aktivitäts- bzw. Gruppenseite zu sehen und werden dort nach Stadt/Landkreis/Bundesland gefiltert. Natürlich sind die Posts auch über die Profilseite des Nutzers bzw. der Gruppe erreichbar.{% endblocktrans %}</li>
-                <li>{% blocktrans %}Für jede Freundschaft, jede Gruppe, jede Bewerbung, jedes Match und jedes Turnier gibt es einen eigenen Chat.{% endblocktrans %}</li>
-                <li>{% blocktrans %}Gruppen können in jeder Kategorie gegründet werden. Matches und Turniere stehen nur bei wettkampffähigen Kategorien zur Verfügung.{% endblocktrans %}</li>
-        </ol>
-</p>
-    <h1>{% blocktrans %}Einloggen{% endblocktrans %}</h1>
-    {% if form.errors %}
-        <p>{% trans "Fehler beim Einloggen" %}: {{ form.non_field_errors }}</p>
-        <p><a href="{% url 'account:login' %}">{% trans "Zurück zum Login" %}</a></p>
-        <p>{% trans "Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der Account möglicherweise gesperrt." %}
-        </p>
-    {% else %}
-        <p>{% trans "Bitte nutzen Sie das folgende Formular zum einloggen:" %}</p>
-        <form method="post" action="{% url 'account:login' %}">
-            {{ form.as_p }}
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{ next }}">
-            <input type="submit" value="{% trans "Einloggen" %}">
-        </form>
-    {% endif %}
-    <p>{% trans "Passwort vergessen?" %} <a href="{% url 'account:password_reset' %}">{% trans "Setzen Sie Ihr Passwort hier zurück." %}</a></p>
-    <p>{% trans "Noch keinen Account?" %} <a href="{% url 'account:register' %}">{% trans "Hier registrieren." %}</a></p>
-</div>
-</body>
+
+{% block title %}{% trans "Einloggen" %}{% endblock %}
+
+{% block content %}
+    <div class="center-container">
+    <div class="login">
+        <h1>{% blocktrans %}Einloggen{% endblocktrans %}</h1>
+        {% if form.errors %}
+            <p>{% trans "Fehler beim Einloggen" %}: {{ form.non_field_errors }}</p>
+            <p><a href="{% url 'account:login' %}">{% trans "Zurück zum Login" %}</a></p>
+            <p>{% trans "Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der Account möglicherweise gesperrt." %}
+            </p>
+        {% else %}
+        <p><strong>Willkommen bei myactivities.net! :) <a href="{% url 'account:about' %}">Was ist das hier?</a></strong></p>
+            <p>{% trans "Bitte nutzen Sie das folgende Formular zum einloggen:" %}</p>
+            <form method="post" action="{% url 'account:login' %}">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
+                <input type="submit" value="{% trans "Einloggen" %}">
+            </form>
+        {% endif %}
+        <p>{% trans "Passwort vergessen?" %} <a href="{% url 'account:password_reset' %}">{% trans "Setzen Sie Ihr Passwort hier zurück." %}</a></p>
+        <p>{% trans "Noch keinen Account?" %} <a href="{% url 'account:register' %}">{% trans "Hier registrieren." %}</a></p>
+    </div>
+    </div>
+{% endblock %}
