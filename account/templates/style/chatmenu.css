@@ -1,0 +1,40 @@
+.chat-menu {
+    float: right;
+    background-color: black;
+    color: white;
+    font-family: "Courier New", "Lucida Console", monospace;
+    display: none;
+    width: 50%;
+}
+
+.chat-menu.clicked {
+    display: block;
+    position: fixed;
+    right: 0;
+    min-width: 50%;
+}
+
+.chat-menu a {
+    text-decoration: none;
+    color: gray;
+    display: block;
+}
+
+.chat-menu a:hover {
+    color: white;
+}
+
+.chat-box {
+    border: 1px solid black;
+    margin: 10px 0px;
+    overflow: auto;
+}
+
+.room-name {
+    font-weight: bold;
+}
+
+.message-date {
+    font-weight: italic;
+    display: none;
+}

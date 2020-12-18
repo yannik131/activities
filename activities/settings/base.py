@@ -15,6 +15,9 @@ To load the settings for one shell session, type
 export DJANGO_SETTINGS_MODULE=activities.settings.local_linux
 Add this line to .bashrc or .bash_profile to have it executed automatically upon shell launch.
 There is also a flag: ./manage.py command --settings=activities.settings.local_linux
+In case of pkey integrity error, run
+python manage.py sqlsequencereset app_name
+copy the result into psql and run it.
 """
 
 import os
@@ -51,7 +54,6 @@ INSTALLED_APPS = [
     'notify',
     'account.apps.AccountConfig',
     'activity.apps.ActivityConfig',
-    'actions.apps.ActionsConfig',
     'usergroups.apps.UsergroupsConfig',
     'scheduling.apps.SchedulingConfig',
     'wall.apps.WallConfig',
@@ -77,6 +79,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'activities.notifications_middleware.NotificationsMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]

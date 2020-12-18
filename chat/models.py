@@ -1,5 +1,5 @@
 from django.db import models
-from account.models import User
+from account.models import User, Friendship
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.urls import reverse
@@ -42,6 +42,16 @@ class ChatRoom(models.Model):
     def get_absolute_url(self):
         return reverse('chat:chat_room', args=[self.target_ct.app_label, self.target_ct.model, self.target_id])
 
+    def title_for_friendship(self, user):
+        if user == self.target.to_user:
+            return str(self.target.from_user)
+        return str(self.target.to_user)
+
+    def title_for(self, user):
+        if self.target_ct == Friendship.content_type():
+            return self.title_for_friendship(user)
+        return str(self.target.verbose())
+
 
 class ChatLogEntry(models.Model):
     MAX_NUMBER_OF_LOG_ENTRIES = 10
@@ -55,6 +65,11 @@ class ChatLogEntry(models.Model):
 
     def __str__(self):
         return self.text
+
+    def full_origin(self, user):
+        if self.chat_room.target_ct == Friendship.content_type():
+            return self.chat_room.title_for_friendship(user)
+        return str(self.chat_room.target.verbose()) + ", " + self.author.username
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

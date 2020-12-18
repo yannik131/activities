@@ -10,6 +10,7 @@
         {% include 'style/content.css' %}
         {% include 'style/topmenu.css' %}
         {% include 'style/sidemenu.css' %}
+        {% include 'style/chatmenu.css' %}
         {% include 'style/queries.css' %}
     </style>
     <link rel="shortcut icon" type="image/png" href="{% static 'icons/users-and-groups-group@32px.png' %}">
@@ -18,21 +19,54 @@
 <body>
 
 {% if user.is_authenticated %}
+{% with latest_messages=user.get_latest_messages %}
     <div class="topmenu" id="topmenu">
         <div class="logo">
-            <a class="icon" href="javascript:void(0);" onclick="barClick()">
-                &#9776;
+            <a class="icon" href="javascript:void(0);" onclick="activateMenu('sidemenu');">
+                &#9776;<sup><strong><span style="color: orange;" id="notifications-count">{% with count=request.notifications.count %}{% if count > 0 %}{{ count }}{% endif %}{% endwith %}</span></strong></sup>
             </a>
         </div>
         <div class="search">Suchen</div>
         <div class="user">
+            <div class="envelope">
+                <a href="javascript:void(0);" onclick="activateMenu('chat-menu');">
+                    <img src="{% static 'icons/envelope.png' %}">
+                    <sup>
+                        <strong>
+                            <span style="color: orange;" id="messages-count">{{ latest_messages|length }}
+                            </span>
+                        </strong>
+                    </sup>
+                </a>
+            </div>
             <a href="{% url 'account:edit' %}">{{ user }}</a>
         </div>
     </div>
 
-    <div class="sidemenu" id="sidemenu">
-        {% include 'account/sidemenu.html' %}
+    {% include 'account/sidemenu.html' %}
+
+    <div class="chat-menu" id="chat-menu">
+        Chats:
+        {% for message in latest_messages %}
+            <div class="chat-box" id="room-{{ message.chat_room.id }}">
+            <a href="{{ message.chat_room.get_absolute_url }}">
+                <span class="room-name">
+                    {% call_method message 'full_origin' user %}:
+                </span>
+                <span class="message">
+                    <span class="message-date">
+                        {{ message.created|date:"SHORT_DATETIME_FORMAT" }}:
+                    </span>
+                    <span class="message-content">
+                        {{ message.text }}
+                    </span>
+                </span>
+            </a>
+            </div>
+        {% endfor %}
     </div>
+{% endwith %}
+
 {% else %}
     <div class="topmenu" id="topmenu">
         <div class="logo">

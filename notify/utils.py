@@ -4,7 +4,7 @@ from asgiref.sync import async_to_sync
 from collections.abc import Iterable
 
 
-def _notify(recipient, actor, action, action_object=None):
+def _notify(recipient, actor, action, action_object):
     notification = Notification.objects.create(recipient=recipient, actor=actor, action=action, action_object=action_object)
     channel_name = recipient.channel_name
     if channel_name:
@@ -13,7 +13,10 @@ def _notify(recipient, actor, action, action_object=None):
             channel_name,
             {
                 'type': 'notify.notification',
-                'text': str(notification)
+                'is_chat': False,
+                'id': f"{notification.id}",
+                'text': str(notification),
+                'url': notification.get_absolute_url()
             }
         )
 

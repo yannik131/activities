@@ -29,9 +29,9 @@ urlpatterns = [
     path('chat/', include('chat.urls', namespace='chat')),
     path('wall/', include('wall.urls')),
     path('competitions/', include('competitions.urls')),
-    path('vacancies/', include('vacancies.urls'))
+    path('vacancies/', include('vacancies.urls')),
+    path('notifications/', include('notify.urls'))
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

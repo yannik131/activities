@@ -5,7 +5,6 @@ from .models import Location, FriendRequest, User, Friendship
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.utils import timezone
 from .templatetags import account_tags
-from actions.models import Action
 from django.db.models import Q
 from usergroups.models import UserGroup
 from activity.models import Activity, Category
@@ -15,24 +14,7 @@ from shared import shared
 
 @login_required
 def home(request):
-    friend_ids = [u.id for u in request.user.friends()]
-    user_type = User.content_type()
-    group_ids = request.user.user_groups.values_list('id', flat=True)
-    group_type = UserGroup.content_type()
-    friend_and_group_actions = \
-        Action.objects.filter(
-            Q(source_ct=group_type, source_id__in=group_ids) |
-            Q(target_ct=group_type, target_id__in=group_ids) |
-            Q(source_ct=user_type, source_id__in=friend_ids) |
-            Q(target_ct=user_type, target_id__in=friend_ids))\
-        .exclude(source_ct=user_type, source_id=request.user.id)\
-        .order_by('-created')\
-        .prefetch_related('target', 'source')[:10]
-    other_actions = Action.objects.filter(
-            Q(source_ct=Activity.content_type()) |
-            Q(source_ct=Category.content_type()))\
-        .prefetch_related('target', 'source')[:5]
-    return render(request, 'account/home.html', dict(friend_and_group_actions=friend_and_group_actions, other_actions=other_actions))
+    return render(request, 'account/home.html')
 
 
 def about(request):
@@ -53,13 +35,9 @@ def detail(request, id):
     requested = False
     if FriendRequest.objects.filter(requesting_user=request.user, requested_user=user).exists():
         requested = True
-    actions = None
     friendship = request.user.get_friendship_for(user)
-    if friendship:
-        user_type = User.content_type()
-        actions = Action.objects.filter(Q(source_ct=user_type, source_id=user.id) | Q(target_ct=user_type, target_id=user.id)).prefetch_related('target', 'source')[:5]
     posts = Post.objects.filter(author=user, target_ct=User.content_type(), target_id=user.id).all()
-    return render(request, 'account/detail.html', {'viewed_user': user, 'friendship': friendship, 'actions': actions, 'requested': requested, 'posts': posts})
+    return render(request, 'account/detail.html', {'viewed_user': user, 'friendship': friendship, 'requested': requested, 'posts': posts})
 
 
 @login_required
@@ -103,6 +81,7 @@ def send_custom_friend_request(request):
 @login_required
 def accept_request(request, id):
     friend_request = FriendRequest.objects.get(requested_user=request.user, id=id)
+
     _, created = Friendship.objects.get_or_create(from_user=friend_request.requesting_user, to_user=friend_request.requested_user)
     friend_request.delete()
     if not created:

@@ -1,10 +1,20 @@
-body {
+html {
+    height: 100%;
     background-color: #2d2d2d;
+}
+
+body {
+    height: 100%;
 }
 
 .content {
     color: white;
     font-family: "Courier New", "Lucida Console", monospace;
+    height: 100%;
+}
+
+input[type='text'], textarea, select:focus {
+    font-size: 16px;
 }
 
 .center-container {
@@ -30,22 +40,20 @@ a:hover {
     color: white;
 }
 
-#login {
-    float:left;
-}
-
 .image {
-    float:center;
-    padding:10px;
+    float: center;
+    padding: 10px;
 }
 
 table {
+    margin-left: auto;
+    margin-right: auto;
     border-collapse: collapse;
     border: 2px solid white;
 }
 
 th, td {
-    padding: 2%;
+    padding: 10px;
     border: 2px solid white;
 }
 
@@ -86,4 +94,13 @@ select {
 select:focus, select:hover {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.chat-room-title {
+    text-decoration-line: underline;
+    font-style: italic;
+}
+
+.full-chat {
+    overflow-wrap: break-word;
 }

@@ -15,6 +15,14 @@ class UserGroup(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='groups')
     public = models.BooleanField(default=True)
 
+    action_strings = {
+        'has_new_appointment': _('hat einen neuen Termin'),
+        'has_moved_appointment': _('hat einen Termin verschoben'),
+        'has_new_member': _('hat ein neues Mitglied'),
+        'has_lost_member': _('hat ein Mitglied verloren'),
+        'updated_description': _('hat eine neue Beschreibung')
+    }
+
     class Meta:
         unique_together = ('name', 'category')
 

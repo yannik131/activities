@@ -1,9 +1,9 @@
 .sidemenu {
     float: left;
-    max-width: 250px;
     height: 100%;
-    margin-right: 20px;
+    max-width: 30%;
     font-family: "Courier New", "Lucida Console", monospace;
+    overflow-y: auto;
 }
 
 .sidemenu a {
@@ -11,6 +11,15 @@
     text-decoration: none;
     padding: 8px 0;
     color: #ababab;
+}
+
+.sidemenu a.notification-url:hover {
+    background-color: #0087f7;
+    color: white;
+}
+
+.sidemenu a.notification-url {
+    color: black;
 }
 
 .sidemenu a:hover {

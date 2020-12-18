@@ -17,12 +17,4 @@
     {% else %}
         <p>{% blocktrans %}Sie sind zurzeit kein Mitglied einer Aktivität.{% endblocktrans %}</p>
     {% endif %}
-    <h3>{% blocktrans %}Neueste Aktivitäten Ihrer Freunde und Gruppen:{% endblocktrans %}</h3>
-    {% with actions=friend_and_group_actions %}
-    {% include 'actions/forloop.html' %}
-    {% endwith %}
-    <h3>{% blocktrans %}... und auf aktivitaeten.de:{% endblocktrans %}</h3>
-    {% with actions=other_actions %}
-    {% include 'actions/forloop.html' %}
-    {% endwith %}
 {% endblock %}

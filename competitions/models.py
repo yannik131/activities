@@ -69,6 +69,10 @@ class Tournament(models.Model):
     tie_breaks = HStoreField(default=dict)
     over = models.BooleanField(default=False)
 
+    action_strings = {
+        'started_new_round': _('hat eine neue Runde')
+    }
+
     class Meta:
         unique_together = ('title', 'location')
 
@@ -94,7 +98,6 @@ class Tournament(models.Model):
 
 
 class Round(models.Model):
-
     starting_time = models.DateTimeField(null=True)
     number = models.PositiveSmallIntegerField()
     tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE, related_name='rounds')
@@ -125,3 +128,6 @@ class Round(models.Model):
 
     def get_absolute_url(self):
         return reverse('competitions:game_plan', args=[self.tournament.id, self.number])
+
+    def __str__(self):
+        return _('Runde ') + str(self.number)

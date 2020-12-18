@@ -4,6 +4,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from model_utils import Choices
 from account.models import User
 from django.utils import timezone
+from django.urls import reverse
 
 
 class Notification(models.Model):
@@ -25,9 +26,16 @@ class Notification(models.Model):
     class Meta:
         ordering = ['-timestamp']
 
+    def get_absolute_url(self):
+        if self.action == 'invited':
+            return reverse('vacancies:application_list')
+        if not self.action_object:
+            return self.actor.get_absolute_url()
+        return self.action_object.get_absolute_url()
+
     def __str__(self):
         model = self.actor_ct.model_class()
         repr = f"{self.actor.verbose()} {model.action_strings[self.action]}"
         if self.action_object:
-            return repr + f" {self.action_object.verbose()}"
+            return repr + f": {self.action_object.verbose()}"
         return repr

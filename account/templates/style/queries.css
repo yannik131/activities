@@ -3,6 +3,13 @@
         width: 100%;
     }
 
+    .content {
+        color: white;
+        font-family: "Courier New", "Lucida Console", monospace;
+        float: left;
+        width: 100%;
+    }
+
     .topmenu .logo .icon {
         display: block;
     }
@@ -12,26 +19,40 @@
     }
 
     .sidemenu.clicked {
-        width: 50%;
-        overflow: auto;
         background-color: black;
         display: block;
         position: fixed;
+        top: 0;
+        right: 0;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        min-width: 50vw;
         padding: 5px;
-    }
-
-    .content {
-        color: white;
-        font-family: "Courier New", "Lucida Console", monospace;
-        float: left;
-        width: 100%;
     }
 }
 
 @media screen and (min-width: 1220px) {
     html {
         width: 1200px;
+        height: 100%;
         margin-left: auto;
         margin-right: auto;
+    }
+}
+
+@media screen and (min-width: 1420px) {
+    html {
+        width: 1400px;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .chat-menu {
+        display: block;
+    }
+
+    .envelope {
+        display: none;
     }
 }

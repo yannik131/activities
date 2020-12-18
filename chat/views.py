@@ -5,8 +5,9 @@ from .templatetags import chat_tags
 from account.models import Friendship
 from usergroups.models import UserGroup
 from competitions.models import Match, Tournament
-from .models import ChatRoom
+from .models import ChatRoom, ChatCheck
 from django.utils.translation import gettext_lazy as _
+from django.utils.timezone import now
 
 
 @login_required
@@ -20,12 +21,14 @@ def chat_room(request, app_label, model, id):
             chat_room.members.add(request.user)
     else:
         return HttpResponseForbidden()
+    check = request.user.last_chat_checks.get(room=chat_room)
+    check.date = now()
+    check.save()
     return render(request, 'chat/room.html', dict(target=chat_room.target, room=chat_room))
 
 
 @login_required
 def chat_list(request):
-    new_messages = chat_tags.new_messages_dict(request.user)
     request.user.save()
     chat_rooms = request.user.chat_rooms.all()
     group_rooms = []
@@ -41,4 +44,8 @@ def chat_list(request):
             match_rooms.append(room)
         elif type(room.target) is Tournament:
             tournament_rooms.append(room)
-    return render(request, 'chat/chat_list.html', dict(new_messages=new_messages, group_rooms=group_rooms, friend_rooms=friend_rooms, match_rooms=match_rooms, tournament_rooms=tournament_rooms))
+
+    def key(room):
+        return room.title_for(request.user)
+
+    return render(request, 'chat/chat_list.html', dict( group_rooms=sorted(group_rooms, key=key), friend_rooms=sorted(friend_rooms, key=key), match_rooms=sorted(match_rooms, key=key), tournament_rooms=sorted(tournament_rooms, key=key)))

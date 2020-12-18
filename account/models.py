@@ -23,7 +23,19 @@ class User(AbstractUser):
     channel_name = models.CharField(max_length=100, null=True)
 
     action_strings = {
-        'created': _('hat erstellt:')
+        'created': _('hat erstellt'),
+        'has_new_friend': _('ist jetzt befreundet mit'),
+        'has_lost_friend': _('ist nicht mehr befreundet mit'),
+        'sent_friend_request': _('hat Ihnen eine Freundschaftsanfrage geschickt'),
+        'entered': _('ist beigetreten'),
+        'left': _('hat verlassen'),
+        'confirmed': _('hat zugesagt'),
+        'declined': _('hat abgesagt'),
+        'applied_for': _('hat sich beworben'),
+        'posted_in': _('hat etwas gepostet in'),
+        'commented_in': _('hat etwas kommentiert'),
+        'terminated_friendship': _('ist nicht mehr mit Ihnen befreundet'),
+        'invited': _('hat Sie eingeladen')
     }
 
     def friendships(self):
@@ -41,6 +53,16 @@ class User(AbstractUser):
             else:
                 friends.append(friendship.to_user)
         return friends
+
+    def get_latest_messages(self):
+        chat_checks = self.last_chat_checks.all()
+        log_entries = list()
+        for check in chat_checks:
+            messages = check.new_messages()
+            if messages:
+                log_entries.append(messages.last())
+        log_entries = sorted(log_entries, key=lambda entry: entry.created)
+        return log_entries
 
     def get_absolute_url(self):
         return reverse('account:detail', args=[self.id])
@@ -102,6 +124,10 @@ class Friendship(models.Model):
     def get_absolute_url(self):
         return reverse('account:view_friendship', args=[self.id])
 
+    @staticmethod
+    def content_type():
+        return ContentType.objects.get(app_label='account', model='friendship')
+
 
 class FriendRequest(models.Model):
     requesting_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_friend_requests')
@@ -125,6 +151,15 @@ class FriendRequest(models.Model):
         other_request.update(status=status)
         self.status = status
         self.save()
+
+    def __str__(self):
+        return self.request_message
+
+    def verbose(self):
+        return self.__str__()
+
+    def get_absolute_url(self):
+        return reverse('account:friend_requests_list')
 
     class Meta:
         ordering = ('status', '-modified')

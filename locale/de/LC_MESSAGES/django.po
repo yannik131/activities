@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-07 21:46+0000\n"
+"POT-Creation-Date: 2020-12-17 13:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,28 +26,46 @@ msgstr ""
 msgid "Passwort (erneut)"
 msgstr ""
 
-#: account/forms.py:18 account/forms.py:36 vacancies/forms.py:14
+#: account/forms.py:18 account/forms.py:41 vacancies/forms.py:14
 #: vacancies/templates/vacancies/vacancy_list.html:8
 msgid "Geschlecht"
 msgstr ""
 
-#: account/forms.py:19 account/forms.py:37
+#: account/forms.py:19 account/forms.py:42
 msgid "Geburtsjahr"
 msgstr ""
 
-#: account/forms.py:25
+#: account/forms.py:22
+msgid "Erforderlich für eine Passwort-Zurücksetzung."
+msgstr ""
+
+#: account/forms.py:23
+msgid "Für Bewerbungen."
+msgstr ""
+
+#: account/forms.py:24
+msgid "Altersermittlung für Bewerbungen."
+msgstr ""
+
+#: account/forms.py:30
 msgid "Passwörter stimmen nicht überein!"
 msgstr ""
 
-#: account/forms.py:38
+#: account/forms.py:43
 msgid "Profiltext"
 msgstr ""
 
-#: account/forms.py:43 account/templates/account/detail.html:25
-msgid "Adresse"
+#: account/forms.py:48 vacancies/templates/vacancies/review_vacancy.html:15
+msgid "Wohnort"
 msgstr ""
 
-#: account/forms.py:52 account/templates/account/friend_requests_list.html:11
+#: account/forms.py:48
+msgid ""
+"Notwendig, um in Ihrer Nähe nach Leuten suchen zu können. Nur für Ihre "
+"Freunde sichtbar."
+msgstr ""
+
+#: account/forms.py:57 account/templates/account/friend_requests_list.html:11
 #: account/templates/account/friend_requests_list.html:41
 #: usergroups/templates/usergroups/invitation_list.html:7 vacancies/forms.py:54
 #: vacancies/forms.py:98 vacancies/templates/vacancies/application_list.html:34
@@ -55,49 +73,53 @@ msgstr ""
 msgid "Nachricht"
 msgstr ""
 
-#: account/forms.py:58
+#: account/forms.py:63
 #, python-brace-format
 msgid ""
 "Die Nachricht darf nicht länger als 150 Zeichen sein, ist aber {l} Zeichen "
 "lang."
 msgstr ""
 
-#: account/forms.py:63 account/templates/account/friend_requests_list.html:10
+#: account/forms.py:68 account/templates/account/friend_requests_list.html:10
 #: account/templates/account/friend_requests_list.html:40
 #: activity/templates/activity/detail.html:27
 msgid "Nutzername"
 msgstr ""
 
-#: account/forms.py:68
+#: account/forms.py:73
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr ""
 
-#: account/models.py:105
+#: account/models.py:26
+msgid "hat erstellt"
+msgstr ""
+
+#: account/models.py:110
 msgid "Ausstehend"
 msgstr ""
 
-#: account/models.py:106 vacancies/templates/vacancies/vacancy_list.html:29
+#: account/models.py:111 vacancies/templates/vacancies/vacancy_list.html:29
 msgid "Angenommen"
 msgstr ""
 
-#: account/models.py:107 vacancies/templates/vacancies/vacancy_list.html:31
+#: account/models.py:112 vacancies/templates/vacancies/vacancy_list.html:31
 msgid "Abgelehnt"
 msgstr ""
 
-#: account/models.py:142 vacancies/models.py:29
+#: account/models.py:147 vacancies/models.py:29
 msgid "Land"
 msgstr ""
 
-#: account/models.py:143 vacancies/models.py:30
+#: account/models.py:148 vacancies/models.py:30
 msgid "Bundesland"
 msgstr ""
 
-#: account/models.py:144 vacancies/models.py:31
+#: account/models.py:149 vacancies/models.py:31
 msgid "Landkreis"
 msgstr ""
 
-#: account/models.py:145 vacancies/models.py:32
+#: account/models.py:150 vacancies/models.py:32
 msgid "Stadt"
 msgstr ""
 
@@ -107,6 +129,86 @@ msgstr ""
 
 #: account/signals.py:20
 msgid "ist nicht mehr befreundet mit"
+msgstr ""
+
+#: account/templates/account/about.html:4
+msgid "Info"
+msgstr ""
+
+#: account/templates/account/about.html:7
+msgid "Willkommen!"
+msgstr ""
+
+#: account/templates/account/about.html:9
+msgid ""
+"Herzlich willkommen auf myactivities.net. Sieht alles noch ein wenig "
+"rustikal aus, funktioniert aber. Darum geht's hier: Sagen wir, Sie spielen "
+"gerne Schach und Gitarre. Sie suchen einen Gegner und eine Band, möglichst "
+"in Ihrer Stadt. Dann tun Sie folgendes:"
+msgstr ""
+
+#: account/templates/account/about.html:11
+msgid "Sie registrieren sich und geben die Stadt an, in der Sie wohnen."
+msgstr ""
+
+#: account/templates/account/about.html:12
+msgid ""
+"Einmal eingeloggt, können Sie unter \"Aktivitäten\" die Aktivität \"Schach "
+"spielen\" auswählen und ihr beitreten."
+msgstr ""
+
+#: account/templates/account/about.html:13
+msgid ""
+"Über die Mitgliederliste finden Sie Menschen in Ihrer Stadt/Ihrem Landkreis/"
+"Ihrem Bundesland, die auch gerne Schach spielen. Falls Sie mit jemandem "
+"Kontakt aufnehmen wollen, schicken Sie dieser Person einfach eine "
+"Freundschaftsanfrage."
+msgstr ""
+
+#: account/templates/account/about.html:14
+msgid ""
+"Unter \"Matches und Turniere\" finden Sie zurzeit in Ihrer Gegend "
+"stattfindende Veranstaltungen, auf die Sie sich bewerben können. Sie können "
+"auch ganz einfach eigene Matches und Turniere erstellen. In einem Turnier "
+"werden nach dem Schweizer System Spielpläne (Runden) und eine Punktetabelle "
+"mit Tie-Breaks generiert (vom Spiel abhängig)."
+msgstr ""
+
+#: account/templates/account/about.html:15
+msgid ""
+"Die Aktivität \"Gitarre spielen\" liegt in der Kategorie \"Musik\". Auf der "
+"Kategorieseite können Sie nach Gruppen in Ihrer Umgebung suchen, die offene "
+"Leerstellen haben. Sie können auch selbst eine Gruppe gründen und so nach "
+"Musikern suchen."
+msgstr ""
+
+#: account/templates/account/about.html:16
+msgid ""
+"In einer Gruppe können Sie Terminabstimmungen für ein Treffen erstellen. "
+"Suchen Sie nach Mitgliedern, erzeugen Sie einfach eine Leerstelle und geben "
+"dort Bewerbungskriterien wie Alter, Wohnort oder Geschlecht an, z. B.: "
+"Bassist gesucht, Alter zwischen 20-30, Geschlecht egal, Wohnort Oldenburg."
+msgstr ""
+
+#: account/templates/account/about.html:17
+msgid ""
+"Jede Gruppe und jeder Nutzer kann in einer Kategorie bzw. einer Aktivität "
+"etwas posten. Die Posts sind über die jeweilige Aktivitäts- bzw. "
+"Gruppenseite zu sehen und werden dort nach Stadt/Landkreis/Bundesland "
+"gefiltert. Natürlich sind die Posts auch über die Profilseite des Nutzers "
+"bzw. der Gruppe erreichbar."
+msgstr ""
+
+#: account/templates/account/about.html:18
+msgid ""
+"Für jede Freundschaft, jede Gruppe, jede Bewerbung, jedes Match und jedes "
+"Turnier gibt es einen eigenen Chat."
+msgstr ""
+
+#: account/templates/account/about.html:19
+msgid ""
+"Gruppen können in jeder Kategorie gegründet werden. Matches und Turniere "
+"stehen nur bei wettkampffähigen Kategorien zur Verfügung."
 msgstr ""
 
 #: account/templates/account/destroy_friendship.html:4
@@ -121,7 +223,7 @@ msgstr ""
 
 #: account/templates/account/detail.html:5
 #, python-format
-msgid "Profil von %(viewed_user.username)s"
+msgid "Profil von %(username)s"
 msgstr ""
 
 #: account/templates/account/detail.html:8
@@ -158,6 +260,10 @@ msgstr ""
 #: vacancies/forms.py:13 vacancies/templates/vacancies/apply_for_vacancy.html:9
 #: vacancies/templates/vacancies/vacancy_list.html:6
 msgid "Beschreibung"
+msgstr ""
+
+#: account/templates/account/detail.html:25
+msgid "Adresse"
 msgstr ""
 
 #: account/templates/account/detail.html:26
@@ -201,7 +307,7 @@ msgid "Posts"
 msgstr ""
 
 #: account/templates/account/edit.html:4 account/templates/account/edit.html:7
-#: account/templates/base.html:24
+#: account/templates/account/sidemenu.html:16
 msgid "Account bearbeiten"
 msgstr ""
 
@@ -312,7 +418,8 @@ msgid "Eine Anfrage an einen Nutzer senden..."
 msgstr ""
 
 #: account/templates/account/friend_requests_list.html:64
-#: account/templates/base.html:22 chat/templates/chat/chat_list.html:15
+#: account/templates/account/sidemenu.html:14
+#: chat/templates/chat/chat_list.html:15
 msgid "Freunde"
 msgstr ""
 
@@ -363,16 +470,16 @@ msgid "Nächste"
 msgstr ""
 
 #: account/templates/account/register.html:4
-#: account/templates/account/register.html:7
-#: account/templates/account/register.html:14
+#: account/templates/account/register.html:8
+#: account/templates/account/register.html:15
 msgid "Registrieren"
 msgstr ""
 
-#: account/templates/account/register.html:8
+#: account/templates/account/register.html:9
 msgid "Sie können sich mit dem folgenden Formular registrieren. "
 msgstr ""
 
-#: account/templates/account/register.html:11
+#: account/templates/account/register.html:12
 msgid "Bitte geben Sie eine Stadt ein"
 msgstr ""
 
@@ -471,6 +578,51 @@ msgstr ""
 msgid "Abschicken"
 msgstr ""
 
+#: account/templates/account/sidemenu.html:7
+msgid "Homepage"
+msgstr ""
+
+#: account/templates/account/sidemenu.html:8
+#: activity/templates/activity/category_list.html:12
+msgid "Aktivitäten"
+msgstr ""
+
+#: account/templates/account/sidemenu.html:9
+msgid "Kategorien"
+msgstr ""
+
+#: account/templates/account/sidemenu.html:10
+#: activity/templates/activity/detail.html:16
+msgid "Matches & Turniere"
+msgstr ""
+
+#: account/templates/account/sidemenu.html:11
+#: chat/templates/chat/chat_list.html:9
+#: usergroups/templates/usergroups/category_group_list.html:4
+#: usergroups/templates/usergroups/category_group_list.html:7
+msgid "Gruppen"
+msgstr ""
+
+#: account/templates/account/sidemenu.html:12
+msgid "Chats"
+msgstr ""
+
+#: account/templates/account/sidemenu.html:13
+msgid "Bewerbungen & Einladungen"
+msgstr ""
+
+#: account/templates/account/sidemenu.html:15
+#: account/templates/registration/password_change_form.html:4
+#: account/templates/registration/password_change_form.html:7
+#: account/templates/registration/password_reset_done.html:4
+#: account/templates/registration/password_reset_done.html:7
+msgid "Passwort ändern"
+msgstr ""
+
+#: account/templates/account/sidemenu.html:17
+msgid "Ausloggen"
+msgstr ""
+
 #: account/templates/account/user_post_list.html:4
 #: account/templates/account/user_post_list.html:7
 msgid "Ihre Posts"
@@ -482,54 +634,6 @@ msgstr ""
 
 #: account/templates/account/user_post_list.html:9
 msgid "Die Posts sind öffentlich auf Ihrer Profilseite sichtbar."
-msgstr ""
-
-#: account/templates/base.html:16
-#, python-format
-msgid "Ihr Nutzername: %(v0)s"
-msgstr ""
-
-#: account/templates/base.html:17
-msgid "Homepage"
-msgstr ""
-
-#: account/templates/base.html:18
-#: activity/templates/activity/category_list.html:12
-msgid "Aktivitäten"
-msgstr ""
-
-#: account/templates/base.html:18
-msgid "Kategorien"
-msgstr ""
-
-#: account/templates/base.html:19 activity/templates/activity/detail.html:16
-msgid "Matches & Turniere"
-msgstr ""
-
-#: account/templates/base.html:20 chat/templates/chat/chat_list.html:9
-#: usergroups/templates/usergroups/category_group_list.html:4
-#: usergroups/templates/usergroups/category_group_list.html:7
-msgid "Gruppen"
-msgstr ""
-
-#: account/templates/base.html:20
-msgid "Chats"
-msgstr ""
-
-#: account/templates/base.html:21
-msgid "Bewerbungen & Einladungen"
-msgstr ""
-
-#: account/templates/base.html:23
-#: account/templates/registration/password_change_form.html:4
-#: account/templates/registration/password_change_form.html:7
-#: account/templates/registration/password_reset_done.html:4
-#: account/templates/registration/password_reset_done.html:7
-msgid "Passwort ändern"
-msgstr ""
-
-#: account/templates/base.html:25
-msgid "Ausloggen"
 msgstr ""
 
 #: account/templates/registration/logged_out.html:4
@@ -546,119 +650,43 @@ msgid "auch wieder einloggen."
 msgstr ""
 
 #: account/templates/registration/login.html:5
-#: account/templates/registration/login.html:26
-#: account/templates/registration/login.html:38
+#: account/templates/registration/login.html:10
+#: account/templates/registration/login.html:23
 msgid "Einloggen"
 msgstr ""
 
-#: account/templates/registration/login.html:11
-msgid "Willkommen!"
-msgstr ""
-
-#: account/templates/registration/login.html:13
-msgid ""
-"Herzlich willkommen auf myactivities.net. Sieht alles noch ein wenig "
-"rustikal aus, funktioniert aber. Darum geht's hier: Sagen wir, Sie spielen "
-"gerne Schach und Gitarre. Sie suchen einen Gegner und eine Band, möglichst "
-"in Ihrer Stadt. Dann tun Sie folgendes:"
-msgstr ""
-
-#: account/templates/registration/login.html:15
-msgid "Sie registrieren sich und geben die Stadt an, in der Sie wohnen."
-msgstr ""
-
-#: account/templates/registration/login.html:16
-msgid ""
-"Einmal eingeloggt, können Sie unter \"Aktivitäten\" die Aktivität \"Schach "
-"spielen\" auswählen und ihr beitreten."
-msgstr ""
-
-#: account/templates/registration/login.html:17
-msgid ""
-"Über die Mitgliederliste finden Sie Menschen in Ihrer Stadt/Ihrem Landkreis/"
-"Ihrem Bundesland, die auch gerne Schach spielen. Falls Sie mit jemandem "
-"Kontakt aufnehmen wollen, schicken Sie dieser Person einfach eine "
-"Freundschaftsanfrage."
-msgstr ""
-
-#: account/templates/registration/login.html:18
-msgid ""
-"Unter \"Matches und Turniere\" finden Sie zurzeit in Ihrer Gegend "
-"stattfindende Veranstaltungen, auf die Sie sich bewerben können. Sie können "
-"auch ganz einfach eigene Matches und Turniere erstellen. In einem Turnier "
-"werden nach dem Schweizer System Spielpläne (Runden) und eine Punktetabelle "
-"mit Tie-Breaks generiert (vom Spiel abhängig)."
-msgstr ""
-
-#: account/templates/registration/login.html:19
-msgid ""
-"Die Aktivität \"Gitarre spielen\" liegt in der Kategorie \"Musik\". Auf der "
-"Kategorieseite können Sie nach Gruppen in Ihrer Umgebung suchen, die offene "
-"Leerstellen haben. Sie können auch selbst eine Gruppe gründen und so nach "
-"Musikern suchen."
-msgstr ""
-
-#: account/templates/registration/login.html:20
-msgid ""
-"In einer Gruppe können Sie Terminabstimmungen für ein Treffen erstellen. "
-"Suchen Sie nach Mitgliedern, erzeugen Sie einfach eine Leerstelle und geben "
-"dort Bewerbungskriterien wie Alter, Wohnort oder Geschlecht an, z. B.: "
-"Bassist gesucht, Alter zwischen 20-30, Geschlecht egal, Wohnort Oldenburg."
-msgstr ""
-
-#: account/templates/registration/login.html:21
-msgid ""
-"Jede Gruppe und jeder Nutzer kann in einer Kategorie bzw. einer Aktivität "
-"etwas posten. Die Posts sind über die jeweilige Aktivitäts- bzw. "
-"Gruppenseite zu sehen und werden dort nach Stadt/Landkreis/Bundesland "
-"gefiltert. Natürlich sind die Posts auch über die Profilseite des Nutzers "
-"bzw. der Gruppe erreichbar."
-msgstr ""
-
-#: account/templates/registration/login.html:22
-msgid ""
-"Für jede Freundschaft, jede Gruppe, jede Bewerbung, jedes Match und jedes "
-"Turnier gibt es einen eigenen Chat."
-msgstr ""
-
-#: account/templates/registration/login.html:23
-msgid ""
-"Gruppen können in jeder Kategorie gegründet werden. Matches und Turniere "
-"stehen nur bei wettkampffähigen Kategorien zur Verfügung."
-msgstr ""
-
-#: account/templates/registration/login.html:28
+#: account/templates/registration/login.html:12
 msgid "Fehler beim Einloggen"
 msgstr ""
 
-#: account/templates/registration/login.html:29
+#: account/templates/registration/login.html:13
 msgid "Zurück zum Login"
 msgstr ""
 
-#: account/templates/registration/login.html:30
+#: account/templates/registration/login.html:14
 msgid ""
 "Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der "
 "Account möglicherweise gesperrt."
 msgstr ""
 
-#: account/templates/registration/login.html:33
+#: account/templates/registration/login.html:18
 msgid "Bitte nutzen Sie das folgende Formular zum einloggen:"
 msgstr ""
 
-#: account/templates/registration/login.html:41
+#: account/templates/registration/login.html:26
 #: account/templates/registration/password_reset_form.html:7
 msgid "Passwort vergessen?"
 msgstr ""
 
-#: account/templates/registration/login.html:41
+#: account/templates/registration/login.html:26
 msgid "Setzen Sie Ihr Passwort hier zurück."
 msgstr ""
 
-#: account/templates/registration/login.html:42
+#: account/templates/registration/login.html:27
 msgid "Noch keinen Account?"
 msgstr ""
 
-#: account/templates/registration/login.html:42
+#: account/templates/registration/login.html:27
 msgid "Hier registrieren."
 msgstr ""
 
@@ -752,11 +780,11 @@ msgstr ""
 msgid "Noch keine Neuigkeiten"
 msgstr ""
 
-#: activities/settings/base.py:137
+#: activities/settings/base.py:140
 msgid "Deutsch"
 msgstr ""
 
-#: activities/settings/base.py:138
+#: activities/settings/base.py:141
 #, fuzzy
 #| msgid "English"
 msgid "Englisch"
@@ -1257,20 +1285,20 @@ msgstr ""
 msgid "Gibts doch nicht."
 msgstr ""
 
-#: competitions/views.py:82
+#: competitions/views.py:85
 #, python-brace-format
 msgid "{act}-Turnier"
 msgstr ""
 
-#: competitions/views.py:168
+#: competitions/views.py:171
 msgid "Es stehen noch Ergebnisse der letzten Runde offen."
 msgstr ""
 
-#: competitions/views.py:173
+#: competitions/views.py:176
 msgid "Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden."
 msgstr ""
 
-#: competitions/views.py:185
+#: competitions/views.py:188
 msgid "Es stehen noch Ergebnisse offen."
 msgstr ""
 
@@ -1366,23 +1394,23 @@ msgstr ""
 msgid "Gruppe: {name}"
 msgstr ""
 
-#: usergroups/signals.py:19
+#: usergroups/signals.py:20
 msgid "hat ein neues Mitglied:"
 msgstr ""
 
-#: usergroups/signals.py:24
+#: usergroups/signals.py:25
 msgid "ist kein Mitglied mehr von:"
 msgstr ""
 
-#: usergroups/signals.py:32
+#: usergroups/signals.py:33
 msgid "hat eine Gruppe erstellt:"
 msgstr ""
 
-#: usergroups/signals.py:40
+#: usergroups/signals.py:42
 msgid "hat seine Beschreibung aktualisiert"
 msgstr ""
 
-#: usergroups/signals.py:48
+#: usergroups/signals.py:50
 #, python-brace-format
 msgid "hat eine Gruppe gelöscht: {name}"
 msgstr ""
@@ -1696,10 +1724,6 @@ msgstr ""
 
 #: vacancies/templates/vacancies/review_vacancy.html:9
 msgid "Leerstellenbeschreibung"
-msgstr ""
-
-#: vacancies/templates/vacancies/review_vacancy.html:15
-msgid "Wohnort"
 msgstr ""
 
 #: vacancies/templates/vacancies/review_vacancy.html:17

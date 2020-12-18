@@ -1,7 +1,7 @@
 from django.db.models.signals import m2m_changed, post_delete, post_save, pre_save
 from django.dispatch import receiver
-from .models import Match, Tournament
-from actions.utils import create_action
+from .models import Match, Tournament, Round
+from notify.utils import notify
 from chat.models import ChatRoom
 from django.utils.translation import gettext_lazy as _
 
@@ -12,11 +12,11 @@ def members_changed(instance, action, model, pk_set, **kwargs):
     member = model.objects.get(id=id)
     room = ChatRoom.get_for_target(instance)
     if action == 'post_add':
-        create_action(instance, _('hat ein neuen Mitspieler:'), member)
+        notify(instance.members.all(), member, 'entered', instance)
         room.members.add(member)
 
     elif action == 'post_remove':
-        create_action(member, _('ist kein Mitspieler mehr bei:'), instance)
+        notify(instance.members.all(), member, 'left', instance)
         room.members.remove(member)
 
 
@@ -26,10 +26,12 @@ def members_changed(instance, action, model, pk_set, **kwargs):
     member = model.objects.get(id=id)
     room = ChatRoom.get_for_target(instance)
     if action == 'post_add':
+        notify(instance.members.all(), member, 'entered', instance)
         instance.points[str(member.id)] = 0
         instance.tie_breaks[str(member.id)] = 0
         room.members.add(member)
     elif action == 'post_remove':
+        notify(instance.members.all(), member, 'left', instance)
         del instance.points[str(member.id)]
         del instance.tie_breaks[str(member.id)]
         room.members.remove(member)
@@ -40,6 +42,7 @@ def members_changed(instance, action, model, pk_set, **kwargs):
 @receiver(post_save, sender=Match)
 def match_created(instance, created, **kwargs):
     if created:
+        notify(instance.admin.friends(), instance.admin, 'created', instance)
         instance.members.add(instance.admin)
 
 
@@ -47,11 +50,12 @@ def match_created(instance, created, **kwargs):
 def match_deleted(instance, **kwargs):
     room = ChatRoom.get_for_target(instance)
     room.delete()
-    create_action(instance.admin, _('hat ein Match gelöscht: {instance}').format(instance=instance), instance)
 
 
 @receiver(post_save, sender=Tournament)
-def tournament_created(instance, **kwargs):
+def tournament_created(instance, created, **kwargs):
+    if created:
+        notify(instance.admin.friends(), instance.admin, 'created', instance)
     room = ChatRoom.get_for_target(instance)
     room.members.add(instance.admin)
 
@@ -60,3 +64,9 @@ def tournament_created(instance, **kwargs):
 def tournament_deleted(instance, **kwargs):
     room = ChatRoom.get_for_target(instance)
     room.delete()
+
+
+@receiver(post_save, sender=Round)
+def round_created(instance, created, **kwargs):
+    if created:
+        notify(instance.tournament.members.all(), instance.tournament, 'started_new_round', instance)

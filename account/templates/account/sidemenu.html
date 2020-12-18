@@ -3,46 +3,25 @@
 {% load chat_tags %}
 {% load usergroup_tags %}
 
-<a href="{% url 'account:home' %}" {% active_if request 'home' %}>{% blocktrans %}Homepage{% endblocktrans %}</a>
-<a href="{% url 'activity:list' %}" {% active_if request 'activities' %}>{% blocktrans %}Aktivitäten{% endblocktrans %}</a>
-<a href="{% url 'activity:category_list' %}" {% active_if request 'categories' %}>{% blocktrans %}Kategorien{% endblocktrans %}</a>
-<a href="{% url 'competitions:user_overview' %}" {% active_if request 'competitions' %}>{% blocktrans %}Matches & Turniere{% endblocktrans %}</a>
-<a href="{% url 'usergroups:group_list' %}" {% active_if request 'groups' %}>{% blocktrans %}Gruppen{% endblocktrans %}</a>
-<a href="{% url 'chat:chat_list' %}" {% active_if request 'chat' %}>{% trans "Chats" %}{% new_messages_str user %}</a>
-<a href="{% url 'vacancies:application_list' %}" {% active_if request 'vacancies' %}>{% trans "Bewerbungen & Einladungen" %} {% invitation_number_string user %}</a>
-<a href="{% url 'account:friend_requests_list' %}" {% active_if request 'friends' %}>{% trans "Freunde" %}{% new_request_number_string user %}</a>
-<a href="{% url 'account:password_change' %}" {% active_if request 'password' %}>{% blocktrans %}Passwort ändern{% endblocktrans %}</a>
-<a href="{% url 'account:edit' %}" {% active_if request 'account' %}>{% blocktrans %}Account bearbeiten{% endblocktrans %}</a>
-<a href="{% url 'account:logout' %}">{% blocktrans %}Ausloggen{% endblocktrans %}</a>
-<div class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    Also
-</div>
-<div class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    so
-</div>
-<div class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    komisch
-</div>
-<div class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    ist
-</div>
-<div class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    das
-</div>
-<div class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    tilo: Ja das ist eine sehr lange Nachricht, um zu gucken, was passiert wenn man das macht.
-</div>
-<div class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    Hi!
-</div>
-<div class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    Hi!
+<div class="sidemenu" id="sidemenu">
+    <a href="{% url 'account:home' %}" {% active_if request 'home' %}>{% blocktrans %}Homepage{% endblocktrans %}</a>
+    <a href="{% url 'activity:list' %}" {% active_if request 'activities' %}>{% blocktrans %}Aktivitäten{% endblocktrans %}</a>
+    <a href="{% url 'activity:category_list' %}" {% active_if request 'categories' %}>{% blocktrans %}Kategorien{% endblocktrans %}</a>
+    <a href="{% url 'competitions:user_overview' %}" {% active_if request 'competitions' %}>{% blocktrans %}Matches & Turniere{% endblocktrans %}</a>
+    <a href="{% url 'usergroups:group_list' %}" {% active_if request 'groups' %}>{% blocktrans %}Gruppen{% endblocktrans %}</a>
+    <a href="{% url 'chat:chat_list' %}" {% active_if request 'chat' %}>{% trans "Chats" %}</a>
+    <a href="{% url 'vacancies:application_list' %}" {% active_if request 'vacancies' %}>{% trans "Bewerbungen & Einladungen" %} {% invitation_number_string user %}</a>
+    <a href="{% url 'account:friend_requests_list' %}" {% active_if request 'friends' %}>{% trans "Freunde" %}{% new_request_number_string user %}</a>
+    <a href="{% url 'account:password_change' %}" {% active_if request 'password' %}>{% blocktrans %}Passwort ändern{% endblocktrans %}</a>
+    <a href="{% url 'account:edit' %}" {% active_if request 'account' %}>{% blocktrans %}Account bearbeiten{% endblocktrans %}</a>
+    <a href="{% url 'account:logout' %}">{% blocktrans %}Ausloggen{% endblocktrans %}</a>
+    {% for notification in request.notifications %}
+    {% with notification_id=notification.id %}
+
+        <div class="alert" id="notification-{{ notification_id }}">
+            <a href="{{ notification.get_absolute_url }}" class="notification-url">{{ notification }}</a>
+            <span class="closebtn" onclick="removeNotification({{ notification_id }});">&times;</span>
+        </div>
+    {% endwith %}
+    {% endfor %}
 </div>

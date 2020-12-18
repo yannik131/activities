@@ -1,74 +1,56 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load account_tags %}
 
 {% block title %}{{ target }}-{% trans "Chat" %}{% endblock %}
 
 {% block content %}
-    <h1>{{ target }}-{% trans "Chat" %}</h1>
-    <p><a href="{{ target.get_absolute_url }}">{{ target.verbose }}</a></p>
+<h1>{% trans "Chat" %}: <a href="{{ target.get_absolute_url }}"><span class="chat-room-title">{% call_method room 'title_for' user %}</span></a></h1>
     <p>
         {% trans "Teilnehmer" %}:
         {% for member in room.members.all %}
             <a href="{{ member.get_absolute_url }}">{{ member }}</a>{% if not forloop.last %}, {% endif %}
         {% endfor %}
     </p>
-    <div id="chat">
+    <div class="full-chat" id="full-chat-{{ room.id }}">
+        {% for message in room.log_entries.all %}
+            <div class="full-chat-message">
+                {{ message.author }}, {{ message.created|date:"SHORT_DATETIME_FORMAT" }}: {{ message.text }}
+            </div>
+        {% endfor %}
     </div>
     <div id="chat-input">
-        <input id="chat-message-input" type="text">
-        <input id="chat-message-submit" type="submit" value="{% trans "Senden" %}">
+        <textarea id="chat-message-input" class="chat-textarea" rows="4" cols="30"></textarea>
+        <input id="chat-message-submit" onclick="submitClick();" type="submit" value="{% trans "Senden" %}">
     </div>
 {% endblock %}
 
 {% block domready %}
-    var url = 'ws://' + window.location.host + '/ws/chat/room/' + '{{ room.target_ct.app_label }}/{{ room.target_ct.model }}/{{ room.target_id }}/';
-    var chatSocket = new WebSocket(url);
-    var $chat = $('#chat');
+    var full_chat = document.getElementById('full-chat-{{ room.id }}');
+    var input = document.getElementById('chat-message-input');
+    var submit = document.getElementById('chat-message-submit');
 
-    chatSocket.onmessage = function(e) {
-        var data = JSON.parse(e.data);
-        if(data.type === 'load_log') {
-            $chat.html("")
-            var messages = JSON.parse(data.log)
-            var i;
-            for(i = 0; i < messages.length; i++)
-            {
-                $chat.append('<div class="message">' + messages[i] + '</div>');
-            }
-        }
-        else {
-            var message = data.message;
-            var datetime = new Date(data['datetime']).toLocaleString('de');
-
-            var isMe = data.user === '{{ request.user }}';
-            var name = isMe ? 'Sie' : data.user;
-
-            $chat.append('<div class="message"><b>' + name + ', ' + datetime + ' Uhr:</b> ' + message + '</div>');
-            $chat.scrollTop($chat[0].scrollHeight);
-            playSound();
-        }
-    };
-
-    chatSocket.onclose = function(e) {
-        console.error('Chat socket closed unexpectedly');
-    };
-
-    var $input = $('#chat-message-input');
-    var $submit = $('#chat-message-submit');
-
-    $submit.click(function() {
-        var message = $input.val();
-        if(message) {
-            chatSocket.send(JSON.stringify({'message': message}));
-            $input.val('');
-            $input.focus();
-        }
-    });
-
-    $input.focus();
-    $input.keyup(function(e) {
+    input.focus();
+    input.onkeyup = function(e) {
         if (e.which == 13) {
-            $submit.click();
+            submitClick();
         }
-    });
+    };
+
+    function submitClick() {
+        var message = input.value;
+        if(message) {
+            user_websocket.send(JSON.stringify({'message': message, 'id': {{ room.id }}}));
+            input.value = "";
+            input.focus();
+        }
+    };
+
+    function addMessageToChat(data) {
+        var message = data.message;
+        var isMe = data.username === '{{ request.user.username }}';
+        var name = isMe ? 'Sie' : data.username;
+
+        full_chat.innerHTML += ('<div class="message"><b>' + name + ', ' + format_time_str(data.time) + ' </b> ' + message + '</div>');
+    };
 {% endblock %}

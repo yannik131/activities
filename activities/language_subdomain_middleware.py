@@ -4,6 +4,7 @@ except ImportError:
     MiddlewareMixin = object
 
 from django.utils import translation, timezone
+from notify.models import Notification
 
 
 class LanguageSubdomainMiddleware(MiddlewareMixin):

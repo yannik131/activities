@@ -7,6 +7,12 @@ register = template.Library()
 
 
 @register.simple_tag
+def call_method(obj, function_name, *args):
+    function = getattr(obj, function_name)
+    return function(*args)
+
+
+@register.simple_tag
 def changed_requests(user):
     request_list = list(chain(user.sent_friend_requests.all(), user.received_friend_requests.all()))
     return [r for r in request_list if r.modified > user.latest_request_check]

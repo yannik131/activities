@@ -1,10 +1,12 @@
 import json
 from account.models import User
 from channels.generic.websocket import WebsocketConsumer
+from chat.models import ChatRoom, ChatLogEntry, ChatCheck
+from asgiref.sync import async_to_sync
+from django.utils.timezone import now
 
 
 class NotificationConsumer(WebsocketConsumer):
-
     def connect(self):
         user_id = int(self.scope['url_route']['kwargs']['user_id'])
         self.user = User.objects.get(id=user_id)
@@ -17,9 +19,35 @@ class NotificationConsumer(WebsocketConsumer):
         self.user.save()
 
     def receive(self, text_data=None, bytes_data=None):
-        pass
+        text_data = json.loads(text_data)
+        chat_room_id = text_data['id']
+        chat_room = ChatRoom.objects.get(id=chat_room_id)
+        time = now()
+        timestr = time.isoformat()
+
+        log = ChatLogEntry.objects.create(
+            author=self.user,
+            chat_room=chat_room,
+            text=text_data['message'],
+            created=time)
+
+        for member in chat_room.members.all():
+            if member.channel_name:
+                async_to_sync(self.channel_layer.send)(
+                    member.channel_name,
+                    {
+                        'type': 'chat_message',
+                        'id': chat_room_id,
+                        'message': text_data['message'],
+                        'username': self.user.username,
+                        'time': timestr,
+                        'origin': log.full_origin(self.user),
+                        'url': chat_room.get_absolute_url()
+                    }
+                )
+
+    def chat_message(self, event):
+        self.send(text_data=json.dumps(event))
 
     def notify_notification(self, event):
-        message = event['text']
-
-        self.send(text_data=json.dumps(dict(message=message)))
+        self.send(text_data=json.dumps(event))
