@@ -10,6 +10,7 @@ from django.utils.translation import gettext_lazy as _
 
 class User(AbstractUser):
     profile_text = models.TextField(null=True, blank=True)
+    photo = models.ImageField(upload_to='users/', blank=True, null=True)
     location = models.ForeignKey("Location", on_delete=models.CASCADE, blank=True, related_name='population')
     latest_request_check = models.DateTimeField(default=timezone.now)
     birth_year = models.PositiveSmallIntegerField()
@@ -34,8 +35,11 @@ class User(AbstractUser):
         'applied_for': _('hat sich beworben'),
         'posted_in': _('hat etwas gepostet in'),
         'commented_in': _('hat etwas kommentiert'),
-        'terminated_friendship': _('ist nicht mehr mit Ihnen befreundet'),
-        'invited': _('hat Sie eingeladen')
+        'terminated_friendship': _('hat eure Freundschaft beendet'),
+        'invited': _('hat Sie eingeladen'),
+        'accepted_friend_request': _('hat Ihre Freundschaftsanfrage angenommen'),
+        'declined_friend_request': _('hat Ihre Freundschaftsanfrage abgelehnt'),
+        'declined_application': _('hat Ihre Bewerbung abgelehnt')
     }
 
     def friendships(self):

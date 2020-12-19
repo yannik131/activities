@@ -18,6 +18,8 @@
     text-decoration: none;
     color: gray;
     display: block;
+    border: 1px solid #ae3635;
+    margin: 0px 5px;
 }
 
 .chat-menu a:hover {

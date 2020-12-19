@@ -16,7 +16,7 @@ def create_post(request, app_label, model, id):
     if ct == UserGroup.content_type():
         group = ct.get_object_for_this_type(pk=id)
     if request.method == 'POST':
-        form = PostForm(group, request.POST, request.FILES)
+        form = PostForm(group, data=request.POST, files=request.FILES)
         form.instance.target_ct = ct
         form.instance.target_id = id
         form.instance.author = request.user

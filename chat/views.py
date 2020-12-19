@@ -21,9 +21,7 @@ def chat_room(request, app_label, model, id):
             chat_room.members.add(request.user)
     else:
         return HttpResponseForbidden()
-    check = request.user.last_chat_checks.get(room=chat_room)
-    check.date = now()
-    check.save()
+    request.user.last_chat_checks.get(room=chat_room).update()
     return render(request, 'chat/room.html', dict(target=chat_room.target, room=chat_room))
 
 

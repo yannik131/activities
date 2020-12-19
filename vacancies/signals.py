@@ -23,6 +23,8 @@ def application_saved(instance: Application, **kwargs):
     if previous:
         if previous.status != instance.status:
             ChatRoom.get_for_target(instance).delete()
+            if instance.status == 'declined':
+                notify(instance.user, instance.vacancy.target.admin, 'declined_application', instance, url=instance.vacancy.target.get_absolute_url())
 
 
 @receiver(post_delete, sender=Application)

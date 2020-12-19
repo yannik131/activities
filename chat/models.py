@@ -3,6 +3,7 @@ from account.models import User, Friendship
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.urls import reverse
+from django.utils.timezone import now
 
 
 class ChatCheck(models.Model):
@@ -12,6 +13,10 @@ class ChatCheck(models.Model):
 
     def new_messages(self):
         return self.room.log_entries.filter(created__gt=self.date).exclude(author=self.user)
+
+    def update(self):
+        self.date = now()
+        self.save()
 
 
 class ChatRoom(models.Model):

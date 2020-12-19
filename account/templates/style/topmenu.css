@@ -13,23 +13,37 @@
     overflow: hidden;
 }
 
-.topmenu .envelope {
-    float: left;
-}
-
 .topmenu .logo {
-    width: 33%;
+    width: 20%;
     float: left;
 }
 
 .topmenu .search {
-    width: 34%;
+    width: 25%;
     float: left;
 }
 
 .topmenu .user {
-    width: 33%;
+    width: 45%;
     float: right;
+    overflow: hidden;
+}
+
+.topmenu .user .envelope {
+    float: left;
+}
+
+.topmenu .user .profile {
+    float: right;
+}
+
+#profile-link {
+    margin-left: 10px;
+    float: right;
+}
+
+#profile-image {
+    float: left;
 }
 
 .topmenu a {

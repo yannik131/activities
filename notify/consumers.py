@@ -15,13 +15,17 @@ class NotificationConsumer(WebsocketConsumer):
         self.accept()
 
     def disconnect(self, code):
-        self.user.channel_name = None
-        self.user.save()
+        user = User.objects.get(id=self.user.id)
+        user.channel_name = None
+        user.save()
 
     def receive(self, text_data=None, bytes_data=None):
         text_data = json.loads(text_data)
         chat_room_id = text_data['id']
         chat_room = ChatRoom.objects.get(id=chat_room_id)
+        if 'update_check' in text_data:
+            self.user.last_chat_checks.get(room=chat_room).update()
+            return
         time = now()
         timestr = time.isoformat()
 

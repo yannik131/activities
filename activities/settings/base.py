@@ -16,7 +16,7 @@ export DJANGO_SETTINGS_MODULE=activities.settings.local_linux
 Add this line to .bashrc or .bash_profile to have it executed automatically upon shell launch.
 There is also a flag: ./manage.py command --settings=activities.settings.local_linux
 In case of pkey integrity error, run
-python manage.py sqlsequencereset app_name
+python3 manage.py sqlsequencereset app_name
 copy the result into psql and run it.
 """
 
@@ -68,7 +68,8 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'django_extensions',
     'channels',
-    'parler'
+    'parler',
+    'easy_thumbnails'
 ]
 
 MIDDLEWARE = [

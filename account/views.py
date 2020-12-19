@@ -1,15 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm
 from .models import Location, FriendRequest, User, Friendship
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.utils import timezone
 from .templatetags import account_tags
-from django.db.models import Q
-from usergroups.models import UserGroup
-from activity.models import Activity, Category
+from notify.utils import notify
 from wall.models import Post
 from shared import shared
+from notify.models import Notification
+from django.views.decorators.cache import patch_cache_control, never_cache
 
 
 @login_required
@@ -80,19 +80,17 @@ def send_custom_friend_request(request):
 
 @login_required
 def accept_request(request, id):
-    friend_request = FriendRequest.objects.get(requested_user=request.user, id=id)
-
+    friend_request = get_object_or_404(FriendRequest, requested_user=request.user, id=id)
     _, created = Friendship.objects.get_or_create(from_user=friend_request.requesting_user, to_user=friend_request.requested_user)
     friend_request.delete()
-    if not created:
-        return HttpResponseForbidden()
     return HttpResponseRedirect(request.build_absolute_uri('/account/friend_requests_list/'))
 
 
 @login_required
 def decline_request(request, id):
-    friend_request = FriendRequest.objects.get(requested_user=request.user, id=id)
+    friend_request = get_object_or_404(FriendRequest, requested_user=request.user, id=id)
     friend_request.set_status('declined')
+    notify(friend_request.requesting_user, request.user, 'declined_friend_request', url=friend_request.get_absolute_url())
     return HttpResponseRedirect(request.build_absolute_uri('/account/friend_requests_list/'))
 
 
@@ -122,6 +120,11 @@ def destroy_friendship(request, id):
     friendship = user.get_friendship_for(request.user)
     if friendship:
         friendship.delete()
+    if request.user == friendship.to_user:
+        recipient = friendship.from_user
+    else:
+        recipient = friendship.to_user
+    notify(recipient, request.user, 'terminated_friendship')
     return render(request, 'account/destroy_friendship.html', {'target_user': user})
 
 
@@ -144,7 +147,7 @@ def register(request):
 @login_required
 def edit(request):
     if request.method == 'POST':
-        user_form = UserEditForm(instance=request.user, data=request.POST)
+        user_form = UserEditForm(instance=request.user, data=request.POST, files=request.FILES)
         if user_form.is_valid():
             user_form.save()
             return HttpResponseRedirect(request.build_absolute_uri('/account/'))

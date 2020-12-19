@@ -47,7 +47,7 @@ class Vacancy(models.Model):
         if self.sex:
             msg += _(', {sex}').format(sex=self.get_sex_display())
         else:
-            msg += _(' (m/w)')
+            msg += str(_(' (m/w)'))
         return msg
 
     def verbose(self):

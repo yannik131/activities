@@ -4,6 +4,7 @@
     max-width: 30%;
     font-family: "Courier New", "Lucida Console", monospace;
     overflow-y: auto;
+    margin-right: 20px;
 }
 
 .sidemenu a {
@@ -18,7 +19,29 @@
     color: white;
 }
 
+.alert {
+    font-family: "Courier New", "Lucida Console", monospace;
+    background-color: #0087f7;
+    margin-bottom: 10px;
+    position: relative;
+}
+
 .sidemenu a.notification-url {
+    color: black;
+    width: 90%;
+    position
+}
+
+.closebtn {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+}
+
+.closebtn:hover {
     color: black;
 }
 
@@ -29,27 +52,4 @@
 .sidemenu a.active {
     background-color: #565612;
     color: white;
-}
-
-.alert {
-    font-family: "Courier New", "Lucida Console", monospace;
-    padding: 20px;
-    background-color: #0087f7;
-    color: white;
-    margin-bottom: 10px;
-}
-
-.closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.closebtn:hover {
-    color: black;
 }

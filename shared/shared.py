@@ -3,6 +3,7 @@ from geopy.geocoders import Nominatim
 from django.forms import ValidationError
 from account.models import Location
 from django.utils.translation import gettext_lazy as _
+from django.utils.timezone import now
 
 
 def get_location(address):
@@ -53,6 +54,14 @@ def slashify(path):
     if not path.endswith('/'):
         path = path + '/'
     return path
+
+
+def log(*args):
+    with open('log.log', 'a') as file:
+        file.write(now().strftime("%Y-%m-%d %H:%M:%S") + ": ")
+        for arg in args:
+            file.write(str(arg) + " ")
+        file.write("\n")
 
 
 GERMAN_DATE_FMT = '%d.%m.%Y %H:%M'

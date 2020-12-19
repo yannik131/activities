@@ -11,9 +11,9 @@ def appointment_confirmed(instance: Appointment, action, pk_set, **kwargs):
     id = next(iter(pk_set))
     user = User.objects.get(id=id)
     if action == 'post_add':
-        notify(instance.group.members.all().exclude(user), user, 'confirmed', instance)
+        notify(instance.group.members.all().exclude(id=user.id), user, 'confirmed', instance)
     elif action == 'post_remove':
-        notify(instance.group.members.all().exclude(user), user, 'declined', instance)
+        notify(instance.group.members.all().exclude(id=user.id), user, 'declined', instance)
 
 
 @receiver(m2m_changed, sender=Appointment.cancellations.through)
@@ -21,13 +21,13 @@ def appointment_cancelled(instance: Appointment, action, pk_set, **kwargs):
     id = next(iter(pk_set))
     user = User.objects.get(id=id)
     if action == 'post_add':
-        notify(instance.group.members.all().exclude(user), user, 'declined', instance)
+        notify(instance.group.members.all().exclude(id=user.id), user, 'declined', instance)
 
 
 @receiver(post_save, sender=Appointment)
 def appointment_created(instance: Appointment, created, **kwargs):
     if created:
-        notify(instance.group.members.all().exclude(instance.group.admin), instance.group, 'has_new_appointment', instance)
+        notify(instance.group.members.all().exclude(id=instance.group.admin.id), instance.group, 'has_new_appointment', instance)
 
 
 @receiver(pre_save, sender=Appointment)

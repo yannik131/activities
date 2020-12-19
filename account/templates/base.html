@@ -30,16 +30,18 @@
         <div class="user">
             <div class="envelope">
                 <a href="javascript:void(0);" onclick="activateMenu('chat-menu');">
-                    <img src="{% static 'icons/envelope.png' %}">
-                    <sup>
-                        <strong>
-                            <span style="color: orange;" id="messages-count">{{ latest_messages|length }}
-                            </span>
-                        </strong>
-                    </sup>
+                    <img src="{% static 'icons/envelope.png' %}"><sup><strong><span style="color: orange;" id="messages-count">{{ latest_messages|length }}</span></strong></sup>
                 </a>
             </div>
-            <a href="{% url 'account:edit' %}">{{ user }}</a>
+            <div class="profile">
+            {% if user.photo %}
+                {% load thumbnail %}
+                <a href="{% url 'account:edit' %}" id="profile-image">
+                    <img src="{% thumbnail user.photo 32x0 %}" style="border-radius: 50%;">
+                </a>
+            {% endif %}
+            <a href="{% url 'account:edit' %}" id="profile-link">{{ user }}</a>
+            </div>
         </div>
     </div>
 

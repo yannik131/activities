@@ -35,12 +35,13 @@ class UserRegistrationForm(forms.ModelForm):
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
-        fields = ('first_name', 'last_name', 'email', 'username', 'sex', 'birth_year', 'profile_text')
+        fields = ('first_name', 'last_name', 'email', 'username', 'sex', 'birth_year', 'profile_text', 'photo')
 
         labels = {
             'sex': _('Geschlecht'),
             'birth_year': _('Geburtsjahr'),
-            'profile_text': _('Profiltext')
+            'profile_text': _('Profiltext'),
+            'photo': _('Profilbild')
         }
 
 

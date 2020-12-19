@@ -10,6 +10,7 @@
         <p>{{ viewed_user.profile_text|linebreaks }}</p>
     {% endif %}
     {% if friendship %}
+        {% if viewed_user.photo %}<img src="{{ viewed_user.photo.url }}">{% endif %}
         <p><a href="{% url 'chat:chat_room' 'account' 'friendship' friendship.id %}">{% trans "Zum Chat" %}...</a></p>
         <p>{% trans "Voller Name" %}: {{ viewed_user.get_full_name }}</p>
         <p>{{ viewed_user.username }} {% trans "ist Mitglied folgender Aktivitäten" %}:</p>

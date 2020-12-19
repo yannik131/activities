@@ -17,7 +17,7 @@ def members_changed(instance, action, model, pk_set, **kwargs):
         for application in vacancy.applications.all():
             rooms.append(ChatRoom.get_for_target(application))
     if action == 'post_add':
-        notify(instance.members.all(), instance, 'has_new_member', member)
+        notify(instance.members.all().exclude(id=member.id), instance, 'has_new_member', member)
         for room in rooms:
             room.members.add(member)
 
@@ -38,5 +38,5 @@ def group_changed(instance, **kwargs):
     previous: UserGroup = UserGroup.objects.filter(id=instance.id).first()
     if previous:
         if previous.description != instance.description:
-            notify(instance.members.all(), instance, 'updated_description')
+            notify(instance.members.all().exclude(id=instance.admin.id), instance, 'updated_description')
 
