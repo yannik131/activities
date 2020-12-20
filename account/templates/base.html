@@ -26,7 +26,7 @@
                 &#9776;<sup><strong><span style="color: orange;" id="notifications-count">{% with count=request.notifications.count %}{% if count > 0 %}{{ count }}{% endif %}{% endwith %}</span></strong></sup>
             </a>
         </div>
-        <div class="search">Suchen</div>
+        <div class="search"><a href="{% url 'account:home' %}"> </a></div>
         <div class="user">
             <div class="envelope">
                 <a href="javascript:void(0);" onclick="activateMenu('chat-menu');">
