@@ -7,42 +7,57 @@
     margin-right: 20px;
 }
 
+.sidemenu .alert {
+    font-family: "Courier New", "Lucida Console", monospace;
+    background-color: #0087f7;
+    margin-bottom: 10px;
+    float: left;
+    display: flex;
+    position: relative;
+}
+
+.sidemenu .alert .notification-url {
+    background-color: #0087f7;
+    text-decoration: none;
+    color: black;
+    word-wrap: break-word;
+    width: 90%;
+    display: block;
+    float: left;
+}
+
+.sidemenu .alert .notification-url:hover {
+    color: white;
+}
+
+.sidemenu .alert .closebtn-container {
+    display: block;
+    float: right;
+    text-align: center;
+    border-left: 1px solid black;
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+.sidemenu .alert .closebtn-container .closebtn {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.sidemenu .alert .closebtn-container:hover {
+    background-color: gray;
+    color: white;
+    transition: 0.3s;
+}
+
 .sidemenu a {
     display: block;
     text-decoration: none;
     padding: 8px 0;
     color: #ababab;
-}
-
-.sidemenu a.notification-url:hover {
-    background-color: #0087f7;
-    color: white;
-}
-
-.alert {
-    font-family: "Courier New", "Lucida Console", monospace;
-    background-color: #0087f7;
-    margin-bottom: 10px;
-    position: relative;
-}
-
-.sidemenu a.notification-url {
-    color: black;
-    width: 90%;
-    position
-}
-
-.closebtn {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-
-}
-
-.closebtn:hover {
-    color: black;
 }
 
 .sidemenu a:hover {
@@ -53,3 +68,5 @@
     background-color: #565612;
     color: white;
 }
+
+

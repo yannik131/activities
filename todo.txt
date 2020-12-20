@@ -1,7 +1,3 @@
-profilbilder
-191, 170 thumbnails
-search engine friendly urls
+search engine friendly url: (request, id) syntax ändern
 bilderdarstellung der aktivitäten/kategorien wie bei facebook
 suche
-alerts in separatem fenster? ist aufm handy etwas unschön
-profilbild neben oben rechts nutzernamen mit logout

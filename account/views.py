@@ -28,8 +28,8 @@ def user_post_list(request):
 
 
 @login_required
-def detail(request, id):
-    user = User.objects.get(id=id)
+def detail(request, username):
+    user = User.objects.get(username=username)
     if request.user == user:
         return HttpResponseRedirect(request.build_absolute_uri('/account/edit/'))
     requested = False
@@ -150,7 +150,6 @@ def edit(request):
         user_form = UserEditForm(instance=request.user, data=request.POST, files=request.FILES)
         if user_form.is_valid():
             user_form.save()
-            return HttpResponseRedirect(request.build_absolute_uri('/account/'))
     else:
         user_form = UserEditForm(instance=request.user)
     return render(request, 'account/edit.html', {'user_form': user_form, 'location': request.user.location.as_dict()})

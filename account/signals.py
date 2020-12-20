@@ -3,23 +3,7 @@ from django.db.models.signals import m2m_changed, post_save, post_delete, pre_sa
 from .models import User, Friendship, FriendRequest
 from notify.utils import notify
 from chat.models import ChatRoom
-from django.utils.translation import gettext_lazy as _
-from shared.shared import log
 
-
-@receiver(pre_save, sender=User)
-def user_saved(instance, **kwargs):
-    previous = User.objects.get(id=instance.id)
-    log('pre_save:')
-    log(previous.profile_text, "->", instance.profile_text)
-    log(previous.channel_name, '->', instance.channel_name)
-    log()
-
-@receiver(post_save, sender=User)
-def user_saved2(instance, **kwargs):
-    log('post_save')
-    log("Now:", instance.profile_text, instance.channel_name)
-    log()
 
 @receiver(post_save, sender=FriendRequest)
 def friend_request_saved(instance, created, **kwargs):

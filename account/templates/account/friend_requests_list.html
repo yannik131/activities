@@ -14,7 +14,7 @@
         </tr>
         {% for request in received_friend_requests %}
             <tr>
-                <td><a href="{% url 'account:detail' request.requesting_user.id %}">{{ request.requesting_user.username }}</a></td>
+                <td><a href="{% url 'account:detail' request.requesting_user.username %}">{{ request.requesting_user.username }}</a></td>
                 <td>{{ request.request_message }}</td>
                 <td>
                     {% if request in changed_requests %}
@@ -44,7 +44,7 @@
         </tr>
         {% for request in sent_friend_requests %}
             <tr>
-                <td><a href="{% url 'account:detail' request.requested_user.id %}">{{ request.requested_user.username }}</a></td>
+                <td><a href="{% url 'account:detail' request.requested_user.username %}">{{ request.requested_user.username }}</a></td>
                 <td>{{ request.request_message }}</td>
                 <td>
                     {% if request in changed_requests %}

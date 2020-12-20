@@ -20,7 +20,9 @@
 
         <div class="alert" id="notification-{{ notification_id }}">
             <a href="{{ notification.get_absolute_url }}" class="notification-url">{{ notification }}</a>
-            <span class="closebtn" onclick="removeNotification({{ notification_id }});">&times;</span>
+            <div class="closebtn-container" onclick="removeNotification({{ notification_id }});">
+                <div class="closebtn">&times;</div>
+            </div>
         </div>
     {% endwith %}
     {% endfor %}
