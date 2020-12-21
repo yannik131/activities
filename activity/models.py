@@ -11,7 +11,7 @@ class Activity(TranslatableModel):
         name=models.CharField(max_length=30, unique=True, db_index=True),
         description=models.CharField(max_length=150, blank=True)
     )
-    image = models.ImageField(upload_to='images/%Y/%m/%d/', blank=True, null=True)
+    image = models.ImageField(upload_to='images/activities/', blank=True, null=True)
     members = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='activities', blank=True)
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, related_name='activities', null=True, blank=True)
     TYPE_CHOICES = (
@@ -20,6 +20,9 @@ class Activity(TranslatableModel):
         ('consumption', _('konsumorientiert'))
     )
     type = models.CharField(max_length=20, choices=TYPE_CHOICES, null=True)
+
+    class Meta:
+        verbose_name_plural = 'activities'
 
     def __str__(self):
         return self.name
@@ -40,7 +43,10 @@ class Category(TranslatableModel):
         name=models.CharField(max_length=30, unique=True, db_index=True),
         description=models.CharField(max_length=150, blank=True)
     )
-    image = models.ImageField(upload_to='images/%Y/%m/%d/', blank=True, null=True)
+    image = models.ImageField(upload_to='images/categories/', blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = 'categories'
 
     def __str__(self):
         return self.name
