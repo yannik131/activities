@@ -14,7 +14,7 @@
             <p>{% trans "Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der Account möglicherweise gesperrt." %}
             </p>
         {% else %}
-        <p><strong>Willkommen bei myactivities.net! :) <a href="{% url 'account:about' %}">Was ist das hier?</a></strong></p>
+        <p><strong>{% trans "Willkommen bei myactivities.net! :)" %} <a href="{% url 'account:about' %}">{% trans "Was ist das hier?" %}</a></strong></p>
             <p>{% trans "Bitte nutzen Sie das folgende Formular zum einloggen:" %}</p>
             <form method="post" action="{% url 'account:login' %}">
                 {{ form.as_p }}

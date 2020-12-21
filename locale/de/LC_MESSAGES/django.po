@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-21 18:51+0000\n"
+"POT-Creation-Date: 2020-12-21 19:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -711,6 +711,14 @@ msgstr ""
 msgid ""
 "Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der "
 "Account möglicherweise gesperrt."
+msgstr ""
+
+#: account/templates/registration/login.html:17
+msgid "Willkommen bei myactivities.net! :)"
+msgstr ""
+
+#: account/templates/registration/login.html:17
+msgid "Was ist das hier?"
 msgstr ""
 
 #: account/templates/registration/login.html:18
