@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-17 13:02+0000\n"
-"PO-Revision-Date: 2020-12-17 14:06+0100\n"
+"POT-Creation-Date: 2020-12-21 18:51+0000\n"
+"PO-Revision-Date: 2020-12-21 19:58+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: account/forms.py:9
 msgid "Passwort"
@@ -55,17 +55,21 @@ msgstr "Passwords don't match!"
 msgid "Profiltext"
 msgstr "Profile text"
 
-#: account/forms.py:48 vacancies/templates/vacancies/review_vacancy.html:15
+#: account/forms.py:44
+msgid "Profilbild"
+msgstr "Profile picture"
+
+#: account/forms.py:49 vacancies/templates/vacancies/review_vacancy.html:15
 msgid "Wohnort"
 msgstr "Location"
 
-#: account/forms.py:48
+#: account/forms.py:49
 msgid ""
 "Notwendig, um in Ihrer Nähe nach Leuten suchen zu können. Nur für Ihre "
 "Freunde sichtbar."
 msgstr "Required to look for people in your area. Only visible to friends."
 
-#: account/forms.py:57 account/templates/account/friend_requests_list.html:11
+#: account/forms.py:58 account/templates/account/friend_requests_list.html:11
 #: account/templates/account/friend_requests_list.html:41
 #: usergroups/templates/usergroups/invitation_list.html:7 vacancies/forms.py:54
 #: vacancies/forms.py:98 vacancies/templates/vacancies/application_list.html:34
@@ -73,7 +77,7 @@ msgstr "Required to look for people in your area. Only visible to friends."
 msgid "Nachricht"
 msgstr "Message"
 
-#: account/forms.py:63
+#: account/forms.py:64
 #, python-brace-format
 msgid ""
 "Die Nachricht darf nicht länger als 150 Zeichen sein, ist aber {l} Zeichen "
@@ -82,56 +86,108 @@ msgstr ""
 "The message can't be longer than 150 characters. It's {l} characters long. "
 "Fix this."
 
-#: account/forms.py:68 account/templates/account/friend_requests_list.html:10
+#: account/forms.py:69 account/templates/account/friend_requests_list.html:10
 #: account/templates/account/friend_requests_list.html:40
 #: activity/templates/activity/detail.html:27
 msgid "Nutzername"
 msgstr "User name"
 
-#: account/forms.py:73
+#: account/forms.py:74
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr "There is no user with the user name {name}"
 
-#: account/models.py:26
+#: account/models.py:27
 msgid "hat erstellt"
 msgstr "created"
 
-#: account/models.py:110
-msgid "Ausstehend"
-msgstr "Pending"
-
-#: account/models.py:111 vacancies/templates/vacancies/vacancy_list.html:29
-msgid "Angenommen"
-msgstr "Accepted"
-
-#: account/models.py:112 vacancies/templates/vacancies/vacancy_list.html:31
-msgid "Abgelehnt"
-msgstr "Declined"
-
-#: account/models.py:147 vacancies/models.py:29
-msgid "Land"
-msgstr "Country"
-
-#: account/models.py:148 vacancies/models.py:30
-msgid "Bundesland"
-msgstr "State"
-
-#: account/models.py:149 vacancies/models.py:31
-msgid "Landkreis"
-msgstr "County"
-
-#: account/models.py:150 vacancies/models.py:32
-msgid "Stadt"
-msgstr "City"
-
-#: account/signals.py:12
+#: account/models.py:28
 msgid "ist jetzt befreundet mit"
 msgstr "is now friends with"
 
-#: account/signals.py:20
+#: account/models.py:29
 msgid "ist nicht mehr befreundet mit"
 msgstr "isn't friends any more with"
+
+#: account/models.py:30
+msgid "hat Ihnen eine Freundschaftsanfrage geschickt"
+msgstr "sent you a friend request"
+
+#: account/models.py:31
+msgid "ist beigetreten"
+msgstr "entered"
+
+#: account/models.py:32
+msgid "hat verlassen"
+msgstr "left"
+
+#: account/models.py:33
+msgid "hat zugesagt"
+msgstr "confirmed"
+
+#: account/models.py:34
+msgid "hat abgesagt"
+msgstr "declined"
+
+#: account/models.py:35
+msgid "hat sich beworben"
+msgstr "applied for"
+
+#: account/models.py:36
+msgid "hat etwas gepostet in"
+msgstr "posted something in"
+
+#: account/models.py:37
+msgid "hat etwas kommentiert"
+msgstr "commented something"
+
+#: account/models.py:38
+msgid "hat eure Freundschaft beendet"
+msgstr "terminated your friendship"
+
+#: account/models.py:39
+msgid "hat Sie eingeladen"
+msgstr "invited you"
+
+#: account/models.py:40
+msgid "hat Ihre Freundschaftsanfrage angenommen"
+msgstr "accepted your friend request"
+
+#: account/models.py:41
+msgid "hat Ihre Freundschaftsanfrage abgelehnt"
+msgstr "declined your friend request"
+
+#: account/models.py:42
+msgid "hat Ihre Bewerbung abgelehnt"
+msgstr "rejected your friend request"
+
+#: account/models.py:140
+msgid "Ausstehend"
+msgstr "Pending"
+
+#: account/models.py:141 vacancies/templates/vacancies/vacancy_list.html:29
+msgid "Angenommen"
+msgstr "Accepted"
+
+#: account/models.py:142 vacancies/templates/vacancies/vacancy_list.html:31
+msgid "Abgelehnt"
+msgstr "Declined"
+
+#: account/models.py:186 vacancies/models.py:29
+msgid "Land"
+msgstr "Country"
+
+#: account/models.py:187 vacancies/models.py:30
+msgid "Bundesland"
+msgstr "State"
+
+#: account/models.py:188 vacancies/models.py:31
+msgid "Landkreis"
+msgstr "County"
+
+#: account/models.py:189 vacancies/models.py:32
+msgid "Stadt"
+msgstr "City"
 
 #: account/templates/account/about.html:4
 msgid "Info"
@@ -262,21 +318,21 @@ msgstr "Profile of %(username)s"
 msgid "Profil von"
 msgstr "Profile of"
 
-#: account/templates/account/detail.html:13
+#: account/templates/account/detail.html:14
 #: usergroups/templates/usergroups/group_detail.html:12
 #: vacancies/templates/vacancies/review_vacancy.html:29
 msgid "Zum Chat"
 msgstr "To the chat"
 
-#: account/templates/account/detail.html:14
+#: account/templates/account/detail.html:15
 msgid "Voller Name"
 msgstr "Full name"
 
-#: account/templates/account/detail.html:15
+#: account/templates/account/detail.html:16
 msgid "ist Mitglied folgender Aktivitäten"
 msgstr "is a member of the following activities"
 
-#: account/templates/account/detail.html:17
+#: account/templates/account/detail.html:18
 #: activity/templates/activity/activity_list.html:15
 #: activity/templates/activity/category_list.html:11 scheduling/forms.py:17
 #: usergroups/forms.py:21
@@ -285,7 +341,7 @@ msgstr "is a member of the following activities"
 msgid "Name"
 msgstr "Name"
 
-#: account/templates/account/detail.html:17 usergroups/forms.py:22
+#: account/templates/account/detail.html:18 usergroups/forms.py:22
 #: usergroups/templates/usergroups/category_group_list.html:14
 #: usergroups/templates/usergroups/group_detail.html:16
 #: usergroups/templates/usergroups/user_group_list.html:11
@@ -294,32 +350,28 @@ msgstr "Name"
 msgid "Beschreibung"
 msgstr "Description"
 
-#: account/templates/account/detail.html:25
+#: account/templates/account/detail.html:26
 msgid "Adresse"
 msgstr "Address"
 
-#: account/templates/account/detail.html:26
-msgid "Neueste Aktivitäten"
-msgstr "Newest activities"
-
-#: account/templates/account/detail.html:28
+#: account/templates/account/detail.html:27
 msgid "Sie sind mit"
 msgstr "You are friends with"
 
-#: account/templates/account/detail.html:28
+#: account/templates/account/detail.html:27
 msgid "befreundet. Falls Sie das ändern möchten, können Sie die Freundschaft"
 msgstr ". If you want to change that,"
 
-#: account/templates/account/detail.html:28
+#: account/templates/account/detail.html:27
 msgid "auch vernichten"
 msgstr "click here"
 
-#: account/templates/account/detail.html:30
+#: account/templates/account/detail.html:29
 #, python-format
-msgid "Sie sind nicht mit %(user)s befreundet "
-msgstr "You aren't friends with %(user)s."
+msgid "Sie sind nicht mit %(user)s befreundet"
+msgstr "You aren't friends with %(user)s"
 
-#: account/templates/account/detail.html:32
+#: account/templates/account/detail.html:31
 msgid ""
 "Sie haben allerdings bereits eine Freundschaftsanfrage gesendet. Diese wurde "
 "entweder abgelehnt oder die Antwort steht noch aus"
@@ -327,15 +379,15 @@ msgstr ""
 "You've already sent a friend request. It was either declined or is still "
 "pending."
 
-#: account/templates/account/detail.html:34
+#: account/templates/account/detail.html:33
 msgid "Falls Sie das ändern möchten, schicken Sie ihm doch eine"
 msgstr "If you want to change that, sent a"
 
-#: account/templates/account/detail.html:34
+#: account/templates/account/detail.html:33
 msgid "Freundschaftsanfrage"
 msgstr "friend request"
 
-#: account/templates/account/detail.html:37
+#: account/templates/account/detail.html:36
 #: usergroups/templates/usergroups/group_detail.html:91
 msgid "Posts"
 msgstr "Posts"
@@ -453,7 +505,7 @@ msgstr "Send a request to a user..."
 
 #: account/templates/account/friend_requests_list.html:64
 #: account/templates/account/sidemenu.html:14
-#: chat/templates/chat/chat_list.html:15
+#: chat/templates/chat/chat_list.html:18
 msgid "Freunde"
 msgstr "Friends"
 
@@ -477,14 +529,6 @@ msgstr "You are currently a member of the following activities:"
 #: account/templates/account/home.html:18
 msgid "Sie sind zurzeit kein Mitglied einer Aktivität."
 msgstr "You aren't a member of an activity. Why don't you join one? :)"
-
-#: account/templates/account/home.html:20
-msgid "Neueste Aktivitäten Ihrer Freunde und Gruppen:"
-msgstr "News from your friends and groups:"
-
-#: account/templates/account/home.html:24
-msgid "... und auf aktivitaeten.de:"
-msgstr "... and on myactivities.net:"
 
 #: account/templates/account/pagination.html:6
 msgid "Vorige"
@@ -631,7 +675,7 @@ msgid "Matches & Turniere"
 msgstr "Matches & Tournaments"
 
 #: account/templates/account/sidemenu.html:11
-#: chat/templates/chat/chat_list.html:9
+#: chat/templates/chat/chat_list.html:12
 #: usergroups/templates/usergroups/category_group_list.html:4
 #: usergroups/templates/usergroups/category_group_list.html:7
 msgid "Gruppen"
@@ -808,27 +852,18 @@ msgid ""
 msgstr "Enter your email address to reset your password."
 
 #: account/templates/registration/password_reset_form.html:12
-#: chat/templates/chat/room.html:19
+#: chat/templates/chat/room.html:24
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
 #: wall/templates/wall/post/create_comment.html:11
 #: wall/templates/wall/post/create_post.html:13
 msgid "Senden"
 msgstr "Send"
 
-#: actions/templates/actions/detail.html:3
-#, python-format
-msgid "vor %(v0)s"
-msgstr "%(v0)s ago"
-
-#: actions/templates/actions/forloop.html:5
-msgid "Noch keine Neuigkeiten"
-msgstr "No news yet"
-
-#: activities/settings/base.py:140
+#: activities/settings/base.py:143
 msgid "Deutsch"
 msgstr "German"
 
-#: activities/settings/base.py:141
+#: activities/settings/base.py:144
 msgid "Englisch"
 msgstr "English"
 
@@ -844,27 +879,15 @@ msgstr "creative"
 msgid "konsumorientiert"
 msgstr "consumption"
 
-#: activity/models.py:28
+#: activity/models.py:31
 #, python-brace-format
 msgid "Aktivität: {name}"
 msgstr "Activity: {name}"
 
-#: activity/models.py:49
+#: activity/models.py:55
 #, python-brace-format
 msgid "Kategorie: {name}"
 msgstr "Category: {name}"
-
-#: activity/signals.py:12 activity/signals.py:28
-msgid "wurde erstellt."
-msgstr "was created"
-
-#: activity/signals.py:20
-msgid "ist einer Aktivität beigetreten:"
-msgstr "joined an activity:"
-
-#: activity/signals.py:22
-msgid "hat eine Aktivität verlassen:"
-msgstr "Left an activity:"
 
 #: activity/templates/activity/activity_list.html:4
 #: activity/templates/activity/activity_list.html:7
@@ -947,22 +970,22 @@ msgstr "join"
 msgid "Beiträge"
 msgstr "Posts"
 
-#: chat/templates/chat/chat_list.html:5 chat/templates/chat/chat_list.html:8
+#: chat/templates/chat/chat_list.html:7 chat/templates/chat/chat_list.html:11
 msgid "Chat-Liste"
 msgstr "Chat-list"
 
-#: chat/templates/chat/chat_list.html:21
+#: chat/templates/chat/chat_list.html:24
 #: competitions/templates/competitions/user_overview.html:8
 msgid "Matches"
 msgstr "Matches"
 
-#: chat/templates/chat/chat_list.html:27
+#: chat/templates/chat/chat_list.html:30
 #: competitions/templates/competitions/overview.html:9
 #: competitions/templates/competitions/user_overview.html:14
 msgid "Turniere"
 msgstr "Tournaments"
 
-#: chat/templates/chat/room.html:4 chat/templates/chat/room.html:7
+#: chat/templates/chat/room.html:5 chat/templates/chat/room.html:8
 #: competitions/templates/competitions/tournament_detail.html:11
 #: competitions/templates/competitions/tournament_detail.html:14
 #: vacancies/templates/vacancies/review_vacancy.html:18
@@ -974,7 +997,7 @@ msgstr "Chat"
 msgid "Teilnehmer"
 msgstr "Members"
 
-#: chat/views.py:17
+#: chat/views.py:18
 msgid "Diesen Chat-Room gibt es nicht mehr."
 msgstr "This chat room doesn't exist any more."
 
@@ -1039,23 +1062,18 @@ msgstr "The application deadline must end before the tournament starts."
 msgid "Match am {start}"
 msgstr "Match on {start}"
 
-#: competitions/models.py:79
+#: competitions/models.py:73
+msgid "hat eine neue Runde"
+msgstr "has a new round"
+
+#: competitions/models.py:83
 #, python-brace-format
 msgid "{act}-Turnier am {stamp}"
 msgstr "{act}-tournament on {stamp}"
 
-#: competitions/signals.py:15
-msgid "hat ein neuen Mitspieler:"
-msgstr "has a new player:"
-
-#: competitions/signals.py:19
-msgid "ist kein Mitspieler mehr bei:"
-msgstr "isn't a player any more in:"
-
-#: competitions/signals.py:50
-#, python-brace-format
-msgid "hat ein Match gelöscht: {instance}"
-msgstr "deleted a match: {instance}"
+#: competitions/models.py:133
+msgid "Runde "
+msgstr "Round "
 
 #: competitions/templates/competitions/change_score.html:4
 msgid "Ergebnisse eintragen"
@@ -1358,41 +1376,6 @@ msgstr "Date & time"
 msgid "Treffen am {start}"
 msgstr "Appointment on {start}"
 
-#: scheduling/signals.py:14
-#, python-brace-format
-msgid ": Jemand hat für den {stamp} zugesagt:"
-msgstr ": Someone confirmed the appointment on {stamp}:"
-
-#: scheduling/signals.py:16
-#, python-brace-format
-msgid ": Jemand hat für den {stamp} seine Zusage zurückgezogen:"
-msgstr ": Someone cancelled his conformation for the appointment on {stamp}:"
-
-#: scheduling/signals.py:24
-#, python-brace-format
-msgid ": Jemand hat für den {stamp} abgesagt:"
-msgstr ": Someone cancelled for the appointment on {stamp}:"
-
-#: scheduling/signals.py:26
-#, python-brace-format
-msgid ": Jemand hat für den {stamp} seine Absage zurückgezogen:"
-msgstr ": Someone cancelled his cancellation for the appointment on {stamp}:"
-
-#: scheduling/signals.py:32
-#, python-brace-format
-msgid "hat eine neue Terminabstimmung für den {stamp}"
-msgstr "new appointment on {stamp}"
-
-#: scheduling/signals.py:40
-#, python-brace-format
-msgid ": Der Termin am {stamp1} wurde auf den {stamp2} verlegt."
-msgstr ": Appointment on {stamp1} was moved to {stamp2}."
-
-#: scheduling/signals.py:45
-#, python-brace-format
-msgid ": Der Termin für den {stamp} wurde gelöscht."
-msgstr ": Appointment on {stamp} was deleted."
-
 #: scheduling/templates/scheduling/create_appointment.html:4
 #: scheduling/templates/scheduling/create_appointment.html:7
 #: usergroups/templates/usergroups/group_detail.html:88
@@ -1403,11 +1386,11 @@ msgstr "Appointment"
 msgid "Bitte füllen Sie folgendes Formular aus, um ein Treffen zu vereinbaren"
 msgstr "Please fill in the following form to schedule an appointment"
 
-#: shared/shared.py:17
+#: shared/shared.py:18
 msgid "Diese Adresse konnte nicht gefunden werden."
 msgstr "This address could not be found."
 
-#: shared/shared.py:19
+#: shared/shared.py:20
 msgid ""
 "Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die "
 "Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
@@ -1439,31 +1422,30 @@ msgstr "You have to set an admin."
 msgid "Keinen Nutzer mit dem Nutzernamen {name} gefunden."
 msgstr "No user found with user name {name}."
 
-#: usergroups/models.py:30
+#: usergroups/models.py:19
+msgid "hat einen neuen Termin"
+msgstr "has a new appointment"
+
+#: usergroups/models.py:20
+msgid "hat einen Termin verschoben"
+msgstr "moved an appointment"
+
+#: usergroups/models.py:21
+msgid "hat ein neues Mitglied"
+msgstr "has a new member"
+
+#: usergroups/models.py:22
+msgid "hat ein Mitglied verloren"
+msgstr "lost a member"
+
+#: usergroups/models.py:23
+msgid "hat eine neue Beschreibung"
+msgstr "has a new description"
+
+#: usergroups/models.py:38
 #, python-brace-format
 msgid "Gruppe: {name}"
 msgstr "Group: {name}"
-
-#: usergroups/signals.py:20
-msgid "hat ein neues Mitglied:"
-msgstr "has a new member:"
-
-#: usergroups/signals.py:25
-msgid "ist kein Mitglied mehr von:"
-msgstr "left:"
-
-#: usergroups/signals.py:33
-msgid "hat eine Gruppe erstellt:"
-msgstr "created a group:"
-
-#: usergroups/signals.py:42
-msgid "hat seine Beschreibung aktualisiert"
-msgstr "updated his descriptions"
-
-#: usergroups/signals.py:50
-#, python-brace-format
-msgid "hat eine Gruppe gelöscht: {name}"
-msgstr "deleted a group: {name}"
 
 #: usergroups/templates/usergroups/category_group_list.html:9
 #: usergroups/templates/usergroups/create_group.html:4
@@ -1691,26 +1673,6 @@ msgstr "Application of {name}"
 msgid "{app} bei {target}"
 msgstr "{app} to {target}"
 
-#: vacancies/signals.py:12
-msgid "hat eine neue Leerstelle:"
-msgstr "has a new vacancy:"
-
-#: vacancies/signals.py:18
-msgid "hat jemanden eingeladen:"
-msgstr "has invited someone:"
-
-#: vacancies/signals.py:24
-#, python-brace-format
-msgid "hat sich auf eine Leerstelle beworben: \"{vacancy}\", von:"
-msgstr "applied for a vacancy: \"{vacancy}\", by:"
-
-#: vacancies/signals.py:36
-#, python-brace-format
-msgid ""
-"hat den Status der Bewerbung auf die Leerstelle {vacancy} auf {status} "
-"geändert. Bewerber:"
-msgstr "changed the application status to {vacancy} to {status}. Applicant:"
-
 #: vacancies/templates/vacancies/application_list.html:4
 #: vacancies/templates/vacancies/application_list.html:7
 #: vacancies/templates/vacancies/review_vacancy.html:4
@@ -1871,14 +1833,6 @@ msgstr "This activity is not in the selected category."
 msgid "Kommentar"
 msgstr "Comment"
 
-#: wall/signals.py:13
-msgid "hat etwas gepostet in:"
-msgstr "posted something in:"
-
-#: wall/signals.py:27
-msgid "hat etwas kommentiert:"
-msgstr "commented something:"
-
 #: wall/templates/wall/post/create_comment.html:4
 msgid "Kommentieren"
 msgstr "Comment"
@@ -1917,6 +1871,85 @@ msgstr " %(v0)s ago"
 #: wall/templates/wall/post/post_loop.html:24
 msgid "Kommentieren..."
 msgstr "Comment..."
+
+#~ msgid "Neueste Aktivitäten"
+#~ msgstr "Newest activities"
+
+#~ msgid "Neueste Aktivitäten Ihrer Freunde und Gruppen:"
+#~ msgstr "News from your friends and groups:"
+
+#~ msgid "... und auf aktivitaeten.de:"
+#~ msgstr "... and on myactivities.net:"
+
+#, python-format
+#~ msgid "vor %(v0)s"
+#~ msgstr "%(v0)s ago"
+
+#~ msgid "Noch keine Neuigkeiten"
+#~ msgstr "No news yet"
+
+#~ msgid "wurde erstellt."
+#~ msgstr "was created"
+
+#~ msgid "ist einer Aktivität beigetreten:"
+#~ msgstr "joined an activity:"
+
+#~ msgid "hat eine Aktivität verlassen:"
+#~ msgstr "Left an activity:"
+
+#~ msgid "ist kein Mitspieler mehr bei:"
+#~ msgstr "isn't a player any more in:"
+
+#, python-brace-format
+#~ msgid "hat ein Match gelöscht: {instance}"
+#~ msgstr "deleted a match: {instance}"
+
+#, python-brace-format
+#~ msgid ": Jemand hat für den {stamp} zugesagt:"
+#~ msgstr ": Someone confirmed the appointment on {stamp}:"
+
+#, python-brace-format
+#~ msgid ": Jemand hat für den {stamp} seine Zusage zurückgezogen:"
+#~ msgstr ""
+#~ ": Someone cancelled his conformation for the appointment on {stamp}:"
+
+#, python-brace-format
+#~ msgid ": Jemand hat für den {stamp} abgesagt:"
+#~ msgstr ": Someone cancelled for the appointment on {stamp}:"
+
+#, python-brace-format
+#~ msgid ": Jemand hat für den {stamp} seine Absage zurückgezogen:"
+#~ msgstr ""
+#~ ": Someone cancelled his cancellation for the appointment on {stamp}:"
+
+#, python-brace-format
+#~ msgid "hat eine neue Terminabstimmung für den {stamp}"
+#~ msgstr "new appointment on {stamp}"
+
+#, python-brace-format
+#~ msgid ": Der Termin am {stamp1} wurde auf den {stamp2} verlegt."
+#~ msgstr ": Appointment on {stamp1} was moved to {stamp2}."
+
+#, python-brace-format
+#~ msgid ": Der Termin für den {stamp} wurde gelöscht."
+#~ msgstr ": Appointment on {stamp} was deleted."
+
+#~ msgid "hat eine Gruppe erstellt:"
+#~ msgstr "created a group:"
+
+#, python-brace-format
+#~ msgid "hat eine Gruppe gelöscht: {name}"
+#~ msgstr "deleted a group: {name}"
+
+#, python-brace-format
+#~ msgid "hat sich auf eine Leerstelle beworben: \"{vacancy}\", von:"
+#~ msgstr "applied for a vacancy: \"{vacancy}\", by:"
+
+#, python-brace-format
+#~ msgid ""
+#~ "hat den Status der Bewerbung auf die Leerstelle {vacancy} auf {status} "
+#~ "geändert. Bewerber:"
+#~ msgstr "changed the application status to {vacancy} to {status}. Applicant:"
 
 #~ msgid "Ihr Nutzername: %(v0)s"
 #~ msgstr "Your user name: %(v0)s"
