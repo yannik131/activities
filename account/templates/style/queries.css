@@ -3,6 +3,10 @@
         width: 100%;
     }
 
+    .sidemenu .alert .notification-url {
+        width: 80%;
+    }
+
     .content {
         color: white;
         font-family: "Courier New", "Lucida Console", monospace;
