@@ -4,6 +4,19 @@ from django.forms import ValidationError
 from account.models import Location
 from django.utils.translation import gettext_lazy as _
 from django.utils.timezone import now
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+
+
+def paginate(object_list, request, limit=3):
+    paginator = Paginator(object_list, limit)
+    page = request.GET.get('page')
+    try:
+        objects = paginator.page(page)
+    except PageNotAnInteger:
+        objects = paginator.page(1)
+    except EmptyPage:
+        objects = paginator.page(paginator.num_pages)
+    return objects, page
 
 
 def get_location(address):

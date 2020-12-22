@@ -4,7 +4,7 @@ from activity.models import Activity, Category
 from usergroups.models import UserGroup
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from shared.shared import paginate
 
 
 class Post(models.Model):
@@ -39,15 +39,7 @@ class Post(models.Model):
             for post in post_list:
                 if request.user.location.equal_to(post.author.location, Location.components[component_index]):
                     object_list.append(post)
-        paginator = Paginator(object_list, 3)
-        page = request.GET.get('page')
-        try:
-            posts = paginator.page(page)
-        except PageNotAnInteger:
-            posts = paginator.page(1)
-        except EmptyPage:
-            posts = paginator.page(paginator.num_pages)
-        return posts, page
+        return paginate(object_list, request)
 
 
 class Comment(models.Model):

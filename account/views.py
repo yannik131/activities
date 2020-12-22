@@ -8,7 +8,6 @@ from .templatetags import account_tags
 from notify.utils import notify
 from wall.models import Post
 from shared import shared
-from notify.models import Notification
 
 
 @login_required
@@ -36,6 +35,7 @@ def detail(request, username):
         requested = True
     friendship = request.user.get_friendship_for(user)
     posts = Post.objects.filter(author=user, target_ct=User.content_type(), target_id=user.id).all()
+    posts, page = shared.paginate(posts, request)
     return render(request, 'account/detail.html', {'viewed_user': user, 'friendship': friendship, 'requested': requested, 'posts': posts})
 
 

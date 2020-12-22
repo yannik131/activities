@@ -20,6 +20,7 @@ def create_post(request, app_label, model, id):
         form.instance.target_ct = ct
         form.instance.target_id = id
         form.instance.author = request.user
+        form.LANGUAGE_CODE = request.LANGUAGE_CODE
         if form.is_valid():
             post = form.save()
             if ct == User.content_type():

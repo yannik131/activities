@@ -1,0 +1,11 @@
+<div class="activity-horizontal-list">
+    {% for activity in activities.all %}
+        <div class="item">
+            {% load thumbnail %}
+            <a href="{{ activity.get_absolute_url }}"><img src="{% thumbnail activity.image 100x100 %}" class="photo"></a>
+            <div class="title">
+                {{ activity }}
+            </div>
+        </div>
+{% endfor %}
+</div>

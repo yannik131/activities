@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% blocktrans %}Freundschaftsanfragen{% endblocktrans %}{% endblock %}
 
@@ -62,9 +63,20 @@
         {% endfor %}
     </table>
     <h1>{% blocktrans %}Freunde{% endblocktrans %}</h1>
-        <ul>
-            {% for user in user.friends %}
-                <li><a href="{{ user.get_absolute_url }}">{{ user.username }}</a></li>
-            {% endfor %}
-        </ul>
+    <div class="activity-horizontal-list">
+        {% for user in user.friends %}
+            <div class="item">
+                {% load thumbnail %}
+                <a href="{{ user.get_absolute_url }}">
+                {% if user.photo %}
+                <img src="{% thumbnail user.photo 100x100 %}" class="photo"></a>
+                {% else %}
+                <img src="{% static 'icons/users-and-groups-user@32px.png' %}" width="100">
+                {% endif %}
+                <div class="title">
+                    {{ user }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

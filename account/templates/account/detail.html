@@ -14,17 +14,7 @@
         <p><a href="{% url 'chat:chat_room' 'account' 'friendship' friendship.id %}">{% trans "Zum Chat" %}...</a></p>
         <p>{% trans "Voller Name" %}: {{ viewed_user.get_full_name }}</p>
         <p>{{ viewed_user.username }} {% trans "ist Mitglied folgender Aktivitäten" %}:</p>
-        <div class="activity-horizontal-list">
-        {% for activity in viewed_user.activities.all %}
-            <div class="item">
-                {% load thumbnail %}
-                <a href="{{ activity.get_absolute_url }}"><img src="{% thumbnail activity.image 100x100 %}" class="photo"></a>
-                <div class="title">
-                    {{ activity }}
-                </div>
-            </div>
-        {% endfor %}
-        </div>
+        {% include "activity/loop.html" with activities=viewed_user.activities %}
         <div class="profile-rest">
             <p>{% trans "Adresse" %}: {{ viewed_user.location.full_address }}</p>
             <p>{% trans "Sie sind mit" %} {{ viewed_user.get_full_name }}{% trans "befreundet. Falls Sie das ändern möchten, können Sie die Freundschaft" %} <a href="{% url 'account:destroy_friendship' viewed_user.id %}">{% trans "auch vernichten" %}.</a></p>
