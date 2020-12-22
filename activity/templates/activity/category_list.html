@@ -6,20 +6,16 @@
 {% block content %}
     <h1>{% trans "Alle Kategorien" %}</h1>
     <p>{% trans "Hier eine Liste aller verfügbaren Kategorien" %}:</p>
-    <table>
-        <tr>
-            <th>{% trans "Name" %}</th>
-            <th>{% trans "Aktivitäten" %}</th>
-        </tr>
-        {% for category in categories %}
-            <tr>
-                <td><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></td>
-                <td>
-                    {% for activity in category.activities.all %}
-                        <a href="{{ activity.get_absolute_url }}">{{ activity.name }}</a>{% if not forloop.last %}, {% endif %}
-                    {% endfor %}
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
+    {% for category in categories %}
+        <div class="activity-thumbnail">
+        {% load thumbnail %}
+            <a href="{{ category.get_absolute_url }}"><img src="{% thumbnail category.image 200x200 %}" class="photo"></a>
+            <div class="title">
+                {{ category }}
+            </div>
+            <div class="text">
+                {% for activity in category.activities.all %}<a href="{{ activity.get_absolute_url }}">{{ activity }}</a> {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}

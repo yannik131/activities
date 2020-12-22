@@ -104,3 +104,44 @@ select:focus, select:hover {
 .full-chat {
     overflow-wrap: break-word;
 }
+
+.user-photo {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.activity-thumbnail {
+    margin: 10px 10px;
+    border: 1px solid transparent;
+    border-radius: 10%;
+}
+
+.activity-thumbnail:hover {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.activity-thumbnail .photo {
+    border-radius: 10%;
+    display: block;
+    margin: 0 auto;
+}
+
+.activity-thumbnail .title {
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.activity-thumbnail .text {
+    text-align: center;
+}
+
+.activity-full-image, .category-full-image {
+    border-radius: 10%;
+    display: block;
+    margin: 0 auto;
+}
+
+

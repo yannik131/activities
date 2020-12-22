@@ -9,7 +9,6 @@ from notify.utils import notify
 from wall.models import Post
 from shared import shared
 from notify.models import Notification
-from django.views.decorators.cache import patch_cache_control, never_cache
 
 
 @login_required

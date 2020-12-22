@@ -5,7 +5,7 @@
 
 {% block content %}
     {% if category.image %}
-        <img src="{{ category.image.url }}" width="200px" class="image">
+        <img src="{{ category.image.url }}" width="200px" class="category-full-image">
     {% endif %}
     <h1>{{ category.verbose }}</h1>
     <h2><a href="{% url 'usergroups:group_list' category.id %}">{% trans "Zu den Gruppen" %}...</a></h2>

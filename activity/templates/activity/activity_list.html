@@ -6,22 +6,19 @@
 {% block content %}
     <h1>{% trans "Alle Aktivitäten" %}</h1>
     <p>
-        {% trans "Anzeige einschränken auf" %}: <br/>
+        {% trans "Mitglieder anzeigen" %}: <br/>
         {% include 'activity/location_selection.html' %}
     </p>
-    <p>{% trans "Hier eine Liste aller verfügbaren Aktivitäten" %}:</p>
-    <table>
-        <tr>
-            <th>{% trans "Name" %}</th>
-            <th>{% trans "Kategorie" %}</th>
-            <th>{% trans "Mitglieder" %}</th>
-        </tr>
-        {% for activity in activities %}
-            <tr>
-                <td><a href="{{ activity.0.get_absolute_url }}">{{ activity.0.name }}</a>{% if activity.0 in user.activities.all %} ({% trans "m" %}) {% endif %}</td>
-                <td><a href="{{ activity.0.category.get_absolute_url }}">{{ activity.0.category.name }}</a></td>
-                <td>{{ activity.1 }}</td>
-            </tr>
-        {% endfor %}
-    </table>
+    {% for activity, count in activities %}
+        <div class="activity-thumbnail">
+        {% load thumbnail %}
+            <a href="{{ activity.get_absolute_url }}"><img src="{% thumbnail activity.image 200x200 %}" class="photo"></a>
+            <div class="title">
+                {{ activity }}
+            </div>
+            <div class="text">
+                {{ count }} {% trans "Mitglieder" %}
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}
