@@ -109,6 +109,7 @@ select:focus, select:hover {
     width: 50%;
     display: block;
     margin: 0 auto;
+    border-radius: 10%;
 }
 
 .activity-thumbnail {
@@ -142,6 +143,35 @@ select:focus, select:hover {
     border-radius: 10%;
     display: block;
     margin: 0 auto;
+}
+
+.activity-horizontal-list {
+
+}
+
+.activity-horizontal-list .item {
+    margin: 10px 10px;
+    border: 1px solid transparent;
+    border-radius: 10%;
+    width: 100px;
+    float: left;
+}
+
+.activity-horizontal-list .item:hover {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.activity-horizontal-list .item .title {
+    text-align: center;
+}
+
+.activity-horizontal-list .photo {
+    border-radius: 10%;
+}
+
+.profile-rest {
+    clear: left;
 }
 
 
