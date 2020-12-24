@@ -16,11 +16,12 @@ class GroupForm(forms.ModelForm):
 
     class Meta:
         model = UserGroup
-        fields = ('name', 'description', 'public')
+        fields = ('name', 'description', 'public', 'image')
         labels = {
             'name': _('Name'),
             'description': _('Beschreibung'),
-            'public': _('Öffentlich')
+            'public': _('Öffentlich'),
+            'image': _('Gruppenbild')
         }
 
         widgets = {

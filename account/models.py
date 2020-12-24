@@ -10,7 +10,7 @@ from django.utils.translation import gettext_lazy as _
 
 class User(AbstractUser):
     profile_text = models.TextField(null=True, blank=True)
-    photo = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True, null=True)
+    image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True, null=True)
     location = models.ForeignKey("Location", on_delete=models.CASCADE, blank=True, related_name='population')
     latest_request_check = models.DateTimeField(default=timezone.now)
     birth_year = models.PositiveSmallIntegerField()

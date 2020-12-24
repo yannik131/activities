@@ -9,16 +9,18 @@
         {% trans "Mitglieder anzeigen" %}: <br/>
         {% include 'activity/location_selection.html' %}
     </p>
+    <div class="list">
     {% for activity, count in activities %}
-        <div class="activity-thumbnail">
+        <div class="item" onclick="location.href='{{ activity.get_absolute_url }}'">
         {% load thumbnail %}
-            <a href="{{ activity.get_absolute_url }}"><img src="{% thumbnail activity.image 200x200 %}" class="photo"></a>
+            <img src="{% thumbnail activity.image 200x200 %}" class="image">
             <div class="title">
                 {{ activity }}
             </div>
-            <div class="text">
+            <div class="subtext">
                 {% trans "Mitglieder" %}: {{ count }}
             </div>
         </div>
     {% endfor %}
+    </div>
 {% endblock %}

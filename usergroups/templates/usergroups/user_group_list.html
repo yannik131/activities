@@ -5,18 +5,5 @@
 
 {% block content %}
     <h1>{% trans "Ihre Gruppen" %}</h1>
-    <table>
-        <tr>
-            <th>{% trans "Name" %}</th>
-            <th>{% trans "Beschreibung" %}</th>
-            <th>{% trans "Mitglieder" %}</th>
-        </tr>
-        {% for group in user.user_groups.all %}
-            <tr>
-                <td><a href="{{ group.get_absolute_url }}">{{ group.name }}</a></td>
-                <td>{{ group.description|truncatewords:30 }}</td>
-                <td>{{ group.members.all|length }}</td>
-            </tr>
-        {% endfor %}
-    </table>
+    {% include 'usergroups/loop.html' with groups=user.user_groups.all %}
 {% endblock %}

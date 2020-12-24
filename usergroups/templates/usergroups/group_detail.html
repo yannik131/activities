@@ -4,7 +4,10 @@
 {% block title %}{{ group.name }}{% endblock %}
 
 {% block content %}
-    <h1>{{ group }}</h1>
+    {% if group.image %}
+    <img src="{{ group.image.url }}" class="group-full-image">
+    {% endif %}
+    <h1>{{ group.verbose }}</h1>
     {% if user == group.admin %}
         <h2><a href="{% url 'usergroups:edit_group' group.id %}">{% trans "Bearbeiten" %}...</a></h2>
     {% endif %}

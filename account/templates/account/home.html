@@ -6,7 +6,7 @@
 
 {% block content %}
 	<p>{% blocktrans with v0=user.username %}Willkommen, {{ v0 }}.{% endblocktrans %}</p>
-    {% if user.photo %}<img src="{{ user.photo.url }}" class="user-photo">{% endif %}
+    {% if user.image %}<img src="{{ user.image.url }}" class="user-photo">{% endif %}
     <p><a href="{% url 'account:user_post_list' %}">{% blocktrans %}Zu Ihren Posts...{% endblocktrans %}</a></p>
     {% if user.activities.all %}
         <p>{% blocktrans %}Sie sind zurzeit Mitglied folgender Aktivitäten:{% endblocktrans %}</p>

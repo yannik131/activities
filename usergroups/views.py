@@ -37,7 +37,7 @@ def edit_group(request, id):
     if request.user != group.admin:
         return HttpResponseForbidden()
     if request.method == 'POST':
-        form = GroupForm(request.POST, instance=group)
+        form = GroupForm(request.POST, instance=group, files=request.FILES)
         form.edit_mode = True
         if form.is_valid():
             form.save()
@@ -51,7 +51,7 @@ def edit_group(request, id):
 def create_group(request, id):
     category = Category.objects.get(id=id)
     if request.method == 'POST':
-        form = GroupForm(request.POST)
+        form = GroupForm(request.POST, files=request.FILES)
         if form.is_valid():
             group = form.save(commit=False)
             group.category = category

@@ -8,6 +8,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UserGroup(models.Model):
+    image = models.ImageField(upload_to='groups/%Y/%m/%d/', blank=True, null=True)
     admin = models.ForeignKey(User, related_name='owned_groups', on_delete=models.PROTECT)
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=150, null=True, blank=True)

@@ -1,0 +1,22 @@
+{% load static %}
+{% load i18n %}
+
+<div class="list">
+    {% for group in groups %}
+        <div class="item" onclick="location.href='{{ group.get_absolute_url }}'">
+            {% load thumbnail %}
+            {% if group.image %}
+                <img src="{% thumbnail group.image 100x100 %}" class="image">
+            {% else %}
+                <img src="{% static 'icons/users-and-groups-group@32px.png' %}" class="image">
+            {% endif %}
+            <div class="title">
+                {{ group }}{% if group.vacancies.all %}: <span style="color: orange; font-style: bold;">{{ group.vacancies.all|length }}</span>{% endif %}
+            </div>
+            <div class="subtext">
+                <a href="{{ group.category.get_absolute_url }}" style="text-decoration: underline;">{{ group.category.verbose }}</a>
+                {% trans "Mitglieder" %}: {{ group.members.all|length }}
+            </div>
+        </div>
+    {% endfor %}
+</div>

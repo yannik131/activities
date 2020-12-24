@@ -1,3 +1,7 @@
 search engine friendly url: (request, id) syntax ändern
-bilderdarstellung der aktivitäten/kategorien wie bei facebook
 suche
+like funktion für posts
+
+DESIGN:
+Bilderliste: Immer 200px breit, wenn möglich mehrere nebeneinander, bild, titel, beschreibung einheitlich, eventuell aufklappbar
+datepicker, datetimepicker

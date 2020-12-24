@@ -114,11 +114,10 @@ select:focus, select:hover {
 
 .activity-thumbnail {
     margin: 10px 10px;
-    border: 1px solid transparent;
     border-radius: 10%;
 }
 
-.activity-thumbnail:hover {
+.activity-thumbnail .photo:hover {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
 }
@@ -127,6 +126,7 @@ select:focus, select:hover {
     border-radius: 10%;
     display: block;
     margin: 0 auto;
+    border: 1px solid transparent;
 }
 
 .activity-thumbnail .title {
@@ -155,6 +155,7 @@ select:focus, select:hover {
     border-radius: 10%;
     width: 100px;
     float: left;
+    cursor: pointer;
 }
 
 .activity-horizontal-list .item:hover {
@@ -168,10 +169,67 @@ select:focus, select:hover {
 
 .activity-horizontal-list .photo {
     border-radius: 10%;
+    border: 1px solid transparent;
 }
 
 .profile-rest {
     clear: left;
+}
+
+.group-full-image {
+    float: right;
+    width: 30%;
+    max-width: 200px;
+    margin: 0 10px;
+    border-radius: 10%;
+}
+
+.list .item {
+    cursor: pointer;
+    width: 250px;
+    height: 200px;
+    float: left;
+    margin: 10px 10px;
+    border: 1px solid black;
+    border-radius: 10%;
+    color: white;
+    font-family: "Courier New";
+    background-color: gray;
+}
+.list .item:hover {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+.list .item .image {
+    max-width: 100%;
+    max-height: 60%;
+    border-radius: 20%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+}
+.list .item .title {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 2px;
+}
+.list .item .subtext {
+    margin: 5px 10px;
+}
+.list .item a {
+    text-decoration: none;
+    color: black;
+}
+.list .item a:hover {
+    color: white;
+}
+@media screen and (max-width: 567px) {
+    .list .item {
+        clear: both;
+        display: block;
+        margin-left: 25%;
+    }
 }
 
 
