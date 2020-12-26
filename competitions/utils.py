@@ -33,7 +33,6 @@ def swiss_pairings_danish_standard(points, tie_breaks):
         del players[-1]  # kick last player from this round
 
     pairings = create_pairings(players, points, tie_breaks)
-
     return pairings, leftover
 
 
@@ -51,7 +50,7 @@ def swiss_pairings_danish_skat(points, team_sizes=None):
     else:
         full_teams = int(num_players / 3)
         if full_teams * 4 < num_players:
-            raise RuntimeError('skat: impossible number of players')
+            raise RuntimeError('Impossible number of players')
         leftover_players = []
         while len(players) % 3 != 0:
             leftover_players.append(players[-1])
@@ -63,6 +62,8 @@ def swiss_pairings_danish_skat(points, team_sizes=None):
 
 
 def get_pairings_for(activity_name, tournament):
+    if tournament.members.all().count() <= 1:
+        raise RuntimeError(_('Nicht genug Spieler'))
     if activity_name == _('Schach spielen'):
         return swiss_pairings_danish_standard(tournament.points, tournament.tie_breaks)
     elif activity_name == _('Doppelkopf spielen'):

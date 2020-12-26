@@ -170,6 +170,9 @@ select:focus, select:hover {
 .activity-horizontal-list .photo {
     border-radius: 10%;
     border: 1px solid transparent;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .profile-rest {
