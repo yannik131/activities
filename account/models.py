@@ -107,6 +107,10 @@ class User(AbstractUser):
 
     def application_dict(self):
         return dict([(a.vacancy.id, a.status) for a in self.applications.all()])
+        
+    @property
+    def channel_group_name(self):
+        return f"user-{self.id}"
 
 
 class Friendship(models.Model):

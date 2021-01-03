@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ activity }}: {% trans 'Online spielen' %}{% endblock %}
+
+{% block content %}
+<h1>{{ activity }}: {% trans 'Online-Match erstellen' %}</h1>
+<p>Füllen Sie das folgende Formular aus, um ein online {{ activity }}-Match zu erstellen.</p>
+<form method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input type="submit" value="{% trans "Fertig" %}">
+</form>
+{% endblock %}

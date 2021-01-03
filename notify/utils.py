@@ -14,8 +14,7 @@ def _notify(recipient, actor, action, action_object, url):
         async_to_sync(channel_layer.send)(
             channel_name,
             {
-                'type': 'notify.notification',
-                'is_chat': False,
+                'type': 'notification',
                 'id': f"{notification.id}",
                 'text': str(notification),
                 'url': url

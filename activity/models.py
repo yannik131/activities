@@ -20,6 +20,7 @@ class Activity(TranslatableModel):
         ('consumption', _('konsumorientiert'))
     )
     type = models.CharField(max_length=20, choices=TYPE_CHOICES, null=True)
+    online = models.BooleanField(default=False)
 
     class Meta:
         verbose_name_plural = 'activities'

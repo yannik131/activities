@@ -10,6 +10,7 @@
 .chat-menu.clicked {
     display: block;
     position: fixed;
+    z-index: 999;
     right: 0;
     min-width: 50%;
 }

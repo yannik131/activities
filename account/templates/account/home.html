@@ -5,6 +5,7 @@
 {% block title %}{% blocktrans %}Home{% endblocktrans %}{% endblock %}
 
 {% block content %}
+    <a href="{% url 'competitions:test' %}">Test</a>
 	<p>{% blocktrans with v0=user.username %}Willkommen, {{ v0 }}.{% endblocktrans %}</p>
     {% if user.image %}<img src="{{ user.image.url }}" class="user-photo">{% endif %}
     <p><a href="{% url 'account:user_post_list' %}">{% blocktrans %}Zu Ihren Posts...{% endblocktrans %}</a></p>

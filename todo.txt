@@ -5,5 +5,7 @@ messages runde nicht möglich
 keine nachricht wenn admin beitritt
 
 DESIGN:
-Bilderliste: Immer 200px breit, wenn möglich mehrere nebeneinander, bild, titel, beschreibung einheitlich, eventuell aufklappbar
 datepicker, datetimepicker
+
+Lobby:
+Laufende Liste von Nutzern rechts, Liste von Matches links

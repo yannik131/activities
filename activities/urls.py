@@ -30,8 +30,11 @@ urlpatterns = [
     path('wall/', include('wall.urls')),
     path('competitions/', include('competitions.urls')),
     path('vacancies/', include('vacancies.urls')),
-    path('notifications/', include('notify.urls'))
+    path('notifications/', include('notify.urls')),
+    path('multiplayer/', include('multiplayer.urls'))
 ]
+
+handler404 = "account.views.handler404"
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

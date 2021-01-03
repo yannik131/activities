@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'wall.apps.WallConfig',
     'competitions.apps.CompetitionsConfig',
     'vacancies.apps.VacanciesConfig',
+    'multiplayer.apps.MultiplayerConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ lobby }}{% endblock %}
+{% block style %}
+{% include "css/lobby.css" %}
+{% endblock %}
+
+{% block content %}
+<h1>{{ activity }}-Lobby</h1>
+<a href="{% url 'multiplayer:create_match' activity.name %}">{% trans "Match erstellen" %}</a>
+<div>
+    <table style="float: right;">
+        <thead>
+            <tr>
+                <th>{% trans "Online" %}</th>
+            </tr>
+        </thead>
+        <tbody id="online-list">
+            
+        </tbody>
+    </table>
+    <table>
+        <tr>
+            <th>
+                {% trans "Matches" %}
+            </th>
+        </tr>
+        <tbody id="match-list">
+            
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
+{% block domready %}
+    {% include 'javascript/lobby.js' with id=activity.id%}
+{% endblock %}

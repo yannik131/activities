@@ -1,0 +1,123 @@
+{% load static %}
+.game-field {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    zoom: 0.7;
+    margin: 70px 70px;
+    border: 1px solid gray;
+    background-color: green;
+}
+.player1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 192px;
+    margin: 0 5px 5px 5px;
+    overflow-x: hidden;
+}
+
+.player2 {
+    position: absolute;
+    top: 80px;
+    bottom: 350px;
+    left: -20px;
+    width: 100px;
+}
+
+.player3 {
+    position: absolute;
+    top: -50px;
+    left: 20%;
+    height: 100px;
+    max-height: 20%;
+    width: 60%;
+}
+
+.player4 {
+    position: absolute;
+    top: 160px;
+    right: -20px;
+    width: 100px;
+    bottom: 350px;
+}
+
+.card {
+
+}
+
+.deck {
+    background: url("{% static 'output.png' %}") no-repeat -246px -920px;
+    position: absolute;
+    top: -10px;
+    left: 0;
+    height: 40px;
+    width: 123px;
+}
+
+.open-card {
+    background: url("{% static 'output.png' %}") no-repeat -246px -112px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 123px;
+}
+
+.deck-count {
+    position: absolute;
+    top: 30px;
+    color: blue;
+    font-weight: bold;
+    font-size: 40px;
+    font-family:sans-serif;
+}
+
+.stack-1-bottom {
+    background: url("{% static 'output.png' %}") no-repeat -123px -192px;
+    width: 123px;
+    height: 192px;
+    position: absolute;
+    left: 200px;
+    top: 200px;
+}
+
+.stack-1-front {
+    background: url("{% static 'output.png' %}") no-repeat -123px -192px;
+    width: 123px;
+    height: 192px;
+    position: absolute;
+    left: 200px;
+    top: 250px;
+}
+
+.stack-2-bottom {
+    background: url("{% static 'output.png' %}") no-repeat -123px -192px;
+    width: 123px;
+    height: 192px;
+    position: absolute;
+    left: 400px;
+    top: 200px;
+}
+
+.stack-3-bottom {
+    background: url("{% static 'output.png' %}") no-repeat -123px -192px;
+    width: 123px;
+    height: 192px;
+    position: absolute;
+    left: 600px;
+    top: 200px;
+}
+
+.stack-4-bottom {
+    background: url("{% static 'output.png' %}") no-repeat -123px -192px;
+    width: 123px;
+    height: 192px;
+    position: absolute;
+    left: 200px;
+    top: 500px;
+}

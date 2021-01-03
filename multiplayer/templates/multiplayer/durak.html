@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Durak{% endblock %}
+{% block style %}{% include 'css/durak.css' %}{% endblock %}
+
+{% block content %}
+
+<div class="game-field">
+    <div class="open-card"></div>
+    <div class="deck"></div>
+    <div class="deck-count">4</div>
+    <div class="stack-1-bottom"></div>
+    <div class="stack-1-front"></div>
+    <div class="stack-2-bottom"></div>
+    <div class="stack-3-bottom"></div>
+    <div class="stack-4-bottom"></div>
+</div>
+
+<script>
+    {% include 'javascript/durak.js' %}
+    displayPlayers(4);
+    addCard("A", "c");
+    addCard("J", "h");
+    addCard("10", "d");
+    addCard("J", "d");
+    addCard("Q", "s");
+    addCard("Q", "c");
+    addCard("9", "d");
+    addCard("9", "d");
+    addCard("10", "h");
+    addCard("J", "d");
+    addCard("10", "s");
+    addCard("A", "s");
+
+    addCardsTo(".player2", 7);
+    addCardsTo(".player3", 12);
+    addCardsTo(".player4", 12);
+
+</script>
+{% endblock %}

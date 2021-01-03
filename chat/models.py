@@ -49,8 +49,12 @@ class ChatRoom(models.Model):
 
     def title_for_friendship(self, user):
         if user == self.target.to_user:
-            return str(self.target.from_user)
-        return str(self.target.to_user)
+            partner = self.target.from_user
+        else:
+            partner = self.target.to_user
+        if partner.channel_name:
+            return str(partner) + " (online)"
+        return str(partner)
 
     def title_for(self, user):
         if self.target_ct == Friendship.content_type():

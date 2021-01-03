@@ -12,7 +12,7 @@ input.onkeyup = function(e) {
 function submitClick() {
     var message = input.value;
     if(message) {
-        user_websocket.send(JSON.stringify({'message': message, 'id': {{ room.id }}}));
+        user_websocket.send(JSON.stringify({'type': 'chat', 'message': message, 'id': {{ room.id }}}));
         input.value = "";
         input.focus();
     }

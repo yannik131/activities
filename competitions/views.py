@@ -19,6 +19,9 @@ def user_overview(request):
     return render(request, 'competitions/user_overview.html')
 
 
+def test(request):
+    return render(request, 'competitions/cards.html')
+
 @login_required
 def overview(request, activity_id):
     component_index = int(request.GET.get('component_index', 3))

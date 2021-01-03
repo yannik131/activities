@@ -174,3 +174,7 @@ def view_friendship(request, id):
     if friendship.to_user == request.user:
         return HttpResponseRedirect(friendship.from_user.get_absolute_url())
     return HttpResponseRedirect(friendship.to_user.get_absolute_url())
+
+
+def handler404(request, exception):
+    return render(request, "account/404.html")

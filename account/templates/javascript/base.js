@@ -97,30 +97,35 @@ function connect() {
 
     user_websocket.onmessage = function(e) {
         const data = JSON.parse(e.data);
-        if(data.type == "chat_message") {
-            var chat = document.getElementById("full-chat-" + data.id)
-            if(chat) {
-                addMessageToChat(data);
-                if(data.username !== '{{ user.username }}')
+        switch(data.type) {
+            case "chat_message":
+                var chat = document.getElementById("full-chat-" + data.id)
+                if(chat) {
+                    addMessageToChat(data);
+                    if(data.username !== '{{ user.username }}')
+                        playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/click_x.wav");
+                }
+                else {
+                    addMessageToChatMenu(data);
                     playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/click_x.wav");
-            }
-            else {
-                addMessageToChatMenu(data);
-                playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/click_x.wav");
-            }
-        }
-        else {
-            addNotification(data.id, data.text, data.url);
-            playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/boing_x.wav")
+                }
+                break;
+            case "notification":
+                addNotification(data.id, data.text, data.url);
+                playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/boing_x.wav")
+                break;
+            case "multiplayer":
+                multiplayerDispatch(data);
+                break;
         }
     }
 
     user_websocket.onclose = function(e) {
-        console.log('User socket closed unexpectedly. Attempting reconnect in 1 second.', e.reason);
+        console.log('User socket closed unexpectedly. Attempting reconnect in 1 second. Code: ', e.code);
         setTimeout(function() {
             connect();
         }, 1000);
-    };
+    }
 
     user_websocket.onerror = function(err) {
         console.error('User socket encountered error: ', err.message, 'Closing socket.');

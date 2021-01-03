@@ -4,6 +4,7 @@ from . import views
 app_name = 'competitions'
 
 urlpatterns = [
+    path('test/', views.test, name='test'),
     path('user_overview/', views.user_overview, name='user_overview'),
     path('overview/<int:activity_id>/', views.overview, name='overview'),
     path('create_match/<int:activity_id>/', views.create_match, name='create_match'),

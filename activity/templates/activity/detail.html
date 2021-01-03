@@ -13,7 +13,11 @@
         <h2><a href="{{ activity.category.get_absolute_url }}">{{ activity.category.verbose }}</a></h2>
     {% endif %}
     {% if activity.type == 'competitive' %}
-        <h3><a href="{% url 'competitions:overview' activity.id %}">{% trans "Matches & Turniere" %}</a></h3>
+        <h3><a href="{% url 'competitions:overview' activity.id %}">{% trans "Matches & Turniere" %}</a>
+        {% if activity.online %}
+            | <a href="{% url 'multiplayer:lobby' activity.name %}">{% trans "Online spielen" %}</a>
+        {% endif %}
+        </h3>
     {% endif %}
     <p>{{ activity.description }}</p>
         {% if is_member %}

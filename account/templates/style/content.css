@@ -10,7 +10,6 @@ body {
 .content {
     color: white;
     font-family: "Courier New", "Lucida Console", monospace;
-    height: 100%;
 }
 
 input[type='text'], textarea, select:focus {

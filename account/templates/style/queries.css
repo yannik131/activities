@@ -30,6 +30,7 @@
         right: 0;
         overflow-y: scroll;
         overflow-x: hidden;
+        z-index: 1000;
         min-width: 50vw;
         padding: 5px;
         margin-right: 0;

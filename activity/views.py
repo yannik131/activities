@@ -3,8 +3,9 @@ from django.contrib.auth.decorators import login_required
 from .models import Activity, Category
 from account.models import Location
 from wall.models import Post
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404
+import json
 
 
 @login_required
@@ -75,3 +76,4 @@ def activity_list(request):
                   {'activities': activities,
                    'component_index': component_index,
                    'components': request.user.location.as_dict()})
+         

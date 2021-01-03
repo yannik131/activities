@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}Match{% endblock%}
+
+{% block style%}{% include 'css/match.css' %}{% endblock %}
+
+{% block content %}
+<div class="box" id="{{ match.id }}">
+    {% for member, position in members %}
+        <div class="user-box-{{ position }}">{{ position }}: 
+            {% if member %}
+                <a href="{{ member.get_absolute_url }}">{{ member }}</a>
+            {% else %}
+                {% trans "Frei" %}
+            {% endif %}
+        </div>
+    {% endfor %}
+    {% if is_member %}
+        <a href="{% url 'multiplayer:leave_match' match.id %}">{% trans "Austreten" %}</a>
+    {% else %}
+        <a href="{% url 'multiplayer:enter_match' match.id %}">{% trans "Beitreten" %}</a>
+    {% endif %}
+</div>
+{% endblock %}
+{% block domready %}
+{% if is_member %}
+    {% include 'javascript/match_overview.js' %}
+{% endif %}
+{% endblock %}
