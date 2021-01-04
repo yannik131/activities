@@ -19,7 +19,7 @@
 
 <script>
     {% include 'javascript/durak.js' %}
-    displayPlayers(4);
+    displayPlayers({{ match.member_limit }});
     addCard("A", "c");
     addCard("J", "h");
     addCard("10", "d");

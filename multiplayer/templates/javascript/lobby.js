@@ -38,6 +38,9 @@ function update() {
                     "/" +
                     match_data[1]
                 );
+                if(match_data[3]) {
+                    new_cell.style.backgroundColor = "green"; 
+                }
                 new_cell.onclick = function() {
                     location.href = "/multiplayer/match/" + match_data[2] + "/";
                 }

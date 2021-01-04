@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load account_tags %}
 
 {% block title %}Match{% endblock%}
 
 {% block style%}{% include 'css/match.css' %}{% endblock %}
 
 {% block content %}
+<h1>{% trans "Online spielen" %}: <a href="{% call_method match 'lobby_url' request %}">{{ match.activity }}</a></h1>
 <div class="box" id="{{ match.id }}">
     {% for member, position in members %}
         <div class="user-box-{{ position }}">{{ position }}: 

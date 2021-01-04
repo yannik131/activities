@@ -18,6 +18,14 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
                 "username": member.username
             }
         )
+        if instance.member_limit == instance.members.all().count():
+            instance.broadcast_data(
+                {
+                    "type": "multiplayer",
+                    "match_id": str(instance.id),
+                    "info": "start"
+                }
+            )
     elif action == "pre_remove":
         instance.broadcast_data(
             {

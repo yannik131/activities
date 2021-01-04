@@ -33,6 +33,10 @@ class Activity(TranslatableModel):
 
     def get_absolute_url(self):
         return reverse('activity:detail', args=[self.name])
+        
+    @property
+    def channel_group_name(self):
+        return f"activity-{self.id}"
 
     @staticmethod
     def content_type():

@@ -22,6 +22,9 @@ class MultiplayerMatch(models.Model):
     def lobby_url(self, request):
         return request.build_absolute_uri(f'/multiplayer/lobby/{self.activity.name}/')
         
+    def is_ready(self):
+        return self.member_limit == self.members.all().count()
+        
     def is_full(self):
         return self.members.all().count() == self.member_limit
         
