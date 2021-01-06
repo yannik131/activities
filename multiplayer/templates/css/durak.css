@@ -1,13 +1,76 @@
 {% load static %}
+
+.game {
+    position: absolute;
+    left: 30%;
+    top: 70px;
+    bottom: 0;
+    right: 0;
+    max-width: 1000px;
+    min-height: 500px;
+}
+
+.game::selection {
+    background: transparent;
+}
+
+.player1-info {
+    position: absolute;
+    bottom: 0;
+    left: 40px;
+    right: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+.player2-info {
+    position: absolute;
+    bottom: 40px;
+    top: 20%;
+    left: 0;
+    width: 40px;
+}
+
+.player2-info .text {
+    position: absolute;
+    text-align: center;
+    width: 500px;
+    transform: rotate(90deg);
+    transform-origin: 20px 50%;
+}
+
+.player3-info {
+    position: absolute;
+    top: 0;
+    left: 40px;
+    right: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+.player4-info {
+    position: absolute;
+    bottom: 40px;
+    top: 20%;
+    right: 0;
+    width: 40px;
+}
+
+.player4-info .text {
+    position: absolute;
+    text-align: center;
+    width: 500px;
+    transform: rotate(90deg);
+    transform-origin: 20px 50%;
+}
+
 .game-field {
     position: absolute;
-    top: 70px;
-    right: 0;
-    left: 0;
-    bottom: 0;
+    top: 40px;
+    right: 40px;
+    left: 40px;
+    bottom: 40px;
     overflow: hidden;
-    zoom: 0.7;
-    margin: 70px 70px;
     border: 1px solid gray;
     background-color: green;
 }
@@ -25,14 +88,13 @@
     position: absolute;
     top: 80px;
     bottom: 350px;
-    left: -20px;
-    width: 100px;
+    left: -50px;
 }
 
 .player3 {
     position: absolute;
-    top: -50px;
-    left: 20%;
+    top: -80px;
+    left: 125px;
     height: 100px;
     max-height: 20%;
     width: 60%;
@@ -41,13 +103,13 @@
 .player4 {
     position: absolute;
     top: 160px;
-    right: -20px;
-    width: 100px;
+    right: 0px;
+    width: 123px;
     bottom: 350px;
 }
 
 .card {
-
+    
 }
 
 .deck {
@@ -77,47 +139,9 @@
     font-family:sans-serif;
 }
 
-.stack-1-bottom {
-    background: url("{% static 'output.png' %}") no-repeat -123px -192px;
-    width: 123px;
-    height: 192px;
-    position: absolute;
-    left: 200px;
-    top: 200px;
-}
+/* card width: 123px, card height: 192px
+player1 height 192px
+player2 width 172px
+player3 height 142px
+player4 width 172px*/
 
-.stack-1-front {
-    background: url("{% static 'output.png' %}") no-repeat -123px -192px;
-    width: 123px;
-    height: 192px;
-    position: absolute;
-    left: 200px;
-    top: 250px;
-}
-
-.stack-2-bottom {
-    background: url("{% static 'output.png' %}") no-repeat -123px -192px;
-    width: 123px;
-    height: 192px;
-    position: absolute;
-    left: 400px;
-    top: 200px;
-}
-
-.stack-3-bottom {
-    background: url("{% static 'output.png' %}") no-repeat -123px -192px;
-    width: 123px;
-    height: 192px;
-    position: absolute;
-    left: 600px;
-    top: 200px;
-}
-
-.stack-4-bottom {
-    background: url("{% static 'output.png' %}") no-repeat -123px -192px;
-    width: 123px;
-    height: 192px;
-    position: absolute;
-    left: 200px;
-    top: 500px;
-}

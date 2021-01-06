@@ -1,0 +1,30 @@
+{
+    "restoreTerminals.terminals": [
+        {
+          "splitTerminals": [
+            {
+              "name": "server",
+              "commands": ["python3 manage.py runserver 0.0.0.0:8000"]
+            }
+          ]
+        },
+        {
+          "splitTerminals": [
+            {
+              "name": "redis",
+              "commands": ["redis-server --port 6655"]
+            }
+          ]
+        },
+        {
+            "splitTerminals": [
+              {
+                "name": "shell",
+                "commands": ["python3 manage.py shell_plus"]
+              }
+            ]
+          }
+      ],
+      "restoreTerminals.keepExistingTerminalsOpen": true,
+      "files.autoSave": "onFocusChange"
+}

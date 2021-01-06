@@ -67,10 +67,10 @@ def delete_vacancy(request, id):
 @login_required
 def delete_invitation(request, id):
     invitation = Invitation.objects.get(id=id)
-    if request.user != invitation.sender.admin:
+    if request.user not in [invitation.sender.admin, invitation.target]:
         return HttpResponseForbidden()
     invitation.delete()
-    return HttpResponseRedirect(invitation.target.get_absolute_url())
+    return HttpResponseRedirect(request.build_absolute_uri("/vacancies/application_list/"))
 
 
 @login_required
@@ -80,7 +80,7 @@ def accept_invitation(request, id):
         return HttpResponseForbidden()
     invitation.sender.members.add(invitation.target)
     invitation.delete()
-    return HttpResponseRedirect(invitation.sender.get_absolute_url())
+    return HttpResponseRedirect(request.build_absolute_uri("/vacancies/application_list/"))
 
 
 @login_required

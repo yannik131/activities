@@ -6,36 +6,28 @@
 
 {% block content %}
 
-<div class="game-field">
-    <div class="open-card"></div>
-    <div class="deck"></div>
-    <div class="deck-count">4</div>
-    <div class="stack-1-bottom"></div>
-    <div class="stack-1-front"></div>
-    <div class="stack-2-bottom"></div>
-    <div class="stack-3-bottom"></div>
-    <div class="stack-4-bottom"></div>
-</div>
+<div class="game">
+    <div class="game-field">
+        
+    </div>
+    <div class="player1-info">
+        Player 1
+    </div>
+    <div class="player2-info">
+        <div class="text">
+            Player 2
+        </div>
+    </div>
+    <div class="player3-info">
+        Player 3
+    </div>
+    <div class="player4-info">
+        <div class="text">
+            Player 4
+        </div>
+    </div>
 
 <script>
     {% include 'javascript/durak.js' %}
-    displayPlayers({{ match.member_limit }});
-    addCard("A", "c");
-    addCard("J", "h");
-    addCard("10", "d");
-    addCard("J", "d");
-    addCard("Q", "s");
-    addCard("Q", "c");
-    addCard("9", "d");
-    addCard("9", "d");
-    addCard("10", "h");
-    addCard("J", "d");
-    addCard("10", "s");
-    addCard("A", "s");
-
-    addCardsTo(".player2", 7);
-    addCardsTo(".player3", 12);
-    addCardsTo(".player4", 12);
-
 </script>
 {% endblock %}

@@ -3,6 +3,11 @@
         width: 100%;
     }
 
+    .game {
+        position: absolute;
+        left: 0;
+    }
+
     .sidemenu .alert .notification-url {
         width: 80%;
     }
