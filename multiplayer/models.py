@@ -6,6 +6,8 @@ from django.shortcuts import reverse
 import uuid
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
+from .utils import create_deck
+import json
 
 
 class MultiplayerMatch(models.Model):
@@ -15,6 +17,7 @@ class MultiplayerMatch(models.Model):
     member_positions = HStoreField(default=dict)
     game_data = HStoreField(default=dict)
     channel_group_name = models.UUIDField(default=uuid.uuid4)
+    in_progress = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         return reverse('multiplayer:match', args=[self.id])
@@ -41,4 +44,26 @@ class MultiplayerMatch(models.Model):
                 member.channel_group_name,
                 data
             )
+
+    def start(self):
+        self.in_progress = True
+        deck = create_deck("6", "7", "8", "9", "10", "J", "Q", "K", "A")
+        self.game_data["deck"] = json.dumps(deck)
+        self.game_data["type"] = "multiplayer"
+        self.game_data["action"] = "load_data"
+        players = []
+        for i in range(self.member_limit):
+            user = User.objects.get(pk=self.member_positions[str(i+1)])
+            players.append(user.username)
+        self.game_data["players"] = json.dumps(players)
+        for player in players:
+            self.game_data[player] = json.dumps(deck[:6])
+            deck = deck[6:]
+        self.game_data["first_attacker"] = players[0]
+        self.game_data["attacking"] = players[0]
+        self.game_data["defending"] = players[1]
+        self.game_data["stacks"] = json.dumps([])
+        self.game_data["done"] = json.dumps([])
+        self.save()
+        # m=MultiplayerMatch.objects.all().last()
         

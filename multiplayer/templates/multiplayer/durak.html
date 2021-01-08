@@ -10,24 +10,26 @@
     <div class="game-field">
         
     </div>
-    <div class="player1-info">
-        Player 1
+    <div class="player1-info" id="player1">
+        
     </div>
     <div class="player2-info">
-        <div class="text">
-            Player 2
+        <div class="text" id="player2">
+            
         </div>
     </div>
-    <div class="player3-info">
-        Player 3
+    <div class="player3-info" id="player3">
+        
     </div>
     <div class="player4-info">
-        <div class="text">
-            Player 4
+        <div class="text" id="player4">
+            
         </div>
     </div>
+</div>
+{% endblock %}
 
-<script>
+{% block domready %}
+    {% include 'javascript/cards.js' %}
     {% include 'javascript/durak.js' %}
-</script>
 {% endblock %}

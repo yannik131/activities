@@ -9,3 +9,5 @@ datepicker, datetimepicker
 
 Lobby:
 Laufende Liste von Nutzern rechts, Liste von Matches links
+trimautowhitespace=false
+autoClosingOvertype=always

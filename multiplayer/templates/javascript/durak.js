@@ -1,162 +1,305 @@
-{% load static %}
+var game_mode;
+var this_user = '{{ user }}';
+var played_cards = [];
+var player_list;
+var selected_card;
 
-var player1_cards = [];
-var player2_cards = [];
-var player3_cards = [];
-var player4_cards = [];
-var scale = 1;
-const w = 123*scale;
-const h = 192*scale;
-const field = document.querySelector(".game-field");
-
-function displayPlayers(n) {
-    for(var i = 0; i < 4; i++) {
-        const player = document.createElement("div");
-        player.className = "player" + (i+1);
-        document.querySelector(".game-field").appendChild(player);
+function processMultiplayerData(data) {
+    switch(data.action) {
+        case "load_data":
+            loadGameField(data);
+            break;
+        case "play":
+            handleMove(data);
+            break;
     }
 }
 
-function getGridPosition(value, suit) {
-    var x, y;
-    switch(value) {
-        case "rear": return {x: 2, y: 4};
-        case "A": x = 0; break;
-        case "J": x = 10; break;
-        case "Q": x = 11; break;
-        case "K": x = 12; break;
-        default: x = parseInt(value)-1;
+function loadGameField(data) {
+    var deck = JSON.parse(data.deck);
+    player_list = JSON.parse(data.players);
+    determineGameMode(data.attacking, data.defending);
+    addCardsToDeck(deck.length-1, deck[deck.length-1]);
+    positionPlayers(data.attacking, data.defending);
+    for(var i = 0; i < player_list.length; i++) {
+        var username = player_list[i];
+        var player_index = players[username];
+        var hand = JSON.parse(data[username]);
+        if(player_index == 1) {
+            for(var j = 0; j < hand.length; j++) {
+                addCardTo(player_index, 1, hand[j]);
+            }
+        }
+        else {
+            addCardTo(player_index, hand.length);
+        }
     }
-    switch(suit) {
-        case "c": y = 0; break;
-        case "d": y = 1; break;
-        case "h": y = 2; break;
-        default: y = 3;
-    }
-    return {x: x, y: y};
+    var stacks = JSON.parse(data.stacks);
+    refreshStacks(stacks);
+    updateButtons();
 }
 
-function createCard(type) {
-    var value, suit;
-    if(type.length == 3) {
-        value = "10";
-        suit = type[2];
+function positionPlayers(attacking, defending) {
+    var my_index = player_list.indexOf(this_user);
+    var added_names = 0;
+    while(added_names != player_list.length) {
+        var username = player_list[my_index];
+        var player_info = document.getElementById("player"+(added_names+1));
+        player_info.innerHTML = (
+            "<a href='/account/detail/" +
+            username + 
+            "/'>" +
+            username +
+            "</a>"
+        );
+        if(username == attacking) {
+            player_info.innerHTML += " (ANGREIFER)";
+        }
+        else if(username == defending) {
+            player_info.innerHTML += " (VERTEIDIGER)";
+        }
+        players[username] = added_names+1;
+        my_index += 1;
+        if(my_index == player_list.length)
+            my_index = 0;
+        added_names += 1;
     }
-    else if(type == "rear") {
-        value = "rear";
+}
+
+function determineGameMode(attacking, defending) {
+    if(this_user == attacking) {
+        game_mode = "attacking";
+    }
+    else if(this_user == defending) {
+        game_mode = "defending";
     }
     else {
-        value = type[0];
-        suit = type[1];
-    }
-    const position = getGridPosition(value, suit);
-    const card = document.createElement("div");
-    card.style.background = "url('{% static 'output.png' %}') no-repeat -" + (position.x*123) + "px -" + (position.y*192)+ "px";
-    card.style.width = "123px"
-    card.style.height = "192px";
-    card.style.position = "absolute";
-    card.style.transformOrigin = "top left";
-    card.className = "card";
-    return card;
-}
-
-function getOffsetForPlayer(player, n) {
-    var offset;
-    switch(player) {
-        case 1: 
-            offset = w-field.offsetWidth/n; break;
-        case 2: 
-            offset = (2*h/3+w*n-field.offsetHeight+h+w)/n;
-            break;
-        case 3: 
-            offset = (1.1*w+w*n-field.offsetWidth)/n; break;
-        case 4: 
-            offset = (2*h/3+w*n-field.offsetHeight+h+w)/n;
-            break;
-    }
-    if(offset < 0) {
-        offset = 0;
-    }
-    return offset;
-}
-
-
-function getPlayerVariables(player) {
-    var rotation;
-    var cards;
-    switch(player) {
-        case 1:
-            rotation = 0;
-            cards = player1_cards;
-            break;
-        case 2:
-            rotation = 90;
-            cards = player2_cards;
-            break;
-        case 3:
-            rotation = 0;
-            cards = player3_cards;
-            break;
-        case 4:
-            rotation = -90;
-            cards = player4_cards;
-            break;
-    }
-    return {rotation: rotation, cards: cards}
-}
-
-function positionCard(player, card, i, n) {
-    const offset = getOffsetForPlayer(player, n);
-    switch(player) {
-        case 1:
-            card.style.left = i*w-offset*i+"px";
-            card.style.top = field.offsetHeight-h+"px";
-            break;
-        case 2:
-            card.style.top = 2*h/3+w*i-offset*i+"px";
-            card.style.left = 1/3*h+"px";
-            break;
-        case 3:
-            card.style.left = 1.1*w+w*i-offset*i+"px";
-            card.style.top = -2/3*h+"px";
-            break;
-        case 4:
-            card.style.top = w+h/2+w*i-offset*i+"px";
-            card.style.right = -2/3*h-(123-h)+"px";
-            break;
+        if(this_user == next(data.defending, player_list)) {
+            game_mode = "helping";
+        }
+        else {
+            game_mode = "none";
+        }
     }
 }
 
-function addCardTo(player, type) {
-    var card;
-    if(type) {
-        card = createCard(type);
+function take() {
+    
+}
+
+function done() {
+    user_websocket.send(JSON.stringify({
+        "type": "multiplayer",
+        "match_id": "{{ match.id }}",
+        "action": "done",
+        "user_id": "{{ user.id }}"
+    }));
+}
+
+function handleMove(data) {
+    if(data.username == this_user) {
+        return;
+    }
+    var player = players[data.username];
+    removeCardFrom(player, data.n);
+    var new_stacks = JSON.parse(data.stacks);
+    refreshStacks(new_stacks);
+    updateButtons();
+}
+
+function confirmBeating() {
+    
+}
+
+function confirmTransfer() {
+    
+}
+
+function handlePlayerMove(value, suit, card) {
+    switch(game_mode) {
+        case "none":
+            return;
+        case "defending":
+            var targets = stackTargetsFor(value, suit);
+            var transfer_possible = transferPossible(value);
+            if(transfer_possible && targets.length == 0) {
+                alert("only transfer");
+                //only transfer possible
+                played_cards.push(card);
+                removePlayerCard(card);
+                addStack(card.id);
+            }
+            else if(transfer_possible && targets.length > 0) {
+                alert("both");
+                //transfer and beating are both possible
+                createButton("Schlagen", "beating", confirmBeating);
+                createButton("Schieben", "transfer", confirmTransfer);
+                game_mode = "none";
+                played_cards.push(card);
+                return;
+            }
+            else if(targets.length == 1) {
+                alert("only one beating");
+                //only beating possible, one card can be beaten
+                played_cards.push(card);
+                beatStack(targets[0], card.id);
+                removePlayerCard(card);
+                sendMove();
+            }
+            else if(targets.length > 1) {
+                alert("only more beating");
+                //only beating possible, more than one card can be beaten
+                card.style.top = (parseFloat(card.style.top)-10)+"px";
+                for(var i = 0; i < stacks.length; i++) {
+                    if(stacks[i].length == 1) {
+                        stacks[i][0].cursor = "pointer";
+                        stacks[i][0].onclick = function() {
+                            var j = 0;
+                            while(stacks[j][0].id != this.id) {
+                                j++;
+                            }
+                            beatStack(j+1, card.id);
+                            played_cards.push(card);
+                            removePlayerCard(card);
+                            game_mode = "defending";
+                        }
+                    }
+                }
+                game_mode = "none";
+                return;
+            }
+            else {
+                return;
+            }
+            break;
+        case "helping":
+        case "attacking":
+            if(played_cards.length == 0) {
+                played_cards.push(card);
+                addStack(card.id);
+                removePlayerCard(card);
+            }
+            else {
+                const old_vs = getValueAndSuitFrom(played_cards[0].id);
+                if(old_vs.value != value) {
+                    return;
+                }
+                played_cards.push(card);
+                addStack(card.id);
+                removePlayerCard(card);
+            }
+            sendMove();
+            break;
+    }
+    updateButtons();
+}
+
+function allDefended() {
+    for(var i = 0; i < stacks.length; i++) {
+        if(stacks[i].length != 2) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function updateButtons() {
+    const defended = allDefended();
+    //take button
+    if(game_mode == "defending" && !defended) {
+        createButton("Schlucken", "take", take);
     }
     else {
-        card = createCard("rear");
+        deleteButton("take");
     }
-    const vars = getPlayerVariables(player);
-    card.style.transform = "rotate("+vars.rotation+"deg) scale("+scale+")";
-    vars.cards.push(card);
-    for(var i = 0; i < vars.cards.length; i++) {
-        const card = vars.cards[i];
-        positionCard(player, card, i, vars.cards.length);
+    
+    //done button
+    if(game_mode == "attacking" || game_mode == "helping") {
+        createButton("Fertig", "done", done);
     }
-    field.appendChild(card);
 }
 
-for(var i = 0; i < 10; i++) {
-    addCardTo(1, "Ac");
+function stackTargetsFor(value, suit) {
+    var targets = [];
+    for(var i = 0; i < stacks.length; i++) {
+        if(stacks[i].length == 1) {
+            const vs = getValueAndSuitFrom(stacks[i][0].id);
+            if(value > vs.value && suit == vs.suit || 
+                (suit == trump_vs.suit && (vs.suit != trump_vs.suit || vs.value < value))) {
+                targets.push(i+1);
+            }
+        }
+    }
+    return targets;
 }
 
-for(var i = 0; i < 6; i++) {
-    addCardTo(2);
+function transferPossible(value) {
+    var left_username = next(this_user, player_list);
+    var left_count = player_cards[players[left_username]].length;
+    if(left_count < stacks.length+1) {
+        return false;
+    }
+    for(var i = 0; i < stacks.length; i++) {
+        if(stacks[i].length > 1 ||
+            getValueAndSuitFrom(stacks[i][0].id).value != value) {
+            return false;
+        }
+    }
+    return true;
 }
 
-for(var i = 0; i < 6; i++) {
-    addCardTo(3);
+function cardClicked(value, suit, card) {
+    handlePlayerMove(value, suit, card);
 }
 
-for(var i = 0; i < 6; i++) {
-    addCardTo(4);
+function cardsContain(value) {
+    for(var i = 0; i < player1_cards.length; i++) {
+        const vs = getValueAndSuitFrom(player1_cards[i].id);
+        if(vs.value == value) {
+            return true;
+        }
+    }
+    return false;
 }
+
+function sendMove() {
+    user_websocket.send(JSON.stringify({
+        "type": "multiplayer",
+        "match_id": "{{ match.id }}",
+        "action": "play",
+        "stacks": JSON.stringify(getConvertedStack()),
+        "hand": JSON.stringify(getConvertedHand()),
+        "n": played_cards.length
+    }));
+    played_cards = [];
+    for(var i = 0; i < buttons.length; i++) {
+        buttons[i].remove();
+    }
+    buttons = [];
+}
+
+function clearStacks() {
+    for(var i = 0; i < stacks.length; i++) {
+        for(var j = 0; j < stacks[i].length; j++) {
+            stacks[i][j].remove();
+        }
+    }
+    stacks = [];
+}
+
+user_websocket.onopen = function() {
+    user_websocket.send(JSON.stringify({
+        'type': 'multiplayer', 
+        'action': 'request_data', 
+        'match_id': '{{ match.id }}'
+    }));
+}
+
+function next(el, arr) {
+    return arr[((arr.indexOf(el)+1)%arr.length+arr.length)%arr.length];
+}
+
+function before(el, arr) {
+    return arr[((arr.indexOf(el)-1)%arr.length+arr.length)%arr.length];
+}
+

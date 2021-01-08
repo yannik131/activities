@@ -26,6 +26,7 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
                     "info": "start"
                 }
             )
+            instance.start()
     elif action == "pre_remove":
         instance.broadcast_data(
             {

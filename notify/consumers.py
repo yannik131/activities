@@ -4,6 +4,7 @@ from channels.generic.websocket import WebsocketConsumer
 from chat.models import ChatRoom, ChatLogEntry, ChatCheck
 from asgiref.sync import async_to_sync
 from django.utils.timezone import now
+from multiplayer.models import MultiplayerMatch
 
 
 class NotificationConsumer(WebsocketConsumer):
@@ -31,6 +32,8 @@ class NotificationConsumer(WebsocketConsumer):
         text_data = json.loads(text_data)
         if text_data["type"] == "chat":
             self.handle_chat_message(text_data)
+        if text_data["type"] == "multiplayer":
+            self.handle_multiplayer_message(text_data)
 
     def handle_chat_message(self, text_data):
         chat_room_id = text_data['id']
@@ -61,6 +64,36 @@ class NotificationConsumer(WebsocketConsumer):
                         'url': chat_room.get_absolute_url()
                     }
                 )
+                
+    def handle_multiplayer_message(self, text_data):
+        match = MultiplayerMatch.objects.get(pk=text_data['match_id'])
+        if text_data['action'] == "request_data":
+            if not match.in_progress:
+                match.start()
+            else:
+                self.send(text_data=json.dumps(match.game_data))
+        elif text_data['action'] == "play":
+            match.game_data["stacks"] = text_data["stacks"]
+            match.game_data[self.user.username] = text_data["hand"]
+            match.game_data["done"] = json.dumps([])
+            match.save()
+            match.broadcast_data({
+                "type": "multiplayer",
+                "username": self.user.username,
+                "action": "play",
+                "stacks": match.game_data["stacks"],
+                "n": text_data["n"]
+            })
+        elif text_data['action'] == "done":
+            done_list = json.loads(match.game_data['done'])
+            if(str(self.user.id) not in done_list):
+                done_list.append(str(self.user.id))
+            if len(done_list) == 2:
+                match.game_data["stacks"] = json.dumps([])
+                
+            match.game_data['done'] = json.dumps(done_list)
+            if 
+        
 
     def chat_message(self, event):
         self.send(text_data=json.dumps(event))
