@@ -1,3 +1,4 @@
+from itertools import cycle
 import json
 from account.models import User
 from channels.generic.websocket import WebsocketConsumer
@@ -5,6 +6,7 @@ from chat.models import ChatRoom, ChatLogEntry, ChatCheck
 from asgiref.sync import async_to_sync
 from django.utils.timezone import now
 from multiplayer.models import MultiplayerMatch
+from multiplayer.utils import cycle_slice, after, deal_cards
 
 
 class NotificationConsumer(WebsocketConsumer):
@@ -67,34 +69,73 @@ class NotificationConsumer(WebsocketConsumer):
                 
     def handle_multiplayer_message(self, text_data):
         match = MultiplayerMatch.objects.get(pk=text_data['match_id'])
+        data = match.game_data
         if text_data['action'] == "request_data":
             if not match.in_progress:
                 match.start()
             else:
-                self.send(text_data=json.dumps(match.game_data))
+                self.send(text_data=json.dumps(data))
         elif text_data['action'] == "play":
-            match.game_data["stacks"] = text_data["stacks"]
-            match.game_data[self.user.username] = text_data["hand"]
-            match.game_data["done"] = json.dumps([])
+            data["stacks"] = text_data["stacks"]
+            data[self.user.username] = text_data["hand"]
+            data["done"] = json.dumps([])
             match.save()
             match.broadcast_data({
-                "type": "multiplayer",
                 "username": self.user.username,
                 "action": "play",
-                "stacks": match.game_data["stacks"],
+                "stacks": data["stacks"],
                 "n": text_data["n"]
             })
         elif text_data['action'] == "done":
-            done_list = json.loads(match.game_data['done'])
+            done_list = json.loads(data['done_list'])
             if(str(self.user.id) not in done_list):
                 done_list.append(str(self.user.id))
-            if len(done_list) == 2:
-                match.game_data["stacks"] = json.dumps([])
-                
-            match.game_data['done'] = json.dumps(done_list)
-            if 
+            # defending player sends done when all is defended
+            diff = match.member_limit - len(done_list)
+            if diff in [0, 1]:
+                players = json.loads(data["players"])
+                deal_cards(data, players)
+                data["attacking"] = data["defending"]
+                data["defending"] = players[after(data["attacking"], players)]
+                done_list = []
+            data['done_list'] = json.dumps(done_list)
+            match.save()
+            match.broadcast_data({
+                "action": "new_round",
+                "data": data
+            })
+        elif text_data["action"] == "take":
+            stacks = json.loads(data["stacks"])
+            hand = json.loads(data[data["defending"]])
+            for stack in stacks:
+                for card in stack:
+                    hand.append(card)
+            players = json.loads(data["players"])
+            deal_cards(data, players)
+            data["attacking"] = players[after(data["defending"])]
+            data["defending"] = players[after(data["attacking"])]
+            match.save()
+            match.broadcast_data({
+                "action": "new_round",
+                "data": data
+            })
+            
+        elif text_data["action"] == "transfer":
+            players = json.loads(data["players"])
+            data["stacks"] = text_data["stacks"]
+            data[self.user.username] = text_data["hand"]
+            data["done"] = json.dumps([])
+            data["attacking"] = players[after(data["defending"])]
+            data["defending"] = players[after(data["attacking"])]
+            match.save()
+            match.broadcast_data({
+                "action": "transfer",
+                "attacking": data["attacking"],
+                "defending": data["defending"],
+                "stacks": data["stacks"]
+            })
+            
         
-
     def chat_message(self, event):
         self.send(text_data=json.dumps(event))
 

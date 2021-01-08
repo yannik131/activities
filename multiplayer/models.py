@@ -39,6 +39,7 @@ class MultiplayerMatch(models.Model):
         
     def broadcast_data(self, data):
         channel_layer = get_channel_layer()
+        data["type"] = "multiplayer"
         for member in self.members.all():
             async_to_sync(channel_layer.group_send)(
                 member.channel_group_name,
@@ -63,7 +64,7 @@ class MultiplayerMatch(models.Model):
         self.game_data["attacking"] = players[0]
         self.game_data["defending"] = players[1]
         self.game_data["stacks"] = json.dumps([])
-        self.game_data["done"] = json.dumps([])
+        self.game_data["done_list"] = json.dumps([])
         self.save()
         # m=MultiplayerMatch.objects.all().last()
         
