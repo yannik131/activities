@@ -2,7 +2,10 @@ var game_mode;
 var this_user = '{{ user }}';
 var played_cards = [];
 var player_list;
+var move_mode = "none";
+var old_stacks = [];
 var selected_card;
+var defending;
 
 function processMultiplayerData(data) {
     switch(data.action) {
@@ -13,19 +16,40 @@ function processMultiplayerData(data) {
             handleMove(data);
             break;
         case "new_round":
-            setupNewRound(data);
+            move_mode = "none";
+            setupNewRound(data.data);
             break;
         case "transfer":
             handleTransfer(data);
+            break;
+        case "take":
+            move_mode = "take";
+            break;
     }
+    updateButtons();
+}
+
+function clear() {
+    clearStacks();
+    for(var i = 1; i < 5; i++) {
+        removeCardFrom(i, 100);
+    }
+    played_cards = [];
+    move_mode = "none";
 }
 
 function loadGameField(data) {
+    clear();
     var deck = JSON.parse(data.deck);
     player_list = JSON.parse(data.players);
-    determineGameMode(data.attacking, data.defending);
+    if(data.taking.length != 0) {
+        is_taking = true;
+    }
+    determineGameMode(data);
+    trump_suit = data.trump;
     addCardsToDeck(deck.length-1, deck[deck.length-1]);
-    positionPlayers(data.attacking, data.defending);
+    positionPlayers();
+    updatePlayerInfo(data);
     for(var i = 0; i < player_list.length; i++) {
         var username = player_list[i];
         var player_index = players[username];
@@ -39,30 +63,44 @@ function loadGameField(data) {
             addCardTo(player_index, hand.length);
         }
     }
-    var stacks = JSON.parse(data.stacks);
-    refreshStacks(stacks);
-    updateButtons();
+    old_stacks = JSON.parse(data.stacks);
+    refreshStacks(old_stacks);
 }
 
-function positionPlayers(attacking, defending) {
+function changeInfoFor(username, info) {
+    var player = players[username];
+    var player_info = document.getElementById("player"+player);
+    player_info.innerHTML = (
+        "<a href='/account/detail/" +
+        username + 
+        "/'>" +
+        username +
+        "</a>" +
+        info
+    );
+}
+
+function updatePlayerInfo(data) {
+    for(var i = 0; i < player_list.length; i++) {
+        var username = player_list[i];
+        if(username == data.attacking) {
+            changeInfoFor(username, " (ANGREIFER)");
+        }
+        else if(username == data.defending) {
+            changeInfoFor(username, " (VERTEIDIGER)");
+        }
+        else {
+            changeInfoFor(username, "");
+        }
+    }
+    defending = data.defending;
+}
+
+function positionPlayers() {
     var my_index = player_list.indexOf(this_user);
     var added_names = 0;
     while(added_names != player_list.length) {
         var username = player_list[my_index];
-        var player_info = document.getElementById("player"+(added_names+1));
-        player_info.innerHTML = (
-            "<a href='/account/detail/" +
-            username + 
-            "/'>" +
-            username +
-            "</a>"
-        );
-        if(username == attacking) {
-            player_info.innerHTML += " (ANGREIFER)";
-        }
-        else if(username == defending) {
-            player_info.innerHTML += " (VERTEIDIGER)";
-        }
         players[username] = added_names+1;
         my_index += 1;
         if(my_index == player_list.length)
@@ -71,12 +109,15 @@ function positionPlayers(attacking, defending) {
     }
 }
 
-function determineGameMode(attacking, defending) {
-    if(this_user == attacking) {
+function determineGameMode(data) {
+    if(this_user == data.attacking) {
         game_mode = "attacking";
     }
-    else if(this_user == defending) {
+    else if(this_user == data.defending) {
         game_mode = "defending";
+    }
+    else if(this_user == data.taking) {
+        game_mode = "none";
     }
     else {
         if(this_user == next(data.defending, player_list)) {
@@ -86,15 +127,9 @@ function determineGameMode(attacking, defending) {
             game_mode = "none";
         }
     }
-}
-
-function take() {
-    sendAction("take");
-}
-
-function done() {
-    sendAction("done");
-    deleteButton("done");
+    if(data.taking && data.taking != this_user) {
+        move_mode = "take";
+    }
 }
 
 function handleMove(data) {
@@ -103,16 +138,8 @@ function handleMove(data) {
     }
     var player = players[data.username];
     removeCardFrom(player, data.n);
-    var new_stacks = JSON.parse(data.stacks);
-    refreshStacks(new_stacks);
-    updateButtons();
-}
-
-function beatSingleCard(targets, card) {
-    played_cards.push(card);
-    beatStack(targets[0], card.id);
-    removePlayerCard(card);
-    sendMove();
+    old_stacks = JSON.parse(data.stacks);
+    refreshStacks(old_stacks);
 }
 
 function clearStackCallbacks() {
@@ -121,27 +148,39 @@ function clearStackCallbacks() {
     }
 }
 
-function beatMultipleCards(targets, card) {
+function createStackCallbacks(targets, card) {
     card.style.top = (parseFloat(card.style.top)-10)+"px";
+    selected_card = card;
     for(var i = 0; i < targets.length; i++) {
         var t = targets[i];
-        stacks[t][0].cursor = "pointer";
-        stacks[t][0].onclick = function() {
+        stacks[t-1][0].cursor = "pointer";
+        stacks[t-1][0].onclick = function() {
             var j = 0;
             while(stacks[j][0].id != this.id) {
                 j++;
             }
-            beatStack(j+1, card.id);
-            played_cards.push(card);
-            removePlayerCard(card);
-            game_mode = "defending";
+            beatStackWith(card, j+1);
             clearStackCallbacks();
+            move_mode = "beating";
+            updateButtons();
         }
     }
-    game_mode = "none";
 }
 
-function handlePlayerMove(value, suit, card) {
+function createStackWith(card) {
+    played_cards.push(card);
+    removePlayerCard(card);
+    addStack(card.id);
+}
+
+function beatStackWith(card, stack) {
+    beatStack(stack, card.id);
+    played_cards.push(card);
+    removePlayerCard(card);
+    sendMove();
+}
+
+function cardClicked(value, suit, card) {
     switch(game_mode) {
         case "none":
             return;
@@ -149,67 +188,36 @@ function handlePlayerMove(value, suit, card) {
             var targets = stackTargetsFor(value, suit);
             var transfer_possible = transferPossible(value);
             if(transfer_possible && targets.length == 0) {
-                //only transfer possible
-                played_cards.push(card);
-                removePlayerCard(card);
-                addStack(card.id);
-                if(cardsContain(value)) {
-                    createButton("Fertig", "done", sendMove);
-                }
-                else {
-                    sendMove(extra="transfer");
-                }
+                createStackWith(card);
+                move_mode = "transfer";
             }
             else if(transfer_possible && targets.length > 0) {
-                beatMultipleCards(targets, card);
-                createButton("Schieben", "transfer", function() {
-                    played_cards.push(card);
-                    addStack(card.id);
-                    removePlayerCard(card);
-                    clearStackCallbacks();
-                    if(!cardsContain(value)) {
-                        sendMove("transfer");
-                    }
-                    else {
-                        createButton("Fertig", "done", sendMove);
-                        deleteButton("transfer");
-                    }
-                    game_mode = "defending";
-                });
+                createStackCallbacks(targets, card);
+                move_mode = "transfer";
             }
             else if(targets.length == 1) {
-                beatSingleCard(targets, card);
+                move_mode = "beating";
+                beatStackWith(card, targets[0]);
             }
             else if(targets.length > 1) {
-                beatMultipleCards(targets, card);
+                createStackCallbacks(targets, card);
+                move_mode = "beating";
             }
             else {
                 return;
             }
             break;
         case "helping":
-        case "attacking":
-            var possible_move = stacks.length == 0;
-            outer_loop:
-            for(var i = 0; i < stacks.length; i++) {
-                for(var j = 0; j < stacks[i].length; j++) {
-                    const vs = getValueAndSuitFrom(stacks[i][j].id);
-                    if(value == vs.value) {
-                        possible_move = true;
-                        break outer_loop;
-                    }
-                }
-            }
-            if(!possible_move) {
+            if(!old_stacks.length) {
                 return;
             }
-            played_cards.push(card);
-            addStack(card.id);
-            removePlayerCard(card);
-            if(cardsContain(value)) {
-                createButton("Fertig", "done", sendMove);
+        case "attacking":
+            if(!attackingIsPossible() || (stacks.length && !stacksContainValue(value))) {
+                return;
             }
-            else {
+            createStackWith(card);
+            move_mode = "attacking";
+            if(!playerHandContains(getVs(stacks[0][0].id).value) || old_stacks.length) {
                 sendMove();
             }
             break;
@@ -217,7 +225,33 @@ function handlePlayerMove(value, suit, card) {
     updateButtons();
 }
 
+function stacksContainValue(value) {
+    for(var i = 0; i < stacks.length; i++) {
+        for(var j = 0; j < stacks[i].length; j++) {
+            const vs = getVs(stacks[i][j].id);
+            if(value == vs.value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+function attackingIsPossible() {
+    if(game_mode != "attacking" && game_mode != "helping" || !player1_cards.length) {
+        return false;
+    }
+    var count = player_cards[players[defending]].length;
+    if(stacks.length == 6 || count == undefendedCardCount()) {
+        return false;
+    }
+    return true;
+}
+
 function allDefended() {
+    if(!stacks.length) {
+        return false;
+    }
     for(var i = 0; i < stacks.length; i++) {
         if(stacks[i].length != 2) {
             return false;
@@ -226,36 +260,108 @@ function allDefended() {
     return true;
 }
 
-function updateButtons() {
-    const defended = allDefended();
-    //take button
-    if(game_mode == "defending" && !defended) {
-        createButton("Schlucken", "take", take);
+function sendMove() {
+    user_websocket.send(JSON.stringify({
+        "type": "multiplayer",
+        "match_id": "{{ match.id }}",
+        "action": move_mode,
+        "stacks": JSON.stringify(getConvertedStack()),
+        "hand": JSON.stringify(getConvertedHand()),
+        "n": played_cards.length
+    }));
+    played_cards = [];
+    move_mode = "none";
+    clearButtons();
+}
+
+function sendAction(action) {
+    if(action == "done") {
+        console.log("done");
+    }
+    user_websocket.send(JSON.stringify({
+        'type': 'multiplayer', 
+        'match_id': '{{ match.id }}',
+        'action': action
+    }));
+}
+
+function transferCheck() {
+    if(playerHandContains(getVs(stacks[0][0].id).value)) {
+        createButton("Fertig", "done", sendMove);
     }
     else {
-        deleteButton("take");
+        sendMove();
     }
-    
-    //done button
-    if(stacks.length > 0) {
-        if(game_mode == "attacking" || game_mode == "helping") {
-            createButton("Fertig", "done", done);
+}
+
+function updateButtons() {
+    if(move_mode != "take" && game_mode == "defending" && undefendedCardCount()) {
+        createButton("Schlucken", "take", function() {
+            sendAction("take");
+            deleteButton("take");
+        });
+    }
+    if(game_mode == "defending" && move_mode == "transfer") {
+        if(played_cards.length) {
+            transferCheck();
         }
-        else if(game_mode == "defending" && defended) {
+        else {
+            createButton("Schieben", "transfer", function() {
+                createStackWith(selected_card);
+                selected_card = null;
+                deleteButton("transfer");
+                transferCheck();
+            });
+        }
+    }
+    if(game_mode == "defending" && allDefended()) {
+        sendAction("done");
+    }
+    if(game_mode == "attacking" && played_cards.length && !old_stacks.length && playerHandContains(getVs(stacks[0][0].id).value)) {
+        if(attackingIsPossible()) {
+            createButton("Fertig", "done", sendMove);
+        }
+        else {
+            sendMove();
+        }
+    }
+    console.log(game_mode, allDefended(), attackingIsPossible());
+    if((game_mode == "attacking" || game_mode == "helping") && (move_mode == "take" || allDefended())) {
+        if(attackingIsPossible()) {
+            createButton("Fertig", "done", function() {
+                sendAction("done");
+                deleteButton("done");
+            });
+        }
+        else {
             sendAction("done");
         }
     }
-    
+    if(document.getElementById("done")) {
+        if((game_mode == "attacking" || game_mode == "helping") && !attackingIsPossible()) {
+            deleteButton("done");
+        }
+    }
+}
+
+function undefendedCardCount() {
+    var count = 0;
+    for(var i = 0; i < stacks.length; i++) {
+        if(stacks[i].length == 1) {
+            count++;
+        }
+    }
+    return count;
 }
 
 function stackTargetsFor(value, suit) {
     var targets = [];
     for(var i = 0; i < stacks.length; i++) {
         if(stacks[i].length == 1) {
-            const vs = getValueAndSuitFrom(stacks[i][0].id);
+            const vs = getVs(stacks[i][0].id);
             const bigger = value_values[value] > value_values[vs.value];
             if(bigger && suit == vs.suit || 
-                (suit == trump_vs.suit && (vs.suit != trump_vs.suit || bigger))) {
+                (suit == trump_suit && (vs.suit != trump_suit || bigger))) {
                 targets.push(i+1);
             }
         }
@@ -264,6 +370,9 @@ function stackTargetsFor(value, suit) {
 }
 
 function transferPossible(value) {
+    if(stacks.length == 0) {
+        return false;
+    }
     var left_username = next(this_user, player_list);
     var left_count = player_cards[players[left_username]].length;
     if(left_count < stacks.length+1) {
@@ -271,20 +380,16 @@ function transferPossible(value) {
     }
     for(var i = 0; i < stacks.length; i++) {
         if(stacks[i].length > 1 ||
-            getValueAndSuitFrom(stacks[i][0].id).value != value) {
+            getVs(stacks[i][0].id).value != value) {
             return false;
         }
     }
     return true;
 }
 
-function cardClicked(value, suit, card) {
-    handlePlayerMove(value, suit, card);
-}
-
-function cardsContain(value) {
+function playerHandContains(value) {
     for(var i = 0; i < player1_cards.length; i++) {
-        const vs = getValueAndSuitFrom(player1_cards[i].id);
+        const vs = getVs(player1_cards[i].id);
         if(vs.value == value) {
             return true;
         }
@@ -292,18 +397,6 @@ function cardsContain(value) {
     return false;
 }
 
-function sendMove(action="play") {
-    user_websocket.send(JSON.stringify({
-        "type": "multiplayer",
-        "match_id": "{{ match.id }}",
-        "action": action,
-        "stacks": JSON.stringify(getConvertedStack()),
-        "hand": JSON.stringify(getConvertedHand()),
-        "n": played_cards.length
-    }));
-    played_cards = [];
-    clearButtons();
-}
 
 function clearButtons() {
     for(var i = 0; i < buttons.length; i++) {
@@ -323,16 +416,17 @@ function clearStacks() {
 
 function setupNewRound(data) {
     clearStacks();
-    clearButtons();
+    old_stacks = [];
     var new_deck = JSON.parse(data.deck);
     removeCardsFromDeck(deck.length-new_deck.length);
-    determineGameMode(data.attacking, data.defending);
+    determineGameMode(data);
+    updatePlayerInfo(data);
     for(var i = 0; i < player_list.length; i++) {
         var username = player_list[i];
         var player = players[username];
         if(username == this_user) {
             var old_hand = getConvertedHand();
-            var new_hand = JSON.parse(data[username]);
+            var new_hand = JSON.parse(data[this_user]);
             for(var j = 0; j < new_hand.length; j++) {
                 if(!old_hand.includes(new_hand[j])) {
                     addCardTo(1, 1, new_hand[j]);
@@ -342,7 +436,7 @@ function setupNewRound(data) {
         else {
             var old_count = player_cards[player].length;
             var new_count = JSON.parse(data[username]).length;
-            const n = old_count-new_count;
+            const n = new_count-old_count;
             if(n > 0) {
                 addCardTo(player, n);
             }
@@ -354,22 +448,13 @@ function setupNewRound(data) {
 }
 
 function handleTransfer(data) {
-    clearButtons();
-    determineGameMode(data.attacking, data.defending);
-    updateButtons();
+    determineGameMode(data);
     refreshStacks(JSON.parse(data.stacks));
+    updatePlayerInfo(data);
 }
 
 user_websocket.onopen = function() {
     sendAction("request_data");
-}
-
-function sendAction(action) {
-    user_websocket.send(JSON.stringify({
-        'type': 'multiplayer', 
-        'match_id': '{{ match.id }}',
-        'action': action
-    }));
 }
 
 function next(el, arr) {

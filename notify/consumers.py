@@ -6,7 +6,7 @@ from chat.models import ChatRoom, ChatLogEntry, ChatCheck
 from asgiref.sync import async_to_sync
 from django.utils.timezone import now
 from multiplayer.models import MultiplayerMatch
-from multiplayer.utils import cycle_slice, after, deal_cards
+from multiplayer.utils import after, deal_cards, left_player
 
 
 class NotificationConsumer(WebsocketConsumer):
@@ -70,15 +70,17 @@ class NotificationConsumer(WebsocketConsumer):
     def handle_multiplayer_message(self, text_data):
         match = MultiplayerMatch.objects.get(pk=text_data['match_id'])
         data = match.game_data
+        players = None
         if text_data['action'] == "request_data":
             if not match.in_progress:
                 match.start()
             else:
                 self.send(text_data=json.dumps(data))
-        elif text_data['action'] == "play":
+        elif text_data['action'] in ["beating", "attacking"]:
             data["stacks"] = text_data["stacks"]
             data[self.user.username] = text_data["hand"]
-            data["done"] = json.dumps([])
+            if not data["taking"]:
+                data["done_list"] = json.dumps([])
             match.save()
             match.broadcast_data({
                 "username": self.user.username,
@@ -91,42 +93,47 @@ class NotificationConsumer(WebsocketConsumer):
             if(str(self.user.id) not in done_list):
                 done_list.append(str(self.user.id))
             # defending player sends done when all is defended
-            diff = match.member_limit - len(done_list)
-            if diff in [0, 1]:
+            limit = match.member_limit
+            if limit is 2 and len(done_list) is 2 or limit > 2 and len(done_list) is 3:
                 players = json.loads(data["players"])
+                if data["taking"]:
+                    hand = json.loads(data[data["taking"]])
+                    stacks = json.loads(data["stacks"])
+                    for stack in stacks:
+                        for card in stack:
+                            hand.append(card)
+                    data[data["taking"]] = json.dumps(hand)
+                    data["attacking"] = left_player(data["taking"], players, data)
+                    data["taking"] = ""
+                else:
+                    if json.loads(data[data["defending"]]):
+                        data["attacking"] = data["defending"]
+                    else:
+                        data["attacking"] = left_player(data["defending"], players, data)
                 deal_cards(data, players)
-                data["attacking"] = data["defending"]
-                data["defending"] = players[after(data["attacking"], players)]
+                data["defending"] = left_player(data["attacking"], players, data)
                 done_list = []
+                match.broadcast_data({
+                    "action": "new_round",
+                    "data": data
+                })
             data['done_list'] = json.dumps(done_list)
             match.save()
-            match.broadcast_data({
-                "action": "new_round",
-                "data": data
-            })
         elif text_data["action"] == "take":
-            stacks = json.loads(data["stacks"])
-            hand = json.loads(data[data["defending"]])
-            for stack in stacks:
-                for card in stack:
-                    hand.append(card)
             players = json.loads(data["players"])
-            deal_cards(data, players)
-            data["attacking"] = players[after(data["defending"])]
-            data["defending"] = players[after(data["attacking"])]
+            data["done_list"] = json.dumps([str(self.user.id)])
+            data["taking"] = self.user.username
             match.save()
             match.broadcast_data({
-                "action": "new_round",
-                "data": data
+                "action": "take"
             })
-            
         elif text_data["action"] == "transfer":
             players = json.loads(data["players"])
             data["stacks"] = text_data["stacks"]
             data[self.user.username] = text_data["hand"]
             data["done"] = json.dumps([])
-            data["attacking"] = players[after(data["defending"])]
-            data["defending"] = players[after(data["attacking"])]
+            data["attacking"] = data["defending"]
+            data["defending"] = left_player(data["attacking"], players, data)
             match.save()
             match.broadcast_data({
                 "action": "transfer",
@@ -134,7 +141,14 @@ class NotificationConsumer(WebsocketConsumer):
                 "defending": data["defending"],
                 "stacks": data["stacks"]
             })
-            
+        if players:
+            count = 0
+            for player in players:
+                if json.loads(data[player]):
+                    count += 1
+            if count <= 1:
+                match.start()
+                match.broadcast_data(match.game_data)
         
     def chat_message(self, event):
         self.send(text_data=json.dumps(event))

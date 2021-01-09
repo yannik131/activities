@@ -8,7 +8,7 @@ var player_cards = {1: player1_cards, 2: player2_cards, 3: player3_cards, 4: pla
 var players = {}; //username -> 1-4
 var suit_values = {}, value_values = {};
 var deck = [];
-var trump_vs;
+var trump_suit;
 var stacks = [];
 var buttons = [];
 const field = document.querySelector(".game-field");
@@ -43,7 +43,7 @@ function getGridPosition(value, suit) {
     return {x: x, y: y};
 }
 
-function getValueAndSuitFrom(type) {
+function getVs(type) {
     var value, suit;
     if(type.length == 3) {
         value = "10";
@@ -60,7 +60,7 @@ function getValueAndSuitFrom(type) {
 }
 
 function createCard(type, clickable=false) {
-    const vs = getValueAndSuitFrom(type);
+    const vs = getVs(type);
     var value = vs.value, suit = vs.suit;
     const position = getGridPosition(value, suit);
     const card = document.createElement("div");
@@ -181,7 +181,7 @@ function defineSortValues() {
     var suits = ["d", "h", "s", "c"];
     var count = 100;
     for(var i = 0; i < suits.length; i++) {
-        if(suits[i] == trump_vs.suit) {
+        if(suits[i] == trump_suit) {
             suit_values[suits[i]] = 400;
         }
         else {
@@ -196,7 +196,7 @@ function defineSortValues() {
 }
 
 function getCardSortValue(type) {
-    const vs = getValueAndSuitFrom(type);
+    const vs = getVs(type);
     const value = vs.value, suit = vs.suit;
     return suit_values[suit] + value_values[value];
 }
@@ -235,7 +235,6 @@ function addBottomCardToDeck(type) {
     card.id = "deck-0";
     field.appendChild(card);
     deck.push(card);
-    trump_vs = getValueAndSuitFrom(type);
 }
 
 function addCardsToDeck(n, bottom_card) {
@@ -340,11 +339,13 @@ function createButton(text, id, callback) {
     var button = document.createElement("button");
     button.type = "button";
     button.style.fontSize = "24pt";
+    button.style.zIndex = "100";
     button.innerHTML = text;
-    button.onclick = callback;
+    button.onclick = function() { callback(); };
     button.style.position = "absolute";
     button.style.right = (buttons.length == 0? 0 : buttons[buttons.length-1].offsetWidth) + "px";
     button.style.top = "0px";
+    button.style.opacity = "0.7";
     button.id = id;
     field.appendChild(button);
     buttons.push(button);
@@ -363,5 +364,4 @@ function deleteButton(id) {
             buttons[i].style.right = parseFloat(buttons[i-1].style.left)+"px";
         }
     }
-    
 }

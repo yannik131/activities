@@ -48,8 +48,9 @@ class MultiplayerMatch(models.Model):
 
     def start(self):
         self.in_progress = True
-        deck = create_deck("6", "7", "8", "9", "10", "J", "Q", "K", "A")
-        self.game_data["deck"] = json.dumps(deck)
+        self.game_data = dict()
+        deck = create_deck("8", "9", "K", "Q", "A", "J")
+        self.game_data["trump"] = deck[-1][-1]
         self.game_data["type"] = "multiplayer"
         self.game_data["action"] = "load_data"
         players = []
@@ -60,11 +61,13 @@ class MultiplayerMatch(models.Model):
         for player in players:
             self.game_data[player] = json.dumps(deck[:6])
             deck = deck[6:]
+        self.game_data["deck"] = json.dumps(deck)
         self.game_data["first_attacker"] = players[0]
         self.game_data["attacking"] = players[0]
         self.game_data["defending"] = players[1]
         self.game_data["stacks"] = json.dumps([])
         self.game_data["done_list"] = json.dumps([])
+        self.game_data["taking"] = ""
         self.save()
         # m=MultiplayerMatch.objects.all().last()
         
