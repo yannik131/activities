@@ -246,10 +246,8 @@ function cardClicked(value, suit, card) {
             createStackWith(card);
             move_mode = "attacking";
             if(!playerHandContains(getVs(stacks[0][0].id).value) || old_stacks.length) {
-                if(move_mode == "take") {
-                    sendAction("done");
-                }
                 sendMove();
+                sendAction("done");
             }
             break;
     }
