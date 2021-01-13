@@ -41,7 +41,10 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [('127.0.0.1', 6655)]
+            'hosts': [('127.0.0.1', 6655)],
+            'group_expiry': 7200,
+            'expiry': 30,
+            'capacity': 1500
         }
     }
 }
@@ -70,7 +73,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'channels',
     'parler',
-    'easy_thumbnails'
+    'easy_thumbnails',
+    'durak'
 ]
 
 MIDDLEWARE = [

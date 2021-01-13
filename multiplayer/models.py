@@ -10,6 +10,7 @@ from .utils import create_deck
 import json
 
 
+
 class MultiplayerMatch(models.Model):
     activity = models.ForeignKey(Activity, related_name='multiplayer_matches', on_delete=models.CASCADE)
     members = models.ManyToManyField(User, related_name='multiplayer_matches')
@@ -18,15 +19,17 @@ class MultiplayerMatch(models.Model):
     game_data = HStoreField(default=dict)
     channel_group_name = models.UUIDField(default=uuid.uuid4)
     in_progress = models.BooleanField(default=False)
+    
+    @staticmethod
+    def match_list_for(activity_id):
+        matches = MultiplayerMatch.objects.filter(activity__id=activity_id)
+        return [(match.id, [user.username for user in match.members.all()], match.member_limit) for match in matches if not match.is_full()]
 
     def get_absolute_url(self):
         return reverse('multiplayer:match', args=[self.id])
         
     def lobby_url(self, request):
         return request.build_absolute_uri(f'/multiplayer/lobby/{self.activity.name}/')
-        
-    def is_ready(self):
-        return self.member_limit == self.members.all().count()
         
     def is_full(self):
         return self.members.all().count() == self.member_limit
@@ -37,12 +40,18 @@ class MultiplayerMatch(models.Model):
                 return k
         return None
         
-    def broadcast_data(self, data):
+    def broadcast_data(self, data, direct=False):
         channel_layer = get_channel_layer()
         data["type"] = "multiplayer"
-        for member in self.members.all():
+        if direct:
+            for user in self.members.all():
+                async_to_sync(channel_layer.group_send)(
+                    user.channel_group_name,
+                    data
+                )
+        else:
             async_to_sync(channel_layer.group_send)(
-                member.channel_group_name,
+                f"match-{self.id}",
                 data
             )
 

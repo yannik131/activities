@@ -115,7 +115,12 @@ function connect() {
                 playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/boing_x.wav")
                 break;
             case "multiplayer":
-                processMultiplayerData(data);
+                if(data.action == "match_list") {
+                    updateMatchList(data);
+                }
+                else if(data.action == "members_changed") {
+                    updateMatchMembers(data);
+                }
                 break;
         }
     }

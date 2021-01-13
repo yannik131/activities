@@ -17,7 +17,11 @@
             </tr>
         </thead>
         <tbody id="online-list">
-            
+            {% for user in online_list %}
+                <tr>
+                    <td><a href="{{ user.get_absolute_url }}">{{ user }}</a></td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
     <table>
@@ -26,6 +30,15 @@
                 {% trans "Matches" %}
             </th>
         </tr>
+        {% for match in user_matches.all %}
+            <tr style="background-color: green; cursor: pointer;" onclick="openMatch({{ match.id }});">
+                <td>
+                    {% for user in match.members.all %}
+                        {{ user }} 
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
         <tbody id="match-list">
             
         </tbody>
@@ -34,5 +47,5 @@
 
 {% endblock %}
 {% block domready %}
-    {% include 'javascript/lobby.js' with id=activity.id%}
+    {% include 'javascript/lobby.js' with activity=activity%}
 {% endblock %}

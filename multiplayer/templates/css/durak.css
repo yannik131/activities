@@ -10,6 +10,18 @@
     min-height: 500px;
 }
 
+.back {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.leave {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 .game::selection {
     background: transparent;
 }

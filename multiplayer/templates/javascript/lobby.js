@@ -1,57 +1,50 @@
 {% load i18n %}
 
-function update() {
-    const request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-        if(this.readyState == 4 && this.status == 200) {
-            const data = JSON.parse(request.responseText);
-            const user_list = data['members'];
-            var old_tbody = document.getElementById('online-list');
-            var new_tbody = document.createElement('tbody');
-            new_tbody.id = "online-list";
-            for(var i = 0; i < user_list.length; i++) {
-                var new_row = new_tbody.insertRow();
-                var new_cell = new_row.insertCell();
-                new_cell.innerHTML = (
-                    "<a href='/account/detail/" 
-                    + user_list[i]
-                    + "/'>"
-                    + user_list[i]
-                    + "</a>"
-                );
-            }  
-            old_tbody.parentNode.replaceChild(new_tbody, old_tbody);
-            
-            const match_list = data['matches'];
-            old_tbody = document.getElementById('match-list');
-            new_tbody = document.createElement('tbody');
-            new_tbody.id = 'match-list';
-            for(var i = 0; i < match_list.length; i++) {
-                match_data = match_list[i];
-                var new_row = new_tbody.insertRow();
-                var new_cell = new_row.insertCell();
-                new_cell.style.cursor = "pointer";
-                new_cell.innerHTML = (
-                    "{% trans "Spieler" %}" + 
-                    ": " + 
-                    match_data[0] +
-                    "/" +
-                    match_data[1]
-                );
-                if(match_data[3]) {
-                    new_cell.style.backgroundColor = "green"; 
-                }
-                new_cell.onclick = function() {
-                    location.href = "/multiplayer/match/" + match_data[2] + "/";
-                }
+function updateMatchList(data) {
+    const match_list = JSON.parse(data.match_list);
+    old_tbody = document.getElementById('match-list');
+    new_tbody = document.createElement('tbody');
+    new_tbody.id = 'match-list';
+    for(var i = 0; i < match_list.length; i++) {
+        match_data = match_list[i];
+        var new_row = new_tbody.insertRow();
+        var new_cell = new_row.insertCell();
+        new_cell.style.cursor = "pointer";
+        var usernames = match_data[1];
+        for(var j = 0; j < match_data[2]; j++) {
+            if(j >= usernames.length) {
+                new_cell.innerHTML += '{% trans "FREI" %} '
             }
-            old_tbody.parentNode.replaceChild(new_tbody, old_tbody);
+            else {
+                new_cell.innerHTML += (
+                    "<a href='/account/detail/" +
+                    usernames[j] +
+                    "/'>" +
+                    usernames[j] +
+                    "</a> "
+                );
+            }
+        }
+        new_cell.onclick = function() {
+            openMatch(match_data[0]);
         }
     }
-    const url = "/multiplayer/get_online_list/" + {{ id }} + "/";
-    request.open("GET", url, true);
-    request.send();
+    old_tbody.parentNode.replaceChild(new_tbody, old_tbody);
 }
 
-update();
-setInterval(update, 5000);
+function requestMatchList() {
+    user_websocket.send(JSON.stringify({
+        'type': 'multiplayer',
+        'activity_id': '{{ activity.id }}',
+        'action': 'match_list'
+    }));
+}
+
+function openMatch(match_id) {
+    location.href = "/multiplayer/match/" + match_id + "/";
+}
+
+user_websocket.onopen = function() {
+    requestMatchList();
+}
+setInterval(requestMatchList, 5000);

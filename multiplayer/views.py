@@ -8,13 +8,13 @@ import json
 from chat.models import ChatRoom
 from django.contrib import messages
 from account.models import User
-from asgiref.sync import async_to_sync
-from channels.layers import get_channel_layer
 
 
 def lobby(request, activity_name):
     activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
-    return render(request, 'multiplayer/lobby.html', dict(activity=activity))
+    online_list = activity.members.filter(channel_name__isnull=False)
+    user_matches = request.user.multiplayer_matches.filter(activity__id=activity.id)
+    return render(request, 'multiplayer/lobby.html', dict(activity=activity, online_list=online_list, user_matches=user_matches))
 
 
 def create_match(request, activity_name):
@@ -40,9 +40,9 @@ def match(request, match_id):
     match = get_object_or_404(MultiplayerMatch, id=match_id)
     members = [(User.objects.get(id=v), k) if v else (None, k) for k, v in match.member_positions.items()]
     is_member = match.members.filter(pk=request.user.id).exists()
-    if is_member and match.is_ready():
+    if is_member and match.is_full():
         return HttpResponseRedirect(request.build_absolute_uri(f"/multiplayer/game/{match_id}"))
-    elif match.is_ready():
+    elif match.is_full():
         messages.add_message(request, messages.INFO, _("Spiel ist bereits voll"))
         return HttpResponseRedirect(match.lobby_url(request))
     return render(request, 'multiplayer/match.html', dict(match=match, members=members, is_member=is_member))
@@ -85,15 +85,8 @@ def leave_match(request, match_id):
 
 def game(request, match_id):
     match = MultiplayerMatch.objects.get(id=match_id)
-    if not match.is_ready():
+    if not match.is_full():
         return HttpResponseServerError()
     if match.activity.name == _('Durak'):
         return render(request, 'multiplayer/durak.html', dict(match=match))
         
-
-def get_online_list(request, activity_id):
-    activity = Activity.objects.get(id=activity_id)
-    members = [user.username for user in activity.members.exclude(channel_name__isnull=True)]
-    matches = [[match.members.all().count(), match.member_limit, match.id, match.members.filter(pk=request.user.id).exists()] for match in activity.multiplayer_matches.all()]
-    data = dict(members=members, matches=matches)
-    return HttpResponse(json.dumps(data))

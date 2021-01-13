@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}Durak{% endblock %}
 {% block style %}{% include 'css/durak.css' %}{% endblock %}
@@ -7,6 +8,12 @@
 {% block content %}
 
 <div class="game">
+    <div class="back">
+        <a href="{{ match.activity.get_absolute_url }}">{{ match.activity }}</a>
+    </div>
+    <div class="leave">
+        <a href="{% url 'multiplayer:leave_match' match.id %}">{% trans "Ciao!" %}</a>
+    </div>
     <div class="game-field">
         
     </div>

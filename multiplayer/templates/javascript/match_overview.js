@@ -1,6 +1,6 @@
 {% load i18n %}
 
-function multiplayerDispatch(data) {
+function updateMatchMembers(data) {
     var box = document.getElementById(data.match_id);
     if(!box) {
         return;
@@ -24,5 +24,4 @@ function multiplayerDispatch(data) {
             location.href = "/multiplayer/game/" + data.match_id;
             break;
     }
-    
 }

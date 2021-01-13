@@ -11,31 +11,34 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
     if action == "post_add":
         instance.broadcast_data(
             {
-                "type": "multiplayer",
+                'action': 'members_changed',
                 "match_id": str(instance.id),
                 "info": "joined",
                 "position": instance.get_position_of(member),
                 "username": member.username
-            }
+            }, 
+            direct=True
         )
         if instance.member_limit == instance.members.all().count():
             instance.broadcast_data(
                 {
-                    "type": "multiplayer",
+                    'action': 'members_changed',
                     "match_id": str(instance.id),
                     "info": "start"
-                }
+                }, 
+                direct=True
             )
             instance.start()
     elif action == "pre_remove":
         instance.broadcast_data(
             {
-                "type": "multiplayer",
+                'action': 'members_changed',
                 "match_id": str(instance.id),
                 "info": "left",
                 "position": instance.get_position_of(member),
                 "username": member.username
-            }
+            },
+            direct=True
         )
         
         

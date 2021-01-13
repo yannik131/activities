@@ -1,10 +1,14 @@
 from django.db import models
+from django.db.models import Count
 from django.conf import settings
 from django.urls import reverse
+from account.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import gettext_lazy as _
 from parler.models import TranslatableModel, TranslatedFields
-
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
+        
 
 class Activity(TranslatableModel):
     translations = TranslatedFields(
@@ -21,6 +25,7 @@ class Activity(TranslatableModel):
     )
     type = models.CharField(max_length=20, choices=TYPE_CHOICES, null=True)
     online = models.BooleanField(default=False)
+    
 
     class Meta:
         verbose_name_plural = 'activities'

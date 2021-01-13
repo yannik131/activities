@@ -48,3 +48,22 @@ def left_player(player, players, data):
         if i == n-2:
             return None
     return None
+    
+    
+def player_with_cards(players, data):
+    count = 0
+    for player in players:
+        if data[player] != "[]":
+            count += 1
+    return count
+    
+    
+def random_name():
+    with open("multiplayer/random_names.txt", "r") as f:
+        names = f.readlines()
+        if not names:
+            raise RuntimeError("Out of names.")
+    with open("multiplayer/random_names.txt", "w") as f:
+        f.writelines(names[1:])
+    return names[0][:-1]
+    
