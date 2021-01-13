@@ -1,13 +1,8 @@
-from concurrent.futures import thread
 import json
 from channels.generic.websocket import WebsocketConsumer
 from chat.models import ChatRoom, ChatLogEntry, ChatCheck
 from multiplayer.models import MultiplayerMatch
 from multiplayer.utils import before, deal_cards, left_player, player_with_cards
-from shared.shared import log
-from django_pglocks import advisory_lock
-from channels.layers import get_channel_layer
-from account.models import User
 from redis import StrictRedis
 conn = StrictRedis()
 import redis_lock
