@@ -4,7 +4,7 @@ from chat.models import ChatRoom, ChatLogEntry, ChatCheck
 from multiplayer.models import MultiplayerMatch
 from multiplayer.utils import before, deal_cards, left_player, player_with_cards
 from redis import StrictRedis
-conn = StrictRedis()
+conn = StrictRedis(host="localhost", port=6655)
 import redis_lock
 from asgiref.sync import async_to_sync
 
