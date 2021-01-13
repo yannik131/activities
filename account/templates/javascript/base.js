@@ -48,9 +48,9 @@ function addNotification(id, text, url) {
         + url
         + '" class="notification-url">'
         + text
-        + '</a><span class="closebtn" onclick="removeNotification('
+        + '</a><div class="closebtn-container" onclick="removeNotification('
         + id
-        + ');">&times;</span></div>');
+        + ');"><div class="closebtn"">&times;</span></div>');
     changeCount("notifications-count", 1);
 }
 

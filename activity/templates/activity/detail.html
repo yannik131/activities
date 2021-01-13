@@ -14,7 +14,7 @@
     {% endif %}
     {% if activity.type == 'competitive' %}
         <h3><a href="{% url 'competitions:overview' activity.id %}">{% trans "Matches & Turniere" %}</a>
-        {% if activity.online %}
+        {% if activity.online and is_member %}
             | <a href="{% url 'multiplayer:lobby' activity.name %}">{% trans "Online spielen" %}</a>
         {% endif %}
         </h3>

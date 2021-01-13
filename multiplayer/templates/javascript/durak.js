@@ -323,7 +323,7 @@ function transferCheck() {
 
 function updateButtons() {
     clearButtons();
-    if(player1_cards.length == 0) {
+    if(player1_cards.length == 0 || game_mode == "none") {
         console.log("updateButtons: no cards, send done");
         sendAction("done");
         return;

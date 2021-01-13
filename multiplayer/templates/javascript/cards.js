@@ -338,7 +338,12 @@ function createButton(text, id, callback) {
     }
     var button = document.createElement("button");
     button.type = "button";
-    button.style.fontSize = "24pt";
+    if(window.screen.width < 768) {
+        button.style.fontSize = "14pt";
+    }
+    else {
+        button.style.fontSize = "24pt";
+    }
     button.style.zIndex = "100";
     button.innerHTML = text;
     button.onclick = function() { callback(); };
