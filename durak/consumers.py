@@ -15,7 +15,7 @@ class DurakConsumer(WebsocketConsumer):
         self.username = self.scope['url_route']['kwargs']['username']
         
         async_to_sync(self.channel_layer.group_add)(
-            self.match_id,
+            f"match-{self.match_id}",
             self.channel_name
         )
         

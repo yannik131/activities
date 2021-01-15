@@ -7,6 +7,7 @@ import uuid
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 from .utils import create_deck
+from django.utils.translation import gettext_lazy as _
 import json
 
 
@@ -54,6 +55,12 @@ class MultiplayerMatch(models.Model):
                 f"match-{self.id}",
                 data
             )
+            
+    def member_list(self):
+        result = [f"{u} " for u in self.members.all()]
+        for i in range(self.member_limit-self.members.all().count()):
+            result.append(_("FREI") + " ")
+        return result
 
     def start(self):
         self.in_progress = True

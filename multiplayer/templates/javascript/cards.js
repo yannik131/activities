@@ -12,17 +12,13 @@ var trump_suit;
 var stacks = [];
 var buttons = [];
 const field = document.querySelector(".game-field");
+var scale, w, h;
 /*To calculate the scale, we substract constant paddings which are
 unaffected by the scale from the divs total width/height and
 divide the result by the space requirements of the cards on the
 durak game field. The smaller value is then used to prevent 
 overlap of cards.*/
-var scale1 = (field.offsetWidth-40)/(123*3+192*2/3);
-var scale2 = (field.offsetHeight-10)/(192*3+192*2/3+192/4*2);
-const scale = scale1 < scale2? scale1 : scale2;
 
-const w = 123*scale;
-const h = 192*scale;
 
 function getGridPosition(value, suit) {
     var x, y;
@@ -370,3 +366,17 @@ function deleteButton(id) {
         }
     }
 }
+
+function resize() {
+    console.log("resize");
+    var scale1 = (field.offsetWidth-40)/(123*3+192*2/3);
+    var scale2 = (field.offsetHeight-10)/(192*3+192*2/3+192/4*2);
+    scale = scale1 < scale2? scale1 : scale2;
+
+    w = 123*scale;
+    h = 192*scale;
+    var children = field.getElementsByTagName("*");
+    //TODO: MAYBE resize?
+}
+
+resize();

@@ -25,8 +25,9 @@ function updateMatchList(data) {
                 );
             }
         }
+        new_cell.id = match_data[0]
         new_cell.onclick = function() {
-            openMatch(match_data[0]);
+            location.href = "/multiplayer/match/" + this.id + "/";
         }
     }
     old_tbody.parentNode.replaceChild(new_tbody, old_tbody);

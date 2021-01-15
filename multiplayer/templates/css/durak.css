@@ -2,12 +2,11 @@
 
 .game {
     position: absolute;
-    left: 30%;
-    top: 70px;
-    bottom: 0;
-    right: 0;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
     max-width: 800px;
-    min-height: 500px;
 }
 
 .back {

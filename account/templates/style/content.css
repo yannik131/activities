@@ -9,6 +9,11 @@ body {
 }
 
 .content {
+    position: absolute;
+    top: 50px;
+    left: 280px;
+    right: 5px;
+    bottom: 5px;
     color: white;
     font-family: "Courier New", "Lucida Console", monospace;
 }

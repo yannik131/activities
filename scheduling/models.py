@@ -1,5 +1,6 @@
 from django.db import models
 from usergroups.models import UserGroup
+from django.utils.translation import gettext_lazy as _
 from shared.shared import GERMAN_DATE_FMT
 
 
@@ -20,3 +21,9 @@ class Appointment(models.Model):
 
     def start_time_formatted(self):
         return self.start_time.strftime(GERMAN_DATE_FMT)
+        
+    def get_absolute_url(self):
+        return self.group.get_absolute_url()
+        
+    def verbose(self):
+        return self.group.verbose()

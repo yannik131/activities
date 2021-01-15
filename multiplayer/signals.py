@@ -2,6 +2,7 @@ from django.db.models.signals import m2m_changed, post_delete, post_save, pre_sa
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
 from .models import MultiplayerMatch
+from shared.shared import log
 
 
 @receiver(m2m_changed, sender=MultiplayerMatch.members.through)
@@ -30,15 +31,25 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
             )
             instance.start()
     elif action == "pre_remove":
-        instance.broadcast_data(
-            {
-                'action': 'members_changed',
-                "match_id": str(instance.id),
-                "info": "left",
-                "position": instance.get_position_of(member),
-                "username": member.username
-            },
-            direct=True
-        )
-        
+        log("pre remove, in progress:", instance.in_progress)
+        if instance.in_progress:
+            log("sending abort")
+            instance.in_progress = False
+            instance.save()
+            instance.broadcast_data(
+                {
+                    'action': 'abort'
+                }
+            )
+        else:
+            instance.broadcast_data(
+                {
+                    'action': 'members_changed',
+                    "match_id": str(instance.id),
+                    "info": "left",
+                    "position": instance.get_position_of(member),
+                    "username": member.username
+                },
+                direct=True
+            )
         

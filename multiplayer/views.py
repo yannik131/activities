@@ -86,7 +86,7 @@ def leave_match(request, match_id):
 def game(request, match_id):
     match = MultiplayerMatch.objects.get(id=match_id)
     if not match.is_full():
-        return HttpResponseServerError()
+        return HttpResponseRedirect(match.get_absolute_url())
     if match.activity.name == _('Durak'):
         return render(request, 'multiplayer/durak.html', dict(match=match))
         

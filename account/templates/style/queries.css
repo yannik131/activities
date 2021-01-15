@@ -15,8 +15,9 @@
     .content {
         color: white;
         font-family: "Courier New", "Lucida Console", monospace;
-        float: left;
-        width: 100%;
+        position: absolute;
+        top: 50px;
+        left: 5px;
     }
 
     .topmenu .logo .icon {

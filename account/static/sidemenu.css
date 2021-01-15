@@ -25,6 +25,7 @@
     float: left;
     width: 30%;
     font-family: "Courier New", "Lucida Console", monospace;
+    height: 100%;
 }
 
 .sidemenu a {

@@ -119,7 +119,12 @@ function connect() {
                     updateMatchList(data);
                 }
                 else if(data.action == "members_changed") {
-                    updateMatchMembers(data);
+                    if(typeof updateMatchMembers != "undefined") {
+                        updateMatchMembers(data);
+                    }
+                    else {
+                        //TODO: Add notification
+                    }
                 }
                 break;
         }

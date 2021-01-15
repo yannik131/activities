@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+{% load account_tags %}
 
 {% block title %}Durak{% endblock %}
 {% block style %}{% include 'css/durak.css' %}{% endblock %}
@@ -9,7 +10,7 @@
 
 <div class="game">
     <div class="back">
-        <a href="{{ match.activity.get_absolute_url }}">{{ match.activity }}</a>
+        <a href="{% call_method match 'lobby_url' request %}">Lobby</a>
     </div>
     <div class="leave">
         <a href="{% url 'multiplayer:leave_match' match.id %}">{% trans "Ciao!" %}</a>

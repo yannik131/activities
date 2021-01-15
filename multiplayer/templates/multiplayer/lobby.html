@@ -31,9 +31,9 @@
             </th>
         </tr>
         {% for match in user_matches.all %}
-            <tr style="background-color: green; cursor: pointer;" onclick="openMatch({{ match.id }});">
+            <tr style="background-color: green; cursor: pointer;" onclick="location.href='/multiplayer/match/{{ match.id }}/';">
                 <td>
-                    {% for user in match.members.all %}
+                    {% for user in match.member_list %}
                         {{ user }} 
                     {% endfor %}
                 </td>

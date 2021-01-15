@@ -9,7 +9,6 @@ var defending;
 var durak_websocket;
 
 function processMultiplayerData(data) {
-    console.log("received: " + data.action)
     var delayed = false;
     switch(data.action) {
         case "load_data":
@@ -30,6 +29,9 @@ function processMultiplayerData(data) {
             move_mode = "take";
             changeInfoFor(defending, " (SCHLUCKT)");
             break;
+        case "abort":
+            location.href = '/multiplayer/match/{{ match.id }}';
+            break;
     }
     if(!delayed) {
         updateButtons();
@@ -38,7 +40,7 @@ function processMultiplayerData(data) {
 
 function delayedCall(callback, arg) {
     var timeout = 0;
-    if(allDefended()) {
+    if(!attackingIsPossible() || move_mode == "take") {
         timeout = 500;
     }
     setTimeout(function() {
