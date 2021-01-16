@@ -432,7 +432,6 @@ function playerHandContains(value) {
     return false;
 }
 
-
 function clearButtons() {
     for(var i = 0; i < buttons.length; i++) {
         buttons[i].remove();

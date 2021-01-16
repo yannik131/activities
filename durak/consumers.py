@@ -7,6 +7,7 @@ from redis import StrictRedis
 conn = StrictRedis(host="localhost", port=6655)
 import redis_lock
 from asgiref.sync import async_to_sync
+from shared.shared import log
 
 
 class DurakConsumer(WebsocketConsumer):
@@ -113,7 +114,6 @@ class DurakConsumer(WebsocketConsumer):
                     "stacks": data["stacks"]
                 }
             match.save()
-            done_list = json.loads(match.game_data["done_list"])
             return message
 
     def receive(self, text_data=None, bytes_data=None):
@@ -124,7 +124,7 @@ class DurakConsumer(WebsocketConsumer):
         message["data"]["type"] = "multiplayer"
         if message["group"]:
             async_to_sync(self.channel_layer.group_send)(
-                self.match_id,
+                f"match-{self.match_id}",
                 message["data"]
             )
         else:
