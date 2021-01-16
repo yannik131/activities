@@ -30,17 +30,13 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
                 direct=True
             )
             instance.start()
-    elif action == "pre_remove":
-        log("pre remove, in progress:", instance.in_progress)
-        if instance.in_progress:
-            log("sending abort")
-            instance.in_progress = False
-            instance.save()
-            instance.broadcast_data(
-                {
-                    'action': 'abort'
-                }
-            )
+    elif action == "post_remove":
+        from shared.shared import log
+        if instance.member_positions['1'] == str(member.id):
+            instance.abort(redirect_to_lobby=True)
+            instance.delete()
+        elif instance.in_progress:
+            instance.abort()
         else:
             instance.broadcast_data(
                 {

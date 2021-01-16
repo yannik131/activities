@@ -29,8 +29,11 @@ class MultiplayerMatch(models.Model):
     def get_absolute_url(self):
         return reverse('multiplayer:match', args=[self.id])
         
-    def lobby_url(self, request):
-        return request.build_absolute_uri(f'/multiplayer/lobby/{self.activity.name}/')
+    def lobby_url(self, request=None):
+        if request:
+            return request.build_absolute_uri(f'/multiplayer/lobby/{self.activity.name}/')
+        else:
+            return f'/multiplayer/lobby/{self.activity.name}/'
         
     def is_full(self):
         return self.members.all().count() == self.member_limit
@@ -55,6 +58,19 @@ class MultiplayerMatch(models.Model):
                 f"match-{self.id}",
                 data
             )
+            
+    def abort(self, redirect_to_lobby=False):
+        if self.in_progress:
+            self.in_progress = False
+            self.save()
+            if redirect_to_lobby:
+                url = self.lobby_url()
+            else:
+                url = self.get_absolute_url()
+            self.broadcast_data({
+                'action': 'abort',
+                'url': url
+            })
             
     def member_list(self):
         result = [f"{u} " for u in self.members.all()]

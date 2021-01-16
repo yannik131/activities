@@ -1,3 +1,4 @@
+from shared.shared import log
 from django.shortcuts import render, get_object_or_404
 from .models import MultiplayerMatch
 from .forms import CreateMatchForm
@@ -49,7 +50,7 @@ def match(request, match_id):
     
     
 def enter_match(request, match_id):
-    match = MultiplayerMatch.objects.get(id=match_id)
+    match = get_object_or_404(MultiplayerMatch, id=match_id)
     if request.user in match.members.all():
         return HttpResponseServerError()
     for k, v in match.member_positions.items():
@@ -66,20 +67,24 @@ def enter_match(request, match_id):
     
     
 def leave_match(request, match_id):
-    match = MultiplayerMatch.objects.get(pk=match_id)
+    match = get_object_or_404(MultiplayerMatch, id=match_id)
     if not match.members.filter(pk=request.user.id).exists():
         return HttpResponseServerError()
-    if match.members.all().count() == 1:
+    if match.member_positions['1'] == str(request.user.id):
+        if match.in_progress:
+            match.abort(redirect_to_lobby=True)
         match.delete()
-    else:
-        room = ChatRoom.get_for_target(match)
-        room.members.remove(request.user)
-        match.members.remove(request.user)
-        for k, v in match.member_positions.items():
-            if v == str(request.user.id):
-                match.member_positions[k] = None
-                match.save()
-                break
+        return HttpResponseRedirect(match.lobby_url(request))
+    room = ChatRoom.get_for_target(match)
+    room.members.remove(request.user)
+    match.members.remove(request.user)
+    for k, v in match.member_positions.items():
+        if v == str(request.user.id):
+            match.member_positions[k] = None
+            match.save()
+            break
+    if match.in_progress:
+        match.abort()
     return HttpResponseRedirect(match.lobby_url(request))
 
 

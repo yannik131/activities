@@ -12,7 +12,7 @@ function processMultiplayerData(data) {
     var delayed = false;
     switch(data.action) {
         case "load_data":
-            delayedCall(loadGameField, data);
+            loadGameField(data);
             delayed = true;
             break;
         case "play":
@@ -30,7 +30,7 @@ function processMultiplayerData(data) {
             changeInfoFor(defending, " (SCHLUCKT)");
             break;
         case "abort":
-            location.href = '/multiplayer/match/{{ match.id }}';
+            location.href = data.url;
             break;
     }
     if(!delayed) {
