@@ -13,7 +13,6 @@ function processMultiplayerData(data) {
     switch(data.action) {
         case "load_data":
             loadGameField(data);
-            delayed = true;
             break;
         case "play":
             handleMove(data);
@@ -40,7 +39,7 @@ function processMultiplayerData(data) {
 
 function delayedCall(callback, arg) {
     var timeout = 0;
-    if(!attackingIsPossible() || move_mode == "take") {
+    if(game_mode != "defending" && (!attackingIsPossible() || move_mode == "take")) {
         timeout = 500;
     }
     setTimeout(function() {
@@ -188,6 +187,7 @@ function createStackCallbacks(targets, card) {
             selected_card = null;
             clearStackCallbacks();
             move_mode = "beating";
+            game_mode = "defending";
             updateButtons();
         }
     }
@@ -220,6 +220,7 @@ function cardClicked(value, suit, card) {
             if(transfer_possible && targets.length == 0) {
                 createStackWith(card);
                 move_mode = "transfer";
+                game_mode = "attacking";
             }
             else if(transfer_possible && targets.length > 0) {
                 createStackCallbacks(targets, card);
@@ -246,7 +247,9 @@ function cardClicked(value, suit, card) {
                 return;
             }
             createStackWith(card);
-            move_mode = "attacking";
+            if(move_mode != "transfer") {
+                move_mode = "attacking";
+            }
             if(!playerHandContains(getVs(stacks[0][0].id).value) || old_stacks.length) {
                 sendMove();
                 sendAction("done");
@@ -336,7 +339,7 @@ function updateButtons() {
             deleteButton("take");
         });
     }
-    if(game_mode == "defending" && move_mode == "transfer") {
+    if((game_mode == "defending" || game_mode == "attacking") && move_mode == "transfer") {
         if(played_cards.length) {
             transferCheck();
         }

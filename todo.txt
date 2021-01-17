@@ -14,3 +14,5 @@ autoClosingOvertype=always
 
 DURAK_WEBSOCKET LÖSCHEN, USER_WEBSOCKET REICHT!!
 zuschmeißen wartezeit
+schieben, noch eine karte möglich, aber schlagen auch??
+schieben mit 2 gegner karten möglich
