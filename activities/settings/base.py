@@ -53,8 +53,6 @@ CHANNEL_LAYERS = {
 # Application definition
 
 INSTALLED_APPS = [
-    'chat',
-    'notify',
     'account.apps.AccountConfig',
     'activity.apps.ActivityConfig',
     'usergroups.apps.UsergroupsConfig',
@@ -63,6 +61,8 @@ INSTALLED_APPS = [
     'competitions.apps.CompetitionsConfig',
     'vacancies.apps.VacanciesConfig',
     'multiplayer.apps.MultiplayerConfig',
+    'notify.apps.NotifyConfig',
+    'chat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,8 +73,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'channels',
     'parler',
-    'easy_thumbnails',
-    'durak'
+    'easy_thumbnails'
 ]
 
 MIDDLEWARE = [

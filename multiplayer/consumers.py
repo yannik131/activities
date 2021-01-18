@@ -10,7 +10,7 @@ from asgiref.sync import async_to_sync
 from shared.shared import log
 
 
-class DurakConsumer(WebsocketConsumer):
+class GameConsumer(WebsocketConsumer):
     def connect(self):
         self.match_id = self.scope['url_route']['kwargs']['match_id']
         self.username = self.scope['url_route']['kwargs']['username']
@@ -27,10 +27,39 @@ class DurakConsumer(WebsocketConsumer):
             self.match_id,
             self.channel_name
         )
+    
+    def multiplayer(self, event):
+        self.send(text_data=json.dumps(event))
         
+    def receive(self, text_data=None):
+        text_data = json.loads(text_data)
+        if text_data["action"] == "match_list":
+            self.handle_multiplayer_message(text_data)
+            return
+        message = self.get_message(text_data)
+        if not "data" in message:
+            return
+        message["data"]["type"] = "multiplayer"
+        if message["group"]:
+            async_to_sync(self.channel_layer.group_send)(
+                f"match-{self.match_id}",
+                message["data"]
+            )
+        else:
+            self.send(text_data=json.dumps(message["data"]))
+            
+    def handle_multiplayer_message(self, text_data):
+        if text_data["action"] == "match_list":
+            self.send(text_data=json.dumps({
+                'type': 'multiplayer',
+                'action': 'match_list',
+                'match_list': json.dumps(MultiplayerMatch.match_list_for(text_data["activity_id"]))
+            }))
+
+class DurakConsumer(GameConsumer):
     def get_message(self, text_data):
         with redis_lock.Lock(conn, self.match_id):
-            match = MultiplayerMatch.objects.get(pk=text_data['match_id'])
+            match = MultiplayerMatch.objects.get(pk=self.match_id)
             data = match.game_data
             players = json.loads(data["players"])
             message = {"group": True}
@@ -68,7 +97,9 @@ class DurakConsumer(WebsocketConsumer):
                         data[data["taking"]] = json.dumps(hand)
                         data["attacking"] = left_player(data["taking"], players, data)
                         data["taking"] = ""
+                        deal_cards(data, players)
                     else:
+                        deal_cards(data, players)
                         if data["defending"]:
                             if json.loads(data[data["defending"]]):
                                 data["attacking"] = data["defending"]
@@ -76,7 +107,6 @@ class DurakConsumer(WebsocketConsumer):
                                 data["attacking"] = left_player(data["defending"], players, data)
                         else:
                             data["attacking"] = None
-                    deal_cards(data, players)
                     count = player_with_cards(players, data)
                     if count <= 1:
                         durak = None
@@ -110,26 +140,18 @@ class DurakConsumer(WebsocketConsumer):
                 message["data"] = {
                     "action": "transfer",
                     "attacking": data["attacking"],
+                    "attacking_n": len(json.loads(data[data["attacking"]])),
                     "defending": data["defending"],
                     "stacks": data["stacks"]
                 }
             match.save()
             return message
-
-    def receive(self, text_data=None, bytes_data=None):
-        text_data = json.loads(text_data)
-        message =self.get_message(text_data)
-        if not "data" in message:
-            return
-        message["data"]["type"] = "multiplayer"
-        if message["group"]:
-            async_to_sync(self.channel_layer.group_send)(
-                f"match-{self.match_id}",
-                message["data"]
-            )
-        else:
-            self.send(text_data=json.dumps(message["data"]))
             
-        
-    def multiplayer(self, event):
-        self.send(text_data=json.dumps(event))
+    
+class SkatConsumer(WebsocketConsumer):
+    def get_message(self):
+        with redis_lock.Lock(conn, self.match_id):
+            match = MultiplayerMatch.objects.get(pk=self.match_id)
+            data = match.game_data
+            message = {"group": True}
+            return message

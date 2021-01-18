@@ -94,4 +94,6 @@ def game(request, match_id):
         return HttpResponseRedirect(match.get_absolute_url())
     if match.activity.name == _('Durak'):
         return render(request, 'multiplayer/durak.html', dict(match=match))
+    elif match.activity.name == _("Skat"):
+        return render(request, 'multiplayer/skat.html', dict(match=match))
         

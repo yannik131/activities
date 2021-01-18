@@ -48,6 +48,55 @@ function delayedCall(callback, arg) {
     }, timeout);
 }
 
+function cardClicked(value, suit, card) {
+    switch(game_mode) {
+        case "none":
+            return;
+        case "defending":
+            var targets = stackTargetsFor(value, suit);
+            var transfer_possible = transferPossible(value);
+            if(transfer_possible && targets.length == 0) {
+                createStackWith(card);
+                move_mode = "transfer";
+                game_mode = "attacking";
+            }
+            else if(transfer_possible && targets.length > 0) {
+                createStackCallbacks(targets, card);
+                move_mode = "transfer";
+            }
+            else if(targets.length == 1) {
+                move_mode = "beating";
+                beatStackWith(card, targets[0]);
+            }
+            else if(targets.length > 1) {
+                createStackCallbacks(targets, card);
+                move_mode = "beating";
+            }
+            else {
+                return;
+            }
+            break;
+        case "helping":
+            if(!old_stacks.length) {
+                return;
+            }
+        case "attacking":
+            if(!attackingIsPossible() || (stacks.length && !stacksContainValue(value))) {
+                return;
+            }
+            createStackWith(card);
+            if(move_mode != "transfer") {
+                move_mode = "attacking";
+            }
+            if(!playerHandContains(getVs(stacks[0][0].id).value) || old_stacks.length) {
+                sendMove();
+                sendAction("done");
+            }
+            break;
+    }
+    updateButtons();
+}
+
 function clear() {
     clearStacks();
     clearButtons();
@@ -210,55 +259,6 @@ function beatStackWith(card, stack) {
     }
 }
 
-function cardClicked(value, suit, card) {
-    switch(game_mode) {
-        case "none":
-            return;
-        case "defending":
-            var targets = stackTargetsFor(value, suit);
-            var transfer_possible = transferPossible(value);
-            if(transfer_possible && targets.length == 0) {
-                createStackWith(card);
-                move_mode = "transfer";
-                game_mode = "attacking";
-            }
-            else if(transfer_possible && targets.length > 0) {
-                createStackCallbacks(targets, card);
-                move_mode = "transfer";
-            }
-            else if(targets.length == 1) {
-                move_mode = "beating";
-                beatStackWith(card, targets[0]);
-            }
-            else if(targets.length > 1) {
-                createStackCallbacks(targets, card);
-                move_mode = "beating";
-            }
-            else {
-                return;
-            }
-            break;
-        case "helping":
-            if(!old_stacks.length) {
-                return;
-            }
-        case "attacking":
-            if(!attackingIsPossible() || (stacks.length && !stacksContainValue(value))) {
-                return;
-            }
-            createStackWith(card);
-            if(move_mode != "transfer") {
-                move_mode = "attacking";
-            }
-            if(!playerHandContains(getVs(stacks[0][0].id).value) || old_stacks.length) {
-                sendMove();
-                sendAction("done");
-            }
-            break;
-    }
-    updateButtons();
-}
-
 function stacksContainValue(value) {
     for(var i = 0; i < stacks.length; i++) {
         for(var j = 0; j < stacks[i].length; j++) {
@@ -298,7 +298,6 @@ function allDefended() {
 function sendMove() {
     durak_websocket.send(JSON.stringify({
         "type": "multiplayer",
-        "match_id": "{{ match.id }}",
         "action": move_mode,
         "stacks": JSON.stringify(getConvertedStack()),
         "hand": JSON.stringify(getConvertedHand()),
@@ -311,8 +310,7 @@ function sendMove() {
 
 function sendAction(action) {
     durak_websocket.send(JSON.stringify({
-        'type': 'multiplayer', 
-        'match_id': '{{ match.id }}',
+        'type': 'multiplayer',
         'action': action
     }));
 }
@@ -489,6 +487,11 @@ function handleTransfer(data) {
     determineGameMode(data);
     refreshStacks(JSON.parse(data.stacks));
     updatePlayerInfo(data);
+    if(game_mode == "attacking") {
+        return;
+    }
+    var attacking = players[data.attacking];
+    removeCardFrom(attacking, player_cards[attacking].length-data.attacking_n)
 }
 
 function next(el, arr) {
@@ -503,7 +506,7 @@ function durakConnect() {
     durak_websocket = new WebSocket(
         'ws://'
         + window.location.host
-        + '/ws/durak/'
+        + '/ws/multiplayer/durak/'
         + '{{ match.id }}/'
         + '{{ user.username }}/'
     );

@@ -12,7 +12,7 @@ from asgiref.sync import async_to_sync
 
 class Activity(TranslatableModel):
     translations = TranslatedFields(
-        name=models.CharField(max_length=30, unique=True, db_index=True),
+        name=models.CharField(max_length=30,  db_index=True),
         description=models.CharField(max_length=150, blank=True)
     )
     image = models.ImageField(upload_to='images/activities/', blank=True, null=True)

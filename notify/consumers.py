@@ -65,21 +65,10 @@ class NotificationConsumer(WebsocketConsumer):
                         'url': chat_room.get_absolute_url()
                     }
                 )
-                
-    def handle_multiplayer_message(self, text_data):
-        if text_data["action"] == "match_list":
-            self.send(text_data=json.dumps({
-                'type': 'multiplayer',
-                'action': 'match_list',
-                'match_list': json.dumps(MultiplayerMatch.match_list_for(text_data["activity_id"]))
-            }))
             
         
     def chat_message(self, event):
         self.send(text_data=json.dumps(event))
 
     def notification(self, event):
-        self.send(text_data=json.dumps(event))
-        
-    def multiplayer(self, event):
         self.send(text_data=json.dumps(event))
