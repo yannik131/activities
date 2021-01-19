@@ -33,9 +33,6 @@ class GameConsumer(WebsocketConsumer):
         
     def receive(self, text_data=None):
         text_data = json.loads(text_data)
-        if text_data["action"] == "match_list":
-            self.handle_multiplayer_message(text_data)
-            return
         message = self.get_message(text_data)
         if not "data" in message:
             return
@@ -48,14 +45,6 @@ class GameConsumer(WebsocketConsumer):
         else:
             self.send(text_data=json.dumps(message["data"]))
             
-    def handle_multiplayer_message(self, text_data):
-        if text_data["action"] == "match_list":
-            self.send(text_data=json.dumps({
-                'type': 'multiplayer',
-                'action': 'match_list',
-                'match_list': json.dumps(MultiplayerMatch.match_list_for(text_data["activity_id"]))
-            }))
-
 class DurakConsumer(GameConsumer):
     def get_message(self, text_data):
         with redis_lock.Lock(conn, self.match_id):

@@ -229,8 +229,9 @@ function addBottomCardToDeck(type) {
     card.style.top = -10-1/3*h+"px";
     card.style.left = 0+"px";
     card.id = "deck-0";
+    card.zIndex = 0;
     field.appendChild(card);
-    deck.push(card);
+    deck.splice(0, 0, card);
 }
 
 function addCardsToDeck(n, bottom_card) {
@@ -240,6 +241,7 @@ function addCardsToDeck(n, bottom_card) {
         var card = createCard("rear");
         card.style.left = 0+"px";
         card.id = i+1;
+        card.zIndex = i+1;
         deck.push(card);
     }
     updateDeck();
