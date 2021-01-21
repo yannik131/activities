@@ -1,9 +1,9 @@
-.topmenu .logo .icon {
-    display: none;
-}
-
 .topmenu {
-    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
     color: #ababab;
     background-color: #ae3635;
     text-decoration: none;
@@ -11,7 +11,6 @@
     font-family: "Courier New", "Lucida Console", monospace;
     margin-bottom: 10px;
     overflow: hidden;
-    height: 40px;
 }
 
 .topmenu .logo {

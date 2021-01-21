@@ -133,7 +133,6 @@ class DurakConsumer(GameConsumer):
         match.save()
         return message
             
-    
 class SkatConsumer(GameConsumer):
     def get_message(self, text_data):
         match = MultiplayerMatch.objects.get(pk=self.match_id)
@@ -150,3 +149,36 @@ class SkatConsumer(GameConsumer):
             data["active"] = next_bidder(data)
         match.save()
         return message
+
+class AudioConsumer(WebsocketConsumer):
+    def connect(self):
+        self.match_id = self.scope['url_route']['kwargs']['match_id']
+        self.username = self.scope['url_route']['kwargs']['username']
+        
+        async_to_sync(self.channel_layer.group_add)(
+            f"audio-{self.match_id}",
+            self.channel_name
+        )
+        
+        self.accept()
+
+    def disconnect(self, code):
+        async_to_sync(self.channel_layer.group_discard)(
+            f"audio-{self.match_id}",
+            self.channel_name
+        )
+
+    def receive(self, text_data=None, bytes_data=None):
+        text_data = dict()
+        text_data["type"] = "audio_message"
+        text_data["sender"] = self.username
+        text_data["bytes_data"] = bytes_data
+        async_to_sync(self.channel_layer.group_send)(
+            f"audio-{self.match_id}",
+            text_data
+        )
+
+    def audio_message(self, event):
+        if event["sender"] != self.username:
+            self.send(bytes_data=event["bytes_data"])
+    

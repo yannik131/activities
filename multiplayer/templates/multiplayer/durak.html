@@ -34,10 +34,16 @@
             
         </div>
     </div>
+    <div class="join-audio">
+        <button id="join-audio" onclick="joinAudio();">Beitreten</button>
+    </div>
 </div>
 {% endblock %}
 
 {% block domready %}
+    {% include 'javascript/ws-audio-api.min.js' %}
     {% include 'javascript/cards.js' %}
     {% include 'javascript/durak.js' %}
+    {% include 'javascript/audiochat.js' %}
+
 {% endblock %}

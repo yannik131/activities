@@ -53,6 +53,7 @@ CHANNEL_LAYERS = {
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'account.apps.AccountConfig',
     'activity.apps.ActivityConfig',
     'usergroups.apps.UsergroupsConfig',
@@ -71,7 +72,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
     'django_extensions',
-    'channels',
     'parler',
     'easy_thumbnails'
 ]

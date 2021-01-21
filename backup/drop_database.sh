@@ -8,5 +8,5 @@ find . -name migrations -type d -exec rm -rf {} \;
 sudo $option psql -c "drop database activities;"
 sudo $option psql -c "create database activities;"
 sudo $option psql -d activities -c "create extension hstore;"
-python3 manage.py makemigrations account activity chat competitions scheduling usergroups vacancies wall notify
+python3 manage.py makemigrations account activity chat competitions scheduling usergroups vacancies wall notify multiplayer
 python3 manage.py migrate

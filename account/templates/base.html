@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
+<div class="base-container">
 {% if user.is_authenticated %}
 {% with latest_messages=user.get_latest_messages %}
     <div class="topmenu" id="topmenu">
@@ -89,5 +89,6 @@
     {% block domready %}
     {% endblock %}
 </script>
+</div>
 </body>
 </html>
