@@ -1,5 +1,5 @@
 var streamer = new WSAudioAPI.Streamer({
-    server: 'ws://'
+    server: 'wss://'
     + window.location.host
     + '/ws/multiplayer/audio/'
     + '{{ match.id }}/'
@@ -7,7 +7,7 @@ var streamer = new WSAudioAPI.Streamer({
 });
 
 var player = new WSAudioAPI.Player({
-    server: 'ws://'
+    server: 'wss://'
     + window.location.host
     + '/ws/multiplayer/audio/'
     + '{{ match.id }}/'
@@ -15,6 +15,7 @@ var player = new WSAudioAPI.Player({
 });
 
 function joinAudio() {
+    initAudio();
     player.start();
     streamer.start();
     var button = document.getElementById("join-audio");

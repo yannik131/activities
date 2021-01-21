@@ -88,7 +88,7 @@ function addMessageToChatMenu(data) {
 
 function connect() {
     user_websocket = new WebSocket(
-        'ws://'
+        'wss://'
         + window.location.host
         + '/ws/user/'
         + {{ user.id }}
