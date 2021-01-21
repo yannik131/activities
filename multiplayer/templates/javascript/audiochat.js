@@ -16,6 +16,7 @@ var player = new WSAudioAPI.Player({
 
 function joinAudio() {
     initAudio();
+    initCrap();
     player.start();
     streamer.start();
     var button = document.getElementById("join-audio");
