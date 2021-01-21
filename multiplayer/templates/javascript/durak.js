@@ -113,47 +113,22 @@ function loadGameField(data) {
     clear();
     var deck = JSON.parse(data.deck);
     player_list = JSON.parse(data.players);
-    positionPlayers();
+    positionPlayers(player_list);
     updatePlayerInfo(data);
     determineGameMode(data);
     trump_suit = data.trump;
     addCardsToDeck(deck.length-1, deck[deck.length-1]);
-    
-    for(var i = 0; i < player_list.length; i++) {
-        var username = player_list[i];
-        var player_index = players[username];
-        var hand = JSON.parse(data[username]);
-        if(player_index == 1) {
-            for(var j = 0; j < hand.length; j++) {
-                addCardTo(player_index, 1, hand[j]);
-            }
-        }
-        else {
-            addCardTo(player_index, hand.length);
-        }
-    }
+    defineSortValues(ten_high=false);
+    displayCards(data, player_list);
     old_stacks = JSON.parse(data.stacks);
     refreshStacks(old_stacks);
-}
-
-function changeInfoFor(username, info) {
-    var player = players[username];
-    var player_info = document.getElementById("player"+player);
-    player_info.innerHTML = (
-        "<a href='/account/detail/" +
-        username + 
-        "/'>" +
-        username +
-        "</a>" +
-        info
-    );
 }
 
 function updatePlayerInfo(data) {
     for(var i = 0; i < player_list.length; i++) {
         var username = player_list[i];
         if(username == data.attacking) {
-            changeInfoFor(username, " (ANGREIFER)");
+            changeInfoFor(username, "(ANGREIFER)");
         }
         else if(username == data.defending) {
             changeInfoFor(username, " (VERTEIDIGER)");
@@ -163,19 +138,6 @@ function updatePlayerInfo(data) {
         }
     }
     defending = data.defending;
-}
-
-function positionPlayers() {
-    var my_index = player_list.indexOf(this_user);
-    var added_names = 0;
-    while(added_names != player_list.length) {
-        var username = player_list[my_index];
-        players[username] = added_names+1;
-        my_index += 1;
-        if(my_index == player_list.length)
-            my_index = 0;
-        added_names += 1;
-    }
 }
 
 function determineGameMode(data) {
@@ -297,7 +259,6 @@ function allDefended() {
 
 function sendMove() {
     durak_websocket.send(JSON.stringify({
-        "type": "multiplayer",
         "action": move_mode,
         "stacks": JSON.stringify(getConvertedStack()),
         "hand": JSON.stringify(getConvertedHand()),
@@ -310,7 +271,6 @@ function sendMove() {
 
 function sendAction(action) {
     durak_websocket.send(JSON.stringify({
-        'type': 'multiplayer',
         'action': action
     }));
 }
@@ -492,14 +452,6 @@ function handleTransfer(data) {
     }
     var attacking = players[data.attacking];
     removeCardFrom(attacking, player_cards[attacking].length-data.attacking_n)
-}
-
-function next(el, arr) {
-    return arr[((arr.indexOf(el)+1)%arr.length+arr.length)%arr.length];
-}
-
-function before(el, arr) {
-    return arr[((arr.indexOf(el)-1)%arr.length+arr.length)%arr.length];
 }
 
 function durakConnect() {

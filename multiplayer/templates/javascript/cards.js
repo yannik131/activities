@@ -13,12 +13,6 @@ var stacks = [];
 var buttons = [];
 const field = document.querySelector(".game-field");
 var scale, w, h;
-/*To calculate the scale, we substract constant paddings which are
-unaffected by the scale from the divs total width/height and
-divide the result by the space requirements of the cards on the
-durak game field. The smaller value is then used to prevent 
-overlap of cards.*/
-
 
 function getGridPosition(value, suit) {
     var x, y;
@@ -173,7 +167,7 @@ function removePlayerCard(card) {
     updateCardsFor(1);
 }
 
-function defineSortValues() {
+function defineSortValues(ten_high, jacks_max) {
     var suits = ["d", "h", "s", "c"];
     var count = 100;
     for(var i = 0; i < suits.length; i++) {
@@ -185,9 +179,18 @@ function defineSortValues() {
             count += 100;
         }
     }
-    const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
+    var values;
+    if(ten_high) {
+        values = ["2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K", "10", "A"];
+    }
+    else {
+        values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+    }
     for(var i = 0; i < values.length; i++) {
         value_values[values[i]] = i;
+    }
+    if(jacks_max) {
+        value_values["J"] = 1000;
     }
 }
 
@@ -240,7 +243,6 @@ function addCardsToDeck(n, bottom_card) {
     for(var i = 0; i < n; i++) {
         var card = createCard("rear");
         card.style.left = 0+"px";
-        card.id = i+1;
         card.zIndex = i+1;
         deck.push(card);
     }
@@ -265,10 +267,7 @@ function updateDeck() {
 function removeCardsFromDeck(n) {
     while(deck.length > 0 && n > 0) {
         const card = deck.pop();
-        const element = document.getElementById(card.id);
-        if(element) {
-            element.remove();
-        }
+        card.remove();
         n -= 1;
     }
     updateDeck();
@@ -369,15 +368,65 @@ function deleteButton(id) {
     }
 }
 
+function next(el, arr) {
+    return arr[((arr.indexOf(el)+1)%arr.length+arr.length)%arr.length];
+}
+
+function before(el, arr) {
+    return arr[((arr.indexOf(el)-1)%arr.length+arr.length)%arr.length];
+}
+
+function positionPlayers(player_list) {
+    //fills players[username] in the right order
+    players[this_user] = 1;
+    var current = next(this_user, player_list);
+    for(var i = 2; current != this_user; i++) {
+        players[current] = i;
+        current = next(current, player_list);
+    }
+}
+
+function changeInfoFor(username, info) {
+    var player = players[username];
+    var player_info = document.getElementById("player"+player);
+    player_info.innerHTML = (
+        "<a href='/account/detail/" +
+        username + 
+        "/'>" +
+        username +
+        "</a> " +
+        info
+    );
+}
+
+function displayCards(data, player_list) {
+    for(var i = 0; i < player_list.length; i++) {
+        var username = player_list[i];
+        var player_index = players[username];
+        var hand = JSON.parse(data[username]);
+        if(player_index == 1) {
+            for(var j = 0; j < hand.length; j++) {
+                addCardTo(player_index, 1, hand[j]);
+            }
+        }
+        else {
+            addCardTo(player_index, hand.length);
+        }
+    }
+}
+
 function resize() {
-    console.log("resize");
+    /*To calculate the scale, we substract constant paddings which are
+unaffected by the scale from the divs total width/height and
+divide the result by the space requirements of the cards on the
+durak game field. The smaller value is then used to prevent 
+overlap of cards.*/
     var scale1 = (field.offsetWidth-40)/(123*3+192*2/3);
     var scale2 = (field.offsetHeight-10)/(192*3+192*2/3+192/4*2);
     scale = scale1 < scale2? scale1 : scale2;
 
     w = 123*scale;
     h = 192*scale;
-    var children = field.getElementsByTagName("*");
     //TODO: MAYBE resize?
 }
 

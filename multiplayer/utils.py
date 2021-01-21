@@ -58,6 +58,13 @@ def player_with_cards(players, data):
     return count
     
     
+def next_bidder(data, players):
+    if data[data["active"]+"_bid"] == "pass":
+        data["active"] = after(data["active"], players)
+    else:
+        data["active"] = before(data["active"], players)
+    
+    
 def random_name():
     with open("multiplayer/random_names.txt", "r") as f:
         names = f.readlines()
