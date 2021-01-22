@@ -456,8 +456,7 @@ function handleTransfer(data) {
 
 function durakConnect() {
     durak_websocket = new WebSocket(
-        'wss://'
-        + window.location.host
+        getWsPrefix()
         + '/ws/multiplayer/durak/'
         + '{{ match.id }}/'
         + '{{ user.username }}/'

@@ -86,12 +86,18 @@ function addMessageToChatMenu(data) {
     changeCount("messages-count", 1);
 }
 
+function getWsPrefix() {
+    if(location.protocol == "https:") {
+        return "wss://" + window.location.host;
+    }
+    return "ws://" + window.location.host;
+}
+
 function connect() {
     user_websocket = new WebSocket(
-        'wss://'
-        + window.location.host
+        getWsPrefix()
         + '/ws/user/'
-        + {{ user.id }}
+        + '{{ user.id }}'
         + '/'
     );
 
@@ -143,4 +149,6 @@ function connect() {
     }
 }
 
-connect();
+{% if user.is_authenticated %}
+    connect();
+{% endif %}

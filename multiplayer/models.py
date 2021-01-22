@@ -46,6 +46,7 @@ class MultiplayerMatch(models.Model):
         
     def broadcast_data(self, data, direct=False):
         channel_layer = get_channel_layer()
+        data["type"] = "multiplayer"
         if direct:
             for user in self.members.all():
                 async_to_sync(channel_layer.group_send)(

@@ -72,8 +72,7 @@ function updatePlayerInfo(data) {
 
 function skatConnect() {
     skat_websocket = new WebSocket(
-        'wss://'
-        + window.location.host
+        getWsPrefix()
         + '/ws/multiplayer/skat/'
         + '{{ match.id }}/'
         + '{{ user.username }}/'

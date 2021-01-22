@@ -5,16 +5,15 @@ function joinAudio() {
     if(!init_happened) {
         initAudio();
         initCrap();
+        prefix = getWsPrefix();
         streamer = new WSAudioAPI.Streamer({
-            server: 'wss://'
-            + window.location.host
+            server: prefix
             + '/ws/multiplayer/audio/'
             + '{{ match.id }}/'
             + '{{ user.username }}/'
         });
         player = new WSAudioAPI.Player({
-            server: 'wss://'
-            + window.location.host
+            server: prefix
             + '/ws/multiplayer/audio/'
             + '{{ match.id }}/'
             + '{{ user.username }}/'

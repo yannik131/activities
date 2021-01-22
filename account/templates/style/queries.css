@@ -26,6 +26,18 @@
     }
 }
 
+@media screen and (min-width: 850px) {
+    .sidemenu {
+        display: block;
+    }
+    .content {
+        left: 250px;
+    }
+    .topmenu .logo .icon {
+        display: none;
+    }
+}
+
 @media screen and (min-width: 1220px) {
     .base-container {
         width: 1200px;
@@ -42,16 +54,6 @@
     .topmenu .logo .icon {
         display: none;
     }
-}
-
-@media screen and (min-width: 1420px) {
-    .base-container {
-        width: 1400px;
-        height: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
     .chat-menu {
         display: block;
         width: 250px;
@@ -64,4 +66,15 @@
     .envelope {
         display: none;
     }
+}
+
+@media screen and (min-width: 1420px) {
+    .base-container {
+        width: 1400px;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    
 }
