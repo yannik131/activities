@@ -1,8 +1,8 @@
 import json
-from channels.generic.websocket import WebsocketConsumer
+from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
 from chat.models import ChatRoom, ChatLogEntry, ChatCheck
 from multiplayer.models import MultiplayerMatch
-from multiplayer.utils import before, deal_cards, left_player, player_with_cards
+from multiplayer.utils import before, deal_cards, left_player, next_bidder, player_with_cards
 from redis import StrictRedis
 conn = StrictRedis(host="localhost", port=6655)
 import redis_lock
@@ -142,43 +142,86 @@ class SkatConsumer(GameConsumer):
             message["data"] = data
             message["group"] = False
             return message
+        elif text_data["action"] == "take":
+            message["data"] = {
+                "action": "take",
+                "deck": data["deck"]
+            }
+            hand = json.loads(data[data["active"]])
+            hand += json.loads(data["deck"])
+            data[data["active"]] = json.dumps(hand)
+            data["deck"] = json.dumps([])
+            data["mode"] = "declaring"
+        elif text_data["action"] == "no_take":
+            data["mode"] = "declaring"
+            data["declarations"] += "h"
+            message["data"] = {
+                "action": "declare"
+            }
+            message["group"] = False
         elif text_data["action"] == "bid":
             bid = text_data["bid"]
-            data["last_bid"] = bid
             data[f"{self.username}_bid"] = bid
-            data["active"] = next_bidder(data)
+            if bid == "pass":
+                data["passed"] += "x"
+            else:
+                data["highest_bid"] = json.dumps([bid, self.username])
+            
+            data["last_bid"] = json.dumps([bid, self.username])
+            bidder, more = next_bidder(data)
+            log("new bidder:", bidder, "more:", more)
+            data["more"] = more
+            if bidder:
+                data["active"] = bidder
+            message["data"] = {
+                "action": "bid",
+                "last_bid": data["last_bid"],
+                "highest_bid": data["highest_bid"],
+                "active": data["active"],
+                "more": more,
+                "mode": "bidding"
+            }
+            
+            if data["highest_bid"] and len(data["passed"]) == 2:
+                data["mode"] = "taking"
+                message["data"]["mode"] = "taking"
+            elif len(data["passed"]) == 3:
+                match.start()
+                message["data"] = match.game_data
+                
+            
         match.save()
         return message
 
-class AudioConsumer(WebsocketConsumer):
-    def connect(self):
+class AudioConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
         self.match_id = self.scope['url_route']['kwargs']['match_id']
         self.username = self.scope['url_route']['kwargs']['username']
         
-        async_to_sync(self.channel_layer.group_add)(
+        await self.channel_layer.group_add(
             f"audio-{self.match_id}",
             self.channel_name
         )
         
-        self.accept()
+        await self.accept()
 
-    def disconnect(self, code):
-        async_to_sync(self.channel_layer.group_discard)(
+    async def disconnect(self, code):
+        await self.channel_layer.group_discard(
             f"audio-{self.match_id}",
             self.channel_name
         )
 
-    def receive(self, text_data=None, bytes_data=None):
+    async def receive(self, text_data=None, bytes_data=None):
         text_data = dict()
         text_data["type"] = "audio_message"
         text_data["sender"] = self.username
         text_data["bytes_data"] = bytes_data
-        async_to_sync(self.channel_layer.group_send)(
+        await self.channel_layer.group_send(
             f"audio-{self.match_id}",
             text_data
         )
 
-    def audio_message(self, event):
+    async def audio_message(self, event):
         if event["sender"] != self.username:
-            self.send(bytes_data=event["bytes_data"])
+            await self.send(bytes_data=event["bytes_data"])
     

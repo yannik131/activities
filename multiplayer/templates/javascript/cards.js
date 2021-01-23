@@ -144,7 +144,7 @@ function addCardTo(player, n, type) {
     const vars = getPlayerVariables(player);
     var card;
     for(var i = 0; i < n; i++) {
-        if(type) {
+        if(type && player == 1) {
             card = createCard(type, true);
             card.id = type;
         }
@@ -366,6 +366,13 @@ function deleteButton(id) {
             buttons[i].style.right = parseFloat(buttons[i-1].style.left)+"px";
         }
     }
+}
+
+function clearButtons() {
+    for(var i = 0; i < buttons.length; i++) {
+        buttons[i].remove();
+    }
+    buttons = [];
 }
 
 function next(el, arr) {

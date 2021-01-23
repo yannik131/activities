@@ -393,13 +393,6 @@ function playerHandContains(value) {
     return false;
 }
 
-function clearButtons() {
-    for(var i = 0; i < buttons.length; i++) {
-        buttons[i].remove();
-    }
-    buttons = [];
-}
-
 function clearStacks() {
     for(var i = 0; i < stacks.length; i++) {
         for(var j = 0; j < stacks[i].length; j++) {

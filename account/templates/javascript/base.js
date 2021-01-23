@@ -149,6 +149,13 @@ function connect() {
     }
 }
 
+function parse(json_string) {
+    if(typeof json_string == "undefined" || !json_string.length) {
+        return null;
+    }
+    return JSON.parse(json_string);
+}
+
 {% if user.is_authenticated %}
     connect();
 {% endif %}

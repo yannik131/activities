@@ -26,5 +26,9 @@
           }
       ],
       "restoreTerminals.keepExistingTerminalsOpen": true,
-      "files.autoSave": "onFocusChange"
+      "files.autoSave": "onFocusChange",
+      "editor.trimAutoWhitespace": false,
+      "editor.autoClosingOvertype": "always",
+      "editor.wordWrap": "on",
+      "editor.wrappingIndent": "none"
 }

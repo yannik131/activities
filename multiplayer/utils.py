@@ -1,5 +1,6 @@
 import random
 import json
+from shared.shared import log
 
 
 def create_deck(*ranks):
@@ -58,12 +59,38 @@ def player_with_cards(players, data):
     return count
     
     
-def next_bidder(data, players):
+def next_bidder(data):
+    players = json.loads(data["players"])
+    participants = cycle_slice(players.index(data["forehand"]), players)[:3]
+    index = participants.index(data["active"])
+    log("active:", data["active"], "index:", index, "bid:", data[data["active"]+"_bid"])
     if data[data["active"]+"_bid"] == "pass":
-        data["active"] = after(data["active"], players)
+        if index == 0: #forehand
+            return participants[2], "1"
+        elif index == 1: #middlehand
+            return participants[2], "1"
+        elif index == 2: #hindquarters
+            if data[participants[1]+"_bid"] != "pass":
+                return participants[1], ""
+            elif data[participants[0]+"_bid"] != "pass":
+               return participants[0], ""
     else:
-        data["active"] = before(data["active"], players)
-    
+        if index == 0:
+            if data[participants[1]+"_bid"] != "pass":
+                return participants[1], "1"
+            elif data[participants[2]+"_bid"] != "pass":
+                return participants[2], "1"
+        elif index == 1:
+            if data[participants[0]+"_bid"] != "pass":
+                return participants[0], ""
+            elif data[participants[2]+"_bid"] != "pass":
+                return participants[2], "1"
+        elif index == 2:
+            if data[participants[0]+"_bid"] != "pass":
+                return participants[0], ""
+            elif data[participants[1]+"_bid"] != "pass":
+                return participants[1], ""
+    return None, ""
     
 def random_name():
     with open("multiplayer/random_names.txt", "r") as f:

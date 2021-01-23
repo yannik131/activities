@@ -1,2 +1,215 @@
-2021-01-16 21:22:52: remove 1 1= 1 
-2021-01-16 21:24:31: deleting 
+2021-01-22 22:48:46: highest [18, "test"] last [18, "test"] bidder admin more  
+2021-01-22 22:49:57: highest [18, "test"] last [18, "test"] bidder admin more  
+2021-01-22 22:51:07: highest [18, "test"] last [18, "test"] bidder admin more  
+2021-01-22 22:51:45: highest [18, "test"] last [18, "test"] bidder admin more  
+2021-01-22 22:53:15: highest [18, "test"] last [18, "test"] bidder admin more  
+2021-01-22 22:53:26: highest [18, "admin"] last [18, "admin"] bidder test more 1 
+2021-01-22 22:53:32: highest [20, "test"] last [20, "test"] bidder admin more  
+2021-01-22 22:53:34: highest [20, "admin"] last [20, "admin"] bidder test more 1 
+2021-01-22 22:53:39: highest ["passe", "test"] last ["passe", "test"] bidder admin more  
+2021-01-22 22:55:27: highest [18, "test"] last [18, "test"] bidder admin more  
+2021-01-22 22:55:34: highest [18, "admin"] last [18, "admin"] bidder test more 1 
+2021-01-22 22:55:49: highest ["passe", "test"] last ["passe", "test"] bidder admin more  
+2021-01-22 22:59:32: active: test index: 1 bid: 18 
+2021-01-22 22:59:32: highest [18, "test"] last [18, "test"] bidder admin more  
+2021-01-22 22:59:33: active: admin index: 0 bid: 18 
+2021-01-22 22:59:33: highest [18, "admin"] last [18, "admin"] bidder test more 1 
+2021-01-22 22:59:34: active: test index: 1 bid: passe 
+2021-01-22 22:59:34: highest ["passe", "test"] last ["passe", "test"] bidder admin more  
+2021-01-22 23:00:45: active: test index: 1 bid: 18 
+2021-01-22 23:00:46: active: admin index: 0 bid: 18 
+2021-01-22 23:00:47: active: test index: 1 bid: pass 
+2021-01-22 23:01:02: active: incocnito index: 2 bid: 20 
+2021-01-22 23:01:04: active: admin index: 0 bid: 20 
+2021-01-22 23:01:06: active: incocnito index: 2 bid: 22 
+2021-01-22 23:01:07: active: admin index: 0 bid: pass 
+2021-01-22 23:03:31: active: test index: 1 bid: 18 
+2021-01-22 23:03:31: new bidder: admin more:  
+2021-01-22 23:03:31: active: admin index: 0 bid: 18 
+2021-01-22 23:03:31: new bidder: test more: 1 
+2021-01-22 23:03:33: active: test index: 1 bid: pass 
+2021-01-22 23:03:33: new bidder: incocnito more: 1 
+2021-01-22 23:04:04: active: incocnito index: 2 bid: 20 
+2021-01-22 23:04:04: new bidder: admin more:  
+2021-01-22 23:04:05: active: admin index: 0 bid: pass 
+2021-01-22 23:04:05: new bidder: incocnito more: 1 
+2021-01-23 00:08:17: active: test index: 1 bid: 18 
+2021-01-23 00:08:17: new bidder: admin more:  
+2021-01-23 00:08:20: active: admin index: 0 bid: 18 
+2021-01-23 00:08:20: new bidder: test more: 1 
+2021-01-23 00:08:21: active: test index: 1 bid: 20 
+2021-01-23 00:08:21: new bidder: admin more:  
+2021-01-23 00:08:22: active: admin index: 0 bid: 20 
+2021-01-23 00:08:22: new bidder: test more: 1 
+2021-01-23 00:08:23: active: test index: 1 bid: pass 
+2021-01-23 00:08:23: new bidder: incocnito more: 1 
+2021-01-23 00:08:59: active: test index: 1 bid: 18 
+2021-01-23 00:08:59: new bidder: admin more:  
+2021-01-23 00:09:00: active: admin index: 0 bid: 18 
+2021-01-23 00:09:00: new bidder: test more: 1 
+2021-01-23 00:09:01: active: test index: 1 bid: pass 
+2021-01-23 00:09:01: new bidder: incocnito more: 1 
+2021-01-23 00:09:18: active: test index: 1 bid: pass 
+2021-01-23 00:09:18: new bidder: incocnito more: 1 
+2021-01-23 00:09:47: active: test index: 1 bid: 18 
+2021-01-23 00:09:47: new bidder: admin more:  
+2021-01-23 00:09:48: active: admin index: 0 bid: 18 
+2021-01-23 00:09:48: new bidder: test more: 1 
+2021-01-23 00:09:48: active: test index: 1 bid: pass 
+2021-01-23 00:09:48: new bidder: incocnito more: 1 
+2021-01-23 00:12:09: active: test index: 1 bid: 18 
+2021-01-23 00:12:09: new bidder: admin more:  
+2021-01-23 00:12:10: active: admin index: 0 bid: 18 
+2021-01-23 00:12:10: new bidder: test more: 1 
+2021-01-23 00:12:18: active: test index: 1 bid: pass 
+2021-01-23 00:12:18: new bidder: incocnito more: 1 
+2021-01-23 00:12:21: active: incocnito index: 2 bid: 20 
+2021-01-23 00:12:21: new bidder: admin more:  
+2021-01-23 00:12:22: active: admin index: 0 bid: 20 
+2021-01-23 00:12:22: new bidder: incocnito more: 1 
+2021-01-23 00:12:23: active: incocnito index: 2 bid: 22 
+2021-01-23 00:12:23: new bidder: admin more:  
+2021-01-23 00:12:25: active: admin index: 0 bid: pass 
+2021-01-23 00:12:25: new bidder: incocnito more: 1 
+2021-01-23 00:17:03: active: test index: 1 bid: 18 
+2021-01-23 00:17:03: new bidder: admin more:  
+2021-01-23 00:17:04: active: admin index: 0 bid: 18 
+2021-01-23 00:17:04: new bidder: test more: 1 
+2021-01-23 00:17:04: active: test index: 1 bid: pass 
+2021-01-23 00:17:04: new bidder: incocnito more: 1 
+2021-01-23 00:17:05: active: incocnito index: 2 bid: 20 
+2021-01-23 00:17:05: new bidder: admin more:  
+2021-01-23 00:17:06: active: admin index: 0 bid: pass 
+2021-01-23 00:17:06: new bidder: incocnito more: 1 
+2021-01-23 00:19:05: active: test index: 1 bid: 18 
+2021-01-23 00:19:05: new bidder: admin more:  
+2021-01-23 00:19:05: active: admin index: 0 bid: 18 
+2021-01-23 00:19:05: new bidder: test more: 1 
+2021-01-23 00:19:06: active: test index: 1 bid: pass 
+2021-01-23 00:19:06: new bidder: incocnito more: 1 
+2021-01-23 00:19:07: active: incocnito index: 2 bid: 20 
+2021-01-23 00:19:07: new bidder: admin more:  
+2021-01-23 00:19:11: active: admin index: 0 bid: pass 
+2021-01-23 00:19:11: new bidder: incocnito more: 1 
+2021-01-23 00:19:20: active: test index: 1 bid: pass 
+2021-01-23 00:19:20: new bidder: incocnito more: 1 
+2021-01-23 00:20:44: active: test index: 1 bid: pass 
+2021-01-23 00:20:44: new bidder: incocnito more: 1 
+2021-01-23 00:20:47: active: incocnito index: 2 bid: pass 
+2021-01-23 00:20:47: new bidder: admin more:  
+2021-01-23 00:20:49: active: admin index: 0 bid: pass 
+2021-01-23 00:20:49: new bidder: incocnito more: 1 
+2021-01-23 00:21:13: active: test index: 1 bid: pass 
+2021-01-23 00:21:13: new bidder: incocnito more: 1 
+2021-01-23 00:21:14: active: incocnito index: 2 bid: pass 
+2021-01-23 00:21:14: new bidder: admin more:  
+2021-01-23 00:21:14: active: admin index: 0 bid: pass 
+2021-01-23 00:21:14: new bidder: incocnito more: 1 
+2021-01-23 00:21:16: active: test index: 1 bid: pass 
+2021-01-23 00:21:16: new bidder: incocnito more: 1 
+2021-01-23 00:21:17: active: incocnito index: 2 bid: pass 
+2021-01-23 00:21:17: new bidder: admin more:  
+2021-01-23 00:21:18: active: admin index: 0 bid: pass 
+2021-01-23 00:21:18: new bidder: incocnito more: 1 
+2021-01-23 00:21:19: active: test index: 1 bid: pass 
+2021-01-23 00:21:19: new bidder: incocnito more: 1 
+2021-01-23 00:21:20: active: incocnito index: 2 bid: pass 
+2021-01-23 00:21:20: new bidder: admin more:  
+2021-01-23 00:21:21: active: admin index: 0 bid: 18 
+2021-01-23 00:21:21: new bidder: None more:  
+2021-01-23 00:23:16: active: test index: 1 bid: pass 
+2021-01-23 00:23:16: new bidder: incocnito more: 1 
+2021-01-23 00:23:17: active: incocnito index: 2 bid: pass 
+2021-01-23 00:23:17: new bidder: admin more:  
+2021-01-23 00:23:17: active: admin index: 0 bid: 18 
+2021-01-23 00:23:17: new bidder: None more:  
+2021-01-23 00:24:31: active: test index: 1 bid: pass 
+2021-01-23 00:24:31: new bidder: incocnito more: 1 
+2021-01-23 00:24:34: active: incocnito index: 2 bid: pass 
+2021-01-23 00:24:34: new bidder: admin more:  
+2021-01-23 00:24:35: active: admin index: 0 bid: 18 
+2021-01-23 00:24:35: new bidder: None more:  
+2021-01-23 00:26:19: active: test index: 1 bid: pass 
+2021-01-23 00:26:19: new bidder: incocnito more: 1 
+2021-01-23 00:26:22: active: incocnito index: 2 bid: pass 
+2021-01-23 00:26:22: new bidder: admin more:  
+2021-01-23 00:26:24: active: admin index: 0 bid: 18 
+2021-01-23 00:26:24: new bidder: None more:  
+2021-01-23 00:27:25: active: test index: 1 bid: pass 
+2021-01-23 00:27:25: new bidder: incocnito more: 1 
+2021-01-23 00:27:26: active: incocnito index: 2 bid: pass 
+2021-01-23 00:27:26: new bidder: admin more:  
+2021-01-23 00:27:27: active: admin index: 0 bid: 18 
+2021-01-23 00:27:27: new bidder: None more:  
+2021-01-23 00:30:25: active: test index: 1 bid: pass 
+2021-01-23 00:30:25: new bidder: incocnito more: 1 
+2021-01-23 00:30:25: active: incocnito index: 2 bid: pass 
+2021-01-23 00:30:25: new bidder: admin more:  
+2021-01-23 00:30:26: active: admin index: 0 bid: 18 
+2021-01-23 00:30:26: new bidder: None more:  
+2021-01-23 00:30:47: active: test index: 1 bid: 18 
+2021-01-23 00:30:47: new bidder: admin more:  
+2021-01-23 00:30:48: active: admin index: 0 bid: pass 
+2021-01-23 00:30:48: new bidder: incocnito more: 1 
+2021-01-23 00:30:51: active: incocnito index: 2 bid: pass 
+2021-01-23 00:30:51: new bidder: test more:  
+2021-01-23 00:31:10: active: test index: 1 bid: 18 
+2021-01-23 00:31:10: new bidder: admin more:  
+2021-01-23 00:31:11: active: admin index: 0 bid: 18 
+2021-01-23 00:31:11: new bidder: test more: 1 
+2021-01-23 00:31:11: active: test index: 1 bid: 20 
+2021-01-23 00:31:11: new bidder: admin more:  
+2021-01-23 00:31:14: active: admin index: 0 bid: pass 
+2021-01-23 00:31:14: new bidder: incocnito more: 1 
+2021-01-23 00:32:26: active: incocnito index: 2 bid: 22 
+2021-01-23 00:32:26: new bidder: test more:  
+2021-01-23 00:32:40: active: test index: 1 bid: 22 
+2021-01-23 00:32:40: new bidder: incocnito more: 1 
+2021-01-23 00:32:53: active: incocnito index: 2 bid: pass 
+2021-01-23 00:32:53: new bidder: test more:  
+2021-01-23 00:35:14: active: test index: 1 bid: pass 
+2021-01-23 00:35:14: new bidder: incocnito more: 1 
+2021-01-23 00:35:15: active: incocnito index: 2 bid: 18 
+2021-01-23 00:35:15: new bidder: admin more:  
+2021-01-23 00:35:16: active: admin index: 0 bid: 18 
+2021-01-23 00:35:16: new bidder: incocnito more: 1 
+2021-01-23 00:35:17: active: incocnito index: 2 bid: 20 
+2021-01-23 00:35:17: new bidder: admin more:  
+2021-01-23 00:35:19: active: admin index: 0 bid: 20 
+2021-01-23 00:35:19: new bidder: incocnito more: 1 
+2021-01-23 00:35:20: active: incocnito index: 2 bid: 22 
+2021-01-23 00:35:20: new bidder: admin more:  
+2021-01-23 00:35:20: active: admin index: 0 bid: pass 
+2021-01-23 00:35:20: new bidder: incocnito more: 1 
+2021-01-23 00:37:06: active: test index: 1 bid: pass 
+2021-01-23 00:37:06: new bidder: incocnito more: 1 
+2021-01-23 00:46:33: active: test index: 1 bid: pass 
+2021-01-23 00:46:33: new bidder: incocnito more: 1 
+2021-01-23 00:46:35: active: incocnito index: 2 bid: 18 
+2021-01-23 00:46:35: new bidder: admin more:  
+2021-01-23 00:46:36: active: admin index: 0 bid: 18 
+2021-01-23 00:46:36: new bidder: incocnito more: 1 
+2021-01-23 00:46:37: active: incocnito index: 2 bid: 20 
+2021-01-23 00:46:37: new bidder: admin more:  
+2021-01-23 00:46:39: active: admin index: 0 bid: pass 
+2021-01-23 00:46:39: new bidder: incocnito more: 1 
+2021-01-23 01:23:15: active: test index: 1 bid: pass 
+2021-01-23 01:23:15: new bidder: incocnito more: 1 
+2021-01-23 01:23:16: active: incocnito index: 2 bid: pass 
+2021-01-23 01:23:16: new bidder: admin more:  
+2021-01-23 01:23:18: active: admin index: 0 bid: 18 
+2021-01-23 01:23:18: new bidder: None more:  
+2021-01-23 01:24:40: active: test index: 1 bid: pass 
+2021-01-23 01:24:40: new bidder: incocnito more: 1 
+2021-01-23 01:24:41: active: incocnito index: 2 bid: pass 
+2021-01-23 01:24:41: new bidder: admin more:  
+2021-01-23 01:24:42: active: admin index: 0 bid: 18 
+2021-01-23 01:24:42: new bidder: None more:  
+2021-01-23 01:31:02: active: test index: 1 bid: 18 
+2021-01-23 01:31:02: new bidder: admin more:  
+2021-01-23 01:32:43: active: admin index: 0 bid: 18 
+2021-01-23 01:32:43: new bidder: test more: 1 
+2021-01-23 01:32:44: active: test index: 1 bid: pass 
+2021-01-23 01:32:44: new bidder: incocnito more: 1 
+2021-01-23 01:32:45: active: incocnito index: 2 bid: pass 
+2021-01-23 01:32:45: new bidder: admin more:  

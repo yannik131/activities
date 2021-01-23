@@ -18,6 +18,7 @@ function joinAudio() {
             + '{{ match.id }}/'
             + '{{ user.username }}/'
         });
+        init_happened = true;
     }
 
     player.start();
@@ -25,7 +26,6 @@ function joinAudio() {
     var button = document.getElementById("join-audio");
     button.innerHTML = "Austreten";
     button.onclick = leaveAudio;
-    init_happened = true;
 }
 
 function leaveAudio() {

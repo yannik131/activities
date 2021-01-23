@@ -9,8 +9,6 @@ datepicker, datetimepicker
 
 Lobby:
 Laufende Liste von Nutzern rechts, Liste von Matches links
-trimautowhitespace=false
-autoClosingOvertype=always
 
 DURAK_WEBSOCKET LÖSCHEN, USER_WEBSOCKET REICHT!!
 zuschmeißen wartezeit
