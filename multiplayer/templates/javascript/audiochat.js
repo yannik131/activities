@@ -8,13 +8,13 @@ function joinAudio() {
         prefix = getWsPrefix();
         streamer = new WSAudioAPI.Streamer({
             server: prefix
-            + '/ws/multiplayer/audio/send/'
+            + '/ws/multiplayer/audio/receive/'
             + '{{ match.id }}/'
             + '{{ user.username }}/'
         });
         player = new WSAudioAPI.Player({
             server: prefix
-            + '/ws/multiplayer/audio/receive/'
+            + '/ws/multiplayer/audio/send/'
             + '{{ match.id }}/'
             + '{{ user.username }}/'
         });
@@ -29,8 +29,13 @@ function joinAudio() {
 }
 
 function leaveAudio() {
-    player.stop();
-    streamer.stop();
+    try {
+        player.stop();
+        streamer.stop();
+    } 
+    catch(err) { 
+        console.log("Error leaving audio: ", err);
+    }
     var button = document.getElementById("join-audio");
     button.innerHTML = "Beitreten";
     button.onclick = joinAudio;

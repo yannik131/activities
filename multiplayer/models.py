@@ -9,6 +9,7 @@ from channels.layers import get_channel_layer
 from .utils import create_deck
 from django.utils.translation import gettext_lazy as _
 import json
+from multiplayer.utils import change
 
 
 class MultiplayerMatch(models.Model):
@@ -78,12 +79,15 @@ class MultiplayerMatch(models.Model):
         return result
         
     def start(self):
-        self.in_progress = True
-        self.game_data = {"type": "multiplayer", "action": "load_data"}
+        self.game_data = {"type": "multiplayer", "action": "load_data", "game_number": "0"}
         if self.activity.name == _("Durak"):
             self.start_durak()
         elif self.activity.name == _("Skat"):
             self.start_skat()
+        if not self.in_progress:
+            for player in json.loads(self.game_data["players"]):
+                self.game_data[player+"_points"] = "0"
+        self.in_progress = True
         self.save()
             
     def create_players(self, n, *deck):
@@ -118,10 +122,11 @@ class MultiplayerMatch(models.Model):
         self.game_data["passed"] = ""
         # bidding, taking, putting, declaring, playing
         self.game_data["mode"] = "bidding"
+        change(self.game_data, "game_number", 1)
         
 
     def start_durak(self):
-        players, deck = self.create_players(6, "6", "7", "8", "9", "10", "J", "Q", "K", "A")
+        players, deck = self.create_players(6, "10", "J", "Q", "K", "A")
         self.game_data["trump"] = deck[-1][-1]
         self.game_data["first_attacker"] = players[0]
         self.game_data["attacking"] = players[0]
@@ -129,4 +134,6 @@ class MultiplayerMatch(models.Model):
         self.game_data["stacks"] = json.dumps([])
         self.game_data["done_list"] = json.dumps([])
         self.game_data["taking"] = ""
+        self.game_data["first"] = ""
+        change(self.game_data, "game_number", 1)
         

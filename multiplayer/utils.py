@@ -1,8 +1,12 @@
 import random
 import json
 from shared.shared import log
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as _
 
+
+def change(dictionary, key, change):
+    dictionary[key] = int(dictionary[key])+change
+    
 
 def create_deck(*ranks):
     colors = ["c", "h", "s", "d"]
@@ -52,12 +56,12 @@ def left_player(player, players, data):
     return None
     
     
-def player_with_cards(players, data):
-    count = 0
+def get_players_with_cards(players, data):
+    l = []
     for player in players:
         if data[player] != "[]":
-            count += 1
-    return count
+            l.append(player)
+    return l
     
     
 def next_bidder(data):
@@ -102,25 +106,28 @@ GAME_VALUES = {
 }
 
 def determine_winner(data):
-    tricks = json.loads(data[data["solist"]+"_tricks"])
-    if data["game_type"] == "n":
-        if tricks:
-            return _("Verloren"), None
-        return _("Gewonnen"), None
-    skat = json.loads(data["deck"])
-    log("skat", skat, "tricks", tricks)
     points = 0
+    skat = json.loads(data["deck"])
+    tricks = json.loads(data[data["solist"]+"_tricks"])
     for trick in tricks+[skat]:
         for card in trick:
             points += CARD_VALUES[card[:-1]]
-    won = points > 60
-    if won:
-        game_value = calc_game_value(data, points)
+    game_value = calc_game_value(data, points)
+    result = "lost"
+    if data["game_type"] == "n":
+        if not tricks:
+            result = "won"
+    elif points > 60:
+        declarations = data["declarations"]
+        if "s" in declarations and points < 91 or\
+            ("b" in declarations or "o" in declarations) and len(tricks) < 10:
+            result = "overbid"
         if game_value >= int(data[data["solist"]+"_bid"]):
-            return _("Gewonnen"), points
+            result = "won"
         else:
-            return _("Überreizt"), points
-    return _("Verloren"), points
+            result = "overbid"
+    
+    return result, points, game_value
     
 
 def calc_game_value(data, points):
@@ -140,6 +147,7 @@ def calc_game_value(data, points):
             factor += 2
         elif points <= 30:
             factor += 1
+        
         return int(data["factor"])*GAME_VALUES[data["game_type"]]
 
 
@@ -160,6 +168,12 @@ def determine_factor(data):
     declarations = data["declarations"]
     if "h" in declarations:
         factor += 1
+    if "s" in declarations:
+        factor += 1
+    elif "b" in declarations:
+        factor += 2
+    elif "o" in declarations:
+        factor += 3
     if data["game_type"] != "g":
         highest = ["A", "10", "K", "Q", "J", "9", "8", "7"]
         for trump in highest:
@@ -168,6 +182,50 @@ def determine_factor(data):
             else:
                 break
     return factor
+    
+    
+def give_skat_points(data, players, result, game_value):
+    solist_change = 0
+    other_change = 0
+    summary = []
+    if result == "won":
+        solist_change += 50 + game_value
+        summary = data["solist"]+": +"+str(solist_change)
+    else:
+        if len(players) == 3:
+            other_change = 40
+        else:
+            other_change = 30
+        solist_change -= 50 + 2*game_value
+        summary = data["solist"]+": -"+str(-solist_change)
+    change(data, data["solist"]+"_points", solist_change)
+    summary += " -> "+str(data[data["solist"]+"_points"])+"\n"
+    summary = [summary, data[data["solist"]+"_points"]]
+    players = cycle_slice(players.index(data["forehand"]), players)
+    for player in players:
+        if player == data["solist"]:
+            continue
+        change(data, player+"_points", other_change)
+        summary.append([player+": +"+str(other_change)+" -> "+str(data[player+"_points"])+"\n", data[player+"_points"]])
+    summary = sorted(summary, key=lambda t: t[1], reverse=True)
+    return "".join([t[0] for t in summary])
+    
+    
+def give_durak_points(data, players, durak):
+    summary = []
+    for player in players:
+        if player == durak:
+            points = 0
+        elif data["first"] == player:
+            points = 2
+        else:
+            points = 1
+        change(data, player+"_points", points)
+        summary.append([f"{player}: +{points} -> {data[player+'_points']}\n", data[player+'_points']])
+    summary = sorted(summary, key=lambda t: t[1], reverse=True)
+    log(summary)
+    return "".join([t[0] for t in summary])
+    
 
 def random_name():
     with open("multiplayer/random_names.txt", "r") as f:

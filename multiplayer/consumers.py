@@ -2,7 +2,7 @@ import json
 from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
 from chat.models import ChatRoom, ChatLogEntry, ChatCheck
 from multiplayer.models import MultiplayerMatch
-from multiplayer.utils import after, before, cycle_slice, deal_cards, determine_factor, determine_winner, left_player, next_bidder, player_with_cards
+from multiplayer.utils import *
 from redis import StrictRedis
 conn = StrictRedis(host="localhost", port=6655)
 import redis_lock
@@ -48,7 +48,11 @@ class GameConsumer(WebsocketConsumer):
             
 class DurakConsumer(GameConsumer):
     def get_message(self, text_data):
-        match = MultiplayerMatch.objects.get(pk=self.match_id)
+        try:
+            match = MultiplayerMatch.objects.get(pk=self.match_id)
+        except:
+            log(self.username, "requested invalid match with id", self.match_id)
+            return dict()
         data = match.game_data
         players = json.loads(data["players"])
         message = {"group": True}
@@ -59,6 +63,8 @@ class DurakConsumer(GameConsumer):
         elif text_data['action'] in ["beating", "attacking"]:
             data["stacks"] = text_data["stacks"]
             data[self.username] = text_data["hand"]
+            if not data["first"] and len(json.loads(text_data["hand"])) == 0:
+                data["first"] = self.username
             if not data["taking"]:
                 data["done_list"] = json.dumps([])
             message["data"] = {
@@ -93,16 +99,22 @@ class DurakConsumer(GameConsumer):
                             data["attacking"] = left_player(data["defending"], players, data)
                     else:
                         data["attacking"] = None
-                count = player_with_cards(players, data)
-                if count <= 1:
+                players_with_cards = get_players_with_cards(players, data)
+                if len(players_with_cards) <= 1:
                     durak = None
-                    if count > 0 and json.loads(data[data["defending"]]):
-                        durak = data["defending"]
-                    match.start()
+                    if players_with_cards:
+                        durak = players_with_cards[0]
+                    summary = give_durak_points(data, players, durak)
+                    match.start_durak()
                     if durak:
                         data["defending"] = durak
                         data["attacking"] = before(durak, players)
+                    else:
+                        data["attacking"] = after(data["first_attacker"], players)
+                        data["defending"] = after(data, data["attacking"])
                     message["data"] = match.game_data
+                    message["data"]["summary"] = summary
+                    message["data"]["game_number"] = data["game_number"]
                 else:
                     data["defending"] = left_player(data["attacking"], players, data)
                     done_list = []
@@ -120,6 +132,8 @@ class DurakConsumer(GameConsumer):
         elif text_data["action"] == "transfer":
             data["stacks"] = text_data["stacks"]
             data[self.username] = text_data["hand"]
+            if not data["first"] and len(json.loads(text_data["hand"])) == 0:
+                data["first"] = self.username
             data["done_list"] = json.dumps([])
             data["attacking"] = data["defending"]
             data["defending"] = left_player(data["attacking"], players, data)
@@ -138,6 +152,7 @@ class SkatConsumer(GameConsumer):
         match = MultiplayerMatch.objects.get(pk=self.match_id)
         data = match.game_data
         message = {"group": True}
+        log(text_data["action"], data["incocnito_points"], data["test_points"], data["admin_points"])
         if text_data["action"] == "request_data":
             message["data"] = data
             message["group"] = False
@@ -168,20 +183,23 @@ class SkatConsumer(GameConsumer):
                 message["data"]["active"] = winner
                 null_lost = data["game_type"] == "n" and data["solist"] == winner
                 if not json.loads(data[data["active"]]) or null_lost:
-                    won, winner_points = determine_winner(data)
-                    message["data"]["result"] = won
+                    players = json.loads(data["players"])
+                    result, winner_points, game_value = determine_winner(data)
+                    points_summary = give_skat_points(data, players, result, game_value)
+                    message["data"]["result"] = result
                     if winner_points:
                         message["data"]["points"] = winner_points
-                    
-                    match.start()
-                    players = json.loads(data["players"])
+                    message["data"]["summary"] = points_summary
+                    message["data"]["game_number"] = data["game_number"]
+                    match.start_skat()
                     starting = after(data["started"], players)
                     match.game_data["started"] = starting
                     match.game_data["forehand"] = starting
                     match.game_data["active"] = after(starting, players)
                     message["data"]["round"] = match.game_data
         elif text_data["action"] == "declare":
-            data["game_type"] = text_data["game"]
+            data["game_type"] = text_data["game"][0]
+            data["declarations"] += text_data["game"][1:]
             data["solist"] = data["active"]
             data["active"] = data["forehand"]
             data["mode"] = "playing"
@@ -247,10 +265,64 @@ class SkatConsumer(GameConsumer):
         match.save()
         return message
 
+class AudioReceiveConsumer(WebsocketConsumer):
+    def connect(self):
+        async_to_sync
+        self.match_id = self.scope['url_route']['kwargs']['match_id']
+        self.username = self.scope['url_route']['kwargs']['username']
+        log("connected: ", self.username)
+        
+        async_to_sync(self.channel_layer.group_add)(
+            f"audio-receive-{self.match_id}",
+            self.channel_name
+        )
+        
+        self.accept()
+
+    def disconnect(self, code):
+        async_to_sync(self.channel_layer.group_discard)(
+            f"audio-receive-{self.match_id}",
+            self.channel_name
+        )
+
+    def receive(self, text_data=None, bytes_data=None):
+        text_data = dict()
+        text_data["type"] = "audio_message"
+        text_data["sender"] = self.username
+        text_data["bytes_data"] = bytes_data
+        async_to_sync(self.channel_layer.group_send)(
+            f"audio-send-{self.match_id}",
+            text_data
+        )
+            
+class AudioSendConsumer(WebsocketConsumer):
+    def connect(self):
+        self.match_id = self.scope['url_route']['kwargs']['match_id']
+        self.username = self.scope['url_route']['kwargs']['username']
+        
+        async_to_sync(self.channel_layer.group_add)(
+            f"audio-send-{self.match_id}",
+            self.channel_name
+        )
+        
+        self.accept()
+
+    def disconnect(self, code):
+        async_to_sync(self.channel_layer.group_discard)(
+            f"audio-send-{self.match_id}",
+            self.channel_name
+        )
+
+    def audio_message(self, event):
+        if event["sender"] != self.username:
+            self.send(bytes_data=event["bytes_data"])
+            
+"""
 class AudioReceiveConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.match_id = self.scope['url_route']['kwargs']['match_id']
         self.username = self.scope['url_route']['kwargs']['username']
+        log("connected: ", self.username)
         
         await self.channel_layer.group_add(
             f"audio-receive-{self.match_id}",
@@ -275,7 +347,6 @@ class AudioReceiveConsumer(AsyncWebsocketConsumer):
             text_data
         )
             
-
 class AudioSendConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.match_id = self.scope['url_route']['kwargs']['match_id']
@@ -297,4 +368,5 @@ class AudioSendConsumer(AsyncWebsocketConsumer):
     async def audio_message(self, event):
         if event["sender"] != self.username:
             await self.send(bytes_data=event["bytes_data"])
+"""
     

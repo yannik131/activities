@@ -1,3 +1,5 @@
+{% load i18n %}
+
 var skat_websocket;
 var player_list;
 var game_type; //d, c, g, ...
@@ -6,6 +8,7 @@ var player_positions; //uname:pos
 var active;
 var mode; //playing or undefined/null
 var solist;
+var no_take = "";
 
 function processMultiplayerData(data) {
     console.log("received: " + data.action + " active: " + data.active);
@@ -15,19 +18,19 @@ function processMultiplayerData(data) {
     switch(data.action) {
         case "load_data":
             loadGameField(data);
-            break;
+            return;
         case "bid":
             handleBidding(data);
-            break;
+            return;
         case "take":
             handleTake(data);
-            break;
+            return;
         case "no_take":
             chooseGameMode();
-            break;
+            return;
         case "declare":
             chooseGameMode();
-            break;
+            return;
         case "start":
             handleStart(data);
             break;
@@ -68,6 +71,7 @@ function loadGameField(data) {
             createTakeButtons();
             break;
         case "declaring":
+            no_take = data.declarations;
             chooseGameMode();
             break;
         case "putting":
@@ -90,6 +94,9 @@ function handleStart(data) {
     updateSortingOrder();
     mode = "playing";
     solist = data.solist;
+    if(deck.length == 0) {
+        addCardsToDeck(3);
+    }
     updatePlayerInfo(solist, null, game_type);
     clearButtons();
 }
@@ -109,12 +116,18 @@ function handlePlay(data) {
     }
     if(data.round) {
         var new_data = data.round;
-        if(game_type == "n") {
-            alert(solist+": "+data.result);
+        var info = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+solist+": ";
+        if(data.result == "won")
+            info += "{% trans 'gewonnen' %}"
+        else if(data.result == "lost")
+            info += "{% trans 'verloren' %}"
+        else
+            info += "{% trans 'überreizt' %}"
+        if(game_type != "n") {
+            info += ", {% trans 'Augen' %}: " + data.points;
         }
-        else {
-            alert(solist+": "+data.result+", Augen: "+data.points);
-        }
+        alert(info+"\n"+data.summary);
+        active = new_data.active;
         loadGameField(new_data);
     }
 }
@@ -142,7 +155,7 @@ function updateSortingOrder() {
         default:
             return;
     }
-    updateCardsFor(1, true);
+    updateCardsFor(1, game_type != "n");
 }
 
 function handleTake(data) {
@@ -158,7 +171,7 @@ function handlePutting() {
     if(this_user != active) {
         return;
     }
-    createButton("Drücken", "put", function() {
+    createButton("{% trans 'Drücken' %}", "put", function() {
         if(player1_cards.length != 10) {
             return;
         }
@@ -171,7 +184,7 @@ function handlePutting() {
             if(player1_cards.length <= 10) {
                 return;
             }
-            removePlayerCard(this, true);
+            removePlayerCard(this, game_type != "n");
             addStack(this.id);
             setStackCallbacks();
         }
@@ -234,13 +247,42 @@ function chooseGameMode() {
                  ["Grand", "g"]];
     for(var i = 0; i < games.length; i++) {
         createButton(games[i][0], games[i][1], function() {
-            sendDeclaration(this.id);
+            prepareDeclarations(this.id);
         });
     }
     var red = document.getElementById("h");
     red.style.color = "red";
     red = document.getElementById("d");
     red.style.color = "red";
+}
+
+function prepareDeclarations(game_type) {
+    clearButtons();
+    if(game_type == "n") {
+        createButton("{% trans 'Ouvert' %}", 'ouvert', function() {
+            sendDeclaration("no");
+        })
+        createButton("{% trans 'Normal' %}", 'normal', function() {
+            sendDeclaration("n");
+        })
+    }
+    else if(no_take) {
+        createButton("{% trans 'Normal' %}", "n", function() {
+            sendDeclaration(game_type);
+        })
+        createButton("{% trans 'Schneider' %}", "s", function() {
+            sendDeclaration(game_type+"s");
+        });
+        createButton("{% trans 'Schwarz' %}", "b", function() {
+            sendDeclaration(game_type+"b");
+        });
+        createButton("{% trans 'Offen' %}", "o", function() {
+            sendDeclaration(game_type+"o");
+        });
+    }
+    else {
+        sendDeclaration(game_type);
+    }
 }
 
 function sendDeclaration(game) {
@@ -254,11 +296,12 @@ function createTakeButtons() {
     if(this_user != active) {
         return;
     }
-    createButton("Aufnehmen", "take", function() {
+    createButton("{% trans 'Aufnehmen' %}", "take", function() {
         sendAction("take");
     });
-    createButton("Hand spielen", "no_take", function() {
+    createButton("{% trans 'Hand spielen' %}", "no_take", function() {
         sendAction("no_take");
+        no_take = true;
     });
 }
 
@@ -275,11 +318,11 @@ function handleBidding(data) {
 }
 
 function updatePlayerInfo(player, bid, game) {
+    console.log("updating info for", player, bid);
     var info = "";
-    var important = false;
-    if(player == active) {
+    var important = player == active;
+    if(important) {
         info += " (*) ";
-        important = true;
     }
     info += player_positions[player];
     if(bid == "pass") {
@@ -290,12 +333,12 @@ function updatePlayerInfo(player, bid, game) {
     }
     if(player == solist) {
         switch(game) {
-            case "c": info += " Kreuz"; break;
-            case "s": info += " Pik"; break;
-            case "h": info += " Herz"; break;
-            case "d": info += " Karo"; break;
-            case "g": info += " Grand"; break;
-            case "n": info += " Null"; break;
+            case "c": info += " {% trans 'Kreuz' %}"; break;
+            case "s": info += " {% trans 'Pik' %}"; break;
+            case "h": info += " {% trans 'Herz' %}"; break;
+            case "d": info += " {% trans 'Karo' %}"; break;
+            case "g": info += " {% trans 'Grand' %}"; break;
+            case "n": info += " {% trans 'Null' %}"; break;
             default: break;
         }
     }
@@ -338,7 +381,7 @@ function cardClicked(value, suit, card) {
     }
     if(stacks.length == 0) {
         addStack(card.id);
-        removePlayerCard(card, true);
+        removePlayerCard(card, game_type != "n");
         sendMove();
         return;
     }
@@ -365,13 +408,13 @@ function cardClicked(value, suit, card) {
             beatStack(1, card.id);
             break;
     }
-    removePlayerCard(card, true);
+    removePlayerCard(card, game_type != "n");
     sendMove();
 }
 
 function compare(vs1, vs2) {
     
-    return getCardSortValue(vs1.value+vs1.suit, true) > getCardSortValue(vs2.value+vs2.suit, true);
+    return getCardSortValue(vs1.value+vs1.suit, game_type != "n") > getCardSortValue(vs2.value+vs2.suit, game_type != "n");
 }
 
 function indexOfHighestCard() {
@@ -458,12 +501,12 @@ function createBidButtons(active, highest_bid, more) {
             });
         }
         else {
-            createButton("Ja, "+highest_bid[0], highest_bid[0], function() {
+            createButton("{% trans 'Ja' %}, "+highest_bid[0], highest_bid[0], function() {
                 sendBid(highest_bid[0]);
             });
         }
     }
-    createButton("Passe", "pass", function() {
+    createButton("{% trans 'Passe' %}", "pass", function() {
         sendBid("pass");
     });
 }
@@ -472,7 +515,7 @@ function updatePlayerPositions(data) {
     var forehand = data.forehand;
     var middle = next(forehand, player_list);
     var behind = next(middle, player_list);
-    player_positions = {[forehand]: "Vorhand", [middle]: "Mittelhand", [behind]: "Hinterhand"};
+    player_positions = {[forehand]: "{% trans 'Vorhand' %}", [middle]: "{% trans 'Mittelhand' %}", [behind]: "{% trans 'Hinterhand' %}"};
 }
 
 function skatConnect() {
