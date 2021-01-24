@@ -102,10 +102,12 @@ class MultiplayerMatch(models.Model):
     def start_skat(self):
         players, _ = self.create_players(10, "7", "8", "9", "10", "J", "Q", "K", "A")
         self.game_data["forehand"] = players[0]
+        self.game_data["started"] = players[0]
         self.game_data["last_bid"] = ""
         self.game_data["highest_bid"] = ""
         self.game_data["more"] = ""
-        self.game_data["stack"] = json.dumps([])
+        self.game_data["trick"] = json.dumps([])
+        self.game_data["factor"] = ""
         for player in players:
             self.game_data[player+"_tricks"] = json.dumps([])
             self.game_data[player+"_bid"] = ""
@@ -114,7 +116,7 @@ class MultiplayerMatch(models.Model):
         self.game_data["game_type"] = ""
         self.game_data["declarations"] = ""
         self.game_data["passed"] = ""
-        # bidding, taking, declaring, playing
+        # bidding, taking, putting, declaring, playing
         self.game_data["mode"] = "bidding"
         
 

@@ -241,7 +241,6 @@ function attackingIsPossible() {
     if(stacks.length == 6 || count == undefendedCardCount()) {
         return false;
     }
-    
     return true;
 }
 
@@ -381,25 +380,6 @@ function transferPossible(value) {
         }
     }
     return true;
-}
-
-function playerHandContains(value) {
-    for(var i = 0; i < player1_cards.length; i++) {
-        const vs = getVs(player1_cards[i].id);
-        if(vs.value == value) {
-            return true;
-        }
-    }
-    return false;
-}
-
-function clearStacks() {
-    for(var i = 0; i < stacks.length; i++) {
-        for(var j = 0; j < stacks[i].length; j++) {
-            stacks[i][j].remove();
-        }
-    }
-    stacks = [];
 }
 
 function setupNewRound(data) {

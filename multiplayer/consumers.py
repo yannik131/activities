@@ -2,7 +2,7 @@ import json
 from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
 from chat.models import ChatRoom, ChatLogEntry, ChatCheck
 from multiplayer.models import MultiplayerMatch
-from multiplayer.utils import before, deal_cards, left_player, next_bidder, player_with_cards
+from multiplayer.utils import after, before, cycle_slice, deal_cards, determine_factor, determine_winner, left_player, next_bidder, player_with_cards
 from redis import StrictRedis
 conn = StrictRedis(host="localhost", port=6655)
 import redis_lock
@@ -142,6 +142,63 @@ class SkatConsumer(GameConsumer):
             message["data"] = data
             message["group"] = False
             return message
+        elif text_data["action"] == "play":
+            players = json.loads(data["players"])
+            players = cycle_slice(players.index(data["forehand"]), players)
+            data["trick"] = text_data["trick"]
+            trick = json.loads(data["trick"])
+            data[data["active"]] = text_data["hand"]
+            data["active"] = after(self.username, players)
+            message["data"] = {
+                "action": "play",
+                "trick": data["trick"],
+                "username": self.username,
+                "active": data["active"]
+            }
+            if len(trick) == 3:
+                winner = players[int(text_data["index"])]
+                tricks = json.loads(data[winner+"_tricks"])
+                tricks.append(trick)
+                data[winner+"_tricks"] = json.dumps(tricks)
+                data["forehand"] = winner
+                data["active"] = winner
+                data["trick"] = json.dumps([])
+                message["data"]["clear"] = "1"
+                message["data"]["forehand"] = winner
+                message["data"]["active"] = winner
+                null_lost = data["game_type"] == "n" and data["solist"] == winner
+                if not json.loads(data[data["active"]]) or null_lost:
+                    won, winner_points = determine_winner(data)
+                    message["data"]["result"] = won
+                    if winner_points:
+                        message["data"]["points"] = winner_points
+                    
+                    match.start()
+                    players = json.loads(data["players"])
+                    starting = after(data["started"], players)
+                    match.game_data["started"] = starting
+                    match.game_data["forehand"] = starting
+                    match.game_data["active"] = after(starting, players)
+                    message["data"]["round"] = match.game_data
+        elif text_data["action"] == "declare":
+            data["game_type"] = text_data["game"]
+            data["solist"] = data["active"]
+            data["active"] = data["forehand"]
+            data["mode"] = "playing"
+            data["factor"] = determine_factor(data)
+            message["data"] = {
+                "action": "start",
+                "active": data["active"],
+                "game_type": data["game_type"],
+                "solist": data["solist"]
+            }
+        elif text_data["action"] == "put":
+            data["deck"] = text_data["skat"]
+            data[data["active"]] = text_data["hand"]
+            data["mode"] = "declaring"
+            message["data"] = {
+                "action": "declare"
+            }
         elif text_data["action"] == "take":
             message["data"] = {
                 "action": "take",
@@ -151,7 +208,7 @@ class SkatConsumer(GameConsumer):
             hand += json.loads(data["deck"])
             data[data["active"]] = json.dumps(hand)
             data["deck"] = json.dumps([])
-            data["mode"] = "declaring"
+            data["mode"] = "putting"
         elif text_data["action"] == "no_take":
             data["mode"] = "declaring"
             data["declarations"] += "h"
@@ -169,7 +226,6 @@ class SkatConsumer(GameConsumer):
             
             data["last_bid"] = json.dumps([bid, self.username])
             bidder, more = next_bidder(data)
-            log("new bidder:", bidder, "more:", more)
             data["more"] = more
             if bidder:
                 data["active"] = bidder
@@ -188,18 +244,16 @@ class SkatConsumer(GameConsumer):
             elif len(data["passed"]) == 3:
                 match.start()
                 message["data"] = match.game_data
-                
-            
         match.save()
         return message
 
-class AudioConsumer(AsyncWebsocketConsumer):
+class AudioReceiveConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.match_id = self.scope['url_route']['kwargs']['match_id']
         self.username = self.scope['url_route']['kwargs']['username']
         
         await self.channel_layer.group_add(
-            f"audio-{self.match_id}",
+            f"audio-receive-{self.match_id}",
             self.channel_name
         )
         
@@ -207,7 +261,7 @@ class AudioConsumer(AsyncWebsocketConsumer):
 
     async def disconnect(self, code):
         await self.channel_layer.group_discard(
-            f"audio-{self.match_id}",
+            f"audio-receive-{self.match_id}",
             self.channel_name
         )
 
@@ -217,8 +271,27 @@ class AudioConsumer(AsyncWebsocketConsumer):
         text_data["sender"] = self.username
         text_data["bytes_data"] = bytes_data
         await self.channel_layer.group_send(
-            f"audio-{self.match_id}",
+            f"audio-send-{self.match_id}",
             text_data
+        )
+            
+
+class AudioSendConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+        self.match_id = self.scope['url_route']['kwargs']['match_id']
+        self.username = self.scope['url_route']['kwargs']['username']
+        
+        await self.channel_layer.group_add(
+            f"audio-send-{self.match_id}",
+            self.channel_name
+        )
+        
+        await self.accept()
+
+    async def disconnect(self, code):
+        await self.channel_layer.group_discard(
+            f"audio-send-{self.match_id}",
+            self.channel_name
         )
 
     async def audio_message(self, event):

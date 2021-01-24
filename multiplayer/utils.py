@@ -1,6 +1,7 @@
 import random
 import json
 from shared.shared import log
+from django.utils.translation import gettext_lazy as _
 
 
 def create_deck(*ranks):
@@ -63,7 +64,6 @@ def next_bidder(data):
     players = json.loads(data["players"])
     participants = cycle_slice(players.index(data["forehand"]), players)[:3]
     index = participants.index(data["active"])
-    log("active:", data["active"], "index:", index, "bid:", data[data["active"]+"_bid"])
     if data[data["active"]+"_bid"] == "pass":
         if index == 0: #forehand
             return participants[2], "1"
@@ -92,6 +92,83 @@ def next_bidder(data):
                 return participants[1], ""
     return None, ""
     
+    
+CARD_VALUES = {
+    "7": 0, "8": 0, "9": 0, "J": 2, "Q": 3,
+    "K": 4, "10": 10, "A": 11
+}
+GAME_VALUES = {
+    "d": 9, "h": 10, "s": 11, "c": 12, "n": 23, "g": 24
+}
+
+def determine_winner(data):
+    tricks = json.loads(data[data["solist"]+"_tricks"])
+    if data["game_type"] == "n":
+        if tricks:
+            return _("Verloren"), None
+        return _("Gewonnen"), None
+    skat = json.loads(data["deck"])
+    log("skat", skat, "tricks", tricks)
+    points = 0
+    for trick in tricks+[skat]:
+        for card in trick:
+            points += CARD_VALUES[card[:-1]]
+    won = points > 60
+    if won:
+        game_value = calc_game_value(data, points)
+        if game_value >= int(data[data["solist"]+"_bid"]):
+            return _("Gewonnen"), points
+        else:
+            return _("Überreizt"), points
+    return _("Verloren"), points
+    
+
+def calc_game_value(data, points):
+    if data["game_type"] == "n":
+        declarations = data["declarations"]
+        if declarations == "h":
+            return 35
+        elif declarations == "o":
+            return 46
+        elif declarations == "ho":
+            return 59
+        else:
+            return 23
+    else:
+        factor = int(data["factor"])
+        if points == 0:
+            factor += 2
+        elif points <= 30:
+            factor += 1
+        return int(data["factor"])*GAME_VALUES[data["game_type"]]
+
+
+def determine_factor(data):
+    factor = 1
+    if data["game_type"] == "n":
+        return factor
+    highest = ["Js", "Jh", "Jd"]
+    cards = json.loads(data[data["solist"]])
+    with_j = "Jc" in cards
+    for trump in highest:
+        if with_j and trump in cards:
+            factor += 1
+        elif not with_j and trump not in cards:
+            factor += 1
+        elif (with_j and trump not in cards) or (not with_j and trump in cards):
+            break
+    declarations = data["declarations"]
+    if "h" in declarations:
+        factor += 1
+    if data["game_type"] != "g":
+        highest = ["A", "10", "K", "Q", "J", "9", "8", "7"]
+        for trump in highest:
+            if trump+data["game_type"] in cards:
+                factor += 1
+            else:
+                break
+    return factor
+
 def random_name():
     with open("multiplayer/random_names.txt", "r") as f:
         names = f.readlines()

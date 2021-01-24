@@ -139,7 +139,7 @@ function positionCard(player, card, i, n) {
     }
 }
 
-function addCardTo(player, n, type) {
+function addCardTo(player, n, type, jacks_high) {
     var new_cards = [];
     const vars = getPlayerVariables(player);
     var card;
@@ -155,16 +155,16 @@ function addCardTo(player, n, type) {
         vars.cards.push(card);
         new_cards.push(card);
     }
-    updateCardsFor(player);
+    updateCardsFor(player, jacks_high);
     for(var i = 0; i < new_cards.length; i++) {
         field.appendChild(new_cards[i]);
     }
 }
 
-function removePlayerCard(card) {
+function removePlayerCard(card, jacks_high) {
     card.remove();
     player1_cards.splice(player1_cards.indexOf(card), 1);
-    updateCardsFor(1);
+    updateCardsFor(1, jacks_high);
 }
 
 function defineSortValues(ten_high, jacks_max) {
@@ -194,21 +194,29 @@ function defineSortValues(ten_high, jacks_max) {
     }
 }
 
-function getCardSortValue(type) {
+function getCardSortValue(type, jacks_high) {
     const vs = getVs(type);
     const value = vs.value, suit = vs.suit;
+    if(jacks_high && value == "J") {
+        switch(suit) {
+            case "c": return 4000;
+            case "s": return 3000;
+            case "h": return 2000;
+            case "d": return 1000;
+        }
+    }
     return suit_values[suit] + value_values[value];
 }
 
-function sortCards() {
+function sortCards(jacks_high) {
     player1_cards.sort(function(a, b) {
-        return getCardSortValue(b.id)-getCardSortValue(a.id);
+        return getCardSortValue(b.id, jacks_high)-getCardSortValue(a.id, jacks_high);
     });
 }
 
-function updateCardsFor(player) {
+function updateCardsFor(player, jacks_high) {
     if(player == 1) {
-        sortCards();
+        sortCards(jacks_high);
     }
     const vars = getPlayerVariables(player);
     for(var i = 0; i < vars.cards.length; i++) {
@@ -343,13 +351,25 @@ function createButton(text, id, callback) {
     }
     button.style.zIndex = "100";
     button.innerHTML = text;
-    button.onclick = function() { callback(); };
+    button.onclick = callback;
     button.style.position = "absolute";
-    button.style.right = (buttons.length == 0? 0 : buttons[buttons.length-1].offsetWidth) + "px";
+    button.style.right = (buttons.length == 0? 0 : field.offsetWidth-buttons[buttons.length-1].offsetLeft+5) + "px";
     button.style.top = "0px";
+    if(buttons.length) {
+        button.style.top = buttons[buttons.length-1].style.top;
+    }
     button.style.opacity = "0.7";
     button.id = id;
     field.appendChild(button);
+    if(button.offsetLeft < 0) {
+        button.style.top = (10+buttons[buttons.length-1].offsetHeight)+"px";
+        button.style.right = "0px";
+        if(buttons[buttons.length-1].style.top != "0px") {
+            button.style.right = buttons[buttons.length-1].offsetLeft;
+        }
+    }
+    
+    
     buttons.push(button);
 }
 
@@ -383,6 +403,28 @@ function before(el, arr) {
     return arr[((arr.indexOf(el)-1)%arr.length+arr.length)%arr.length];
 }
 
+function playerHandContains(value, suit, except_value) {
+    for(var i = 0; i < player1_cards.length; i++) {
+        const vs = getVs(player1_cards[i].id);
+        if(vs.value == value || vs.suit == suit) {
+            if(vs.value == except_value) {
+                continue;
+            }
+            return true;
+        }
+    }
+    return false;
+}
+
+function clearStacks() {
+    for(var i = 0; i < stacks.length; i++) {
+        for(var j = 0; j < stacks[i].length; j++) {
+            stacks[i][j].remove();
+        }
+    }
+    stacks = [];
+}
+
 function positionPlayers(player_list) {
     //fills players[username] in the right order
     players[this_user] = 1;
@@ -393,7 +435,7 @@ function positionPlayers(player_list) {
     }
 }
 
-function changeInfoFor(username, info) {
+function changeInfoFor(username, info, important) {
     var player = players[username];
     var player_info = document.getElementById("player"+player);
     player_info.innerHTML = (
@@ -404,6 +446,14 @@ function changeInfoFor(username, info) {
         "</a> " +
         info
     );
+    if(important) {
+        player_info.style.fontWeight = "bold";
+        player_info.style.color = "red";
+    }
+    else {
+        player_info.style.fontWeight = "normal";
+        player_info.style.color = "white";
+    }
 }
 
 function displayCards(data, player_list) {

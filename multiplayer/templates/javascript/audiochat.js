@@ -8,19 +8,19 @@ function joinAudio() {
         prefix = getWsPrefix();
         streamer = new WSAudioAPI.Streamer({
             server: prefix
-            + '/ws/multiplayer/audio/'
+            + '/ws/multiplayer/audio/send/'
             + '{{ match.id }}/'
             + '{{ user.username }}/'
         });
         player = new WSAudioAPI.Player({
             server: prefix
-            + '/ws/multiplayer/audio/'
+            + '/ws/multiplayer/audio/receive/'
             + '{{ match.id }}/'
             + '{{ user.username }}/'
         });
         init_happened = true;
     }
-
+    
     player.start();
     streamer.start();
     var button = document.getElementById("join-audio");
