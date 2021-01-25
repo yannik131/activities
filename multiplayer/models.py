@@ -129,7 +129,7 @@ class MultiplayerMatch(models.Model):
         
 
     def start_durak(self):
-        players, deck = self.create_players(6, "10", "J", "Q", "K", "A", '7', '6')
+        players, deck = self.create_players(6, "6", "7", "8", "9", "10", "J", "Q", "K", "A")
         self.game_data["trump"] = deck[-1][-1]
         self.game_data["attacking"] = players[0]
         self.game_data["defending"] = players[1]
