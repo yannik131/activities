@@ -8,7 +8,7 @@ var move_mode = "none";
 var old_stacks = [];
 var selected_card;
 var defending;
-var durak_websocket;
+var socket;
 var button_color = "red";
 
 function processMultiplayerData(data) {
@@ -279,7 +279,7 @@ function allDefended() {
 }
 
 function sendMove() {
-    durak_websocket.send(JSON.stringify({
+    socket.send(JSON.stringify({
         "action": move_mode,
         "stacks": JSON.stringify(getConvertedStack()),
         "hand": JSON.stringify(getConvertedHand()),
@@ -288,12 +288,6 @@ function sendMove() {
     played_cards = [];
     move_mode = "none";
     clearButtons();
-}
-
-function sendAction(action) {
-    durak_websocket.send(JSON.stringify({
-        'action': action
-    }));
 }
 
 function transferCheck() {
@@ -454,39 +448,4 @@ function handleTransfer(data) {
     removeCardFrom(attacking, player_cards[attacking].length-data.attacking_n)
 }
 
-function durakConnect() {
-    durak_websocket = new WebSocket(
-        getWsPrefix()
-        + '/ws/multiplayer/durak/'
-        + '{{ match.id }}/'
-        + '{{ user.username }}/'
-    );
-
-    durak_websocket.onmessage = function(e) {
-        const data = JSON.parse(e.data);
-        if(data.action == "match_list") {
-            updateMatchList(data);
-        }
-        else {
-            processMultiplayerData(data);
-        }
-    }
-    
-    durak_websocket.onopen = function() {
-        sendAction("request_data");
-    }
-
-    durak_websocket.onclose = function(e) {
-        console.log('User socket closed unexpectedly. Attempting reconnect in 1 second. Code: ', e.code);
-        setTimeout(function() {
-            durakConnect();
-        }, 1000);
-    }
-
-    durak_websocket.onerror = function(err) {
-        console.error('User socket encountered error: ', err.message, 'Closing socket.');
-        durak_websocket.close();
-    }
-}
-
-durakConnect();
+gameConnect(socket, '{{ match.id }}', '{{ user.username }}');

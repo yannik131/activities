@@ -44,6 +44,13 @@ class MultiplayerMatch(models.Model):
                 return k
         return None
         
+    def add_first_member(self, member):
+        for i in range(1, self.member_limit+1):
+            self.member_positions[str(i)] = None
+        self.member_positions['1'] = str(member.id)
+        self.save()
+        self.members.add(member)
+        
     def broadcast_data(self, data, direct=False):
         channel_layer = get_channel_layer()
         data["type"] = "multiplayer"
@@ -84,6 +91,8 @@ class MultiplayerMatch(models.Model):
             self.start_durak()
         elif self.activity.name == _("Skat"):
             self.start_skat()
+        elif self.activity.name == _("Doppelkopf"):
+            self.start_doppelkopf()
         if not self.in_progress:
             players = json.loads(self.game_data["players"])
             self.game_data["started"] = players[0]
@@ -136,6 +145,11 @@ class MultiplayerMatch(models.Model):
         self.game_data["stacks"] = json.dumps([])
         self.game_data["done_list"] = json.dumps([])
         self.game_data["taking"] = ""
-        self.game_data["first"] = ""
+        self.game_data["first"] = "" # first without cards
         change(self.game_data, "game_number", 1)
+        
+        
+    def start_doppelkopf(self):
+        players, deck = self.create_players(11, "9", "9", "10", "10", "A", "A", "J", "J", "K", "K", "Q", "Q")
+        
         

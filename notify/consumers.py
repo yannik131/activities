@@ -6,6 +6,7 @@ from chat.models import ChatRoom, ChatLogEntry, ChatCheck
 from asgiref.sync import async_to_sync
 from django.utils.timezone import now
 from multiplayer.models import MultiplayerMatch
+from shared.shared import log
 
 
 class NotificationConsumer(WebsocketConsumer):
@@ -31,6 +32,8 @@ class NotificationConsumer(WebsocketConsumer):
 
     def receive(self, text_data=None, bytes_data=None):
         text_data = json.loads(text_data)
+        if not "type" in text_data:
+            log("No type: ", self.user.username, text_data)
         if text_data["type"] == "chat":
             self.handle_chat_message(text_data)
         elif text_data["action"] == "match_list":

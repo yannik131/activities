@@ -1,6 +1,6 @@
 {% load i18n %}
 
-var skat_websocket;
+var socket;
 var player_list;
 var game_type; //d, c, g, ...
 var this_user = "{{ user }}";
@@ -64,7 +64,7 @@ function loadGameField(data) {
     }
     var deck = parse(data.deck);
     if(deck.length) {
-        addCardsToDeck(3);
+        addCardsToDeck(3, false);
     }
     if(ouvert) {
         displayCards(data, player_list, data.solist);
@@ -107,13 +107,14 @@ function loadGameField(data) {
 }
 
 function handleStart(data) {
+    if(deck.length == 0) {
+        addCardsToDeck(3, false);
+    }
     game_type = data.game_type;
     updateSortingOrder();
     mode = "playing";
     solist = data.solist;
-    if(deck.length == 0) {
-        addCardsToDeck(3);
-    }
+   
     updatePlayerInfo(solist, null, game_type);
     clearButtons();
     if(data.declarations.includes("o") && this_user != data.solist) {
@@ -171,20 +172,19 @@ function updateAllInfo() {
 
 function updateSortingOrder() {
     switch(game_type) {
+        case "n":
+            trump_suit = null;
+            defineSortValues(ten_high=false, jacks_max=false);
+            break;
         case "c":
         case "s":
         case "h":
         case "d":
             trump_suit = game_type;
         case "g":
+        default:
             defineSortValues(ten_high=true, jacks_max=true);
             break;
-        case "n":
-            trump_suit = null;
-            defineSortValues(ten_high=false, jacks_max=false);
-            break;
-        default:
-            return;
     }
     updateCardsFor(1, game_type != "n");
 }
@@ -253,7 +253,7 @@ function setStackCallbacks() {
 }
 
 function sendSkat(skat) {
-    skat_websocket.send(JSON.stringify({
+    socket.send(JSON.stringify({
         "action": "put", 
         "skat": JSON.stringify(skat),
         "hand": JSON.stringify(getConvertedHand())
@@ -273,7 +273,7 @@ function chooseGameMode() {
     }
     if(stacks.length) {
         clearStacks();
-        addCardsToDeck(3);
+        addCardsToDeck(3, false);
     }
     var games = [["&clubs;", "c"],
                  ["&spades;", "s"],
@@ -322,7 +322,7 @@ function prepareDeclarations(game_type) {
 }
 
 function sendDeclaration(game) {
-    skat_websocket.send(JSON.stringify({
+    socket.send(JSON.stringify({
         'action': 'declare',
         'game': game
     }));
@@ -494,7 +494,7 @@ function indexOfHighestCard() {
 
 function sendMove() {
     if(stacks[0].length == 3) {
-        skat_websocket.send(JSON.stringify({
+        socket.send(JSON.stringify({
             "action": "play",
             "trick": JSON.stringify(getConvertedStack()[0]),
             "index": indexOfHighestCard(),
@@ -502,7 +502,7 @@ function sendMove() {
         }));
     }
     else {
-        skat_websocket.send(JSON.stringify({
+        socket.send(JSON.stringify({
             "action": "play",
             "trick": JSON.stringify(getConvertedStack()[0]),
             "hand": JSON.stringify(getConvertedHand())
@@ -511,7 +511,7 @@ function sendMove() {
 }
 
 function sendBid(bid) {
-    skat_websocket.send(JSON.stringify({
+    socket.send(JSON.stringify({
         'action': 'bid',
         'bid': bid
     }));
@@ -552,45 +552,4 @@ function updatePlayerPositions(data) {
     player_positions = {[forehand]: "{% trans 'Vorhand' %}", [middle]: "{% trans 'Mittelhand' %}", [behind]: "{% trans 'Hinterhand' %}"};
 }
 
-function skatConnect() {
-    skat_websocket = new WebSocket(
-        getWsPrefix()
-        + '/ws/multiplayer/skat/'
-        + '{{ match.id }}/'
-        + '{{ user.username }}/'
-    );
-
-    skat_websocket.onmessage = function(e) {
-        const data = JSON.parse(e.data);
-        if(data.action == "match_list") {
-            updateMatchList(data);
-        }
-        else {
-            processMultiplayerData(data);
-        }
-    }
-    
-    skat_websocket.onopen = function() {
-        sendAction("request_data");
-    }
-
-    skat_websocket.onclose = function(e) {
-        console.log('User socket closed unexpectedly. Attempting reconnect in 1 second. Code: ', e.code);
-        setTimeout(function() {
-            skatConnect();
-        }, 1000);
-    }
-
-    skat_websocket.onerror = function(err) {
-        console.error('User socket encountered error: ', err.message, 'Closing socket.');
-        skat_websocket.close();
-    }
-}
-
-function sendAction(action) {
-    skat_websocket.send(JSON.stringify({
-        'action': action
-    }));
-}
-
-skatConnect();
+gameConnect(socket, '{{ match.id }}', '{{ user.username }}');

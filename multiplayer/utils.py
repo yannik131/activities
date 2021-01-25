@@ -143,9 +143,9 @@ def calc_game_value(data, points):
             return 23
     else:
         factor = int(data["factor"])
-        if points == 0:
+        if points == 120:
             factor += 2
-        elif points <= 30:
+        elif points > 30:
             factor += 1
         
         return int(data["factor"])*GAME_VALUES[data["game_type"]]
@@ -234,4 +234,5 @@ def random_name():
     with open("multiplayer/random_names.txt", "w") as f:
         f.writelines(names[1:])
     return names[0][:-1]
+    
     

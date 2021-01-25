@@ -261,7 +261,7 @@ function addBottomCardToDeck(type) {
     deck.splice(0, 0, card);
 }
 
-function addCardsToDeck(n, bottom_card) {
+function addCardsToDeck(n, bottom_card, sort=true) {
     if(bottom_card)
         addBottomCardToDeck(bottom_card);
     for(var i = 0; i < n; i++) {
@@ -274,7 +274,9 @@ function addCardsToDeck(n, bottom_card) {
     for(var i = 0; i < 10 && i < deck.length-1; i++) {
         field.appendChild(deck[i+1]);
     }
-    defineSortValues();
+    if(sort) {
+        defineSortValues();
+    }
 }
 
 function updateDeck() {

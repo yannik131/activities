@@ -20,6 +20,14 @@ def lobby(request, activity_name):
 
 def create_match(request, activity_name):
     activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
+    if activity.name == _("Skat"):
+        match = MultiplayerMatch.objects.create(activity=activity, member_limit=3)
+        match.add_first_member(request.user)
+        return HttpResponseRedirect(match.get_absolute_url())
+    elif activity.name == _("Doppelkopf"):
+        match = MultiplayerMatch.objects.create(activity=activity, member_limit=4)
+        match.add_first_member(request.user)
+        return HttpResponseRedirect(match.get_absolute_url())
     if request.method == 'POST':
         form = CreateMatchForm(request.POST)
         form.activity = activity
@@ -96,4 +104,6 @@ def game(request, match_id):
         return render(request, 'multiplayer/durak.html', dict(match=match))
     elif match.activity.name == _("Skat"):
         return render(request, 'multiplayer/skat.html', dict(match=match))
+    elif match.activity.name == _("Doppelkopf"):
+        return render(request, 'multiplayer/doppelkopf.html', dict(match=match))
         
