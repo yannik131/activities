@@ -144,8 +144,8 @@ function addCardTo(player, n, type, jacks_high) {
     const vars = getPlayerVariables(player);
     var card;
     for(var i = 0; i < n; i++) {
-        if(type && player == 1) {
-            card = createCard(type, true);
+        if(type) {
+            card = createCard(type, player == 1);
             card.id = type;
         }
         else {
@@ -226,11 +226,31 @@ function updateCardsFor(player, jacks_high) {
     }
 }
 
-function removeCardFrom(player, n) {
+function removeCardFrom(player, n, type) {
     const vars = getPlayerVariables(player);
-    for(var i = 0; i < n && vars.cards.length > 0; i++) {
-        const card = vars.cards.pop();
-        card.remove();
+    if(type) {
+        console.log("delete: ", type);
+    }
+    for(var i = 0; (i < n && vars.cards.length > 0) || type; i++) {
+        if(type) {
+            console.log("checking: ", vars.cards[i].id);
+            if(vars.cards[i].id == type) {
+                console.log("found: ", vars.cards[i].id);
+                vars.cards[i].remove();
+                vars.cards.splice(i, 1);
+                for(var j = 0; j < vars.cards.length; j++) {
+                    console.log(vars.cards[j].id);
+                }
+                break;
+            }
+            else if(i == vars.cards.length-1) {
+                break;
+            }
+        }
+        else {
+            const card = vars.cards.pop();
+            card.remove();
+        }   
     }
     updateCardsFor(player);
 }
@@ -395,6 +415,33 @@ function clearButtons() {
     buttons = [];
 }
 
+function createInfoAlert(info) {
+    if(document.getElementById("info-alert")) {
+        return;
+    }
+    info = info.replace(/(?:\r\n|\r|\n)/g, '<br>');
+    var info_alert = document.createElement("div");
+    info_alert.className = "info-alert";
+    info_alert.innerHTML = info;
+    info_alert.id = "info-alert";
+    var button = document.createElement("button");
+    button.type = "button";
+    button.onclick = function() {
+        document.getElementById("info-alert").remove();
+    }
+    button.className = "info-alert-button";
+    if(window.screen.width < 768) {
+        button.style.fontSize = "10pt";
+    }
+    else {
+        button.style.fontSize = "18pt";
+    }
+    button.innerHTML = "Okay";
+    info_alert.appendChild(button);
+    field.appendChild(info_alert);
+    info_alert.style.zIndex = 1000;
+}
+
 function next(el, arr) {
     return arr[((arr.indexOf(el)+1)%arr.length+arr.length)%arr.length];
 }
@@ -456,9 +503,12 @@ function changeInfoFor(username, info, important) {
     }
 }
 
-function displayCards(data, player_list) {
+function displayCards(data, player_list, except) {
     for(var i = 0; i < player_list.length; i++) {
         var username = player_list[i];
+        if(username == except) {
+            continue;
+        }
         var player_index = players[username];
         var hand = JSON.parse(data[username]);
         if(player_index == 1) {

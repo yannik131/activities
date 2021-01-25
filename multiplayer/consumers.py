@@ -190,6 +190,7 @@ class SkatConsumer(GameConsumer):
                     if winner_points:
                         message["data"]["points"] = winner_points
                     message["data"]["summary"] = points_summary
+                    data["summary"] = points_summary
                     message["data"]["game_number"] = data["game_number"]
                     match.start_skat()
                     starting = after(data["started"], players)
@@ -208,7 +209,8 @@ class SkatConsumer(GameConsumer):
                 "action": "start",
                 "active": data["active"],
                 "game_type": data["game_type"],
-                "solist": data["solist"]
+                "solist": data["solist"],
+                "declarations": data["declarations"]
             }
         elif text_data["action"] == "put":
             data["deck"] = text_data["skat"]

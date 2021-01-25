@@ -124,7 +124,7 @@ function loadGameField(data) {
     old_stacks = JSON.parse(data.stacks);
     refreshStacks(old_stacks);
     if(data.summary) {
-        alert("{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary);
+        createInfoAlert("{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary);
     }
 }
 
@@ -135,7 +135,7 @@ function updatePlayerInfo(data) {
             changeInfoFor(username, "({% trans 'ANGREIFER' %})");
         }
         else if(username == data.defending) {
-            changeInfoFor(username, " ({% trans 'VERTEIDIGER' %})");
+            changeInfoFor(username, " ({% trans 'VERTEIDIGER' %})", true);
         }
         else {
             changeInfoFor(username, "");

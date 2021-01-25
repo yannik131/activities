@@ -9,6 +9,7 @@ var active;
 var mode; //playing or undefined/null
 var solist;
 var no_take = "";
+var ouvert = false;
 
 function processMultiplayerData(data) {
     console.log("received: " + data.action + " active: " + data.active);
@@ -42,6 +43,7 @@ function processMultiplayerData(data) {
 }
 
 function loadGameField(data) {
+    ouvert = false;
     clearButtons();
     removeCardsFromDeck(100);
     for(var i = 1; i < 5; i++) {
@@ -60,7 +62,18 @@ function loadGameField(data) {
         addCardsToDeck(3);
     }
     defineSortValues(ten_high=true, jacks_max=true);
-    displayCards(data, player_list);
+    if(data.declarations.includes("o")) {
+        ouvert = true;
+        displayCards(data, player_list, data.solist);
+        var hand = JSON.parse(data[data.solist]);
+        for(var i = 0; i < hand.length; i++) {
+            addCardTo(players[data.solist], 1, hand[i]);
+        }
+    }
+    else {
+        displayCards(data, player_list);
+    }
+    updateCardsFor(1);
     game_type = data.game_type;
     mode = data.mode;
     switch(data.mode) {
@@ -87,6 +100,9 @@ function loadGameField(data) {
             updatePlayerInfo(solist, null, game_type);
             break;
     }
+    if(data.summary) {
+        createInfoAlert("{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary);
+    }
 }
 
 function handleStart(data) {
@@ -99,6 +115,14 @@ function handleStart(data) {
     }
     updatePlayerInfo(solist, null, game_type);
     clearButtons();
+    if(data.declarations.includes("o")) {
+        ouvert = true;
+        removeCardFrom(players[data.solist], 100);
+        var hand = JSON.parse(data[data.solist]);
+        for(var i = 0; i < hand.length; i++) {
+            addCardTo(players[data.solist], 1, hand[i]);
+        }
+    }
 }
 
 function handlePlay(data) {
@@ -108,7 +132,12 @@ function handlePlay(data) {
         refreshStacks([JSON.parse(data.trick)]);
     }
     if(data.username != this_user) {
-        removeCardFrom(players[data.username], 1);
+        if(ouvert && data.username == solist) {
+            removeCardFrom(players[data.username], 1, trick[trick.length-1]);
+        }
+        else {
+            removeCardFrom(players[data.username], 1);
+        }
     }
     updateAllInfo();
     if(data.clear) {
@@ -126,7 +155,7 @@ function handlePlay(data) {
         if(game_type != "n") {
             info += ", {% trans 'Augen' %}: " + data.points;
         }
-        alert(info+"\n"+data.summary);
+        createInfoAlert(info+"\n"+data.summary);
         active = new_data.active;
         loadGameField(new_data);
     }
@@ -146,6 +175,7 @@ function updateSortingOrder() {
         case "h":
         case "d":
             trump_suit = game_type;
+        case "g":
             defineSortValues(ten_high=true, jacks_max=true);
             break;
         case "n":
@@ -162,8 +192,14 @@ function handleTake(data) {
     clearButtons();
     removeCardsFromDeck(3);
     var deck = parse(data.deck);
-    addCardTo(players[active], 1, deck[0]);
-    addCardTo(players[active], 1, deck[1]);
+    if(players[active] == 1) {
+        addCardTo(players[active], 1, deck[0]);
+        addCardTo(players[active], 1, deck[1]);
+    }
+    else {
+        addCardTo(players[active], 1);
+        addCardTo(players[active], 1);
+    }
     handlePutting();
 }
 
@@ -222,10 +258,9 @@ function sendSkat(skat) {
         "hand": JSON.stringify(getConvertedHand())
     }));
     for(var i = 0; i < player1_cards.length; i++) {
-        var card = player1_cards[i];
-        var vs = getVs(card.id);
         player1_cards[i].onclick = function() {
-            cardClicked(vs.calue, vs.suit, this);
+            var vs = getVs(this.id);
+            cardClicked(vs.value, vs.suit, this);
         }
     }
 }
@@ -318,7 +353,6 @@ function handleBidding(data) {
 }
 
 function updatePlayerInfo(player, bid, game) {
-    console.log("updating info for", player, bid);
     var info = "";
     var important = player == active;
     if(important) {
@@ -413,7 +447,6 @@ function cardClicked(value, suit, card) {
 }
 
 function compare(vs1, vs2) {
-    
     return getCardSortValue(vs1.value+vs1.suit, game_type != "n") > getCardSortValue(vs2.value+vs2.suit, game_type != "n");
 }
 

@@ -200,13 +200,14 @@ def give_skat_points(data, players, result, game_value):
         summary = data["solist"]+": -"+str(-solist_change)
     change(data, data["solist"]+"_points", solist_change)
     summary += " -> "+str(data[data["solist"]+"_points"])+"\n"
-    summary = [summary, data[data["solist"]+"_points"]]
+    summary = [[summary, data[data["solist"]+"_points"]]]
     players = cycle_slice(players.index(data["forehand"]), players)
     for player in players:
         if player == data["solist"]:
             continue
         change(data, player+"_points", other_change)
         summary.append([player+": +"+str(other_change)+" -> "+str(data[player+"_points"])+"\n", data[player+"_points"]])
+    log(summary)
     summary = sorted(summary, key=lambda t: t[1], reverse=True)
     return "".join([t[0] for t in summary])
     
