@@ -207,7 +207,6 @@ def give_skat_points(data, players, result, game_value):
             continue
         change(data, player+"_points", other_change)
         summary.append([player+": +"+str(other_change)+" -> "+str(data[player+"_points"])+"\n", data[player+"_points"]])
-    log(summary)
     summary = sorted(summary, key=lambda t: t[1], reverse=True)
     return "".join([t[0] for t in summary])
     
@@ -224,7 +223,6 @@ def give_durak_points(data, players, durak):
         change(data, player+"_points", points)
         summary.append([f"{player}: +{points} -> {data[player+'_points']}\n", data[player+'_points']])
     summary = sorted(summary, key=lambda t: t[1], reverse=True)
-    log(summary)
     return "".join([t[0] for t in summary])
     
 
