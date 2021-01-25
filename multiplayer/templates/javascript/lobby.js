@@ -17,11 +17,7 @@ function updateMatchList(data) {
             }
             else {
                 new_cell.innerHTML += (
-                    "<a href='/account/detail/" +
-                    usernames[j] +
-                    "/'>" +
-                    usernames[j] +
-                    "</a> "
+                    usernames[j] + " "
                 );
             }
         }

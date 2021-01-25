@@ -22,7 +22,7 @@ def deal_cards(data, players):
     deck = json.loads(data["deck"])
     data["stacks"] = json.dumps([])
     if deck:
-        player_cycle = cycle_slice(players.index(data["first_attacker"]), players)
+        player_cycle = cycle_slice(players.index(data["started"]), players)
         for player in player_cycle:
             hand = json.loads(data[player])
             if deck and len(hand) < 6:
@@ -122,7 +122,7 @@ def determine_winner(data):
         if "s" in declarations and points < 91 or\
             ("b" in declarations or "o" in declarations) and len(tricks) < 10:
             result = "overbid"
-        if game_value >= int(data[data["solist"]+"_bid"]):
+        elif game_value >= int(data[data["solist"]+"_bid"]):
             result = "won"
         else:
             result = "overbid"

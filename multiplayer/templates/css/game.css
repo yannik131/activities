@@ -16,7 +16,6 @@
     right: 0px;
     max-width: 800px;
 }
-
 .back {
     position: absolute;
     top: 0;
@@ -27,6 +26,22 @@
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.button-like {
+    z-index: 1;
+    padding: 2px;
+    border: 1px solid white;
+    background-color: black;
+}
+
+.button-like:hover {
+    background-color: gray;
+}
+
+.button-like a {
+    color: white;
+    text-decoration: none;
 }
 
 .game::selection {
@@ -45,7 +60,7 @@
 .player2-info {
     position: absolute;
     bottom: 40px;
-    top: 20%;
+    top: 0;
     left: 0;
     width: 40px;
 }
@@ -70,7 +85,7 @@
 .player4-info {
     position: absolute;
     bottom: 40px;
-    top: 20%;
+    top: 0;
     right: 0;
     width: 40px;
 }
@@ -109,4 +124,5 @@
     left: 15%;
     right: 15%;
     border-radius: 10px;
+    z-index: 1;
 }

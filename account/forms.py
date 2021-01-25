@@ -28,8 +28,13 @@ class UserRegistrationForm(forms.ModelForm):
         cd = self.cleaned_data
         if cd['password'] != cd['password2']:
             raise forms.ValidationError(_('Passwörter stimmen nicht überein!'))
-
         return cd['password2']
+        
+    def clean_username(self):
+        cd = self.cleaned_data
+        if len(cd['username']) > 10:
+            raise forms.ValidationError(_('Nutzername zu lang (max. 10 Zeichen)'))
+        return cd['username']
 
 
 class UserEditForm(forms.ModelForm):

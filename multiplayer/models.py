@@ -79,13 +79,15 @@ class MultiplayerMatch(models.Model):
         return result
         
     def start(self):
-        self.game_data = {"type": "multiplayer", "action": "load_data", "game_number": "0"}
+        self.game_data = {"type": "multiplayer", "action": "load_data", "game_number": "-1"}
         if self.activity.name == _("Durak"):
             self.start_durak()
         elif self.activity.name == _("Skat"):
             self.start_skat()
         if not self.in_progress:
-            for player in json.loads(self.game_data["players"]):
+            players = json.loads(self.game_data["players"])
+            self.game_data["started"] = players[0]
+            for player in players:
                 self.game_data[player+"_points"] = "0"
         self.in_progress = True
         self.save()
@@ -100,13 +102,14 @@ class MultiplayerMatch(models.Model):
         for player in players:
             self.game_data[player] = json.dumps(deck[:n])
             deck = deck[n:]
+            if len(deck) < n:
+                break
         self.game_data["deck"] = json.dumps(deck)
         return players, deck
             
     def start_skat(self):
         players, _ = self.create_players(10, "7", "8", "9", "10", "J", "Q", "K", "A")
         self.game_data["forehand"] = players[0]
-        self.game_data["started"] = players[0]
         self.game_data["last_bid"] = ""
         self.game_data["highest_bid"] = ""
         self.game_data["more"] = ""
@@ -126,9 +129,8 @@ class MultiplayerMatch(models.Model):
         
 
     def start_durak(self):
-        players, deck = self.create_players(6, "10", "J", "Q", "K", "A")
+        players, deck = self.create_players(6, "10", "J", "Q", "K", "A", '7', '6')
         self.game_data["trump"] = deck[-1][-1]
-        self.game_data["first_attacker"] = players[0]
         self.game_data["attacking"] = players[0]
         self.game_data["defending"] = players[1]
         self.game_data["stacks"] = json.dumps([])

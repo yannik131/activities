@@ -71,7 +71,9 @@ class DurakConsumer(GameConsumer):
                 "username": self.username,
                 "action": "play",
                 "stacks": data["stacks"],
-                "n": text_data["n"]
+                "n": text_data["n"],
+                "defending": data["defending"],
+                "attacking": data["attacking"]
             }
         elif text_data['action'] == "done":
             done_list = json.loads(data['done_list'])
@@ -110,8 +112,8 @@ class DurakConsumer(GameConsumer):
                         data["defending"] = durak
                         data["attacking"] = before(durak, players)
                     else:
-                        data["attacking"] = after(data["first_attacker"], players)
-                        data["defending"] = after(data, data["attacking"])
+                        data["attacking"] = after(data["started"], players)
+                        data["defending"] = after(data["attacking"], players)
                     message["data"] = match.game_data
                     message["data"]["summary"] = summary
                     message["data"]["game_number"] = data["game_number"]
@@ -152,7 +154,6 @@ class SkatConsumer(GameConsumer):
         match = MultiplayerMatch.objects.get(pk=self.match_id)
         data = match.game_data
         message = {"group": True}
-        log(text_data["action"], data["incocnito_points"], data["test_points"], data["admin_points"])
         if text_data["action"] == "request_data":
             message["data"] = data
             message["group"] = False
@@ -181,8 +182,8 @@ class SkatConsumer(GameConsumer):
                 message["data"]["clear"] = "1"
                 message["data"]["forehand"] = winner
                 message["data"]["active"] = winner
-                null_lost = data["game_type"] == "n" and data["solist"] == winner
-                if not json.loads(data[data["active"]]) or null_lost:
+                ouvert_null_lost = (data["game_type"] == "n" and data["solist"] == winner) or (("o" in data["declarations"] or "b" in data["declarations"]) and data["solist"] != winner)
+                if not json.loads(data[data["active"]]) or ouvert_null_lost:
                     players = json.loads(data["players"])
                     result, winner_points, game_value = determine_winner(data)
                     points_summary = give_skat_points(data, players, result, game_value)
@@ -210,6 +211,7 @@ class SkatConsumer(GameConsumer):
                 "active": data["active"],
                 "game_type": data["game_type"],
                 "solist": data["solist"],
+                data["solist"]: data[data["solist"]],
                 "declarations": data["declarations"]
             }
         elif text_data["action"] == "put":
@@ -272,7 +274,6 @@ class AudioReceiveConsumer(WebsocketConsumer):
         async_to_sync
         self.match_id = self.scope['url_route']['kwargs']['match_id']
         self.username = self.scope['url_route']['kwargs']['username']
-        log("connected: ", self.username)
         
         async_to_sync(self.channel_layer.group_add)(
             f"audio-receive-{self.match_id}",

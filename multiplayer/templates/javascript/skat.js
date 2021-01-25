@@ -38,19 +38,24 @@ function processMultiplayerData(data) {
         case "play":
             handlePlay(data);
             break;
+        case "abort":
+            location.href = data.url;
     }
     updateAllInfo();
 }
 
 function loadGameField(data) {
-    ouvert = false;
+    ouvert = data.declarations.includes("o");
+    game_type = data.game_type;
+    mode = data.mode;
+    player_list = JSON.parse(data.players);
+    solist = data.solist;
+    updateSortingOrder();
     clearButtons();
     removeCardsFromDeck(100);
     for(var i = 1; i < 5; i++) {
         removeCardFrom(i, 100);
     }
-    player_list = JSON.parse(data.players);
-    solist = data.solist;
     positionPlayers(player_list);
     updatePlayerPositions(data);
     for(var i = 0; i < player_list.length; i++) {
@@ -61,21 +66,18 @@ function loadGameField(data) {
     if(deck.length) {
         addCardsToDeck(3);
     }
-    defineSortValues(ten_high=true, jacks_max=true);
-    if(data.declarations.includes("o")) {
-        ouvert = true;
+    if(ouvert) {
         displayCards(data, player_list, data.solist);
         var hand = JSON.parse(data[data.solist]);
         for(var i = 0; i < hand.length; i++) {
             addCardTo(players[data.solist], 1, hand[i]);
         }
+        updateCardsFor(players[data.solist], game_type != "n");
     }
     else {
         displayCards(data, player_list);
     }
     updateCardsFor(1);
-    game_type = data.game_type;
-    mode = data.mode;
     switch(data.mode) {
         case "bidding":
             createBidButtons(data.active, parse(data.highest_bid), data.more);
@@ -91,7 +93,6 @@ function loadGameField(data) {
             handlePutting();
             break;
         case "playing":
-            updateSortingOrder(data.game_type);
             mode = "playing";
             var trick = JSON.parse(data.trick);
             if(trick.length) {
@@ -115,7 +116,7 @@ function handleStart(data) {
     }
     updatePlayerInfo(solist, null, game_type);
     clearButtons();
-    if(data.declarations.includes("o")) {
+    if(data.declarations.includes("o") && this_user != data.solist) {
         ouvert = true;
         removeCardFrom(players[data.solist], 100);
         var hand = JSON.parse(data[data.solist]);

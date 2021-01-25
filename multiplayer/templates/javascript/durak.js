@@ -9,12 +9,19 @@ var old_stacks = [];
 var selected_card;
 var defending;
 var durak_websocket;
+var button_color = "red";
 
 function processMultiplayerData(data) {
     var delayed = false;
     switch(data.action) {
         case "load_data":
-            loadGameField(data);
+            delayed = player_list;
+            if(delayed) {
+                delayedCall(loadGameField, data);
+            }
+            else {
+                loadGameField(data);
+            }
             break;
         case "play":
             handleMove(data);
@@ -116,13 +123,13 @@ function loadGameField(data) {
     player_list = JSON.parse(data.players);
     positionPlayers(player_list);
     updatePlayerInfo(data);
-    determineGameMode(data);
     trump_suit = data.trump;
     addCardsToDeck(deck.length-1, deck[deck.length-1]);
     defineSortValues(ten_high=false);
     displayCards(data, player_list);
     old_stacks = JSON.parse(data.stacks);
     refreshStacks(old_stacks);
+    determineGameMode(data);
     if(data.summary) {
         createInfoAlert("{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary);
     }
@@ -155,7 +162,17 @@ function determineGameMode(data) {
         game_mode = "none";
     }
     else {
-        if(this_user == next(data.defending, player_list)) {
+        var helping = next(data.defending, player_list);
+        if(player_list.length == 4) {
+            if(player_cards[players[helping]].length == 0) {
+                helping = next(helping, player_list)
+            }
+            else if(player_cards[players[before(data.defending, player_list)]].length == 0) {
+                helping = next(helping, player_list);
+            }
+        }
+        
+        if(this_user == helping) {
             game_mode = "helping";
         }
         else {
@@ -169,12 +186,13 @@ function determineGameMode(data) {
 }
 
 function handleMove(data) {
+    old_stacks = JSON.parse(data.stacks);
+    determineGameMode(data);
     if(data.username == this_user) {
         return;
     }
     var player = players[data.username];
     removeCardFrom(player, data.n);
-    old_stacks = JSON.parse(data.stacks);
     refreshStacks(old_stacks);
 }
 
@@ -280,7 +298,7 @@ function sendAction(action) {
 
 function transferCheck() {
     if(playerHandContains(getVs(stacks[0][0].id).value)) {
-        createButton("{% trans 'Fertig' %}", "done", sendMove);
+        createButton("{% trans 'Fertig' %}", "done", sendMove, button_color);
     }
     else {
         console.log("transferCheck sends move");
@@ -289,6 +307,9 @@ function transferCheck() {
 }
 
 function updateButtons() {
+    if(!player_list) {
+        return;
+    }
     clearButtons();
     if(player1_cards.length == 0 || game_mode == "none") {
         console.log("updateButtons: no cards, send done");
@@ -299,7 +320,7 @@ function updateButtons() {
         createButton("{% trans 'Schlucken' %}", "take", function() {
             sendAction("take");
             deleteButton("take");
-        });
+        }, button_color);
     }
     if((game_mode == "defending" || game_mode == "attacking") && move_mode == "transfer") {
         if(played_cards.length) {
@@ -311,12 +332,12 @@ function updateButtons() {
                 selected_card = null;
                 deleteButton("transfer");
                 transferCheck();
-            });
+            }, button_color);
         }
     }
     if(game_mode == "attacking" && played_cards.length && !old_stacks.length && playerHandContains(getVs(stacks[0][0].id).value)) {
         if(attackingIsPossible()) {
-            createButton("{% trans 'Fertig' %}", "done", sendMove);
+            createButton("{% trans 'Fertig' %}", "done", sendMove, button_color);
         }
         else {
             console.log("1 sends move");
@@ -330,7 +351,7 @@ function updateButtons() {
                 console.log("button pressed, send done");
                 sendAction("done");
                 deleteButton("done");
-            });
+            }, button_color);
         }
         else {
             console.log("updateButtons: attacking/helping, send done");

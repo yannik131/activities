@@ -54,7 +54,7 @@ function createCard(type, clickable=false) {
     var value = vs.value, suit = vs.suit;
     const position = getGridPosition(value, suit);
     const card = document.createElement("div");
-    card.style.background = "url('{% static 'output.png' %}') no-repeat -" + (position.x*123) + "px -" + (position.y*192)+ "px";
+    card.style.background = "url('{% static 'cards.png' %}') no-repeat -" + (position.x*123) + "px -" + (position.y*192)+ "px";
     card.style.width = "123px"
     card.style.height = "192px";
     card.style.position = "absolute";
@@ -208,17 +208,13 @@ function getCardSortValue(type, jacks_high) {
     return suit_values[suit] + value_values[value];
 }
 
-function sortCards(jacks_high) {
-    player1_cards.sort(function(a, b) {
-        return getCardSortValue(b.id, jacks_high)-getCardSortValue(a.id, jacks_high);
-    });
-}
-
 function updateCardsFor(player, jacks_high) {
-    if(player == 1) {
-        sortCards(jacks_high);
-    }
     const vars = getPlayerVariables(player);
+    if(vars.cards.length && vars.cards[0].id) {
+        vars.cards.sort(function(a, b) {
+            return getCardSortValue(b.id, jacks_high)-getCardSortValue(a.id, jacks_high);
+        });
+    }
     for(var i = 0; i < vars.cards.length; i++) {
         const card = vars.cards[i];
         card.style.zIndex = i;
@@ -357,7 +353,7 @@ function getConvertedHand() {
     return converted;
 }
 
-function createButton(text, id, callback) {
+function createButton(text, id, callback, color) {
     if(document.getElementById(id)) {
         return;
     }
@@ -373,6 +369,7 @@ function createButton(text, id, callback) {
     button.innerHTML = text;
     button.onclick = callback;
     button.style.position = "absolute";
+    button.style.border = "1px solid white";
     button.style.right = (buttons.length == 0? 0 : field.offsetWidth-buttons[buttons.length-1].offsetLeft+5) + "px";
     button.style.top = "0px";
     if(buttons.length) {
@@ -380,6 +377,10 @@ function createButton(text, id, callback) {
     }
     button.style.opacity = "0.7";
     button.id = id;
+    if(color) {
+        button.style.backgroundColor = "black";
+        button.style.color = "white";
+    }
     field.appendChild(button);
     if(button.offsetLeft < 0) {
         button.style.top = (10+buttons[buttons.length-1].offsetHeight)+"px";
@@ -439,7 +440,6 @@ function createInfoAlert(info) {
     button.innerHTML = "Okay";
     info_alert.appendChild(button);
     field.appendChild(info_alert);
-    info_alert.style.zIndex = 1000;
 }
 
 function next(el, arr) {
