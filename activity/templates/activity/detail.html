@@ -44,6 +44,6 @@
     </p>
 
     <h3>{% trans "Beiträge" %} {{ chosen_component|inim }}</h3>
-    <h2><a href="{% url 'wall:create_post' 'activity' 'activity' activity.id %}">{% blocktrans %}Post erstellen...{% endblocktrans %}</a></h2>
+    <h2><a href="{% url 'wall:create_post' 'activity' 'activity' activity.id activity.id %}">{% blocktrans %}Post erstellen...{% endblocktrans %}</a></h2>
     {% include 'wall/post/post_loop.html' %}
 {% endblock %}

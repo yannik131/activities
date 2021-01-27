@@ -27,18 +27,22 @@ class Post(models.Model):
         ordering = ('-created',)
 
     @staticmethod
-    def get_page(request, component_index=None, activity=None, category=None):
-        object_list = []
+    def get_page(request, component_index=None, chosen_component=None, activity=None, category=None):
         if component_index is None:
-            object_list = Post.objects.filter(author=request.user, target_id=request.user.id, target_ct=User.content_type()).all()
+            object_list = Post.objects.filter(author=request.user, target_id=request.user.id, target_ct=User.content_type())
         else:
             if activity is not None:
-                post_list = Post.objects.filter(activity=activity)
-            elif category is not None:
-                post_list = Post.objects.filter(category=category)
-            for post in post_list:
-                if request.user.location.equal_to(post.author.location, Location.components[component_index]):
-                    object_list.append(post)
+                post_list = activity.posts
+            else:
+                post_list = category.posts
+            if component_index == 3:
+                object_list = post_list.filter(author__location__city=chosen_component)
+            elif component_index == 2:
+                object_list = post_list.filter(author__location__county=chosen_component)
+            elif component_index == 1:
+                object_list = post_list.filter(author__location__state=chosen_component)
+            else:
+                object_list = post_list.filter(author__location__country=chosen_component)
         return paginate(object_list, request)
 
 

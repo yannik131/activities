@@ -10,13 +10,13 @@ from shared.shared import slashify
 
 
 @login_required
-def create_post(request, app_label, model, id):
+def create_post(request, app_label, model, id, activity_id=None):
     ct = ContentType.objects.get(app_label=app_label, model=model)
     group = None
     if ct == UserGroup.content_type():
         group = ct.get_object_for_this_type(pk=id)
     if request.method == 'POST':
-        form = PostForm(group, data=request.POST, files=request.FILES)
+        form = PostForm(group, activity_id, data=request.POST, files=request.FILES)
         form.instance.target_ct = ct
         form.instance.target_id = id
         form.instance.author = request.user
@@ -27,7 +27,7 @@ def create_post(request, app_label, model, id):
                 return HttpResponseRedirect(request.build_absolute_uri('/account/user_post_list/'))
             return HttpResponseRedirect(post.target.get_absolute_url())
     else:
-        form = PostForm(group)
+        form = PostForm(group, activity_id)
         form.instance.target_ct = ct
         form.instance.target_id = id
     return render(request, 'wall/post/create_post.html', dict(form=form, target=form.instance.target))

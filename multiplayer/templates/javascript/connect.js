@@ -1,7 +1,10 @@
-function gameConnect(socket, match_id, username) {
+var socket;
+
+function gameConnect(game, match_id, username) {
     socket = new WebSocket(
         getWsPrefix()
-        + '/ws/multiplayer/skat/'
+        + '/ws/multiplayer/'
+        + game + "/"
         + match_id + "/"
         + username + "/"
     );

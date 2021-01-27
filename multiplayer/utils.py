@@ -112,7 +112,7 @@ def determine_winner(data):
     for trick in tricks+[skat]:
         for card in trick:
             points += CARD_VALUES[card[:-1]]
-    game_value = calc_game_value(data, points)
+    game_value = calc_game_value(data, points, tricks)
     result = "lost"
     if data["game_type"] == "n":
         if not tricks:
@@ -130,7 +130,7 @@ def determine_winner(data):
     return result, points, game_value
     
 
-def calc_game_value(data, points):
+def calc_game_value(data, points, tricks):
     if data["game_type"] == "n":
         declarations = data["declarations"]
         if declarations == "h":
@@ -143,7 +143,7 @@ def calc_game_value(data, points):
             return 23
     else:
         factor = int(data["factor"])
-        if points == 120:
+        if len(tricks) == 10:
             factor += 2
         elif points > 30:
             factor += 1
@@ -163,7 +163,7 @@ def determine_factor(data):
             factor += 1
         elif not with_j and trump not in cards:
             factor += 1
-        elif (with_j and trump not in cards) or (not with_j and trump in cards):
+        else:
             break
     declarations = data["declarations"]
     if "h" in declarations:
@@ -177,11 +177,13 @@ def determine_factor(data):
     if data["game_type"] != "g":
         highest = ["A", "10", "K", "Q", "J", "9", "8", "7"]
         for trump in highest:
-            if trump+data["game_type"] in cards:
+            if with_j and trump+data["game_type"] in cards:
+                factor += 1
+            elif not with_j and (trump+data["game_type"] not in cards):
                 factor += 1
             else:
                 break
-    return factor
+    return factor+1
     
     
 def give_skat_points(data, players, result, game_value):

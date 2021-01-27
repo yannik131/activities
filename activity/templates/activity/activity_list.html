@@ -10,7 +10,7 @@
         {% include 'activity/location_selection.html' %}
     </p>
     <div class="list">
-    {% for activity, count in activities %}
+    {% for activity in activities %}
         <div class="item" onclick="location.href='{{ activity.get_absolute_url }}'">
         {% load thumbnail %}
             <img src="{% thumbnail activity.image 200x200 %}" class="image">
@@ -18,7 +18,7 @@
                 {{ activity }}
             </div>
             <div class="subtext">
-                {% trans "Mitglieder" %}: {{ count }}
+                {% trans "Mitglieder" %}: {{ activity.count }}
             </div>
         </div>
     {% endfor %}

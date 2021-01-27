@@ -8,8 +8,30 @@ var move_mode = "none";
 var old_stacks = [];
 var selected_card;
 var defending;
-var socket;
 var button_color = "red";
+var trump_suit;
+
+function defineSortValues(trump_suit) {
+    var suits = ["d", "h", "s", "c"];
+    var count = 100;
+    for(var i = 0; i < suits.length; i++) {
+        if(suits[i] == trump_suit) {
+            suit_values[suits[i]] = 400;
+        }
+        else {
+            suit_values[suits[i]] = count;
+            count += 100;
+        }
+    }
+    var values= ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+    for(var i = 0; i < values.length; i++) {
+        value_values[values[i]] = i;
+    }
+}
+
+function getCardSortValue(type) {
+    return getCardSortValueDefault(type);
+}
 
 function processMultiplayerData(data) {
     var delayed = false;
@@ -124,8 +146,8 @@ function loadGameField(data) {
     positionPlayers(player_list);
     updatePlayerInfo(data);
     trump_suit = data.trump;
+    defineSortValues(trump_suit);
     addCardsToDeck(deck.length-1, deck[deck.length-1]);
-    defineSortValues(ten_high=false);
     displayCards(data, player_list);
     old_stacks = JSON.parse(data.stacks);
     refreshStacks(old_stacks);
@@ -448,4 +470,4 @@ function handleTransfer(data) {
     removeCardFrom(attacking, player_cards[attacking].length-data.attacking_n)
 }
 
-gameConnect(socket, '{{ match.id }}', '{{ user.username }}');
+gameConnect('durak', '{{ match.id }}', '{{ user.username }}');

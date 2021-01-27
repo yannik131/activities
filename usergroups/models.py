@@ -27,11 +27,6 @@ class UserGroup(models.Model):
     class Meta:
         unique_together = ('name', 'category')
 
-    def set_admin(self, admin):
-        self.admin = admin
-        if admin not in self.members.all():
-            self.members.add(admin)
-
     def __str__(self):
         return self.name
 

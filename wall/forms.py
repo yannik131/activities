@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class PostForm(forms.ModelForm):
-    def __init__(self, group, *args, **kwargs):
+    def __init__(self, group, activity_id, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if group:
             self.instance.category = group.category
@@ -15,6 +15,13 @@ class PostForm(forms.ModelForm):
             self.fields['category'].disabled = True
             self.fields['category'].initial = group.category.id
             self.fields['activity'].choices = [(None, '-'*10)] + [(activity.id, activity) for activity in self.instance.category.activities.all()]
+        elif activity_id:
+            activity = Activity.objects.get(pk=activity_id)
+            self.fields['category'].disabled = True
+            self.fields['category'].initial = activity.category.id
+            self.fields['activity'].disabled = True
+            self.fields['activity'].initial = activity.id
+            
 
     MAX_UPLOAD_FILE_SIZE = 30000000
     MAX_UPLOAD_FILE_SIZE_STR = str(int(MAX_UPLOAD_FILE_SIZE/1000000)) + "MB"
@@ -69,7 +76,7 @@ class PostForm(forms.ModelForm):
         self.clean_media_fields(cd)
         category = cd.get('category')
         activity = cd.get('activity')
-        if category and activity:
+        if category and activity and not self.fields['category'].disabled:
             activity = Activity.objects.get(translations__language_code=self.LANGUAGE_CODE, translations__name=activity)
             category = Category.objects.get(translations__language_code=self.LANGUAGE_CODE, translations__name=category)
 

@@ -139,7 +139,7 @@ function positionCard(player, card, i, n) {
     }
 }
 
-function addCardTo(player, n, type, jacks_high) {
+function addCardTo(player, n, type) {
     var new_cards = [];
     const vars = getPlayerVariables(player);
     var card;
@@ -155,64 +155,42 @@ function addCardTo(player, n, type, jacks_high) {
         vars.cards.push(card);
         new_cards.push(card);
     }
-    updateCardsFor(player, jacks_high);
+    updateCardsFor(player);
     for(var i = 0; i < new_cards.length; i++) {
         field.appendChild(new_cards[i]);
     }
 }
 
-function removePlayerCard(card, jacks_high) {
+function removePlayerCard(card) {
     card.remove();
     player1_cards.splice(player1_cards.indexOf(card), 1);
-    updateCardsFor(1, jacks_high);
+    updateCardsFor(1);
 }
 
-function defineSortValues(ten_high, jacks_max) {
+function defineSortValuesDefault() {
     var suits = ["d", "h", "s", "c"];
     var count = 100;
     for(var i = 0; i < suits.length; i++) {
-        if(suits[i] == trump_suit) {
-            suit_values[suits[i]] = 400;
-        }
-        else {
-            suit_values[suits[i]] = count;
-            count += 100;
-        }
+        suit_values[suits[i]] = count;
+        count += 100;
     }
-    var values;
-    if(ten_high) {
-        values = ["2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K", "10", "A"];
-    }
-    else {
-        values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-    }
+    var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
     for(var i = 0; i < values.length; i++) {
         value_values[values[i]] = i;
     }
-    if(jacks_max) {
-        value_values["J"] = 1000;
-    }
 }
 
-function getCardSortValue(type, jacks_high) {
+function getCardSortValueDefault(type) {
     const vs = getVs(type);
     const value = vs.value, suit = vs.suit;
-    if(jacks_high && value == "J") {
-        switch(suit) {
-            case "c": return 4000;
-            case "s": return 3000;
-            case "h": return 2000;
-            case "d": return 1000;
-        }
-    }
     return suit_values[suit] + value_values[value];
 }
 
-function updateCardsFor(player, jacks_high) {
+function updateCardsFor(player) {
     const vars = getPlayerVariables(player);
     if(vars.cards.length && vars.cards[0].id) {
         vars.cards.sort(function(a, b) {
-            return getCardSortValue(b.id, jacks_high)-getCardSortValue(a.id, jacks_high);
+            return getCardSortValue(b.id)-getCardSortValue(a.id);
         });
     }
     for(var i = 0; i < vars.cards.length; i++) {
@@ -261,7 +239,7 @@ function addBottomCardToDeck(type) {
     deck.splice(0, 0, card);
 }
 
-function addCardsToDeck(n, bottom_card, sort=true) {
+function addCardsToDeck(n, bottom_card) {
     if(bottom_card)
         addBottomCardToDeck(bottom_card);
     for(var i = 0; i < n; i++) {
@@ -273,9 +251,6 @@ function addCardsToDeck(n, bottom_card, sort=true) {
     updateDeck();
     for(var i = 0; i < 10 && i < deck.length-1; i++) {
         field.appendChild(deck[i+1]);
-    }
-    if(sort) {
-        defineSortValues();
     }
 }
 

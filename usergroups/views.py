@@ -11,11 +11,18 @@ from django.utils.translation import gettext_lazy as _
 
 @login_required
 def group_list(request, id=None):
-    component_index = int(request.GET.get('component_index', 3))
     if id:
+        component_index = int(request.GET.get('component_index', 3))
         category = Category.objects.get(id=id)
-        component = Location.components[component_index]
-        groups = [group for group in category.groups.all() if group.admin.location.equal_to(request.user.location, component)]
+        chosen_component = request.user.location.get_component(Location.components[component_index])
+        if component_index == 3:
+            groups = UserGroup.objects.filter(admin__location__city=chosen_component)
+        elif component_index == 2:
+            groups = UserGroup.objects.filter(admin__location__county=chosen_component)
+        elif component_index == 1:
+            groups = UserGroup.objects.filter(admin__location__state=chosen_component)
+        else:
+            groups = UserGroup.objects.filter(admin__location__country=chosen_component)
         return render(request, 'usergroups/category_group_list.html', dict(category=category, component_index=component_index, groups=groups))
     else:
         return render(request, 'usergroups/user_group_list.html')

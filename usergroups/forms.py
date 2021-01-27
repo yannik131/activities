@@ -1,7 +1,7 @@
 from .models import UserGroup
 from django import forms
 from account.models import User
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as _
 
 
 class GroupForm(forms.ModelForm):
@@ -34,10 +34,10 @@ class GroupForm(forms.ModelForm):
         if len(name) > 30 or description and len(description) > 150:
             raise forms.ValidationError(_('Der Name darf nicht länger als 30, die Beschreibung nicht länger als 150 Zeichen lang sein.'))
         if self.edit_mode:
-            if self.instance.admin and not cd.get('admin'):
+            admin = cd.get('admin')
+            if not admin:
                 raise forms.ValidationError(_('Sie müssen einen Administrator auswählen.'))
-            try:
-                self.instance.set_admin(User.objects.get(username=cd['admin']))
-            except User.DoesNotExist:
-                raise forms.ValidationError(_("Keinen Nutzer mit dem Nutzernamen {name} gefunden.").format(name=cd['admin']))
+            elif not self.instance.members.filter(username=admin).exists():
+                raise forms.ValidationError(admin+": "+_("Der Macker ist nicht mal in der Gruppe."))
+            self.instance.admin = User.objects.get(username=admin)
         return cd

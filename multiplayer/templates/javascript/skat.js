@@ -1,6 +1,5 @@
 {% load i18n %}
 
-var socket;
 var player_list;
 var game_type; //d, c, g, ...
 var this_user = "{{ user }}";
@@ -10,6 +9,48 @@ var mode; //playing or undefined/null
 var solist;
 var no_take = "";
 var ouvert = false;
+var trump_suit;
+
+function defineSortValues(ten_high, jacks_max) {
+    var suits = ["d", "h", "s", "c"];
+    var count = 100;
+    for(var i = 0; i < suits.length; i++) {
+        if(suits[i] == trump_suit) {
+            suit_values[suits[i]] = 400;
+        }
+        else {
+            suit_values[suits[i]] = count;
+            count += 100;
+        }
+    }
+    var values;
+    if(ten_high) {
+        values = ["2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K", "10", "A"];
+    }
+    else {
+        values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+    }
+    for(var i = 0; i < values.length; i++) {
+        value_values[values[i]] = i;
+    }
+    if(jacks_max) {
+        value_values["J"] = 1000;
+    }
+}
+
+function getCardSortValue(type) {
+    const vs = getVs(type);
+    const value = vs.value, suit = vs.suit;
+    if(game_type != "n" && value == "J") {
+        switch(suit) {
+            case "c": return 4000;
+            case "s": return 3000;
+            case "h": return 2000;
+            case "d": return 1000;
+        }
+    }
+    return suit_values[suit] + value_values[value];
+}
 
 function processMultiplayerData(data) {
     console.log("received: " + data.action + " active: " + data.active);
@@ -70,9 +111,8 @@ function loadGameField(data) {
         displayCards(data, player_list, data.solist);
         var hand = JSON.parse(data[data.solist]);
         for(var i = 0; i < hand.length; i++) {
-            addCardTo(players[data.solist], 1, hand[i]);
+            addCardTo(players[data.solist], 1, hand[i], game_type != "n");
         }
-        updateCardsFor(players[data.solist], game_type != "n");
     }
     else {
         displayCards(data, player_list);
@@ -552,4 +592,4 @@ function updatePlayerPositions(data) {
     player_positions = {[forehand]: "{% trans 'Vorhand' %}", [middle]: "{% trans 'Mittelhand' %}", [behind]: "{% trans 'Hinterhand' %}"};
 }
 
-gameConnect(socket, '{{ match.id }}', '{{ user.username }}');
+gameConnect('durak', '{{ match.id }}', '{{ user.username }}');

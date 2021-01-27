@@ -1,6 +1,6 @@
 .sidemenu {
     position: absolute;
-    left: 0;
+    left: 5px;
     top: 50px;
     max-width: 250px;
     font-family: "Courier New", "Lucida Console", monospace;
