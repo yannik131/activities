@@ -13,7 +13,7 @@ class UserRegistrationForm(forms.ModelForm):
 
     class Meta:
         model = get_user_model()
-        fields = ('username', 'first_name', 'email', 'sex', 'birth_year')
+        fields = ('username', 'email', 'sex', 'birth_year')
         labels = {
             'sex': _('Geschlecht'),
             'birth_year': _('Geburtsjahr'),
@@ -40,7 +40,7 @@ class UserRegistrationForm(forms.ModelForm):
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
-        fields = ('first_name', 'last_name', 'email', 'username', 'sex', 'birth_year', 'profile_text', 'image')
+        fields = ('last_name', 'email', 'username', 'sex', 'birth_year', 'profile_text', 'image')
 
         labels = {
             'sex': _('Geschlecht'),

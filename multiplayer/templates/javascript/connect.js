@@ -24,14 +24,14 @@ function gameConnect(game, match_id, username) {
     }
 
     socket.onclose = function(e) {
-        console.log('User socket closed unexpectedly. Attempting reconnect in 1 second. Code: ', e.code);
+        console.log('User socket closed unexpectedly. Attempting reconnect in 1 second. Code:', e.code);
         setTimeout(function() {
-            gameConnect();
+            gameConnect(game, match_id, username);
         }, 1000);
     }
 
     socket.onerror = function(err) {
-        console.error('User socket encountered error: ', err.message, 'Closing socket.');
+        console.error('User socket encountered error:', err.message, 'Closing socket.');
         socket.close();
     }
 }

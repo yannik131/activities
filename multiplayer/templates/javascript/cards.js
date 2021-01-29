@@ -336,27 +336,23 @@ function createButton(text, id, callback, color) {
     }
     var button = document.createElement("button");
     button.type = "button";
-    if(window.screen.width < 768) {
+    if(field.offsetWidth < 600) {
         button.style.fontSize = "14pt";
     }
     else {
         button.style.fontSize = "24pt";
     }
-    button.style.zIndex = "100";
+    button.className = "game-button";
     button.innerHTML = text;
     button.onclick = callback;
-    button.style.position = "absolute";
-    button.style.border = "1px solid white";
     button.style.right = (buttons.length == 0? 0 : field.offsetWidth-buttons[buttons.length-1].offsetLeft+5) + "px";
     button.style.top = "0px";
     if(buttons.length) {
         button.style.top = buttons[buttons.length-1].style.top;
     }
-    button.style.opacity = "0.7";
     button.id = id;
     if(color) {
-        button.style.backgroundColor = "black";
-        button.style.color = "white";
+        button.style.color = color;
     }
     field.appendChild(button);
     if(button.offsetLeft < 0) {
@@ -366,7 +362,6 @@ function createButton(text, id, callback, color) {
             button.style.right = buttons[buttons.length-1].offsetLeft;
         }
     }
-    
     
     buttons.push(button);
 }

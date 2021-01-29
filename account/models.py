@@ -172,7 +172,7 @@ class FriendRequest(models.Model):
     class Meta:
         ordering = ('status', '-modified')
         unique_together = ('requesting_user', 'requested_user')
-
+        
 
 class Location(models.Model):
     country = models.CharField(max_length=40)

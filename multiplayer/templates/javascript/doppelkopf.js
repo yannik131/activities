@@ -1,7 +1,7 @@
 {% load i18n %}
 
 var this_user = '{{ user }}';
-var game_type = "Q"; //fleischlos, farbsolo, standard
+var game_type;
 
 function defineSortValues() {
     var suits = ["d", "h", "s", "c"];
@@ -105,21 +105,33 @@ function loadGameField(data) {
     mode = data.mode;
     player_list = JSON.parse(data.players);
     solist = data.solist;
-    defineSortValues("d");
+    game_type = data.game_type || "d";
+    
     updateSortingOrder();
     clearButtons();
-    for(var i = 1; i < 5; i++) {
-        removeCardFrom(i, 100);
-    }
     positionPlayers(player_list);
     for(var i = 0; i < player_list.length; i++) {
         var player = player_list[i];
-        updatePlayerInfo(player, data[player+"_solo"], data.game_type)
+        if(data.mode == "bidding") {
+            updatePlayerInfo(player, data[player+"_bid"], undefined)
+        }
+        else {
+            if(data.solist == player) {
+                updatePlayerInfo(player, undefined, data.game_type);
+            }
+            else {
+                updatePlayerInfo(player, undefined, undefined);
+            }
+        }
+    }
+    for(var i = 1; i < 5; i++) {
+        removeCardFrom(i, 100);
     }
     displayCards(data, player_list);
+    console.log(data.mode);
     switch(data.mode) {
         case "bidding":
-            createBidButtons(data.active, parse(data.highest_bid), data.more);
+            createBidButtons();
             break;
         case "taking":
             createTakeButtons();
@@ -145,12 +157,71 @@ function loadGameField(data) {
     }
 }
 
+function createBidButtons() {
+    if(active != this_user) {
+        return;
+    }
+    createButton("{% trans 'Gesund' %}", 'healthy', function() {
+        sendBid("healthy");
+    });
+    var count = 0;
+    for(var i = 0; i < player1_cards.length; i++) {
+        if(player1_cards[i].id == "Qc") {
+            count++;
+        }
+    }
+    if(count == 2) {
+        createButton("{% trans 'Hochzeit' %}", 'marriage', function() {
+            sendBid("marriage");
+        });
+    }
+    createButton("{% trans 'Damen' %}", 'queens', function() {
+        sendBid("queens");
+    });
+    createButton("{% trans 'Buben' %}", 'jacks', function() {
+        sendBid("jacks");
+    });
+    createButton("{% trans 'Kreuz' %}", 'clubs', function() {
+        sendBid("clubs");
+    });
+    createButton("{% trans 'Pik' %}", 'spades', function() {
+        sendBid("spades");
+    });
+    createButton("{% trans 'Herz' %}", 'hearts', function() {
+        sendBid("hearts");
+    });
+    createButton("{% trans 'Trumpf' %}", 'diamonds', function() {
+        sendBid("diamonds");
+    });
+    createButton("{% trans 'Fleischlos' %}", 'without', function() {
+        sendBid("without");
+    });
+}
+
+function sendBid(bid) {
+    socket.send(JSON.stringify({
+        'action': 'bid',
+        'bid': bid
+    }));
+}
+
 function updateSortingOrder() {
     
 }
 
-function updatePlayerInfo() {
+function updatePlayerInfo(player, bid, game) {
+    var info = "";
+    var important = player == active;
+    if(important) {
+        info += " (*) ";
+    }
+    if(bid) {
+        info += bid;
+    }
     
+    changeInfoFor(player, info, important);
 }
 
-gameConnect('{{ match.id }}', '{{ user.username }}');
+defineSortValues();
+
+gameConnect('doppelkopf', '{{ match.id }}', '{{ user.username }}');

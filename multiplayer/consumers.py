@@ -269,6 +269,25 @@ class SkatConsumer(GameConsumer):
         match.save()
         return message
 
+class DoppelkopfConsumer(GameConsumer):
+    def get_message(self, text_data):
+        match = MultiplayerMatch.objects.get(pk=self.match_id)
+        data = match.game_data
+        message = {"group": True}
+        players = json.loads(data["players"])
+        if text_data["action"] == "request_data":
+            message["data"] = data
+            message["group"] = False
+        elif text_data["action"] == "bid":
+            data[self.username+"_bid"] = text_data["bid"]
+            data["active"] = after(self.username, players)
+            message["data"] = {
+                'username': self.username,
+                'bid': text_data['bid']
+            }
+            
+        return message
+
 class AudioReceiveConsumer(WebsocketConsumer):
     def connect(self):
         async_to_sync
