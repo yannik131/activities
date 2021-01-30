@@ -19,10 +19,7 @@ function defineSortValues() {
 function getCardSortValue(type) {
     var vs = getVs(type);
     if(game_type == "d" || game_type == "h" || game_type == "s" || game_type == "c") {
-        if(game_type == "d" && type == "10h") {
-            return 101;
-        }
-        else if(game_type != "d" && type == "10"+game_type) {
+        if(type == "10h") {
             return 101;
         }
         else if(vs.value == "Q") {

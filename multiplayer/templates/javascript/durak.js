@@ -92,7 +92,13 @@ function cardClicked(value, suit, card) {
                 transferCheck();
             }
             else if(transfer_possible && targets.length > 0) {
-                createStackCallbacks(targets, card);
+                if(move_mode == "transfer") {
+                    createStackWith(card);
+                    transferCheck();
+                }
+                else {
+                    createStackCallbacks(targets, card);
+                }
                 move_mode = "transfer";
             }
             else if(targets.length == 1) {
@@ -463,6 +469,7 @@ function handleTransfer(data) {
     determineGameMode(data);
     refreshStacks(JSON.parse(data.stacks));
     updatePlayerInfo(data);
+    old_stacks = JSON.parse(data.stacks);
     if(game_mode == "attacking") {
         return;
     }

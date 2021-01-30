@@ -160,6 +160,6 @@ class MultiplayerMatch(models.Model):
         self.game_data["trick"] = json.dumps([])
         for player in players:
             self.game_data[player+"_tricks"] = json.dumps([])
-            self.game_data[player+"_bid"] = json.dumps([])
+            self.game_data[player+"_bid"] = ""
         change(self.game_data, "game_number", 1)
         
