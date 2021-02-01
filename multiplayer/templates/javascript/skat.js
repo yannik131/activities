@@ -11,6 +11,8 @@ var no_take = "";
 var ouvert = false;
 var trump_suit;
 
+{% include 'javascript/common_sd.js' %}
+
 function defineSortValues(ten_high, jacks_max) {
     var suits = ["d", "h", "s", "c"];
     var count = 100;
@@ -456,7 +458,7 @@ function cardClicked(value, suit, card) {
     }
     if(stacks.length == 0) {
         addStack(card.id);
-        removePlayerCard(card, game_type != "n");
+        removePlayerCard(card);
         sendMove();
         return;
     }
@@ -485,76 +487,6 @@ function cardClicked(value, suit, card) {
     }
     removePlayerCard(card, game_type != "n");
     sendMove();
-}
-
-function compare(vs1, vs2) {
-    return getCardSortValue(vs1.value+vs1.suit, game_type != "n") > getCardSortValue(vs2.value+vs2.suit, game_type != "n");
-}
-
-function indexOfHighestCard() {
-    var highest_vs = getVs(stacks[0][0].id);
-    var index = 0;
-    for(var i = 1; i < stacks[0].length; i++) {
-        var vs = getVs(stacks[0][i].id);
-        if(trump_suit) {
-            if(isTrump(stacks[0][0].id)) {
-                if(compare(vs, highest_vs)) {
-                    index = i;
-                    highest_vs = vs;
-                }
-            }
-            else {
-                if(isTrump(vs.value, vs.suit)) {
-                    if(compare(vs, highest_vs)) {
-                        index = i;
-                        highest_vs = vs;
-                    }
-                }
-                else if(vs.suit != highest_vs.suit) {
-                    continue;
-                }
-                else if(compare(vs, highest_vs)) {
-                    index = i;
-                    highest_vs = vs;
-                }
-            }
-        }
-        else {
-            if(vs.suit != highest_vs.suit) {
-                continue;
-            }
-            if(value_values[vs.value] > value_values[highest_vs.value]) {
-                index = i;
-                highest_vs = vs;
-            }
-        }
-    }
-    return index;
-}
-
-function sendMove() {
-    if(stacks[0].length == 3) {
-        socket.send(JSON.stringify({
-            "action": "play",
-            "trick": JSON.stringify(getConvertedStack()[0]),
-            "index": indexOfHighestCard(),
-            "hand": JSON.stringify(getConvertedHand())
-        }));
-    }
-    else {
-        socket.send(JSON.stringify({
-            "action": "play",
-            "trick": JSON.stringify(getConvertedStack()[0]),
-            "hand": JSON.stringify(getConvertedHand())
-        }));
-    }
-}
-
-function sendBid(bid) {
-    socket.send(JSON.stringify({
-        'action': 'bid',
-        'bid': bid
-    }));
 }
 
 function createBidButtons(active, highest_bid, more) {

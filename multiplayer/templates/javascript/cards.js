@@ -422,17 +422,22 @@ function before(el, arr) {
     return arr[((arr.indexOf(el)-1)%arr.length+arr.length)%arr.length];
 }
 
-function playerHandContains(value, suit, except_value) {
+function getPlayerCards(value, suit, except_value) {
+    var cards = [];
     for(var i = 0; i < player1_cards.length; i++) {
         const vs = getVs(player1_cards[i].id);
         if(vs.value == value || vs.suit == suit) {
             if(vs.value == except_value) {
                 continue;
             }
-            return true;
+            cards.push(vs);
         }
     }
-    return false;
+    return cards;
+}
+
+function playerHandContains(value, suit, except_value) {
+    return getPlayerCards(value, suit, except_value).length != 0;
 }
 
 function clearStacks() {

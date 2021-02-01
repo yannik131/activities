@@ -1,3 +1,4 @@
+#! /bin/bash
 source scripts/comp.sh
 for app in "account" "usergroups" "vacancies" "wall" "competitions"
 do

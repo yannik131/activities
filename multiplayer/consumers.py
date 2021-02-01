@@ -159,46 +159,7 @@ class SkatConsumer(GameConsumer):
             message["group"] = False
             return message
         elif text_data["action"] == "play":
-            players = json.loads(data["players"])
-            players = cycle_slice(players.index(data["forehand"]), players)
-            data["trick"] = text_data["trick"]
-            trick = json.loads(data["trick"])
-            data[data["active"]] = text_data["hand"]
-            data["active"] = after(self.username, players)
-            message["data"] = {
-                "action": "play",
-                "trick": data["trick"],
-                "username": self.username,
-                "active": data["active"]
-            }
-            if len(trick) == 3:
-                winner = players[int(text_data["index"])]
-                tricks = json.loads(data[winner+"_tricks"])
-                tricks.append(trick)
-                data[winner+"_tricks"] = json.dumps(tricks)
-                data["forehand"] = winner
-                data["active"] = winner
-                data["trick"] = json.dumps([])
-                message["data"]["clear"] = "1"
-                message["data"]["forehand"] = winner
-                message["data"]["active"] = winner
-                ouvert_null_lost = (data["game_type"] == "n" and data["solist"] == winner) or (("o" in data["declarations"] or "b" in data["declarations"]) and data["solist"] != winner)
-                if not json.loads(data[data["active"]]) or ouvert_null_lost:
-                    players = json.loads(data["players"])
-                    result, winner_points, game_value = determine_winner(data)
-                    points_summary = give_skat_points(data, players, result, game_value)
-                    message["data"]["result"] = result
-                    if winner_points:
-                        message["data"]["points"] = winner_points
-                    message["data"]["summary"] = points_summary
-                    data["summary"] = points_summary
-                    message["data"]["game_number"] = data["game_number"]
-                    match.start_skat()
-                    starting = after(data["started"], players)
-                    match.game_data["started"] = starting
-                    match.game_data["forehand"] = starting
-                    match.game_data["active"] = after(starting, players)
-                    message["data"]["round"] = match.game_data
+            handle_play("skat", data, text_data, self.username, message, match)
         elif text_data["action"] == "declare":
             data["game_type"] = text_data["game"][0]
             data["declarations"] += text_data["game"][1:]
@@ -282,10 +243,36 @@ class DoppelkopfConsumer(GameConsumer):
             data[self.username+"_bid"] = text_data["bid"]
             data["active"] = after(self.username, players)
             message["data"] = {
+                'action': 'bid',
                 'username': self.username,
-                'bid': text_data['bid']
+                'bid': text_data['bid'],
+                'active': data["active"]
             }
-            
+            if data[data["active"]+"_bid"]:
+                for player in players:
+                    if data[player+"_bid"] != "healthy":
+                        data["solist"] = player
+                        data["game_type"] = data[player+"_bid"]
+                        break
+                if not data["solist"]:
+                    data["game_type"] = "diamonds"
+                message["data"]["solist"] = data["solist"]
+                message["data"]["game_type"] = data["game_type"]
+                message["data"]["mode"] = "playing"
+                data["mode"] = "playing"
+        elif text_data["action"] == "play":
+            handle_play("doko", data, text_data, self.username, message, match)
+        elif text_data["action"] == "value":
+            if text_data["who"] == "re":
+                data["re_value"] = text_data["value"]
+            else:
+                data["contra_value"] = text_data["value"]
+            message["data"] = {
+                "action": "value",
+                "username": self.username,
+                "value": text_data["value"]
+            }
+        match.save()
         return message
 
 class AudioReceiveConsumer(WebsocketConsumer):

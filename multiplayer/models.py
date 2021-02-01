@@ -150,14 +150,17 @@ class MultiplayerMatch(models.Model):
         
         
     def start_doppelkopf(self):
-        players, deck = self.create_players(11, "9", "9", "10", "10", "A", "A", "J", "J", "K", "K", "Q", "Q")
+        players, _ = self.create_players(12, "9", "9", "10", "10", "A", "A", "J", "J", "K", "K", "Q", "Q")
         self.game_data["game_type"] = ""
-        self.game_data["declarations"] = ""
+        self.game_data["re_value"] = ""
+        self.game_data["contra_value"] = ""
         self.game_data["mode"] = "bidding"
         self.game_data["re_1"] = ""
         self.game_data["re_2"] = ""
+        self.game_data["solist"] = ""
         self.game_data["active"] = players[1]
         self.game_data["trick"] = json.dumps([])
+        self.game_data["m_show"] = ""
         for player in players:
             self.game_data[player+"_tricks"] = json.dumps([])
             self.game_data[player+"_bid"] = ""

@@ -96,7 +96,145 @@ def next_bidder(data):
                 return participants[1], ""
     return None, ""
     
+
+def handle_play(game, data, text_data, username, message, match):
+    players = json.loads(data["players"])
+    if game == "skat":
+        players = cycle_slice(players.index(data["forehand"]), players)
+    else:
+        players = cycle_slice(players.index(after(data["active"], players)), players)
+    data["trick"] = text_data["trick"]
+    trick = json.loads(data["trick"])
+    data[data["active"]] = text_data["hand"]
+    data["active"] = after(username, players)
+    message["data"] = {
+        "action": "play",
+        "trick": data["trick"],
+        "username": username,
+        "active": data["active"]
+    }
+    if game == "skat" and len(trick) == 3 or game == "doko" and len(trick) == 4:
+        winner = players[int(text_data["index"])]
+        tricks = json.loads(data[winner+"_tricks"])
+        tricks.append(trick)
+        data[winner+"_tricks"] = json.dumps(tricks)
+        if game == "skat":
+            data["forehand"] = winner
+            message["data"]["forehand"] = winner
+            ouvert_null_lost = (data["game_type"] == "n" and data["solist"] == winner) or (("o" in data["declarations"] or "b" in data["declarations"]) and data["solist"] != winner)
+        else:
+            ouvert_null_lost = False
+            if data["game_type"] == "marriage":
+                if winner != data["solist"] and len(tricks) < 4:
+                    data["re_1"] = data["solist"]
+                    data["re_2"] = winner
+                    data["m_show"] = len(tricks)
+                    data["game_type"] = "diamonds"
+                    data["solist"] = ""
+                    message["m_show"] = data["m_show"]
+        data["active"] = winner
+        data["trick"] = json.dumps([])
+        message["data"]["clear"] = "1"
+        message["data"]["active"] = winner
+        if not json.loads(data[data["active"]]) or ouvert_null_lost:
+            players = json.loads(data["players"])
+            if game == "skat":
+                determine, give = determine_winner_skat, give_skat_points
+            else:
+                determine, give = determine_winner_doko, give_doko_points
+                
+            result, winner_points, game_value = determine(data)
+            points_summary = give(data, players, result, game_value)
+            
+            message["data"]["result"] = result
+            if winner_points:
+                message["data"]["points"] = winner_points
+            message["data"]["summary"] = points_summary
+            data["summary"] = points_summary
+            message["data"]["game_number"] = data["game_number"]
+            starting = after(data["started"], players)
+            if game == "skat":
+                match.start_skat()
+                match.game_data["forehand"] = starting
+            else:
+                match.doppelkopf_start()
+            match.game_data["active"] = after(starting, players)
+            message["data"]["round"] = match.game_data
+            match.game_data["started"] = starting
+
+DOKO_GAME_VALUES = {
+    "": 121, "w": 121, "9": 151, "6": 181, "3": 211, "s": 240
+}
+
+DOKO_VALUES = {
+    "": 1, "w": 2, "9": 3, "6": 4, "3": 5, "s": 6
+}
+
+def determine_winner_doko(data):
+    if data["solist"]:
+        re = [data["solist"]]
+    else:
+        re = [data["re_1"], data["re_2"]]
+    re_points = 0
+    count = 0
+    for player in re:
+        for trick in json.loads(data[player+"_tricks"]):
+            count += 1
+            for card in trick:
+                re_points += CARD_VALUES[card]
+    value = data["contra_value"]
+    if value == "s" and count == 12:
+        return "contra", 240
+    elif value == "s":
+        return "re", re_points
+    if 240-re_points >= DOKO_GAME_VALUES[value]:
+        return "contra", 240-re_points
+    value = data["re_value"]
+    if value == "s" and count == 12:
+        return "re", 240
+    elif value == "s":
+        return "contra", 240-re_points
+    if re_points >= DOKO_GAME_VALUES[value]:
+        return "re", re_points
+    else:
+        return "contra", 240-re_points
+        
+def sum_change(dictionary, key, change, summary):
+    change(dictionary, key, change)
+    pre = ""
+    if change >= 0:
+        pre = "+"
+    summary.append([f"{key}: {pre}{change} -> {dictionary[key]}", {dictionary[key]}])
     
+def give_doko_points(data, players, result):
+    points = 0
+    value = data[result+"_value"]
+    if result == "contra":
+        points += 1 # gegen die alten
+    points += DOKO_VALUES[value]
+    summary = []
+    if data["solist"]:
+        for player in players:
+            if player == data["solist"]:
+                sum_change(data, player+"_points", 3*points, summary)
+            else:
+                sum_change(data, player+"_points", points, summary)
+        return
+    for player in players:
+        if result == "re":
+            if player == data["re_1"] or player == data["re_2"]:
+                sum_change(data, player+"_points", points, summary)
+            else:
+                sum_change(data, player+"_points", -points, summary)
+        else:
+            if player == data["re_1"] or player == data["re_2"]:
+                sum_change(data, player+"_points", -points, summary)
+            else:
+                sum_change(data, player+"_points", points, summary)
+    summary = sorted(summary, key=lambda t: t[1])
+    return "".join([t[0] for t in summary])
+    
+
 CARD_VALUES = {
     "7": 0, "8": 0, "9": 0, "J": 2, "Q": 3,
     "K": 4, "10": 10, "A": 11
@@ -105,7 +243,7 @@ GAME_VALUES = {
     "d": 9, "h": 10, "s": 11, "c": 12, "n": 23, "g": 24
 }
 
-def determine_winner(data):
+def determine_winner_skat(data):
     points = 0
     skat = json.loads(data["deck"])
     tricks = json.loads(data[data["solist"]+"_tricks"])
