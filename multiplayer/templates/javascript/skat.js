@@ -395,6 +395,13 @@ function handleBidding(data) {
     }
 }
 
+function sendBid(bid) {
+    socket.send(JSON.stringify({
+        'action': 'bid',
+        'bid': bid
+    }));
+}
+
 function updatePlayerInfo(player, bid, game) {
     var info = "";
     var important = player == active;

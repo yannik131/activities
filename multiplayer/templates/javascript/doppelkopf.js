@@ -25,6 +25,8 @@ var solist;
 var re_value;
 var contra_value;
 var m_show;
+var player_info = {};
+var re;
 
 {% include 'javascript/common_sd.js' %}
 
@@ -113,12 +115,6 @@ function processMultiplayerData(data) {
         case "value":
             handleValue(data);
             break;
-        case "start":
-            handleStart();
-            if(data.solist) {
-                solist = data.solist;
-            }
-            break;
         case "play":
             handlePlay(data);
             break;
@@ -129,6 +125,22 @@ function processMultiplayerData(data) {
 
 function handleValue(data) {
     createValueButtons();
+    if(data.username == this_user) {
+        return;
+    }
+    var info = data.username + ": ";
+    if(data.value == "w") {
+        if(data.who == "re") {
+            info += "{% trans 'Re' %}";
+        }
+        else {
+            info += "{% trans 'Kontra' %}";
+        }
+    }
+    else {
+        info += value_translations[data.value];
+    }
+    createInfoAlert(info, 1000);
 }
 
 function handlePlay(data) {
@@ -147,11 +159,12 @@ function handlePlay(data) {
     if(data.round) {
         var new_data = data.round;
         var info = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n";
-        createInfoAlert(info+"\n"+data.summary);
+        createInfoAlert(info+"\n"+data.result+": "+data.points+" {% trans 'Punkte' %}\n"+data.summary);
         active = new_data.active;
         loadGameField(new_data);
     }
     createValueButtons();
+    updateAllInfo();
 }
 
 function handleStart() {
@@ -163,12 +176,24 @@ function handleStart() {
     }
     mode = "playing";
     createValueButtons();
+    if(solist.length) {
+        createInfoAlert(solist + ": " + bid_translations[game_type], 1000);
+    }
+    else {
+        createInfoAlert("{% trans 'Normalspiel' %}", 1000);
+    }
+}
+
+function updateAllInfo() {
+    for(var i = 0; i < player_list.length; i++) {
+        updatePlayerInfo(player_list[i]);
+    }
 }
 
 function createValueButtons(m_show) {
     clearButtons();
     var last_bid;
-    if(this_user == solist || getConvertedHand().includes("Qc")) {
+    if(re) {
         last_bid = re_value;
     }
     else {
@@ -197,7 +222,7 @@ function createValueButtons(m_show) {
     if(value) {
         var trans = value_translations[value];
         if(value == "w") {
-            if(getConvertedHand().includes("Qc")) {
+            if(re) {
                 trans = "Re";
             }
             else {
@@ -210,19 +235,32 @@ function createValueButtons(m_show) {
     }
 }
 
+function sendValue(value) {
+    socket.send(JSON.stringify({
+        'action': 'value',
+        'value': value,
+        'who': getConvertedHand().includes("Qc")? "re" : "contra"
+    }))
+}
+
 function handleBid(data) {
     console.log("bid, game_type: ", data.game_type);
     if(data.game_type) {
         game_type = data.game_type;
         if(data.solist.length) {
+            re = this_user == data.re_1 || this_user == data.re_2 || this_user == data.solist;
             updatePlayerInfo(data.solist, undefined, data.game_type);
+            solist = data.solist;
+            updateCardsFor(1);
         }
         handleStart();
+        updateAllInfo();
     }
     else {
         createBidButtons();
         updatePlayerInfo(data.username, data.bid);
     }
+    
 }
 
 function loadGameField(data) {
@@ -234,21 +272,17 @@ function loadGameField(data) {
     re_value = data.re_value;
     contra_value = data.contra_value;
     m_show = data.m_show;
+    re = this_user == data.re_1 || this_user == data.re_2 || this_user == data.solist;
     
     clearButtons();
     positionPlayers(player_list);
     for(var i = 0; i < player_list.length; i++) {
         var player = player_list[i];
         if(data.mode == "bidding") {
-            updatePlayerInfo(player, data[player+"_bid"], undefined)
+            updatePlayerInfo(player, data[player+"_bid"]);
         }
         else {
-            if(data.solist == player) {
-                updatePlayerInfo(player, undefined, data.game_type);
-            }
-            else {
-                updatePlayerInfo(player, undefined, undefined);
-            }
+            updatePlayerInfo(player);
         }
     }
     for(var i = 1; i < 5; i++) {
@@ -284,7 +318,7 @@ function cardClicked(value, suit, card) {
         if(isTrump(first_vs.value, first_vs.suit) && playerHasTrump() && !isTrump(value, suit)) {
             return;
         }
-        else if(suit != first_vs.suit) {
+        else if(!isTrump(first_vs.value, first_vs.suit) && (suit != first_vs.suit || isTrump(value, suit))) {
             var cards = getPlayerCards("x", first_vs.suit);
             for(var i = 0; i < cards.length; i++) {
                 if(!isTrump(cards[i].value, cards[i].suit)) {
@@ -375,7 +409,7 @@ function createBidButtons() {
     });
 }
 
-function updatePlayerInfo(player, bid, game) {
+function updatePlayerInfo(player, bid) {
     var info = "";
     var important = player == active;
     if(important) {
@@ -384,11 +418,19 @@ function updatePlayerInfo(player, bid, game) {
     if(bid) {
         info += bid_translations[bid];
     }
-    if(game) {
-        info += bid_translations[game];
+    if(game_type.length && player == solist) {
+        info += bid_translations[game_type];
     }
     
     changeInfoFor(player, info, important);
+}
+
+function sendBid(bid) {
+    socket.send(JSON.stringify({
+        'action': 'bid',
+        'bid': bid,
+        're': getConvertedHand().includes("Qc")? "1" : ""
+    }));
 }
 
 defineSortValues();

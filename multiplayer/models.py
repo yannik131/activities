@@ -93,11 +93,10 @@ class MultiplayerMatch(models.Model):
             self.start_skat()
         elif self.activity.name == _("Doppelkopf"):
             self.start_doppelkopf()
-        if not self.in_progress:
-            players = json.loads(self.game_data["players"])
-            self.game_data["started"] = players[0]
-            for player in players:
-                self.game_data[player+"_points"] = "0"
+        players = json.loads(self.game_data["players"])
+        self.game_data["started"] = players[0]
+        for player in players:
+            self.game_data[player+"_points"] = "0"
         self.in_progress = True
         self.save()
             

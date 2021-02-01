@@ -242,6 +242,11 @@ class DoppelkopfConsumer(GameConsumer):
         elif text_data["action"] == "bid":
             data[self.username+"_bid"] = text_data["bid"]
             data["active"] = after(self.username, players)
+            if text_data["re"] == "1":
+                if data["re_1"]:
+                    data["re_2"] = self.username
+                else:
+                    data["re_1"] = self.username
             message["data"] = {
                 'action': 'bid',
                 'username': self.username,
@@ -249,13 +254,28 @@ class DoppelkopfConsumer(GameConsumer):
                 'active': data["active"]
             }
             if data[data["active"]+"_bid"]:
-                for player in players:
+                solos = []
+                for player in cycle_slice(players.index(data["started"]), players):
                     if data[player+"_bid"] != "healthy":
-                        data["solist"] = player
-                        data["game_type"] = data[player+"_bid"]
-                        break
+                        solos.append([player, data[player+"_bid"]])
+                if solos:
+                    if len(solos) > 1:
+                        solos = [solo for solo in solos if solo[1] != "marriage"]
+                    player, game_type = solos[0]
+                    data["solist"] = player
+                    data["game_type"] = game_type
+                    data["re_1"] = ""
+                    data["re_2"] = ""
+                    data["active"] = player
+                    message["data"]["active"] = player
                 if not data["solist"]:
+                    if data["re_1"] and not data["re_2"]:
+                        data["solist"] = data["re_1"]
+                        data["re_1"] = ""
+                        data["re_2"] = ""
                     data["game_type"] = "diamonds"
+                message["data"]["re_1"] = data["re_1"]
+                message["data"]["re_2"] = data["re_2"]
                 message["data"]["solist"] = data["solist"]
                 message["data"]["game_type"] = data["game_type"]
                 message["data"]["mode"] = "playing"
@@ -270,7 +290,8 @@ class DoppelkopfConsumer(GameConsumer):
             message["data"] = {
                 "action": "value",
                 "username": self.username,
-                "value": text_data["value"]
+                "value": text_data["value"],
+                "who": text_data["who"]
             }
         match.save()
         return message

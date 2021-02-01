@@ -388,7 +388,7 @@ function clearButtons() {
     buttons = [];
 }
 
-function createInfoAlert(info) {
+function createInfoAlert(info, timeout) {
     if(document.getElementById("info-alert")) {
         return;
     }
@@ -397,20 +397,27 @@ function createInfoAlert(info) {
     info_alert.className = "info-alert";
     info_alert.innerHTML = info;
     info_alert.id = "info-alert";
-    var button = document.createElement("button");
-    button.type = "button";
-    button.onclick = function() {
-        document.getElementById("info-alert").remove();
-    }
-    button.className = "info-alert-button";
-    if(window.screen.width < 768) {
-        button.style.fontSize = "10pt";
+    if(timeout) {
+        setTimeout(function() {
+            document.getElementById("info-alert").remove();
+        }, timeout);
     }
     else {
-        button.style.fontSize = "18pt";
+        var button = document.createElement("button");
+        button.type = "button";
+        button.onclick = function() {
+            document.getElementById("info-alert").remove();
+        }
+        button.className = "info-alert-button";
+        if(window.screen.width < 768) {
+            button.style.fontSize = "10pt";
+        }
+        else {
+            button.style.fontSize = "18pt";
+        }
+        button.innerHTML = "Okay";
+        info_alert.appendChild(button);
     }
-    button.innerHTML = "Okay";
-    info_alert.appendChild(button);
     field.appendChild(info_alert);
 }
 

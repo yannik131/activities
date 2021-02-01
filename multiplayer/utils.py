@@ -139,25 +139,23 @@ def handle_play(game, data, text_data, username, message, match):
         if not json.loads(data[data["active"]]) or ouvert_null_lost:
             players = json.loads(data["players"])
             if game == "skat":
-                determine, give = determine_winner_skat, give_skat_points
+                result, winner_points, game_value = determine_winner_skat(data)
+                points_summary = give_skat_points(data, players, result, game_value)
             else:
-                determine, give = determine_winner_doko, give_doko_points
-                
-            result, winner_points, game_value = determine(data)
-            points_summary = give(data, players, result, game_value)
-            
+                result, winner_points = determine_winner_doko(data)
+                points_summary = give_doko_points(data, players, result)
             message["data"]["result"] = result
             if winner_points:
                 message["data"]["points"] = winner_points
             message["data"]["summary"] = points_summary
             data["summary"] = points_summary
-            message["data"]["game_number"] = data["game_number"]
             starting = after(data["started"], players)
             if game == "skat":
                 match.start_skat()
                 match.game_data["forehand"] = starting
             else:
-                match.doppelkopf_start()
+                match.start_doppelkopf()
+            message["data"]["game_number"] = data["game_number"]
             match.game_data["active"] = after(starting, players)
             message["data"]["round"] = match.game_data
             match.game_data["started"] = starting
@@ -181,7 +179,7 @@ def determine_winner_doko(data):
         for trick in json.loads(data[player+"_tricks"]):
             count += 1
             for card in trick:
-                re_points += CARD_VALUES[card]
+                re_points += CARD_VALUES[card[:-1]]
     value = data["contra_value"]
     if value == "s" and count == 12:
         return "contra", 240
@@ -199,12 +197,12 @@ def determine_winner_doko(data):
     else:
         return "contra", 240-re_points
         
-def sum_change(dictionary, key, change, summary):
-    change(dictionary, key, change)
+def sum_change(dictionary, key, _change, summary):
+    change(dictionary, key, _change)
     pre = ""
-    if change >= 0:
+    if _change >= 0:
         pre = "+"
-    summary.append([f"{key}: {pre}{change} -> {dictionary[key]}", {dictionary[key]}])
+    summary.append([f"{key[:-7]}: {pre}{_change} -> {dictionary[key]}\n", {dictionary[key]}])
     
 def give_doko_points(data, players, result):
     points = 0
@@ -219,18 +217,18 @@ def give_doko_points(data, players, result):
                 sum_change(data, player+"_points", 3*points, summary)
             else:
                 sum_change(data, player+"_points", points, summary)
-        return
-    for player in players:
-        if result == "re":
-            if player == data["re_1"] or player == data["re_2"]:
-                sum_change(data, player+"_points", points, summary)
+    else:
+        for player in players:
+            if result == "re":
+                if player == data["re_1"] or player == data["re_2"]:
+                    sum_change(data, player+"_points", points, summary)
+                else:
+                    sum_change(data, player+"_points", -points, summary)
             else:
-                sum_change(data, player+"_points", -points, summary)
-        else:
-            if player == data["re_1"] or player == data["re_2"]:
-                sum_change(data, player+"_points", -points, summary)
-            else:
-                sum_change(data, player+"_points", points, summary)
+                if player == data["re_1"] or player == data["re_2"]:
+                    sum_change(data, player+"_points", -points, summary)
+                else:
+                    sum_change(data, player+"_points", points, summary)
     summary = sorted(summary, key=lambda t: t[1])
     return "".join([t[0] for t in summary])
     

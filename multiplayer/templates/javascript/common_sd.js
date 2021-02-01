@@ -31,9 +31,3 @@ function sendMove() {
     socket.send(JSON.stringify(response));
 }
 
-function sendBid(bid) {
-    socket.send(JSON.stringify({
-        'action': 'bid',
-        'bid': bid
-    }));
-}
