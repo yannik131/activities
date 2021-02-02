@@ -1,107 +1,150 @@
-2021-01-25 11:56:23: False ho admin test 
-2021-01-25 11:58:45: True ho admin test 
-2021-01-25 11:58:45: lost 
-2021-01-25 11:58:45: [['test: -290 -> -494\n', -494], ['admin: +40 -> 215\n', 215], ['incocnito: +40 -> 62\n', 62]] 
-2021-01-25 11:59:43: True ho test test 
-2021-01-25 11:59:43: lost 
-2021-01-25 11:59:43: [['test: -168 -> -662\n', -662], ['admin: +40 -> 255\n', 255], ['incocnito: +40 -> 102\n', 102]] 
-2021-01-25 16:19:51: True ho incocnito test 
-2021-01-25 16:19:51: lost 
-2021-01-25 16:19:51: [['test: -338 -> -1000\n', -1000], ['incocnito: +40 -> 142\n', 142], ['admin: +40 -> 295\n', 295]] 
-2021-01-25 16:22:44: True ho test test 
-2021-01-25 16:22:44: lost 
-2021-01-25 16:22:44: [['test: -168 -> -1168\n', -1168], ['admin: +40 -> 335\n', 335], ['incocnito: +40 -> 182\n', 182]] 
-2021-01-25 16:42:18: incocnito requested invalid match with id 21 
-2021-01-25 16:46:55: [['admin: +2 -> 2\n', 2], ['incocnito: +1 -> 1\n', 1], ['test: +1 -> 1\n', 1], ['aha: +0 -> 0\n', 0]] 
-2021-01-25 17:00:07: [['test: +2 -> 2\n', 2], ['incocnito: +1 -> 1\n', 1], ['admin: +0 -> 0\n', 0]] 
-2021-01-25 17:09:17: [['test: +2 -> 4\n', 4], ['incocnito: +1 -> 2\n', 2], ['admin: +0 -> 0\n', 0]] 
-2021-01-25 17:19:58: {'action': 'request_data'} 
-2021-01-25 17:19:58: {'action': 'request_data'} 
-2021-01-25 17:19:58: {'action': 'done'} 
-2021-01-25 17:19:58: {'action': 'request_data'} 
-2021-01-25 17:19:58: {'action': 'done'} 
-2021-01-25 17:20:20: {'action': 'request_data'} 
-2021-01-25 17:20:20: {'action': 'request_data'} 
-2021-01-25 17:20:20: {'action': 'done'} 
-2021-01-25 17:20:20: {'action': 'request_data'} 
-2021-01-25 17:20:20: {'action': 'done'} 
-2021-01-25 17:20:27: {'action': 'request_data'} 
-2021-01-25 17:20:27: {'action': 'request_data'} 
-2021-01-25 17:20:27: {'action': 'done'} 
-2021-01-25 17:20:27: {'action': 'request_data'} 
-2021-01-25 17:20:27: {'action': 'done'} 
-2021-01-25 17:20:43: {'action': 'request_data'} 
-2021-01-25 17:20:49: {'action': 'request_data'} 
-2021-01-25 17:21:00: {'action': 'request_data'} 
-2021-01-25 17:21:18: {'action': 'request_data'} 
-2021-01-25 17:21:26: {'action': 'request_data'} 
-2021-01-25 17:26:30: [['test: +2 -> 6\n', 6], ['incocnito: +0 -> 2\n', 2], ['admin: +1 -> 1\n', 1]] 
-2021-01-25 17:31:26: [['test: +2 -> 8\n', 8], ['incocnito: +1 -> 3\n', 3], ['admin: +0 -> 1\n', 1]] 
-2021-01-25 17:35:10: [['test: +0 -> 8\n', 8], ['incocnito: +2 -> 5\n', 5], ['admin: +1 -> 2\n', 2]] 
-2021-01-25 17:38:49: [['incocnito: -168 -> 14\n', 14], ['test: +40 -> -1128\n', -1128], ['admin: +40 -> 375\n', 375]] 
-2021-01-25 17:39:26: aha requested invalid match with id 23 
-2021-01-25 21:12:06: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:12:11: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:12:15: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:12:18: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:12:23: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:12:28: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:12:33: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:12:38: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:12:43: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:12:48: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:12:53: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:12:58: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:13:03: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:13:08: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:13:13: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:13:18: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:13:23: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:13:28: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:13:33: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:13:38: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:13:44: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:13:49: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:13:54: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:13:59: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:14:04: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:14:09: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:14:14: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:14:19: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:14:24: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:14:29: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:14:34: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:14:39: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:14:44: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:14:49: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:14:54: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:14:59: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:15:04: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:15:09: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:15:14: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:15:19: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:15:24: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:15:29: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:15:34: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:15:39: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:15:44: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:15:49: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:15:54: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:15:59: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:16:04: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:16:09: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:16:14: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:16:19: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:16:24: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:16:29: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:16:34: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:16:39: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:16:45: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:16:50: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:16:55: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:17:00: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:17:05: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:17:10: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:17:15: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:17:20: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
-2021-01-25 21:17:25: admin {'type': 'multiplayer', 'activity_id': '1', 'action': 'match_list'} 
+2021-02-02 14:29:43: Counting points for team re with members ['admin', 'test'] 
+2021-02-02 14:29:43: Card Ks adds 4 total: 4 
+2021-02-02 14:29:43: Card 9s adds 0 total: 4 
+2021-02-02 14:29:43: Card Ad adds 11 total: 15 
+2021-02-02 14:29:43: Card 10d adds 10 total: 25 
+2021-02-02 14:29:43: Card Jh adds 2 total: 27 
+2021-02-02 14:29:43: Card 9d adds 0 total: 27 
+2021-02-02 14:29:43: Card Js adds 2 total: 29 
+2021-02-02 14:29:43: Card Jh adds 2 total: 31 
+2021-02-02 14:29:43: Card Jc adds 2 total: 33 
+2021-02-02 14:29:43: Card Jd adds 2 total: 35 
+2021-02-02 14:29:43: Card Qc adds 3 total: 38 
+2021-02-02 14:29:43: Card Qh adds 3 total: 41 
+2021-02-02 14:29:43: Counting points for team contra with members ['incocnito', 'aha'] 
+2021-02-02 14:29:43: Card Ah adds 11 total: 11 
+2021-02-02 14:29:43: Card 9h adds 0 total: 11 
+2021-02-02 14:29:43: Card 9h adds 0 total: 11 
+2021-02-02 14:29:43: Card Ah adds 11 total: 22 
+2021-02-02 14:29:43: Card As adds 11 total: 33 
+2021-02-02 14:29:43: Card 10s adds 10 total: 43 
+2021-02-02 14:29:43: Card 10s adds 10 total: 53 
+2021-02-02 14:29:43: Card Ks adds 4 total: 57 
+2021-02-02 14:29:43: Card Ac adds 11 total: 68 
+2021-02-02 14:29:43: Card 9c adds 0 total: 68 
+2021-02-02 14:29:43: Card Ad adds 11 total: 79 
+2021-02-02 14:29:43: Card 9c adds 0 total: 79 
+2021-02-02 14:29:43: Card 9d adds 0 total: 79 
+2021-02-02 14:29:43: Card Qc adds 3 total: 82 
+2021-02-02 14:29:43: Card 10h adds 10 total: 92 
+2021-02-02 14:29:43: Card Kd adds 4 total: 96 
+2021-02-02 14:29:43: Card Kh adds 4 total: 100 
+2021-02-02 14:29:43: Card Qs adds 3 total: 103 
+2021-02-02 14:29:43: Card 10h adds 10 total: 113 
+2021-02-02 14:29:43: Card Jd adds 2 total: 115 
+2021-02-02 14:29:43: Card 9s adds 0 total: 115 
+2021-02-02 14:29:43: Card Kh adds 4 total: 119 
+2021-02-02 14:29:43: Card 10c adds 10 total: 129 
+2021-02-02 14:29:43: Card As adds 11 total: 140 
+2021-02-02 14:29:43: Card Qd adds 3 total: 143 
+2021-02-02 14:29:43: Card Js adds 2 total: 145 
+2021-02-02 14:29:43: Card Kc adds 4 total: 149 
+2021-02-02 14:29:43: Card Ac adds 11 total: 160 
+2021-02-02 14:29:43: Card 10d adds 10 total: 170 
+2021-02-02 14:29:43: Card Qs adds 3 total: 173 
+2021-02-02 14:29:43: Card Qd adds 3 total: 176 
+2021-02-02 14:29:43: Card Kc adds 4 total: 180 
+2021-02-02 14:29:43: Card Qh adds 3 total: 183 
+2021-02-02 14:29:43: Card Jc adds 2 total: 185 
+2021-02-02 14:29:43: Card 10c adds 10 total: 195 
+2021-02-02 14:29:43: Card Kd adds 4 total: 199 
+2021-02-02 14:41:35: Counting points for team re with members ['aha', 'test'] 
+2021-02-02 14:41:35: Card Ad adds 11 total: 11 
+2021-02-02 14:41:35: Card Kd adds 4 total: 15 
+2021-02-02 14:41:35: Card Jh adds 2 total: 17 
+2021-02-02 14:41:35: Card Ad adds 11 total: 28 
+2021-02-02 14:41:35: Card Jh adds 2 total: 30 
+2021-02-02 14:41:35: Card 10d adds 10 total: 40 
+2021-02-02 14:41:35: Card 10d adds 10 total: 50 
+2021-02-02 14:41:35: Card Ac adds 11 total: 61 
+2021-02-02 14:41:35: Card Qs adds 3 total: 64 
+2021-02-02 14:41:35: Card Qc adds 3 total: 67 
+2021-02-02 14:41:35: Card Qh adds 3 total: 70 
+2021-02-02 14:41:35: Card 10h adds 10 total: 80 
+2021-02-02 14:41:35: Card 10h adds 10 total: 90 
+2021-02-02 14:41:35: Card Qs adds 3 total: 93 
+2021-02-02 14:41:35: Card Qh adds 3 total: 96 
+2021-02-02 14:41:35: Card Qd adds 3 total: 99 
+2021-02-02 14:41:35: Card Qc adds 3 total: 102 
+2021-02-02 14:41:35: Card Qd adds 3 total: 105 
+2021-02-02 14:41:35: Card Js adds 2 total: 107 
+2021-02-02 14:41:35: Card Jc adds 2 total: 109 
+2021-02-02 14:41:35: Card Jc adds 2 total: 111 
+2021-02-02 14:41:35: Card Jd adds 2 total: 113 
+2021-02-02 14:41:35: Card Js adds 2 total: 115 
+2021-02-02 14:41:35: Card Jd adds 2 total: 117 
+2021-02-02 14:41:35: Card 10c adds 10 total: 127 
+2021-02-02 14:41:35: Card Ac adds 11 total: 138 
+2021-02-02 14:41:35: Card Kc adds 4 total: 142 
+2021-02-02 14:41:35: Card 9c adds 0 total: 142 
+2021-02-02 14:41:35: Card Kc adds 4 total: 146 
+2021-02-02 14:41:35: Card As adds 11 total: 157 
+2021-02-02 14:41:35: Card As adds 11 total: 168 
+2021-02-02 14:41:35: Card 10s adds 10 total: 178 
+2021-02-02 14:41:35: Card 9c adds 0 total: 178 
+2021-02-02 14:41:35: Card 9s adds 0 total: 178 
+2021-02-02 14:41:35: Card Ks adds 4 total: 182 
+2021-02-02 14:41:35: Card Ks adds 4 total: 186 
+2021-02-02 14:41:35: Card 10s adds 10 total: 196 
+2021-02-02 14:41:35: Card Kh adds 4 total: 200 
+2021-02-02 14:41:35: Card Ah adds 11 total: 211 
+2021-02-02 14:41:35: Card 9s adds 0 total: 211 
+2021-02-02 14:41:35: Counting points for team contra with members ['admin', 'incocnito'] 
+2021-02-02 14:41:35: Card 9d adds 0 total: 0 
+2021-02-02 14:41:35: Card Kd adds 4 total: 4 
+2021-02-02 14:41:35: Card 9d adds 0 total: 4 
+2021-02-02 14:41:35: Card 10c adds 10 total: 14 
+2021-02-02 14:41:35: Card 9h adds 0 total: 14 
+2021-02-02 14:41:35: Card 9h adds 0 total: 14 
+2021-02-02 14:41:35: Card Kh adds 4 total: 18 
+2021-02-02 14:41:35: Card Ah adds 11 total: 29 
+2021-02-02 17:34:06: Counting points for team re with members ['incocnito', 'aha'] 
+2021-02-02 17:34:06: Card 9h adds 0 total: 0 
+2021-02-02 17:34:06: Card Ah adds 11 total: 11 
+2021-02-02 17:34:06: Card Kh adds 4 total: 15 
+2021-02-02 17:34:06: Card Kh adds 4 total: 19 
+2021-02-02 17:34:06: Card Jc adds 2 total: 21 
+2021-02-02 17:34:06: Card 9d adds 0 total: 21 
+2021-02-02 17:34:06: Card Qd adds 3 total: 24 
+2021-02-02 17:34:06: Card Ad adds 11 total: 35 
+2021-02-02 17:34:06: Card Jc adds 2 total: 37 
+2021-02-02 17:34:06: Card 10d adds 10 total: 47 
+2021-02-02 17:34:06: Card Js adds 2 total: 49 
+2021-02-02 17:34:06: Card Ac adds 11 total: 60 
+2021-02-02 17:34:06: Card Jh adds 2 total: 62 
+2021-02-02 17:34:06: Card 10c adds 10 total: 72 
+2021-02-02 17:34:06: Card Jd adds 2 total: 74 
+2021-02-02 17:34:06: Card Ac adds 11 total: 85 
+2021-02-02 17:34:06: Card Jd adds 2 total: 87 
+2021-02-02 17:34:06: Card Kc adds 4 total: 91 
+2021-02-02 17:34:06: Card Kd adds 4 total: 95 
+2021-02-02 17:34:06: Card 10c adds 10 total: 105 
+2021-02-02 17:34:06: Card 10d adds 10 total: 115 
+2021-02-02 17:34:06: Card 9c adds 0 total: 115 
+2021-02-02 17:34:06: Card 9d adds 0 total: 115 
+2021-02-02 17:34:06: Card Kc adds 4 total: 119 
+2021-02-02 17:34:06: Card Kd adds 4 total: 123 
+2021-02-02 17:34:06: Card As adds 11 total: 134 
+2021-02-02 17:34:06: Card 10s adds 10 total: 144 
+2021-02-02 17:34:06: Card 9c adds 0 total: 144 
+2021-02-02 17:34:06: Card Ks adds 4 total: 148 
+2021-02-02 17:34:06: Card As adds 11 total: 159 
+2021-02-02 17:34:06: Card Ks adds 4 total: 163 
+2021-02-02 17:34:06: Card 10s adds 10 total: 173 
+2021-02-02 17:34:06: Card Ah adds 11 total: 184 
+2021-02-02 17:34:06: Card 9s adds 0 total: 184 
+2021-02-02 17:34:06: Card 9s adds 0 total: 184 
+2021-02-02 17:34:06: Card 9h adds 0 total: 184 
+2021-02-02 17:34:06: Counting points for team contra with members ['admin', 'test'] 
+2021-02-02 17:34:06: Card Qc adds 3 total: 3 
+2021-02-02 17:34:06: Card Qc adds 3 total: 6 
+2021-02-02 17:34:06: Card 10h adds 10 total: 16 
+2021-02-02 17:34:06: Card Qh adds 3 total: 19 
+2021-02-02 17:34:06: Card 10h adds 10 total: 29 
+2021-02-02 17:34:06: Card Qh adds 3 total: 32 
+2021-02-02 17:34:06: Card Qs adds 3 total: 35 
+2021-02-02 17:34:06: Card Js adds 2 total: 37 
+2021-02-02 17:34:06: Card Qs adds 3 total: 40 
+2021-02-02 17:34:06: Card Jh adds 2 total: 42 
+2021-02-02 17:34:06: Card Qd adds 3 total: 45 
+2021-02-02 17:34:06: Card Ad adds 11 total: 56 

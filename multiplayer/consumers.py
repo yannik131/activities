@@ -268,12 +268,9 @@ class DoppelkopfConsumer(GameConsumer):
                     data["re_2"] = ""
                     data["active"] = player
                     message["data"]["active"] = player
-                if not data["solist"]:
-                    if data["re_1"] and not data["re_2"]:
-                        data["solist"] = data["re_1"]
-                        data["re_1"] = ""
-                        data["re_2"] = ""
+                else:
                     data["game_type"] = "diamonds"
+                    message["data"]["game_type"] = "diamonds"
                 message["data"]["re_1"] = data["re_1"]
                 message["data"]["re_2"] = data["re_2"]
                 message["data"]["solist"] = data["solist"]

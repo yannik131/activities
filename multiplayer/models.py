@@ -153,6 +153,8 @@ class MultiplayerMatch(models.Model):
         self.game_data["game_type"] = ""
         self.game_data["re_value"] = ""
         self.game_data["contra_value"] = ""
+        self.game_data["re_extra"] = "0"
+        self.game_data["contra_extra"] = "0"
         self.game_data["mode"] = "bidding"
         self.game_data["re_1"] = ""
         self.game_data["re_2"] = ""

@@ -21,6 +21,10 @@ const value_translations = {
     "3": "{% trans 'Keine 30' %}",
     "s": "{% trans 'Schwarz' %}"
 };
+const team_translations = {
+    "re": "{% trans 'Re' %}",
+    "contra": "{% trans 'Kontra' %}"
+};
 var solist;
 var re_value;
 var contra_value;
@@ -37,7 +41,13 @@ function defineSortValues() {
         suit_values[suits[i]] = count;
         count += 10;
     }
-    var values = ["9", "K", "J", "Q", "10", "A"];
+    var values;
+    if(solist && solist.length) {
+        values = ["9", "J", "Q", "K", "10", "A"];
+    }
+    else {
+        values = ["9", "K", "J", "Q", "10", "A"];
+    }
     for(var i = 0; i < values.length; i++) {
         value_values[values[i]] = i;
     }
@@ -65,7 +75,7 @@ function getCardSortValue(type) {
                 case "d": return 93;
             }
         }
-        else if(vs.suit == game_type[0]) {
+        else if(vs.suit == game_type[0] || (game_type == "marriage" && vs.suit == "d")) {
             switch(vs.value) {
                 case "A": return 92;
                 case "10": return 91;
@@ -124,21 +134,22 @@ function processMultiplayerData(data) {
 }
 
 function handleValue(data) {
-    createValueButtons();
-    if(data.username == this_user) {
-        return;
-    }
     var info = data.username + ": ";
+    if(data.who == "re") {
+        re_value = data.value;
+    }
+    else {
+        contra_value = data.value;
+    }
     if(data.value == "w") {
-        if(data.who == "re") {
-            info += "{% trans 'Re' %}";
-        }
-        else {
-            info += "{% trans 'Kontra' %}";
-        }
+        info += team_translations[data.who];
     }
     else {
         info += value_translations[data.value];
+    }
+    createValueButtons();
+    if(data.username == this_user) {
+        return;
     }
     createInfoAlert(info, 1000);
 }
@@ -147,23 +158,28 @@ function handlePlay(data) {
     clearStacks();
     var trick = JSON.parse(data.trick);
     if(trick.length) {
-        refreshStacks([JSON.parse(data.trick)]);
+        refreshStacks([JSON.parse(data.trick)], true);
     }
     if(data.username != this_user) {
         removeCardFrom(players[data.username], 1);
     }
     m_show = data.m_show;
+    if(data.re_1) {
+        setRe(data);
+    }
     if(data.clear) {
         setTimeout(clearStacks, 500);
     }
     if(data.round) {
         var new_data = data.round;
         var info = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n";
-        createInfoAlert(info+"\n"+data.result+": "+data.points+" {% trans 'Punkte' %}\n"+data.summary);
+        createInfoAlert(info+"\n"+team_translations[data.result]+": "+data.points+" {% trans 'Punkte' %}\n"+data.summary);
         active = new_data.active;
         loadGameField(new_data);
     }
-    createValueButtons();
+    else {
+        createValueButtons();
+    }
     updateAllInfo();
 }
 
@@ -190,8 +206,11 @@ function updateAllInfo() {
     }
 }
 
-function createValueButtons(m_show) {
+function createValueButtons() {
     clearButtons();
+    if(this_user != active) {
+        return;
+    }
     var last_bid;
     if(re) {
         last_bid = re_value;
@@ -229,6 +248,7 @@ function createValueButtons(m_show) {
                 trans = "{% trans 'Kontra' %}";
             }
         }
+        console.log("button, last bid:", last_bid, "value:", value);
         createButton(trans, value, function() {
             sendValue(value);
         });
@@ -243,14 +263,19 @@ function sendValue(value) {
     }))
 }
 
+function setRe(data) {
+    re = this_user == data.re_1 || this_user == data.re_2 || this_user == data.solist;
+}
+
 function handleBid(data) {
     console.log("bid, game_type: ", data.game_type);
     if(data.game_type) {
         game_type = data.game_type;
+        setRe(data);
         if(data.solist.length) {
-            re = this_user == data.re_1 || this_user == data.re_2 || this_user == data.solist;
             updatePlayerInfo(data.solist, undefined, data.game_type);
             solist = data.solist;
+            defineSortValues();
             updateCardsFor(1);
         }
         handleStart();
@@ -272,8 +297,8 @@ function loadGameField(data) {
     re_value = data.re_value;
     contra_value = data.contra_value;
     m_show = data.m_show;
-    re = this_user == data.re_1 || this_user == data.re_2 || this_user == data.solist;
-    
+    setRe(data);
+    defineSortValues();
     clearButtons();
     positionPlayers(player_list);
     for(var i = 0; i < player_list.length; i++) {
@@ -297,7 +322,7 @@ function loadGameField(data) {
             handleStart();
             var trick = JSON.parse(data.trick);
             if(trick.length) {
-                refreshStacks([JSON.parse(data.trick)]);
+                refreshStacks([JSON.parse(data.trick)], true);
             }
             break;
     }
@@ -314,6 +339,9 @@ function cardClicked(value, suit, card) {
         addStack(card.id);
     }
     else {
+        if(stacks[0].length == 4) {
+            return;
+        }
         var first_vs = getVs(stacks[0][0].id);
         if(isTrump(first_vs.value, first_vs.suit) && playerHasTrump() && !isTrump(value, suit)) {
             return;
@@ -326,7 +354,7 @@ function cardClicked(value, suit, card) {
                 }
             }
         }
-        beatStack(1, card.id);
+        beatStack(1, card.id, true);
     }
     
     removePlayerCard(card);
@@ -432,7 +460,5 @@ function sendBid(bid) {
         're': getConvertedHand().includes("Qc")? "1" : ""
     }));
 }
-
-defineSortValues();
 
 gameConnect('doppelkopf', '{{ match.id }}', '{{ user.username }}');

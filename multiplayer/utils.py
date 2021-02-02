@@ -131,7 +131,9 @@ def handle_play(game, data, text_data, username, message, match):
                     data["m_show"] = len(tricks)
                     data["game_type"] = "diamonds"
                     data["solist"] = ""
-                    message["m_show"] = data["m_show"]
+                    message["data"]["m_show"] = data["m_show"]
+                    message["data"]["re_1"] = data["re_1"]
+                    message["data"]["re_2"] = data["re_2"]
         data["active"] = winner
         data["trick"] = json.dumps([])
         message["data"]["clear"] = "1"
@@ -142,8 +144,8 @@ def handle_play(game, data, text_data, username, message, match):
                 result, winner_points, game_value = determine_winner_skat(data)
                 points_summary = give_skat_points(data, players, result, game_value)
             else:
-                result, winner_points = determine_winner_doko(data)
-                points_summary = give_doko_points(data, players, result)
+                result, winner_points = determine_winner_doko(data, winner, "Jc" == tricks[-1][int(text_data["index"])])
+                points_summary = give_doko_points(data, players, result, winner_points)
             message["data"]["result"] = result
             if winner_points:
                 message["data"]["points"] = winner_points
@@ -168,18 +170,41 @@ DOKO_VALUES = {
     "": 1, "w": 2, "9": 3, "6": 4, "3": 5, "s": 6
 }
 
-def determine_winner_doko(data):
+def sum_tricks(data, team, name):
+    count = 0
+    points = 0
+    log("Counting points for team", name, "with members", team)
+    for player in team:
+        for trick in json.loads(data[player+"_tricks"]):
+            count += 1
+            trick_points = 0
+            for card in trick:
+                points += CARD_VALUES[card[:-1]]
+                log("Card", card, "adds", CARD_VALUES[card[:-1]], "total:", points)
+                trick_points += CARD_VALUES[card[:-1]]
+            if not data["solist"]:
+                if trick_points >= 40:
+                    change(data, name+"_extra", 1)
+                change(data, name+"_extra", len([card for card in trick if card == "Ad"]))
+    return points, count
+
+def determine_winner_doko(data, last_winner, charlie):
+    if data["re_1"] and not data["re_2"]:
+        data["solist"] = data["re_1"]
+        data["re_1"] = ""
     if data["solist"]:
         re = [data["solist"]]
     else:
         re = [data["re_1"], data["re_2"]]
-    re_points = 0
-    count = 0
-    for player in re:
-        for trick in json.loads(data[player+"_tricks"]):
-            count += 1
-            for card in trick:
-                re_points += CARD_VALUES[card[:-1]]
+    contra = [p for p in json.loads(data["players"]) if p not in re]
+    if charlie:
+        if last_winner in re:
+            change(data, "re_extra", 1)
+        else:
+            change(data, "contra_extra", 1)
+    re_points, count = sum_tricks(data, re, "re")
+    _, _ = sum_tricks(data, contra, "contra")
+    
     value = data["contra_value"]
     if value == "s" and count == 12:
         return "contra", 240
@@ -204,19 +229,34 @@ def sum_change(dictionary, key, _change, summary):
         pre = "+"
     summary.append([f"{key[:-7]}: {pre}{_change} -> {dictionary[key]}\n", {dictionary[key]}])
     
-def give_doko_points(data, players, result):
+def give_doko_points(data, players, result, winner_points):
     points = 0
     value = data[result+"_value"]
     if result == "contra":
-        points += 1 # gegen die alten
+        if not data["solist"]:
+            points += 1 # gegen die alten
+            points += int(data["contra_extra"])
+    else:
+        points += int(data["re_extra"])
     points += DOKO_VALUES[value]
+    for mark in [151, 181, 211, 240]:
+        if winner_points > mark:
+            points += 1
+        else:
+            break
     summary = []
     if data["solist"]:
         for player in players:
             if player == data["solist"]:
-                sum_change(data, player+"_points", 3*points, summary)
+                if result == "re":
+                    sum_change(data, player+"_points", 3*points, summary)
+                else:
+                    sum_change(data, player+"_points", -3*points, summary)
             else:
-                sum_change(data, player+"_points", points, summary)
+                if result == "re":
+                    sum_change(data, player+"_points", -points, summary)
+                else:
+                    sum_change(data, player+"_points", points, summary)
     else:
         for player in players:
             if result == "re":

@@ -13,6 +13,7 @@ var stacks = [];
 var buttons = [];
 const field = document.querySelector(".game-field");
 var scale, w, h;
+var button_row = 0;
 
 function getGridPosition(value, suit) {
     var x, y;
@@ -288,24 +289,32 @@ function addStack(type) {
     field.appendChild(card);
 }
 
-function beatStack(n, type) {
+function beatStack(n, type, right) {
     const stack = stacks[n-1];
     const card = createCard(type);
-    card.style.left = stack[0].style.left;
-    card.style.top = parseInt(stack[stack.length-1].style.top)+0.8*h/4+"px";
+    
+    if(right) {
+        card.style.top = stack[stack.length-1].style.top;
+        card.style.left = parseInt(stack[stack.length-1].style.left)+0.4*w+"px";
+    }
+    else {
+        card.style.left = stack[0].style.left;
+        card.style.top = parseInt(stack[stack.length-1].style.top)+0.8*h/4+"px";
+    }
+    
     card.id = type;
     stack.push(card);
     field.appendChild(card);
 }
 
-function refreshStacks(new_stacks) {
+function refreshStacks(new_stacks, right) {
     for(var i = 0; i < new_stacks.length; i++) {
         if(typeof stacks[i] == "undefined") {
             addStack(new_stacks[i][0]);
         }
         for(var j = 1; j < new_stacks[i].length; j++) {
             if(typeof stacks[i][j] == "undefined") {
-                beatStack(i+1, new_stacks[i][j]);
+                beatStack(i+1, new_stacks[i][j], right);
             }
         }
     }
@@ -346,21 +355,24 @@ function createButton(text, id, callback, color) {
     button.innerHTML = text;
     button.onclick = callback;
     button.style.right = (buttons.length == 0? 0 : field.offsetWidth-buttons[buttons.length-1].offsetLeft+5) + "px";
+    field.appendChild(button);
+    if(button.offsetLeft < 0) {
+        ++button_row;
+        button.style.right = "0px";
+    }
     button.style.top = "0px";
     if(buttons.length) {
-        button.style.top = buttons[buttons.length-1].style.top;
+        if(button_row == 0) {
+            button.style.top = buttons[buttons.length-1].style.top;
+        }
+        else {
+            button.style.top = button_row*(10+buttons[buttons.length-1].offsetHeight)+"px";
+        }
     }
+    
     button.id = id;
     if(color) {
         button.style.color = color;
-    }
-    field.appendChild(button);
-    if(button.offsetLeft < 0) {
-        button.style.top = (10+buttons[buttons.length-1].offsetHeight)+"px";
-        button.style.right = "0px";
-        if(buttons[buttons.length-1].style.top != "0px") {
-            button.style.right = buttons[buttons.length-1].offsetLeft;
-        }
     }
     
     buttons.push(button);
@@ -386,6 +398,7 @@ function clearButtons() {
         buttons[i].remove();
     }
     buttons = [];
+    button_row = 0;
 }
 
 function createInfoAlert(info, timeout) {

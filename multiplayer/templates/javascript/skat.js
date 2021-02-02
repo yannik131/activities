@@ -469,6 +469,9 @@ function cardClicked(value, suit, card) {
         sendMove();
         return;
     }
+    if(stacks[0].length == 3) {
+        return;
+    }
     var first_card = stacks[0][0];
     var vs = getVs(first_card.id);
     switch(game_type) {
@@ -531,4 +534,4 @@ function updatePlayerPositions(data) {
     player_positions = {[forehand]: "{% trans 'Vorhand' %}", [middle]: "{% trans 'Mittelhand' %}", [behind]: "{% trans 'Hinterhand' %}"};
 }
 
-gameConnect('durak', '{{ match.id }}', '{{ user.username }}');
+gameConnect('skat', '{{ match.id }}', '{{ user.username }}');
