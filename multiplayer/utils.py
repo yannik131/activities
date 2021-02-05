@@ -121,7 +121,7 @@ def handle_play(game, data, text_data, username, message, match):
         if game == "skat":
             data["forehand"] = winner
             message["data"]["forehand"] = winner
-            ouvert_null_lost = (data["game_type"] == "n" and data["solist"] == winner) or (("o" in data["declarations"] or "b" in data["declarations"]) and data["solist"] != winner)
+            ouvert_null_lost = (data["game_type"] == "n" and data["solist"] == winner) or (("o" in data["declarations"] or "b" in data["declarations"]) and (data["solist"] != winner and data["game_type"] != "n"))
         else:
             ouvert_null_lost = False
             if data["game_type"] == "marriage":
@@ -328,7 +328,7 @@ def calc_game_value(data, points, tricks):
 
 
 def determine_factor(data):
-    factor = 1
+    factor = 0
     if data["game_type"] == "n":
         return factor
     highest = ["Js", "Jh", "Jd"]

@@ -275,12 +275,14 @@ function removeCardsFromDeck(n) {
     updateDeck();
 }
 
-function addStack(type) {
+function addStack(type, row, column) {
     const n = stacks.length;
     const padding = {x: 10, y: h/4};
     const top_left = {x: 1/3*h+10, y: 2/3*h+10};
-    const row = Math.floor(n/3);
-    const column = n % 3;
+    if(!row) {
+        row = Math.floor(n/3);
+        column = n % 3;
+    }
     const card = createCard(type);
     card.style.left = top_left.x+column*(w+padding.x)+"px";
     card.style.top = top_left.y+(h+padding.y)*row+"px";
@@ -308,6 +310,14 @@ function beatStack(n, type, right) {
 }
 
 function refreshStacks(new_stacks, right) {
+    if(new_stacks.length < stacks.length) {
+        while(stacks.length > new_stacks.length) {
+            for(var i = 0; i < stacks[stacks.length-1].length; i++) {
+                stacks[stacks.length-1][i].remove();
+            }
+            stacks.splice(stacks.length-1, 1);
+        }
+    }
     for(var i = 0; i < new_stacks.length; i++) {
         if(typeof stacks[i] == "undefined") {
             addStack(new_stacks[i][0]);
@@ -353,7 +363,6 @@ function createButton(text, id, callback, color) {
     }
     button.className = "game-button";
     button.innerHTML = text;
-    button.onclick = callback;
     button.style.right = (buttons.length == 0? 0 : field.offsetWidth-buttons[buttons.length-1].offsetLeft+5) + "px";
     field.appendChild(button);
     if(button.offsetLeft < 0) {
@@ -374,7 +383,7 @@ function createButton(text, id, callback, color) {
     if(color) {
         button.style.color = color;
     }
-    
+    button.onclick = callback;
     buttons.push(button);
 }
 
@@ -467,6 +476,11 @@ function clearStacks() {
         }
     }
     stacks = [];
+    var card = document.getElementById("last_trick0");
+    for(var i = 1; card; i++) {
+        card.remove();
+        card = document.getElementById("last_trick"+i);
+    }
 }
 
 function positionPlayers(player_list) {

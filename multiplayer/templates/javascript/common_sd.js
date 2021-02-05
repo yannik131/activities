@@ -1,3 +1,5 @@
+{% load i18n %}
+
 function compare(vs1, vs2) {
     return getCardSortValue(vs1.value+vs1.suit, game_type != "n") > getCardSortValue(vs2.value+vs2.suit, game_type != "n");
 }
@@ -31,3 +33,31 @@ function sendMove() {
     socket.send(JSON.stringify(response));
 }
 
+function lastTrickButton() {
+    if(!last_trick) {
+        return;
+    }
+    createButton("{% trans 'Stich' %}", "last_trick", function() {
+        if(document.getElementById("last_trick0")) {
+            for(var i = 0; i < last_trick.length; i++) {
+                var card = document.getElementById("last_trick"+i);
+                if(card) {
+                    card.remove();
+                }
+            }
+            deleteButton("last_trick");
+            lastTrickButton();
+        }
+        else {
+            for(var i = 0; i < last_trick.length; i++) {
+                var card = createCard(last_trick[i]);
+                card.id = "last_trick"+i;
+                card.style.position.top = "0px";
+                card.style.left = i*0.4*w+"px";
+                card.style.zIndex = 100;
+                field.appendChild(card);
+            }
+            document.getElementById("last_trick").innerHTML = "{% trans 'Okay' %}";
+        }
+    });
+}

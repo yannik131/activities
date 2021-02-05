@@ -31,6 +31,8 @@ var contra_value;
 var m_show;
 var player_info = {};
 var re;
+var last_trick;
+var last_bid_cards = 12;
 
 {% include 'javascript/common_sd.js' %}
 
@@ -131,6 +133,7 @@ function processMultiplayerData(data) {
         case "abort":
             location.href = data.url;
     }
+    lastTrickButton();
 }
 
 function handleValue(data) {
@@ -155,7 +158,6 @@ function handleValue(data) {
 }
 
 function handlePlay(data) {
-    clearStacks();
     var trick = JSON.parse(data.trick);
     if(trick.length) {
         refreshStacks([JSON.parse(data.trick)], true);
@@ -169,12 +171,14 @@ function handlePlay(data) {
     }
     if(data.clear) {
         setTimeout(clearStacks, 500);
+        last_trick = trick;
     }
     if(data.round) {
         var new_data = data.round;
         var info = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n";
         createInfoAlert(info+"\n"+team_translations[data.result]+": "+data.points+" {% trans 'Punkte' %}\n"+data.summary);
         active = new_data.active;
+        last_trick = null;
         loadGameField(new_data);
     }
     else {
@@ -208,7 +212,7 @@ function updateAllInfo() {
 
 function createValueButtons() {
     clearButtons();
-    if(this_user != active) {
+    if(this_user != active || game_type == "marriage" && !m_show.length) {
         return;
     }
     var last_bid;

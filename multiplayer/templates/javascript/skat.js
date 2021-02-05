@@ -85,6 +85,7 @@ function processMultiplayerData(data) {
             location.href = data.url;
     }
     updateAllInfo();
+    lastTrickButton();
 }
 
 function loadGameField(data) {
@@ -186,8 +187,10 @@ function handlePlay(data) {
     updateAllInfo();
     if(data.clear) {
         setTimeout(clearStacks, 500);
+        last_trick = trick;
     }
     if(data.round) {
+        last_trick = null;
         var new_data = data.round;
         var info = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+solist+": ";
         if(data.result == "won")
