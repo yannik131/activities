@@ -264,14 +264,14 @@ def give_doko_points(data, players, result, winner_points):
         for player in players:
             if result == "re":
                 if player == data["re_1"] or player == data["re_2"]:
-                    sum_change(data, player+"_points", points+re_extra, summary)
+                    sum_change(data, player+"_points", (points+re_extra-contra_extra), summary)
                 else:
-                    sum_change(data, player+"_points", -points+contra_extra, summary)
+                    sum_change(data, player+"_points", -(points+re_extra-contra_extra), summary)
             else:
                 if player == data["re_1"] or player == data["re_2"]:
-                    sum_change(data, player+"_points", -points+re_extra, summary)
+                    sum_change(data, player+"_points", -(points-re_extra+contra_extra), summary)
                 else:
-                    sum_change(data, player+"_points", points+contra_extra, summary)
+                    sum_change(data, player+"_points", (points-re_extra+contra_extra), summary)
     summary = sorted(summary, key=lambda t: t[1])
     return "".join([t[0] for t in summary])
     

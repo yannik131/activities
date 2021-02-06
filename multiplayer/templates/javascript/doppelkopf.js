@@ -267,7 +267,7 @@ function sendValue(value) {
     socket.send(JSON.stringify({
         'action': 'value',
         'value': value,
-        'who': getConvertedHand().includes("Qc")? "re" : "contra",
+        'who': re? "re" : "contra",
         "value_ncards": player1_cards.length-1
     }));
 }
@@ -467,7 +467,7 @@ function sendBid(bid) {
     socket.send(JSON.stringify({
         'action': 'bid',
         'bid': bid,
-        're': getConvertedHand().includes("Qc")? "1" : ""
+        're': re? 1 : 0
     }));
 }
 
