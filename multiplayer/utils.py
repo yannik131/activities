@@ -151,16 +151,16 @@ def handle_play(game, data, text_data, username, message, match):
                 message["data"]["points"] = winner_points
             message["data"]["summary"] = points_summary
             data["summary"] = points_summary
-            starting = after(data["started"], players)
+            data["started"] = after(data["started"], players)
             if game == "skat":
                 match.start_skat()
-                match.game_data["forehand"] = starting
+                data["forehand"] = data["started"]
+                data["active"] = after(data["forehand"], players)
             else:
                 match.start_doppelkopf()
+                data["active"] = data["started"]
             message["data"]["game_number"] = data["game_number"]
-            match.game_data["active"] = after(starting, players)
             message["data"]["round"] = match.game_data
-            match.game_data["started"] = starting
 
 DOKO_GAME_VALUES = {
     "": 121, "w": 121, "9": 151, "6": 181, "3": 211, "s": 240
@@ -231,20 +231,23 @@ def sum_change(dictionary, key, _change, summary):
     
 def give_doko_points(data, players, result, winner_points):
     points = 0
+    log("start:", points)
     value = data[result+"_value"]
+    re_extra = int(data["re_extra"])
+    contra_extra = int(data["contra_extra"])
+    log("re_extra", re_extra, "contra_extra", contra_extra)
     if result == "contra":
         if not data["solist"]:
             points += 1 # gegen die alten
-            points += int(data["contra_extra"])
-    else:
-        points += int(data["re_extra"])
     points += DOKO_VALUES[value]
     for mark in [151, 181, 211, 240]:
         if winner_points > mark:
             points += 1
+            log(">", mark, "+1")
         else:
             break
     summary = []
+    log("total:", points, "solist:", bool(data["solist"]))
     if data["solist"]:
         for player in players:
             if player == data["solist"]:
@@ -261,14 +264,14 @@ def give_doko_points(data, players, result, winner_points):
         for player in players:
             if result == "re":
                 if player == data["re_1"] or player == data["re_2"]:
-                    sum_change(data, player+"_points", points, summary)
+                    sum_change(data, player+"_points", points+re_extra, summary)
                 else:
-                    sum_change(data, player+"_points", -points, summary)
+                    sum_change(data, player+"_points", -points+contra_extra, summary)
             else:
                 if player == data["re_1"] or player == data["re_2"]:
-                    sum_change(data, player+"_points", -points, summary)
+                    sum_change(data, player+"_points", -points+re_extra, summary)
                 else:
-                    sum_change(data, player+"_points", points, summary)
+                    sum_change(data, player+"_points", points+contra_extra, summary)
     summary = sorted(summary, key=lambda t: t[1])
     return "".join([t[0] for t in summary])
     
@@ -302,6 +305,7 @@ def determine_winner_skat(data):
             result = "won"
         else:
             result = "overbid"
+        log("game_value:", game_value, "bid:", int(data[data["solist"]+"_bid"]), "->", result)
     
     return result, points, game_value
     
@@ -328,9 +332,9 @@ def calc_game_value(data, points, tricks):
 
 
 def determine_factor(data):
-    factor = 0
+    factor = 1
     if data["game_type"] == "n":
-        return factor
+        return 1
     highest = ["Js", "Jh", "Jd"]
     cards = json.loads(data[data["solist"]])
     with_j = "Jc" in cards
@@ -341,6 +345,15 @@ def determine_factor(data):
             factor += 1
         else:
             break
+    if data["game_type"] != "g" and factor == 3:
+        highest = ["A", "10", "K", "Q", "J", "9", "8", "7"]
+        for trump in highest:
+            if with_j and trump+data["game_type"] in cards:
+                factor += 1
+            elif not with_j and (trump+data["game_type"] not in cards):
+                factor += 1
+            else:
+                break
     declarations = data["declarations"]
     if "h" in declarations:
         factor += 1
@@ -350,15 +363,6 @@ def determine_factor(data):
         factor += 2
     elif "o" in declarations:
         factor += 3
-    if data["game_type"] != "g":
-        highest = ["A", "10", "K", "Q", "J", "9", "8", "7"]
-        for trump in highest:
-            if with_j and trump+data["game_type"] in cards:
-                factor += 1
-            elif not with_j and (trump+data["game_type"] not in cards):
-                factor += 1
-            else:
-                break
     return factor+1
     
     

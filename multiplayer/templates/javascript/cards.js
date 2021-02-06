@@ -8,7 +8,6 @@ var player_cards = {1: player1_cards, 2: player2_cards, 3: player3_cards, 4: pla
 var players = {}; //username -> 1-4
 var suit_values = {}, value_values = {};
 var deck = [];
-var trump_suit;
 var stacks = [];
 var buttons = [];
 const field = document.querySelector(".game-field");
@@ -208,14 +207,9 @@ function removeCardFrom(player, n, type) {
     }
     for(var i = 0; (i < n && vars.cards.length > 0) || type; i++) {
         if(type) {
-            console.log("checking: ", vars.cards[i].id);
             if(vars.cards[i].id == type) {
-                console.log("found: ", vars.cards[i].id);
                 vars.cards[i].remove();
                 vars.cards.splice(i, 1);
-                for(var j = 0; j < vars.cards.length; j++) {
-                    console.log(vars.cards[j].id);
-                }
                 break;
             }
             else if(i == vars.cards.length-1) {
@@ -420,6 +414,8 @@ function createInfoAlert(info, timeout) {
     info_alert.innerHTML = info;
     info_alert.id = "info-alert";
     if(timeout) {
+        info_alert.style.zIndex = 1;
+        info_alert.style.border = "1px solid gray";
         setTimeout(function() {
             document.getElementById("info-alert").remove();
         }, timeout);

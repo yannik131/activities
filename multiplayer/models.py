@@ -6,7 +6,7 @@ from django.shortcuts import reverse
 import uuid
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
-from .utils import create_deck
+from .utils import after, create_deck
 from django.utils.translation import gettext_lazy as _
 import json
 from multiplayer.utils import change
@@ -20,6 +20,10 @@ class MultiplayerMatch(models.Model):
     game_data = HStoreField(default=dict)
     channel_group_name = models.UUIDField(default=uuid.uuid4)
     in_progress = models.BooleanField(default=False)
+    
+    @staticmethod
+    def last():
+        return MultiplayerMatch.objects.all().last()
     
     @staticmethod
     def match_list_for(activity_id):
@@ -159,9 +163,10 @@ class MultiplayerMatch(models.Model):
         self.game_data["re_1"] = ""
         self.game_data["re_2"] = ""
         self.game_data["solist"] = ""
-        self.game_data["active"] = players[1]
         self.game_data["trick"] = json.dumps([])
-        self.game_data["m_show"] = ""
+        self.game_data["m_show"] = "0"
+        self.game_data["value_ncards"] = "0"
+        self.game_data["active"] = players[0]
         for player in players:
             self.game_data[player+"_tricks"] = json.dumps([])
             self.game_data[player+"_bid"] = ""

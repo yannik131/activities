@@ -10,6 +10,7 @@ var solist;
 var no_take = "";
 var ouvert = false;
 var trump_suit;
+var last_trick;
 
 {% include 'javascript/common_sd.js' %}
 
@@ -506,7 +507,7 @@ function createBidButtons(active, highest_bid, more) {
     if(this_user != active) {
         return;
     }
-    bid_values = [18, 20, 22, 23, 24, 27, 30, 33, 35, 36, 40, 44, 45, 46, 48, 50, 54, 55, 59, 60, 63, 66, 70, 72, 77, 84, 96, 120, 144, 168]
+    bid_values = [18, 20, 22, 23, 24, 27, 30, 33, 35, 36, 40, 44, 45, 46, 48, 50, 54, 55, 59, 60, 63, 66, 70, 72, 77, 84, 96, 120, 144, 168];
     if(more && highest_bid) {
         var bid = next(highest_bid[0], bid_values);
         createButton(bid, bid, function() {

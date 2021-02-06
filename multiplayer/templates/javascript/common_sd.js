@@ -1,7 +1,7 @@
 {% load i18n %}
 
 function compare(vs1, vs2) {
-    return getCardSortValue(vs1.value+vs1.suit, game_type != "n") > getCardSortValue(vs2.value+vs2.suit, game_type != "n");
+    return getCardSortValue(vs1.value+vs1.suit) > getCardSortValue(vs2.value+vs2.suit);
 }
 
 function indexOfHighestCard() {

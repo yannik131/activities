@@ -32,7 +32,7 @@ var m_show;
 var player_info = {};
 var re;
 var last_trick;
-var last_bid_cards = 12;
+var value_ncards;
 
 {% include 'javascript/common_sd.js' %}
 
@@ -58,7 +58,8 @@ function defineSortValues() {
 function getCardSortValue(type) {
     var vs = getVs(type);
     if(game_type == "diamonds" || game_type == "hearts" || game_type == "spades" || game_type == "clubs" || game_type == "marriage") {
-        if(type == "10h") {
+        if((game_type == "diamonds" || game_type == "marriage") && type == "10h" || 
+        (game_type != "diamonds" && game_type != "marriage" && vs.suit == game_type[0])) {
             return 101;
         }
         else if(vs.value == "Q") {
@@ -138,6 +139,7 @@ function processMultiplayerData(data) {
 
 function handleValue(data) {
     var info = data.username + ": ";
+    value_ncards = parseInt(data.value_ncards);
     if(data.who == "re") {
         re_value = data.value;
     }
@@ -165,9 +167,10 @@ function handlePlay(data) {
     if(data.username != this_user) {
         removeCardFrom(players[data.username], 1);
     }
-    m_show = data.m_show;
+    m_show = parseInt(data.m_show);
     if(data.re_1) {
         setRe(data);
+        createInfoAlert("Re: "+data.re_1+", "+data.re_2, 500);
     }
     if(data.clear) {
         setTimeout(clearStacks, 500);
@@ -212,7 +215,7 @@ function updateAllInfo() {
 
 function createValueButtons() {
     clearButtons();
-    if(this_user != active || game_type == "marriage" && !m_show.length) {
+    if(this_user != active || game_type == "marriage" && !m_show) {
         return;
     }
     var last_bid;
@@ -227,19 +230,20 @@ function createValueButtons() {
     if(!m_show) {
         m_show = 0;
     }
-    if(last_bid == "" && l >= 11-m_show) {
+    const allowed = (value_ncards && value_ncards-player1_cards.length <= 1);
+    if(last_bid == "" && (l >= 11-m_show || allowed)) {
         value = "w";
     }
-    else if(last_bid == "w" && l >= 10-m_show) {
+    else if(last_bid == "w" && (l >= 10-m_show || allowed)) {
         value = "9";
     }
-    else if(last_bid == "9" && l >= 9-m_show) {
+    else if(last_bid == "9" && (l >= 9-m_show || allowed)) {
         value = "6";
     }
-    else if(last_bid == "6" && l >= 8-m_show) {
+    else if(last_bid == "6" && (l >= 8-m_show || allowed)) {
         value = "3";
     }
-    else if(last_bid == "3" && l >= 7-m_show) {
+    else if(last_bid == "3" && (l >= 7-m_show || allowed)) {
         value = "s";
     }
     if(value) {
@@ -263,8 +267,9 @@ function sendValue(value) {
     socket.send(JSON.stringify({
         'action': 'value',
         'value': value,
-        'who': getConvertedHand().includes("Qc")? "re" : "contra"
-    }))
+        'who': getConvertedHand().includes("Qc")? "re" : "contra",
+        "value_ncards": player1_cards.length-1
+    }));
 }
 
 function setRe(data) {
@@ -300,7 +305,8 @@ function loadGameField(data) {
     game_type = data.game_type || "diamonds";
     re_value = data.re_value;
     contra_value = data.contra_value;
-    m_show = data.m_show;
+    m_show = parseInt(data.m_show);
+    value_ncards = parseInt(data.value_ncards);
     setRe(data);
     defineSortValues();
     clearButtons();

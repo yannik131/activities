@@ -284,11 +284,13 @@ class DoppelkopfConsumer(GameConsumer):
                 data["re_value"] = text_data["value"]
             else:
                 data["contra_value"] = text_data["value"]
+            data["value_ncards"] = text_data["value_ncards"]
             message["data"] = {
                 "action": "value",
                 "username": self.username,
                 "value": text_data["value"],
-                "who": text_data["who"]
+                "who": text_data["who"],
+                "value_ncards": data["value_ncards"]
             }
         match.save()
         return message
