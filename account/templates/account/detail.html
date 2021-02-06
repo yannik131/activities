@@ -12,7 +12,6 @@
     {% if friendship %}
         {% if viewed_user.image %}<img src="{{ viewed_user.image.url }}" class="user-photo">{% endif %}
         <p><a href="{% url 'chat:chat_room' 'account' 'friendship' friendship.id %}">{% trans "Zum Chat" %}...</a></p>
-        <p>{% trans "Voller Name" %}: {{ viewed_user.get_full_name }}</p>
         <p>{{ viewed_user.username }} {% trans "ist Mitglied folgender Aktivitäten" %}:</p>
         {% include "activity/loop.html" with activities=viewed_user.activities %}
         <div class="profile-rest">
