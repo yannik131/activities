@@ -19,12 +19,11 @@
 }
 
 .topmenu .search {
-    width: 10%;
     float: left;
+    display: none;
 }
 
 .topmenu .user {
-    width: 60%;
     float: right;
     overflow: hidden;
 }
