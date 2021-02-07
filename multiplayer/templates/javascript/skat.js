@@ -95,6 +95,7 @@ function loadGameField(data) {
     mode = data.mode;
     player_list = JSON.parse(data.players);
     solist = data.solist;
+    last_trick = JSON.parse(data.last_trick);
     updateSortingOrder();
     clearButtons();
     removeCardsFromDeck(100);

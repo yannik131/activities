@@ -167,10 +167,12 @@ function handlePlay(data) {
     if(data.username != this_user) {
         removeCardFrom(players[data.username], 1);
     }
-    m_show = parseInt(data.m_show);
+    if(data.m_show) {
+        m_show = parseInt(data.m_show);
+    }
     if(data.re_1) {
         setRe(data);
-        createInfoAlert("Re: "+data.re_1+", "+data.re_2, 500);
+        createInfoAlert("Re: "+data.re_1+", "+data.re_2, 1000);
     }
     if(data.clear) {
         setTimeout(clearStacks, 500);
@@ -307,6 +309,7 @@ function loadGameField(data) {
     contra_value = data.contra_value;
     m_show = parseInt(data.m_show);
     value_ncards = parseInt(data.value_ncards);
+    last_trick = JSON.parse(data.last_trick);
     setRe(data);
     defineSortValues();
     clearButtons();
@@ -467,7 +470,7 @@ function sendBid(bid) {
     socket.send(JSON.stringify({
         'action': 'bid',
         'bid': bid,
-        're': re? 1 : 0
+        're': getConvertedHand().includes("Qc")? "1" : "0"
     }));
 }
 

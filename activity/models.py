@@ -42,6 +42,12 @@ class Activity(TranslatableModel):
     @staticmethod
     def content_type():
         return ContentType.objects.get(app_label='activity', model='activity')
+        
+    def lobby_url(self, request=None):
+        if request:
+            return request.build_absolute_uri(f'/multiplayer/lobby/{self.name}/')
+        else:
+            return f'/multiplayer/lobby/{self.name}/'
 
 
 class Category(TranslatableModel):

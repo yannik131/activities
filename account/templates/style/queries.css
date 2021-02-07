@@ -29,6 +29,7 @@
 @media screen and (min-width: 850px) {
     .sidemenu {
         display: block;
+        max-height: 80vh;
     }
     .content {
         left: 250px;

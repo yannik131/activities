@@ -19,9 +19,9 @@
         </div>
     {% endfor %}
     {% if is_member %}
-        <a href="{% url 'multiplayer:leave_match' match.id %}">{% trans "Austreten" %}</a>
+        <a href="{% url 'multiplayer:leave_match' match.activity.name match.id %}">{% trans "Austreten" %}</a>
     {% else %}
-        <a href="{% url 'multiplayer:enter_match' match.id %}">{% trans "Beitreten" %}</a>
+        <a href="{% url 'multiplayer:enter_match' match.activity.name match.id %}">{% trans "Beitreten" %}</a>
     {% endif %}
 </div>
 {% endblock %}

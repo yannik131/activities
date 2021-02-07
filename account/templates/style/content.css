@@ -117,10 +117,11 @@ select:focus, select:hover {
 }
 
 .user-photo {
-    width: 50%;
+    width: 40%;
     display: block;
     margin: 0 auto;
     border-radius: 10%;
+    float: right;
 }
 
 .activity-thumbnail {

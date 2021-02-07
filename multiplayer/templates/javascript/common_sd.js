@@ -34,10 +34,15 @@ function sendMove() {
 }
 
 function lastTrickButton() {
-    if(!last_trick) {
+    if(last_trick.length == 0) {
+        deleteButton("last_trick");
         return;
     }
-    createButton("{% trans 'Stich' %}", "last_trick", function() {
+    var label = "{% trans 'Stich' %}";
+    if(document.getElementById("last_trick0")) {
+        label = "{% trans 'Okay' %}";
+    }
+    createButton(label, "last_trick", function() {
         if(document.getElementById("last_trick0")) {
             for(var i = 0; i < last_trick.length; i++) {
                 var card = document.getElementById("last_trick"+i);
@@ -45,8 +50,6 @@ function lastTrickButton() {
                     card.remove();
                 }
             }
-            deleteButton("last_trick");
-            lastTrickButton();
         }
         else {
             for(var i = 0; i < last_trick.length; i++) {
@@ -57,7 +60,8 @@ function lastTrickButton() {
                 card.style.zIndex = 100;
                 field.appendChild(card);
             }
-            document.getElementById("last_trick").innerHTML = "{% trans 'Okay' %}";
         }
+        deleteButton("last_trick");
+        lastTrickButton();
     });
 }

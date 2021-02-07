@@ -21,6 +21,7 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
             direct=True
         )
         if instance.member_limit == instance.members.all().count():
+            instance.start()
             instance.broadcast_data(
                 {
                     'action': 'members_changed',
@@ -29,7 +30,7 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
                 }, 
                 direct=True
             )
-            instance.start()
+            
     elif action == "post_remove":
         from shared.shared import log
         if instance.member_positions['1'] == str(member.id):

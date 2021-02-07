@@ -117,6 +117,7 @@ def handle_play(game, data, text_data, username, message, match):
         winner = players[int(text_data["index"])]
         tricks = json.loads(data[winner+"_tricks"])
         tricks.append(trick)
+        data["last_trick"] = json.dumps(trick)
         data[winner+"_tricks"] = json.dumps(tricks)
         if game == "skat":
             data["forehand"] = winner
@@ -227,7 +228,7 @@ def sum_change(dictionary, key, _change, summary):
     pre = ""
     if _change >= 0:
         pre = "+"
-    summary.append([f"{key[:-7]}: {pre}{_change} -> {dictionary[key]}\n", {dictionary[key]}])
+    summary.append([f"{key[:-7]}: {pre}{_change} -> {dictionary[key]}\n", dictionary[key]])
     
 def give_doko_points(data, players, result, winner_points):
     points = 0
@@ -272,7 +273,8 @@ def give_doko_points(data, players, result, winner_points):
                     sum_change(data, player+"_points", -(points-re_extra+contra_extra), summary)
                 else:
                     sum_change(data, player+"_points", (points-re_extra+contra_extra), summary)
-    summary = sorted(summary, key=lambda t: t[1])
+    log("sorting summary:", summary)
+    summary = sorted(summary, key=lambda t: t[1], reverse=True)
     return "".join([t[0] for t in summary])
     
 

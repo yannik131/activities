@@ -31,13 +31,10 @@ class MultiplayerMatch(models.Model):
         return [(match.id, [user.username for user in match.members.all()], match.member_limit) for match in matches if not match.is_full()]
 
     def get_absolute_url(self):
-        return reverse('multiplayer:match', args=[self.id])
+        return reverse('multiplayer:match', args=[self.activity.name, self.id])
         
     def lobby_url(self, request=None):
-        if request:
-            return request.build_absolute_uri(f'/multiplayer/lobby/{self.activity.name}/')
-        else:
-            return f'/multiplayer/lobby/{self.activity.name}/'
+        return self.activity.lobby_url(request)
         
     def is_full(self):
         return self.members.all().count() == self.member_limit
@@ -71,17 +68,24 @@ class MultiplayerMatch(models.Model):
             )
             
     def abort(self, redirect_to_lobby=False):
+        if redirect_to_lobby:
+            url = self.lobby_url()
+        else:
+            url = self.get_absolute_url()
         if self.in_progress:
-            self.in_progress = False
-            self.save()
-            if redirect_to_lobby:
-                url = self.lobby_url()
-            else:
-                url = self.get_absolute_url()
             self.broadcast_data({
                 'action': 'abort',
                 'url': url
             })
+            self.in_progress = False
+            self.save()
+        else:
+            self.broadcast_data({
+                'action': 'members_changed',
+                'info': 'abort',
+                'url': url,
+                'match_id': self.id
+            }, direct=True)
             
     def member_list(self):
         result = [f"{u} " for u in self.members.all()]
@@ -135,6 +139,7 @@ class MultiplayerMatch(models.Model):
         self.game_data["game_type"] = ""
         self.game_data["declarations"] = ""
         self.game_data["passed"] = ""
+        self.game_data["last_trick"] = json.dumps([])
         # bidding, taking, putting, declaring, playing
         self.game_data["mode"] = "bidding"
         change(self.game_data, "game_number", 1)
@@ -167,6 +172,7 @@ class MultiplayerMatch(models.Model):
         self.game_data["m_show"] = "0"
         self.game_data["value_ncards"] = "0"
         self.game_data["active"] = players[0]
+        self.game_data["last_trick"] = json.dumps([])
         for player in players:
             self.game_data[player+"_tricks"] = json.dumps([])
             self.game_data[player+"_bid"] = ""

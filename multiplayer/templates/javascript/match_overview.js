@@ -21,7 +21,10 @@ function updateMatchMembers(data) {
             user_box.innerHTML = data.position + ': {% trans "Frei" %}';
             break;
         case "start":
-            location.href = "/multiplayer/game/" + data.match_id;
+            location.href = "/multiplayer/game/{{ match.activity.name }}/" + data.match_id;
+            break;
+        case "abort":
+            location.href = data.url;
             break;
     }
 }

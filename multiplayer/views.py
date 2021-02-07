@@ -5,10 +5,10 @@ from .forms import CreateMatchForm
 from activity.models import Activity
 from django.http import HttpResponseRedirect, HttpResponse, HttpResponseServerError
 from django.utils.translation import gettext_lazy as _
-import json
 from chat.models import ChatRoom
 from django.contrib import messages
 from account.models import User
+from .decorators import guard_match
 
 
 def lobby(request, activity_name):
@@ -45,20 +45,20 @@ def create_match(request, activity_name):
     return render(request, 'multiplayer/create_match.html', dict(activity=activity, form=form))
 
 
-def match(request, match_id):
-    match = get_object_or_404(MultiplayerMatch, id=match_id)
+@guard_match
+def match(request, match):
     members = [(User.objects.get(id=v), k) if v else (None, k) for k, v in match.member_positions.items()]
     is_member = match.members.filter(pk=request.user.id).exists()
     if is_member and match.is_full():
-        return HttpResponseRedirect(request.build_absolute_uri(f"/multiplayer/game/{match_id}"))
+        return HttpResponseRedirect(request.build_absolute_uri(f"/multiplayer/game/{match.activity.name}/{match.id}/"))
     elif match.is_full():
         messages.add_message(request, messages.INFO, _("Spiel ist bereits voll"))
         return HttpResponseRedirect(match.lobby_url(request))
     return render(request, 'multiplayer/match.html', dict(match=match, members=members, is_member=is_member))
     
-    
-def enter_match(request, match_id):
-    match = get_object_or_404(MultiplayerMatch, id=match_id)
+
+@guard_match
+def enter_match(request, match):
     if request.user in match.members.all():
         return HttpResponseServerError()
     for k, v in match.member_positions.items():
@@ -73,14 +73,13 @@ def enter_match(request, match_id):
     messages.add_message(request, messages.INFO, _("Sie waren zu langsam, das Match war bereits voll."))
     return HttpResponseRedirect(match.lobby_url(request))
     
-    
-def leave_match(request, match_id):
-    match = get_object_or_404(MultiplayerMatch, id=match_id)
+
+@guard_match
+def leave_match(request, match):
     if not match.members.filter(pk=request.user.id).exists():
-        return HttpResponseServerError()
+        return HttpResponseRedirect(match.lobby_url(request))
     if match.member_positions['1'] == str(request.user.id):
-        if match.in_progress:
-            match.abort(redirect_to_lobby=True)
+        match.abort(redirect_to_lobby=True)
         match.delete()
         return HttpResponseRedirect(match.lobby_url(request))
     room = ChatRoom.get_for_target(match)
@@ -96,8 +95,8 @@ def leave_match(request, match_id):
     return HttpResponseRedirect(match.lobby_url(request))
 
 
-def game(request, match_id):
-    match = MultiplayerMatch.objects.get(id=match_id)
+@guard_match
+def game(request, match):
     if not match.is_full():
         return HttpResponseRedirect(match.get_absolute_url())
     if match.activity.name == _('Durak'):

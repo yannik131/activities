@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-
 {% block title %}{% trans "Einloggen" %}{% endblock %}
 
 {% block content %}
-    <div class="center-container">
+    <div class="center-container" style="position: absolute; left: 0;">
     <div class="login">
         <h1>{% blocktrans %}Einloggen{% endblocktrans %}</h1>
         {% if form.errors %}

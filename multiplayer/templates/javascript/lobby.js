@@ -23,7 +23,7 @@ function updateMatchList(data) {
         }
         new_cell.id = match_data[0]
         new_cell.onclick = function() {
-            location.href = "/multiplayer/match/" + this.id + "/";
+            location.href = "/multiplayer/match/{{ activity.name }}/" + this.id + "/";
         }
     }
     old_tbody.parentNode.replaceChild(new_tbody, old_tbody);
@@ -35,10 +35,6 @@ function requestMatchList() {
         'activity_id': '{{ activity.id }}',
         'action': 'match_list'
     }));
-}
-
-function openMatch(match_id) {
-    location.href = "/multiplayer/match/" + match_id + "/";
 }
 
 user_websocket.onopen = function() {

@@ -6,7 +6,7 @@
         <a href="{% call_method match 'lobby_url' request %}">Lobby</a>
     </div>
     <div class="button-like leave">
-        <a href="{% url 'multiplayer:leave_match' match.id %}">{% trans "Ciao!" %}</a>
+        <a href="{% url 'multiplayer:leave_match' match.activity.name match.id %}">{% trans "Ciao!" %}</a>
     </div>
     <div class="game-field">
         
