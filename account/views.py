@@ -138,7 +138,7 @@ def register(request):
             new_user.save()
             return render(request, 'account/register_done.html', {'new_user': new_user})
     else:
-        user_form = UserRegistrationForm()
+        user_form = UserRegistrationForm(initial=dict(birth_year=1990))
         location_form = LocationForm()
     return render(request, 'account/register.html', {'user_form': user_form, 'location_form': location_form})
 
