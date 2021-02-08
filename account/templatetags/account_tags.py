@@ -68,3 +68,9 @@ def language_setter(request):
     if language == "de":
         return mark_safe(f"<a href='https://en.myactivities.net{request.path}'>EN</a>")
     return mark_safe(f"<a href='https://myactivities.net{request.path}'>DE</a>")
+    
+    
+@register.simple_tag
+def locale_picture(request, name):
+    language = get_prefix(request)
+    return mark_safe("{% static '"+name+"_"+language+".png' %}")

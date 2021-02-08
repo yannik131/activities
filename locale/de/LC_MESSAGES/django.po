@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-08 15:39+0000\n"
+"POT-Creation-Date: 2021-02-08 16:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -248,50 +248,56 @@ msgid ""
 "Schimmel gewünscht oder was?"
 msgstr ""
 
-#: account/templates/account/about.html:4
+#: account/templates/account/about.html:5
 msgid "Info"
 msgstr ""
 
-#: account/templates/account/about.html:7
+#: account/templates/account/about.html:8
 msgid "Willkommen!"
 msgstr ""
 
-#: account/templates/account/about.html:9
+#: account/templates/account/about.html:10
 msgid "Moin. Kurz und bündig:"
 msgstr ""
 
-#: account/templates/account/about.html:11
+#: account/templates/account/about.html:12
 msgid "Sie registrieren sich und geben die Stadt an, in der Sie wohnen."
 msgstr ""
 
-#: account/templates/account/about.html:12
+#: account/templates/account/about.html:13
 msgid ""
 "Sie suchen ne Band/Spielegruppe etc.? Kategorien -> Musik/Brettspiele -> Zu "
 "den Gruppen -> Bewerben bzw. selbst erstellen -> Terminplanung, Chat, "
 "Leerstellen"
 msgstr ""
 
-#: account/templates/account/about.html:13
+#: account/templates/account/about.html:14
 msgid ""
 "Sie wollen Durak/Doko/Skat zocken? Aktivitäten -> Durak/Skat/Doppelkopf -> "
 "Beitreten -> Online spielen -> Match erstellen/beitreten"
 msgstr ""
 
-#: account/templates/account/about.html:14
+#: account/templates/account/about.html:15
 msgid ""
 "Sie wollen sich offline zum Spielen treffen? Aktivitäten -> Durak/Azul/... -"
 "> Turniere & Matches -> Bewerben/Selbst ein Treffen erstellen"
 msgstr ""
 
-#: account/templates/account/about.html:15
+#: account/templates/account/about.html:16
 msgid ""
 "Sie wollen sehen wo man gut spazieren/schwimmen/was auch immer gehen kann? "
 "Aktivitäten -> Spazieren/Schwimmen/WasAuchImmer -> Posts in Ihrer Nähe "
 "anschauen (von Gruppen und Personen)"
 msgstr ""
 
-#: account/templates/account/about.html:16
+#: account/templates/account/about.html:17
 msgid "Und vieles mehr.. einfach ausprobieren. Kostet ja nix."
+msgstr ""
+
+#: account/templates/account/about.html:20
+msgid ""
+"Klicken Sie auf den Beitreten-Button unten links um dem Audiochat eines "
+"Spiels beizutreten!"
 msgstr ""
 
 #: account/templates/account/destroy_friendship.html:4
