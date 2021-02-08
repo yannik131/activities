@@ -69,7 +69,3 @@ def language_setter(request):
         return mark_safe(f"<a href='https://en.myactivities.net{request.path}'>EN</a>")
     return mark_safe(f"<a href='https://myactivities.net{request.path}'>DE</a>")
     
-    
-@register.assignment_tag
-def get_locale_prefix(request):
-    return get_prefix(request)

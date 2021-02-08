@@ -8,6 +8,7 @@ from .templatetags import account_tags
 from notify.utils import notify
 from wall.models import Post
 from shared import shared
+from activities.language_subdomain_middleware import get_prefix
 
 
 @login_required
@@ -16,7 +17,7 @@ def home(request):
 
 
 def about(request):
-    return render(request, 'account/about.html')
+    return render(request, 'account/about.html', dict(prefix=get_prefix(request)))
 
 
 @login_required
