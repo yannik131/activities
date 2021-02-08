@@ -76,6 +76,9 @@
         <div class="logo">
             <a href="{% url 'account:home' %}">myactivities.net</a>
         </div>
+        <div class="lang-select">
+            {% language_setter request %}
+        </div>
     </div>
 {% endif %}
 

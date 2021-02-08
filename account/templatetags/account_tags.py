@@ -2,6 +2,7 @@ from django import template
 from itertools import chain
 from shared.shared import n_parenthesis
 from django.utils.safestring import mark_safe
+from activities.language_subdomain_middleware import get_prefix
 
 register = template.Library()
 
@@ -59,3 +60,11 @@ def active_if(request, section):
         if path.startswith('/account/edit'):
             return okay
     return ""
+    
+    
+@register.simple_tag
+def language_setter(request):
+    language = get_prefix(request)
+    if language == "de":
+        return mark_safe("<a href='https://en.myactivities.net'>EN</a>")
+    return mark_safe("<a href='https://myactivities.net'>DE</a>")

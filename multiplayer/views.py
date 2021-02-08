@@ -1,3 +1,4 @@
+from django.http.response import HttpResponseNotFound
 from shared.shared import log
 from django.shortcuts import render, get_object_or_404
 from .models import MultiplayerMatch
@@ -105,4 +106,5 @@ def game(request, match):
         return render(request, 'multiplayer/skat.html', dict(match=match))
     elif match.activity.name == _("Doppelkopf"):
         return render(request, 'multiplayer/doppelkopf.html', dict(match=match))
+    return HttpResponseNotFound()
         
