@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-08 15:04+0000\n"
+"POT-Creation-Date: 2021-02-08 15:39+0000\n"
 "PO-Revision-Date: 2021-02-08 16:04+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -407,6 +407,9 @@ msgstr "You can edit your account with the following form:"
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
+#: multiplayer/templates/javascript/durak.js:323
+#: multiplayer/templates/javascript/durak.js:362
+#: multiplayer/templates/javascript/durak.js:372
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:13
 #: usergroups/templates/usergroups/edit_group.html:12
@@ -1203,6 +1206,7 @@ msgid "Nutzer"
 msgstr "User"
 
 #: competitions/templates/competitions/full_table.html:13
+#: multiplayer/templates/javascript/doppelkopf.js:184
 msgid "Punkte"
 msgstr "Points"
 
@@ -1405,13 +1409,202 @@ msgstr "Skat"
 msgid "Unterstützt werden 3 oder 4 Spieler"
 msgstr "3 or 4 players"
 
-#: multiplayer/models.py:93
+#: multiplayer/models.py:93 multiplayer/templates/javascript/lobby.js:16
 msgid "FREI"
 msgstr "FREE!"
 
 #: multiplayer/models.py:102 multiplayer/views.py:28 multiplayer/views.py:107
 msgid "Doppelkopf"
 msgstr "Doppelkopf"
+
+#: multiplayer/templates/javascript/common_sd.js:41
+msgid "Stich"
+msgstr "Trick"
+
+#: multiplayer/templates/javascript/common_sd.js:43
+msgid "Okay"
+msgstr "Okay"
+
+#: multiplayer/templates/javascript/doppelkopf.js:7
+#: multiplayer/templates/javascript/doppelkopf.js:416
+msgid "Gesund"
+msgstr "Healthy"
+
+#: multiplayer/templates/javascript/doppelkopf.js:8
+msgid "Hochzeit"
+msgstr "Marriage"
+
+#: multiplayer/templates/javascript/doppelkopf.js:9
+msgid "Damen"
+msgstr "Queens"
+
+#: multiplayer/templates/javascript/doppelkopf.js:10
+msgid "Buben"
+msgstr "Jacks"
+
+#: multiplayer/templates/javascript/doppelkopf.js:11
+#: multiplayer/templates/javascript/skat.js:425
+msgid "Kreuz"
+msgstr "Clubs"
+
+#: multiplayer/templates/javascript/doppelkopf.js:12
+#: multiplayer/templates/javascript/skat.js:426
+msgid "Pik"
+msgstr "Spades"
+
+#: multiplayer/templates/javascript/doppelkopf.js:13
+#: multiplayer/templates/javascript/skat.js:427
+msgid "Herz"
+msgstr "Hearts"
+
+#: multiplayer/templates/javascript/doppelkopf.js:14
+msgid "Trumpf"
+msgstr "Trump"
+
+#: multiplayer/templates/javascript/doppelkopf.js:15
+msgid "Fleischlos"
+msgstr "Aces"
+
+#: multiplayer/templates/javascript/doppelkopf.js:19
+msgid "Keine 90"
+msgstr "No 90"
+
+#: multiplayer/templates/javascript/doppelkopf.js:20
+msgid "Keine 60"
+msgstr "No 60"
+
+#: multiplayer/templates/javascript/doppelkopf.js:21
+msgid "Keine 30"
+msgstr "No 30"
+
+#: multiplayer/templates/javascript/doppelkopf.js:22
+#: multiplayer/templates/javascript/skat.js:359
+msgid "Schwarz"
+msgstr "Black"
+
+#: multiplayer/templates/javascript/doppelkopf.js:25
+msgid "Re"
+msgstr "Re"
+
+#: multiplayer/templates/javascript/doppelkopf.js:26
+#: multiplayer/templates/javascript/doppelkopf.js:258
+msgid "Kontra"
+msgstr "Contra"
+
+#: multiplayer/templates/javascript/doppelkopf.js:183
+#: multiplayer/templates/javascript/doppelkopf.js:343
+#: multiplayer/templates/javascript/durak.js:162
+#: multiplayer/templates/javascript/skat.js:150
+#: multiplayer/templates/javascript/skat.js:197
+msgid "Spiel Nummer"
+msgstr "Game number"
+
+#: multiplayer/templates/javascript/doppelkopf.js:208
+msgid "Normalspiel"
+msgstr "Normal game"
+
+#: multiplayer/templates/javascript/durak.js:60
+#: multiplayer/templates/javascript/durak.js:212
+msgid "SCHLUCKT"
+msgstr "GOBBLING"
+
+#: multiplayer/templates/javascript/durak.js:170
+msgid "ANGREIFER"
+msgstr "ATTACKER"
+
+#: multiplayer/templates/javascript/durak.js:173
+msgid "VERTEIDIGER"
+msgstr "DEFENDER"
+
+#: multiplayer/templates/javascript/durak.js:342
+msgid "Schlucken"
+msgstr "Gobble"
+
+#: multiplayer/templates/javascript/durak.js:352
+msgid "Schieben"
+msgstr "Transfer"
+
+#: multiplayer/templates/javascript/match_overview.js:21
+#: multiplayer/templates/multiplayer/match.html:17
+msgid "Frei"
+msgstr "Free"
+
+#: multiplayer/templates/javascript/skat.js:199
+msgid "gewonnen"
+msgstr "won"
+
+#: multiplayer/templates/javascript/skat.js:201
+msgid "verloren"
+msgstr "lost"
+
+#: multiplayer/templates/javascript/skat.js:203
+msgid "überreizt"
+msgstr "overbid"
+
+#: multiplayer/templates/javascript/skat.js:205
+msgid "Augen"
+msgstr "Points"
+
+#: multiplayer/templates/javascript/skat.js:258
+msgid "Drücken"
+msgstr "Put"
+
+#: multiplayer/templates/javascript/skat.js:345
+msgid "Ouvert"
+msgstr "Ouvert"
+
+#: multiplayer/templates/javascript/skat.js:348
+#: multiplayer/templates/javascript/skat.js:353
+msgid "Normal"
+msgstr "Normal"
+
+#: multiplayer/templates/javascript/skat.js:356
+msgid "Schneider"
+msgstr "Schneider"
+
+#: multiplayer/templates/javascript/skat.js:362
+msgid "Offen"
+msgstr "Ouvert"
+
+#: multiplayer/templates/javascript/skat.js:382
+msgid "Aufnehmen"
+msgstr "Take Skat"
+
+#: multiplayer/templates/javascript/skat.js:385
+msgid "Hand spielen"
+msgstr "Hand"
+
+#: multiplayer/templates/javascript/skat.js:428
+msgid "Karo"
+msgstr "Diamonds"
+
+#: multiplayer/templates/javascript/skat.js:429
+msgid "Grand"
+msgstr "Grand"
+
+#: multiplayer/templates/javascript/skat.js:430
+msgid "Null"
+msgstr "Null"
+
+#: multiplayer/templates/javascript/skat.js:525
+msgid "Ja"
+msgstr "Yes"
+
+#: multiplayer/templates/javascript/skat.js:530
+msgid "Passe"
+msgstr "Nah fam"
+
+#: multiplayer/templates/javascript/skat.js:539
+msgid "Vorhand"
+msgstr "Forehand"
+
+#: multiplayer/templates/javascript/skat.js:539
+msgid "Mittelhand"
+msgstr "Middle"
+
+#: multiplayer/templates/javascript/skat.js:539
+msgid "Hinterhand"
+msgstr "Behind"
 
 #: multiplayer/templates/multiplayer/create_match.html:7
 msgid "Online-Match erstellen"
@@ -1431,10 +1624,6 @@ msgstr "Ciao!"
 #: multiplayer/templates/multiplayer/lobby.html:16
 msgid "Online"
 msgstr "Online"
-
-#: multiplayer/templates/multiplayer/match.html:17
-msgid "Frei"
-msgstr "Free"
 
 #: multiplayer/views.py:56
 msgid "Spiel ist bereits voll"
@@ -1978,135 +2167,6 @@ msgstr " %(v0)s ago"
 #: wall/templates/wall/post/post_loop.html:25
 msgid "Kommentieren..."
 msgstr "Comment..."
-
-#~ msgid "Stich"
-#~ msgstr "Trick"
-
-#~ msgid "Okay"
-#~ msgstr "Okay"
-
-#~ msgid "Gesund"
-#~ msgstr "Healthy"
-
-#~ msgid "Hochzeit"
-#~ msgstr "Marriage"
-
-#~ msgid "Damen"
-#~ msgstr "Queens"
-
-#~ msgid "Buben"
-#~ msgstr "Jacks"
-
-#~ msgid "Kreuz"
-#~ msgstr "Clubs"
-
-#~ msgid "Pik"
-#~ msgstr "Spades"
-
-#~ msgid "Herz"
-#~ msgstr "Hearts"
-
-#~ msgid "Trumpf"
-#~ msgstr "Trump"
-
-#~ msgid "Fleischlos"
-#~ msgstr "Aces"
-
-#~ msgid "Keine 90"
-#~ msgstr "No 90"
-
-#~ msgid "Keine 60"
-#~ msgstr "No 60"
-
-#~ msgid "Keine 30"
-#~ msgstr "No 30"
-
-#~ msgid "Schwarz"
-#~ msgstr "Black"
-
-#~ msgid "Re"
-#~ msgstr "Re"
-
-#~ msgid "Kontra"
-#~ msgstr "Contra"
-
-#~ msgid "Spiel Nummer"
-#~ msgstr "Game number"
-
-#~ msgid "Normalspiel"
-#~ msgstr "Normal game"
-
-#~ msgid "SCHLUCKT"
-#~ msgstr "GOBBLING"
-
-#~ msgid "ANGREIFER"
-#~ msgstr "ATTACKER"
-
-#~ msgid "VERTEIDIGER"
-#~ msgstr "DEFENDER"
-
-#~ msgid "Schlucken"
-#~ msgstr "Gobble"
-
-#~ msgid "Schieben"
-#~ msgstr "Transfer"
-
-#~ msgid "gewonnen"
-#~ msgstr "won"
-
-#~ msgid "verloren"
-#~ msgstr "lost"
-
-#~ msgid "überreizt"
-#~ msgstr "overbid"
-
-#~ msgid "Augen"
-#~ msgstr "Points"
-
-#~ msgid "Drücken"
-#~ msgstr "Put"
-
-#~ msgid "Ouvert"
-#~ msgstr "Ouvert"
-
-#~ msgid "Normal"
-#~ msgstr "Normal"
-
-#~ msgid "Schneider"
-#~ msgstr "Schneider"
-
-#~ msgid "Offen"
-#~ msgstr "Ouvert"
-
-#~ msgid "Aufnehmen"
-#~ msgstr "Take Skat"
-
-#~ msgid "Hand spielen"
-#~ msgstr "Hand"
-
-#~ msgid "Karo"
-#~ msgstr "Diamonds"
-
-#~ msgid "Grand"
-#~ msgstr "Grand"
-
-#~ msgid "Null"
-#~ msgstr "Null"
-
-#~ msgid "Ja"
-#~ msgstr "Yes"
-
-#~ msgid "Passe"
-#~ msgstr "Nah fam"
-
-#~ msgid "Vorhand"
-#~ msgstr "Forehand"
-
-#~ msgid "Mittelhand"
-#~ msgstr "Middle"
-
-#~ msgid "Hinterhand"
-#~ msgstr "Behind"
 
 #~ msgid "Erforderlich für eine Passwort-Zurücksetzung."
 #~ msgstr "Required for password reset."
