@@ -21,7 +21,8 @@ class UserGroup(models.Model):
         'has_moved_appointment': _('hat einen Termin verschoben'),
         'has_new_member': _('hat ein neues Mitglied'),
         'has_lost_member': _('hat ein Mitglied verloren'),
-        'updated_description': _('hat eine neue Beschreibung')
+        'updated_description': _('hat eine neue Beschreibung'),
+        'accepted_application': _('hat Ihre Bewerbung angenommen')
     }
 
     class Meta:

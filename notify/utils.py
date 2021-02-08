@@ -4,13 +4,13 @@ from asgiref.sync import async_to_sync
 from collections.abc import Iterable
 notify_channel_layer = get_channel_layer()
 
+
 def _notify(recipient, actor, action, action_object, url):
     notification = Notification.objects.create(recipient=recipient, actor=actor, action=action, action_object=action_object)
     channel_name = recipient.channel_name
     if url is None:
         url = notification.get_absolute_url()
     if channel_name:
-        
         async_to_sync(notify_channel_layer.send)(
             channel_name,
             {

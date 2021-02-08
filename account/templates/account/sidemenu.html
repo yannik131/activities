@@ -19,7 +19,7 @@
     {% with notification_id=notification.id %}
 
         <div class="alert" id="notification-{{ notification_id }}">
-            <a href="{{ notification.get_absolute_url }}" class="notification-url" onclick="removeNotification({{ notification_id }});">{{ notification }}</a>
+            <a class="notification-url" onclick="removeNotification({{ notification_id }}, '{{ notification.get_absolute_url }}');">{{ notification }}</a>
             <div class="closebtn-container" onclick="removeNotification({{ notification_id }});">
                 <div class="closebtn">&times;</div>
             </div>

@@ -25,13 +25,16 @@ function changeCount(element_id, value) {
     }
 }
 
-function removeNotification(id) {
+function removeNotification(id, notification_url) {
     const userAlert = document.getElementById("notification-" + id);
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if(request.readyState == 4 && request.status == 204) {
             userAlert.style.display = 'none';
-            changeCount("notifications-count", -1)
+            changeCount("notifications-count", -1);
+            if(notification_url) {
+                location.href = notification_url;
+            }
         }
     }
     const url = "/notifications/delete/" + id;
@@ -44,9 +47,11 @@ function addNotification(id, text, url) {
     sidemenu.innerHTML += (
         '<div class="alert" id="notification-'
         + id
-        + '"><a href="'
-        + url
-        + '" class="notification-url">'
+        + '"><a class="notification-url" onclick="removeNotification('
+        + id 
+        + ', \''
+        + url 
+        + '\')">'
         + text
         + '</a><div class="closebtn-container" onclick="removeNotification('
         + id

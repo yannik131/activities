@@ -29,6 +29,7 @@
     float: left;
     display: flex;
     position: relative;
+    cursor: pointer;
 }
 
 .sidemenu .alert .notification-url {

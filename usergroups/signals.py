@@ -18,6 +18,7 @@ def members_changed(instance, action, model, pk_set, **kwargs):
             rooms.append(ChatRoom.get_for_target(application))
     if action == 'post_add':
         notify(instance.members.all().exclude(id=member.id), instance, 'has_new_member', member)
+        notify(member, instance, 'accepted_application')
         for room in rooms:
             room.members.add(member)
 
