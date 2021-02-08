@@ -66,5 +66,5 @@ def active_if(request, section):
 def language_setter(request):
     language = get_prefix(request)
     if language == "de":
-        return mark_safe("<a href='https://en.myactivities.net'>EN</a>")
-    return mark_safe("<a href='https://myactivities.net'>DE</a>")
+        return mark_safe(f"<a href='https://en.myactivities.net{request.path}'>EN</a>")
+    return mark_safe(f"<a href='https://myactivities.net{request.path}'>DE</a>")
