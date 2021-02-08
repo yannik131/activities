@@ -18,10 +18,16 @@
                 <li>{% blocktrans %}Und vieles mehr.. einfach ausprobieren. Kostet ja nix.{% endblocktrans %}</li>
         </ol>
 </p>
-<p>{% trans "Klicken Sie auf den Beitreten-Button unten rechts um dem Audiochat eines Spiels beizutreten!" %}</p>
+<p>{% trans "Treten Sie Aktivitäten bei, chatten Sie mit Leuten in Ihrer Nähe und lesen/erstellen Sie Posts!" %}</p>
 {% if prefix == 'de' %}
-<img src="{% static 'game_de.png' %}">
+<img src="{% static 'profile_de.png' %}" class="about-picture">
 {% else %}
-<img src="{% static 'game_en.png' %}">
+<img src="{% static 'profile_en.png' %}" class="about-picture">
+{% endif %}
+<p>{% trans "Klicken Sie auf den Beitreten-Button unten rechts, um dem Audiochat eines Spiels beizutreten!" %}</p>
+{% if prefix == 'de' %}
+<img src="{% static 'game_de.png' %}" class="about-picture">
+{% else %}
+<img src="{% static 'game_en.png' %}" class="about-picture">
 {% endif %}
 {% endblock %}

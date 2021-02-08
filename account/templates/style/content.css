@@ -251,4 +251,7 @@ select:focus, select:hover {
     }
 }
 
-
+.about-picture {
+    width: 90%;
+    border: 2px solid gray;
+}
