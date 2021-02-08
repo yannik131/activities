@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-08 16:07+0000\n"
-"PO-Revision-Date: 2021-02-08 17:08+0100\n"
+"POT-Creation-Date: 2021-02-08 16:10+0000\n"
+"PO-Revision-Date: 2021-02-08 17:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -323,10 +323,10 @@ msgstr "And a lot more… just check it out. It’s free."
 
 #: account/templates/account/about.html:20
 msgid ""
-"Klicken Sie auf den Beitreten-Button unten links um dem Audiochat eines "
+"Klicken Sie auf den Beitreten-Button unten rechts um dem Audiochat eines "
 "Spiels beizutreten!"
 msgstr ""
-"Press the join button in the bottom left corner to join to audio chat of a "
+"Press the join button in the bottom right corner to join to audio chat of a "
 "game!"
 
 #: account/templates/account/destroy_friendship.html:4

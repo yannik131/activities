@@ -17,6 +17,11 @@
                 <li>{% blocktrans %}Und vieles mehr.. einfach ausprobieren. Kostet ja nix.{% endblocktrans %}</li>
         </ol>
 </p>
-<p>{% trans "Klicken Sie auf den Beitreten-Button unten links um dem Audiochat eines Spiels beizutreten!" %}</p>
-<img src="{% locale_picture request 'game' %}">
+<p>{% trans "Klicken Sie auf den Beitreten-Button unten rechts um dem Audiochat eines Spiels beizutreten!" %}</p>
+{% get_locale_prefix request as prefix %}
+{% if prefix == 'de' %}
+<img src="{% static 'game_de.png' %}">
+{% else %}
+<img src="{% static 'game_en.png' %}">
+{% endif %}
 {% endblock %}

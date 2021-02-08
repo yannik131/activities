@@ -70,7 +70,6 @@ def language_setter(request):
     return mark_safe(f"<a href='https://myactivities.net{request.path}'>DE</a>")
     
     
-@register.simple_tag
-def locale_picture(request, name):
-    language = get_prefix(request)
-    return mark_safe("{% static '"+name+"_"+language+".png' %}")
+@register.assignment_tag
+def get_locale_prefix(request):
+    return get_prefix(request)
