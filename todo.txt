@@ -14,3 +14,13 @@ DURAK_WEBSOCKET LÖSCHEN, USER_WEBSOCKET REICHT!!
 zuschmeißen wartezeit
 schieben, noch eine karte möglich, aber schlagen auch??
 schieben mit 2 gegner karten möglich
+
+Application instance 
+<Task pending name='Task-323' coro=<StaticFilesWrapper.__call__()
+running at 
+/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/channels/staticfiles.py:44> wait_for=<Future pending cb=[_chain_future.<locals>._call_check_cancel() 
+at 
+/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/asyncio/futures.py:360, <TaskWakeupMethWrapper object at 0x7f83089af7c0>()]>> 
+for connection 
+<WebRequest at 0x7f83087b7550 method=GET uri=/multiplayer/enter_match/Doppelkopf/73/ clientproto=HTTP/1.1> 
+took too long to shut down and was killed.
