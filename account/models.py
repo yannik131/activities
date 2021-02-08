@@ -15,8 +15,8 @@ class User(AbstractUser):
     latest_request_check = models.DateTimeField(default=timezone.now)
     birth_year = models.PositiveSmallIntegerField()
     SEX_CHOICES = (
-        ('m', 'männlich'),
-        ('w', 'weiblich')
+        ('m', _('männlich')),
+        ('w', _('weiblich'))
     )
     sex = models.CharField(max_length=1, choices=SEX_CHOICES, default='m')
     confirmed_appointments = models.ManyToManyField("scheduling.Appointment", related_name='participants')

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-08 14:13+0000\n"
+"POT-Creation-Date: 2021-02-08 15:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,6 +97,14 @@ msgstr ""
 #: account/forms.py:79
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
+msgstr ""
+
+#: account/models.py:18
+msgid "männlich"
+msgstr ""
+
+#: account/models.py:19
+msgid "weiblich"
 msgstr ""
 
 #: account/models.py:27
