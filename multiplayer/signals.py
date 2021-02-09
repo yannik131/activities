@@ -7,6 +7,8 @@ from shared.shared import log
 
 @receiver(m2m_changed, sender=MultiplayerMatch.members.through)
 def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
+    if not pk_set:
+        return
     id = next(iter(pk_set))
     member = model.objects.get(id=id)
     if action == "post_add":
@@ -21,7 +23,9 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
             direct=True
         )
         if instance.member_limit == instance.members.all().count():
+            log("starting match")
             instance.start()
+            log("broadcasting message")
             instance.broadcast_data(
                 {
                     'action': 'members_changed',
@@ -32,7 +36,6 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
             )
             
     elif action == "post_remove":
-        from shared.shared import log
         if instance.member_positions['1'] == str(member.id):
             instance.abort(redirect_to_lobby=True)
             instance.delete()

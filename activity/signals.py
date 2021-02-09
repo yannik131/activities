@@ -1,12 +1,15 @@
 from django.db.models.signals import pre_save, post_save, post_delete, m2m_changed
 from django.dispatch import receiver
-from .models import Activity, Category
+from .models import Activity
 from notify.utils import notify
 from account.models import User
+from shared.shared import log
 
 
 @receiver(m2m_changed, sender=Activity.members.through)
 def activity_members_changed(instance, action, pk_set, **kwargs):
+    if not pk_set:
+        return
     id = next(iter(pk_set))
     user = User.objects.get(id=id)
     if action == 'post_add':

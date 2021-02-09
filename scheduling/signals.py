@@ -8,6 +8,8 @@ from django.utils.translation import gettext_lazy as _
 
 @receiver(m2m_changed, sender=Appointment.participants.through)
 def appointment_confirmed(instance: Appointment, action, pk_set, **kwargs):
+    if not pk_set:
+        return
     id = next(iter(pk_set))
     user = User.objects.get(id=id)
     if action == 'post_add':
@@ -18,6 +20,8 @@ def appointment_confirmed(instance: Appointment, action, pk_set, **kwargs):
 
 @receiver(m2m_changed, sender=Appointment.cancellations.through)
 def appointment_cancelled(instance: Appointment, action, pk_set, **kwargs):
+    if not pk_set:
+        return
     id = next(iter(pk_set))
     user = User.objects.get(id=id)
     if action == 'post_add':

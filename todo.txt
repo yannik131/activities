@@ -24,3 +24,16 @@ at
 for connection 
 <WebRequest at 0x7f83087b7550 method=GET uri=/multiplayer/enter_match/Doppelkopf/73/ clientproto=HTTP/1.1> 
 took too long to shut down and was killed.
+
+x schieben und schlucken, zwei karten gespielt doppelt
+x sortierung skat nicht zurückgesetzt letztes spiel
+x skat nachricht eingepasst
+x? eingepasst reihenfolge zurückgesetzt
+x? skat spielart nachricht
+x? stich clear immer noch okay
+x? skat punkte bleiben nicht bestehen vielleicht eingepasst
+x? skat letzter stich zu schnell
+x reizwerte alert
+x ciao bestätigen
+x kontra + re wurde nur re gewertet
+x doko solo sofort start wenn nicht hochzeit

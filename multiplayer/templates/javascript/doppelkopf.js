@@ -58,8 +58,7 @@ function defineSortValues() {
 function getCardSortValue(type) {
     var vs = getVs(type);
     if(game_type == "diamonds" || game_type == "hearts" || game_type == "spades" || game_type == "clubs" || game_type == "marriage") {
-        if((game_type == "diamonds" || game_type == "marriage") && type == "10h" || 
-        (game_type != "diamonds" && game_type != "marriage" && vs.suit == game_type[0])) {
+        if(vs.value == "10" && ((game_type == "marriage" || game_type == "diamonds") && vs.suit == "h" || (game_type != "marriage" && game_type != "diamonds") && vs.suit == game_type[0])) {
             return 101;
         }
         else if(vs.value == "Q") {
@@ -121,10 +120,10 @@ function processMultiplayerData(data) {
     switch(data.action) {
         case "load_data":
             loadGameField(data);
-            return;
+            break;
         case "bid":
             handleBid(data);
-            return;
+            break;
         case "value":
             handleValue(data);
             break;
@@ -174,20 +173,26 @@ function handlePlay(data) {
         setRe(data);
         createInfoAlert("Re: "+data.re_1+", "+data.re_2, 1000);
     }
-    if(data.clear) {
-        setTimeout(clearStacks, 500);
-        last_trick = trick;
-    }
     if(data.round) {
-        var new_data = data.round;
-        var info = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n";
-        createInfoAlert(info+"\n"+team_translations[data.result]+": "+data.points+" {% trans 'Punkte' %}\n"+data.summary);
-        active = new_data.active;
-        last_trick = null;
-        loadGameField(new_data);
+        setTimeout(function() {
+            clearStacks();
+            var new_data = data.round;
+            var info = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n";
+            createInfoAlert(info+"\n"+team_translations[data.result]+": "+data.points+" {% trans 'Punkte' %}\n"+data.summary);
+            active = new_data.active;
+            last_trick = null;
+            loadGameField(new_data);
+        }, 1000);
     }
     else {
         createValueButtons();
+        if(data.clear) {
+            setTimeout(function() {
+                clearStacks();
+                lastTrickButton();
+            }, 500);
+            last_trick = trick;
+        }
     }
     updateAllInfo();
 }
@@ -391,7 +396,7 @@ function isTrump(value, suit) {
         case "clubs":
         case "hearts":
         case "spades":
-            if(value == "Q" || value == "J" || (value == "10" && suit == "h")) {
+            if(value == "Q" || value == "J" || value == "10" && ((game_type == "marriage" || game_type == "diamonds") && suit == "h" || (game_type != "marriage" && game_type != "diamonds") && suit == game_type[0])) {
                 return true;
             }
             else if(game_type == "marriage" && suit == "d" || game_type[0] == suit) {

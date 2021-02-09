@@ -6,7 +6,7 @@ from account.models import Location
 from wall.models import Post
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404
-import json
+from shared.shared import log
 
 
 @login_required
@@ -48,6 +48,7 @@ def category_detail(request, category_name):
 @login_required
 def join(request, activity_name):
     activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
+    log("join:", request.user.id)
     activity.members.add(request.user)
     return HttpResponseRedirect(activity.get_absolute_url())
 

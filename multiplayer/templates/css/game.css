@@ -33,6 +33,7 @@
     padding: 2px;
     border: 1px solid white;
     background-color: black;
+    cursor: pointer;
 }
 
 .button-like:hover {

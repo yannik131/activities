@@ -135,6 +135,17 @@ def handle_play(game, data, text_data, username, message, match):
                     message["data"]["m_show"] = data["m_show"]
                     message["data"]["re_1"] = data["re_1"]
                     message["data"]["re_2"] = data["re_2"]
+            if not data["solist"] and "Ad" in trick:
+                winner_is_re = winner == data["re_1"] or winner == data["re_2"]
+                for i, card in enumerate(trick):
+                    if card != "Ad":
+                        continue
+                    fox_owner = players[i]
+                    owner_is_re = fox_owner == data["re_1"] or fox_owner == data["re_2"]
+                    if winner_is_re and not owner_is_re:
+                        change(data, "re_extra", 1)
+                    elif not winner_is_re and owner_is_re:
+                        change(data, "contra_extra", 1)
         data["active"] = winner
         data["trick"] = json.dumps([])
         message["data"]["clear"] = "1"
@@ -168,7 +179,7 @@ DOKO_GAME_VALUES = {
 }
 
 DOKO_VALUES = {
-    "": 1, "w": 2, "9": 3, "6": 4, "3": 5, "s": 6
+    "w": 2, "9": 3, "6": 4, "3": 5, "s": 6
 }
 
 def sum_tricks(data, team, name):
@@ -183,10 +194,8 @@ def sum_tricks(data, team, name):
                 points += CARD_VALUES[card[:-1]]
                 log("Card", card, "adds", CARD_VALUES[card[:-1]], "total:", points)
                 trick_points += CARD_VALUES[card[:-1]]
-            if not data["solist"]:
-                if trick_points >= 40:
-                    change(data, name+"_extra", 1)
-                change(data, name+"_extra", len([card for card in trick if card == "Ad"]))
+            if not data["solist"] and trick_points >= 40:
+                change(data, name+"_extra", 1)
     return points, count
 
 def determine_winner_doko(data, last_winner, charlie):
@@ -231,16 +240,19 @@ def sum_change(dictionary, key, _change, summary):
     summary.append([f"{key[:-7]}: {pre}{_change} -> {dictionary[key]}\n", dictionary[key]])
     
 def give_doko_points(data, players, result, winner_points):
-    points = 0
+    points = 1 # somebody won, +1
     log("start:", points)
-    value = data[result+"_value"]
     re_extra = int(data["re_extra"])
     contra_extra = int(data["contra_extra"])
     log("re_extra", re_extra, "contra_extra", contra_extra)
     if result == "contra":
         if not data["solist"]:
             points += 1 # gegen die alten
-    points += DOKO_VALUES[value]
+    if data["contra_value"]:
+        points += DOKO_VALUES[data["contra_value"]]
+    if data["re_value"]:
+        points += DOKO_VALUES[data["re_value"]]
+    
     for mark in [151, 181, 211, 240]:
         if winner_points > mark:
             points += 1
@@ -327,10 +339,9 @@ def calc_game_value(data, points, tricks):
         factor = int(data["factor"])
         if len(tricks) == 10:
             factor += 2
-        elif points > 30:
+        elif points >= 91 or points < 31:
             factor += 1
-        
-        return int(data["factor"])*GAME_VALUES[data["game_type"]]
+        return factor*GAME_VALUES[data["game_type"]]
 
 
 def determine_factor(data):
@@ -347,7 +358,7 @@ def determine_factor(data):
             factor += 1
         else:
             break
-    if data["game_type"] != "g" and factor == 3:
+    if data["game_type"] != "g" and factor == 4:
         highest = ["A", "10", "K", "Q", "J", "9", "8", "7"]
         for trump in highest:
             if with_j and trump+data["game_type"] in cards:

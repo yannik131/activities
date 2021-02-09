@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 var player1_cards = [];
 var player2_cards = [];
@@ -404,6 +405,26 @@ function clearButtons() {
     button_row = 0;
 }
 
+function createYesNoAlert(info, zIndex, callback) {
+    var old_alert = document.getElementById("yesno-alert");
+    if(old_alert) {
+        old_alert.remove();
+        return;
+    }
+    info = info.replace(/(?:\r\n|\r|\n)/g, '<br>');
+    var info_alert = document.createElement("div");
+    info_alert.className = "info-alert";
+    info_alert.innerHTML = info + "<br>";
+    info_alert.style.zIndex = zIndex;
+    info_alert.style.border = "5px solid red";
+    info_alert.id = "yesno-alert";
+    var button = createInfoButton("{% trans 'Ja' %}", callback, info_alert);
+    button.style.marginRight = "5px";
+    var button = createInfoButton("{% trans 'Nein' %}", null, info_alert);
+    button.style.marginLeft = "5px";
+    field.appendChild(info_alert);
+}
+
 function createInfoAlert(info, timeout) {
     if(document.getElementById("info-alert")) {
         return;
@@ -421,22 +442,30 @@ function createInfoAlert(info, timeout) {
         }, timeout);
     }
     else {
-        var button = document.createElement("button");
-        button.type = "button";
-        button.onclick = function() {
-            document.getElementById("info-alert").remove();
-        }
-        button.className = "info-alert-button";
-        if(window.screen.width < 768) {
-            button.style.fontSize = "10pt";
-        }
-        else {
-            button.style.fontSize = "18pt";
-        }
-        button.innerHTML = "Okay";
-        info_alert.appendChild(button);
+        createInfoButton("Okay", null, info_alert);
     }
     field.appendChild(info_alert);
+}
+
+function createInfoButton(text, button_callback, info_alert) {
+    var button = document.createElement("button");
+    button.type = "button";
+    button.onclick = function() {
+        info_alert.remove();
+        if(button_callback) {
+            button_callback();
+        }
+    }
+    button.className = "info-alert-button";
+    if(window.screen.width < 768) {
+        button.style.fontSize = "10pt";
+    }
+    else {
+        button.style.fontSize = "18pt";
+    }
+    button.innerHTML = text;
+    info_alert.appendChild(button);
+    return button;
 }
 
 function next(el, arr) {
@@ -473,6 +502,9 @@ function clearStacks() {
     }
     stacks = [];
     var card = document.getElementById("last_trick0");
+    if(card) {
+        deleteButton("last_trick");
+    }
     for(var i = 1; card; i++) {
         card.remove();
         card = document.getElementById("last_trick"+i);

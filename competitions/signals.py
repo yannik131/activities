@@ -8,6 +8,8 @@ from django.utils.translation import gettext_lazy as _
 
 @receiver(m2m_changed, sender=Match.members.through)
 def members_changed(instance, action, model, pk_set, **kwargs):
+    if not pk_set:
+        return
     id = next(iter(pk_set))
     member = model.objects.get(id=id)
     room = ChatRoom.get_for_target(instance)
@@ -22,6 +24,8 @@ def members_changed(instance, action, model, pk_set, **kwargs):
 
 @receiver(m2m_changed, sender=Tournament.members.through)
 def members_changed(instance, action, model, pk_set, **kwargs):
+    if not pk_set:
+        return
     id = next(iter(pk_set))
     member = model.objects.get(id=id)
     room = ChatRoom.get_for_target(instance)

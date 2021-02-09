@@ -101,6 +101,7 @@ class MultiplayerMatch(models.Model):
             self.start_skat()
         elif self.activity.name == _("Doppelkopf"):
             self.start_doppelkopf()
+        # if self.in_progress return? TODO
         players = json.loads(self.game_data["players"])
         self.game_data["started"] = players[0]
         for player in players:

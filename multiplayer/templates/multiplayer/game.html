@@ -1,12 +1,13 @@
 {% load i18n %}
 {% load account_tags %}
-
+{% load static %}
+<script src="{% static 'ws-audio-api.min.js' %}"></script>
 <div class="game">
     <div class="button-like back">
         <a href="{% call_method match 'lobby_url' request %}">Lobby</a>
     </div>
-    <div class="button-like leave">
-        <a href="{% url 'multiplayer:leave_match' match.activity.name match.id %}">{% trans "Ciao!" %}</a>
+    <div class="button-like leave" onclick="createYesNoAlert('{% trans 'Spiel beenden und verlassen?' %}', 2, function() { location.href = '{% url 'multiplayer:leave_match' match.activity.name match.id %}'});">
+        {% trans "Ciao!" %}
     </div>
     <div class="game-field">
         

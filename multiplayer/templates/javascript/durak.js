@@ -90,11 +90,13 @@ function cardClicked(value, suit, card) {
                 createStackWith(card);
                 move_mode = "transfer";
                 transferCheck();
+                clearStackCallbacks();
             }
             else if(transfer_possible && targets.length > 0) {
                 if(move_mode == "transfer") {
                     createStackWith(card);
                     transferCheck();
+                    clearStackCallbacks();
                 }
                 else {
                     createStackCallbacks(targets, card);
@@ -232,7 +234,7 @@ function clearStackCallbacks() {
 
 function createStackCallbacks(targets, card) {
     if(selected_card) {
-        selected_card.style.top = (parseFloat(card.style.top)+10)+"px";
+        selected_card.style.top = (parseFloat(selected_card.style.top)+10)+"px";
     }
     card.style.top = (parseFloat(card.style.top)-10)+"px";
     selected_card = card;

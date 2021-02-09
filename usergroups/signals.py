@@ -10,6 +10,8 @@ from notify.utils import notify
 
 @receiver(m2m_changed, sender=UserGroup.members.through)
 def members_changed(instance, action, model, pk_set, **kwargs):
+    if not pk_set:
+        return
     id = next(iter(pk_set))
     member = model.objects.get(id=id)
     rooms = [ChatRoom.get_for_target(instance)]

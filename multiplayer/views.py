@@ -61,7 +61,7 @@ def match(request, match):
 @guard_match
 def enter_match(request, match):
     if request.user in match.members.all():
-        return HttpResponseServerError()
+        return HttpResponseRedirect(match.get_absolute_url())
     for k, v in match.member_positions.items():
         if v is None:
             match.member_positions[k] = str(request.user.id)

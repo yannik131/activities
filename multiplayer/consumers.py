@@ -225,8 +225,12 @@ class SkatConsumer(GameConsumer):
                 data["mode"] = "taking"
                 message["data"]["mode"] = "taking"
             elif len(data["passed"]) == 3:
-                match.start()
-                message["data"] = match.game_data
+                players = json.loads(data["players"])
+                match.start_skat()
+                data["started"] = after(data["started"], players)
+                data["forehand"] = data["started"]
+                data["active"] = after(data["forehand"], players)
+                message["data"]["round"] = match.game_data
         match.save()
         return message
 
@@ -253,7 +257,7 @@ class DoppelkopfConsumer(GameConsumer):
                 'bid': text_data['bid'],
                 'active': data["active"]
             }
-            if data[data["active"]+"_bid"]:
+            if data[data["active"]+"_bid"] or text_data["bid"] not in ["healthy", "marriage"]:
                 solos = []
                 for player in cycle_slice(players.index(data["started"]), players):
                     if data[player+"_bid"] != "healthy":

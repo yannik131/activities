@@ -11,6 +11,17 @@ var no_take = "";
 var ouvert = false;
 var trump_suit;
 var last_trick;
+var game_type_translations = {
+    "c": "{% trans 'Kreuz' %}",
+    "s": "{% trans 'Pik' %}",
+    "h": "{% trans 'Herz' %}",
+    "d": "{% trans 'Karo' %}",
+    "g": "{% trans 'Grand' %}",
+    "n": "{% trans 'Null' %}"
+};
+var bid_translations = {
+    "pass": "{% trans 'Nö' %}"
+};
 
 {% include 'javascript/common_sd.js' %}
 
@@ -96,6 +107,7 @@ function loadGameField(data) {
     player_list = JSON.parse(data.players);
     solist = data.solist;
     last_trick = JSON.parse(data.last_trick);
+    clearStacks();
     updateSortingOrder();
     clearButtons();
     removeCardsFromDeck(100);
@@ -141,13 +153,21 @@ function loadGameField(data) {
             mode = "playing";
             var trick = JSON.parse(data.trick);
             if(trick.length) {
-                refreshStacks([JSON.parse(data.trick)]);
+                refreshStacks([JSON.parse(data.trick)], true);
             }
             updatePlayerInfo(solist, null, game_type);
+            lastTrickButton();
             break;
     }
     if(data.summary) {
-        createInfoAlert("{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary);
+        var info = "";
+        if(game_type.length && solist.length) {
+            info += solist + ": " + game_type_translations[game_type] + "\n";
+        }
+        createInfoAlert(info+"{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary);
+    }
+    else if(game_type.length && solist.length) {
+        createInfoAlert(solist + ": " + game_type_translations[game_type], 1000);
     }
 }
 
@@ -159,7 +179,6 @@ function handleStart(data) {
     updateSortingOrder();
     mode = "playing";
     solist = data.solist;
-   
     updatePlayerInfo(solist, null, game_type);
     clearButtons();
     if(data.declarations.includes("o") && this_user != data.solist) {
@@ -170,13 +189,31 @@ function handleStart(data) {
             addCardTo(players[data.solist], 1, hand[i]);
         }
     }
+    createInfoAlert(solist + ": " + game_type_translations[game_type], 1000);
+}
+
+function setUpNewRound(data) {
+    last_trick = null;
+    var new_data = data.round;
+    var info = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+solist+": ";
+    if(data.result == "won")
+        info += "{% trans 'gewonnen' %}"
+    else if(data.result == "lost")
+        info += "{% trans 'verloren' %}"
+    else
+        info += "{% trans 'überreizt' %}"
+    if(game_type != "n") {
+        info += ", {% trans 'Augen' %}: " + data.points;
+    }
+    createInfoAlert(info+"\n"+data.summary);
+    active = new_data.active;
+    loadGameField(new_data);
 }
 
 function handlePlay(data) {
-    clearStacks();
     var trick = JSON.parse(data.trick);
     if(trick.length) {
-        refreshStacks([JSON.parse(data.trick)]);
+        refreshStacks([JSON.parse(data.trick)], true);
     }
     if(data.username != this_user) {
         if(ouvert && data.username == solist) {
@@ -187,26 +224,17 @@ function handlePlay(data) {
         }
     }
     updateAllInfo();
-    if(data.clear) {
-        setTimeout(clearStacks, 500);
-        last_trick = trick;
-    }
     if(data.round) {
-        last_trick = null;
-        var new_data = data.round;
-        var info = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+solist+": ";
-        if(data.result == "won")
-            info += "{% trans 'gewonnen' %}"
-        else if(data.result == "lost")
-            info += "{% trans 'verloren' %}"
-        else
-            info += "{% trans 'überreizt' %}"
-        if(game_type != "n") {
-            info += ", {% trans 'Augen' %}: " + data.points;
-        }
-        createInfoAlert(info+"\n"+data.summary);
-        active = new_data.active;
-        loadGameField(new_data);
+        setTimeout(function() {
+            setUpNewRound(data);
+        }, 1000);
+    }
+    else if(data.clear) {
+        setTimeout(function() {
+            clearStacks();
+            lastTrickButton();
+        }, 500);
+        last_trick = trick;
     }
 }
 
@@ -390,8 +418,20 @@ function createTakeButtons() {
 
 function handleBidding(data) {
     clearButtons();
+    if(data.round) {
+        createInfoAlert("{% trans 'Eingepasst' %}", 1000);
+        loadGameField(data.round);
+        return;
+    }
     var last_bid = parse(data.last_bid);
     updatePlayerInfo(last_bid[1], last_bid[0]);
+    if(this_user != last_bid[1]) {
+        var info = last_bid[0];
+        if(info == "pass") {
+            info = bid_translations[info];
+        }
+        createInfoAlert(last_bid[1]+": "+info, 500);
+    }
     if(data.mode == "taking") {
         createTakeButtons();
     }
@@ -415,21 +455,13 @@ function updatePlayerInfo(player, bid, game) {
     }
     info += player_positions[player];
     if(bid == "pass") {
-        info += " nö";
+        info += " "+bid_translations[bid];
     }
     else if(bid) {
         info += " "+bid;
     }
     if(player == solist) {
-        switch(game) {
-            case "c": info += " {% trans 'Kreuz' %}"; break;
-            case "s": info += " {% trans 'Pik' %}"; break;
-            case "h": info += " {% trans 'Herz' %}"; break;
-            case "d": info += " {% trans 'Karo' %}"; break;
-            case "g": info += " {% trans 'Grand' %}"; break;
-            case "n": info += " {% trans 'Null' %}"; break;
-            default: break;
-        }
+        info += " "+game_type_translations[game];
     }
     
     changeInfoFor(player, info, important);
@@ -491,13 +523,13 @@ function cardClicked(value, suit, card) {
             else if(!isTrump(vs.value, vs.suit) && playerHandContains("x", vs.suit, "J") && vs.suit != suit) {
                 return;
             }
-            beatStack(1, card.id);
+            beatStack(1, card.id, true);
             break;
         case "n":
             if(playerHandContains("x", vs.suit) && vs.suit != suit) {
                 return;
             }
-            beatStack(1, card.id);
+            beatStack(1, card.id, true);
             break;
     }
     removePlayerCard(card, game_type != "n");
