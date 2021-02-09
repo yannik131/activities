@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{ activity }}-Lobby</h1>
+<h1><a href="{{ activity.get_absolute_url }}">{{ activity }}</a>-Lobby</h1>
 <a href="{% url 'multiplayer:create_match' activity.name %}">{% trans "Match erstellen" %}</a>
 <div>
     <table style="float: right;">
