@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-08 16:48+0000\n"
+"POT-Creation-Date: 2021-02-09 17:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -390,9 +390,9 @@ msgstr ""
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:323
-#: multiplayer/templates/javascript/durak.js:362
-#: multiplayer/templates/javascript/durak.js:372
+#: multiplayer/templates/javascript/durak.js:325
+#: multiplayer/templates/javascript/durak.js:364
+#: multiplayer/templates/javascript/durak.js:374
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:13
 #: usergroups/templates/usergroups/edit_group.html:12
@@ -947,7 +947,7 @@ msgid "treten Sie Ihr bei"
 msgstr ""
 
 #: activity/templates/activity/detail.html:44
-#: multiplayer/templates/multiplayer/game.html:31
+#: multiplayer/templates/multiplayer/game.html:32
 #: multiplayer/templates/multiplayer/match.html:24
 msgid "Beitreten"
 msgstr ""
@@ -1176,7 +1176,7 @@ msgid "Nutzer"
 msgstr ""
 
 #: competitions/templates/competitions/full_table.html:13
-#: multiplayer/templates/javascript/doppelkopf.js:184
+#: multiplayer/templates/javascript/doppelkopf.js:181
 msgid "Punkte"
 msgstr ""
 
@@ -1387,6 +1387,15 @@ msgstr ""
 msgid "Doppelkopf"
 msgstr ""
 
+#: multiplayer/templates/javascript/cards.js:421
+#: multiplayer/templates/javascript/skat.js:557
+msgid "Ja"
+msgstr ""
+
+#: multiplayer/templates/javascript/cards.js:423
+msgid "Nein"
+msgstr ""
+
 #: multiplayer/templates/javascript/common_sd.js:41
 msgid "Stich"
 msgstr ""
@@ -1396,7 +1405,7 @@ msgid "Okay"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:7
-#: multiplayer/templates/javascript/doppelkopf.js:416
+#: multiplayer/templates/javascript/doppelkopf.js:421
 msgid "Gesund"
 msgstr ""
 
@@ -1413,17 +1422,17 @@ msgid "Buben"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:11
-#: multiplayer/templates/javascript/skat.js:425
+#: multiplayer/templates/javascript/skat.js:15
 msgid "Kreuz"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:12
-#: multiplayer/templates/javascript/skat.js:426
+#: multiplayer/templates/javascript/skat.js:16
 msgid "Pik"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:13
-#: multiplayer/templates/javascript/skat.js:427
+#: multiplayer/templates/javascript/skat.js:17
 msgid "Herz"
 msgstr ""
 
@@ -1448,7 +1457,7 @@ msgid "Keine 30"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:22
-#: multiplayer/templates/javascript/skat.js:359
+#: multiplayer/templates/javascript/skat.js:387
 msgid "Schwarz"
 msgstr ""
 
@@ -1457,40 +1466,40 @@ msgid "Re"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:26
-#: multiplayer/templates/javascript/doppelkopf.js:258
+#: multiplayer/templates/javascript/doppelkopf.js:263
 msgid "Kontra"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:183
-#: multiplayer/templates/javascript/doppelkopf.js:343
-#: multiplayer/templates/javascript/durak.js:162
-#: multiplayer/templates/javascript/skat.js:150
-#: multiplayer/templates/javascript/skat.js:197
+#: multiplayer/templates/javascript/doppelkopf.js:180
+#: multiplayer/templates/javascript/doppelkopf.js:348
+#: multiplayer/templates/javascript/durak.js:164
+#: multiplayer/templates/javascript/skat.js:167
+#: multiplayer/templates/javascript/skat.js:198
 msgid "Spiel Nummer"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:208
+#: multiplayer/templates/javascript/doppelkopf.js:213
 msgid "Normalspiel"
 msgstr ""
 
 #: multiplayer/templates/javascript/durak.js:60
-#: multiplayer/templates/javascript/durak.js:212
+#: multiplayer/templates/javascript/durak.js:214
 msgid "SCHLUCKT"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:170
+#: multiplayer/templates/javascript/durak.js:172
 msgid "ANGREIFER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:173
+#: multiplayer/templates/javascript/durak.js:175
 msgid "VERTEIDIGER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:342
+#: multiplayer/templates/javascript/durak.js:344
 msgid "Schlucken"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:352
+#: multiplayer/templates/javascript/durak.js:354
 msgid "Schieben"
 msgstr ""
 
@@ -1499,80 +1508,84 @@ msgstr ""
 msgid "Frei"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:199
-msgid "gewonnen"
-msgstr ""
-
-#: multiplayer/templates/javascript/skat.js:201
-msgid "verloren"
-msgstr ""
-
-#: multiplayer/templates/javascript/skat.js:203
-msgid "überreizt"
-msgstr ""
-
-#: multiplayer/templates/javascript/skat.js:205
-msgid "Augen"
-msgstr ""
-
-#: multiplayer/templates/javascript/skat.js:258
-msgid "Drücken"
-msgstr ""
-
-#: multiplayer/templates/javascript/skat.js:345
-msgid "Ouvert"
-msgstr ""
-
-#: multiplayer/templates/javascript/skat.js:348
-#: multiplayer/templates/javascript/skat.js:353
-msgid "Normal"
-msgstr ""
-
-#: multiplayer/templates/javascript/skat.js:356
-msgid "Schneider"
-msgstr ""
-
-#: multiplayer/templates/javascript/skat.js:362
-msgid "Offen"
-msgstr ""
-
-#: multiplayer/templates/javascript/skat.js:382
-msgid "Aufnehmen"
-msgstr ""
-
-#: multiplayer/templates/javascript/skat.js:385
-msgid "Hand spielen"
-msgstr ""
-
-#: multiplayer/templates/javascript/skat.js:428
+#: multiplayer/templates/javascript/skat.js:18
 msgid "Karo"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:429
+#: multiplayer/templates/javascript/skat.js:19
 msgid "Grand"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:430
+#: multiplayer/templates/javascript/skat.js:20
 msgid "Null"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:525
-msgid "Ja"
+#: multiplayer/templates/javascript/skat.js:23
+msgid "Nö"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:530
+#: multiplayer/templates/javascript/skat.js:200
+msgid "gewonnen"
+msgstr ""
+
+#: multiplayer/templates/javascript/skat.js:202
+msgid "verloren"
+msgstr ""
+
+#: multiplayer/templates/javascript/skat.js:204
+msgid "überreizt"
+msgstr ""
+
+#: multiplayer/templates/javascript/skat.js:206
+msgid "Augen"
+msgstr ""
+
+#: multiplayer/templates/javascript/skat.js:286
+msgid "Drücken"
+msgstr ""
+
+#: multiplayer/templates/javascript/skat.js:373
+msgid "Ouvert"
+msgstr ""
+
+#: multiplayer/templates/javascript/skat.js:376
+#: multiplayer/templates/javascript/skat.js:381
+msgid "Normal"
+msgstr ""
+
+#: multiplayer/templates/javascript/skat.js:384
+msgid "Schneider"
+msgstr ""
+
+#: multiplayer/templates/javascript/skat.js:390
+msgid "Offen"
+msgstr ""
+
+#: multiplayer/templates/javascript/skat.js:410
+msgid "Aufnehmen"
+msgstr ""
+
+#: multiplayer/templates/javascript/skat.js:413
+msgid "Hand spielen"
+msgstr ""
+
+#: multiplayer/templates/javascript/skat.js:422
+msgid "Eingepasst"
+msgstr ""
+
+#: multiplayer/templates/javascript/skat.js:562
 msgid "Passe"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:539
+#: multiplayer/templates/javascript/skat.js:571
 msgid "Vorhand"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:539
+#: multiplayer/templates/javascript/skat.js:571
 msgid "Mittelhand"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:539
+#: multiplayer/templates/javascript/skat.js:571
 msgid "Hinterhand"
 msgstr ""
 
@@ -1588,6 +1601,10 @@ msgid ""
 msgstr ""
 
 #: multiplayer/templates/multiplayer/game.html:9
+msgid "Spiel beenden und verlassen?"
+msgstr ""
+
+#: multiplayer/templates/multiplayer/game.html:10
 msgid "Ciao!"
 msgstr ""
 
