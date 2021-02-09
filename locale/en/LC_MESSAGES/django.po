@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-09 17:58+0000\n"
-"PO-Revision-Date: 2021-02-09 19:01+0100\n"
+"POT-Creation-Date: 2021-02-09 18:35+0000\n"
+"PO-Revision-Date: 2021-02-09 19:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -585,8 +585,8 @@ msgstr "Registered"
 
 #: account/templates/account/register_done.html:8
 #, python-format
-msgid "Sie haben sich erfolgreich mit dem Nutzernamen %(v0)s registriert "
-msgstr "You've successfully registered with the user name %(v0)s "
+msgid "Sie haben sich erfolgreich mit dem Nutzernamen %(v0)s registriert"
+msgstr "You've successfully registered with the user name %(v0)s"
 
 #: account/templates/account/register_done.html:8
 msgid "Sie können sich jetzt einloggen."
