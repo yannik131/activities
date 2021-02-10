@@ -203,7 +203,7 @@ class Location(models.Model):
         address = location.raw['address']
         location, created = Location.objects.get_or_create(
             country=address['country'],
-            state=address['state'],
+            state=address.get('state', address.get('city', address.get('town'))),
             county=address.get('county'),
             city=address.get('city', address.get('town')))
         return location

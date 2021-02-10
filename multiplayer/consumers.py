@@ -14,13 +14,13 @@ class GameConsumer(WebsocketConsumer):
     def connect(self):
         self.match_id = self.scope['url_route']['kwargs']['match_id']
         self.username = self.scope['url_route']['kwargs']['username']
-        
-        async_to_sync(self.channel_layer.group_add)(
-            f"match-{self.match_id}",
-            self.channel_name
-        )
-        
-        self.accept()
+        if MultiplayerMatch.objects.filter(pk=self.match_id).exists():
+            async_to_sync(self.channel_layer.group_add)(
+                f"match-{self.match_id}",
+                self.channel_name
+            )
+            
+            self.accept()
 
     def disconnect(self, code):
         async_to_sync(self.channel_layer.group_discard)(
@@ -48,11 +48,7 @@ class GameConsumer(WebsocketConsumer):
             
 class DurakConsumer(GameConsumer):
     def get_message(self, text_data):
-        try:
-            match = MultiplayerMatch.objects.get(pk=self.match_id)
-        except:
-            log(self.username, "requested invalid match with id", self.match_id)
-            return dict()
+        match = MultiplayerMatch.objects.get(pk=self.match_id)
         data = match.game_data
         players = json.loads(data["players"])
         message = {"group": True}
@@ -270,8 +266,9 @@ class DoppelkopfConsumer(GameConsumer):
                     data["game_type"] = game_type
                     data["re_1"] = ""
                     data["re_2"] = ""
-                    data["active"] = player
-                    message["data"]["active"] = player
+                    if game_type != "marriage":
+                        data["active"] = player
+                        message["data"]["active"] = player
                 else:
                     data["game_type"] = "diamonds"
                     message["data"]["game_type"] = "diamonds"

@@ -126,7 +126,7 @@ def handle_play(game, data, text_data, username, message, match):
         else:
             ouvert_null_lost = False
             if data["game_type"] == "marriage":
-                if winner != data["solist"] and len(tricks) < 4:
+                if winner != data["solist"] and len(json.loads(data[data["solist"]+"_tricks"])) < 3:
                     data["re_1"] = data["solist"]
                     data["re_2"] = winner
                     data["m_show"] = len(tricks)
