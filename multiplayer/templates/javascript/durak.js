@@ -86,22 +86,18 @@ function cardClicked(value, suit, card) {
         case "defending":
             var targets = stackTargetsFor(value, suit);
             var transfer_possible = transferPossible(value);
-            if(transfer_possible && targets.length == 0) {
+            if(transfer_possible && (targets.length == 0 || played_cards.length)) {
                 createStackWith(card);
+                console.log(move_mode, "-> transfer");
                 move_mode = "transfer";
                 transferCheck();
                 clearStackCallbacks();
             }
             else if(transfer_possible && targets.length > 0) {
-                if(move_mode == "transfer") {
-                    createStackWith(card);
-                    transferCheck();
-                    clearStackCallbacks();
-                }
-                else {
+                if(move_mode != "transfer") {
                     createStackCallbacks(targets, card);
+                    move_mode = "transfer";
                 }
-                move_mode = "transfer";
             }
             else if(targets.length == 1) {
                 move_mode = "beating";
@@ -227,6 +223,7 @@ function handleMove(data) {
 }
 
 function clearStackCallbacks() {
+    selected_card = null;
     for(var k = 0; k < stacks.length; k++) {
         stacks[k][0].onclick = null;
     }
@@ -309,14 +306,15 @@ function allDefended() {
 }
 
 function sendMove() {
+    var mode = move_mode;
+    move_mode = "none";
     socket.send(JSON.stringify({
-        "action": move_mode,
+        "action": mode,
         "stacks": JSON.stringify(getConvertedStack()),
         "hand": JSON.stringify(getConvertedHand()),
         "n": played_cards.length
     }));
     played_cards = [];
-    move_mode = "none";
     clearButtons();
 }
 

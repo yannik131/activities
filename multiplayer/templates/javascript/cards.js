@@ -203,9 +203,6 @@ function updateCardsFor(player) {
 
 function removeCardFrom(player, n, type) {
     const vars = getPlayerVariables(player);
-    if(type) {
-        console.log("delete: ", type);
-    }
     for(var i = 0; (i < n && vars.cards.length > 0) || type; i++) {
         if(type) {
             if(vars.cards[i].id == type) {

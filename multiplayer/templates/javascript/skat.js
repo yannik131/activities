@@ -173,6 +173,10 @@ function loadGameField(data) {
 function handleStart(data) {
     if(deck.length == 0) {
         addCardsToDeck(3, false);
+        if(data.solist != this_user) {
+            removeCardFrom(players[data.solist], 2);
+        }
+        
     }
     game_type = data.game_type;
     updateSortingOrder();
@@ -257,6 +261,7 @@ function updateSortingOrder() {
             trump_suit = game_type;
         case "g":
         default:
+            trump_suit = null;
             defineSortValues(ten_high=true, jacks_max=true);
             break;
     }

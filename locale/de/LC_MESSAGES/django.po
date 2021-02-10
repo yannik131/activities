@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-10 10:18+0000\n"
+"POT-Creation-Date: 2021-02-10 20:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -344,7 +344,7 @@ msgid "Sie sind mit"
 msgstr ""
 
 #: account/templates/account/detail.html:19
-msgid "befreundet. Falls Sie das ändern möchten, können Sie die Freundschaft"
+msgid " befreundet. Falls Sie das ändern möchten, können Sie die Freundschaft"
 msgstr ""
 
 #: account/templates/account/detail.html:19
@@ -390,9 +390,9 @@ msgstr ""
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:325
-#: multiplayer/templates/javascript/durak.js:364
-#: multiplayer/templates/javascript/durak.js:374
+#: multiplayer/templates/javascript/durak.js:323
+#: multiplayer/templates/javascript/durak.js:362
+#: multiplayer/templates/javascript/durak.js:372
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:13
 #: usergroups/templates/usergroups/edit_group.html:12
@@ -506,6 +506,14 @@ msgstr ""
 #: account/templates/account/home.html:8
 #, python-format
 msgid "Willkommen, %(v0)s."
+msgstr ""
+
+#: account/templates/account/home.html:8
+msgid "Ist irgendwas? Schicken Sie"
+msgstr ""
+
+#: account/templates/account/home.html:8
+msgid "eine Freundschaftsanfrage."
 msgstr ""
 
 #: account/templates/account/home.html:10
@@ -1380,12 +1388,12 @@ msgstr ""
 msgid "Doppelkopf"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:421
-#: multiplayer/templates/javascript/skat.js:557
+#: multiplayer/templates/javascript/cards.js:418
+#: multiplayer/templates/javascript/skat.js:561
 msgid "Ja"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:423
+#: multiplayer/templates/javascript/cards.js:420
 msgid "Nein"
 msgstr ""
 
@@ -1450,7 +1458,7 @@ msgid "Keine 30"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:22
-#: multiplayer/templates/javascript/skat.js:387
+#: multiplayer/templates/javascript/skat.js:391
 msgid "Schwarz"
 msgstr ""
 
@@ -1465,9 +1473,9 @@ msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:180
 #: multiplayer/templates/javascript/doppelkopf.js:348
-#: multiplayer/templates/javascript/durak.js:164
-#: multiplayer/templates/javascript/skat.js:167
-#: multiplayer/templates/javascript/skat.js:198
+#: multiplayer/templates/javascript/durak.js:160
+#: multiplayer/templates/javascript/skat.js:166
+#: multiplayer/templates/javascript/skat.js:201
 msgid "Spiel Nummer"
 msgstr ""
 
@@ -1476,23 +1484,23 @@ msgid "Normalspiel"
 msgstr ""
 
 #: multiplayer/templates/javascript/durak.js:60
-#: multiplayer/templates/javascript/durak.js:214
+#: multiplayer/templates/javascript/durak.js:210
 msgid "SCHLUCKT"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:172
+#: multiplayer/templates/javascript/durak.js:168
 msgid "ANGREIFER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:175
+#: multiplayer/templates/javascript/durak.js:171
 msgid "VERTEIDIGER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:344
+#: multiplayer/templates/javascript/durak.js:342
 msgid "Schlucken"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:354
+#: multiplayer/templates/javascript/durak.js:352
 msgid "Schieben"
 msgstr ""
 
@@ -1517,68 +1525,68 @@ msgstr ""
 msgid "Nö"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:200
+#: multiplayer/templates/javascript/skat.js:203
 msgid "gewonnen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:202
+#: multiplayer/templates/javascript/skat.js:205
 msgid "verloren"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:204
+#: multiplayer/templates/javascript/skat.js:207
 msgid "überreizt"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:206
+#: multiplayer/templates/javascript/skat.js:209
 msgid "Augen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:286
+#: multiplayer/templates/javascript/skat.js:290
 msgid "Drücken"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:373
+#: multiplayer/templates/javascript/skat.js:377
 msgid "Ouvert"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:376
-#: multiplayer/templates/javascript/skat.js:381
+#: multiplayer/templates/javascript/skat.js:380
+#: multiplayer/templates/javascript/skat.js:385
 msgid "Normal"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:384
+#: multiplayer/templates/javascript/skat.js:388
 msgid "Schneider"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:390
+#: multiplayer/templates/javascript/skat.js:394
 msgid "Offen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:410
+#: multiplayer/templates/javascript/skat.js:414
 msgid "Aufnehmen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:413
+#: multiplayer/templates/javascript/skat.js:417
 msgid "Hand spielen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:422
+#: multiplayer/templates/javascript/skat.js:426
 msgid "Eingepasst"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:562
+#: multiplayer/templates/javascript/skat.js:566
 msgid "Passe"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:571
+#: multiplayer/templates/javascript/skat.js:578
 msgid "Vorhand"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:571
+#: multiplayer/templates/javascript/skat.js:578
 msgid "Mittelhand"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:571
+#: multiplayer/templates/javascript/skat.js:578
 msgid "Hinterhand"
 msgstr ""
 
@@ -1594,7 +1602,7 @@ msgid ""
 msgstr ""
 
 #: multiplayer/templates/multiplayer/game.html:9
-msgid "Spiel beenden und verlassen?"
+msgid "Spiel beenden, verlassen und zurücksetzen?"
 msgstr ""
 
 #: multiplayer/templates/multiplayer/game.html:10
@@ -1849,7 +1857,7 @@ msgstr ""
 msgid "Ihre Gruppen"
 msgstr ""
 
-#: usergroups/views.py:88
+#: usergroups/views.py:90
 msgid ""
 "Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest "
 "oder löschen Sie die Gruppe."

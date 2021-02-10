@@ -26,7 +26,9 @@ for connection
 took too long to shut down and was killed.
 
 x schieben und schlucken, zwei karten gespielt doppelt
-x sortierung skat nicht zurückgesetzt letztes spiel
+x? sortierung skat nicht zurückgesetzt letztes spiel
+x? skat drücken 12 karten noch
+durak hinterherschmeißen zu schnell done send
 x skat nachricht eingepasst
 x? eingepasst reihenfolge zurückgesetzt
 x? skat spielart nachricht
