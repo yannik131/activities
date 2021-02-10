@@ -108,14 +108,13 @@ function loadGameField(data) {
     solist = data.solist;
     last_trick = JSON.parse(data.last_trick);
     clearStacks();
-    updateSortingOrder();
     clearButtons();
     removeCardsFromDeck(100);
     for(var i = 1; i < 5; i++) {
         removeCardFrom(i, 100);
     }
     positionPlayers(player_list);
-    updatePlayerPositions(data);
+    updatePlayerPositions(data.forehand);
     for(var i = 0; i < player_list.length; i++) {
         var player = player_list[i];
         updatePlayerInfo(player, data[player+"_bid"], data.game_type)
@@ -134,7 +133,7 @@ function loadGameField(data) {
     else {
         displayCards(data, player_list);
     }
-    updateCardsFor(1);
+    updateSortingOrder();
     switch(data.mode) {
         case "bidding":
             createBidButtons(data.active, parse(data.highest_bid), data.more);
@@ -223,7 +222,7 @@ function handlePlay(data) {
             removeCardFrom(players[data.username], 1);
         }
     }
-    updateAllInfo();
+    updatePlayerPositions(data.forehand);
     if(data.round) {
         setTimeout(function() {
             setUpNewRound(data);
@@ -564,8 +563,11 @@ function createBidButtons(active, highest_bid, more) {
     });
 }
 
-function updatePlayerPositions(data) {
-    var forehand = data.forehand;
+function updatePlayerPositions(forehand) {
+    if(!forehand) {
+        return;
+    }
+    var forehand = forehand;
     var middle = next(forehand, player_list);
     var behind = next(middle, player_list);
     player_positions = {[forehand]: "{% trans 'Vorhand' %}", [middle]: "{% trans 'Mittelhand' %}", [behind]: "{% trans 'Hinterhand' %}"};
