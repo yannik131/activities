@@ -1,3 +1,4 @@
+from notify.utils import notify
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import VacancyForm, InvitationForm, ApplicationForm
@@ -121,6 +122,7 @@ def accept_application(request, id):
     if request.user != application.vacancy.target.admin or application.status != 'pending':
         return HttpResponseForbidden()
     application.vacancy.target.members.add(application.user)
+    notify(application.user, application.vacancy.target, "accepted_invitation")
     if not application.vacancy.persistent:
         application.vacancy.delete()
     application.delete()

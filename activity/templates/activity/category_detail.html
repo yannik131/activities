@@ -8,7 +8,7 @@
         <img src="{{ category.image.url }}" width="200px" class="category-full-image">
     {% endif %}
     <h1>{{ category.verbose }}</h1>
-    <h2><a href="{% url 'usergroups:group_list' category.id %}">{% trans "Zu den Gruppen" %}...</a></h2>
+    <h2><a href="{% url 'usergroups:group_list' category.id %}">{% trans "Zu den Gruppen" %}</a></h2>
     <p>{{ category.description|linebreaks }}</p>
     <p>{% trans "Folgende Aktivitäten gehören zu dieser Kategorie" %}:</p>
         {% include "activity/loop.html" with activities=category.activities%}

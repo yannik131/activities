@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-09 18:35+0000\n"
+"POT-Creation-Date: 2021-02-10 10:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -440,6 +440,10 @@ msgstr ""
 msgid "Anfragen"
 msgstr ""
 
+#: account/templates/account/friend_requests_list.html:9
+msgid "Eingegangen"
+msgstr ""
+
 #: account/templates/account/friend_requests_list.html:15
 #: account/templates/account/friend_requests_list.html:40
 #: usergroups/templates/usergroups/group_detail.html:56
@@ -536,6 +540,7 @@ msgstr ""
 #: account/templates/account/register.html:4
 #: account/templates/account/register.html:8
 #: account/templates/account/register.html:15
+#: account/templates/registration/login.html:26
 msgid "Registrieren"
 msgstr ""
 
@@ -715,7 +720,7 @@ msgstr ""
 
 #: account/templates/registration/login.html:4
 #: account/templates/registration/login.html:9
-#: account/templates/registration/login.html:22
+#: account/templates/registration/login.html:23
 msgid "Einloggen"
 msgstr ""
 
@@ -737,29 +742,20 @@ msgstr ""
 msgid "Willkommen bei myactivities.net! :)"
 msgstr ""
 
-#: account/templates/registration/login.html:16
+#: account/templates/registration/login.html:17
 msgid "Was ist das hier?"
 msgstr ""
 
-#: account/templates/registration/login.html:17
+#: account/templates/registration/login.html:18
 msgid "Bitte nutzen Sie das folgende Formular zum einloggen:"
 msgstr ""
 
-#: account/templates/registration/login.html:25
-#: account/templates/registration/password_reset_form.html:7
-msgid "Passwort vergessen?"
-msgstr ""
-
-#: account/templates/registration/login.html:25
-msgid "Setzen Sie Ihr Passwort hier zurück."
-msgstr ""
-
 #: account/templates/registration/login.html:26
-msgid "Noch keinen Account?"
-msgstr ""
-
-#: account/templates/registration/login.html:26
-msgid "Hier registrieren."
+#: account/templates/registration/password_reset_complete.html:4
+#: account/templates/registration/password_reset_confirm.html:4
+#: account/templates/registration/password_reset_confirm.html:7
+#: account/templates/registration/password_reset_form.html:4
+msgid "Passwort zurücksetzen"
 msgstr ""
 
 #: account/templates/registration/password_change_done.html:4
@@ -773,13 +769,6 @@ msgstr ""
 
 #: account/templates/registration/password_change_form.html:8
 msgid "Benutzen Sie folgendes Formular zum Ändern des Passworts:"
-msgstr ""
-
-#: account/templates/registration/password_reset_complete.html:4
-#: account/templates/registration/password_reset_confirm.html:4
-#: account/templates/registration/password_reset_confirm.html:7
-#: account/templates/registration/password_reset_form.html:4
-msgid "Passwort zurücksetzen"
 msgstr ""
 
 #: account/templates/registration/password_reset_complete.html:7
@@ -827,6 +816,10 @@ msgstr ""
 #: account/templates/registration/password_reset_email.html:5
 #, python-format
 msgid "Falls Sie es vergessen haben sollten, Ihr Nutzername lautet: %(v0)s"
+msgstr ""
+
+#: account/templates/registration/password_reset_form.html:7
+msgid "Passwort vergessen?"
 msgstr ""
 
 #: account/templates/registration/password_reset_form.html:8
@@ -2030,23 +2023,23 @@ msgstr ""
 msgid "Beworben"
 msgstr ""
 
-#: vacancies/views.py:90
+#: vacancies/views.py:91
 #, python-brace-format
 msgid ""
 "Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder "
 "Geschlecht) nicht. <a href=\"{link}\">Zurück</a>"
 msgstr ""
 
-#: vacancies/views.py:92
+#: vacancies/views.py:93
 msgid "Sie haben sich bereits beworben."
 msgstr ""
 
-#: vacancies/views.py:94
+#: vacancies/views.py:95
 #, python-brace-format
 msgid "Die Anmeldefrist ist bereits abgelaufen. <a href=\"{link}\">Zurück</a>"
 msgstr ""
 
-#: vacancies/views.py:96
+#: vacancies/views.py:97
 msgid "Sie sind bereits Mitglied."
 msgstr ""
 

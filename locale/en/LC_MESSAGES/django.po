@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-09 18:35+0000\n"
-"PO-Revision-Date: 2021-02-09 19:35+0100\n"
+"POT-Creation-Date: 2021-02-10 10:18+0000\n"
+"PO-Revision-Date: 2021-02-10 11:20+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -471,6 +471,10 @@ msgstr "New address saved: <b>%(v0)s</b>"
 msgid "Anfragen"
 msgstr "Requests"
 
+#: account/templates/account/friend_requests_list.html:9
+msgid "Eingegangen"
+msgstr "Received"
+
 #: account/templates/account/friend_requests_list.html:15
 #: account/templates/account/friend_requests_list.html:40
 #: usergroups/templates/usergroups/group_detail.html:56
@@ -567,6 +571,7 @@ msgstr "Next"
 #: account/templates/account/register.html:4
 #: account/templates/account/register.html:8
 #: account/templates/account/register.html:15
+#: account/templates/registration/login.html:26
 msgid "Registrieren"
 msgstr "Register"
 
@@ -746,7 +751,7 @@ msgstr "log in again."
 
 #: account/templates/registration/login.html:4
 #: account/templates/registration/login.html:9
-#: account/templates/registration/login.html:22
+#: account/templates/registration/login.html:23
 msgid "Einloggen"
 msgstr "Login"
 
@@ -770,30 +775,21 @@ msgstr ""
 msgid "Willkommen bei myactivities.net! :)"
 msgstr "Welcome to myactivities.net! :)"
 
-#: account/templates/registration/login.html:16
+#: account/templates/registration/login.html:17
 msgid "Was ist das hier?"
 msgstr "What’s this about?"
 
-#: account/templates/registration/login.html:17
+#: account/templates/registration/login.html:18
 msgid "Bitte nutzen Sie das folgende Formular zum einloggen:"
 msgstr "Please use the following form to log in:"
 
-#: account/templates/registration/login.html:25
-#: account/templates/registration/password_reset_form.html:7
-msgid "Passwort vergessen?"
-msgstr "Forgot your password?"
-
-#: account/templates/registration/login.html:25
-msgid "Setzen Sie Ihr Passwort hier zurück."
-msgstr "Reset your password here."
-
 #: account/templates/registration/login.html:26
-msgid "Noch keinen Account?"
-msgstr "No account yet?"
-
-#: account/templates/registration/login.html:26
-msgid "Hier registrieren."
-msgstr "Register here."
+#: account/templates/registration/password_reset_complete.html:4
+#: account/templates/registration/password_reset_confirm.html:4
+#: account/templates/registration/password_reset_confirm.html:7
+#: account/templates/registration/password_reset_form.html:4
+msgid "Passwort zurücksetzen"
+msgstr "Reset password"
 
 #: account/templates/registration/password_change_done.html:4
 #: account/templates/registration/password_change_done.html:7
@@ -807,13 +803,6 @@ msgstr "Your password was changed successfully!"
 #: account/templates/registration/password_change_form.html:8
 msgid "Benutzen Sie folgendes Formular zum Ändern des Passworts:"
 msgstr "Please use the following form to change your password:"
-
-#: account/templates/registration/password_reset_complete.html:4
-#: account/templates/registration/password_reset_confirm.html:4
-#: account/templates/registration/password_reset_confirm.html:7
-#: account/templates/registration/password_reset_form.html:4
-msgid "Passwort zurücksetzen"
-msgstr "Reset password"
 
 #: account/templates/registration/password_reset_complete.html:7
 msgid "Passwort zurückgesetzt"
@@ -869,6 +858,10 @@ msgstr ""
 #, python-format
 msgid "Falls Sie es vergessen haben sollten, Ihr Nutzername lautet: %(v0)s"
 msgstr "In case you forgot, your user name is: %(v0)s"
+
+#: account/templates/registration/password_reset_form.html:7
+msgid "Passwort vergessen?"
+msgstr "Forgot your password?"
 
 #: account/templates/registration/password_reset_form.html:8
 msgid ""
@@ -2080,7 +2073,7 @@ msgstr "Age"
 msgid "Beworben"
 msgstr "Applied"
 
-#: vacancies/views.py:90
+#: vacancies/views.py:91
 #, python-brace-format
 msgid ""
 "Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder "
@@ -2089,17 +2082,17 @@ msgstr ""
 "You don't fulfill the vacancy's criteria (location, age and/or gender). <a "
 "href=\"{link}\">Back</a>"
 
-#: vacancies/views.py:92
+#: vacancies/views.py:93
 msgid "Sie haben sich bereits beworben."
 msgstr "You already applied to this vacancy."
 
-#: vacancies/views.py:94
+#: vacancies/views.py:95
 #, python-brace-format
 msgid "Die Anmeldefrist ist bereits abgelaufen. <a href=\"{link}\">Zurück</a>"
 msgstr ""
 "The application deadline has already expired. <a href=\"{link}\">Back</a>"
 
-#: vacancies/views.py:96
+#: vacancies/views.py:97
 msgid "Sie sind bereits Mitglied."
 msgstr "You already are a member."
 
@@ -2198,6 +2191,15 @@ msgstr " %(v0)s ago"
 #: wall/templates/wall/post/post_loop.html:25
 msgid "Kommentieren..."
 msgstr "Comment..."
+
+#~ msgid "Setzen Sie Ihr Passwort hier zurück."
+#~ msgstr "Reset your password here."
+
+#~ msgid "Noch keinen Account?"
+#~ msgstr "No account yet?"
+
+#~ msgid "Hier registrieren."
+#~ msgstr "Register here."
 
 #~ msgid "Erforderlich für eine Passwort-Zurücksetzung."
 #~ msgstr "Required for password reset."

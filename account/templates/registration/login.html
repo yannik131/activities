@@ -13,17 +13,17 @@
             <p>{% trans "Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der Account möglicherweise gesperrt." %}
             </p>
         {% else %}
-        <p><strong>{% trans "Willkommen bei myactivities.net! :)" %} <a href="{% url 'account:about' %}">{% trans "Was ist das hier?" %}</a></strong></p>
+        <p><strong>{% trans "Willkommen bei myactivities.net! :)" %}</strong></p>
+        <p> <a href="{% url 'account:about' %}">{% trans "Was ist das hier?" %}</a></p>
             <p>{% trans "Bitte nutzen Sie das folgende Formular zum einloggen:" %}</p>
-            <form method="post" action="{% url 'account:login' %}">
+            <form method="post" action="{% url 'account:login' %}" class="login-form">
                 {{ form.as_p }}
                 {% csrf_token %}
                 <input type="hidden" name="next" value="{{ next }}">
                 <input type="submit" value="{% trans "Einloggen" %}">
             </form>
         {% endif %}
-        <p>{% trans "Passwort vergessen?" %} <a href="{% url 'account:password_reset' %}">{% trans "Setzen Sie Ihr Passwort hier zurück." %}</a></p>
-        <p>{% trans "Noch keinen Account?" %} <a href="{% url 'account:register' %}">{% trans "Hier registrieren." %}</a></p>
+        <p><a href="{% url 'account:password_reset' %}">{% trans "Passwort zurücksetzen" %}</a> | <a href="{% url 'account:register' %}">{% trans "Registrieren" %}</a></p>
     </div>
     </div>
 {% endblock %}
