@@ -1,3 +1,4 @@
+from shared.shared import paginate
 from django.shortcuts import render
 from activity.models import Category
 from django.contrib.auth.decorators import login_required
@@ -35,7 +36,8 @@ def group_detail(request, id):
     if not group.public and not is_in_group:
         return HttpResponseForbidden()
     posts = Post.objects.filter(target_ct=UserGroup.content_type(), target_id=group.id)
-    return render(request, 'usergroups/group_detail.html', dict(group=group, is_member=is_in_group, posts=posts))
+    posts, page = paginate(posts, request)
+    return render(request, 'usergroups/group_detail.html', dict(group=group, is_member=is_in_group, posts=posts, page=page))
 
 
 @login_required
