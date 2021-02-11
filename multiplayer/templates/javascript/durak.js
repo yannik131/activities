@@ -10,6 +10,7 @@ var selected_card;
 var defending;
 var button_color = "red";
 var trump_suit;
+var is_taking;
 
 function defineSortValues(trump_suit) {
     var suits = ["d", "h", "s", "c"];
@@ -56,7 +57,7 @@ function processMultiplayerData(data) {
             handleTransfer(data);
             break;
         case "take":
-            move_mode = "take";
+            is_taking = true;
             changeInfoFor(defending, " ({% trans 'SCHLUCKT' %})");
             break;
         case "abort":
@@ -70,7 +71,7 @@ function processMultiplayerData(data) {
 
 function delayedCall(callback, arg) {
     var timeout = 0;
-    if(game_mode != "defending" && (!attackingIsPossible() || move_mode == "take")) {
+    if(game_mode != "defending" && (!attackingIsPossible() || is_taking)) {
         timeout = 500;
     }
     setTimeout(function() {
@@ -87,11 +88,11 @@ function cardClicked(value, suit, card) {
             var targets = stackTargetsFor(value, suit);
             var transfer_possible = transferPossible(value);
             if(transfer_possible && (targets.length == 0 || played_cards.length)) {
+                clearStackCallbacks();
                 createStackWith(card);
                 console.log(move_mode, "-> transfer");
                 move_mode = "transfer";
                 transferCheck();
-                clearStackCallbacks();
             }
             else if(transfer_possible && targets.length > 0) {
                 if(move_mode != "transfer") {
@@ -100,6 +101,7 @@ function cardClicked(value, suit, card) {
                 }
             }
             else if(targets.length == 1) {
+                clearStackCallbacks();
                 move_mode = "beating";
                 beatStackWith(card, targets[0]);
             }
@@ -119,12 +121,11 @@ function cardClicked(value, suit, card) {
             if(!attackingIsPossible() || (stacks.length && !stacksContainValue(value))) {
                 return;
             }
-            move_mode = "attacking"
+            move_mode = "attacking";
             createStackWith(card);
             if(!playerHandContains(getVs(stacks[0][0].id).value) || old_stacks.length) {
                 console.log("attacking sends move");
                 sendMove();
-                sendAction("done");
             }
             break;
     }
@@ -186,53 +187,56 @@ function determineGameMode(data) {
     }
     else if(this_user == data.taking) {
         game_mode = "none";
+        console.log("taking, set to none");
+    }
+    else if(player_list.length == 4 && player_cards[players[data.attacking]].length == 0 && this_user == before(data.attacking, player_list) && player1_cards.length > 0) {
+        game_mode = "helping";
     }
     else {
         var helping = next(data.defending, player_list);
+        console.log("helping=", helping);
         if(player_list.length == 4) {
             if(player_cards[players[helping]].length == 0) {
                 helping = next(helping, player_list)
             }
-            else if(player_cards[players[before(data.defending, player_list)]].length == 0) {
-                helping = next(helping, player_list);
-            }
         }
-        
+        console.log("after:", helping);
         if(this_user == helping) {
             game_mode = "helping";
         }
         else {
+            console.log("not helping, set to none");
             game_mode = "none";
         }
     }
     if(data.taking) {
-        move_mode = "take";
+        is_taking = true;
         changeInfoFor(data.taking, " ({% trans 'SCHLUCKT' %})");
     }
 }
 
 function handleMove(data) {
     old_stacks = JSON.parse(data.stacks);
-    determineGameMode(data);
     if(data.username == this_user) {
         return;
     }
     var player = players[data.username];
     removeCardFrom(player, data.n);
     refreshStacks(old_stacks);
+    determineGameMode(data);
 }
 
 function clearStackCallbacks() {
-    selected_card = null;
+    if(selected_card) {
+        selected_card.style.top = (parseFloat(selected_card.style.top)+10)+"px";
+        selected_card = undefined;
+    }
     for(var k = 0; k < stacks.length; k++) {
         stacks[k][0].onclick = null;
     }
 }
 
 function createStackCallbacks(targets, card) {
-    if(selected_card) {
-        selected_card.style.top = (parseFloat(selected_card.style.top)+10)+"px";
-    }
     card.style.top = (parseFloat(card.style.top)-10)+"px";
     selected_card = card;
     for(var i = 0; i < targets.length; i++) {
@@ -306,15 +310,14 @@ function allDefended() {
 }
 
 function sendMove() {
-    var mode = move_mode;
-    move_mode = "none";
     socket.send(JSON.stringify({
-        "action": mode,
+        "action": move_mode,
         "stacks": JSON.stringify(getConvertedStack()),
         "hand": JSON.stringify(getConvertedHand()),
         "n": played_cards.length
     }));
     played_cards = [];
+    move_mode = "none";
     clearButtons();
 }
 
@@ -334,11 +337,11 @@ function updateButtons() {
     }
     clearButtons();
     if(player1_cards.length == 0 || game_mode == "none") {
-        console.log("updateButtons: no cards, send done");
+        console.log("updateButtons: no cards, send done, game_mode=", game_mode);
         sendAction("done");
         return;
     }
-    if(move_mode != "take" && game_mode == "defending" && undefendedCardCount()) {
+    if(!is_taking && game_mode == "defending" && undefendedCardCount()) {
         createButton("{% trans 'Schlucken' %}", "take", function() {
             sendAction("take");
             deleteButton("take");
@@ -351,9 +354,9 @@ function updateButtons() {
         else {
             createButton("{% trans 'Schieben' %}", "transfer", function() {
                 createStackWith(selected_card);
-                selected_card = null;
                 deleteButton("transfer");
                 transferCheck();
+                clearStackCallbacks();
             }, button_color);
         }
     }
@@ -367,7 +370,7 @@ function updateButtons() {
         }
     }
     
-    if((game_mode == "attacking" || game_mode == "helping") && (move_mode == "take" || allDefended())) {
+    if((game_mode == "attacking" || game_mode == "helping") && (allDefended() || is_taking)) {
         if(attackingIsPossible()) {
             createButton("{% trans 'Fertig' %}", "done", function() {
                 console.log("button pressed, send done");
@@ -433,6 +436,7 @@ function transferPossible(value) {
 
 function setupNewRound(data) {
     move_mode = "none";
+    is_taking = false;
     clearStacks();
     old_stacks = [];
     var new_deck = JSON.parse(data.deck);
@@ -466,15 +470,16 @@ function setupNewRound(data) {
 }
 
 function handleTransfer(data) {
-    determineGameMode(data);
     refreshStacks(JSON.parse(data.stacks));
     updatePlayerInfo(data);
     old_stacks = JSON.parse(data.stacks);
+    var attacking = players[data.attacking];
+    removeCardFrom(attacking, player_cards[attacking].length-data.attacking_n);
+    determineGameMode(data);
     if(game_mode == "attacking") {
         return;
     }
-    var attacking = players[data.attacking];
-    removeCardFrom(attacking, player_cards[attacking].length-data.attacking_n)
+    
 }
 
 gameConnect('durak', '{{ match.id }}', '{{ user.username }}');
