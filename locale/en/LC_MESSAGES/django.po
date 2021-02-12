@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-10 20:09+0000\n"
+"POT-Creation-Date: 2021-02-12 17:22+0000\n"
 "PO-Revision-Date: 2021-02-10 21:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -335,6 +335,17 @@ msgstr ""
 "Press the join button in the bottom right corner to join the audio chat of a "
 "game!"
 
+#: account/templates/account/banner.html:29
+msgid ""
+"Diese Seite nutzt Cookies. Blabla.. können Sie im Browser irgendwo deaktivieren.. "
+"Statistiken werden nicht erstellt.. durch Weiternutzen der Seite stimmen sie "
+"zu.."
+msgstr "This site uses cookies. Blabla.. you can deactive them in the browser settings somewhere.. you are not being tracked.. by using this site you accept.."
+
+#: account/templates/account/banner.html:31
+msgid "Mir doch egal!"
+msgstr "I don't care!"
+
 #: account/templates/account/destroy_friendship.html:4
 #: account/templates/account/destroy_friendship.html:7
 msgid "Freundschaft beendet"
@@ -424,9 +435,9 @@ msgstr "You can edit your account with the following form:"
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:323
-#: multiplayer/templates/javascript/durak.js:362
-#: multiplayer/templates/javascript/durak.js:372
+#: multiplayer/templates/javascript/durak.js:326
+#: multiplayer/templates/javascript/durak.js:365
+#: multiplayer/templates/javascript/durak.js:375
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:13
 #: usergroups/templates/usergroups/edit_group.html:12
@@ -537,16 +548,16 @@ msgstr "Friends"
 msgid "Home"
 msgstr "Home"
 
-#: account/templates/account/home.html:8
+#: account/templates/account/home.html:9
 #, python-format
 msgid "Willkommen, %(v0)s."
 msgstr "Welcome, %(v0)s."
 
-#: account/templates/account/home.html:8
+#: account/templates/account/home.html:9
 msgid "Ist irgendwas? Schicken Sie"
 msgstr "Suggestions? send"
 
-#: account/templates/account/home.html:8
+#: account/templates/account/home.html:9
 #, fuzzy
 #| msgid "eine Freundschaftsanfrage"
 msgid "eine Freundschaftsanfrage."
@@ -584,7 +595,7 @@ msgstr "Next"
 #: account/templates/account/register.html:4
 #: account/templates/account/register.html:8
 #: account/templates/account/register.html:15
-#: account/templates/registration/login.html:26
+#: account/templates/registration/login.html:27
 msgid "Registrieren"
 msgstr "Register"
 
@@ -762,21 +773,21 @@ msgstr "You've successfully logged out. You can now"
 msgid "auch wieder einloggen."
 msgstr "log in again."
 
-#: account/templates/registration/login.html:4
-#: account/templates/registration/login.html:9
-#: account/templates/registration/login.html:23
+#: account/templates/registration/login.html:5
+#: account/templates/registration/login.html:10
+#: account/templates/registration/login.html:24
 msgid "Einloggen"
 msgstr "Login"
 
-#: account/templates/registration/login.html:11
+#: account/templates/registration/login.html:12
 msgid "Fehler beim Einloggen"
 msgstr "Error logging in"
 
-#: account/templates/registration/login.html:12
+#: account/templates/registration/login.html:13
 msgid "Zurück zum Login"
 msgstr "Back to login"
 
-#: account/templates/registration/login.html:13
+#: account/templates/registration/login.html:14
 msgid ""
 "Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der "
 "Account möglicherweise gesperrt."
@@ -784,19 +795,19 @@ msgstr ""
 "Does the problem persist in spite of using the correct user name and "
 "password? Maybe your account has been banned."
 
-#: account/templates/registration/login.html:16
+#: account/templates/registration/login.html:17
 msgid "Willkommen bei myactivities.net! :)"
 msgstr "Welcome to myactivities.net! :)"
 
-#: account/templates/registration/login.html:17
+#: account/templates/registration/login.html:18
 msgid "Was ist das hier?"
 msgstr "What’s this about?"
 
-#: account/templates/registration/login.html:18
+#: account/templates/registration/login.html:19
 msgid "Bitte nutzen Sie das folgende Formular zum einloggen:"
 msgstr "Please use the following form to log in:"
 
-#: account/templates/registration/login.html:26
+#: account/templates/registration/login.html:27
 #: account/templates/registration/password_reset_complete.html:4
 #: account/templates/registration/password_reset_confirm.html:4
 #: account/templates/registration/password_reset_confirm.html:7
@@ -890,11 +901,11 @@ msgstr "Enter your email address to reset your password."
 msgid "Senden"
 msgstr "Send"
 
-#: activities/settings/base.py:147
+#: activities/settings/base.py:148
 msgid "Deutsch"
 msgstr "German"
 
-#: activities/settings/base.py:148
+#: activities/settings/base.py:149
 msgid "Englisch"
 msgstr "English"
 
@@ -1437,12 +1448,12 @@ msgstr "FREE"
 msgid "Doppelkopf"
 msgstr "Doppelkopf"
 
-#: multiplayer/templates/javascript/cards.js:418
-#: multiplayer/templates/javascript/skat.js:561
+#: multiplayer/templates/javascript/cards.js:419
+#: multiplayer/templates/javascript/skat.js:562
 msgid "Ja"
 msgstr "Yes"
 
-#: multiplayer/templates/javascript/cards.js:420
+#: multiplayer/templates/javascript/cards.js:421
 msgid "Nein"
 msgstr "No"
 
@@ -1472,17 +1483,20 @@ msgid "Buben"
 msgstr "Jacks"
 
 #: multiplayer/templates/javascript/doppelkopf.js:11
-#: multiplayer/templates/javascript/skat.js:15
+#: multiplayer/templates/javascript/skat.js:14
+#: multiplayer/templates/javascript/skat.js:358
 msgid "Kreuz"
 msgstr "Clubs"
 
 #: multiplayer/templates/javascript/doppelkopf.js:12
-#: multiplayer/templates/javascript/skat.js:16
+#: multiplayer/templates/javascript/skat.js:15
+#: multiplayer/templates/javascript/skat.js:359
 msgid "Pik"
 msgstr "Spades"
 
 #: multiplayer/templates/javascript/doppelkopf.js:13
-#: multiplayer/templates/javascript/skat.js:17
+#: multiplayer/templates/javascript/skat.js:16
+#: multiplayer/templates/javascript/skat.js:360
 msgid "Herz"
 msgstr "Hearts"
 
@@ -1507,7 +1521,7 @@ msgid "Keine 30"
 msgstr "No 30"
 
 #: multiplayer/templates/javascript/doppelkopf.js:22
-#: multiplayer/templates/javascript/skat.js:391
+#: multiplayer/templates/javascript/skat.js:392
 msgid "Schwarz"
 msgstr "Black"
 
@@ -1522,9 +1536,9 @@ msgstr "Contra"
 
 #: multiplayer/templates/javascript/doppelkopf.js:180
 #: multiplayer/templates/javascript/doppelkopf.js:348
-#: multiplayer/templates/javascript/durak.js:160
-#: multiplayer/templates/javascript/skat.js:166
-#: multiplayer/templates/javascript/skat.js:201
+#: multiplayer/templates/javascript/durak.js:161
+#: multiplayer/templates/javascript/skat.js:165
+#: multiplayer/templates/javascript/skat.js:200
 msgid "Spiel Nummer"
 msgstr "Game number"
 
@@ -1532,24 +1546,24 @@ msgstr "Game number"
 msgid "Normalspiel"
 msgstr "Normal game"
 
-#: multiplayer/templates/javascript/durak.js:60
-#: multiplayer/templates/javascript/durak.js:210
+#: multiplayer/templates/javascript/durak.js:61
+#: multiplayer/templates/javascript/durak.js:214
 msgid "SCHLUCKT"
 msgstr "GOBBLING"
 
-#: multiplayer/templates/javascript/durak.js:168
+#: multiplayer/templates/javascript/durak.js:169
 msgid "ANGREIFER"
 msgstr "ATTACKER"
 
-#: multiplayer/templates/javascript/durak.js:171
+#: multiplayer/templates/javascript/durak.js:172
 msgid "VERTEIDIGER"
 msgstr "DEFENDER"
 
-#: multiplayer/templates/javascript/durak.js:342
+#: multiplayer/templates/javascript/durak.js:345
 msgid "Schlucken"
 msgstr "Gobble"
 
-#: multiplayer/templates/javascript/durak.js:352
+#: multiplayer/templates/javascript/durak.js:355
 msgid "Schieben"
 msgstr "Transfer"
 
@@ -1558,84 +1572,85 @@ msgstr "Transfer"
 msgid "Frei"
 msgstr "Free"
 
-#: multiplayer/templates/javascript/skat.js:18
+#: multiplayer/templates/javascript/skat.js:17
+#: multiplayer/templates/javascript/skat.js:361
 msgid "Karo"
 msgstr "Diamonds"
 
-#: multiplayer/templates/javascript/skat.js:19
+#: multiplayer/templates/javascript/skat.js:18
 msgid "Grand"
 msgstr "Grand"
 
-#: multiplayer/templates/javascript/skat.js:20
+#: multiplayer/templates/javascript/skat.js:19
 msgid "Null"
 msgstr "Null"
 
-#: multiplayer/templates/javascript/skat.js:23
+#: multiplayer/templates/javascript/skat.js:22
 msgid "Nö"
 msgstr "Nah fam"
 
-#: multiplayer/templates/javascript/skat.js:203
+#: multiplayer/templates/javascript/skat.js:202
 msgid "gewonnen"
 msgstr "won"
 
-#: multiplayer/templates/javascript/skat.js:205
+#: multiplayer/templates/javascript/skat.js:204
 msgid "verloren"
 msgstr "lost"
 
-#: multiplayer/templates/javascript/skat.js:207
+#: multiplayer/templates/javascript/skat.js:206
 msgid "überreizt"
 msgstr "overbid"
 
-#: multiplayer/templates/javascript/skat.js:209
+#: multiplayer/templates/javascript/skat.js:208
 msgid "Augen"
 msgstr "Points"
 
-#: multiplayer/templates/javascript/skat.js:290
+#: multiplayer/templates/javascript/skat.js:291
 msgid "Drücken"
 msgstr "Put"
 
-#: multiplayer/templates/javascript/skat.js:377
+#: multiplayer/templates/javascript/skat.js:378
 msgid "Ouvert"
 msgstr "Ouvert"
 
-#: multiplayer/templates/javascript/skat.js:380
-#: multiplayer/templates/javascript/skat.js:385
+#: multiplayer/templates/javascript/skat.js:381
+#: multiplayer/templates/javascript/skat.js:386
 msgid "Normal"
 msgstr "Normal"
 
-#: multiplayer/templates/javascript/skat.js:388
+#: multiplayer/templates/javascript/skat.js:389
 msgid "Schneider"
 msgstr "Schneider"
 
-#: multiplayer/templates/javascript/skat.js:394
+#: multiplayer/templates/javascript/skat.js:395
 msgid "Offen"
 msgstr "Ouvert"
 
-#: multiplayer/templates/javascript/skat.js:414
+#: multiplayer/templates/javascript/skat.js:415
 msgid "Aufnehmen"
 msgstr "Take Skat"
 
-#: multiplayer/templates/javascript/skat.js:417
+#: multiplayer/templates/javascript/skat.js:418
 msgid "Hand spielen"
 msgstr "Hand"
 
-#: multiplayer/templates/javascript/skat.js:426
+#: multiplayer/templates/javascript/skat.js:427
 msgid "Eingepasst"
 msgstr "No bid, new game"
 
-#: multiplayer/templates/javascript/skat.js:566
+#: multiplayer/templates/javascript/skat.js:567
 msgid "Passe"
 msgstr "Nah fam"
 
-#: multiplayer/templates/javascript/skat.js:578
+#: multiplayer/templates/javascript/skat.js:579
 msgid "Vorhand"
 msgstr "Forehand"
 
-#: multiplayer/templates/javascript/skat.js:578
+#: multiplayer/templates/javascript/skat.js:579
 msgid "Mittelhand"
 msgstr "Middle"
 
-#: multiplayer/templates/javascript/skat.js:578
+#: multiplayer/templates/javascript/skat.js:579
 msgid "Hinterhand"
 msgstr "Behind"
 
@@ -2321,7 +2336,6 @@ msgstr "Comment..."
 #~ msgid "Gesendete Freundschaftsanfragen"
 #~ msgstr "Sent friend requests"
 
-#, python-format
 #~ msgid "Willkommen, %(v0)s %(v1)s (aka %(v2)s)."
 #~ msgstr "Welcome, %(v0)s %(v1)s (aka %(v2)s)."
 
@@ -2346,7 +2360,6 @@ msgstr "Comment..."
 #~ msgid "... und auf aktivitaeten.de:"
 #~ msgstr "... and on myactivities.net:"
 
-#, python-format
 #~ msgid "vor %(v0)s"
 #~ msgstr "%(v0)s ago"
 
@@ -2365,52 +2378,41 @@ msgstr "Comment..."
 #~ msgid "ist kein Mitspieler mehr bei:"
 #~ msgstr "isn't a player any more in:"
 
-#, python-brace-format
 #~ msgid "hat ein Match gelöscht: {instance}"
 #~ msgstr "deleted a match: {instance}"
 
-#, python-brace-format
 #~ msgid ": Jemand hat für den {stamp} zugesagt:"
 #~ msgstr ": Someone confirmed the appointment on {stamp}:"
 
-#, python-brace-format
 #~ msgid ": Jemand hat für den {stamp} seine Zusage zurückgezogen:"
 #~ msgstr ""
 #~ ": Someone cancelled his conformation for the appointment on {stamp}:"
 
-#, python-brace-format
 #~ msgid ": Jemand hat für den {stamp} abgesagt:"
 #~ msgstr ": Someone cancelled for the appointment on {stamp}:"
 
-#, python-brace-format
 #~ msgid ": Jemand hat für den {stamp} seine Absage zurückgezogen:"
 #~ msgstr ""
 #~ ": Someone cancelled his cancellation for the appointment on {stamp}:"
 
-#, python-brace-format
 #~ msgid "hat eine neue Terminabstimmung für den {stamp}"
 #~ msgstr "new appointment on {stamp}"
 
-#, python-brace-format
 #~ msgid ": Der Termin am {stamp1} wurde auf den {stamp2} verlegt."
 #~ msgstr ": Appointment on {stamp1} was moved to {stamp2}."
 
-#, python-brace-format
 #~ msgid ": Der Termin für den {stamp} wurde gelöscht."
 #~ msgstr ": Appointment on {stamp} was deleted."
 
 #~ msgid "hat eine Gruppe erstellt:"
 #~ msgstr "created a group:"
 
-#, python-brace-format
 #~ msgid "hat eine Gruppe gelöscht: {name}"
 #~ msgstr "deleted a group: {name}"
 
-#, python-brace-format
 #~ msgid "hat sich auf eine Leerstelle beworben: \"{vacancy}\", von:"
 #~ msgstr "applied for a vacancy: \"{vacancy}\", by:"
 
-#, python-brace-format
 #~ msgid ""
 #~ "hat den Status der Bewerbung auf die Leerstelle {vacancy} auf {status} "
 #~ "geändert. Bewerber:"

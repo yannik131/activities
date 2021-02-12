@@ -1,6 +1,7 @@
 {% load static %}
 {% load i18n %}
 {% load account_tags %}
+{% load cookielaw_tags %}
 
 <!DOCTYPE html>
 <html>
@@ -76,6 +77,7 @@
 {% endwith %}
 
 {% else %}
+{% cookielaw_banner %}
     <div class="topmenu" id="topmenu">
         <div class="logo">
             <a href="{% url 'account:home' %}">myactivities.net</a>

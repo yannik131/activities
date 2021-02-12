@@ -1,0 +1,57 @@
+{% load i18n %}
+
+<style>
+.cookie-banner {
+    position: fixed;
+    bottom: 0px;
+    left: 15px;
+    right: 15px;
+    background: black;
+    border-radius: 10px;
+    padding: 0px 5px 15px 5px;
+    color: white;
+    font-family: "Courier New", "Lucida Console", monospace;
+}
+
+.cookie-banner a {
+    color: black;
+}
+
+.container {
+    text-align: center;
+}
+
+</style>
+
+<div class="cookie-banner" id="CookielawBanner">
+    <div class="container">
+        <p>
+            {% trans 'Diese Seite nutzt Cookies. Blabla.. können Sie im Browser irgendwo deaktivieren.. Statistiken werden nicht erstellt.. durch Weiternutzen der Seite stimmen sie zu..' %}<br>
+        </p>
+            <a class="blue-button" onclick="javascript:Cookielaw.createCookielawCookie();">{% trans "Mir doch egal!" %}</a>
+    </div>
+</div>
+
+<script>
+var Cookielaw = {
+
+    createCookie: function (name, value, days) {
+        var date = new Date(),
+            expires = '';
+        if (days) {
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toGMTString();
+        } else {
+            expires = "";
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    },
+
+    createCookielawCookie: function () {
+        this.createCookie('cookielaw_accepted', '1', 10 * 365);
+
+        document.getElementById('CookielawBanner').style.display = 'none';
+    }
+
+};
+</script>
