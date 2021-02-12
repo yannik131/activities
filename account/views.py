@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm
 from .models import Location, FriendRequest, User, Friendship
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseNotFound, HttpResponseServerError
 from django.utils import timezone
 from .templatetags import account_tags
 from notify.utils import notify
@@ -179,8 +179,12 @@ def view_friendship(request, id):
 
 
 def handler404(request, exception):
-    return render(request, "account/404.html")
+    return render(request, "account/404.html", dict(exception=exception))
     
     
 def handler403(request, exception):
-    return render(request, "account/403.html")
+    return render(request, "account/403.html", dict(exception=exception))
+
+
+def handler500(request):
+    return render(request, "account/500.html")

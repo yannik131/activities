@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}Mist{% endblock %}
+
+{% block content %}
+<h1>{% trans "Fehler: 500 - Server Fehler" %}</h1>
+<p>{% trans "Da kann entweder jemand nicht programmieren (*HUST*), oder jemand versucht hier absichtlich einen Fehler zu verursachen." %} {% trans "Falls Sie das traurig machen sollte, hier ein paar ausgewählte Witze: " %}</p>
+
+{% include 'account/jokes.html' %}
+{% endblock %}

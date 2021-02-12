@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}404{% endblock %}
+{% block title %}Wo?{% endblock %}
 
 {% block content %}
-<h1>{% trans "Fehler: 404" %}</h1>
-<p>{% trans "Die geforderte Seite gibt's anscheinend nicht mehr :( Falls Sie das traurig machen sollte, hier ein paar ausgewählte Witze: " %}</p>
-<p>{% blocktrans %}Steht son Typ mit seinem Wagen vor der Tanke, schaut sich um, macht den Tank auf und pinkelt da rein. Da kommt jemand aus der Tankstelle, sieht das ganze und sagt zu dem Typen: "Das ist doch nicht normal!" Sagt er: "Ne, das ist super! :)"{% endblocktrans %}</p>
-<p>{% blocktrans %}Frau geht arbeiten, Mann bleibt zuhause, wir kennen dat. Bevor die Frau aber arbeiten geht sagt sie zu ihrem Mann: Denk dran, dass du mit dem Hund raus gehst. Der Mann sagt: Jaja, kenn wir auch. Frau geht arbeiten, draußen fängt dat an zu regnen, denkt der Mann: Da hab ich keine Lust drauf. Macht er einfach die Tür auf, sodass der Hund dann alleine rausgeht. Kommt der Hund 20 Minuten später wieder und hat n Kaninchen im Maul. Sagt er, oh Mist, das ist ja das von den Nachbarn. Da macht er es schnell sauber und legt es drüben wieder zurück in der Käfig. Am nächsten Morgen hat er dann mit seiner Frau Frühstück, sagt sie: Du, unseren Nachbarn ist was gruseliges passiert! Sagt er: Nein, erzähl mal! Sie: Das Kaninchen von denen lag gestern tot im Stall! Sagt er: Oh, wie gruselig! Sie: Das Gruselige ist, das haben die einen Tag vorher beerdigt!{% endblocktrans %}</p>
-<p>{% blocktrans %}Typ sitzt inner Kneipe, kommt so ein kleines weißes Pferd vorbeigerannt. Denkt er sich, was war dat denn, hat sich bestimmt verguckt. Kommt das kleine Pferd wieder vorbei! Sagt er zum Wirt: Hör mal, was soll das denn hier mit dem kleinen weißen Pferd? Sagt der Wirt: Hör bloß auf, geh mal unten runter in den Bierkeller, da hinter dem Gurkenfass, da sitzt eine Fee. Geh da mal hin und wünsch dir wat, weißte Bescheid. Er geht runter, kommt 20 Minuten später wieder hoch, hat ne Melone unterm Arm und hinter ihm läuft ein kleines Schwein. Da sagt er zum Wirt: Hör mal, kann das sein dass die mich da unten nicht versteht? Ich hab mir eine Million gewünscht, in kleinen Scheinen! Da sagt er: Ja glaubst du ich hab mir einen 30 Zentimeter langen Schimmel gewünscht oder was?{% endblocktrans %}</p>
+<h1>{% trans "Fehler: 404 - Seite nicht gefunden" %}</h1>
+<p>{% trans "Die geforderte Seite gibt's anscheinend nicht mehr :(" %}<br>
+{% if exception %}
+{% trans "Fehlerbeschreibung: " %} {{ exception }}<br>
+{% endif %}
+{% trans "Falls Sie das traurig machen sollte, hier ein paar ausgewählte Witze: " %}</p>
+
+{% include 'account/jokes.html' %}
 {% endblock %}

@@ -39,3 +39,5 @@ x reizwerte alert
 x ciao bestätigen
 x kontra + re wurde nur re gewertet
 x doko solo sofort start wenn nicht hochzeit
+
+regex replace HttpResponseForbidden
