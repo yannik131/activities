@@ -13,7 +13,6 @@ from activities.language_subdomain_middleware import get_prefix
 
 @login_required
 def home(request):
-    return HttpResponseNotFound("hi")
     missing_fields = request.user.birth_year is None or request.user.sex is None
     return render(request, 'account/home.html', dict(missing_fields=missing_fields))
 
