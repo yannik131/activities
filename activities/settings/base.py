@@ -73,7 +73,8 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'django_extensions',
     'parler',
-    'easy_thumbnails'
+    'easy_thumbnails',
+    'cookielaw'
 ]
 
 MIDDLEWARE = [
@@ -101,7 +102,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                'django.contrib.messages.context_processors.messages'
             ],
         },
     },

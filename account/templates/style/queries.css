@@ -71,6 +71,7 @@
     }
     .content {
         left: 250px;
+        right: 250px;
     }
     .sidemenu {
         display: block;
@@ -81,10 +82,6 @@
     .chat-menu {
         display: block;
         width: 250px;
-    }
-
-    .content {
-        right: 250px;
     }
 
     .envelope {

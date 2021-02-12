@@ -20,6 +20,10 @@
 </head>
 <body>
 <div class="base-container">
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
 {% if user.is_authenticated %}
 {% with latest_messages=user.get_latest_messages %}
     <div class="topmenu" id="topmenu">
@@ -80,12 +84,11 @@
             {% language_setter request %}
         </div>
     </div>
+    <script>
+        document.getElementsByClassName("content")[0].style.left = 0;
+        document.getElementsByClassName("content")[0].style.right = 0;
+    </script>
 {% endif %}
-
-<div class="content">
-    {% block content %}
-    {% endblock %}
-</div>
 
 <script>
     {% include 'javascript/base.js' %}

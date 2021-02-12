@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load cookielaw_tags %}
 
 {% block title %}{% trans "Einloggen" %}{% endblock %}
 
@@ -26,4 +27,5 @@
         <p><a href="{% url 'account:password_reset' %}">{% trans "Passwort zurücksetzen" %}</a> | <a href="{% url 'account:register' %}">{% trans "Registrieren" %}</a></p>
     </div>
     </div>
+    {% cookielaw_banner %}
 {% endblock %}
