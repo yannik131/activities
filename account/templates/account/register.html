@@ -9,7 +9,7 @@
     <p>{% blocktrans %}Sie können sich mit dem folgenden Formular registrieren. {% endblocktrans %}</p>
     <form method="post">
         {{ user_form.as_p }}
-        {% trans "Bitte geben Sie eine Stadt ein" %}.
+        {% trans "Wo hängen Sie meistens rum?" %}
         {{ location_form.as_p }}
         {% csrf_token %}
         <input type="submit" value="{% blocktrans %}Registrieren{% endblocktrans %}">

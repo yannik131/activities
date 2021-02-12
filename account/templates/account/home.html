@@ -7,6 +7,12 @@
 {% block content %}
     {% if user.image %}<img src="{{ user.image.url }}" class="user-photo">{% endif %}
 	<p>{% blocktrans with v0=user.username %}Willkommen, {{ v0 }}.{% endblocktrans %} {% trans 'Ist irgendwas? Schicken Sie' %} <a href="{% url 'account:detail' 'admin' %}">admin</a> {% trans 'eine Freundschaftsanfrage.' %}</p>
+    {% if missing_fields %}
+    <p style="border: 2px solid gray; color: red;">
+    {% trans 'Schließen Sie Ihre Anmeldung ab, indem Sie Alter, E-Mail-Adresse und Geschlecht nachtragen: ' %} <a href="{% url 'account:edit' %}">Klick!</a><br>
+    {% trans 'Ansonsten können Sie Ihr Passwort nicht zurücksetzen und/oder sich auf Leerstellen bewerben.' %}
+    </p>
+    {% endif %}
     <p><a href="{% url 'account:user_post_list' %}">{% blocktrans %}Zu Ihren Posts...{% endblocktrans %}</a></p>
     {% if user.activities.all %}
         <p>{% blocktrans %}Sie sind zurzeit Mitglied folgender Aktivitäten:{% endblocktrans %}</p>

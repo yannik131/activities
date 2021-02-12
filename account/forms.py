@@ -13,16 +13,16 @@ class UserRegistrationForm(forms.ModelForm):
 
     class Meta:
         model = get_user_model()
-        fields = ('username', 'sex', 'birth_year', 'email')
+        fields = ('username',)
         labels = {
             'sex': _('Geschlecht'),
             'birth_year': _('Geburtsjahr'),
         }
+        
         help_texts = {
-            'email': _('Falls Sie mal das Passwort zurücksetzen müssen. Optional.'),
-            'sex': _('Für Bewerbungen.'),
-            'birth_year': _('Altersermittlung für Bewerbungen.')
+            'username': _("10 Zeichen oder weniger!")
         }
+        
 
     def clean_password2(self):
         cd = self.cleaned_data
@@ -48,10 +48,17 @@ class UserEditForm(forms.ModelForm):
             'profile_text': _('Profiltext'),
             'image': _('Profilbild')
         }
+        
+        help_texts = {
+            'email': _('Falls Sie mal das Passwort zurücksetzen müssen. Optional.'),
+            'sex': _('Für Bewerbungen.'),
+            'birth_year': _('Altersermittlung für Bewerbungen.')
+        }
 
 
 class LocationForm(forms.Form):
-    address = forms.CharField(label=_('Ihre Stadt'), help_text=_('Notwendig, um in Ihrer Nähe nach Leuten suchen zu können. Nur für Ihre Freunde sichtbar.'))
+    # , help_text=_('Notwendig, um in Ihrer Nähe nach Leuten suchen zu können. Nur für Ihre Freunde sichtbar.')
+    address = forms.CharField(label=_('Ihre Stadt'))
 
     def clean(self):
         cd = super().clean()

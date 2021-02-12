@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-12 22:17+0000\n"
-"PO-Revision-Date: 2021-02-12 23:18+0100\n"
+"POT-Creation-Date: 2021-02-12 22:49+0000\n"
+"PO-Revision-Date: 2021-02-12 23:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -35,17 +35,9 @@ msgstr "Gender"
 msgid "Geburtsjahr"
 msgstr "Birth year"
 
-#: account/forms.py:22
-msgid "Falls Sie mal das Passwort zurücksetzen müssen. Optional."
-msgstr "In case you want to reset the password. Optional."
-
 #: account/forms.py:23
-msgid "Für Bewerbungen."
-msgstr "For applications."
-
-#: account/forms.py:24
-msgid "Altersermittlung für Bewerbungen."
-msgstr "Age for applications."
+msgid "10 Zeichen oder weniger!"
+msgstr "10 characters or less!"
 
 #: account/forms.py:30
 msgid "Passwörter stimmen nicht überein!"
@@ -63,17 +55,23 @@ msgstr "Profile text"
 msgid "Profilbild"
 msgstr "Profile picture"
 
+#: account/forms.py:53
+msgid "Falls Sie mal das Passwort zurücksetzen müssen. Optional."
+msgstr "In case you want to reset the password. Optional."
+
 #: account/forms.py:54
+msgid "Für Bewerbungen."
+msgstr "For applications."
+
+#: account/forms.py:55
+msgid "Altersermittlung für Bewerbungen."
+msgstr "Age for applications."
+
+#: account/forms.py:61
 msgid "Ihre Stadt"
 msgstr "Your city"
 
-#: account/forms.py:54
-msgid ""
-"Notwendig, um in Ihrer Nähe nach Leuten suchen zu können. Nur für Ihre "
-"Freunde sichtbar."
-msgstr "Required to look for people in your area. Only visible to friends."
-
-#: account/forms.py:63 account/templates/account/friend_requests_list.html:14
+#: account/forms.py:70 account/templates/account/friend_requests_list.html:14
 #: account/templates/account/friend_requests_list.html:39
 #: usergroups/templates/usergroups/invitation_list.html:7 vacancies/forms.py:54
 #: vacancies/forms.py:98 vacancies/templates/vacancies/application_list.html:34
@@ -81,7 +79,7 @@ msgstr "Required to look for people in your area. Only visible to friends."
 msgid "Nachricht"
 msgstr "Message"
 
-#: account/forms.py:69
+#: account/forms.py:76
 #, python-brace-format
 msgid ""
 "Die Nachricht darf nicht länger als 150 Zeichen sein, ist aber {l} Zeichen "
@@ -90,13 +88,13 @@ msgstr ""
 "The message can't be longer than 150 characters. It's {l} characters long. "
 "Fix this."
 
-#: account/forms.py:74 account/templates/account/friend_requests_list.html:13
+#: account/forms.py:81 account/templates/account/friend_requests_list.html:13
 #: account/templates/account/friend_requests_list.html:38
 #: activity/templates/activity/detail.html:32
 msgid "Nutzername"
 msgstr "User name"
 
-#: account/forms.py:79
+#: account/forms.py:86
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr "There is no user with the user name {name}"
@@ -566,15 +564,27 @@ msgstr "Suggestions? send"
 msgid "eine Freundschaftsanfrage."
 msgstr "a friend request"
 
-#: account/templates/account/home.html:10
+#: account/templates/account/home.html:12
+msgid ""
+"Schließen Sie Ihre Anmeldung ab, indem Sie Alter, E-Mail-Adresse und "
+"Geschlecht nachtragen: "
+msgstr "Finish your registration by specifying your age, e-mail and gender: "
+
+#: account/templates/account/home.html:13
+msgid ""
+"Ansonsten können Sie Ihr Passwort nicht zurücksetzen und/oder sich auf "
+"Leerstellen bewerben."
+msgstr "Otherwise you can't reset your password and/or apply to vacancies!"
+
+#: account/templates/account/home.html:16
 msgid "Zu Ihren Posts..."
 msgstr "Your posts..."
 
-#: account/templates/account/home.html:12
+#: account/templates/account/home.html:18
 msgid "Sie sind zurzeit Mitglied folgender Aktivitäten:"
 msgstr "You are currently a member of the following activities:"
 
-#: account/templates/account/home.html:15
+#: account/templates/account/home.html:21
 msgid "Sie sind zurzeit kein Mitglied einer Aktivität."
 msgstr "You aren't a member of an activity. Why don't you join one? :)"
 
@@ -607,8 +617,8 @@ msgid "Sie können sich mit dem folgenden Formular registrieren. "
 msgstr "Fill in the following form to register. "
 
 #: account/templates/account/register.html:12
-msgid "Bitte geben Sie eine Stadt ein"
-msgstr "Please enter a city name"
+msgid "Wo hängen Sie meistens rum?"
+msgstr "Where do you usually hang out?"
 
 #: account/templates/account/register_done.html:4
 #: account/templates/account/register_done.html:7
@@ -2215,6 +2225,14 @@ msgstr " %(v0)s ago"
 #: wall/templates/wall/post/post_loop.html:25
 msgid "Kommentieren..."
 msgstr "Comment..."
+
+#~ msgid ""
+#~ "Notwendig, um in Ihrer Nähe nach Leuten suchen zu können. Nur für Ihre "
+#~ "Freunde sichtbar."
+#~ msgstr "Required to look for people in your area. Only visible to friends."
+
+#~ msgid "Bitte geben Sie eine Stadt ein"
+#~ msgstr "Please enter a city name"
 
 #~ msgid ""
 #~ "Der Name darf nicht länger als 30, die Beschreibung nicht länger als 150 "

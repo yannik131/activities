@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm
 from .models import Location, FriendRequest, User, Friendship
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseNotFound
 from django.utils import timezone
 from .templatetags import account_tags
 from notify.utils import notify
@@ -13,7 +13,9 @@ from activities.language_subdomain_middleware import get_prefix
 
 @login_required
 def home(request):
-    return render(request, 'account/home.html')
+    return HttpResponseNotFound("hi")
+    missing_fields = request.user.birth_year is None or request.user.sex is None
+    return render(request, 'account/home.html', dict(missing_fields=missing_fields))
 
 
 def about(request):
@@ -179,3 +181,7 @@ def view_friendship(request, id):
 
 def handler404(request, exception):
     return render(request, "account/404.html")
+    
+    
+def handler403(request, exception):
+    return render(request, "account/403.html")
