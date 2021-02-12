@@ -9,7 +9,6 @@ var mode; //playing or undefined/null
 var solist;
 var no_take = "";
 var ouvert = false;
-var trump_suit;
 var last_trick;
 var game_type_translations = {
     "c": "{% trans 'Kreuz' %}",
@@ -25,7 +24,7 @@ var bid_translations = {
 
 {% include 'javascript/common_sd.js' %}
 
-function defineSortValues(ten_high, jacks_max) {
+function defineSortValues(ten_high, jacks_max, trump_suit) {
     var suits = ["d", "h", "s", "c"];
     var count = 100;
     for(var i = 0; i < suits.length; i++) {
@@ -179,7 +178,6 @@ function handleStart(data) {
         
     }
     game_type = data.game_type;
-    updateSortingOrder();
     mode = "playing";
     solist = data.solist;
     updatePlayerInfo(solist, null, game_type);
@@ -192,6 +190,7 @@ function handleStart(data) {
             addCardTo(players[data.solist], 1, hand[i]);
         }
     }
+    updateSortingOrder();
     createInfoAlert(solist + ": " + game_type_translations[game_type], 1000);
 }
 
@@ -251,21 +250,23 @@ function updateAllInfo() {
 function updateSortingOrder() {
     switch(game_type) {
         case "n":
-            trump_suit = null;
             defineSortValues(ten_high=false, jacks_max=false);
             break;
         case "c":
         case "s":
         case "h":
         case "d":
-            trump_suit = game_type;
+            defineSortValues(ten_high=true, jacks_max=true, game_type[0]);
+            break;
         case "g":
         default:
-            trump_suit = null;
             defineSortValues(ten_high=true, jacks_max=true);
             break;
     }
-    updateCardsFor(1, game_type != "n");
+    updateCardsFor(1);
+    if(ouvert && this_user != solist) {
+        updateCardsFor(players[solist]);
+    }
 }
 
 function handleTake(data) {
@@ -354,10 +355,10 @@ function chooseGameMode() {
         clearStacks();
         addCardsToDeck(3, false);
     }
-    var games = [["&clubs;", "c"],
-                 ["&spades;", "s"],
-                 ["&hearts;", "h"],
-                 ["&diams;", "d"],
+    var games = [["&clubs; {% trans 'Kreuz' %}", "c"],
+                 ["&spades; {% trans 'Pik' %}", "s"],
+                 ["&hearts; {% trans 'Herz' %}", "h"],
+                 ["&diams; {% trans 'Karo' %}", "d"],
                  ["Null", "n"],
                  ["Grand", "g"]];
     for(var i = 0; i < games.length; i++) {

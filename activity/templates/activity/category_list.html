@@ -8,7 +8,7 @@
     <p>{% trans "Hier eine Liste aller verfügbaren Kategorien" %}:</p>
     <div class="list">
         {% for category in categories %}
-            <div class="item" onclick="location.href='{{ category.get_absolute_url }}'">
+            <div class="item fixed" onclick="location.href='{{ category.get_absolute_url }}'">
             {% load thumbnail %}
                 <img src="{% thumbnail category.image 200x200 %}" class="image">
                 <div class="title">

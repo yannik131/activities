@@ -353,6 +353,7 @@ function createButton(text, id, callback, color) {
     else {
         button.style.fontSize = "24pt";
     }
+    button.style.fontWeight = "bold";
     button.className = "game-button";
     button.innerHTML = text;
     button.style.right = (buttons.length == 0? 0 : field.offsetWidth-buttons[buttons.length-1].offsetLeft+5) + "px";

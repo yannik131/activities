@@ -108,13 +108,14 @@ class DurakConsumer(GameConsumer):
                         data["defending"] = durak
                         data["attacking"] = before(durak, players)
                     else:
-                        data["attacking"] = after(data["started"], players)
+                        data["attacking"] = data["first"]
                         data["defending"] = after(data["attacking"], players)
                     message["data"] = match.game_data
                     message["data"]["summary"] = summary
                     message["data"]["game_number"] = data["game_number"]
                 else:
                     data["defending"] = left_player(data["attacking"], players, data)
+                    data["started"] = data["attacking"]
                     done_list = []
                     message["data"] = {
                         "action": "new_round",

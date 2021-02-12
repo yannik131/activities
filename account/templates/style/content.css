@@ -121,11 +121,11 @@ select:focus, select:hover {
 }
 
 .user-photo {
-    width: 40%;
+    max-height: 300px;
+    max-width: 60%;
     display: block;
-    margin: 0 auto;
     border-radius: 10%;
-    float: right;
+    margin: auto auto;
 }
 
 .activity-thumbnail {
@@ -169,7 +169,6 @@ select:focus, select:hover {
     margin: 10px 10px;
     border: 1px solid transparent;
     border-radius: 10%;
-    width: 100px;
     float: left;
     cursor: pointer;
 }
@@ -189,6 +188,7 @@ select:focus, select:hover {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    height: 100px;
 }
 
 .profile-rest {
@@ -238,18 +238,12 @@ select:focus, select:hover {
 }
 .list .item a {
     text-decoration: none;
-    color: black;
-}
-.list .item a:hover {
     color: white;
 }
-@media screen and (max-width: 567px) {
-    .list .item {
-        clear: both;
-        display: block;
-        margin-left: 25%;
-    }
+.list .item a:hover {
+    color: black;
 }
+
 
 .about-picture {
     width: 90%;
