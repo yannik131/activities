@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-12 22:49+0000\n"
+"POT-Creation-Date: 2021-02-12 23:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -197,53 +197,39 @@ msgstr ""
 msgid "Stadt"
 msgstr ""
 
+#: account/templates/account/403.html:7
+msgid "Fehler: 403 - Zugriff verweigert"
+msgstr ""
+
+#: account/templates/account/403.html:8
+msgid "Halt! Kein Zutritt!"
+msgstr ""
+
+#: account/templates/account/403.html:9 account/templates/account/404.html:10
+msgid "Fehlerbeschreibung: "
+msgstr ""
+
+#: account/templates/account/403.html:10 account/templates/account/404.html:12
+#: account/templates/account/500.html:8
+msgid "Falls Sie das traurig machen sollte, hier ein paar ausgewählte Witze: "
+msgstr ""
+
 #: account/templates/account/404.html:7
-msgid "Fehler: 404"
+msgid "Fehler: 404 - Seite nicht gefunden"
 msgstr ""
 
 #: account/templates/account/404.html:8
-msgid ""
-"Die geforderte Seite gibt's anscheinend nicht mehr :( Falls Sie das traurig "
-"machen sollte, hier ein paar ausgewählte Witze: "
+msgid "Die geforderte Seite gibt's anscheinend nicht mehr :("
 msgstr ""
 
-#: account/templates/account/404.html:9
-msgid ""
-"Steht son Typ mit seinem Wagen vor der Tanke, schaut sich um, macht den Tank "
-"auf und pinkelt da rein. Da kommt jemand aus der Tankstelle, sieht das ganze "
-"und sagt zu dem Typen: \"Das ist doch nicht normal!\" Sagt er: \"Ne, das ist "
-"super! :)\""
+#: account/templates/account/500.html:7
+msgid "Fehler: 500 - Server Fehler"
 msgstr ""
 
-#: account/templates/account/404.html:10
+#: account/templates/account/500.html:8
 msgid ""
-"Frau geht arbeiten, Mann bleibt zuhause, wir kennen dat. Bevor die Frau aber "
-"arbeiten geht sagt sie zu ihrem Mann: Denk dran, dass du mit dem Hund raus "
-"gehst. Der Mann sagt: Jaja, kenn wir auch. Frau geht arbeiten, draußen fängt "
-"dat an zu regnen, denkt der Mann: Da hab ich keine Lust drauf. Macht er "
-"einfach die Tür auf, sodass der Hund dann alleine rausgeht. Kommt der Hund "
-"20 Minuten später wieder und hat n Kaninchen im Maul. Sagt er, oh Mist, das "
-"ist ja das von den Nachbarn. Da macht er es schnell sauber und legt es "
-"drüben wieder zurück in der Käfig. Am nächsten Morgen hat er dann mit seiner "
-"Frau Frühstück, sagt sie: Du, unseren Nachbarn ist was gruseliges passiert! "
-"Sagt er: Nein, erzähl mal! Sie: Das Kaninchen von denen lag gestern tot im "
-"Stall! Sagt er: Oh, wie gruselig! Sie: Das Gruselige ist, das haben die "
-"einen Tag vorher beerdigt!"
-msgstr ""
-
-#: account/templates/account/404.html:11
-msgid ""
-"Typ sitzt inner Kneipe, kommt so ein kleines weißes Pferd vorbeigerannt. "
-"Denkt er sich, was war dat denn, hat sich bestimmt verguckt. Kommt das "
-"kleine Pferd wieder vorbei! Sagt er zum Wirt: Hör mal, was soll das denn "
-"hier mit dem kleinen weißen Pferd? Sagt der Wirt: Hör bloß auf, geh mal "
-"unten runter in den Bierkeller, da hinter dem Gurkenfass, da sitzt eine Fee. "
-"Geh da mal hin und wünsch dir wat, weißte Bescheid. Er geht runter, kommt 20 "
-"Minuten später wieder hoch, hat ne Melone unterm Arm und hinter ihm läuft "
-"ein kleines Schwein. Da sagt er zum Wirt: Hör mal, kann das sein dass die "
-"mich da unten nicht versteht? Ich hab mir eine Million gewünscht, in kleinen "
-"Scheinen! Da sagt er: Ja glaubst du ich hab mir einen 30 Zentimeter langen "
-"Schimmel gewünscht oder was?"
+"Da kann entweder jemand nicht programmieren (*HUST*), oder jemand versucht "
+"hier absichtlich einen Fehler zu verursachen."
 msgstr ""
 
 #: account/templates/account/about.html:6
@@ -547,6 +533,45 @@ msgstr ""
 
 #: account/templates/account/home.html:21
 msgid "Sie sind zurzeit kein Mitglied einer Aktivität."
+msgstr ""
+
+#: account/templates/account/jokes.html:2
+msgid ""
+"Steht son Typ mit seinem Wagen vor der Tanke, schaut sich um, macht den Tank "
+"auf und pinkelt da rein. Da kommt jemand aus der Tankstelle, sieht das ganze "
+"und sagt zu dem Typen: \"Das ist doch nicht normal!\" Sagt er: \"Ne, das ist "
+"super! :)\""
+msgstr ""
+
+#: account/templates/account/jokes.html:3
+msgid ""
+"Frau geht arbeiten, Mann bleibt zuhause, wir kennen dat. Bevor die Frau aber "
+"arbeiten geht sagt sie zu ihrem Mann: Denk dran, dass du mit dem Hund raus "
+"gehst. Der Mann sagt: Jaja, kenn wir auch. Frau geht arbeiten, draußen fängt "
+"dat an zu regnen, denkt der Mann: Da hab ich keine Lust drauf. Macht er "
+"einfach die Tür auf, sodass der Hund dann alleine rausgeht. Kommt der Hund "
+"20 Minuten später wieder und hat n Kaninchen im Maul. Sagt er, oh Mist, das "
+"ist ja das von den Nachbarn. Da macht er es schnell sauber und legt es "
+"drüben wieder zurück in der Käfig. Am nächsten Morgen hat er dann mit seiner "
+"Frau Frühstück, sagt sie: Du, unseren Nachbarn ist was gruseliges passiert! "
+"Sagt er: Nein, erzähl mal! Sie: Das Kaninchen von denen lag gestern tot im "
+"Stall! Sagt er: Oh, wie gruselig! Sie: Das Gruselige ist, das haben die "
+"einen Tag vorher beerdigt!"
+msgstr ""
+
+#: account/templates/account/jokes.html:4
+msgid ""
+"Typ sitzt inner Kneipe, kommt so ein kleines weißes Pferd vorbeigerannt. "
+"Denkt er sich, was war dat denn, hat sich bestimmt verguckt. Kommt das "
+"kleine Pferd wieder vorbei! Sagt er zum Wirt: Hör mal, was soll das denn "
+"hier mit dem kleinen weißen Pferd? Sagt der Wirt: Hör bloß auf, geh mal "
+"unten runter in den Bierkeller, da hinter dem Gurkenfass, da sitzt eine Fee. "
+"Geh da mal hin und wünsch dir wat, weißte Bescheid. Er geht runter, kommt 20 "
+"Minuten später wieder hoch, hat ne Melone unterm Arm und hinter ihm läuft "
+"ein kleines Schwein. Da sagt er zum Wirt: Hör mal, kann das sein dass die "
+"mich da unten nicht versteht? Ich hab mir eine Million gewünscht, in kleinen "
+"Scheinen! Da sagt er: Ja glaubst du ich hab mir einen 30 Zentimeter langen "
+"Schimmel gewünscht oder was?"
 msgstr ""
 
 #: account/templates/account/pagination.html:6
