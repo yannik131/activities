@@ -26,4 +26,4 @@ class Appointment(models.Model):
         return self.group.get_absolute_url()
         
     def verbose(self):
-        return self.group.verbose()
+        return self.__str__()
