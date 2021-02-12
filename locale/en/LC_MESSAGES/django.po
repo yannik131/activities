@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-12 23:19+0000\n"
-"PO-Revision-Date: 2021-02-13 00:21+0100\n"
+"PO-Revision-Date: 2021-02-13 00:40+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -532,10 +532,8 @@ msgid "Ist irgendwas? Schicken Sie"
 msgstr "Suggestions? send"
 
 #: account/templates/account/home.html:9
-#, fuzzy
-#| msgid "eine Freundschaftsanfrage"
 msgid "eine Freundschaftsanfrage."
-msgstr "a friend request"
+msgstr "a friend request."
 
 #: account/templates/account/home.html:12
 msgid ""
