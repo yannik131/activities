@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-12 17:37+0000\n"
+"POT-Creation-Date: 2021-02-12 22:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -294,13 +294,13 @@ msgstr ""
 msgid "Und vieles mehr.. einfach ausprobieren. Kostet ja nix."
 msgstr ""
 
-#: account/templates/account/about.html:21
+#: account/templates/account/about.html:22
 msgid ""
 "Treten Sie Aktivitäten bei, chatten Sie mit Leuten in Ihrer Nähe und lesen/"
 "erstellen Sie Posts!"
 msgstr ""
 
-#: account/templates/account/about.html:27
+#: account/templates/account/about.html:28
 msgid ""
 "Klicken Sie auf den Beitreten-Button unten rechts, um dem Audiochat eines "
 "Spiels beizutreten!"
@@ -559,7 +559,7 @@ msgstr ""
 #: account/templates/account/register.html:4
 #: account/templates/account/register.html:8
 #: account/templates/account/register.html:15
-#: account/templates/registration/login.html:27
+#: account/templates/registration/login.html:30
 msgid "Registrieren"
 msgstr ""
 
@@ -737,39 +737,47 @@ msgstr ""
 msgid "auch wieder einloggen."
 msgstr ""
 
-#: account/templates/registration/login.html:5
-#: account/templates/registration/login.html:10
-#: account/templates/registration/login.html:24
+#: account/templates/registration/login.html:6
+#: account/templates/registration/login.html:13
+#: account/templates/registration/login.html:27
 msgid "Einloggen"
 msgstr ""
 
+#: account/templates/registration/login.html:11
+msgid "Nutzer gesamt: "
+msgstr ""
+
 #: account/templates/registration/login.html:12
+msgid "Online: "
+msgstr ""
+
+#: account/templates/registration/login.html:15
 msgid "Fehler beim Einloggen"
 msgstr ""
 
-#: account/templates/registration/login.html:13
+#: account/templates/registration/login.html:16
 msgid "Zurück zum Login"
 msgstr ""
 
-#: account/templates/registration/login.html:14
+#: account/templates/registration/login.html:17
 msgid ""
 "Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der "
 "Account möglicherweise gesperrt."
 msgstr ""
 
-#: account/templates/registration/login.html:17
+#: account/templates/registration/login.html:20
 msgid "Willkommen bei myactivities.net! :)"
 msgstr ""
 
-#: account/templates/registration/login.html:18
+#: account/templates/registration/login.html:21
 msgid "Was ist das hier?"
 msgstr ""
 
-#: account/templates/registration/login.html:19
+#: account/templates/registration/login.html:22
 msgid "Bitte nutzen Sie das folgende Formular zum einloggen:"
 msgstr ""
 
-#: account/templates/registration/login.html:27
+#: account/templates/registration/login.html:30
 #: account/templates/registration/password_reset_complete.html:4
 #: account/templates/registration/password_reset_confirm.html:4
 #: account/templates/registration/password_reset_confirm.html:7
@@ -1636,7 +1644,7 @@ msgstr ""
 msgid "Sie waren zu langsam, das Match war bereits voll."
 msgstr ""
 
-#: scheduling/forms.py:17 usergroups/forms.py:21
+#: scheduling/forms.py:17 usergroups/forms.py:22
 msgid "Name"
 msgstr ""
 
@@ -1669,36 +1677,22 @@ msgid ""
 "Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
 msgstr ""
 
-#: usergroups/forms.py:15
+#: usergroups/forms.py:16
 msgid "Administrator (Nutzername)"
 msgstr ""
 
-#: usergroups/forms.py:22 usergroups/templates/usergroups/group_detail.html:19
+#: usergroups/forms.py:23 usergroups/templates/usergroups/group_detail.html:19
 #: vacancies/forms.py:13 vacancies/templates/vacancies/apply_for_vacancy.html:9
 #: vacancies/templates/vacancies/vacancy_list.html:6
 msgid "Beschreibung"
 msgstr ""
 
-#: usergroups/forms.py:23
+#: usergroups/forms.py:24
 msgid "Öffentlich"
 msgstr ""
 
-#: usergroups/forms.py:24
+#: usergroups/forms.py:25
 msgid "Gruppenbild"
-msgstr ""
-
-#: usergroups/forms.py:35
-msgid ""
-"Der Name darf nicht länger als 30, die Beschreibung nicht länger als 150 "
-"Zeichen lang sein."
-msgstr ""
-
-#: usergroups/forms.py:39
-msgid "Sie müssen einen Administrator auswählen."
-msgstr ""
-
-#: usergroups/forms.py:41
-msgid "Der Macker ist nicht mal in der Gruppe."
 msgstr ""
 
 #: usergroups/models.py:20

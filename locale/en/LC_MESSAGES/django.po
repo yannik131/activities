@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-12 17:37+0000\n"
-"PO-Revision-Date: 2021-02-12 18:39+0100\n"
+"POT-Creation-Date: 2021-02-12 22:17+0000\n"
+"PO-Revision-Date: 2021-02-12 23:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -321,13 +321,13 @@ msgstr ""
 msgid "Und vieles mehr.. einfach ausprobieren. Kostet ja nix."
 msgstr "And a lot more… just check it out. It’s free."
 
-#: account/templates/account/about.html:21
+#: account/templates/account/about.html:22
 msgid ""
 "Treten Sie Aktivitäten bei, chatten Sie mit Leuten in Ihrer Nähe und lesen/"
 "erstellen Sie Posts!"
 msgstr "Join activities, chat with people in your area and create/read posts!"
 
-#: account/templates/account/about.html:27
+#: account/templates/account/about.html:28
 msgid ""
 "Klicken Sie auf den Beitreten-Button unten rechts, um dem Audiochat eines "
 "Spiels beizutreten!"
@@ -598,7 +598,7 @@ msgstr "Next"
 #: account/templates/account/register.html:4
 #: account/templates/account/register.html:8
 #: account/templates/account/register.html:15
-#: account/templates/registration/login.html:27
+#: account/templates/registration/login.html:30
 msgid "Registrieren"
 msgstr "Register"
 
@@ -776,21 +776,29 @@ msgstr "You've successfully logged out. You can now"
 msgid "auch wieder einloggen."
 msgstr "log in again."
 
-#: account/templates/registration/login.html:5
-#: account/templates/registration/login.html:10
-#: account/templates/registration/login.html:24
+#: account/templates/registration/login.html:6
+#: account/templates/registration/login.html:13
+#: account/templates/registration/login.html:27
 msgid "Einloggen"
 msgstr "Login"
 
+#: account/templates/registration/login.html:11
+msgid "Nutzer gesamt: "
+msgstr "Total users: "
+
 #: account/templates/registration/login.html:12
+msgid "Online: "
+msgstr "Online: "
+
+#: account/templates/registration/login.html:15
 msgid "Fehler beim Einloggen"
 msgstr "Error logging in"
 
-#: account/templates/registration/login.html:13
+#: account/templates/registration/login.html:16
 msgid "Zurück zum Login"
 msgstr "Back to login"
 
-#: account/templates/registration/login.html:14
+#: account/templates/registration/login.html:17
 msgid ""
 "Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der "
 "Account möglicherweise gesperrt."
@@ -798,19 +806,19 @@ msgstr ""
 "Does the problem persist in spite of using the correct user name and "
 "password? Maybe your account has been banned."
 
-#: account/templates/registration/login.html:17
+#: account/templates/registration/login.html:20
 msgid "Willkommen bei myactivities.net! :)"
 msgstr "Welcome to myactivities.net! :)"
 
-#: account/templates/registration/login.html:18
+#: account/templates/registration/login.html:21
 msgid "Was ist das hier?"
 msgstr "What’s this about?"
 
-#: account/templates/registration/login.html:19
+#: account/templates/registration/login.html:22
 msgid "Bitte nutzen Sie das folgende Formular zum einloggen:"
 msgstr "Please use the following form to log in:"
 
-#: account/templates/registration/login.html:27
+#: account/templates/registration/login.html:30
 #: account/templates/registration/password_reset_complete.html:4
 #: account/templates/registration/password_reset_confirm.html:4
 #: account/templates/registration/password_reset_confirm.html:7
@@ -1688,7 +1696,7 @@ msgstr "Game is full"
 msgid "Sie waren zu langsam, das Match war bereits voll."
 msgstr "Too slow. Match is already full."
 
-#: scheduling/forms.py:17 usergroups/forms.py:21
+#: scheduling/forms.py:17 usergroups/forms.py:22
 msgid "Name"
 msgstr "Name"
 
@@ -1723,38 +1731,23 @@ msgstr ""
 "There is no city connected to this address. Please explicitly give the "
 "city's name (villages/districts may not be recognised)."
 
-#: usergroups/forms.py:15
+#: usergroups/forms.py:16
 msgid "Administrator (Nutzername)"
 msgstr "Admin (user name)"
 
-#: usergroups/forms.py:22 usergroups/templates/usergroups/group_detail.html:19
+#: usergroups/forms.py:23 usergroups/templates/usergroups/group_detail.html:19
 #: vacancies/forms.py:13 vacancies/templates/vacancies/apply_for_vacancy.html:9
 #: vacancies/templates/vacancies/vacancy_list.html:6
 msgid "Beschreibung"
 msgstr "Description"
 
-#: usergroups/forms.py:23
+#: usergroups/forms.py:24
 msgid "Öffentlich"
 msgstr "Public"
 
-#: usergroups/forms.py:24
+#: usergroups/forms.py:25
 msgid "Gruppenbild"
 msgstr "Group picture"
-
-#: usergroups/forms.py:35
-msgid ""
-"Der Name darf nicht länger als 30, die Beschreibung nicht länger als 150 "
-"Zeichen lang sein."
-msgstr ""
-"The name must not exceed 30 and the description not 150 characters in length."
-
-#: usergroups/forms.py:39
-msgid "Sie müssen einen Administrator auswählen."
-msgstr "You have to set an admin."
-
-#: usergroups/forms.py:41
-msgid "Der Macker ist nicht mal in der Gruppe."
-msgstr "The dude isn’t even in the group."
 
 #: usergroups/models.py:20
 msgid "hat einen neuen Termin"
@@ -2222,6 +2215,19 @@ msgstr " %(v0)s ago"
 #: wall/templates/wall/post/post_loop.html:25
 msgid "Kommentieren..."
 msgstr "Comment..."
+
+#~ msgid ""
+#~ "Der Name darf nicht länger als 30, die Beschreibung nicht länger als 150 "
+#~ "Zeichen lang sein."
+#~ msgstr ""
+#~ "The name must not exceed 30 and the description not 150 characters in "
+#~ "length."
+
+#~ msgid "Sie müssen einen Administrator auswählen."
+#~ msgstr "You have to set an admin."
+
+#~ msgid "Der Macker ist nicht mal in der Gruppe."
+#~ msgstr "The dude isn’t even in the group."
 
 #~ msgid "Setzen Sie Ihr Passwort hier zurück."
 #~ msgstr "Reset your password here."

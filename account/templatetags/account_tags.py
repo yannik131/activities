@@ -3,6 +3,7 @@ from itertools import chain
 from shared.shared import n_parenthesis
 from django.utils.safestring import mark_safe
 from activities.language_subdomain_middleware import get_prefix
+from account.models import User
 
 register = template.Library()
 
@@ -69,3 +70,12 @@ def language_setter(request):
         return mark_safe(f"<a href='https://en.myactivities.net{request.path}'>EN</a>")
     return mark_safe(f"<a href='https://myactivities.net{request.path}'>DE</a>")
     
+
+@register.simple_tag
+def online_count():
+    return User.objects.filter(channel_name__isnull=False).count()
+    
+
+@register.simple_tag
+def total_count():
+    return User.objects.all().count()

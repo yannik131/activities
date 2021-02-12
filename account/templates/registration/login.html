@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load cookielaw_tags %}
+{% load account_tags %}
 
 {% block title %}{% trans "Einloggen" %}{% endblock %}
 
 {% block content %}
     <div class="center-container">
     <div class="login">
+    <div style="float: left">{% trans 'Nutzer gesamt: ' %}{% total_count %}</div>
+    <div style="float: right">{% trans 'Online: ' %} {% online_count %}</div>
         <h1>{% blocktrans %}Einloggen{% endblocktrans %}</h1>
         {% if form.errors %}
             <p>{% trans "Fehler beim Einloggen" %}: {{ form.non_field_errors }}</p>
