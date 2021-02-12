@@ -18,6 +18,7 @@
                 <li>{% blocktrans %}Und vieles mehr.. einfach ausprobieren. Kostet ja nix.{% endblocktrans %}</li>
         </ol>
 </p>
+<div class="center-container">
 <p>{% trans "Treten Sie Aktivitäten bei, chatten Sie mit Leuten in Ihrer Nähe und lesen/erstellen Sie Posts!" %}</p>
 {% if prefix == 'de' %}
 <img src="{% static 'profile_de.png' %}" class="about-picture">
@@ -30,4 +31,5 @@
 {% else %}
 <img src="{% static 'game_en.png' %}" class="about-picture">
 {% endif %}
+</div>
 {% endblock %}

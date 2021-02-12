@@ -247,7 +247,11 @@ select:focus, select:hover {
 
 .about-picture {
     width: 90%;
+    max-width: 500px;
     border: 2px solid gray;
+    border-radius: 10px;
+    display: block;
+    margin: auto auto;
 }
 
 .login-form input {
