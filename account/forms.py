@@ -20,7 +20,7 @@ class UserRegistrationForm(forms.ModelForm):
         }
         
         help_texts = {
-            'username': _("10 Zeichen oder weniger!")
+            'username': _("15 Zeichen oder weniger!")
         }
         
 
@@ -32,8 +32,8 @@ class UserRegistrationForm(forms.ModelForm):
         
     def clean_username(self):
         cd = self.cleaned_data
-        if len(cd['username']) > 10:
-            raise forms.ValidationError(_('Nutzername zu lang (max. 10 Zeichen)'))
+        if len(cd['username']) > 15:
+            raise forms.ValidationError(_('Nutzername zu lang (max. 15 Zeichen)'))
         return cd['username']
 
 

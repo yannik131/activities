@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-12 23:19+0000\n"
-"PO-Revision-Date: 2021-02-13 00:40+0100\n"
+"POT-Creation-Date: 2021-02-13 10:53+0000\n"
+"PO-Revision-Date: 2021-02-13 11:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -36,16 +36,16 @@ msgid "Geburtsjahr"
 msgstr "Birth year"
 
 #: account/forms.py:23
-msgid "10 Zeichen oder weniger!"
-msgstr "10 characters or less!"
+msgid "15 Zeichen oder weniger!"
+msgstr "15 characters or less!"
 
 #: account/forms.py:30
 msgid "Passwörter stimmen nicht überein!"
 msgstr "Passwords don't match!"
 
 #: account/forms.py:36
-msgid "Nutzername zu lang (max. 10 Zeichen)"
-msgstr "Username too long (10 chars max)."
+msgid "Nutzername zu lang (max. 15 Zeichen)"
+msgstr "Username too long (15 chars max)."
 
 #: account/forms.py:48
 msgid "Profiltext"
@@ -207,12 +207,13 @@ msgstr "Error: 403 - Permission denied"
 msgid "Halt! Kein Zutritt!"
 msgstr "Stop! No admittance!"
 
-#: account/templates/account/403.html:9 account/templates/account/404.html:10
+#: account/templates/account/403.html:10 account/templates/account/404.html:10
+#: account/templates/account/500.html:10
 msgid "Fehlerbeschreibung: "
 msgstr "Error description: "
 
-#: account/templates/account/403.html:10 account/templates/account/404.html:12
-#: account/templates/account/500.html:8
+#: account/templates/account/403.html:12 account/templates/account/404.html:12
+#: account/templates/account/500.html:12
 msgid "Falls Sie das traurig machen sollte, hier ein paar ausgewählte Witze: "
 msgstr "If you’re sad now, here are a few select jokes: "
 
@@ -222,7 +223,7 @@ msgstr "Error: 404 - Page not found"
 
 #: account/templates/account/404.html:8
 msgid "Die geforderte Seite gibt's anscheinend nicht mehr :("
-msgstr "The requested site doesn’t exist anymore :( "
+msgstr "The requested site doesn’t exist anymore :("
 
 #: account/templates/account/500.html:7
 msgid "Fehler: 500 - Server Fehler"
@@ -1088,7 +1089,7 @@ msgstr "Chat"
 msgid "Teilnehmer"
 msgstr "Members"
 
-#: chat/views.py:18
+#: chat/views.py:19
 msgid "Diesen Chat-Room gibt es nicht mehr."
 msgstr "This chat room doesn't exist any more."
 
@@ -1445,20 +1446,20 @@ msgstr "Playing Skat"
 msgid "Gibts doch nicht."
 msgstr "No way."
 
-#: competitions/views.py:88
+#: competitions/views.py:89
 #, python-brace-format
 msgid "{act}-Turnier"
 msgstr "{act}-tournament"
 
-#: competitions/views.py:174
+#: competitions/views.py:175
 msgid "Es stehen noch Ergebnisse der letzten Runde offen."
 msgstr "There are still matches without results in the last round."
 
-#: competitions/views.py:179
+#: competitions/views.py:180
 msgid "Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden."
 msgstr "No teams can be formed with this number of players."
 
-#: competitions/views.py:191
+#: competitions/views.py:192
 msgid "Es stehen noch Ergebnisse offen."
 msgstr "There are still matches without results."
 
@@ -1953,7 +1954,7 @@ msgstr "Create post"
 msgid "Ihre Gruppen"
 msgstr "Your groups"
 
-#: usergroups/views.py:90
+#: usergroups/views.py:91
 msgid ""
 "Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest "
 "oder löschen Sie die Gruppe."
@@ -2129,7 +2130,7 @@ msgstr "Age"
 msgid "Beworben"
 msgstr "Applied"
 
-#: vacancies/views.py:91
+#: vacancies/views.py:92
 #, python-brace-format
 msgid ""
 "Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder "
@@ -2138,17 +2139,17 @@ msgstr ""
 "You don't fulfill the vacancy's criteria (location, age and/or gender). <a "
 "href=\"{link}\">Back</a>"
 
-#: vacancies/views.py:93
+#: vacancies/views.py:94
 msgid "Sie haben sich bereits beworben."
 msgstr "You already applied to this vacancy."
 
-#: vacancies/views.py:95
+#: vacancies/views.py:96
 #, python-brace-format
 msgid "Die Anmeldefrist ist bereits abgelaufen. <a href=\"{link}\">Zurück</a>"
 msgstr ""
 "The application deadline has already expired. <a href=\"{link}\">Back</a>"
 
-#: vacancies/views.py:97
+#: vacancies/views.py:98
 msgid "Sie sind bereits Mitglied."
 msgstr "You already are a member."
 

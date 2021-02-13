@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-12 23:19+0000\n"
+"POT-Creation-Date: 2021-02-13 10:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgid "Geburtsjahr"
 msgstr ""
 
 #: account/forms.py:23
-msgid "10 Zeichen oder weniger!"
+msgid "15 Zeichen oder weniger!"
 msgstr ""
 
 #: account/forms.py:30
@@ -44,7 +44,7 @@ msgid "Passwörter stimmen nicht überein!"
 msgstr ""
 
 #: account/forms.py:36
-msgid "Nutzername zu lang (max. 10 Zeichen)"
+msgid "Nutzername zu lang (max. 15 Zeichen)"
 msgstr ""
 
 #: account/forms.py:48
@@ -205,12 +205,13 @@ msgstr ""
 msgid "Halt! Kein Zutritt!"
 msgstr ""
 
-#: account/templates/account/403.html:9 account/templates/account/404.html:10
+#: account/templates/account/403.html:10 account/templates/account/404.html:10
+#: account/templates/account/500.html:10
 msgid "Fehlerbeschreibung: "
 msgstr ""
 
-#: account/templates/account/403.html:10 account/templates/account/404.html:12
-#: account/templates/account/500.html:8
+#: account/templates/account/403.html:12 account/templates/account/404.html:12
+#: account/templates/account/500.html:12
 msgid "Falls Sie das traurig machen sollte, hier ein paar ausgewählte Witze: "
 msgstr ""
 
@@ -1043,7 +1044,7 @@ msgstr ""
 msgid "Teilnehmer"
 msgstr ""
 
-#: chat/views.py:18
+#: chat/views.py:19
 msgid "Diesen Chat-Room gibt es nicht mehr."
 msgstr ""
 
@@ -1396,20 +1397,20 @@ msgstr ""
 msgid "Gibts doch nicht."
 msgstr ""
 
-#: competitions/views.py:88
+#: competitions/views.py:89
 #, python-brace-format
 msgid "{act}-Turnier"
 msgstr ""
 
-#: competitions/views.py:174
+#: competitions/views.py:175
 msgid "Es stehen noch Ergebnisse der letzten Runde offen."
 msgstr ""
 
-#: competitions/views.py:179
+#: competitions/views.py:180
 msgid "Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden."
 msgstr ""
 
-#: competitions/views.py:191
+#: competitions/views.py:192
 msgid "Es stehen noch Ergebnisse offen."
 msgstr ""
 
@@ -1901,7 +1902,7 @@ msgstr ""
 msgid "Ihre Gruppen"
 msgstr ""
 
-#: usergroups/views.py:90
+#: usergroups/views.py:91
 msgid ""
 "Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest "
 "oder löschen Sie die Gruppe."
@@ -2075,23 +2076,23 @@ msgstr ""
 msgid "Beworben"
 msgstr ""
 
-#: vacancies/views.py:91
+#: vacancies/views.py:92
 #, python-brace-format
 msgid ""
 "Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder "
 "Geschlecht) nicht. <a href=\"{link}\">Zurück</a>"
 msgstr ""
 
-#: vacancies/views.py:93
+#: vacancies/views.py:94
 msgid "Sie haben sich bereits beworben."
 msgstr ""
 
-#: vacancies/views.py:95
+#: vacancies/views.py:96
 #, python-brace-format
 msgid "Die Anmeldefrist ist bereits abgelaufen. <a href=\"{link}\">Zurück</a>"
 msgstr ""
 
-#: vacancies/views.py:97
+#: vacancies/views.py:98
 msgid "Sie sind bereits Mitglied."
 msgstr ""
 

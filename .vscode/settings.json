@@ -23,6 +23,14 @@
                 "commands": ["python3 manage.py shell_plus"]
               }
             ]
+          },
+          {
+            "splitTerminals": [
+              {
+                "name": "ssh",
+                "commands": ["ssh root@myactivities.net"]
+              }
+            ]
           }
       ],
       "restoreTerminals.keepExistingTerminalsOpen": true,
