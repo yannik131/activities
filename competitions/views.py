@@ -12,6 +12,7 @@ import datetime
 import json
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext_lazy as _
+from account.views import handler403
 
 
 @login_required
@@ -64,7 +65,7 @@ def edit_match(request, match_id):
 def delete_match(request, match_id):
     match = Match.objects.get(id=match_id)
     if request.user != match.admin:
-        return HttpResponseForbidden()
+        return handler403(request)
     match.delete()
     return HttpResponseRedirect(match.activity.get_absolute_url())
 
@@ -95,7 +96,7 @@ def create_tournament(request, activity_id):
 def edit_tournament(request, tournament_id):
     tournament = Tournament.objects.get(id=tournament_id)
     if request.user != tournament.admin:
-        return HttpResponseForbidden()
+        return handler403(request)
     if request.method == 'POST':
         form = TournamentForm(request.POST, instance=tournament)
         if form.is_valid():
@@ -109,7 +110,7 @@ def edit_tournament(request, tournament_id):
 def delete_tournament(request, tournament_id):
     tournament = Tournament.objects.get(id=tournament_id)
     if tournament.admin != request.user:
-        return HttpResponseForbidden()
+        return handler403(request)
     tournament.delete()
     return HttpResponseRedirect(tournament.activity.get_absolute_url())
 
@@ -122,7 +123,7 @@ def tournament_detail(request, tournament_id):
 def add_tournament_member(request, tournament_id, user_id):
     tournament = Tournament.objects.get(id=tournament_id)
     if request.user != tournament.admin:
-        return HttpResponseForbidden()
+        return handler403(request)
     user = User.objects.get(id=user_id)
     tournament.members.add(user)
     return HttpResponseRedirect(request.build_absolute_uri(f"/competitions/edit_tournament/{tournament.id}"))
@@ -135,14 +136,14 @@ def remove_member(request, model, instance_id, user_id, who):
         instance = Match.objects.get(id=instance_id)
     if who == 'admin':
         if request.user != instance.admin:
-            return HttpResponseForbidden()
+            return handler403(request)
         user = User.objects.get(id=user_id)
         instance.members.remove(user)
         return HttpResponseRedirect(request.build_absolute_uri(f"/competitions/edit_{model}/{instance.id}"))
     elif who == 'user':
         user = User.objects.get(id=user_id)
         if request.user != user:
-            return HttpResponseForbidden()
+            return handler403(request)
         instance.members.remove(user)
         return HttpResponseRedirect(instance.get_absolute_url())
 
@@ -166,7 +167,7 @@ def game_plan(request, tournament_id, round_number):
 def generate_next_round(request, tournament_id):
     tournament = Tournament.objects.get(id=tournament_id)
     if request.user != tournament.admin:
-        return HttpResponseForbidden()
+        return handler403(request)
     n = 1
     if tournament.rounds.all().exists():
         last_round = tournament.rounds.all().last()
@@ -186,7 +187,7 @@ def generate_next_round(request, tournament_id):
 def close_round(request, round_id):
     round = Round.objects.get(id=round_id)
     if request.user != round.tournament.admin or round.over:
-        return HttpResponseForbidden()
+        return handler403(request)
     if not round.matches_have_results():
         return HttpResponseServerError(_('Es stehen noch Ergebnisse offen.'))
     for (k, v) in round.points.items():
@@ -200,7 +201,7 @@ def close_round(request, round_id):
 def change_score(request, round_id, matchup_index):
     round = Round.objects.get(id=round_id)
     if request.user != round.tournament.admin or round.over:
-        return HttpResponseForbidden()
+        return handler403(request)
     matchup = json.loads(round.matchups)[matchup_index]
     if request.method == 'POST':
         form = make_matchup_score_form(matchup)(request.POST)

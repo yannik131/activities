@@ -7,6 +7,7 @@ from account.models import User
 from usergroups.models import UserGroup
 from django.contrib.contenttypes.models import ContentType
 from shared.shared import slashify
+from account.views import handler403
 
 
 @login_required
@@ -39,7 +40,7 @@ def delete_post(request, id, path):
     if request.user == post.author:
         post.delete()
         return HttpResponseRedirect(request.build_absolute_uri(slashify(path)))
-    return HttpResponseForbidden()
+    return handler403(request)
 
 
 @login_required
@@ -64,4 +65,4 @@ def delete_comment(request, id, path):
     if comment.author == request.user:
         comment.delete()
         return HttpResponseRedirect(request.build_absolute_uri(slashify(path)))
-    return HttpResponseForbidden()
+    return handler403(request)

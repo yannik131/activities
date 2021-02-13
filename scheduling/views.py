@@ -4,6 +4,7 @@ from usergroups.models import UserGroup
 from .models import Appointment
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from .forms import AppointmentForm
+from account.views import handler403
 
 
 @login_required
@@ -27,7 +28,7 @@ def delete_appointment(request, id):
     if request.user == appointment.group.admin:
         appointment.delete()
         return HttpResponseRedirect(appointment.group.get_absolute_url())
-    return HttpResponseForbidden()
+    return handler403(request)
 
 
 @login_required

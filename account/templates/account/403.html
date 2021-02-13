@@ -6,7 +6,9 @@
 {% block content %}
 <h1>{% trans "Fehler: 403 - Zugriff verweigert" %}</h1>
 <p>{% trans "Halt! Kein Zutritt!" %}<br>
+{% if exception %}
 {% trans "Fehlerbeschreibung: " %} {{ exception }}<br>
+{% endif %}
 {% trans "Falls Sie das traurig machen sollte, hier ein paar ausgewählte Witze: " %}</p>
 
 {% include 'account/jokes.html' %}

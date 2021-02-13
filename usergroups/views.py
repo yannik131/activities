@@ -8,6 +8,7 @@ from account.models import Location, User
 from django.http import HttpResponseForbidden, HttpResponseRedirect, HttpResponse
 from wall.models import Post
 from django.utils.translation import gettext_lazy as _
+from account.views import handler403
 
 
 @login_required
@@ -34,7 +35,7 @@ def group_detail(request, id):
     group = UserGroup.objects.get(id=id)
     is_in_group = request.user in group.members.all()
     if not group.public and not is_in_group:
-        return HttpResponseForbidden()
+        return handler403(request)
     posts = Post.objects.filter(target_ct=UserGroup.content_type(), target_id=group.id)
     posts, page = paginate(posts, request)
     return render(request, 'usergroups/group_detail.html', dict(group=group, is_member=is_in_group, posts=posts, page=page))
@@ -44,7 +45,7 @@ def group_detail(request, id):
 def edit_group(request, id):
     group = UserGroup.objects.get(id=id)
     if request.user != group.admin:
-        return HttpResponseForbidden()
+        return handler403(request)
     if request.method == 'POST':
         form = GroupForm(request.POST, instance=group, files=request.FILES)
         form.edit_mode = True
@@ -77,7 +78,7 @@ def create_group(request, id):
 def delete_group(request, id):
     group = UserGroup.objects.get(id=id)
     if request.user != group.admin:
-        return HttpResponseForbidden()
+        return handler403(request)
     group.delete()
     return render(request, 'usergroups/group_deleted.html', dict(group=group))
 
@@ -90,7 +91,7 @@ def leave_group(request, id):
             return HttpResponse(_('Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest oder löschen Sie die Gruppe.'))
         group.members.remove(request.user)
         return HttpResponseRedirect(group.get_absolute_url())
-    return HttpResponseForbidden()
+    return handler403(request)
 
 
 @login_required
@@ -98,6 +99,6 @@ def kick_out(request, group_id, user_id):
     group = UserGroup.objects.get(id=group_id)
     user = User.objects.get(id=user_id)
     if request.user != group.admin or user not in group.members.all():
-        return HttpResponseForbidden()
+        return handler403(request)
     group.members.remove(user)
     return HttpResponseRedirect(request.build_absolute_uri(f"/usergroups/edit_group/{group.id}"))

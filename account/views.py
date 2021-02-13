@@ -178,11 +178,11 @@ def view_friendship(request, id):
     return HttpResponseRedirect(friendship.to_user.get_absolute_url())
 
 
-def handler404(request, exception):
+def handler404(request, exception=None):
     return render(request, "account/404.html", dict(exception=exception))
     
     
-def handler403(request, exception):
+def handler403(request, exception=None):
     return render(request, "account/403.html", dict(exception=exception))
 
 

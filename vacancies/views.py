@@ -9,6 +9,7 @@ from django.contrib.contenttypes.models import ContentType
 from competitions.models import Tournament
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from account.views import handler403
 
 
 @login_required
@@ -45,7 +46,7 @@ def create_invitation(request, app_label, model, id):
 def edit_vacancy(request, id):
     vacancy = Vacancy.objects.get(id=id)
     if request.user != vacancy.target.admin:
-        return HttpResponseForbidden()
+        return handler403(request)
     if request.method == 'POST':
         form = VacancyForm(request.POST, instance=vacancy)
         if form.is_valid():
@@ -60,7 +61,7 @@ def edit_vacancy(request, id):
 def delete_vacancy(request, id):
     vacancy = Vacancy.objects.get(id=id)
     if request.user != vacancy.target.admin:
-        return HttpResponseForbidden()
+        return handler403(request)
     vacancy.delete()
     return HttpResponseRedirect(vacancy.target.get_absolute_url())
 
@@ -69,7 +70,7 @@ def delete_vacancy(request, id):
 def delete_invitation(request, id):
     invitation = Invitation.objects.get(id=id)
     if request.user not in [invitation.sender.admin, invitation.target]:
-        return HttpResponseForbidden()
+        return handler403(request)
     invitation.delete()
     return HttpResponseRedirect(request.build_absolute_uri("/vacancies/application_list/"))
 
@@ -78,7 +79,7 @@ def delete_invitation(request, id):
 def accept_invitation(request, id):
     invitation = Invitation.objects.get(id=id)
     if invitation.target != request.user:
-        return HttpResponseForbidden()
+        return handler403(request)
     invitation.sender.members.add(invitation.target)
     invitation.delete()
     return HttpResponseRedirect(request.build_absolute_uri("/vacancies/application_list/"))
@@ -88,13 +89,13 @@ def accept_invitation(request, id):
 def apply_for_vacancy(request, id):
     vacancy = Vacancy.objects.get(id=id)
     if not request.user.satisfies_requirements_of(vacancy):
-        return HttpResponseForbidden(_('Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder Geschlecht) nicht. <a href=\"{link}\">Zurück</a>').format(link=vacancy.target.get_absolute_url()))
+        return handler403(request, _('Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder Geschlecht) nicht. <a href=\"{link}\">Zurück</a>').format(link=vacancy.target.get_absolute_url()))
     elif request.user.applications.filter(vacancy=vacancy).exists():
-        return HttpResponseForbidden(_('Sie haben sich bereits beworben.'))
+        return handler403(request, _('Sie haben sich bereits beworben.'))
     elif type(vacancy.target) is Tournament and vacancy.target.application_deadline < timezone.now():
-        return HttpResponseForbidden(_('Die Anmeldefrist ist bereits abgelaufen. <a href=\"{link}\">Zurück</a>').format(link=vacancy.target.get_absolute_url()))
+        return handler403(request, _('Die Anmeldefrist ist bereits abgelaufen. <a href=\"{link}\">Zurück</a>').format(link=vacancy.target.get_absolute_url()))
     if request.user in vacancy.target.members.all():
-        return HttpResponseForbidden(_('Sie sind bereits Mitglied.'))
+        return handler403(request, _('Sie sind bereits Mitglied.'))
     if request.method == 'POST':
         form = ApplicationForm(request.POST)
         if form.is_valid():
@@ -113,14 +114,14 @@ def review_vacancy(request, id):
     vacancy = Vacancy.objects.get(id=id)
     if request.user == vacancy.target.admin or request.user in vacancy.target.members.all():
         return render(request, 'vacancies/review_vacancy.html', dict(vacancy=vacancy))
-    return HttpResponseForbidden()
+    return handler403(request)
 
 
 @login_required
 def accept_application(request, id):
     application = Application.objects.get(id=id)
     if request.user != application.vacancy.target.admin or application.status != 'pending':
-        return HttpResponseForbidden()
+        return handler403(request)
     application.vacancy.target.members.add(application.user)
     notify(application.user, application.vacancy.target, "accepted_application")
     if not application.vacancy.persistent:
@@ -133,7 +134,7 @@ def accept_application(request, id):
 def decline_application(request, id):
     application = Application.objects.get(id=id)
     if request.user != application.vacancy.target.admin or application.status != 'pending':
-        return HttpResponseForbidden()
+        return handler403(request)
     application.status = 'declined'
     application.save()
     return HttpResponseRedirect(application.vacancy.get_absolute_url())
@@ -148,7 +149,7 @@ def delete_application(request, id):
             return HttpResponseRedirect(application.vacancy.get_absolute_url())
         elif request.user == application.user:
             return HttpResponseRedirect(request.user.get_absolute_url())
-    return HttpResponseForbidden()
+    return handler403(request)
 
 
 @login_required

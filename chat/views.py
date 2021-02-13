@@ -8,6 +8,7 @@ from competitions.models import Match, Tournament
 from .models import ChatRoom, ChatCheck
 from django.utils.translation import gettext_lazy as _
 from django.utils.timezone import now
+from account.views import handler403
 
 
 @login_required
@@ -15,12 +16,12 @@ def chat_room(request, app_label, model, id):
     try:
         chat_room = ChatRoom.get(app_label, model, id)
     except:
-        return HttpResponseForbidden(_('Diesen Chat-Room gibt es nicht mehr.'))
+        return handler403(request, _('Diesen Chat-Room gibt es nicht mehr.'))
     if chat_room.is_allowed_here(request.user):
         if request.user not in chat_room.members.all():
             chat_room.members.add(request.user)
     else:
-        return HttpResponseForbidden()
+        return handler403(request)
     request.user.last_chat_checks.get(room=chat_room).update()
     return render(request, 'chat/room.html', dict(target=chat_room.target, room=chat_room))
 
