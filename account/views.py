@@ -36,7 +36,7 @@ def detail(request, username):
     if FriendRequest.objects.filter(requesting_user=request.user, requested_user=user).exists():
         requested = True
     friendship = request.user.get_friendship_for(user)
-    posts = Post.objects.filter(author=user, target_ct=User.content_type(), target_id=user.id).all()
+    posts = Post.objects.filter(author=user).all()
     posts, page = shared.paginate(posts, request)
     return render(request, 'account/detail.html', {'viewed_user': user, 'friendship': friendship, 'requested': requested, 'posts': posts})
 

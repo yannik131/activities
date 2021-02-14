@@ -29,7 +29,7 @@ class Post(models.Model):
     @staticmethod
     def get_page(request, component_index=None, chosen_component=None, activity=None, category=None):
         if component_index is None:
-            object_list = Post.objects.filter(author=request.user, target_id=request.user.id, target_ct=User.content_type())
+            object_list = Post.objects.filter(author=request.user)
         else:
             if activity is not None:
                 post_list = activity.posts
