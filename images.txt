@@ -1,4 +1,4 @@
-{% trans "kartenspiele https://www.kalaydo.de/blog/kartenspiele/
+kartenspiele https://www.kalaydo.de/blog/kartenspiele/
 brettspiele https://mitvergnuegen.com/2020/11-retro-brettspiele-zuhause/
 musik https://www.wissenschaft.de/gesellschaft-psychologie/ohrwurm-was-musik-klebrig-macht/
 kochen https://www.kochbar.de/cms/welcher-alkohol-sich-zum-kochen-eignet-2560789.html
@@ -9,4 +9,5 @@ singen https://de.wikipedia.org/wiki/Gesang
 bass https://de.wikipedia.org/wiki/Flea_(Musiker)
 laufen https://www.trainingsworld.com/sportarten/laufen/laufen-im-flow-mehr-spass-und-konzentration-beim-laufen#prettyPhoto/0/
 sport https://www.sauerlandkurier.de/hochsauerlandkreis/arnsberg/masterplan-sport-arnsberg-erste-ergebnisse-befragung-liegen-13129905.html
-schwimmen https://naturfotografen-forum.de/o34072-Kaulquappe%20der%20Erdkr%C3%B6te%20%5BKD%20EBV%5D" %}
+schwimmen https://naturfotografen-forum.de/o34072-Kaulquappe%20der%20Erdkr%C3%B6te%20%5BKD%20EBV%5D
+https://blog.playo.co/wp-content/uploads/2019/01/Navarino-Racquet-Academy-1.jpg
