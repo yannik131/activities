@@ -18,13 +18,13 @@ def group_list(request, id=None):
         category = Category.objects.get(id=id)
         chosen_component = request.user.location.get_component(Location.components[component_index])
         if component_index == 3:
-            groups = UserGroup.objects.filter(admin__location__city=chosen_component)
+            groups = UserGroup.objects.filter(admin__location__city=chosen_component, category=category)
         elif component_index == 2:
-            groups = UserGroup.objects.filter(admin__location__county=chosen_component)
+            groups = UserGroup.objects.filter(admin__location__county=chosen_component, category=category)
         elif component_index == 1:
-            groups = UserGroup.objects.filter(admin__location__state=chosen_component)
+            groups = UserGroup.objects.filter(admin__location__state=chosen_component, category=category)
         else:
-            groups = UserGroup.objects.filter(admin__location__country=chosen_component)
+            groups = UserGroup.objects.filter(admin__location__country=chosen_component, category=category)
         return render(request, 'usergroups/category_group_list.html', dict(category=category, component_index=component_index, groups=groups))
     else:
         return render(request, 'usergroups/user_group_list.html')
