@@ -27,3 +27,6 @@ took too long to shut down and was killed.
 
 gekickt -> nachricht
 match bewerbung annehmen server error
+
+audiochat 3-4 personen zerhackstückelt
+game chat unten links button mit popup in der mitte

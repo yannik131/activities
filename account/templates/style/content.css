@@ -288,6 +288,7 @@ select:focus, select:hover {
 }
 
 .competitive {
+    display: flex;
     background-color: #1a1a1a;
     border-radius: 10px;
     height: 40px;
@@ -301,7 +302,7 @@ select:focus, select:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 45%;
+    width: 50%;
     height: 100%;
     cursor: pointer;
 }
@@ -321,7 +322,7 @@ select:focus, select:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 45%;
+    width: 50%;
     height: 100%;
     cursor: pointer;
 }

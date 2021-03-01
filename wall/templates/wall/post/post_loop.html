@@ -1,6 +1,8 @@
 {% load wall_tags %}
 {% load i18n %}
+{% load static %}
 {% include "account/pagination.html" with page=posts %}
+<p></p>
 {% for post in posts %}
     <div class="post">
     <b><i>
@@ -24,7 +26,7 @@
             <br/>
             <a href="{{ comment.author.get_absolute_url }}">{{ comment.author }}</a>, {% blocktrans with v0=comment.created|timesince %} vor {{ v0 }}{% endblocktrans %}{% if comment.author == user %} <a href="{% url 'wall:delete_comment' comment.id request.path %}">{% blocktrans %}[Löschen]{% endblocktrans %}</a>{% endif %}: {{ comment.message }}
         {% endfor %}
-        <a href="{% url 'wall:create_comment' post.id request.path %}">{% blocktrans %}Kommentieren...{% endblocktrans %}</a>
+        <div class="button-like" onclick=openLink("{% url 'wall:create_comment' post.id request.path %}")><img src="{% static 'icons/comment.png' %}">{% blocktrans %}Kommentieren{% endblocktrans %}</div>
     </div>
     {% empty %}
         <b>{% trans "Keine" %}.</b>

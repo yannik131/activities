@@ -1,22 +1,30 @@
 {% extends 'base.html' %}
 {% load account_tags %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% blocktrans with username=viewed_user.username %}Profil von {{ username }}{% endblocktrans %}{% endblock %}
 
 {% block content %}
     <h1>{% trans "Profil von" %} {{ viewed_user.username }}</h1>
-    {% if viewed_user.profile_text %}
-        <p>{{ viewed_user.profile_text|linebreaks }}</p>
-    {% endif %}
     {% if friendship %}
         {% if viewed_user.image %}<img src="{{ viewed_user.image.url }}" class="user-photo">{% endif %}
-        <p><a href="{% url 'chat:chat_room' 'account' 'friendship' friendship.id %}">{% trans "Zum Chat" %}...</a></p>
+        {% if viewed_user.profile_text %}
+            <p class="center-container">
+                <i>
+                    {{ viewed_user.profile_text }}
+                </i>
+            </p>
+        {% endif %}
+        <div class="button-like" onclick=openLink("{% url 'chat:chat_room' 'account' 'friendship' friendship.id %}")>
+            <img src="{% static 'icons/chat.png' %}">
+            {% trans "Zum Chat" %}
+        </div>
         <p>{{ viewed_user.username }} {% trans "ist Mitglied folgender Aktivitäten" %}:</p>
         {% include "activity/loop.html" with activities=viewed_user.activities %}
         <div class="profile-rest">
             <p>{% trans "Adresse" %}: {{ viewed_user.location.full_address }}</p>
-            <p>{% trans "Sie sind mit" %} {{ viewed_user }}{% trans " befreundet. Falls Sie das ändern möchten, können Sie die Freundschaft" %} <a href="{% url 'account:destroy_friendship' viewed_user.id %}">{% trans "auch vernichten" %}.</a></p>
+            <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'account:destroy_friendship' viewed_user.id %}")>{% trans "Freundschaft beenden" %}</button></div></p>
             {% else %}
                 {% blocktrans with user=viewed_user.username%}Sie sind nicht mit {{ user }} befreundet{% endblocktrans %}.
                 {% if requested %}
