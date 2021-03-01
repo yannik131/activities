@@ -7,7 +7,7 @@
 {% block content %}
     <h1>{{ category.name }}-{% trans "Gruppen" %}
     </h1>
-    <h3><a href="{% url 'usergroups:create_group' category.id %}">{% trans "Gruppe erstellen" %}...</a></h3>
+    <div class="button-like" onclick=openLink("{% url 'usergroups:create_group' category.id %}")><img src="{% static 'icons/group.png' %}">{% trans "Gruppe erstellen" %}...</div>
     {% include 'activity/location_selection.html' %}
     {% include 'usergroups/loop.html' %}
 {% endblock %}

@@ -9,11 +9,19 @@
     <img src="{{ group.image.url }}" class="group-full-image">
     {% endif %}
     <h1 class="center-container">{{ group.verbose }}</h1>
-    {% if user == group.admin %}<p class="center-container"><a href="{% url 'usergroups:edit_group' group.id %}">{% trans "Bearbeiten" %}</a></p>{% endif %}
     <p class="center-container">{{ group.description }}</p>
-    
     {% if is_member %}
-    <div class="button-like" onclick=openLink("{% url 'chat:chat_room' 'usergroups' 'usergroup' group.id %}")><img src="{% static 'icons/lobby.png' %}">{% trans "Zum Chat" %}
+    <div class="competitive">
+        <div class="left" onclick=openLink("{% url 'chat:chat_room' 'usergroups' 'usergroup' group.id %}")>
+            <img src="{% static 'icons/chat.png' %}">
+            {% trans "Zum Chat" %}
+        </div>
+        {% if user == group.admin %}
+            <div class="right" onclick=openLink("{% url 'usergroups:edit_group' group.id %}")>
+                <img src="{% static 'icons/pen.png' %}">
+                {% trans "Bearbeiten" %}
+            </div>
+        {% endif %}
     </div>
     {% endif %}
     <p>{% trans "Gruppe gehört zur" %} <a href="{{ group.category.get_absolute_url }}">{{ group.category.verbose }}</a></p>
@@ -21,28 +29,35 @@
     {% endif %}
     <h2>{% trans "Mitglieder" %}</h2>
     {% include 'account/user_loop.html' with users=group.members.all %}
-    <p style="clear: both"></p>
+    <p style="clear: both">{% trans "Administrator" %}: <a href="{{ group.admin.get_absolute_url }}">{{ group.admin }}</a></p>
     {% if is_member %}
-    <p><a class="center-container" href="{% url 'usergroups:leave_group' group.id %}"><button class="blue-button">{% trans "Austreten" %}</button></a></p>
+    <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'usergroups:leave_group' group.id %}")>{% trans "Austreten" %}</button></div></p>
     {% endif %}
-    <h2>{% trans "Leerstellen" %}</h2>
     {% if group.vacancies.all.exists %}
+    <h2>{% trans "Leerstellen" %}</h2>
         {% with target=group %}
         {% include 'vacancies/vacancy_list.html' %}
         {% endwith %}
     {% else %}
-        {% trans "Zurzeit gibt es keine Leerstellen. Der Administrator kann welche erstellen" %}.
+        <!--{% trans "Zurzeit gibt es keine Leerstellen. Der Administrator kann welche erstellen" %}.-->
     {% endif %}
-    {% if is_member %}
+    {% if is_member and group.invitations.all.exists %}
         <h2>{% trans "Einladungen" %}</h2>
-        {% if group.invitations.all.exists %}
-            {% include 'usergroups/invitation_list.html' %}
-        {% endif %}
+        {% include 'usergroups/invitation_list.html' %}
     {% endif %}
     {% if user == group.admin %}
-        <p><a href="{% url 'vacancies:create_vacancies' 'usergroups' 'usergroup' group.id %}">{% trans "Leerstellen hinzufügen" %}</a> | <a href="{% url 'vacancies:create_invitation' 'usergroups' 'usergroup' group.id %}">{% trans "Jemanden einladen" %}</a></p>
+        <div class="competitive">
+            <div class="left" onclick=openLink("{% url 'vacancies:create_vacancies' 'usergroups' 'usergroup' group.id %}")>
+                <img src="{% static 'icons/interview.png' %}">
+                {% trans "Leerstellen hinzufügen" %}
+            </div>
+            <div class="right" onclick=openLink("{% url 'vacancies:create_invitation' 'usergroups' 'usergroup' group.id %}")>
+                <img src="{% static 'icons/invitation.png' %}">
+                {% trans "Jemanden einladen" %}
+            </div>
+        </div>
     {% endif %}
-    {% if is_member %}
+    {% if is_member and group.appointments.all.exists %}
         <h2>{% trans "Termine" %}</h2>
         <table>
             <tr>
@@ -84,13 +99,13 @@
             {% endfor %}
         </table>
     {% endif %}
+    <br/>
     {% if user == group.admin %}
-        <p><a href="{% url 'scheduling:create_appointment' group.id %}">{% trans "Termin erstellen" %}</a></p>
+        <div class="button-like" onclick=openLink("{% url 'scheduling:create_appointment' group.id %}")><img src="{% static 'icons/date.png' %}">{% trans "Termin erstellen" %}</div>
     {% endif %}
-    <p>{% trans "Administrator" %}: <a href="{{ group.admin.get_absolute_url }}">{{ group.admin }}</a></p>
-    <h3>{% trans "Posts" %}</h3>
+    <h2>{% trans "Posts" %}</h2>
     {% if is_member %}
-        <p><a href="{% url 'wall:create_post' 'usergroups' 'usergroup' group.id %}">{% trans "Post erstellen" %}...</a></p>
+        <div class="button-like" onclick=openLink("{% url 'wall:create_post' 'usergroups' 'usergroup' group.id %}")><img src="{% static 'icons/post.png' %}">{% blocktrans %}Post erstellen{% endblocktrans %}</div>
     {% endif %}
     {% include 'wall/post/post_loop.html' %}
 {% endblock %}

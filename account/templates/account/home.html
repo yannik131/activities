@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 {% load account_tags %}
 
 {% block title %}{% blocktrans %}Home{% endblocktrans %}{% endblock %}
@@ -8,12 +9,13 @@
     {% if user.image %}<img src="{{ user.image.url }}" class="user-photo">{% endif %}
 	<p>{% blocktrans with v0=user.username %}Willkommen, {{ v0 }}.{% endblocktrans %} {% trans 'Ist irgendwas? Schicken Sie' %} <a href="{% url 'account:detail' 'admin' %}">admin</a> {% trans 'eine Freundschaftsanfrage.' %}</p>
     {% if missing_fields %}
-    <p style="border: 2px solid gray; color: red;">
-    {% trans 'Schließen Sie Ihre Anmeldung ab, indem Sie Alter, E-Mail-Adresse und Geschlecht nachtragen: ' %} <a href="{% url 'account:edit' %}">Klick!</a><br>
+    <div class="missing-stuff">
+    {% trans 'Schließen Sie Ihre Anmeldung ab, indem Sie Alter, E-Mail-Adresse und Geschlecht nachtragen: ' %} 
+    <div class="button-like" onclick=openLink("{% url 'account:edit' %}")><img src="{% static 'icons/pen.png' %}">{% blocktrans %}Profil vervollständigen{% endblocktrans %}</div>
     {% trans 'Ansonsten können Sie Ihr Passwort nicht zurücksetzen und/oder sich auf Leerstellen bewerben.' %}
-    </p>
+    </div>
     {% endif %}
-    <p><a href="{% url 'account:user_post_list' %}">{% blocktrans %}Zu Ihren Posts...{% endblocktrans %}</a></p>
+    <div class="button-like" onclick=openLink("{% url 'account:user_post_list' %}")><img src="{% static 'icons/post.png' %}">{% blocktrans %}Zu Ihren Posts{% endblocktrans %}</div>
     {% if user.activities.all %}
         <p>{% blocktrans %}Sie sind zurzeit Mitglied folgender Aktivitäten:{% endblocktrans %}</p>
         {% include "activity/loop.html" with activities=user.activities %}

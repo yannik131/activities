@@ -6,6 +6,10 @@
     .sidemenu .alert .notification-url {
         width: 80%;
     }
+    
+    .competitive {
+        height: 60px;
+    }
 
     .content {
         color: white;

@@ -8,6 +8,11 @@
     display: none;
 }
 
+.sidemenu img {
+    height: 25px;
+    margin-right: 5px;
+}
+
 .sidemenu.clicked {
     background-color: #1a1a1a;
     display: block;
@@ -25,11 +30,18 @@
 .sidemenu .alert {
     font-family: "Arial", "Verdana", "Helvectica";
     background-color: #0087f7;
+    border-radius: 10px;
+    padding-left: 5px;
     margin-bottom: 10px;
     float: left;
     display: flex;
     position: relative;
     cursor: pointer;
+    overflow: hidden;
+}
+
+.sidemenu .alert a {
+    max-height: 70px;
 }
 
 .sidemenu .alert .notification-url {
@@ -70,10 +82,12 @@
 }
 
 .sidemenu a {
-    display: block;
+    display: flex;
+    align-items: center;
     text-decoration: none;
     padding: 8px 0;
     color: #ababab;
+    max-height: 25px;
 }
 
 .sidemenu a:hover {

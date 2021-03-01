@@ -1,20 +1,21 @@
 {% load i18n %}
+{% load static %}
 {% load account_tags %}
 {% load chat_tags %}
 {% load usergroup_tags %}
 
 <div class="sidemenu" id="sidemenu">
-    <a href="{% url 'account:home' %}" {% active_if request 'home' %}>{% blocktrans %}Homepage{% endblocktrans %}</a>
-    <a href="{% url 'activity:list' %}" {% active_if request 'activities' %}>{% blocktrans %}Aktivitäten{% endblocktrans %}</a>
-    <a href="{% url 'activity:category_list' %}" {% active_if request 'categories' %}>{% blocktrans %}Kategorien{% endblocktrans %}</a>
-    <a href="{% url 'competitions:user_overview' %}" {% active_if request 'competitions' %}>{% blocktrans %}Matches & Turniere{% endblocktrans %}</a>
-    <a href="{% url 'usergroups:group_list' %}" {% active_if request 'groups' %}>{% blocktrans %}Gruppen{% endblocktrans %}</a>
-    <a href="{% url 'chat:chat_list' %}" {% active_if request 'chat' %}>{% trans "Chats" %}</a>
-    <a href="{% url 'vacancies:application_list' %}" {% active_if request 'vacancies' %}>{% trans "Bewerbungen & Einladungen" %} {% invitation_number_string user %}</a>
-    <a href="{% url 'account:friend_requests_list' %}" {% active_if request 'friends' %}>{% trans "Freunde" %}{% new_request_number_string user %}</a>
-    <a href="{% url 'account:password_change' %}" {% active_if request 'password' %}>{% blocktrans %}Passwort ändern{% endblocktrans %}</a>
-    <a href="{% url 'account:edit' %}" {% active_if request 'account' %}>{% blocktrans %}Account bearbeiten{% endblocktrans %}</a>
-    <a href="{% url 'account:logout' %}">{% blocktrans %}Ausloggen{% endblocktrans %}</a>
+    <a href="{% url 'account:home' %}" {% active_if request 'home' %}><img src="{% static 'icons/home.png' %}">{% blocktrans %}Homepage{% endblocktrans %}</a>
+    <a href="{% url 'activity:list' %}" {% active_if request 'activities' %}><img src="{% static 'icons/activity.png' %}">{% blocktrans %}Aktivitäten{% endblocktrans %}</a>
+    <a href="{% url 'activity:category_list' %}" {% active_if request 'categories' %}><img src="{% static 'icons/category.png' %}">{% blocktrans %}Kategorien{% endblocktrans %}</a>
+    <a href="{% url 'competitions:user_overview' %}" {% active_if request 'competitions' %}><img src="{% static 'icons/tournament.png' %}">{% blocktrans %}Matches & Turniere{% endblocktrans %}</a>
+    <a href="{% url 'usergroups:group_list' %}" {% active_if request 'groups' %}><img src="{% static 'icons/group.png' %}">{% blocktrans %}Gruppen{% endblocktrans %}</a>
+    <a href="{% url 'chat:chat_list' %}" {% active_if request 'chat' %}><img src="{% static 'icons/chat.png' %}">{% trans "Chats" %}</a>
+    <a href="{% url 'vacancies:application_list' %}" {% active_if request 'vacancies' %}><img src="{% static 'icons/interview.png' %}">{% trans "Bewerbungen & Einladungen" %} {% invitation_number_string user %}</a>
+    <a href="{% url 'account:friend_requests_list' %}" {% active_if request 'friends' %}><img src="{% static 'icons/friendship.png' %}">{% trans "Freunde" %}{% new_request_number_string user %}</a>
+    <a href="{% url 'account:password_change' %}" {% active_if request 'password' %}><img src="{% static 'icons/password.png' %}">{% blocktrans %}Passwort ändern{% endblocktrans %}</a>
+    <a href="{% url 'account:edit' %}" {% active_if request 'account' %}><img src="{% static 'icons/pen.png' %}">{% blocktrans %}Account bearbeiten{% endblocktrans %}</a>
+    <a href="{% url 'account:logout' %}"><img src="{% static 'icons/logout.png' %}">{% blocktrans %}Ausloggen{% endblocktrans %}</a>
     {% for notification in request.notifications %}
     {% with notification_id=notification.id %}
 

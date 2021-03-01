@@ -259,7 +259,6 @@ select:focus, select:hover {
     color: #1a1a1a;
 }
 
-
 .about-picture {
     width: 90%;
     max-width: 500px;
@@ -314,6 +313,7 @@ select:focus, select:hover {
 
 .competitive img {
     height: 100%;
+    margin-right: 5px;
 }
 
 .competitive .right {
@@ -340,14 +340,23 @@ select:focus, select:hover {
     height: 25px;
     font-weight: bold;
     display: flex;
-    vertical-align: center;
+    align-items: center;
     justify-content: center;
 }
 
 .button-like img {
     height: 100%;
+    margin-right: 5px;
 }
 
 .button-like:hover {
     background-color: gray;
+}
+
+.missing-stuff {
+    font-weight: bold;
+    padding: 5px 5px;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+    margin: 10px 0px;
 }
