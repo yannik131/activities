@@ -56,20 +56,5 @@
     {% endif %}
     <p><a href="{% url 'account:send_custom_friend_request' %}" style="font-style: italic;">{% blocktrans %}Eine Anfrage an einen Nutzer senden...{% endblocktrans %}</a></p>
     <h1>{% blocktrans %}Freunde{% endblocktrans %}</h1>
-    <div class="activity-horizontal-list">
-        {% for user in user.friends %}
-            <div class="item">
-                {% load thumbnail %}
-                <a href="{{ user.get_absolute_url }}">
-                {% if user.image %}
-                <img src="{% thumbnail user.image 100x100 %}" class="photo"></a>
-                {% else %}
-                <img src="{% static 'icons/users-and-groups-user@32px.png' %}" width="100">
-                {% endif %}
-                <div class="title">
-                    {{ user }}
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+    {% include 'account/user_loop.html' with users=user.friends %}
 {% endblock %}

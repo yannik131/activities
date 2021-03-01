@@ -14,12 +14,12 @@
     <h2>{% blocktrans with v0=match.location v1=match.address %}Ort: {{ v0 }}, {{ v1 }}{% endblocktrans %}</h2>
     <h3>{% blocktrans %}Teilnehmer{% endblocktrans %}</h3>
     <ul>
-        {% for member in match.members.all %}
+        {% for member in match.contestants.all %}
             <li><a href="{{ member.get_absolute_url }}">{{ member }}</a></li>
         {% endfor %}
     </ul>
     <h3>{% blocktrans %}Leerstellen{% endblocktrans %}</h3>
-    {% if user == match.admin %}
+    {% if not match.for_groups and user == match.admin %}
         <p><a href="{% url 'vacancies:create_vacancies' 'competitions' 'match' match.id %}">{% blocktrans %}Leerstelle hinzufügen{% endblocktrans %}</a></p>
     {% endif %}
     {% with target=match %}

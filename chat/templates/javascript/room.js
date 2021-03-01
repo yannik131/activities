@@ -27,5 +27,5 @@ function addMessageToChat(data) {
 };
 
 window.onbeforeunload = function() {
-    user_websocket.send(JSON.stringify({'update_check': '', 'id': {{ room.id }}}));
+    user_websocket.send(JSON.stringify({'type': 'chat', 'update_check': '', 'id': {{ room.id }}}));
 };

@@ -8,7 +8,8 @@
     {% if activity.image %}
         <img src="{{ activity.image.url }}" width="200px" class="activity-full-image">
     {% endif %}
-    <h1>{{ activity.verbose }}</h1>
+    <h1 class="center-container">{{ activity.verbose }}</h1>
+    <p class="center-container"><i>{{ activity.description }}</i></p>
     {% if activity.category %}
         <h2><a href="{{ activity.category.get_absolute_url }}">{{ activity.category.verbose }}</a></h2>
     {% endif %}
@@ -19,7 +20,6 @@
         {% endif %}
         </h3>
     {% endif %}
-    <p>{{ activity.description }}</p>
         {% if is_member %}
             <p>
             {% trans "Sie sind Mitglied dieser Aktivität" %}.

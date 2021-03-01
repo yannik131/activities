@@ -8,7 +8,7 @@
     background-color: #ae3635;
     text-decoration: none;
     font-size: 32px;
-    font-family: "Courier New", "Lucida Console", monospace;
+    font-family: "Arial", "Verdana", "Helvectica";
     margin-bottom: 10px;
     overflow: hidden;
 }
@@ -67,5 +67,5 @@
     right: 0;
     font-size: 12px;
     font-weight: bold;
-    font-family: "Courier New", "Lucida Console", monospace;
+    font-family: "Arial", "Verdana", "Helvectica";
 }

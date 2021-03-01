@@ -13,6 +13,7 @@ import json
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext_lazy as _
 from account.views import handler403
+from usergroups.models import UserGroup
 
 
 @login_required
@@ -138,21 +139,21 @@ def remove_member(request, model, instance_id, user_id, who):
         if request.user != instance.admin:
             return handler403(request)
         user = User.objects.get(id=user_id)
-        instance.members.remove(user)
+        instance.contestants.remove(user)
         return HttpResponseRedirect(request.build_absolute_uri(f"/competitions/edit_{model}/{instance.id}"))
     elif who == 'user':
         user = User.objects.get(id=user_id)
         if request.user != user:
             return handler403(request)
-        instance.members.remove(user)
+        instance.contestants.remove(user)
         return HttpResponseRedirect(instance.get_absolute_url())
 
 
 def tournament_standings(request, tournament_id):
     tournament = Tournament.objects.get(id=tournament_id)
-    players = utils.sorted_player_list(tournament.points, tournament.tie_breaks)
-    players = [(User.objects.get(id=int(k)), s, t) for k, s, t in players]
-    return render(request, 'competitions/full_table.html', dict(tournament=tournament, players=players))
+    contestants = utils.sorted_player_list(tournament.points, tournament.tie_breaks)
+    contestants = [(tournament.Contestant().objects.get(id=int(k)), s, t) for k, s, t in contestants]
+    return render(request, 'competitions/full_table.html', dict(tournament=tournament, players=contestants))
 
 
 def game_plan(request, tournament_id, round_number):
@@ -178,7 +179,7 @@ def generate_next_round(request, tournament_id):
         matchups, leftover = utils.get_pairings_for(tournament.activity.name, tournament)
     except:
         return HttpResponseServerError(_('Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden.'))
-    round = Round.objects.create(tournament=tournament, number=n, points=dict.fromkeys([str(k) for k in tournament.members.all().values_list('id', flat=True)], 0), matchups = json.dumps(matchups), leftover=leftover)
+    round = Round.objects.create(tournament=tournament, number=n, points=dict.fromkeys([str(k) for k in tournament.contestants.all().values_list('id', flat=True)], 0), matchups = json.dumps(matchups), leftover=leftover)
     tournament.save()
     round.save()
     return HttpResponseRedirect(round.get_absolute_url())

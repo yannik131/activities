@@ -13,11 +13,11 @@
     </form>
     <h2>{% blocktrans %}Mitglieder verwalten{% endblocktrans %}</h2>
     <p><a href="{% url 'vacancies:create_invitation' 'competitions' 'tournament' tournament.id %}">{% blocktrans %}Mitglied einladen{% endblocktrans %}</a></p>
-    {% if user not in tournament.members.all %}
+    {% if not tournament.for_groups and user not in tournament.members.all %}
         <p><a href="{% url 'competitions:add_tournament_member' tournament.id user.id %}">{% blocktrans %}Selbst beitreten{% endblocktrans %}</a></p>
     {% endif %}
     <ul>
-        {% for member in tournament.members.all %}
+        {% for member in tournament.contestants.all %}
             <li><a href="{{ member.get_absolute_url }}">{{ member }}</a> <a href="{% url 'competitions:remove_member' 'tournament' tournament.id member.id 'admin' %}">{% blocktrans %}Entfernen{% endblocktrans %}</a></li>
         {% endfor %}
     </ul>

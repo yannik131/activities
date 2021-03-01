@@ -1,0 +1,17 @@
+{% load static %}
+<div class="activity-horizontal-list">
+    {% for user in users %}
+        <div class="item">
+            {% load thumbnail %}
+            <a href="{{ user.get_absolute_url }}">
+            {% if user.image %}
+            <img src="{% thumbnail user.image 100x100 %}" class="photo"></a>
+            {% else %}
+            <img src="{% static 'icons/users-and-groups-user@32px.png' %}" width="100">
+            {% endif %}
+            <div class="title">
+                {{ user }}
+            </div>
+        </div>
+    {% endfor %}
+</div>

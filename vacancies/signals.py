@@ -5,12 +5,15 @@ from notify.utils import notify
 from chat.models import ChatRoom
 from account.models import User
 from django.utils.translation import gettext_lazy as _
+from shared.shared import log
 
 
 @receiver(post_save, sender=Application)
 def application_created(instance: Application, created, **kwargs):
     if created:
         notify(instance.vacancy.target.members.all(), instance.user, 'applied_for', instance.vacancy)
+        if instance.vacancy.target.admin not in instance.vacancy.target.members.all():
+            notify(instance.vacancy.target.admin, instance.user, 'applied_for', instance.vacancy)
         room = ChatRoom.get_for_target(instance)
         room.members.add(instance.user)
         for member in instance.vacancy.target.members.all():

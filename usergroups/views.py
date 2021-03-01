@@ -9,6 +9,7 @@ from django.http import HttpResponseForbidden, HttpResponseRedirect, HttpRespons
 from wall.models import Post
 from django.utils.translation import gettext_lazy as _
 from account.views import handler403
+from notify.utils import notify
 
 
 @login_required
@@ -101,4 +102,5 @@ def kick_out(request, group_id, user_id):
     if request.user != group.admin or user not in group.members.all():
         return handler403(request)
     group.members.remove(user)
+    notify(user, group, "kicked_you_out")
     return HttpResponseRedirect(request.build_absolute_uri(f"/usergroups/edit_group/{group.id}"))

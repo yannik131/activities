@@ -9,7 +9,7 @@
 
     .content {
         color: white;
-        font-family: "Courier New", "Lucida Console", monospace;
+        font-family: "Arial", "Verdana", "Helvectica";
         position: absolute;
         top: 50px;
         left: 5px;
@@ -55,7 +55,7 @@
         max-height: 80vh;
     }
     .content {
-        left: 250px;
+        left: 255px;
     }
     .topmenu .logo .icon {
         display: none;
@@ -70,7 +70,7 @@
         margin-right: auto;
     }
     .content {
-        left: 250px;
+        left: 260px;
         right: 250px;
     }
     .sidemenu {

@@ -7,17 +7,15 @@
     {% if group.image %}
     <img src="{{ group.image.url }}" class="group-full-image">
     {% endif %}
-    <h1>{{ group.verbose }}</h1>
-    {% if user == group.admin %}
-        <h2><a href="{% url 'usergroups:edit_group' group.id %}">{% trans "Bearbeiten" %}...</a></h2>
-    {% endif %}
+    <h1 class="center-container">{{ group.verbose }}</h1>
+    {% if user == group.admin %}<p class="center-container"><a href="{% url 'usergroups:edit_group' group.id %}">{% trans "Bearbeiten" %}</a></p>{% endif %}
+    <p class="center-container">{{ group.description }}</p>
+    
     {% if is_member %}
         <p><a href="{% url 'chat:chat_room' 'usergroups' 'usergroup' group.id %}">{% trans "Zum Chat" %}...</a></p>
     {% endif %}
     <p>{% trans "Gruppe gehört zur" %} <a href="{{ group.category.get_absolute_url }}">{{ group.category.verbose }}</a></p>
     {% if group.description %}
-        <h2>{% trans "Beschreibung" %}</h2>
-        <p>{{ group.description }}</p>
     {% endif %}
     <h2>{% trans "Mitglieder" %}</h2>
     <p>

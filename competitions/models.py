@@ -30,12 +30,27 @@ class Match(models.Model):
     points = HStoreField(default=dict)
     members = models.ManyToManyField(User, related_name='matches')
     groups = models.ManyToManyField(UserGroup, related_name='matches')
+    for_groups = models.BooleanField(default=False)
+    action_strings = {
+        'accepted_application': _('Hat Ihre Bewerbung akzeptiert')
+    }
 
     def verbose(self):
         return str(self.activity) + "-" + self.__str__()
 
     def chat_allowed_for(self, user):
         return user in self.members.all()
+        
+    def Contestant(self):
+        if self.for_groups:
+            return UserGroup
+        return User
+        
+    @property
+    def contestants(self):
+        if self.for_groups:
+            return self.groups
+        return self.members
 
     @staticmethod
     def content_type():
@@ -60,6 +75,7 @@ class Tournament(models.Model):
     address = models.CharField(max_length=50, null=True, blank=True)
     members = models.ManyToManyField(User, related_name='tournaments')
     groups = models.ManyToManyField(UserGroup, related_name='tournaments')
+    for_groups = models.BooleanField(default=False)
     starting_time = models.DateTimeField()
     application_deadline = models.DateTimeField()
     max_members = models.PositiveSmallIntegerField(null=True, blank=True)
@@ -70,7 +86,8 @@ class Tournament(models.Model):
     over = models.BooleanField(default=False)
 
     action_strings = {
-        'started_new_round': _('hat eine neue Runde')
+        'started_new_round': _('hat eine neue Runde'),
+        'accepted_application': _('Hat Ihre Bewerbung akzeptiert')
     }
 
     class Meta:
@@ -87,6 +104,17 @@ class Tournament(models.Model):
 
     def chat_allowed_for(self, user):
         return self in user.tournaments.all() or user == self.admin
+        
+    def Contestant(self):
+        if self.for_groups:
+            return UserGroup
+        return User
+        
+    @property
+    def contestants(self):
+        if self.for_groups:
+            return self.groups
+        return self.members
 
     @staticmethod
     def content_type():

@@ -1,0 +1,20 @@
+{% load static %}
+
+<div class="activity-horizontal-list">
+    {% for room, target in rooms %}
+        <div class="item">
+            {% load thumbnail %}
+            <a href="{{ room.get_absolute_url }}">
+            {% if target.image %}
+            <img src="{% thumbnail target.image 100x100 %}" class="photo">
+            {% else %}
+            <img src="{% static default_img %}" width="100">
+            {% endif %}
+            </a>
+            <div class="title">
+                {{ target }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<p style="clear: both"></p>

@@ -49,14 +49,7 @@ class User(AbstractUser):
         return next((friendship for friendship in self.friendships() if friendship.to_user == user or friendship.from_user == user), None)
 
     def friends(self):
-        friendships = self.friendships()
-        friends = []
-        for friendship in friendships:
-            if friendship.to_user == self:
-                friends.append(friendship.from_user)
-            else:
-                friends.append(friendship.to_user)
-        return friends
+        return [f.get_other_user(self) for f in self.friendships()]
 
     def get_latest_messages(self):
         chat_checks = self.last_chat_checks.all()
@@ -131,6 +124,11 @@ class Friendship(models.Model):
 
     def get_absolute_url(self):
         return reverse('account:view_friendship', args=[self.id])
+        
+    def get_other_user(self, user):
+        if user == self.from_user:
+            return self.to_user
+        return self.from_user
 
     @staticmethod
     def content_type():

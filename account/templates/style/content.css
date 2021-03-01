@@ -20,7 +20,7 @@ body {
     bottom: 5px;
     margin-left: 10px;
     color: white;
-    font-family: "Courier New", "Lucida Console", monospace;
+    font-family: "Arial", "Verdana", "Helvectica";
 }
 
 .lang-select {
@@ -43,8 +43,20 @@ input[type='text'], textarea, select:focus {
     padding: 0px 5px;
 }
 
+.post {
+    border: 2px solid gray;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+h1 {
+    font-style: italic;
+}
+
 a:link {
     color: #338ad3;
+    text-decoration: none;
 }
 
 a:visited {
@@ -84,7 +96,7 @@ input[type=submit], a.button, .blue-button {
 }
 
 input, textarea {
-    font-family: "Courier New", "Lucida Console", monospace;
+    font-family: "Arial", "Verdana", "Helvectica";
     background-color: #494949;
     color: white;
     border: 1px solid black;
@@ -99,7 +111,7 @@ input:focus, input:hover, textarea:hover, textarea:focus, .blue-button:hover {
 }
 
 select {
-    font-family: "Courier New", "Lucida Console", monospace;
+    font-family: "Arial", "Verdana", "Helvectica";
     background-color: #494949;
     border: 1px solid black;
     outline: none;
@@ -163,7 +175,6 @@ select:focus, select:hover {
 }
 
 .activity-horizontal-list {
-
 }
 
 .activity-horizontal-list .item {
@@ -214,7 +225,7 @@ select:focus, select:hover {
     border: 1px solid black;
     border-radius: 10%;
     color: white;
-    font-family: "Courier New";
+    font-family: "Arial", "Verdana", "Helvectica";;
     background-color: gray;
 }
 .list .item:hover {

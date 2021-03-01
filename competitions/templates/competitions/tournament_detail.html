@@ -17,12 +17,14 @@
     <h2><a href="{% url 'competitions:tournament_standings' tournament.id %}">{% blocktrans %}Tabelle{% endblocktrans %}</a> | <a href="{% url 'competitions:game_plan' tournament.id 1 %}">{% blocktrans %}Spielplan{% endblocktrans %}</a></h2>
     <p>
         {% trans "Mitglieder" %}:
-        {% for member in tournament.members.all %}
+        {% for member in tournament.contestants.all %}
             <a href="{{ member.get_absolute_url }}">{{ member }}</a>{% if forloop.last %}.{% else %},{% endif %}
         {% endfor %}
     </p>
-    {% if user == tournament.admin %}
+    {% if not tournament.for_groups and user == tournament.admin %}
         <p><a href="{% url 'vacancies:create_vacancies' 'competitions' 'tournament' tournament.id %}">{% blocktrans %}Leerstelle hinzufügen{% endblocktrans %}</a></p>
+    {% elif tournament.for_groups and user == tournament.admin %}
+        <p>TODO</p>
     {% endif %}
     {% with target=tournament %}
         {% include 'vacancies/vacancy_list.html' %}

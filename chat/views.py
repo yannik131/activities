@@ -36,15 +36,15 @@ def chat_list(request):
     tournament_rooms = []
     for room in chat_rooms:
         if type(room.target) is UserGroup:
-            group_rooms.append(room)
+            group_rooms.append((room, room.target))
         elif type(room.target) is Friendship:
-            friend_rooms.append(room)
+            friend_rooms.append((room, room.target.get_other_user(request.user)))
         elif type(room.target) is Match:
-            match_rooms.append(room)
+            match_rooms.append((room, room.target))
         elif type(room.target) is Tournament:
-            tournament_rooms.append(room)
+            tournament_rooms.append((room, room.target))
 
-    def key(room):
-        return room.title_for(request.user)
+    def key(t):
+        return t[0].title_for(request.user)
 
     return render(request, 'chat/chat_list.html', dict( group_rooms=sorted(group_rooms, key=key), friend_rooms=sorted(friend_rooms, key=key), match_rooms=sorted(match_rooms, key=key), tournament_rooms=sorted(tournament_rooms, key=key)))

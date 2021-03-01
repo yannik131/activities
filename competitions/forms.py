@@ -17,7 +17,8 @@ class MatchForm(forms.ModelForm):
             'start_time': _('Wann findet das Match statt?'),
             'public': _('Soll das Match öffentlich unter Matches & Turniere sichtbar sein?'),
             'address': _('Wo genau findet das Match statt?'),
-            'format': _('Bitte beschreiben Sie kurz die Spielregeln und das Format des Matches')
+            'format': _('Bitte beschreiben Sie kurz die Spielregeln und das Format des Matches'),
+            'for_groups': _('Mannschaftsspiel')
         }
         widgets = {
             'format': forms.Textarea
@@ -45,7 +46,8 @@ class TournamentForm(forms.ModelForm):
             'application_deadline': _('Anmeldeschluss'),
             'max_members': _('Maximale Teilnehmeranzahl (leer lassen für kein Limit)'),
             'fixed_number_of_rounds': _('Rundenanzahl (leer lassen für automatische Ermittlung)'),
-            'format': _('Turnierformat und weitere Informationen')
+            'format': _('Turnierformat und weitere Informationen'),
+            'for_groups': _('Mannschaftsspiel')
         }
 
     def clean(self):

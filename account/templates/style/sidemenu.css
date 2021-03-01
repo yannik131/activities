@@ -3,7 +3,7 @@
     left: 5px;
     top: 50px;
     max-width: 250px;
-    font-family: "Courier New", "Lucida Console", monospace;
+    font-family: "Arial", "Verdana", "Helvectica";
     overflow-y: auto;
     display: none;
 }
@@ -23,7 +23,7 @@
 }
 
 .sidemenu .alert {
-    font-family: "Courier New", "Lucida Console", monospace;
+    font-family: "Arial", "Verdana", "Helvectica";
     background-color: #0087f7;
     margin-bottom: 10px;
     float: left;
