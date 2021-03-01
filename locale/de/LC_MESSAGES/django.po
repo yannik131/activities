@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-01 17:47+0000\n"
+"POT-Creation-Date: 2021-03-01 18:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -976,22 +976,22 @@ msgstr ""
 msgid "Online spielen"
 msgstr ""
 
-#: activity/templates/activity/detail.html:32
+#: activity/templates/activity/detail.html:33
 #: multiplayer/templates/javascript/audiochat.js:32
 #: multiplayer/templates/multiplayer/match.html:22
 #: usergroups/templates/usergroups/group_detail.html:26
 msgid "Austreten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:33
+#: activity/templates/activity/detail.html:34
 msgid "Suche nach Mitgliedern"
 msgstr ""
 
-#: activity/templates/activity/detail.html:39
+#: activity/templates/activity/detail.html:40
 msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
 msgstr ""
 
-#: activity/templates/activity/detail.html:41
+#: activity/templates/activity/detail.html:42
 #: multiplayer/templates/multiplayer/match.html:24
 msgid "Beitreten"
 msgstr ""
@@ -1441,7 +1441,7 @@ msgstr ""
 
 #: multiplayer/templates/javascript/audiochat.js:48
 #: multiplayer/templates/multiplayer/game.html:32
-msgid "Audiokonferenz"
+msgid "Konferenz"
 msgstr ""
 
 #: multiplayer/templates/javascript/cards.js:419

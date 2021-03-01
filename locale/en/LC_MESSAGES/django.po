@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-01 17:47+0000\n"
-"PO-Revision-Date: 2021-03-01 18:49+0100\n"
+"POT-Creation-Date: 2021-03-01 18:23+0000\n"
+"PO-Revision-Date: 2021-03-01 19:24+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -1020,22 +1020,22 @@ msgstr "Play offline"
 msgid "Online spielen"
 msgstr "Play online"
 
-#: activity/templates/activity/detail.html:32
+#: activity/templates/activity/detail.html:33
 #: multiplayer/templates/javascript/audiochat.js:32
 #: multiplayer/templates/multiplayer/match.html:22
 #: usergroups/templates/usergroups/group_detail.html:26
 msgid "Austreten"
 msgstr "Leave"
 
-#: activity/templates/activity/detail.html:33
+#: activity/templates/activity/detail.html:34
 msgid "Suche nach Mitgliedern"
 msgstr "Members"
 
-#: activity/templates/activity/detail.html:39
+#: activity/templates/activity/detail.html:40
 msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
 msgstr "If you want to see the members, you need to enter the activity."
 
-#: activity/templates/activity/detail.html:41
+#: activity/templates/activity/detail.html:42
 #: multiplayer/templates/multiplayer/match.html:24
 msgid "Beitreten"
 msgstr "Join"
@@ -1489,8 +1489,8 @@ msgstr "Doppelkopf"
 
 #: multiplayer/templates/javascript/audiochat.js:48
 #: multiplayer/templates/multiplayer/game.html:32
-msgid "Audiokonferenz"
-msgstr "Audio conference"
+msgid "Konferenz"
+msgstr "Conference"
 
 #: multiplayer/templates/javascript/cards.js:419
 #: multiplayer/templates/javascript/skat.js:562

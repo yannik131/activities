@@ -45,6 +45,6 @@ function leaveAudio() {
     button.innerHTML = "<img src='" +
     "{% static 'icons/login.png' %}" +
     "'>" +
-    "{% trans 'Audiokonferenz' %}"
+    "{% trans 'Konferenz' %}"
     button.onclick = joinAudio;
 }
