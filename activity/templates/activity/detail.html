@@ -21,9 +21,6 @@
         </h3>
     {% endif %}
         {% if is_member %}
-            <p>
-            {% trans "Sie sind Mitglied dieser Aktivität" %}.
-            </p>
             <a href="{% url 'activity:leave' activity.name %}"><button class="blue-button">{% trans "Austreten" %}</button></a>
             <h3>{% trans "Suche nach Mitgliedern" %}</h3>
             <p>{% include 'activity/location_selection.html' %}</p>
@@ -39,7 +36,7 @@
             {% endif %}
         {% else %}
             <p>
-                {% trans "Sie sind noch kein Mitglied. Falls Sie sehen wollen, wer in Ihrer Umgebung Teil dieser Aktivität ist" %}, {% trans "treten Sie Ihr bei" %}.
+                {% trans "Falls Sie sehen wollen, wer in Ihrer Umgebung Teil dieser Aktivität ist" %}, {% trans "treten Sie Ihr bei" %}.
             </p>
             <a href="{% url 'activity:join' activity.name %}"><button class="blue-button">{% trans "Beitreten" %}</button></a>
         {% endif %}
