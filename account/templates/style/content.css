@@ -176,14 +176,15 @@ select:focus, select:hover {
 }
 
 .activity-horizontal-list {
+    display: block;
 }
 
 .activity-horizontal-list .item {
     margin: 10px 10px;
     border: 1px solid transparent;
     border-radius: 10%;
-    float: left;
     cursor: pointer;
+    display: inline-block;
 }
 
 .activity-horizontal-list .item:hover {
@@ -226,7 +227,7 @@ select:focus, select:hover {
     border: 1px solid #1a1a1a;
     border-radius: 10%;
     color: white;
-    font-family: "Arial", "Verdana", "Helvectica";;
+    font-family: "Arial", "Verdana", "Helvectica";
     background-color: gray;
 }
 .list .item:hover {
