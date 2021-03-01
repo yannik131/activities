@@ -2,11 +2,11 @@
 
 <div class="activity-horizontal-list">
     {% for room, target in rooms %}
-        <div class="item">
+        <div class="item" style="max-width:125px;">
             {% load thumbnail %}
             <a href="{{ room.get_absolute_url }}">
             {% if target.image %}
-            <img src="{% thumbnail target.image 100x100 %}" class="photo">
+            <img src="{% thumbnail target.image 200x200 %}" class="photo" style="max-width: 125px">
             {% else %}
             <img src="{% static default_img %}" width="100">
             {% endif %}

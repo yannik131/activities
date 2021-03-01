@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-13 10:53+0000\n"
-"PO-Revision-Date: 2021-02-13 11:54+0100\n"
+"POT-Creation-Date: 2021-03-01 17:47+0000\n"
+"PO-Revision-Date: 2021-03-01 18:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -90,7 +90,6 @@ msgstr ""
 
 #: account/forms.py:81 account/templates/account/friend_requests_list.html:13
 #: account/templates/account/friend_requests_list.html:38
-#: activity/templates/activity/detail.html:32
 msgid "Nutzername"
 msgstr "User name"
 
@@ -171,31 +170,31 @@ msgstr "declined your friend request"
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr "rejected your friend request"
 
-#: account/models.py:144
+#: account/models.py:142
 msgid "Ausstehend"
 msgstr "Pending"
 
-#: account/models.py:145 vacancies/templates/vacancies/vacancy_list.html:29
+#: account/models.py:143 vacancies/templates/vacancies/vacancy_list.html:29
 msgid "Angenommen"
 msgstr "Accepted"
 
-#: account/models.py:146 vacancies/templates/vacancies/vacancy_list.html:31
+#: account/models.py:144 vacancies/templates/vacancies/vacancy_list.html:31
 msgid "Abgelehnt"
 msgstr "Declined"
 
-#: account/models.py:190 vacancies/models.py:29
+#: account/models.py:188 vacancies/models.py:29
 msgid "Land"
 msgstr "Country"
 
-#: account/models.py:191 vacancies/models.py:30
+#: account/models.py:189 vacancies/models.py:30
 msgid "Bundesland"
 msgstr "State"
 
-#: account/models.py:192 vacancies/models.py:31
+#: account/models.py:190 vacancies/models.py:31
 msgid "Landkreis"
 msgstr "County"
 
-#: account/models.py:193 vacancies/models.py:32
+#: account/models.py:191 vacancies/models.py:32
 msgid "Stadt"
 msgstr "City"
 
@@ -341,7 +340,7 @@ msgid "Profil von"
 msgstr "Profile of"
 
 #: account/templates/account/detail.html:14
-#: usergroups/templates/usergroups/group_detail.html:15
+#: usergroups/templates/usergroups/group_detail.html:16
 #: vacancies/templates/vacancies/review_vacancy.html:29
 msgid "Zum Chat"
 msgstr "To the chat"
@@ -391,7 +390,7 @@ msgid "Freundschaftsanfrage"
 msgstr "friend request"
 
 #: account/templates/account/detail.html:28
-#: usergroups/templates/usergroups/group_detail.html:94
+#: usergroups/templates/usergroups/group_detail.html:91
 msgid "Posts"
 msgstr "Posts"
 
@@ -466,7 +465,7 @@ msgstr "Received"
 
 #: account/templates/account/friend_requests_list.html:15
 #: account/templates/account/friend_requests_list.html:40
-#: usergroups/templates/usergroups/group_detail.html:56
+#: usergroups/templates/usergroups/group_detail.html:53
 #: usergroups/templates/usergroups/invitation_list.html:8
 #: vacancies/templates/vacancies/application_list.html:14
 #: vacancies/templates/vacancies/application_list.html:35
@@ -488,7 +487,7 @@ msgstr "Decline"
 
 #: account/templates/account/friend_requests_list.html:25
 #: account/templates/account/friend_requests_list.html:48
-#: usergroups/templates/usergroups/group_detail.html:83
+#: usergroups/templates/usergroups/group_detail.html:80
 #: usergroups/templates/usergroups/invitation_list.html:16
 #: vacancies/templates/vacancies/application_list.html:24
 #: vacancies/templates/vacancies/application_list.html:41
@@ -515,7 +514,7 @@ msgstr "Send a request to a user..."
 
 #: account/templates/account/friend_requests_list.html:58
 #: account/templates/account/sidemenu.html:14
-#: chat/templates/chat/chat_list.html:18
+#: chat/templates/chat/chat_list.html:14
 msgid "Freunde"
 msgstr "Friends"
 
@@ -620,7 +619,7 @@ msgid "Seite"
 msgstr "Page"
 
 #: account/templates/account/pagination.html:9
-#: wall/templates/wall/post/post_loop.html:6
+#: wall/templates/wall/post/post_loop.html:7
 msgid "von"
 msgstr "of"
 
@@ -751,7 +750,6 @@ msgid "Kategorien"
 msgstr "Categories"
 
 #: account/templates/account/sidemenu.html:10
-#: activity/templates/activity/detail.html:16
 msgid "Matches & Turniere"
 msgstr "Matches & Tournaments"
 
@@ -788,7 +786,7 @@ msgid "Ihre Posts"
 msgstr "Your posts"
 
 #: account/templates/account/user_post_list.html:8
-#: activity/templates/activity/detail.html:49
+#: activity/templates/activity/detail.html:46
 msgid "Post erstellen..."
 msgstr "Create post..."
 
@@ -991,15 +989,15 @@ msgstr "Show members"
 msgid "Mitglieder"
 msgstr "Members"
 
-#: activity/templates/activity/category_detail.html:11
+#: activity/templates/activity/category_detail.html:14
 msgid "Zu den Gruppen"
 msgstr "Groups..."
 
-#: activity/templates/activity/category_detail.html:13
+#: activity/templates/activity/category_detail.html:15
 msgid "Folgende Aktivitäten gehören zu dieser Kategorie"
 msgstr "The following activities belong to this category"
 
-#: activity/templates/activity/category_detail.html:16
+#: activity/templates/activity/category_detail.html:18
 msgid "Posts in"
 msgstr "Posts in"
 
@@ -1012,48 +1010,37 @@ msgstr "All categories"
 msgid "Hier eine Liste aller verfügbaren Kategorien"
 msgstr "Here's a list of all available categories"
 
-#: activity/templates/activity/detail.html:18
+#: activity/templates/activity/detail.html:22
+msgid "Offline spielen"
+msgstr "Play offline"
+
+#: activity/templates/activity/detail.html:27
 #: multiplayer/templates/multiplayer/create_match.html:4
 #: multiplayer/templates/multiplayer/match.html:10
 msgid "Online spielen"
 msgstr "Play online"
 
-#: activity/templates/activity/detail.html:25
-msgid "Sie sind Mitglied dieser Aktivität"
-msgstr "You are a member of this activity"
-
-#: activity/templates/activity/detail.html:27
+#: activity/templates/activity/detail.html:32
+#: multiplayer/templates/javascript/audiochat.js:32
 #: multiplayer/templates/multiplayer/match.html:22
+#: usergroups/templates/usergroups/group_detail.html:26
 msgid "Austreten"
 msgstr "Leave"
 
-#: activity/templates/activity/detail.html:28
+#: activity/templates/activity/detail.html:33
 msgid "Suche nach Mitgliedern"
 msgstr "Members"
 
-#: activity/templates/activity/detail.html:38
-#: wall/templates/wall/post/post_loop.html:27
-msgid "Keine"
-msgstr "None"
+#: activity/templates/activity/detail.html:39
+msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
+msgstr "If you want to see the members, you need to enter the activity."
 
-#: activity/templates/activity/detail.html:42
-msgid ""
-"Sie sind noch kein Mitglied. Falls Sie sehen wollen, wer in Ihrer Umgebung "
-"Teil dieser Aktivität ist"
-msgstr ""
-"You aren't a member yet. If you want to see who in your area is a member"
-
-#: activity/templates/activity/detail.html:42
-msgid "treten Sie Ihr bei"
-msgstr "join"
-
-#: activity/templates/activity/detail.html:44
-#: multiplayer/templates/multiplayer/game.html:32
+#: activity/templates/activity/detail.html:41
 #: multiplayer/templates/multiplayer/match.html:24
 msgid "Beitreten"
 msgstr "Join"
 
-#: activity/templates/activity/detail.html:48
+#: activity/templates/activity/detail.html:45
 msgid "Beiträge"
 msgstr "Posts"
 
@@ -1065,13 +1052,13 @@ msgstr "None!"
 msgid "Chat-Liste"
 msgstr "Chat-list"
 
-#: chat/templates/chat/chat_list.html:24
+#: chat/templates/chat/chat_list.html:16
 #: competitions/templates/competitions/user_overview.html:8
 #: multiplayer/templates/multiplayer/lobby.html:30
 msgid "Matches"
 msgstr "Matches"
 
-#: chat/templates/chat/chat_list.html:30
+#: chat/templates/chat/chat_list.html:22
 #: competitions/templates/competitions/overview.html:9
 #: competitions/templates/competitions/user_overview.html:14
 msgid "Turniere"
@@ -1093,7 +1080,7 @@ msgstr "Members"
 msgid "Diesen Chat-Room gibt es nicht mehr."
 msgstr "This chat room doesn't exist any more."
 
-#: competitions/forms.py:10 competitions/forms.py:36
+#: competitions/forms.py:10 competitions/forms.py:37
 msgid "Austragungsort (Stadt)"
 msgstr "Location (city)"
 
@@ -1113,11 +1100,15 @@ msgstr "Where exactly does the match take place?"
 msgid "Bitte beschreiben Sie kurz die Spielregeln und das Format des Matches"
 msgstr "Please describe the rules and the format of the match briefly"
 
-#: competitions/forms.py:42
+#: competitions/forms.py:21 competitions/forms.py:50
+msgid "Mannschaftsspiel"
+msgstr "Team game"
+
+#: competitions/forms.py:43
 msgid "Titel des Turniers"
 msgstr "Tournament title"
 
-#: competitions/forms.py:43
+#: competitions/forms.py:44
 msgid ""
 "Adresse (falls das Turnier an einem einzigen Ort stattfindet, sonst leer "
 "lassen)"
@@ -1125,45 +1116,49 @@ msgstr ""
 "Address (in case the tournament takes place in one single location, "
 "otherwise leave blank)"
 
-#: competitions/forms.py:44
+#: competitions/forms.py:45
 msgid "Turnierbeginn"
 msgstr "Tournament start"
 
-#: competitions/forms.py:45
+#: competitions/forms.py:46
 msgid "Anmeldeschluss"
 msgstr "Deadline"
 
-#: competitions/forms.py:46
+#: competitions/forms.py:47
 msgid "Maximale Teilnehmeranzahl (leer lassen für kein Limit)"
 msgstr "Member limit (leave blank for no limit)"
 
-#: competitions/forms.py:47
+#: competitions/forms.py:48
 msgid "Rundenanzahl (leer lassen für automatische Ermittlung)"
 msgstr "Number of rounds (leave blank for automatic calculation)"
 
-#: competitions/forms.py:48
+#: competitions/forms.py:49
 msgid "Turnierformat und weitere Informationen"
 msgstr "Format of the tournament and other information"
 
-#: competitions/forms.py:55
+#: competitions/forms.py:57
 msgid "Anmeldeschluss muss vor Turnierbeginn sein."
 msgstr "The application deadline must end before the tournament starts."
 
-#: competitions/models.py:48
+#: competitions/models.py:35 competitions/models.py:90
+msgid "Hat Ihre Bewerbung akzeptiert"
+msgstr "Accepted your friend request"
+
+#: competitions/models.py:63
 #, python-brace-format
 msgid "Match am {start}"
 msgstr "Match on {start}"
 
-#: competitions/models.py:73
+#: competitions/models.py:89
 msgid "hat eine neue Runde"
 msgstr "has a new round"
 
-#: competitions/models.py:83
+#: competitions/models.py:100
 #, python-brace-format
 msgid "{act}-Turnier am {stamp}"
 msgstr "{act}-tournament on {stamp}"
 
-#: competitions/models.py:133
+#: competitions/models.py:161
 msgid "Runde "
 msgstr "Round "
 
@@ -1345,7 +1340,7 @@ msgstr "Location: %(v0)s, %(v1)s"
 
 #: competitions/templates/competitions/match_detail.html:21
 #: competitions/templates/competitions/overview.html:33
-#: usergroups/templates/usergroups/group_detail.html:31
+#: usergroups/templates/usergroups/group_detail.html:28
 msgid "Leerstellen"
 msgstr "Vacancies"
 
@@ -1446,20 +1441,20 @@ msgstr "Playing Skat"
 msgid "Gibts doch nicht."
 msgstr "No way."
 
-#: competitions/views.py:89
+#: competitions/views.py:90
 #, python-brace-format
 msgid "{act}-Turnier"
 msgstr "{act}-tournament"
 
-#: competitions/views.py:175
+#: competitions/views.py:176
 msgid "Es stehen noch Ergebnisse der letzten Runde offen."
 msgstr "There are still matches without results in the last round."
 
-#: competitions/views.py:180
+#: competitions/views.py:181
 msgid "Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden."
 msgstr "No teams can be formed with this number of players."
 
-#: competitions/views.py:192
+#: competitions/views.py:193
 msgid "Es stehen noch Ergebnisse offen."
 msgstr "There are still matches without results."
 
@@ -1491,6 +1486,11 @@ msgstr "FREE"
 #: multiplayer/models.py:102 multiplayer/views.py:28 multiplayer/views.py:107
 msgid "Doppelkopf"
 msgstr "Doppelkopf"
+
+#: multiplayer/templates/javascript/audiochat.js:48
+#: multiplayer/templates/multiplayer/game.html:32
+msgid "Audiokonferenz"
+msgstr "Audio conference"
 
 #: multiplayer/templates/javascript/cards.js:419
 #: multiplayer/templates/javascript/skat.js:562
@@ -1744,7 +1744,7 @@ msgstr "Appointment on {start}"
 
 #: scheduling/templates/scheduling/create_appointment.html:4
 #: scheduling/templates/scheduling/create_appointment.html:7
-#: usergroups/templates/usergroups/group_detail.html:91
+#: usergroups/templates/usergroups/group_detail.html:88
 msgid "Termin erstellen"
 msgstr "Appointment"
 
@@ -1768,8 +1768,8 @@ msgstr ""
 msgid "Administrator (Nutzername)"
 msgstr "Admin (user name)"
 
-#: usergroups/forms.py:23 usergroups/templates/usergroups/group_detail.html:19
-#: vacancies/forms.py:13 vacancies/templates/vacancies/apply_for_vacancy.html:9
+#: usergroups/forms.py:23 vacancies/forms.py:13
+#: vacancies/templates/vacancies/apply_for_vacancy.html:9
 #: vacancies/templates/vacancies/vacancy_list.html:6
 msgid "Beschreibung"
 msgstr "Description"
@@ -1806,7 +1806,11 @@ msgstr "has a new description"
 msgid "hat Ihre Bewerbung angenommen"
 msgstr "accepted your application"
 
-#: usergroups/models.py:35
+#: usergroups/models.py:26
+msgid "Hat Sie rausgeschmissen"
+msgstr "Kicked you out"
+
+#: usergroups/models.py:36
 #, python-brace-format
 msgid "Gruppe: {name}"
 msgstr "Group: {name}"
@@ -1880,72 +1884,64 @@ msgstr "The group"
 msgid "erfolgreich gelöscht"
 msgstr "was successfully deleted"
 
-#: usergroups/templates/usergroups/group_detail.html:17
+#: usergroups/templates/usergroups/group_detail.html:19
 msgid "Gruppe gehört zur"
 msgstr "Group belongs to"
 
-#: usergroups/templates/usergroups/group_detail.html:29
-msgid "Sie sind Mitglied dieser Gruppe. Wenn Sie sie wieder verlassen wollen"
-msgstr "You are a member of this group. If you want to leave it"
-
-#: usergroups/templates/usergroups/group_detail.html:29
-msgid "klicken Sie hier"
-msgstr "click here"
-
-#: usergroups/templates/usergroups/group_detail.html:37
+#: usergroups/templates/usergroups/group_detail.html:34
 msgid ""
 "Zurzeit gibt es keine Leerstellen. Der Administrator kann welche erstellen"
 msgstr "There are no vacancies at the moment. The admin can create some"
 
-#: usergroups/templates/usergroups/group_detail.html:40
+#: usergroups/templates/usergroups/group_detail.html:37
 #: vacancies/templates/vacancies/application_list.html:30
 msgid "Einladungen"
 msgstr "Invitations"
 
-#: usergroups/templates/usergroups/group_detail.html:46
+#: usergroups/templates/usergroups/group_detail.html:43
 #: vacancies/templates/vacancies/create_vacancies.html:4
 msgid "Leerstellen hinzufügen"
 msgstr "Add vacancy"
 
-#: usergroups/templates/usergroups/group_detail.html:46
+#: usergroups/templates/usergroups/group_detail.html:43
 msgid "Jemanden einladen"
 msgstr "Invite somebody"
 
-#: usergroups/templates/usergroups/group_detail.html:49
+#: usergroups/templates/usergroups/group_detail.html:46
 msgid "Termine"
 msgstr "Appointments"
 
-#: usergroups/templates/usergroups/group_detail.html:52
+#: usergroups/templates/usergroups/group_detail.html:49
 msgid "Wann"
 msgstr "When"
 
-#: usergroups/templates/usergroups/group_detail.html:53
+#: usergroups/templates/usergroups/group_detail.html:50
 msgid "Wo"
 msgstr "Where"
 
-#: usergroups/templates/usergroups/group_detail.html:54
-#: usergroups/templates/usergroups/group_detail.html:80
+#: usergroups/templates/usergroups/group_detail.html:51
+#: usergroups/templates/usergroups/group_detail.html:77
 msgid "Zusagen"
 msgstr "Confirm"
 
-#: usergroups/templates/usergroups/group_detail.html:55
-#: usergroups/templates/usergroups/group_detail.html:80
+#: usergroups/templates/usergroups/group_detail.html:52
+#: usergroups/templates/usergroups/group_detail.html:77
 msgid "Absagen"
 msgstr "Cancel"
 
-#: usergroups/templates/usergroups/group_detail.html:76
+#: usergroups/templates/usergroups/group_detail.html:73
 msgid "Zusage zurücknehmen"
 msgstr "Cancel confirmation"
 
-#: usergroups/templates/usergroups/group_detail.html:78
+#: usergroups/templates/usergroups/group_detail.html:75
 msgid "Absage zurücknehmen"
 msgstr "Cancel cancellation"
 
-#: usergroups/templates/usergroups/group_detail.html:93
+#: usergroups/templates/usergroups/group_detail.html:90
 msgid "Administrator"
 msgstr "Admin"
 
-#: usergroups/templates/usergroups/group_detail.html:96
+#: usergroups/templates/usergroups/group_detail.html:93
 msgid "Post erstellen"
 msgstr "Create post"
 
@@ -1954,7 +1950,7 @@ msgstr "Create post"
 msgid "Ihre Gruppen"
 msgstr "Your groups"
 
-#: usergroups/views.py:91
+#: usergroups/views.py:92
 msgid ""
 "Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest "
 "oder löschen Sie die Gruppe."
@@ -2235,19 +2231,42 @@ msgstr ""
 "Attention: Posts are public. Watch your language and don't upload "
 "copyrighted, offensive or inappropriate material."
 
-#: wall/templates/wall/post/post_loop.html:8
-#: wall/templates/wall/post/post_loop.html:23
+#: wall/templates/wall/post/post_loop.html:9
+#: wall/templates/wall/post/post_loop.html:25
 msgid "[Löschen]"
 msgstr "[Delete]"
 
-#: wall/templates/wall/post/post_loop.html:23
+#: wall/templates/wall/post/post_loop.html:25
 #, python-format
 msgid " vor %(v0)s"
 msgstr " %(v0)s ago"
 
-#: wall/templates/wall/post/post_loop.html:25
+#: wall/templates/wall/post/post_loop.html:27
 msgid "Kommentieren..."
 msgstr "Comment..."
+
+#: wall/templates/wall/post/post_loop.html:30
+msgid "Keine"
+msgstr "None"
+
+#~ msgid "Sie sind Mitglied dieser Aktivität"
+#~ msgstr "You are a member of this activity"
+
+#~ msgid ""
+#~ "Sie sind noch kein Mitglied. Falls Sie sehen wollen, wer in Ihrer "
+#~ "Umgebung Teil dieser Aktivität ist"
+#~ msgstr ""
+#~ "You aren't a member yet. If you want to see who in your area is a member"
+
+#~ msgid "treten Sie Ihr bei"
+#~ msgstr "join"
+
+#~ msgid ""
+#~ "Sie sind Mitglied dieser Gruppe. Wenn Sie sie wieder verlassen wollen"
+#~ msgstr "You are a member of this group. If you want to leave it"
+
+#~ msgid "klicken Sie hier"
+#~ msgstr "click here"
 
 #~ msgid "Fehler: 404"
 #~ msgstr "Error: 404"

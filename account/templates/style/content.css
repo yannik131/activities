@@ -44,8 +44,9 @@ input[type='text'], textarea, select:focus {
 }
 
 .post {
-    border: 2px solid gray;
-    border-radius: 5px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 5px 5px;
     position: relative;
     margin-bottom: 5px;
 }
@@ -99,7 +100,7 @@ input, textarea {
     font-family: "Arial", "Verdana", "Helvectica";
     background-color: #494949;
     color: white;
-    border: 1px solid black;
+    border: 1px solid #1a1a1a;
     border-radius: 4px;
     vertical-align: middle;
     outline: none;
@@ -113,7 +114,7 @@ input:focus, input:hover, textarea:hover, textarea:focus, .blue-button:hover {
 select {
     font-family: "Arial", "Verdana", "Helvectica";
     background-color: #494949;
-    border: 1px solid black;
+    border: 1px solid #1a1a1a;
     outline: none;
     color: white;
     border-radius: 4px;
@@ -222,7 +223,7 @@ select:focus, select:hover {
     float: left;
     margin: 10px 10px;
     padding-bottom: 5px;
-    border: 1px solid black;
+    border: 1px solid #1a1a1a;
     border-radius: 10%;
     color: white;
     font-family: "Arial", "Verdana", "Helvectica";;
@@ -254,7 +255,7 @@ select:focus, select:hover {
     color: white;
 }
 .list .item a:hover {
-    color: black;
+    color: #1a1a1a;
 }
 
 
@@ -275,7 +276,7 @@ select:focus, select:hover {
 }
 
 .cookie-alert {
-    background-color: black;
+    background-color: #1a1a1a;
     color: white;
     text-align: center;
     position: absolute;
@@ -284,4 +285,68 @@ select:focus, select:hover {
     right: 30%;
     border-radius: 10px;
     z-index: 1;
+}
+
+.competitive {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    height: 40px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.competitive .left {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.competitive .left:hover {
+    background-color: #404040;
+    border-radius: 10px;
+}
+
+.competitive img {
+    height: 100%;
+}
+
+.competitive .right {
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.competitive .right:hover {
+    background-color: #404040;
+    border-radius: 10px;
+}
+
+.button-like {
+    z-index: 1;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    padding: 5px 5px;
+    border-radius: 5px;
+    height: 25px;
+    font-weight: bold;
+    display: flex;
+    vertical-align: center;
+    justify-content: center;
+}
+
+.button-like img {
+    height: 100%;
+}
+
+.button-like:hover {
+    background-color: gray;
 }

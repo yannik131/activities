@@ -6,7 +6,7 @@
         <div class="item" onclick="location.href='{{ group.get_absolute_url }}'">
             {% load thumbnail %}
             {% if group.image %}
-                <img src="{% thumbnail group.image 100x100 %}" class="image">
+                <img src="{% thumbnail group.image 200x200 %}" class="image">
             {% else %}
                 <img src="{% static 'icons/users-and-groups-group@32px.png' %}" class="image">
             {% endif %}

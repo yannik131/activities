@@ -4,7 +4,7 @@
     {% for activity in activities.all %}
     <div class="item" onclick="location.href='{{ activity.get_absolute_url }}'">
         {% load thumbnail %}
-        <img src="{% thumbnail activity.image 100x100 %}" class="photo">
+        <img src="{% thumbnail activity.image 200x200 %}" class="photo">
         <div class="title">
             {{ activity }}
         </div>

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load activity_filter %}
+{% load static %}
 
 {% block title %}{{ activity.name }}{% endblock %}
 
@@ -13,33 +14,32 @@
     {% if activity.category %}
         <h2><a href="{{ activity.category.get_absolute_url }}">{{ activity.category.verbose }}</a></h2>
     {% endif %}
+    {% if is_member %}
     {% if activity.type == 'competitive' %}
-        <h3><a href="{% url 'competitions:overview' activity.id %}">{% trans "Matches & Turniere" %}</a>
+    <div class="competitive">
+        <div class="left" onclick="location.href='{% url 'competitions:overview' activity.id %}'">
+            <img src="{% static 'icons/tournament.png' %}">
+            {% trans "Offline spielen" %}
+        </div>
         {% if activity.online and is_member %}
-            | <a href="{% url 'multiplayer:lobby' activity.name %}">{% trans "Online spielen" %}</a>
+            <div class="right" onclick="location.href='{% url 'multiplayer:lobby' activity.name %}'">
+                <img src="{% static 'icons/dog.png' %}">
+                {% trans "Online spielen" %}
+            </div>
         {% endif %}
-        </h3>
+    </div>
     {% endif %}
-        {% if is_member %}
-            <a href="{% url 'activity:leave' activity.name %}"><button class="blue-button">{% trans "Austreten" %}</button></a>
-            <h3>{% trans "Suche nach Mitgliedern" %}</h3>
-            <p>{% include 'activity/location_selection.html' %}</p>
-            {% if users %}
-                <table>
-                    <tr><th>{% trans "Nutzername" %}</th></tr>
-                    {% for u in users %}
-                        <tr><td><a href="{{ u.get_absolute_url }}">{{ u.username }}</a></td></tr>
-                    {% endfor %}
-                </table>
-            {% else %}
-                <p><b>{% trans "Keine" %}.</b></p>
-            {% endif %}
-        {% else %}
-            <p>
-                {% trans "Falls Sie sehen wollen, wer in Ihrer Umgebung Teil dieser Aktivität ist" %}, {% trans "treten Sie Ihr bei" %}.
-            </p>
-            <a href="{% url 'activity:join' activity.name %}"><button class="blue-button">{% trans "Beitreten" %}</button></a>
-        {% endif %}
+        <a class="center-container" href="{% url 'activity:leave' activity.name %}"><button class="blue-button">{% trans "Austreten" %}</button></a>
+        <h3>{% trans "Suche nach Mitgliedern" %}</h3>
+        <p>{% include 'activity/location_selection.html' %}</p>
+        {% include 'account/user_loop.html' %}
+        <p style="clear: both"></p>
+    {% else %}
+        <p>
+            {% trans "Um Mitglieder anzeigen zu können, müssen Sie beitreten." %}
+        </p>
+        <a class="center-container" href="{% url 'activity:join' activity.name %}"><button class="blue-button">{% trans "Beitreten" %}</button></a>
+    {% endif %}
     </p>
 
     <h3>{% trans "Beiträge" %} {{ chosen_component|inim }}</h3>

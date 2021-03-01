@@ -9,7 +9,7 @@
 }
 
 .sidemenu.clicked {
-    background-color: black;
+    background-color: #1a1a1a;
     display: block;
     position: fixed;
     top: 50px;
@@ -35,7 +35,7 @@
 .sidemenu .alert .notification-url {
     background-color: #0087f7;
     text-decoration: none;
-    color: black;
+    color: #1a1a1a;
     word-wrap: break-word;
     width: 90%;
     display: block;
@@ -50,7 +50,7 @@
     display: block;
     float: right;
     text-align: center;
-    border-left: 1px solid black;
+    border-left: 1px solid #1a1a1a;
     flex-grow: 1;
     cursor: pointer;
 }

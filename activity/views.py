@@ -23,7 +23,7 @@ def detail(request, activity_name):
         users = activity.members.filter(location__state=chosen_component)
     else:
         users = activity.members.filter(location__country=chosen_component)
-    
+    users = users[:50]
     posts, page = Post.get_page(request, component_index, chosen_component, activity=activity)
     return render(request, 'activity/detail.html',
                   {'activity': activity,

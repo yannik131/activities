@@ -1,3 +1,5 @@
+{% load static %}
+{% load i18n %}
 var streamer, player;
 var init_happened = false;
 
@@ -24,7 +26,10 @@ function joinAudio() {
     player.start();
     streamer.start();
     var button = document.getElementById("join-audio");
-    button.innerHTML = "Austreten";
+    button.innerHTML = "<img src='" +
+    "{% static 'icons/leave.png' %}" +
+    "'>" +
+    "{% trans 'Austreten' %}"
     button.onclick = leaveAudio;
 }
 
@@ -37,6 +42,9 @@ function leaveAudio() {
         console.log("Error leaving audio: ", err);
     }
     var button = document.getElementById("join-audio");
-    button.innerHTML = "Beitreten";
+    button.innerHTML = "<img src='" +
+    "{% static 'icons/login.png' %}" +
+    "'>" +
+    "{% trans 'Audiokonferenz' %}"
     button.onclick = joinAudio;
 }

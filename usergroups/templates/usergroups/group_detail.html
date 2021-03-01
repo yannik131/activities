@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load i18n %}
 
 {% block title %}{{ group.name }}{% endblock %}
@@ -12,19 +13,17 @@
     <p class="center-container">{{ group.description }}</p>
     
     {% if is_member %}
-        <p><a href="{% url 'chat:chat_room' 'usergroups' 'usergroup' group.id %}">{% trans "Zum Chat" %}...</a></p>
+    <div class="button-like" onclick=openLink("{% url 'chat:chat_room' 'usergroups' 'usergroup' group.id %}")><img src="{% static 'icons/lobby.png' %}">{% trans "Zum Chat" %}
+    </div>
     {% endif %}
     <p>{% trans "Gruppe gehört zur" %} <a href="{{ group.category.get_absolute_url }}">{{ group.category.verbose }}</a></p>
     {% if group.description %}
     {% endif %}
     <h2>{% trans "Mitglieder" %}</h2>
-    <p>
-        {% for member in group.members.all %}
-            <a href="{{ member.get_absolute_url }}">{{ member.username }}</a>{% if not forloop.last %}, {% endif %}
-        {% endfor %}
-    </p>
+    {% include 'account/user_loop.html' with users=group.members.all %}
+    <p style="clear: both"></p>
     {% if is_member %}
-        <p>{% trans "Sie sind Mitglied dieser Gruppe. Wenn Sie sie wieder verlassen wollen" %}, <a href="{% url 'usergroups:leave_group' group.id %}">{% trans "klicken Sie hier" %}.</a></p>
+    <p><a class="center-container" href="{% url 'usergroups:leave_group' group.id %}"><button class="blue-button">{% trans "Austreten" %}</button></a></p>
     {% endif %}
     <h2>{% trans "Leerstellen" %}</h2>
     {% if group.vacancies.all.exists %}

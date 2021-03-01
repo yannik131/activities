@@ -5,10 +5,11 @@
             {% load thumbnail %}
             <a href="{{ user.get_absolute_url }}">
             {% if user.image %}
-            <img src="{% thumbnail user.image 100x100 %}" class="photo"></a>
+            <img src="{% thumbnail user.image 200x200 %}" class="photo">
             {% else %}
             <img src="{% static 'icons/users-and-groups-user@32px.png' %}" width="100">
             {% endif %}
+            </a>
             <div class="title">
                 {{ user }}
             </div>

@@ -3,11 +3,11 @@
 {% load static %}
 <script src="{% static 'ws-audio-api.min.js' %}"></script>
 <div class="game">
-    <div class="button-like back">
-        <a href="{% call_method match 'lobby_url' request %}">Lobby</a>
+    <div class="button-like back" onclick="location.href='{% call_method match 'lobby_url' request %}'">
+        <img src="{% static 'icons/lobby.png' %}">Lobby
     </div>
     <div class="button-like leave" onclick="createYesNoAlert('{% trans 'Spiel beenden, verlassen und zurücksetzen?' %}', 2, function() { location.href = '{% url 'multiplayer:leave_match' match.activity.name match.id %}'});">
-        {% trans "Ciao!" %}
+        <img src="{% static 'icons/bye.png' %}">{% trans "Ciao!" %}
     </div>
     <div class="game-field">
         
@@ -28,7 +28,7 @@
             
         </div>
     </div>
-    <div class="join-audio">
-        <button id="join-audio" onclick="joinAudio();">{% trans 'Beitreten' %}</button>
+    <div class="button-like join-audio" id="join-audio" onclick="joinAudio();">
+        <img src="{% static 'icons/login.png' %}">{% trans 'Audiokonferenz' %}
     </div>
 </div>

@@ -161,6 +161,10 @@ function parse(json_string) {
     return JSON.parse(json_string);
 }
 
+function openLink(link) {
+    location.href = link;
+}
+
 {% if user.is_authenticated %}
     connect();
 {% endif %}

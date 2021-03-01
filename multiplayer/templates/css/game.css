@@ -16,6 +16,7 @@
     right: 0px;
     max-width: 800px;
 }
+
 .back {
     position: absolute;
     top: 0;
@@ -26,23 +27,6 @@
     position: absolute;
     top: 0;
     right: 0;
-}
-
-.button-like {
-    z-index: 1;
-    padding: 2px;
-    border: 1px solid white;
-    background-color: black;
-    cursor: pointer;
-}
-
-.button-like:hover {
-    background-color: gray;
-}
-
-.button-like a {
-    color: white;
-    text-decoration: none;
 }
 
 .game-button {
