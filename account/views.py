@@ -83,6 +83,7 @@ def send_custom_friend_request(request):
 def accept_request(request, id):
     friend_request = get_object_or_404(FriendRequest, requested_user=request.user, id=id)
     _, created = Friendship.objects.get_or_create(from_user=friend_request.requesting_user, to_user=friend_request.requested_user)
+    notify(friend_request.requesting_user, request.user, 'accepted_friend_request')
     friend_request.delete()
     return HttpResponseRedirect(request.build_absolute_uri('/account/friend_requests_list/'))
 

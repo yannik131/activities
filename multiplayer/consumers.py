@@ -297,7 +297,7 @@ class DoppelkopfConsumer(GameConsumer):
         match.save()
         return message
 
-class AudioReceiveConsumer(WebsocketConsumer):
+"""class AudioReceiveConsumer(WebsocketConsumer):
     def connect(self):
         async_to_sync
         self.match_id = self.scope['url_route']['kwargs']['match_id']
@@ -346,9 +346,8 @@ class AudioSendConsumer(WebsocketConsumer):
 
     def audio_message(self, event):
         if event["sender"] != self.username:
-            self.send(bytes_data=event["bytes_data"])
+            self.send(bytes_data=event["bytes_data"])"""
             
-"""
 class AudioReceiveConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.match_id = self.scope['url_route']['kwargs']['match_id']
@@ -399,5 +398,4 @@ class AudioSendConsumer(AsyncWebsocketConsumer):
     async def audio_message(self, event):
         if event["sender"] != self.username:
             await self.send(bytes_data=event["bytes_data"])
-"""
     

@@ -30,3 +30,5 @@ match bewerbung annehmen server error
 
 audiochat 3-4 personen zerhackstückelt
 game chat unten links button mit popup in der mitte
+eklige weiße nachrichten (bereits freundschaftsanfrage gesendet) durch redirect mit message ersetzen (grün?)
+lobby aufhübschen (match erstellen, beitreten sofort)

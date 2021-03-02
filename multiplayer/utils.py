@@ -410,13 +410,13 @@ def give_durak_points(data, players, durak):
     summary = []
     for player in players:
         if player == durak:
-            points = 0
+            points = -1
         elif data["first"] == player:
             points = 2
         else:
             points = 1
         change(data, player+"_points", points)
-        summary.append([f"{player}: +{points} -> {data[player+'_points']}\n", data[player+'_points']])
+        summary.append([f"{player}: {'+' if points >= 0 else ''}{points} -> {data[player+'_points']}\n", data[player+'_points']])
     summary = sorted(summary, key=lambda t: t[1], reverse=True)
     return "".join([t[0] for t in summary])
     
