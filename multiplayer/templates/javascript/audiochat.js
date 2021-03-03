@@ -123,7 +123,7 @@ function handleOffer(data) {
         send({
             'type': 'rtc',
             'action': 'answer',
-            'answer': answer,
+            'answer': pc.localDescription,
             'channel': channel_names[data.sender]
         });
     }).catch(function(reason) {
