@@ -38,7 +38,7 @@ function handleRTCMessage(data) {
     else if(data.action == 'channel_name') {
         channel_names[data.sender] = data.name;
     }
-    else if(data.action == 'leave') {
+    else if(data.action == 'disconnect') {
         delete channel_names[data.sender];
     }
     if(!acceptingConnections) {
@@ -170,14 +170,6 @@ function deletePeerConnection(user) {
 function joinAudio() {
     navigator.mediaDevices.getUserMedia({audio: true}).then(function(mediaStream) {
         localTrack = mediaStream.getAudioTracks()[0];
-        if(localTrack.muted) {
-            alert('Audio is muted');
-            localTrack.enabled = false;
-            localTrack.enabled = true;
-            if(localTrack.muted) {
-                alert('Fix didnt work');
-            }
-        }
         acceptingConnections = true;
         send({'type': 'rtc', 'action': 'join'});
         button.innerHTML = "<img src='" +

@@ -24,7 +24,7 @@ class GameConsumer(WebsocketConsumer):
             self.accept()
 
     def disconnect(self, code):
-        self.rtc_send({'action': 'leave'})
+        self.rtc_send({'action': 'disconnect'})
         async_to_sync(self.channel_layer.group_discard)(
             f"match-{self.match_id}",
             self.channel_name
