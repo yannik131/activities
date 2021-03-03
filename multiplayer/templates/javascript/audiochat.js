@@ -155,7 +155,6 @@ function deletePeerConnection(user) {
     }
     const track = tracks[pc];
     remoteMediaStream.removeTrack(track);
-    tracks[pc].stop();
     delete tracks[pc];
     users.splice(users.indexOf(user), 1);
     pc.close();
