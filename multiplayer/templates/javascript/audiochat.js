@@ -73,6 +73,7 @@ function getOrCreatePeerConnection(sender) {
         pc = new RTCPeerConnection(configuration);
         peerConnections[sender] = pc;
         users.push(sender);
+        pc.addTrack(localTrack);
         pc.ontrack = function(event) {
             console.log('adding track from', sender, ':', event.track);
             remoteMediaStream.addTrack(event.track);
@@ -111,14 +112,8 @@ function handleJoin(data) {
 }
 
 function handleOffer(data) {
-    var pc = getOrCreatePeerConnection(data.sender);
+    const pc = getOrCreatePeerConnection(data.sender);
     pc.setRemoteDescription(new RTCSessionDescription(data.offer))
-    .then(function() {
-        return navigator.mediaDevices.getUserMedia({audio: true, video: false})
-    })
-    .then(function(stream) {
-        return pc.addTrack(stream.getAudioTracks()[0]);
-    })
     .then(function() {
         return pc.createAnswer();
     })
@@ -140,14 +135,14 @@ function handleOffer(data) {
 }
 
 function handleAnswer(data) {
-    pc = peerConnections[data.sender];
+    const pc = peerConnections[data.sender];
     pc.setRemoteDescription(new RTCSessionDescription(data.answer)).catch(function(reason) {
         console.log('Error handling answer from', data.sender, ':', reason);
     })
 }
 
 function handleCandidate(data) {
-    pc = peerConnections[data.sender];
+    const pc = peerConnections[data.sender];
     pc.addIceCandidate(new RTCIceCandidate(data.candidate)).catch(function(reason) {
         console.log('Error handling candidate from', data.sender, ':', reason);
     });
