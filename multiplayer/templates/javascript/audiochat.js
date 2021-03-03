@@ -121,13 +121,13 @@ function handleOffer(data) {
         pc.setLocalDescription(new RTCSessionDescription(answer)).catch(function(reason) {
             console.log('Error setting local sd after answer to', data.sender, ':', reason, pc.signalingState);
         });
-    });
-    console.log('sending answer to', data.sender);
-    send({
-        'type': 'rtc',
-        'action': 'answer',
-        'answer': answer,
-        'channel': channel_names[data.sender]
+        console.log('sending answer to', data.sender);
+        send({
+            'type': 'rtc',
+            'action': 'answer',
+            'answer': answer,
+            'channel': channel_names[data.sender]
+        });
     });
 }
 
