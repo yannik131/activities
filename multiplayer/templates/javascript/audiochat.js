@@ -75,6 +75,7 @@ function getOrCreatePeerConnection(sender) {
         users.push(sender);
         pc.addTrack(localTrack);
         pc.ontrack = function(event) {
+            event.track
             remoteMediaStream.addTrack(event.track);
             tracks[pc] = event.track;
         }
@@ -148,19 +149,22 @@ function handleLeave(data) {
 
 function deletePeerConnection(user) {
     console.log('Attempting to delete connection for', user);
+    console.log('peerConnections:', peerConnections, 'tracks:', tracks);
     const pc = peerConnections[user];
+    console.log('PeerConnection:', pc);
     if(!pc) {
         console.log('No connection found, aborting');
         return;
     }
     const track = tracks[pc];
+    console.log('Track:', track);
     remoteMediaStream.removeTrack(track);
     delete tracks[pc];
-    users.splice(users.indexOf(user), 1);
     pc.close();
     pc.onicecandidate = null;
     pc.ontrack = null;
     delete peerConnections[user];
+    users.splice(users.indexOf(user), 1);
 }
 
 function joinAudio() {
