@@ -73,7 +73,6 @@ function getOrCreatePeerConnection(sender) {
         pc = new RTCPeerConnection(configuration);
         peerConnections[sender] = pc;
         users.push(sender);
-        pc.addTrack(localTrack);
         pc.ontrack = function(event) {
             console.log('adding track from', sender, ':', event.track);
             remoteMediaStream.addTrack(event.track);
@@ -113,11 +112,20 @@ function handleJoin(data) {
 
 function handleOffer(data) {
     pc = getOrCreatePeerConnection(data.sender);
-    pc.setRemoteDescription(new RTCSessionDescription(data.offer)).then(function() {
+    pc.setRemoteDescription(new RTCSessionDescription(data.offer))
+    .then(function() {
+        return navigator.mediaDevices.getUserMedia({audio: true, video: false})
+    })
+    .then(function(stream) {
+        return pc.addTrack(stream.getAudioTracks()[0]);
+    })
+    .then(function() {
         return pc.createAnswer();
-    }).then(function(answer) {
+    })
+    .then(function(answer) {
         return pc.setLocalDescription(new RTCSessionDescription(answer));
-    }).then(function() {
+    })
+    .then(function() {
         console.log('sending answer to', data.sender);
         send({
             'type': 'rtc',
@@ -125,9 +133,10 @@ function handleOffer(data) {
             'answer': pc.localDescription,
             'channel': channel_names[data.sender]
         });
-    }).catch(function(reason) {
-            console.log('Error setting local sd after answer to', data.sender, ':', reason, pc.signalingState);
-        });
+    })
+    .catch(function(reason) {
+        console.log('Error setting local sd after answer to', data.sender, ':', reason, pc.signalingState);
+    });
 }
 
 function handleAnswer(data) {
