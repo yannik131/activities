@@ -97,16 +97,18 @@ function getOrCreatePeerConnection(sender) {
 function handleJoin(data) {
     const pc = getOrCreatePeerConnection(data.sender);
     pc.createOffer().then(function(offer) {
-        pc.setLocalDescription(new RTCSessionDescription(offer)).catch(function(reason) {
+        pc.setLocalDescription(new RTCSessionDescription(offer)).then(function() {
+            console.log('sending offer to', data.sender);
+            send({
+                'type': 'rtc',
+                'action': 'offer',
+                'offer': offer,
+                'channel': channel_names[data.sender]
+            });
+        }).catch(function(reason) {
             console.log('Error setting local sd from local offer?', reason);
         });
-        console.log('sending offer to', data.sender);
-        send({
-            'type': 'rtc',
-            'action': 'offer',
-            'offer': offer,
-            'channel': channel_names[data.sender]
-        });
+        
     });
 }
 
@@ -116,17 +118,18 @@ function handleOffer(data) {
         console.log('Error setting remote sd after offer from', data.sender, ':', reason);
     });
     pc.createAnswer().then(function(answer) {
-        pc.setLocalDescription(new RTCSessionDescription(answer)).catch(function(reason) {
+        pc.setLocalDescription(new RTCSessionDescription(answer)).then(function() {
+            console.log('sending answer to', data.sender);
+            send({
+                'type': 'rtc',
+                'action': 'answer',
+                'answer': answer,
+                'channel': channel_names[data.sender]
+            });
+    }).catch(function(reason) {
             console.log('Error setting local sd after answer to', data.sender, ':', reason);
         });
-        console.log('sending answer to', data.sender);
-        send({
-            'type': 'rtc',
-            'action': 'answer',
-            'answer': answer,
-            'channel': channel_names[data.sender]
-        });
-    })
+    });
 }
 
 function handleAnswer(data) {
