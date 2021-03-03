@@ -75,7 +75,7 @@ function getOrCreatePeerConnection(sender) {
         users.push(sender);
         pc.addTrack(localTrack);
         pc.ontrack = function(event) {
-            event.track
+            console.log('adding track from', sender, ':', event.track);
             remoteMediaStream.addTrack(event.track);
             tracks[pc] = event.track;
         }
