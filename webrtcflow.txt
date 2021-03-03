@@ -1,0 +1,31 @@
+tls port: 5349
+udp port: 3478
+audio setup:
+remoteAudiostream, remoteAudio.srcObject = remoteAudioStream
+
+local peer erzeugen: 
+localPeer.addStream(localStream)
+localPeer.onaddstream -> remoteAudioStream.addTrack + tracks[username] = track
+localPeer.onicecandidate -> send candidate
+
+verbinden:
+gerät 1: call-button click -> nutzernamen holen -> localPeer.createOffer() -> localPeer.setLocalDescription(offer) -> send offer -> 
+server -> sende offer+sender-nutzername -> 
+gerät 2: handleOffer(offer, name) -> localPeer.setRemoteDescription(new RTCSessionDescription(offer)) -> localPeer.createAnswer() -> localPeer.setLocalDescription(answer) -> send answer -> 
+server -> sende answer ->
+gerät 1: handleAnswer(answer) -> localPeer.setRemoteDescription(new RTCSessionDescription(answer))
+
+Dann Candidates austauschen:
+gerät 1: onicecandidate -> send candidate -> 
+server -> sende candidate ->
+gerät 2: handleCandidate(candidate) -> localPeer.addIceCandidate(new RTCIceCandidate(candidate))
+
+Beenden:
+
+gerät 1: hangup-button click -> handleLeave() -> removeTrack+localPeer.close() -> send leave ->
+server -> send leave ->
+gerät 2: handleLeave() -> removeTrack+localPeer.close()
+
+Mehrere Leute:
+Beitreten -> Server sendet Liste von beigetretenen Leuten -> Liste ist größer -> Liste enthält nicht nur eigenen Namen -> localPeer für jeden Namen erzeugen -> createOffer() für jeden peer ausführen -> siehe oben
+Austreten -> Server sendet Liste von beigetretenen Leuten -> Liste ist kleiner -> Sehen wer wegfällt -> localPeer.close()+remoteAudioStream.removeTrack(tracks[username])+delete tracks[username]

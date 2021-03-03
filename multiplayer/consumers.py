@@ -23,6 +23,7 @@ class GameConsumer(WebsocketConsumer):
             self.accept()
 
     def disconnect(self, code):
+        self.rtc_send({'action': 'leave'})
         async_to_sync(self.channel_layer.group_discard)(
             f"match-{self.match_id}",
             self.channel_name
@@ -31,9 +32,49 @@ class GameConsumer(WebsocketConsumer):
     def multiplayer(self, event):
         self.send(text_data=json.dumps(event))
         
+    def rtc(self, event):
+        if event["sender"] != self.username:
+            self.send(text_data=json.dumps(event))
+            
+    def rtc_send(self, data):
+        data['type'] = 'rtc'
+        data['sender'] = self.username
+        async_to_sync(self.channel_layer.group_send)(
+            f"match-{self.match_id}",
+            data
+        )
+        
+    def handle_rtc_message(self, text_data):
+        if text_data["action"] == "join":
+            self.rtc_send({
+                'action': 'join'
+            })
+        elif text_data['action'] == 'offer':
+            self.rtc_send({
+                'action': 'offer',
+                'offer': text_data['offer']
+            })
+        elif text_data['action'] == 'answer':
+            self.rtc_send({
+                'action': 'answer',
+                'answer': text_data['answer']
+            })
+        elif text_data['action'] == 'candidate':
+            self.rtc_send({
+                'action': 'candidate',
+                'candidate': text_data['candidate']
+            })
+        elif text_data['action'] == 'leave':
+            self.rtc_send({
+                'action': 'leave'
+            })
+        
     def receive(self, text_data=None):
         with redis_lock.Lock(conn, self.match_id):
             text_data = json.loads(text_data)
+            if "type" in text_data and text_data["type"] == "rtc":
+                self.handle_rtc_message(text_data)
+                return
             message = self.get_message(text_data)
             if not "data" in message:
                 return

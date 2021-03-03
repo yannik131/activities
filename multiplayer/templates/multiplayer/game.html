@@ -1,7 +1,10 @@
 {% load i18n %}
 {% load account_tags %}
 {% load static %}
-<script src="{% static 'ws-audio-api.min.js' %}"></script>
+
+
+<audio id="remote-audio" autoplay></audio>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <div class="game">
     <div class="button-like back" onclick="location.href='{% call_method match 'lobby_url' request %}'">
         <img src="{% static 'icons/lobby.png' %}">Lobby

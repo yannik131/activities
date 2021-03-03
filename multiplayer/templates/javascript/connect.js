@@ -11,6 +11,10 @@ function gameConnect(game, match_id, username) {
 
     socket.onmessage = function(e) {
         const data = JSON.parse(e.data);
+        if(data.type == 'rtc') {
+            console.log(data.sender, "sent", data.action);
+            handleRTCMessage(data);
+        }
         if(data.action == "match_list") {
             updateMatchList(data);
         }
@@ -40,4 +44,8 @@ function sendAction(action) {
     socket.send(JSON.stringify({
         'action': action
     }));
+}
+
+function send(message) {
+    socket.send(JSON.stringify(message));
 }
