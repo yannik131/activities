@@ -97,18 +97,17 @@ function getOrCreatePeerConnection(sender) {
 function handleJoin(data) {
     const pc = getOrCreatePeerConnection(data.sender);
     pc.createOffer().then(function(offer) {
-        pc.setLocalDescription(new RTCSessionDescription(offer)).then(function() {
-            console.log('sending offer to', data.sender);
-            send({
-                'type': 'rtc',
-                'action': 'offer',
-                'offer': offer,
-                'channel': channel_names[data.sender]
-            });
-        }).catch(function(reason) {
-            console.log('Error setting local sd from local offer?', reason);
+        return pc.setLocalDescription(new RTCSessionDescription(offer));
+    }).then(function() {
+        console.log('sending offer to', data.sender);
+        send({
+            'type': 'rtc',
+            'action': 'offer',
+            'offer': pc.localDescription,
+            'channel': channel_names[data.sender]
         });
-        
+    }).catch(function(reason) {
+        console.log('Error setting local sd from local offer?', reason);
     });
 }
 
