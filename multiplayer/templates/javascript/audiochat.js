@@ -111,7 +111,7 @@ function handleJoin(data) {
 }
 
 function handleOffer(data) {
-    pc = getOrCreatePeerConnection(data.sender);
+    var pc = getOrCreatePeerConnection(data.sender);
     pc.setRemoteDescription(new RTCSessionDescription(data.offer))
     .then(function() {
         return navigator.mediaDevices.getUserMedia({audio: true, video: false})
