@@ -114,13 +114,11 @@ function handleJoin(data) {
 
 function handleOffer(data) {
     pc = getOrCreatePeerConnection(data.sender);
-    pc.setRemoteDescription(new RTCSessionDescription(data.offer)).catch(function(reason) {
-        console.log('Error setting remote sd after offer from', data.sender, ':', reason);
-    });
-    pc.createAnswer().then(function(answer) {
-        pc.setLocalDescription(new RTCSessionDescription(answer)).catch(function(reason) {
-            console.log('Error setting local sd after answer to', data.sender, ':', reason, pc.signalingState);
-        });
+    pc.setRemoteDescription(new RTCSessionDescription(data.offer)).then(function() {
+        return pc.createAnswer();
+    }).then(function(answer) {
+        return pc.setLocalDescription(new RTCSessionDescription(answer));
+    }).then(function() {
         console.log('sending answer to', data.sender);
         send({
             'type': 'rtc',
@@ -128,7 +126,9 @@ function handleOffer(data) {
             'answer': answer,
             'channel': channel_names[data.sender]
         });
-    });
+    }).catch(function(reason) {
+            console.log('Error setting local sd after answer to', data.sender, ':', reason, pc.signalingState);
+        });
 }
 
 function handleAnswer(data) {
