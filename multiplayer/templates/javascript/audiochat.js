@@ -170,6 +170,14 @@ function deletePeerConnection(user) {
 function joinAudio() {
     navigator.mediaDevices.getUserMedia({audio: true}).then(function(mediaStream) {
         localTrack = mediaStream.getAudioTracks()[0];
+        if(localTrack.muted) {
+            alert('Audio is muted');
+            localTrack.enabled = false;
+            localTrack.enabled = true;
+            if(localTrack.muted) {
+                alert('Fix didnt work');
+            }
+        }
         acceptingConnections = true;
         send({'type': 'rtc', 'action': 'join'});
         button.innerHTML = "<img src='" +
