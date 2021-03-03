@@ -12,7 +12,6 @@ function gameConnect(game, match_id, username) {
     socket.onmessage = function(e) {
         const data = JSON.parse(e.data);
         if(data.type == 'rtc') {
-            console.log(data.sender, "sent", data.action);
             handleRTCMessage(data);
         }
         if(data.action == "match_list") {
@@ -25,17 +24,21 @@ function gameConnect(game, match_id, username) {
     
     socket.onopen = function() {
         sendAction("request_data");
+        send({
+            'type': 'rtc',
+            'action': 'channel_request'
+        });
     }
 
     socket.onclose = function(e) {
-        console.log('User socket closed unexpectedly. Attempting reconnect in 1 second. Code:', e.code);
+        console.log('Game socket closed unexpectedly. Attempting reconnect in 1 second. Code:', e.code);
         setTimeout(function() {
             gameConnect(game, match_id, username);
         }, 1000);
     }
 
     socket.onerror = function(err) {
-        console.error('User socket encountered error:', err.message, 'Closing socket.');
+        console.error('Game socket encountered error:', err.message, 'Closing socket.');
         socket.close();
     }
 }

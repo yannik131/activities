@@ -19,6 +19,7 @@ class GameConsumer(WebsocketConsumer):
                 f"match-{self.match_id}",
                 self.channel_name
             )
+            self.rtc_send({'action': 'channel_name', 'name': self.channel_name})
             
             self.accept()
 
@@ -33,16 +34,23 @@ class GameConsumer(WebsocketConsumer):
         self.send(text_data=json.dumps(event))
         
     def rtc(self, event):
-        if event["sender"] != self.username:
+        if event["sender"] != self.username or event['action'] == 'channel_name':
             self.send(text_data=json.dumps(event))
             
     def rtc_send(self, data):
         data['type'] = 'rtc'
         data['sender'] = self.username
-        async_to_sync(self.channel_layer.group_send)(
-            f"match-{self.match_id}",
-            data
-        )
+        if 'channel' in data:
+            log(self.username, "sends offer to", data['channel'])
+            async_to_sync(self.channel_layer.send)(
+                data['channel'],
+                data
+            )
+        else:
+            async_to_sync(self.channel_layer.group_send)(
+                f"match-{self.match_id}",
+                data
+            )
         
     def handle_rtc_message(self, text_data):
         if text_data["action"] == "join":
@@ -52,29 +60,47 @@ class GameConsumer(WebsocketConsumer):
         elif text_data['action'] == 'offer':
             self.rtc_send({
                 'action': 'offer',
-                'offer': text_data['offer']
+                'offer': text_data['offer'],
+                'channel': text_data['channel']
             })
         elif text_data['action'] == 'answer':
             self.rtc_send({
                 'action': 'answer',
-                'answer': text_data['answer']
+                'answer': text_data['answer'],
+                'channel': text_data['channel']
             })
         elif text_data['action'] == 'candidate':
             self.rtc_send({
                 'action': 'candidate',
-                'candidate': text_data['candidate']
+                'candidate': text_data['candidate'],
+                'channel': text_data['channel']
             })
         elif text_data['action'] == 'leave':
             self.rtc_send({
                 'action': 'leave'
             })
+        elif text_data['action'] == 'channel_request':
+            self.rtc_send({
+                'action': 'channel_request',
+                'origin': self.channel_name
+            })
+        elif text_data['action'] == 'channel_name':
+            async_to_sync(self.channel_layer.send)(
+                text_data['origin'],
+                {
+                    'type': 'rtc',
+                    'action': 'channel_name',
+                    'sender': self.username,
+                    'name': self.channel_name
+                }
+            )
         
     def receive(self, text_data=None):
+        text_data = json.loads(text_data)
+        if "type" in text_data and text_data["type"] == "rtc":
+            self.handle_rtc_message(text_data)
+            return
         with redis_lock.Lock(conn, self.match_id):
-            text_data = json.loads(text_data)
-            if "type" in text_data and text_data["type"] == "rtc":
-                self.handle_rtc_message(text_data)
-                return
             message = self.get_message(text_data)
             if not "data" in message:
                 return
@@ -337,108 +363,3 @@ class DoppelkopfConsumer(GameConsumer):
             }
         match.save()
         return message
-
-class AudioReceiveConsumer(WebsocketConsumer):
-    def connect(self):
-        async_to_sync
-        self.match_id = self.scope['url_route']['kwargs']['match_id']
-        self.username = self.scope['url_route']['kwargs']['username']
-        
-        async_to_sync(self.channel_layer.group_add)(
-            f"audio-receive-{self.match_id}",
-            self.channel_name
-        )
-        
-        self.accept()
-
-    def disconnect(self, code):
-        async_to_sync(self.channel_layer.group_discard)(
-            f"audio-receive-{self.match_id}",
-            self.channel_name
-        )
-
-    def receive(self, text_data=None, bytes_data=None):
-        text_data = dict()
-        text_data["type"] = "audio_message"
-        text_data["sender"] = self.username
-        text_data["bytes_data"] = bytes_data
-        async_to_sync(self.channel_layer.group_send)(
-            f"audio-send-{self.match_id}",
-            text_data
-        )
-            
-class AudioSendConsumer(WebsocketConsumer):
-    def connect(self):
-        self.match_id = self.scope['url_route']['kwargs']['match_id']
-        self.username = self.scope['url_route']['kwargs']['username']
-        
-        async_to_sync(self.channel_layer.group_add)(
-            f"audio-send-{self.match_id}",
-            self.channel_name
-        )
-        
-        self.accept()
-
-    def disconnect(self, code):
-        async_to_sync(self.channel_layer.group_discard)(
-            f"audio-send-{self.match_id}",
-            self.channel_name
-        )
-
-    def audio_message(self, event):
-        if event["sender"] != self.username:
-            self.send(bytes_data=event["bytes_data"])
-            
-"""
-class AudioReceiveConsumer(AsyncWebsocketConsumer):
-    async def connect(self):
-        self.match_id = self.scope['url_route']['kwargs']['match_id']
-        self.username = self.scope['url_route']['kwargs']['username']
-        log("connected: ", self.username)
-        
-        await self.channel_layer.group_add(
-            f"audio-receive-{self.match_id}",
-            self.channel_name
-        )
-        
-        await self.accept()
-
-    async def disconnect(self, code):
-        await self.channel_layer.group_discard(
-            f"audio-receive-{self.match_id}",
-            self.channel_name
-        )
-
-    async def receive(self, text_data=None, bytes_data=None):
-        text_data = dict()
-        text_data["type"] = "audio_message"
-        text_data["sender"] = self.username
-        text_data["bytes_data"] = bytes_data
-        await self.channel_layer.group_send(
-            f"audio-send-{self.match_id}",
-            text_data
-        )
-            
-class AudioSendConsumer(AsyncWebsocketConsumer):
-    async def connect(self):
-        self.match_id = self.scope['url_route']['kwargs']['match_id']
-        self.username = self.scope['url_route']['kwargs']['username']
-        
-        await self.channel_layer.group_add(
-            f"audio-send-{self.match_id}",
-            self.channel_name
-        )
-        
-        await self.accept()
-
-    async def disconnect(self, code):
-        await self.channel_layer.group_discard(
-            f"audio-send-{self.match_id}",
-            self.channel_name
-        )
-
-    async def audio_message(self, event):
-        if event["sender"] != self.username:
-            await self.send(bytes_data=event["bytes_data"])
-"""
-    
