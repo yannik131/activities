@@ -114,21 +114,20 @@ function handleJoin(data) {
 
 function handleOffer(data) {
     pc = getOrCreatePeerConnection(data.sender);
-    pc.setRemoteDescription(new RTCSessionDescription(data.offer)).catch(function(reason) {
+    await pc.setRemoteDescription(new RTCSessionDescription(data.offer)).catch(function(reason) {
         console.log('Error setting remote sd after offer from', data.sender, ':', reason);
     });
-    pc.createAnswer().then(function(answer) {
-        pc.setLocalDescription(new RTCSessionDescription(answer)).then(function() {
-            console.log('sending answer to', data.sender);
-            send({
-                'type': 'rtc',
-                'action': 'answer',
-                'answer': answer,
-                'channel': channel_names[data.sender]
-            });
-    }).catch(function(reason) {
+    await pc.createAnswer().then(function(answer) {
+        pc.setLocalDescription(new RTCSessionDescription(answer)).catch(function(reason) {
             console.log('Error setting local sd after answer to', data.sender, ':', reason);
         });
+    });
+    console.log('sending answer to', data.sender);
+    send({
+        'type': 'rtc',
+        'action': 'answer',
+        'answer': answer,
+        'channel': channel_names[data.sender]
     });
 }
 
@@ -160,9 +159,11 @@ function deletePeerConnection(user) {
         return;
     }
     const track = tracks[user];
-    console.log('Track:', track);
-    remoteMediaStream.removeTrack(track);
-    delete tracks[user];
+    if(track) {
+        console.log('Track:', track);
+        remoteMediaStream.removeTrack(track);
+        delete tracks[user];
+    }
     pc.close();
     pc.onicecandidate = null;
     pc.ontrack = null;
