@@ -77,7 +77,7 @@ function getOrCreatePeerConnection(sender) {
         pc.ontrack = function(event) {
             console.log('adding track from', sender, ':', event.track);
             remoteMediaStream.addTrack(event.track);
-            tracks[pc] = event.track;
+            tracks[sender] = event.track;
         }
         pc.onicecandidate = function(event) {
             if(event.candidate) {
@@ -159,7 +159,7 @@ function deletePeerConnection(user) {
     const track = tracks[pc];
     console.log('Track:', track);
     remoteMediaStream.removeTrack(track);
-    delete tracks[pc];
+    delete tracks[user];
     pc.close();
     pc.onicecandidate = null;
     pc.ontrack = null;
