@@ -156,7 +156,7 @@ function deletePeerConnection(user) {
         console.log('No connection found, aborting');
         return;
     }
-    const track = tracks[pc];
+    const track = tracks[user];
     console.log('Track:', track);
     remoteMediaStream.removeTrack(track);
     delete tracks[user];
