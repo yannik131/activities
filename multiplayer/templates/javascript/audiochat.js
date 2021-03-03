@@ -78,6 +78,7 @@ function getOrCreatePeerConnection(sender) {
             console.log('adding track from', sender, ':', event.track);
             remoteMediaStream.addTrack(event.track);
             tracks[sender] = event.track;
+            remoteAudio.play(); //some browsers deactivate this
         }
         pc.onicecandidate = function(event) {
             if(event.candidate) {
