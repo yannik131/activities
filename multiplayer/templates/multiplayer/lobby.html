@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
+{% load thumbnail %}
 
 {% block title %}{{ activity }}-Lobby{% endblock %}
 {% block style %}
@@ -8,8 +10,9 @@
 
 {% block content %}
 <h1><a href="{{ activity.get_absolute_url }}">{{ activity }}</a>-Lobby</h1>
-<a href="{% url 'multiplayer:create_match' activity.name %}">{% trans "Match erstellen" %}</a>
-<div>
+<div class="button-like" onclick=openLink("{% url 'multiplayer:create_match' activity.name %}")><img src="{% static 'icons/match.png' %}">{% blocktrans %}Match erstellen{% endblocktrans %}</div>
+<p></p>
+<div class="online-table">
     <table style="float: right;">
         <thead>
             <tr>
@@ -24,25 +27,38 @@
             {% endfor %}
         </tbody>
     </table>
-    <table>
-        <tr>
-            <th>
-                {% trans "Matches" %}
-            </th>
-        </tr>
+</div>
+<div class="joined-matches">
+    <h2>{% trans 'Ihre Matches' %}</h2>
+    <div class="list">
         {% for match in user_matches.all %}
-            <tr style="background-color: green; cursor: pointer;" onclick="location.href='/multiplayer/match/{{ match.activity.name }}/{{ match.id }}/';">
-                <td>
-                    {% for user in match.member_list %}
-                        {{ user }} 
-                    {% endfor %}
-                </td>
-            </tr>
+            <div class="item" style="width: 150px; height: 150px; cursor: auto; background-color: darkgrey">
+                <img src="{% static 'icons/match.png' %}" class="image" style="height: 40px">
+                <div class="title">
+                    {{ match.members.all.count }}/{{ match.member_limit }}
+                </div>
+                <div class="subtext">
+                    {% for member in match.members.all %}{{ member }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                </div>
+                <div class="button-like" onclick="openLink('{{ match.get_absolute_url }}')">
+                    {% if match.in_progress %}
+                        <img src="{% static 'icons/dog.png' %}">
+                        {% trans 'Spielen' %}
+                    {% else %}
+                        <img src="{% static 'icons/chat.png' %}">
+                        {% trans 'Zur Übersicht' %}
+                    {% endif %}
+                </div>
+            </div>
         {% endfor %}
-        <tbody id="match-list">
-            
-        </tbody>
-    </table>
+    </div>
+</div>
+<p style="clear: both"></p>
+<div class="other-matches">
+    <h2>{% trans 'Öffentliche Matches' %}</h2>
+    <div class="list" id="other-matches">
+        
+    </div>
 </div>
 
 {% endblock %}

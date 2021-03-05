@@ -59,7 +59,7 @@ class ChatRoom(models.Model):
     def title_for(self, user):
         if self.target_ct == Friendship.content_type():
             return self.title_for_friendship(user)
-        return str(self.target.verbose())
+        return str(self.target)
 
 
 class ChatLogEntry(models.Model):
@@ -78,7 +78,7 @@ class ChatLogEntry(models.Model):
     def full_origin(self, user):
         if self.chat_room.target_ct == Friendship.content_type():
             return self.chat_room.title_for_friendship(user)
-        return str(self.chat_room.target.verbose()) + ", " + self.author.username
+        return str(self.chat_room.target) + ", " + self.author.username
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

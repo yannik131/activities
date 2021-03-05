@@ -21,78 +21,72 @@ def lobby(request, activity_name):
 
 def create_match(request, activity_name):
     activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
+    match = None
     if activity.name == _("Skat"):
-        match = MultiplayerMatch.objects.create(activity=activity, member_limit=3)
-        match.add_first_member(request.user)
-        return HttpResponseRedirect(match.get_absolute_url())
+        match = MultiplayerMatch.objects.create(activity=activity, member_limit=3, admin=request.user)
     elif activity.name == _("Doppelkopf"):
-        match = MultiplayerMatch.objects.create(activity=activity, member_limit=4)
-        match.add_first_member(request.user)
-        return HttpResponseRedirect(match.get_absolute_url())
+        match = MultiplayerMatch.objects.create(activity=activity, member_limit=4, admin=request.user)
     if request.method == 'POST':
         form = CreateMatchForm(request.POST)
         form.activity = activity
         if form.is_valid():
             match = form.save(commit=False)
             match.activity = activity
-            for i in range(1, match.member_limit+1):
-                match.member_positions[str(i)] = None
-            match.member_positions['1'] = str(request.user.id)
+            match.admin = request.user
             match.save()
-            match.members.add(request.user)
-            return HttpResponseRedirect(match.get_absolute_url())
     else:
         form = CreateMatchForm()
+    if match:
+        match.init_positions()
+        match.members.add(match.admin)
+        return HttpResponseRedirect(match.get_absolute_url())
     return render(request, 'multiplayer/create_match.html', dict(activity=activity, form=form))
 
 
 @guard_match
 def match(request, match):
-    members = [(User.objects.get(id=v), k) if v else (None, k) for k, v in match.member_positions.items()]
     is_member = match.members.filter(pk=request.user.id).exists()
-    if is_member and match.is_full():
+    if not is_member:
+        return HttpResponseRedirect(match.lobby_url(request))
+    members = sorted([(User.objects.get(id=v), k) if v else ("", k) for k, v in match.member_positions.items()], key=lambda t: t[1])
+    while len(members) < 4:
+        members.append(("", len(members)))
+    
+    if is_member and match.in_progress:
         return HttpResponseRedirect(request.build_absolute_uri(f"/multiplayer/game/{match.activity.name}/{match.id}/"))
-    elif match.is_full():
+    elif match.is_full() and match.in_progress:
         messages.add_message(request, messages.INFO, _("Spiel ist bereits voll"))
         return HttpResponseRedirect(match.lobby_url(request))
-    return render(request, 'multiplayer/match.html', dict(match=match, members=members, is_member=is_member))
+    return render(request, 'multiplayer/match.html', dict(match=match, members=members, is_member=is_member, room=ChatRoom.get_for_target(match)))
     
+@guard_match
+def start_match(request, match):
+    if not match.is_full():
+        return HttpResponseRedirect(match.get_absolute_url())
+    match.start()
+    return HttpResponseRedirect(match.get_absolute_url())
 
 @guard_match
 def enter_match(request, match):
     if request.user in match.members.all():
         return HttpResponseRedirect(match.get_absolute_url())
-    for k, v in match.member_positions.items():
-        if v is None:
-            match.member_positions[k] = str(request.user.id)
-            match.save()
-            match.members.add(request.user)
-            room = ChatRoom.get_for_target(match)
-            if request.user not in room.members.all():
-                room.members.add(request.user)
-            return HttpResponseRedirect(match.get_absolute_url())
-    messages.add_message(request, messages.INFO, _("Sie waren zu langsam, das Match war bereits voll."))
-    return HttpResponseRedirect(match.lobby_url(request))
+    elif match.is_full():
+        messages.add_message(request, messages.INFO, _("Sie waren zu langsam, das Match war bereits voll."))
+        return HttpResponseRedirect(match.lobby_url(request))
+    match.add_member(request.user)
+    return HttpResponseRedirect(match.get_absolute_url())
+    
     
 
 @guard_match
 def leave_match(request, match):
     if not match.members.filter(pk=request.user.id).exists():
         return HttpResponseRedirect(match.lobby_url(request))
-    if match.member_positions['1'] == str(request.user.id):
+    if match.admin == request.user:
         match.abort(redirect_to_lobby=True)
         match.delete()
         return HttpResponseRedirect(match.lobby_url(request))
-    room = ChatRoom.get_for_target(match)
-    room.members.remove(request.user)
-    match.members.remove(request.user)
-    for k, v in match.member_positions.items():
-        if v == str(request.user.id):
-            match.member_positions[k] = None
-            match.save()
-            break
-    if match.in_progress:
-        match.abort()
+    match.remove_member(request.user)
     return HttpResponseRedirect(match.lobby_url(request))
 
 
@@ -100,11 +94,12 @@ def leave_match(request, match):
 def game(request, match):
     if not match.is_full():
         return HttpResponseRedirect(match.get_absolute_url())
+    data = dict(match=match, room=ChatRoom.get_for_target(match))
     if match.activity.name == _('Durak'):
-        return render(request, 'multiplayer/durak.html', dict(match=match))
+        return render(request, 'multiplayer/durak.html', data)
     elif match.activity.name == _("Skat"):
-        return render(request, 'multiplayer/skat.html', dict(match=match))
+        return render(request, 'multiplayer/skat.html', data)
     elif match.activity.name == _("Doppelkopf"):
-        return render(request, 'multiplayer/doppelkopf.html', dict(match=match))
+        return render(request, 'multiplayer/doppelkopf.html', data)
     return HttpResponseNotFound()
         

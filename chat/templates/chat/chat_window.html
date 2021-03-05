@@ -1,0 +1,56 @@
+{% load i18n %}
+{% load account_tags %}
+{% load static %}
+{% load thumbnail %}
+
+<style>{% include 'css/chat.css' %}</style>
+<audio id="remote-audio" autoplay></audio>
+<script src="{% static 'javascript/adapter-latest.js' %}"></script>
+<div class="chat-window">
+    <div class="chat-top">
+        {% if not friendship %}
+            <div class="title" onclick="openLink('{{ room.target.get_absolute_url }}')">
+                {% call_method room 'title_for' user %}:
+            </div>
+        {% endif %}
+        <div class="chat-members">
+            {% for member in room.members.all %}
+            {% if friendship and member != user or not friendship %}
+                <div class="chat-member" id="member-{{ forloop.counter0 }}" onclick='openLink("{{ member.get_absolute_url }}")'>
+                    {% if member.image %}
+                        <img src="{% thumbnail member.image 0x80 %}">
+                    {% else %}
+                        <img src="{% static 'icons/users-and-groups-user@32px.png' %}">
+                    {% endif %}
+                    <span class="{{ member }}-span" id="member-name-{{ member.id }}">{{ member }}</span>
+                </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <img src="{% static 'icons/call.png' %}" class="chat-call" onclick=joinAudio() id='call-button'>
+    </div>
+    <div class="chat-middle" id="full-chat-{{ room.id }}">
+        {% for log_entry in room.log_entries.all %}
+            {% if log_entry.author == user %}
+                <div class="chat-message-right" 
+            {% else %}
+                <div class="chat-message-left" 
+            {% endif %}
+            {% if forloop.last %}
+                id="last-message"
+            {% endif %}
+                >
+                    <div class="message-info">
+                        {{ log_entry.author }}, {{ log_entry.created }}
+                    </div>
+                    {{ log_entry|linebreaksbr }}
+                </div>
+        {% endfor %}
+    </div>
+    <div class="chat-bottom">
+        <div contenteditable="true" class="chat-input"></div>
+        <div class="chat-send-img">
+            <img src="{% static '/icons/send.png' %}" onclick=submitClick()>
+        </div>
+    </div>
+</div>

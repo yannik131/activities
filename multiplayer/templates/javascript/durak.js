@@ -194,18 +194,15 @@ function determineGameMode(data) {
     }
     else {
         var helping = next(data.defending, player_list);
-        console.log("helping=", helping);
         if(player_list.length == 4) {
             if(player_cards[players[helping]].length == 0) {
                 helping = next(helping, player_list)
             }
         }
-        console.log("after:", helping);
         if(this_user == helping) {
             game_mode = "helping";
         }
         else {
-            console.log("not helping, set to none");
             game_mode = "none";
         }
     }

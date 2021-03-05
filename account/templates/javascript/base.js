@@ -105,7 +105,6 @@ function connect() {
         + '{{ user.id }}'
         + '/'
     );
-
     user_websocket.onmessage = function(e) {
         const data = JSON.parse(e.data);
         switch(data.type) {
@@ -138,6 +137,10 @@ function connect() {
                     }
                 }
                 break;
+            case "rtc":
+                if(typeof handleRTCMessage != 'undefined')
+                    handleRTCMessage(data);
+                break;
         }
     }
 
@@ -154,6 +157,10 @@ function connect() {
     }
 }
 
+function send(message) {
+    user_websocket.send(JSON.stringify(message));
+}
+
 function parse(json_string) {
     if(typeof json_string == "undefined" || !json_string.length) {
         return null;
@@ -164,6 +171,16 @@ function parse(json_string) {
 function openLink(link) {
     location.href = link;
 }
+
+function resize() {
+    var content = document.querySelector('.content');
+    if(content) {
+        content.style.height = window.innerHeight-50+"px";
+    }
+}
+
+window.addEventListener('load', resize);
+window.addEventListener('resize', resize);
 
 {% if user.is_authenticated %}
     connect();

@@ -19,12 +19,10 @@ class GameConsumer(WebsocketConsumer):
                 f"match-{self.match_id}",
                 self.channel_name
             )
-            self.rtc_send({'action': 'channel_name', 'name': self.channel_name})
             
             self.accept()
 
     def disconnect(self, code):
-        self.rtc_send({'action': 'disconnect'})
         async_to_sync(self.channel_layer.group_discard)(
             f"match-{self.match_id}",
             self.channel_name
@@ -33,73 +31,9 @@ class GameConsumer(WebsocketConsumer):
     def multiplayer(self, event):
         self.send(text_data=json.dumps(event))
         
-    def rtc(self, event):
-        if event["sender"] != self.username or event['action'] == 'channel_name':
-            self.send(text_data=json.dumps(event))
-            
-    def rtc_send(self, data):
-        data['type'] = 'rtc'
-        data['sender'] = self.username
-        if 'channel' in data:
-            log(self.username, "sends offer to", data['channel'])
-            async_to_sync(self.channel_layer.send)(
-                data['channel'],
-                data
-            )
-        else:
-            async_to_sync(self.channel_layer.group_send)(
-                f"match-{self.match_id}",
-                data
-            )
-        
-    def handle_rtc_message(self, text_data):
-        if text_data["action"] == "join":
-            self.rtc_send({
-                'action': 'join'
-            })
-        elif text_data['action'] == 'offer':
-            self.rtc_send({
-                'action': 'offer',
-                'offer': text_data['offer'],
-                'channel': text_data['channel']
-            })
-        elif text_data['action'] == 'answer':
-            self.rtc_send({
-                'action': 'answer',
-                'answer': text_data['answer'],
-                'channel': text_data['channel']
-            })
-        elif text_data['action'] == 'candidate':
-            self.rtc_send({
-                'action': 'candidate',
-                'candidate': text_data['candidate'],
-                'channel': text_data['channel']
-            })
-        elif text_data['action'] == 'leave':
-            self.rtc_send({
-                'action': 'leave'
-            })
-        elif text_data['action'] == 'channel_request':
-            self.rtc_send({
-                'action': 'channel_request',
-                'origin': self.channel_name
-            })
-        elif text_data['action'] == 'channel_name':
-            async_to_sync(self.channel_layer.send)(
-                text_data['origin'],
-                {
-                    'type': 'rtc',
-                    'action': 'channel_name',
-                    'sender': self.username,
-                    'name': self.channel_name
-                }
-            )
         
     def receive(self, text_data=None):
         text_data = json.loads(text_data)
-        if "type" in text_data and text_data["type"] == "rtc":
-            self.handle_rtc_message(text_data)
-            return
         with redis_lock.Lock(conn, self.match_id):
             message = self.get_message(text_data)
             if not "data" in message:

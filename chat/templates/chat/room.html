@@ -1,30 +1,15 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load account_tags %}
+{% load static %}
 
-{% block title %}{{ target }}-{% trans "Chat" %}{% endblock %}
+{% block title %}{{ room.target }}-{% trans "Chat" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Chat" %}: <a href="{{ target.get_absolute_url }}"><span class="chat-room-title">{% call_method room 'title_for' user %}</span></a></h1>
-    <p>
-        {% trans "Teilnehmer" %}:
-        {% for member in room.members.all %}
-            <a href="{{ member.get_absolute_url }}">{{ member }}</a>{% if not forloop.last %}, {% endif %}
-        {% endfor %}
-    </p>
-    <div class="full-chat" id="full-chat-{{ room.id }}">
-        {% for message in room.log_entries.all %}
-            <div class="full-chat-message">
-                {{ message.author }}, {{ message.created|date:"SHORT_DATETIME_FORMAT" }}: {{ message.text }}
-            </div>
-        {% endfor %}
-    </div>
-    <div id="chat-input">
-        <textarea id="chat-message-input" class="chat-textarea" rows="4" cols="30"></textarea>
-        <input id="chat-message-submit" onclick="submitClick();" type="submit" value="{% trans "Senden" %}">
-    </div>
+{% include 'chat/chat_window.html' %}
 {% endblock %}
 
 {% block domready %}
-    {% include 'javascript/room.js' %}
+{% include 'javascript/room.js' %}
+{% include 'javascript/audiochat.js' %}
 {% endblock %}

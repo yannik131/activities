@@ -4,9 +4,9 @@ from django.http import HttpResponseRedirect
 
 
 def guard_match(func):
-    def wrapper(request, activity_name, match_id):
+    def wrapper(request, activity_name, match_id, *args):
         match = MultiplayerMatch.objects.filter(pk=match_id)
         if not match.exists():
             return HttpResponseRedirect(f"/multiplayer/lobby/{activity_name}/")
-        return func(request, match.first())
+        return func(request, match.first(), *args)
     return wrapper

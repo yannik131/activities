@@ -29,20 +29,6 @@
     right: 0;
 }
 
-.game-button {
-    z-index: 100;
-    position: absolute;
-    border: 1px solid white;
-    color: white;
-    background-color: black;
-    opacity: 0.6;
-    border-radius: 5px;
-}
-
-.game-button:hover {
-    background-color: gray;
-}
-
 .game::selection {
     background: transparent;
 }
@@ -108,7 +94,7 @@
     background-color: green;
 }
 
-.join-audio {
+.chat {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -124,4 +110,18 @@
     right: 15%;
     border-radius: 10px;
     z-index: 1;
+}
+
+.game-chat {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 80px;
+    left: 0;
+    right: 0;
+    z-index: 998;
+}
+
+.game-chat div {
+    opacity: 0.98;
 }

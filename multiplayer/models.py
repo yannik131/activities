@@ -10,6 +10,7 @@ from .utils import after, create_deck
 from django.utils.translation import gettext_lazy as _
 import json
 from multiplayer.utils import change
+from shared.shared import log
 
 
 class MultiplayerMatch(models.Model):
@@ -20,6 +21,10 @@ class MultiplayerMatch(models.Model):
     game_data = HStoreField(default=dict)
     channel_group_name = models.UUIDField(default=uuid.uuid4)
     in_progress = models.BooleanField(default=False)
+    admin = models.ForeignKey(User, related_name='admin_matches', on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.activity.name
     
     @staticmethod
     def last():
@@ -29,6 +34,53 @@ class MultiplayerMatch(models.Model):
     def match_list_for(activity_id):
         matches = MultiplayerMatch.objects.filter(activity__id=activity_id)
         return [(match.id, [user.username for user in match.members.all()], match.member_limit) for match in matches if not match.is_full()]
+        
+    def add_member(self, user):
+        for k, v in self.member_positions.items():
+            if not v:
+                self.member_positions[k] = user.id
+                self.save()
+                break
+        log('Added member', user, 'positions:', self.member_positions)
+        self.broadcast_data(
+            {
+                'action': 'members_changed',
+                "match_id": self.id,
+                "info": "joined",
+                "position": k,
+                "username": user.username,
+                'id': user.id,
+                'url': user.image.url if user.image else ""
+            }, 
+            direct=True
+        )
+        self.members.add(user)
+        
+    def remove_member(self, member):
+        for k, v in self.member_positions.items():
+            if str(v) == str(member.id):
+                self.member_positions[k] = ""
+                self.save()
+                break
+        log('Removed member', member, 'positions:', self.member_positions)
+        if self.in_progress:
+            self.abort()
+        else:
+            self.broadcast_data(
+                {
+                    'action': 'members_changed',
+                    "match_id": self.id,
+                    "info": "left",
+                    "position": k,
+                    "username": member.username,
+                    'id': member.id
+                },
+                direct=True
+            )
+        self.members.remove(member)
+        
+    def chat_allowed_for(self, user):
+        return self.members.filter(pk=user.id).exists()
 
     def get_absolute_url(self):
         return reverse('multiplayer:match', args=[self.activity.name, self.id])
@@ -45,12 +97,11 @@ class MultiplayerMatch(models.Model):
                 return k
         return None
         
-    def add_first_member(self, member):
-        for i in range(1, self.member_limit+1):
-            self.member_positions[str(i)] = None
-        self.member_positions['1'] = str(member.id)
+    def init_positions(self):
+        for i in range(2, self.member_limit+1):
+            self.member_positions[str(i)] = ""
+        self.member_positions['1'] = self.admin.id
         self.save()
-        self.members.add(member)
         
     def broadcast_data(self, data, direct=False):
         channel_layer = get_channel_layer()
@@ -86,12 +137,6 @@ class MultiplayerMatch(models.Model):
                 'url': url,
                 'match_id': self.id
             }, direct=True)
-            
-    def member_list(self):
-        result = [f"{u} " for u in self.members.all()]
-        for i in range(self.member_limit-self.members.all().count()):
-            result.append(_("FREI") + " ")
-        return result
         
     def start(self):
         self.game_data = {"type": "multiplayer", "action": "load_data", "game_number": "-1"}
@@ -108,6 +153,14 @@ class MultiplayerMatch(models.Model):
             self.game_data[player+"_points"] = "0"
         self.in_progress = True
         self.save()
+        self.broadcast_data(
+                {
+                    'action': 'members_changed',
+                    "match_id": self.id,
+                    "info": "start"
+                }, 
+                direct=True
+            )
             
     def create_players(self, n, *deck):
         deck = create_deck(*deck)

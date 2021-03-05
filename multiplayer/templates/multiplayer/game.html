@@ -3,8 +3,6 @@
 {% load static %}
 
 
-<audio id="remote-audio" autoplay></audio>
-<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <div class="game">
     <div class="button-like back" onclick="location.href='{% call_method match 'lobby_url' request %}'">
         <img src="{% static 'icons/lobby.png' %}">Lobby
@@ -31,7 +29,10 @@
             
         </div>
     </div>
-    <div class="button-like join-audio" id="join-audio" onclick="joinAudio();">
-        <img src="{% static 'icons/login.png' %}">{% trans 'Konferenz' %}
+    <div class="button-like chat" id="chat-button" onclick="openChat();">
+        <img src="{% static 'icons/chat.png' %}" id="open-chat-img">{% trans 'Chat' %}
+    </div>
+    <div class="game-chat">
+        {% include 'chat/chat_window.html' %}
     </div>
 </div>

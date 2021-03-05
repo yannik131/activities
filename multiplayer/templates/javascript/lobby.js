@@ -1,32 +1,54 @@
 {% load i18n %}
+{% load static %}
 
 function updateMatchList(data) {
+    var list = document.getElementById('other-matches');
+    list.innerHTML = "";
     const match_list = JSON.parse(data.match_list);
-    old_tbody = document.getElementById('match-list');
-    new_tbody = document.createElement('tbody');
-    new_tbody.id = 'match-list';
     for(var i = 0; i < match_list.length; i++) {
         match_data = match_list[i];
-        var new_row = new_tbody.insertRow();
-        var new_cell = new_row.insertCell();
-        new_cell.style.cursor = "pointer";
-        var usernames = match_data[1];
-        for(var j = 0; j < match_data[2]; j++) {
-            if(j >= usernames.length) {
-                new_cell.innerHTML += '{% trans "FREI" %} '
-            }
-            else {
-                new_cell.innerHTML += (
-                    usernames[j] + " "
-                );
+        var user_list = match_data[1];
+        if(user_list.indexOf('{{ user }}') != -1) {
+            continue;
+        }
+        var item = document.createElement('div');
+        var img = document.createElement('img');
+        var title = document.createElement('div');
+        var subtext = document.createElement('div');
+        var button = document.createElement('div');
+        item.className = 'item';
+        item.style = "width: 150px; height: 150px; cursor: auto; background-color: darkgrey";
+
+        img.src = "{% static 'icons/match.png' %}";
+        img.className = "image";
+        img.style.height = "40px";
+        item.appendChild(img);
+        
+        title.className = 'title';
+        title.innerHTML = user_list.length+"/"+match_data[2];
+        item.appendChild(title);
+        
+        subtext.className = 'subtext';
+        for(var j = 0; j < user_list.length; j++) {
+            subtext.innerHTML += user_list[j];
+            if(j != user_list.length-1) {
+                subtext.innerHTML += ", ";
             }
         }
-        new_cell.id = match_data[0]
-        new_cell.onclick = function() {
-            location.href = "/multiplayer/match/{{ activity.name }}/" + this.id + "/";
+        item.appendChild(subtext);
+        
+        button.className = 'button-like';
+        button.id = match_data[0];
+        button.onclick = function() {
+            openLink("/multiplayer/enter_match/{{ activity.name }}/"+this.id+"/");
         }
+        img = document.createElement('img');
+        img.src = "{% static 'icons/join.png' %}";
+        button.appendChild(img);
+        button.innerHTML += "{% trans 'Beitreten' %}";
+        item.appendChild(button);
+        list.appendChild(item);
     }
-    old_tbody.parentNode.replaceChild(new_tbody, old_tbody);
 }
 
 function requestMatchList() {

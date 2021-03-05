@@ -3,7 +3,8 @@ from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
 from .models import MultiplayerMatch
 from shared.shared import log
-
+from chat.models import ChatRoom
+import json
 
 @receiver(m2m_changed, sender=MultiplayerMatch.members.through)
 def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
@@ -11,45 +12,10 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
         return
     id = next(iter(pk_set))
     member = model.objects.get(id=id)
+    room = ChatRoom.get_for_target(instance)
     if action == "post_add":
-        instance.broadcast_data(
-            {
-                'action': 'members_changed',
-                "match_id": str(instance.id),
-                "info": "joined",
-                "position": instance.get_position_of(member),
-                "username": member.username
-            }, 
-            direct=True
-        )
-        if instance.member_limit == instance.members.all().count():
-            log("starting match")
-            instance.start()
-            log("broadcasting message")
-            instance.broadcast_data(
-                {
-                    'action': 'members_changed',
-                    "match_id": str(instance.id),
-                    "info": "start"
-                }, 
-                direct=True
-            )
-            
+        room.members.add(member)
     elif action == "post_remove":
-        if instance.member_positions['1'] == str(member.id):
-            instance.abort(redirect_to_lobby=True)
-            instance.delete()
-        elif instance.in_progress:
-            instance.abort()
-        else:
-            instance.broadcast_data(
-                {
-                    'action': 'members_changed',
-                    "match_id": str(instance.id),
-                    "info": "left",
-                    "position": instance.get_position_of(member),
-                    "username": member.username
-                },
-                direct=True
-            )
+        room.members.remove(member)
+        
         

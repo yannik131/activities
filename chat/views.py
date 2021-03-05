@@ -23,7 +23,7 @@ def chat_room(request, app_label, model, id):
     else:
         return handler403(request)
     request.user.last_chat_checks.get(room=chat_room).update()
-    return render(request, 'chat/room.html', dict(target=chat_room.target, room=chat_room))
+    return render(request, 'chat/room.html', dict(room=chat_room, friendship=model == 'friendship'))
 
 
 @login_required
