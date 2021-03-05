@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-01 18:23+0000\n"
+"POT-Creation-Date: 2021-03-05 23:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -311,67 +311,59 @@ msgstr ""
 msgid "Sie haben die Freundschaft mit %(name)s, aka %(username)s, beendet."
 msgstr ""
 
-#: account/templates/account/detail.html:5
+#: account/templates/account/detail.html:6
 #, python-format
 msgid "Profil von %(username)s"
 msgstr ""
 
-#: account/templates/account/detail.html:8
+#: account/templates/account/detail.html:9
 msgid "Profil von"
 msgstr ""
 
-#: account/templates/account/detail.html:14
-#: usergroups/templates/usergroups/group_detail.html:16
+#: account/templates/account/detail.html:21
+#: usergroups/templates/usergroups/group_detail.html:17
 #: vacancies/templates/vacancies/review_vacancy.html:29
 msgid "Zum Chat"
 msgstr ""
 
-#: account/templates/account/detail.html:15
+#: account/templates/account/detail.html:23
 msgid "ist Mitglied folgender Aktivitäten"
 msgstr ""
 
-#: account/templates/account/detail.html:18
+#: account/templates/account/detail.html:26
 msgid "Adresse"
 msgstr ""
 
-#: account/templates/account/detail.html:19
-msgid "Sie sind mit"
+#: account/templates/account/detail.html:27
+msgid "Freundschaft beenden"
 msgstr ""
 
-#: account/templates/account/detail.html:19
-msgid " befreundet. Falls Sie das ändern möchten, können Sie die Freundschaft"
-msgstr ""
-
-#: account/templates/account/detail.html:19
-msgid "auch vernichten"
-msgstr ""
-
-#: account/templates/account/detail.html:21
+#: account/templates/account/detail.html:29
 #, python-format
 msgid "Sie sind nicht mit %(user)s befreundet"
 msgstr ""
 
-#: account/templates/account/detail.html:23
+#: account/templates/account/detail.html:31
 msgid ""
 "Sie haben allerdings bereits eine Freundschaftsanfrage gesendet. Diese wurde "
 "entweder abgelehnt oder die Antwort steht noch aus"
 msgstr ""
 
-#: account/templates/account/detail.html:25
+#: account/templates/account/detail.html:33
 msgid "Falls Sie das ändern möchten, schicken Sie ihm doch eine"
 msgstr ""
 
-#: account/templates/account/detail.html:25
+#: account/templates/account/detail.html:33
 msgid "Freundschaftsanfrage"
 msgstr ""
 
-#: account/templates/account/detail.html:28
-#: usergroups/templates/usergroups/group_detail.html:91
+#: account/templates/account/detail.html:36
+#: usergroups/templates/usergroups/group_detail.html:106
 msgid "Posts"
 msgstr ""
 
 #: account/templates/account/edit.html:4 account/templates/account/edit.html:7
-#: account/templates/account/sidemenu.html:16
+#: account/templates/account/sidemenu.html:17
 msgid "Account bearbeiten"
 msgstr ""
 
@@ -385,9 +377,9 @@ msgstr ""
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:326
-#: multiplayer/templates/javascript/durak.js:365
-#: multiplayer/templates/javascript/durak.js:375
+#: multiplayer/templates/javascript/durak.js:323
+#: multiplayer/templates/javascript/durak.js:362
+#: multiplayer/templates/javascript/durak.js:372
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:13
 #: usergroups/templates/usergroups/edit_group.html:12
@@ -441,7 +433,7 @@ msgstr ""
 
 #: account/templates/account/friend_requests_list.html:15
 #: account/templates/account/friend_requests_list.html:40
-#: usergroups/templates/usergroups/group_detail.html:53
+#: usergroups/templates/usergroups/group_detail.html:68
 #: usergroups/templates/usergroups/invitation_list.html:8
 #: vacancies/templates/vacancies/application_list.html:14
 #: vacancies/templates/vacancies/application_list.html:35
@@ -463,7 +455,7 @@ msgstr ""
 
 #: account/templates/account/friend_requests_list.html:25
 #: account/templates/account/friend_requests_list.html:48
-#: usergroups/templates/usergroups/group_detail.html:80
+#: usergroups/templates/usergroups/group_detail.html:95
 #: usergroups/templates/usergroups/invitation_list.html:16
 #: vacancies/templates/vacancies/application_list.html:24
 #: vacancies/templates/vacancies/application_list.html:41
@@ -489,49 +481,53 @@ msgid "Eine Anfrage an einen Nutzer senden..."
 msgstr ""
 
 #: account/templates/account/friend_requests_list.html:58
-#: account/templates/account/sidemenu.html:14
+#: account/templates/account/sidemenu.html:15
 #: chat/templates/chat/chat_list.html:14
 msgid "Freunde"
 msgstr ""
 
-#: account/templates/account/home.html:5
+#: account/templates/account/home.html:6
 msgid "Home"
 msgstr ""
 
-#: account/templates/account/home.html:9
+#: account/templates/account/home.html:10
 #, python-format
 msgid "Willkommen, %(v0)s."
 msgstr ""
 
-#: account/templates/account/home.html:9
+#: account/templates/account/home.html:10
 msgid "Ist irgendwas? Schicken Sie"
 msgstr ""
 
-#: account/templates/account/home.html:9
+#: account/templates/account/home.html:10
 msgid "eine Freundschaftsanfrage."
 msgstr ""
 
-#: account/templates/account/home.html:12
+#: account/templates/account/home.html:13
 msgid ""
 "Schließen Sie Ihre Anmeldung ab, indem Sie Alter, E-Mail-Adresse und "
 "Geschlecht nachtragen: "
 msgstr ""
 
-#: account/templates/account/home.html:13
+#: account/templates/account/home.html:14
+msgid "Profil vervollständigen"
+msgstr ""
+
+#: account/templates/account/home.html:15
 msgid ""
 "Ansonsten können Sie Ihr Passwort nicht zurücksetzen und/oder sich auf "
 "Leerstellen bewerben."
 msgstr ""
 
-#: account/templates/account/home.html:16
-msgid "Zu Ihren Posts..."
+#: account/templates/account/home.html:18
+msgid "Zu Ihren Posts"
 msgstr ""
 
-#: account/templates/account/home.html:18
+#: account/templates/account/home.html:20
 msgid "Sie sind zurzeit Mitglied folgender Aktivitäten:"
 msgstr ""
 
-#: account/templates/account/home.html:21
+#: account/templates/account/home.html:23
 msgid "Sie sind zurzeit kein Mitglied einer Aktivität."
 msgstr ""
 
@@ -583,7 +579,7 @@ msgid "Seite"
 msgstr ""
 
 #: account/templates/account/pagination.html:9
-#: wall/templates/wall/post/post_loop.html:7
+#: wall/templates/wall/post/post_loop.html:9
 msgid "von"
 msgstr ""
 
@@ -594,7 +590,7 @@ msgstr ""
 #: account/templates/account/register.html:4
 #: account/templates/account/register.html:8
 #: account/templates/account/register.html:15
-#: account/templates/registration/login.html:30
+#: account/templates/registration/login.html:38
 msgid "Registrieren"
 msgstr ""
 
@@ -701,38 +697,38 @@ msgstr ""
 msgid "Abschicken"
 msgstr ""
 
-#: account/templates/account/sidemenu.html:7
+#: account/templates/account/sidemenu.html:8
 msgid "Homepage"
 msgstr ""
 
-#: account/templates/account/sidemenu.html:8
+#: account/templates/account/sidemenu.html:9
 msgid "Aktivitäten"
 msgstr ""
 
-#: account/templates/account/sidemenu.html:9
+#: account/templates/account/sidemenu.html:10
 msgid "Kategorien"
 msgstr ""
 
-#: account/templates/account/sidemenu.html:10
+#: account/templates/account/sidemenu.html:11
 msgid "Matches & Turniere"
 msgstr ""
 
-#: account/templates/account/sidemenu.html:11
+#: account/templates/account/sidemenu.html:12
 #: chat/templates/chat/chat_list.html:12
 #: usergroups/templates/usergroups/category_group_list.html:5
 #: usergroups/templates/usergroups/category_group_list.html:8
 msgid "Gruppen"
 msgstr ""
 
-#: account/templates/account/sidemenu.html:12
+#: account/templates/account/sidemenu.html:13
 msgid "Chats"
 msgstr ""
 
-#: account/templates/account/sidemenu.html:13
+#: account/templates/account/sidemenu.html:14
 msgid "Bewerbungen & Einladungen"
 msgstr ""
 
-#: account/templates/account/sidemenu.html:15
+#: account/templates/account/sidemenu.html:16
 #: account/templates/registration/password_change_form.html:4
 #: account/templates/registration/password_change_form.html:7
 #: account/templates/registration/password_reset_done.html:4
@@ -740,21 +736,22 @@ msgstr ""
 msgid "Passwort ändern"
 msgstr ""
 
-#: account/templates/account/sidemenu.html:17
+#: account/templates/account/sidemenu.html:18
 msgid "Ausloggen"
 msgstr ""
 
-#: account/templates/account/user_post_list.html:4
-#: account/templates/account/user_post_list.html:7
+#: account/templates/account/user_post_list.html:5
+#: account/templates/account/user_post_list.html:8
 msgid "Ihre Posts"
 msgstr ""
 
-#: account/templates/account/user_post_list.html:8
+#: account/templates/account/user_post_list.html:9
 #: activity/templates/activity/detail.html:46
-msgid "Post erstellen..."
+#: usergroups/templates/usergroups/group_detail.html:108
+msgid "Post erstellen"
 msgstr ""
 
-#: account/templates/account/user_post_list.html:9
+#: account/templates/account/user_post_list.html:10
 msgid "Die Posts sind öffentlich auf Ihrer Profilseite sichtbar."
 msgstr ""
 
@@ -771,47 +768,47 @@ msgstr ""
 msgid "auch wieder einloggen."
 msgstr ""
 
-#: account/templates/registration/login.html:6
-#: account/templates/registration/login.html:13
-#: account/templates/registration/login.html:27
+#: account/templates/registration/login.html:7
+#: account/templates/registration/login.html:14
+#: account/templates/registration/login.html:28
 msgid "Einloggen"
 msgstr ""
 
-#: account/templates/registration/login.html:11
+#: account/templates/registration/login.html:12
 msgid "Nutzer gesamt: "
 msgstr ""
 
-#: account/templates/registration/login.html:12
+#: account/templates/registration/login.html:13
 msgid "Online: "
 msgstr ""
 
-#: account/templates/registration/login.html:15
+#: account/templates/registration/login.html:16
 msgid "Fehler beim Einloggen"
 msgstr ""
 
-#: account/templates/registration/login.html:16
+#: account/templates/registration/login.html:17
 msgid "Zurück zum Login"
 msgstr ""
 
-#: account/templates/registration/login.html:17
+#: account/templates/registration/login.html:18
 msgid ""
 "Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der "
 "Account möglicherweise gesperrt."
 msgstr ""
 
-#: account/templates/registration/login.html:20
+#: account/templates/registration/login.html:21
 msgid "Willkommen bei myactivities.net! :)"
 msgstr ""
 
-#: account/templates/registration/login.html:21
+#: account/templates/registration/login.html:22
 msgid "Was ist das hier?"
 msgstr ""
 
-#: account/templates/registration/login.html:22
+#: account/templates/registration/login.html:23
 msgid "Bitte nutzen Sie das folgende Formular zum einloggen:"
 msgstr ""
 
-#: account/templates/registration/login.html:30
+#: account/templates/registration/login.html:34
 #: account/templates/registration/password_reset_complete.html:4
 #: account/templates/registration/password_reset_confirm.html:4
 #: account/templates/registration/password_reset_confirm.html:7
@@ -890,7 +887,6 @@ msgid ""
 msgstr ""
 
 #: account/templates/registration/password_reset_form.html:12
-#: chat/templates/chat/room.html:24
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
 #: wall/templates/wall/post/create_comment.html:11
 #: wall/templates/wall/post/create_post.html:13
@@ -940,7 +936,7 @@ msgstr ""
 
 #: activity/templates/activity/activity_list.html:21
 #: competitions/templates/competitions/tournament_detail.html:19
-#: usergroups/templates/usergroups/group_detail.html:22
+#: usergroups/templates/usergroups/group_detail.html:30
 #: usergroups/templates/usergroups/loop.html:18
 msgid "Mitglieder"
 msgstr ""
@@ -972,14 +968,11 @@ msgstr ""
 
 #: activity/templates/activity/detail.html:27
 #: multiplayer/templates/multiplayer/create_match.html:4
-#: multiplayer/templates/multiplayer/match.html:10
 msgid "Online spielen"
 msgstr ""
 
 #: activity/templates/activity/detail.html:33
-#: multiplayer/templates/javascript/audiochat.js:32
-#: multiplayer/templates/multiplayer/match.html:22
-#: usergroups/templates/usergroups/group_detail.html:26
+#: usergroups/templates/usergroups/group_detail.html:34
 msgid "Austreten"
 msgstr ""
 
@@ -992,7 +985,7 @@ msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
 msgstr ""
 
 #: activity/templates/activity/detail.html:42
-#: multiplayer/templates/multiplayer/match.html:24
+#: multiplayer/templates/javascript/lobby.js:48
 msgid "Beitreten"
 msgstr ""
 
@@ -1010,7 +1003,6 @@ msgstr ""
 
 #: chat/templates/chat/chat_list.html:16
 #: competitions/templates/competitions/user_overview.html:8
-#: multiplayer/templates/multiplayer/lobby.html:30
 msgid "Matches"
 msgstr ""
 
@@ -1020,16 +1012,20 @@ msgstr ""
 msgid "Turniere"
 msgstr ""
 
-#: chat/templates/chat/room.html:5 chat/templates/chat/room.html:8
+#: chat/templates/chat/room.html:6
 #: competitions/templates/competitions/tournament_detail.html:11
 #: competitions/templates/competitions/tournament_detail.html:14
+#: multiplayer/templates/multiplayer/game.html:33
 #: vacancies/templates/vacancies/review_vacancy.html:18
 msgid "Chat"
 msgstr ""
 
-#: chat/templates/chat/room.html:10
-#: competitions/templates/competitions/match_detail.html:15
-msgid "Teilnehmer"
+#: chat/templates/javascript/audiochat.js:216
+msgid "tritt der Konferenz bei."
+msgstr ""
+
+#: chat/templates/javascript/room.js:44
+msgid "Sie"
 msgstr ""
 
 #: chat/views.py:19
@@ -1132,7 +1128,7 @@ msgstr ""
 
 #: competitions/templates/competitions/create_match.html:4
 #: competitions/templates/competitions/overview.html:27
-#: multiplayer/templates/multiplayer/lobby.html:11
+#: multiplayer/templates/multiplayer/lobby.html:13
 msgid "Match erstellen"
 msgstr ""
 
@@ -1276,12 +1272,13 @@ msgid "Admin"
 msgstr ""
 
 #: competitions/templates/competitions/match_detail.html:10
-#: usergroups/templates/usergroups/group_detail.html:12
+#: usergroups/templates/usergroups/group_detail.html:22
 #: vacancies/templates/vacancies/vacancy_list.html:21
 msgid "Bearbeiten"
 msgstr ""
 
 #: competitions/templates/competitions/match_detail.html:12
+#: multiplayer/templates/multiplayer/match.html:19
 msgid "Verlassen"
 msgstr ""
 
@@ -1290,9 +1287,13 @@ msgstr ""
 msgid "Ort: %(v0)s, %(v1)s"
 msgstr ""
 
+#: competitions/templates/competitions/match_detail.html:15
+msgid "Teilnehmer"
+msgstr ""
+
 #: competitions/templates/competitions/match_detail.html:21
 #: competitions/templates/competitions/overview.html:33
-#: usergroups/templates/usergroups/group_detail.html:28
+#: usergroups/templates/usergroups/group_detail.html:37
 msgid "Leerstellen"
 msgstr ""
 
@@ -1324,6 +1325,7 @@ msgid "Ort"
 msgstr ""
 
 #: competitions/templates/competitions/overview.html:25
+#: multiplayer/templates/multiplayer/lobby.html:58
 msgid "Öffentliche Matches"
 msgstr ""
 
@@ -1414,7 +1416,7 @@ msgstr ""
 msgid "Spieleranzahl"
 msgstr ""
 
-#: multiplayer/forms.py:17 multiplayer/models.py:98 multiplayer/views.py:103
+#: multiplayer/forms.py:17 multiplayer/models.py:143 multiplayer/views.py:98
 msgid "Durak"
 msgstr ""
 
@@ -1422,8 +1424,8 @@ msgstr ""
 msgid "Unterstützt werden 2, 3 oder 4 Spieler"
 msgstr ""
 
-#: multiplayer/forms.py:20 multiplayer/models.py:100 multiplayer/views.py:24
-#: multiplayer/views.py:105
+#: multiplayer/forms.py:20 multiplayer/models.py:145 multiplayer/views.py:25
+#: multiplayer/views.py:100
 msgid "Skat"
 msgstr ""
 
@@ -1431,17 +1433,8 @@ msgstr ""
 msgid "Unterstützt werden 3 oder 4 Spieler"
 msgstr ""
 
-#: multiplayer/models.py:93 multiplayer/templates/javascript/lobby.js:16
-msgid "FREI"
-msgstr ""
-
-#: multiplayer/models.py:102 multiplayer/views.py:28 multiplayer/views.py:107
+#: multiplayer/models.py:147 multiplayer/views.py:27 multiplayer/views.py:102
 msgid "Doppelkopf"
-msgstr ""
-
-#: multiplayer/templates/javascript/audiochat.js:48
-#: multiplayer/templates/multiplayer/game.html:32
-msgid "Konferenz"
 msgstr ""
 
 #: multiplayer/templates/javascript/cards.js:419
@@ -1543,7 +1536,7 @@ msgid "Normalspiel"
 msgstr ""
 
 #: multiplayer/templates/javascript/durak.js:61
-#: multiplayer/templates/javascript/durak.js:214
+#: multiplayer/templates/javascript/durak.js:211
 msgid "SCHLUCKT"
 msgstr ""
 
@@ -1555,17 +1548,12 @@ msgstr ""
 msgid "VERTEIDIGER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:345
+#: multiplayer/templates/javascript/durak.js:342
 msgid "Schlucken"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:355
+#: multiplayer/templates/javascript/durak.js:352
 msgid "Schieben"
-msgstr ""
-
-#: multiplayer/templates/javascript/match_overview.js:21
-#: multiplayer/templates/multiplayer/match.html:17
-msgid "Frei"
 msgstr ""
 
 #: multiplayer/templates/javascript/skat.js:17
@@ -1661,19 +1649,39 @@ msgid ""
 "erstellen."
 msgstr ""
 
-#: multiplayer/templates/multiplayer/game.html:9
+#: multiplayer/templates/multiplayer/game.html:10
 msgid "Spiel beenden, verlassen und zurücksetzen?"
 msgstr ""
 
-#: multiplayer/templates/multiplayer/game.html:10
+#: multiplayer/templates/multiplayer/game.html:11
 msgid "Ciao!"
 msgstr ""
 
-#: multiplayer/templates/multiplayer/lobby.html:16
+#: multiplayer/templates/multiplayer/lobby.html:19
 msgid "Online"
 msgstr ""
 
-#: multiplayer/views.py:56
+#: multiplayer/templates/multiplayer/lobby.html:32
+msgid "Ihre Matches"
+msgstr ""
+
+#: multiplayer/templates/multiplayer/lobby.html:46
+msgid "Spielen"
+msgstr ""
+
+#: multiplayer/templates/multiplayer/lobby.html:49
+msgid "Zur Übersicht"
+msgstr ""
+
+#: multiplayer/templates/multiplayer/match.html:27
+msgid "Abbrechen"
+msgstr ""
+
+#: multiplayer/templates/multiplayer/match.html:31
+msgid "Starten"
+msgstr ""
+
+#: multiplayer/views.py:58
 msgid "Spiel ist bereits voll"
 msgstr ""
 
@@ -1696,7 +1704,7 @@ msgstr ""
 
 #: scheduling/templates/scheduling/create_appointment.html:4
 #: scheduling/templates/scheduling/create_appointment.html:7
-#: usergroups/templates/usergroups/group_detail.html:88
+#: usergroups/templates/usergroups/group_detail.html:104
 msgid "Termin erstellen"
 msgstr ""
 
@@ -1833,65 +1841,61 @@ msgstr ""
 msgid "erfolgreich gelöscht"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:19
+#: usergroups/templates/usergroups/group_detail.html:27
 msgid "Gruppe gehört zur"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:34
+#: usergroups/templates/usergroups/group_detail.html:32
+msgid "Administrator"
+msgstr ""
+
+#: usergroups/templates/usergroups/group_detail.html:42
 msgid ""
 "Zurzeit gibt es keine Leerstellen. Der Administrator kann welche erstellen"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:37
+#: usergroups/templates/usergroups/group_detail.html:45
 #: vacancies/templates/vacancies/application_list.html:30
 msgid "Einladungen"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:43
+#: usergroups/templates/usergroups/group_detail.html:52
 #: vacancies/templates/vacancies/create_vacancies.html:4
 msgid "Leerstellen hinzufügen"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:43
+#: usergroups/templates/usergroups/group_detail.html:56
 msgid "Jemanden einladen"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:46
+#: usergroups/templates/usergroups/group_detail.html:61
 msgid "Termine"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:49
+#: usergroups/templates/usergroups/group_detail.html:64
 msgid "Wann"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:50
+#: usergroups/templates/usergroups/group_detail.html:65
 msgid "Wo"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:51
-#: usergroups/templates/usergroups/group_detail.html:77
+#: usergroups/templates/usergroups/group_detail.html:66
+#: usergroups/templates/usergroups/group_detail.html:92
 msgid "Zusagen"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:52
-#: usergroups/templates/usergroups/group_detail.html:77
+#: usergroups/templates/usergroups/group_detail.html:67
+#: usergroups/templates/usergroups/group_detail.html:92
 msgid "Absagen"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:73
+#: usergroups/templates/usergroups/group_detail.html:88
 msgid "Zusage zurücknehmen"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:75
-msgid "Absage zurücknehmen"
-msgstr ""
-
 #: usergroups/templates/usergroups/group_detail.html:90
-msgid "Administrator"
-msgstr ""
-
-#: usergroups/templates/usergroups/group_detail.html:93
-msgid "Post erstellen"
+msgid "Absage zurücknehmen"
 msgstr ""
 
 #: usergroups/templates/usergroups/user_group_list.html:4
@@ -2149,6 +2153,7 @@ msgid "Kommentar"
 msgstr ""
 
 #: wall/templates/wall/post/create_comment.html:4
+#: wall/templates/wall/post/post_loop.html:29
 msgid "Kommentieren"
 msgstr ""
 
@@ -2171,21 +2176,17 @@ msgid ""
 "anstößigen Mediendateien hoch."
 msgstr ""
 
-#: wall/templates/wall/post/post_loop.html:9
-#: wall/templates/wall/post/post_loop.html:25
+#: wall/templates/wall/post/post_loop.html:11
+#: wall/templates/wall/post/post_loop.html:27
 msgid "[Löschen]"
 msgstr ""
 
-#: wall/templates/wall/post/post_loop.html:25
+#: wall/templates/wall/post/post_loop.html:27
 #, python-format
 msgid " vor %(v0)s"
 msgstr ""
 
-#: wall/templates/wall/post/post_loop.html:27
-msgid "Kommentieren..."
-msgstr ""
-
-#: wall/templates/wall/post/post_loop.html:30
+#: wall/templates/wall/post/post_loop.html:32
 msgid "Keine"
 msgstr ""
 
