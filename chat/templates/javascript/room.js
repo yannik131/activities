@@ -53,8 +53,7 @@ function addMessageToChat(data) {
     middle.scrollTop = msg.offsetTop;
     var game_field = document.querySelector('.game-field');
     var game_chat = document.querySelector('.game-chat');
-    console.log(game_field, game_chat.style.display);
-    if(game_field && !game_chat.style.display) {
+    if(game_field && (!game_chat.style.display || game_chat.style.display == "none")) {
         var button = document.getElementById('chat-button');
         button.style.backgroundColor = "red";
     }
@@ -67,7 +66,7 @@ window.onbeforeunload = function() {
     user_websocket.send(JSON.stringify({'type': 'chat', 'update_check': '', 'id': {{ room.id }}}));
 };
 
-function moveMembers(count) {
+function moveMembers() {
     var padding = 10;
     var title_div = document.querySelector('.title');
     var members_div = document.querySelector('.chat-members');
@@ -84,9 +83,11 @@ function moveMembers(count) {
     }
     var last_member_div;
     var current_pos = 0;
-    if(!count) {
-        count = {{ room.members.all.count }};
+    var all_members = document.getElementsByClassName('chat-member');
+    for(var i = 0; i < all_members.length; i++) {
+        all_members[i].id = "member-"+i;
     }
+    var count = all_members.length;
     for(var i = 0; i < count; i++) {
         var member = document.getElementById('member-'+i);
         if(!member) {

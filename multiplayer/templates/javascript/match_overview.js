@@ -23,11 +23,7 @@ function addChatMember(username, id, img_src) {
     span.innerHTML = username;
     member.appendChild(span);
     document.querySelector('.chat-members').appendChild(member);
-    var all_members = document.getElementsByClassName('chat-member');
-    for(var i = 0; i < all_members.length; i++) {
-        all_members[i].id = "member-"+i;
-    }
-    moveMembers(all_members.length);
+    moveMembers();
 }
 
 function updateMatchMembers(data) {
@@ -60,10 +56,10 @@ function updateMatchMembers(data) {
             var member_span = document.querySelector('.'+data.username+"-span");
             var parent = member_span.parentElement;
             parent.remove();
-            moveMembers();
             deletePeerConnection(data.id);
             colorize(data.id, 'white');
             members--;
+            moveMembers();
             break;
         case "start":
             location.href = "/multiplayer/game/{{ match.activity.name }}/" + data.match_id;

@@ -6,7 +6,6 @@ html {
 body {
     height: 100vh;
     margin: 0;
-    padding-bottom: 20px;
 }
 
 .base-container {
@@ -50,6 +49,7 @@ input[type='text'], textarea, select:focus {
     padding: 5px 5px;
     position: relative;
     margin-bottom: 10px;
+    display: block;
 }
 
 h1 {
@@ -324,7 +324,7 @@ select:focus, select:hover {
 }
 
 .competitive img {
-    height: 100%;
+    max-height: 80%;
     margin-right: 5px;
 }
 
@@ -373,3 +373,4 @@ select:focus, select:hover {
     border: 1px solid rgba(81, 203, 238, 1);
     margin: 10px 0px;
 }
+

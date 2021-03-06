@@ -1,60 +1,84 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
+{% load thumbnail %}
 
 {% block title %}{% blocktrans %}Anfragen{% endblocktrans %}{% endblock %}
 
+{% block style%}{% include 'multiplayer/lobby.css' %}{% endblock %}
+
+
 {% block content %}
-    <h1>{% blocktrans %}Anfragen{% endblocktrans %}</h1>
-    <h2>{% trans 'Eingegangen' %}</h2>
-    {% if received_friend_requests %}
-    <table>
-        <tr>
-            <th>{% blocktrans %}Nutzername{% endblocktrans %}</th>
-            <th>{% blocktrans %}Nachricht{% endblocktrans %}</th>
-            <th>{% blocktrans %}Aktion{% endblocktrans %}</th>
-        </tr>
-        {% for request in received_friend_requests %}
-            <tr>
-                <td><a href="{% url 'account:detail' request.requesting_user.username %}">{{ request.requesting_user.username }}</a></td>
-                <td>{{ request.request_message }}</td>
-                <td>
-                    {% if request.status == 'pending' %}
-                        <a href="{% url 'account:accept_request' request.id %}">{% blocktrans %}Annehmen{% endblocktrans %}</a> <a href="{% url 'account:decline_request' request.id %}">{% blocktrans %}Ablehnen{% endblocktrans %}</a>
-                    {% else %}
-                        <a href="{% url 'account:delete_request' request.id %}">{% blocktrans %}Löschen{% endblocktrans %}</a>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-    {% else %}
-    <p>{% trans "Keine Anfragen." %}</p>
-    {% endif %}
-    <h2>{% blocktrans %}Gesendet{% endblocktrans %}</h2>
-    {% if sent_friend_requests %}
-    <table>
-        <tr>
-            <th>{% blocktrans %}Nutzername{% endblocktrans %}</th>
-            <th>{% blocktrans %}Nachricht{% endblocktrans %}</th>
-            <th>{% blocktrans %}Aktion{% endblocktrans %}</th>
-        </tr>
-        {% for request in sent_friend_requests %}
-            <tr>
-                <td><a href="{% url 'account:detail' request.requested_user.username %}">{{ request.requested_user.username }}</a></td>
-                <td>{{ request.request_message }}</td>
-                <td>
-                    {% if request.status != 'declined' %}
-                        <a href="{% url 'account:delete_request' request.id %}">{% blocktrans %}Löschen{% endblocktrans %}</a>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-    {% else %}
-    <p>{% trans "Keine." %}</p>
-    {% endif %}
-    <p><a href="{% url 'account:send_custom_friend_request' %}" style="font-style: italic;">{% blocktrans %}Eine Anfrage an einen Nutzer senden...{% endblocktrans %}</a></p>
-    <h1>{% blocktrans %}Freunde{% endblocktrans %}</h1>
+    <h1 class="center-container">{% blocktrans %}Ihre Freunde{% endblocktrans %}</h1>
+    <div class="button-like" onclick=openLink("{% url 'account:send_custom_friend_request' %}")>
+        <img src="{% static 'icons/friendship.png' %}">
+        {% trans 'Anfrage senden' %}
+    </div>
     {% include 'account/user_loop.html' with users=user.friends %}
+    {% if received_friend_requests %}
+        <h1 class="center-container">{% trans 'Eingegange Anfragen' %}</h1>
+        <div class="match-list">
+            {% for request in received_friend_requests %}
+            <div class="item" style="width: 250px;">
+                <div class="top">
+                    {% trans 'Von' %}:
+                    {% if request.requesting_user.image %}
+                    <img src="{% thumbnail request.requesting_user.image 0x80 %}">
+                    {% else %}
+                    <img src="{% static 'icons/users-and-groups-user@32px.png' %}">
+                    {% endif %}
+                    <a href="{% url 'account:detail' request.requesting_user.username %}">{{ request.requesting_user.username }}</a>
+                </div>
+                <div class="middle">
+                    {{ request.request_message }}
+                </div>
+                <div class="bottom">
+                    {% if request.status == 'pending' %}
+                    <div class="competitive" style="font-size: 16px">
+                        <div class="left" onclick=openLink("{% url 'account:accept_request' request.id %}")>
+                            <img src="{% static 'icons/accept.png' %}">
+                            {% trans 'Annehmen' %}
+                        </div>
+                        <div class="right" onclick=openLink("{% url 'account:decline_request' request.id %}")>
+                            <img src="{% static 'icons/reject.png' %}">
+                            {% trans 'Ablehnen' %}
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="button-like" onclick=openLink("{% url 'account:delete_request' request.id %}")>
+                        <img src="{% static 'icons/remove.png' %}">
+                        {% trans 'Löschen' %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if sent_friend_requests %}
+        <h1 class="center-container">{% trans 'Gesendete Anfragen' %}</h1>
+        <div class="match-list">
+            {% for request in sent_friend_requests %}
+            <div class="item" style="width: 200px;">
+                <div class="top">
+                    {% trans 'An' %}:{% if request.requested_user.image %}
+                    <img src="{% thumbnail request.requested_user.image 0x80 %}">
+                    {% else %}
+                    <img src="{% static 'icons/users-and-groups-user@32px.png' %}">
+                    {% endif %}
+                    <a href="{% url 'account:detail' request.requested_user.username %}">{{ request.requested_user.username }}</a>
+                </div>
+                <div class="middle">
+                    {{ request.request_message }}
+                </div>
+                <div class="bottom">
+                    <div class="button-like" onclick=openLink("{% url 'account:delete_request' request.id %}")>
+                        <img src="{% static 'icons/remove.png' %}">
+                        {% trans 'Löschen' %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}

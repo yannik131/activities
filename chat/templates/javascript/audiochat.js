@@ -208,7 +208,6 @@ function joinAudio() {
 function leaveAudio() {
     acceptingConnections = false;
     localTrack.stop();
-    console.log('Deleting peer connections for', users);
     while(users.length > 0) {
         deletePeerConnection(users[users.length-1]);
     }
