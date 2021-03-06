@@ -30,7 +30,7 @@
                 {% if requested %}
                     {% trans "Sie haben allerdings bereits eine Freundschaftsanfrage gesendet. Diese wurde entweder abgelehnt oder die Antwort steht noch aus" %}.
                 {% else %}
-                    {% trans "Falls Sie das ändern möchten, schicken Sie ihm doch eine" %} <a href="{% url 'account:send_friend_request' viewed_user.id %}">{% trans "Freundschaftsanfrage" %}.</a>
+                    <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'account:send_friend_request' viewed_user.id %}")>{% trans "Freundschaftsanfrage schicken" %}</button></div></p>
                 {% endif %}
             {% endif %}
             <h3>{% trans "Posts" %}</h3>

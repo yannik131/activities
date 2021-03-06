@@ -37,7 +37,7 @@ function updateMatchMembers(data) {
             username.innerHTML = data.username;
             if('{{ user }}' == '{{ match.admin }}') {
                 var img = document.getElementById('kick-img-'+data.position);
-                img.style.display = "block";
+                img.style.display = "flex";
                 img.username = data.username;
                 img.onclick = function() {
                     kickUser(this.username);

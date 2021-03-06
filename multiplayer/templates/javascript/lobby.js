@@ -13,30 +13,28 @@ function updateMatchList(data) {
         }
         var item = document.createElement('div');
         var img = document.createElement('img');
-        var title = document.createElement('div');
-        var subtext = document.createElement('div');
+        var top = document.createElement('div');
+        var middle = document.createElement('div');
+        var bottom = document.createElement('div');
         var button = document.createElement('div');
         item.className = 'item';
-        item.style = "width: 150px; height: 150px; cursor: auto; background-color: darkgrey";
-
+        
+        top.className = 'top';
         img.src = "{% static 'icons/match.png' %}";
-        img.className = "image";
-        img.style.height = "40px";
-        item.appendChild(img);
+        top.appendChild(img);
+        top.innerHTML += user_list.length+"/"+match_data[2];
+        item.appendChild(top);
         
-        title.className = 'title';
-        title.innerHTML = user_list.length+"/"+match_data[2];
-        item.appendChild(title);
-        
-        subtext.className = 'subtext';
+        middle.className = 'middle';
         for(var j = 0; j < user_list.length; j++) {
-            subtext.innerHTML += user_list[j];
+            middle.innerHTML += user_list[j];
             if(j != user_list.length-1) {
-                subtext.innerHTML += ", ";
+                middle.innerHTML += ", ";
             }
         }
-        item.appendChild(subtext);
+        item.appendChild(middle);
         
+        bottom.className = 'bottom';
         button.className = 'button-like';
         button.id = match_data[0];
         button.onclick = function() {
@@ -46,7 +44,8 @@ function updateMatchList(data) {
         img.src = "{% static 'icons/join.png' %}";
         button.appendChild(img);
         button.innerHTML += "{% trans 'Beitreten' %}";
-        item.appendChild(button);
+        bottom.appendChild(button);
+        item.appendChild(bottom);
         list.appendChild(item);
     }
 }

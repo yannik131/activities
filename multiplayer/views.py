@@ -48,7 +48,7 @@ def match(request, match):
     is_member = match.members.filter(pk=request.user.id).exists()
     if not is_member:
         return HttpResponseRedirect(match.lobby_url(request))
-    members = sorted([(User.objects.get(id=v), k) if v else ("", k) for k, v in match.member_positions.items()], key=lambda t: t[1])
+    members = sorted([(v, k) if v else ("", k) for k, v in match.member_positions.items()], key=lambda t: t[1])
     while len(members) < 4:
         members.append(("", len(members)))
     

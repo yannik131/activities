@@ -29,25 +29,27 @@
     </table>
 </div>
 <div class="joined-matches">
-    <h2>{% trans 'Ihre Matches' %}</h2>
-    <div class="list">
+    <h2>{% trans 'Beigetreten' %}</h2>
+    <div class="match-list">
         {% for match in user_matches.all %}
-            <div class="item" style="width: 150px; height: 150px; cursor: auto; background-color: darkgrey">
-                <img src="{% static 'icons/match.png' %}" class="image" style="height: 40px">
-                <div class="title">
-                    {{ match.members.all.count }}/{{ match.member_limit }}
+            <div class="item">
+                <div class="top">
+                    <img src="{% static 'icons/match.png' %}" class="image">{{ match.members.all.count }}/{{ match.member_limit }}
                 </div>
-                <div class="subtext">
-                    {% for member in match.members.all %}{{ member }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                
+                <div class="middle">
+                    {% for k, v in match.member_positions.items %}{% if v == match.admin.username %}<b style="color: red">{{ v }}</b>{% else %}{{ v }}{% endif %}{% if forloop.counter < match.members.all.count %}, {% endif %}{% endfor %}
                 </div>
-                <div class="button-like" onclick="openLink('{{ match.get_absolute_url }}')">
-                    {% if match.in_progress %}
-                        <img src="{% static 'icons/dog.png' %}">
-                        {% trans 'Spielen' %}
-                    {% else %}
-                        <img src="{% static 'icons/chat.png' %}">
-                        {% trans 'Zur Übersicht' %}
-                    {% endif %}
+                <div class="bottom">
+                    <div class="button-like" onclick="openLink('{{ match.get_absolute_url }}')">
+                        {% if match.in_progress %}
+                            <img src="{% static 'icons/dog.png' %}">
+                            {% trans 'Spielen' %}
+                        {% else %}
+                            <img src="{% static 'icons/chat.png' %}">
+                            {% trans 'Zur Übersicht' %}
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         {% endfor %}
@@ -55,8 +57,8 @@
 </div>
 <p style="clear: both"></p>
 <div class="other-matches">
-    <h2>{% trans 'Öffentliche Matches' %}</h2>
-    <div class="list" id="other-matches">
+    <h2>{% trans 'Offen' %}</h2>
+    <div class="match-list" id="other-matches">
         
     </div>
 </div>

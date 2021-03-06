@@ -33,15 +33,14 @@ class MultiplayerMatch(models.Model):
     @staticmethod
     def match_list_for(activity_id):
         matches = MultiplayerMatch.objects.filter(activity__id=activity_id)
-        return [(match.id, [user.username for user in match.members.all()], match.member_limit) for match in matches if not match.is_full()]
+        return [(match.id, [v for k, v in match.member_positions.items() if v], match.member_limit) for match in matches if not match.is_full()]
         
     def add_member(self, user):
         for k, v in self.member_positions.items():
             if not v:
-                self.member_positions[k] = user.id
+                self.member_positions[k] = user.username
                 self.save()
                 break
-        log('Added member', user, 'positions:', self.member_positions)
         self.broadcast_data(
             {
                 'action': 'members_changed',
@@ -58,11 +57,10 @@ class MultiplayerMatch(models.Model):
         
     def remove_member(self, member):
         for k, v in self.member_positions.items():
-            if str(v) == str(member.id):
+            if str(v) == member.username:
                 self.member_positions[k] = ""
                 self.save()
                 break
-        log('Removed member', member, 'positions:', self.member_positions)
         if self.in_progress:
             self.abort()
         else:
@@ -93,14 +91,14 @@ class MultiplayerMatch(models.Model):
         
     def get_position_of(self, member):
         for k, v in self.member_positions.items():
-            if v == str(member.id):
+            if v == member.username:
                 return k
         return None
         
     def init_positions(self):
         for i in range(2, self.member_limit+1):
             self.member_positions[str(i)] = ""
-        self.member_positions['1'] = self.admin.id
+        self.member_positions['1'] = self.admin.username
         self.save()
         
     def broadcast_data(self, data, direct=False):
@@ -165,9 +163,8 @@ class MultiplayerMatch(models.Model):
     def create_players(self, n, *deck):
         deck = create_deck(*deck)
         players = []
-        for i in range(self.member_limit):
-            user = User.objects.get(pk=self.member_positions[str(i+1)])
-            players.append(user.username)
+        for k, v in self.member_positions.items():
+            players.append(v)
         self.game_data["players"] = json.dumps(players)
         for player in players:
             self.game_data[player] = json.dumps(deck[:n])

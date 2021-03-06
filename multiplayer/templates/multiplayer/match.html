@@ -22,11 +22,14 @@
                     <img src="{% static 'icons/lobby.png' %}">Lobby
                 </div>
             {% elif user == match.admin %}
-                <div class="left" onclick=openLink("{% url 'multiplayer:leave_match' match.activity.name match.id %}")>
+                <div class="left" style="width: 33%" onclick=openLink("{% url 'multiplayer:leave_match' match.activity.name match.id %}")>
                     <img src="{% static 'icons/bye.png' %}">
                     {% trans "Abbrechen" %}
                 </div>
-                <div class="right" onclick="startMatch()">
+                <div class="left" style="width: 33%" onclick="location.href='{% call_method match 'lobby_url' request %}'">
+                    <img src="{% static 'icons/lobby.png' %}">Lobby
+                </div>
+                <div class="right" style="width: 33%" onclick="startMatch()">
                     <img src="{% static 'icons/start.png' %}">
                     {% trans "Starten" %}
                 </div>
