@@ -1,16 +1,14 @@
 {% load static %}
+{% load thumbnail %}
 
-<div class="activity-horizontal-list">
+<div class="list">
     {% for room, target in rooms %}
-        <div class="item">
-            {% load thumbnail %}
-            <a href="{{ room.get_absolute_url }}">
+        <div class="item" onclick="location.href='{{ room.get_absolute_url }}'" style="width: 150px; height: 150px">
             {% if target.image %}
-            <img src="{% thumbnail target.image 200x200 %}" class="photo">
+                <img src="{% thumbnail target.image 200x200 %}" class="image">
             {% else %}
-            <img src="{% static default_img %}" width="100">
+                <img src="{% static 'icons/users-and-groups-group@32px.png' %}" class="image">
             {% endif %}
-            </a>
             <div class="title">
                 {{ target }}
             </div>
