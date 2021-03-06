@@ -53,7 +53,8 @@ function addMessageToChat(data) {
     middle.scrollTop = msg.offsetTop;
     var game_field = document.querySelector('.game-field');
     var game_chat = document.querySelector('.game-chat');
-    if(game_field && game_chat.style.display == "none") {
+    console.log(game_field, game_chat.style.display);
+    if(game_field && !game_chat.style.display) {
         var button = document.getElementById('chat-button');
         button.style.backgroundColor = "darkgreen";
     }
@@ -87,10 +88,8 @@ function moveMembers(count) {
         count = {{ room.members.all.count }};
     }
     for(var i = 0; i < count; i++) {
-        console.log(i);
         var member = document.getElementById('member-'+i);
         if(!member) {
-            console.log("not found");
             continue;
         }
         if(last_member_div) {
