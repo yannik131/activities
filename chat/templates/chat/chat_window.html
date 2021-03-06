@@ -22,7 +22,7 @@
                     {% else %}
                         <img src="{% static 'icons/users-and-groups-user@32px.png' %}">
                     {% endif %}
-                    <span class="{{ member }}-span" id="member-name-{{ member.id }}">{{ member }}</span>
+                    <span class="{{ member }}-span" id="member-name-{{ member.id }}" {% if member.channel_name %}style="color: yellow"{% endif %}>{{ member }}</span>
                 </div>
             {% endif %}
             {% endfor %}

@@ -20,6 +20,7 @@ function addChatMember(username, id, img_src) {
     var span = document.createElement('span');
     span.className = username+"-span";
     span.id = "member-name-"+id;
+    span.style.color = "yellow";
     span.innerHTML = username;
     member.appendChild(span);
     document.querySelector('.chat-members').appendChild(member);

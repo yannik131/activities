@@ -5,7 +5,7 @@
 
 {% block title %}{{ activity }}-Lobby{% endblock %}
 {% block style %}
-{% include "css/lobby.css" %}
+{% include "multiplayer/lobby.css" %}
 {% endblock %}
 
 {% block content %}
@@ -51,6 +51,11 @@
                         {% endif %}
                     </div>
                 </div>
+                {% if user == match.admin %}
+                <img src="{% static 'icons/admin.png' %}" class="icon">
+                {% elif user in match.members.all %}
+                <img src="{% static 'icons/member.png' %}" class="icon">
+                {% endif %}
             </div>
         {% endfor %}
     </div>

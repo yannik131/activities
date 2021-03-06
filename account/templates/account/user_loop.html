@@ -11,7 +11,7 @@
             {% endif %}
             </a>
             <div class="title">
-                {{ user }}
+                <span {% if user.channel_name %}style="color: yellow; font-weight: bold;"{% endif %}>{{ user }}</span>
             </div>
         </div>
     {% endfor %}

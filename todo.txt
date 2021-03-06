@@ -35,3 +35,9 @@ lobby aufhübschen (match erstellen, beitreten sofort)
 aktivitäten vorschlagen: 5 mit den meisten mitgliedern (vorschläge wegklicken), fragebogen ausfüllen
 
 überall .get durch get_object_or_404
+leerstellen zusagen absagen weniger/mehr mitglieder
+viele chatcheck objekte?
+vacancy gelöscht redirect zu account bearbeiten?
+bewerbungen & einladungen .list class
+charakterpunkte zu aktivitäten hinzufügen, fragebogen zur Charakterermittlung
+messages in einigen fällen

@@ -24,6 +24,7 @@ var tracks = {};
 var users = [];
 let localTrack;
 var acceptingConnections = false;
+var old_colors = {};
 
 function requestShow() {
     send({'type': 'rtc', 'action': 'request_show', 'room_id': {{ room.id }}});
@@ -78,7 +79,19 @@ function handleRTCMessage(data) {
 function colorize(user, color) {
     var user_span = document.getElementById('member-name-'+user);
     if(user_span) {
-        user_span.style.color = color;
+        var old_color = old_colors[user_span.id];
+        var new_color;
+        if(!old_color) {
+            old_color = user_span.style.color;
+            old_colors[user_span.id] = old_color;
+        }
+        if(color == "white") {
+            new_color = old_colors[user_span.id];
+        }
+        else {
+            new_color = color;
+        }
+        user_span.style.color = new_color? new_color : color;
     }
 }
 
