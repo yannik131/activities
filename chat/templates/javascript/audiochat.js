@@ -4,8 +4,8 @@
 
 const button = document.getElementById("join-audio");
 const remoteAudio = document.getElementById('remote-audio');
-const remoteMediaStream = new MediaStream();
-remoteAudio.srcObject = remoteMediaStream;
+let remoteMediaStream;
+
 const configuration = {
     "iceServers": [{
         urls: 'turn:turn.myactivities.net:5349',
@@ -210,6 +210,8 @@ function closeChat() {
 
 function joinAudio() {
     navigator.mediaDevices.getUserMedia({audio: true}).then(function(mediaStream) {
+        remoteMediaStream = new MediaStream();
+        remoteAudio.srcObject = remoteMediaStream;
         localTrack = mediaStream.getAudioTracks()[0];
         acceptingConnections = true;
         send({'type': 'rtc', 'action': 'join', 'room_id': '{{ room.id }}'});
