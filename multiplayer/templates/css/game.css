@@ -125,3 +125,17 @@
 .game-chat div {
     opacity: 0.98;
 }
+
+.game-button {
+    z-index: 100;
+    position: absolute;
+    border: 1px solid white;
+    color: white;
+    background-color: black;
+    opacity: 0.6;
+    border-radius: 5px;
+}
+
+.game-button:hover {
+    background-color: gray;
+}
