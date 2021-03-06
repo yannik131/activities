@@ -187,27 +187,6 @@ function deletePeerConnection(user) {
     users.splice(users.indexOf(user), 1);
 }
 
-function openChat() {
-    document.querySelector('.game-chat').style.display = "block";
-    var button = document.getElementById('chat-button');
-    button.style.backgroundColor = "#2a2a2a";
-    var img = document.getElementById('open-chat-img');
-    img.src = "{% static 'icons/leave.png' %}";
-    document.getElementById('chat-button').onclick = closeChat;
-    var last_msg = document.getElementById('last-message');
-    if(last_msg) {
-        document.querySelector('.chat-middle').scrollTop = last_msg.offsetTop;
-    }
-    moveMembers();
-}
-
-function closeChat() {
-    document.querySelector('.game-chat').style.display = "none";
-    var img = document.getElementById('open-chat-img');
-    img.src = "{% static 'icons/chat.png' %}";
-    document.getElementById('chat-button').onclick = openChat;
-}
-
 function joinAudio() {
     navigator.mediaDevices.getUserMedia({audio: true}).then(function(mediaStream) {
         remoteMediaStream = new MediaStream();

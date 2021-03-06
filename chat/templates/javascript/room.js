@@ -56,7 +56,7 @@ function addMessageToChat(data) {
     console.log(game_field, game_chat.style.display);
     if(game_field && !game_chat.style.display) {
         var button = document.getElementById('chat-button');
-        button.style.backgroundColor = "darkgreen";
+        button.style.backgroundColor = "red";
     }
 };
 
@@ -99,6 +99,28 @@ function moveMembers(count) {
         last_member_div = member;
         member.style.display = 'flex';
     }
+}
+
+function openChat() {
+    document.querySelector('.game-chat').style.display = "block";
+    var button = document.getElementById('chat-button');
+    button.style.backgroundColor = "#2a2a2a";
+    button.style.color = "white";
+    var img = document.getElementById('open-chat-img');
+    img.src = "{% static 'icons/leave.png' %}";
+    document.getElementById('chat-button').onclick = closeChat;
+    var last_msg = document.getElementById('last-message');
+    if(last_msg) {
+        document.querySelector('.chat-middle').scrollTop = last_msg.offsetTop;
+    }
+    moveMembers();
+}
+
+function closeChat() {
+    document.querySelector('.game-chat').style.display = "none";
+    var img = document.getElementById('open-chat-img');
+    img.src = "{% static 'icons/chat.png' %}";
+    document.getElementById('chat-button').onclick = openChat;
 }
 
 function positionChat() {
