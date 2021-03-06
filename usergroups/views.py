@@ -1,5 +1,5 @@
 from shared.shared import paginate
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from activity.models import Category
 from django.contrib.auth.decorators import login_required
 from .forms import GroupForm
@@ -33,7 +33,7 @@ def group_list(request, id=None):
 
 @login_required
 def group_detail(request, id):
-    group = UserGroup.objects.get(id=id)
+    group = get_object_or_404(UserGroup, id=id)
     is_in_group = request.user in group.members.all()
     if not group.public and not is_in_group:
         return handler403(request)
@@ -68,10 +68,9 @@ def create_group(request, id):
             group.category = category
             group.admin = request.user
             group.save()
-            return render(request, 'usergroups/group_created.html', dict(group=group))
+            return HttpResponseRedirect(group.get_absolute_url())
     else:
         form = GroupForm(initial=dict(public=True, category=category.name, admin=request.user.username))
-
     return render(request, 'usergroups/create_group.html', dict(category=category, form=form))
 
 

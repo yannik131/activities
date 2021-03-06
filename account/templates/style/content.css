@@ -41,6 +41,7 @@ input[type='text'], textarea, select:focus {
 .login {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     padding: 0px 5px;
+    margin: 5px 5px;
 }
 
 .post {
@@ -227,6 +228,7 @@ select:focus, select:hover {
     width: 250px;
     height: 200px;
     display: inline-block;
+    position: relative;
     margin: 10px 10px;
     padding-bottom: 5px;
     border: 1px solid #1a1a1a;
@@ -268,6 +270,12 @@ select:focus, select:hover {
 }
 .list .item a:hover {
     color: #1a1a1a;
+}
+.list .icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 30px;
 }
 
 .about-picture {

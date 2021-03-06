@@ -19,3 +19,9 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
         room.members.remove(member)
         
         
+@receiver(post_delete, sender=MultiplayerMatch)
+def match_deleted(instance, **kwargs):
+    room = ChatRoom.get_for_target(instance)
+    room.delete()
+        
+        

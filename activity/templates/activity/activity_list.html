@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans "Alle Aktivitäten" %}{% endblock %}
 
@@ -20,6 +21,9 @@
             <div class="subtext">
                 {% trans "Mitglieder" %}: {{ activity.count }}
             </div>
+            {% if activity in user.activities.all %}
+                <img src="{% static 'icons/member.png' %}" class="icon">
+            {% endif %}
         </div>
     {% endfor %}
     </div>

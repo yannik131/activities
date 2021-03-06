@@ -33,3 +33,5 @@ game chat unten links button mit popup in der mitte
 eklige weiße nachrichten (bereits freundschaftsanfrage gesendet) durch redirect mit message ersetzen (grün?)
 lobby aufhübschen (match erstellen, beitreten sofort)
 aktivitäten vorschlagen: 5 mit den meisten mitgliedern (vorschläge wegklicken), fragebogen ausfüllen
+
+überall .get durch get_object_or_404

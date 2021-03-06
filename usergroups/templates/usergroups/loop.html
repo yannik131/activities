@@ -17,6 +17,11 @@
                 <a href="{{ group.category.get_absolute_url }}" style="text-decoration: underline;">{{ group.category.verbose }}</a>
                 {% trans "Mitglieder" %}: {{ group.members.all|length }}
             </div>
+            {% if user == group.admin %}
+                <img src="{% static 'icons/admin.png' %}" class="icon">
+            {% elif group in user.user_groups.all %}
+                <img src="{% static 'icons/member.png' %}" class="icon">
+            {% endif %}
         </div>
     {% endfor %}
 </div>

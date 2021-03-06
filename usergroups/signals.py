@@ -41,4 +41,9 @@ def group_changed(instance, **kwargs):
     if previous:
         if previous.description != instance.description:
             notify(instance.members.all().exclude(id=instance.admin.id), instance, 'updated_description')
+            
+@receiver(post_delete, sender=UserGroup)
+def group_deleted(instance, **kwargs):
+    room = ChatRoom.get_for_target(instance)
+    room.delete()
 

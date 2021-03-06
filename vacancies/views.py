@@ -88,6 +88,9 @@ def accept_invitation(request, id):
 @login_required
 def apply_for_vacancy(request, id):
     vacancy = Vacancy.objects.get(id=id)
+    if not request.user.birth_year:
+        #TODO: messages
+        return HttpResponseRedirect(request.user.get_absolute_url())
     if not request.user.satisfies_requirements_of(vacancy):
         return handler403(request, _('Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder Geschlecht) nicht. <a href=\"{link}\">Zurück</a>').format(link=vacancy.target.get_absolute_url()))
     elif request.user.applications.filter(vacancy=vacancy).exists():
