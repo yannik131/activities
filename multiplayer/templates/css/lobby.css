@@ -19,7 +19,12 @@
     font-family: "Arial", "Verdana", "Helvectica";
     background-color: gray;
     scrollbar-width: none;
+    -ms-overflow-style: none;
 }
+.match-list .item::-webkit-scrollbar {
+    display: none;
+}
+
 .match-list .item:hover {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
@@ -47,6 +52,10 @@
     text-align: center;
     overflow-y: scroll;
     scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.match-list .item .middle::-webkit-scrollbar {
+    display: none;
 }
 .match-list .item .bottom {
     position: absolute;

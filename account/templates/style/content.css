@@ -236,6 +236,10 @@ select:focus, select:hover {
     background-color: gray;
     overflow-y: scroll;
     scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.list .item::-webkit-scrollbar {
+    display: none;
 }
 .list .item:hover {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
