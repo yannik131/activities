@@ -95,7 +95,7 @@ function colorize(user, color) {
     }
 }
 
-function setOnIceCandidate(pc) {
+function setOnIceCandidate(pc, sender) {
     pc.onicecandidate = function(event) {
         if(event.candidate) {
             send({
@@ -139,7 +139,7 @@ function handleJoin(data) {
             'offer': pc.localDescription,
             'channel': 'user-'+data.sender
         });
-        setOnIceCandidate(pc);
+        setOnIceCandidate(pc, data.sender);
     }).catch(function(reason) {
         console.log('Error setting local sd from local offer?', reason);
     });
@@ -161,7 +161,7 @@ function handleOffer(data) {
             'answer': pc.localDescription,
             'channel': 'user-'+data.sender
         });
-        setOnIceCandidate(pc);
+        setOnIceCandidate(pc, data.sender);
     })
     .catch(function(reason) {
         console.log('Error setting local sd after answer to', data.sender, ':', reason, pc.signalingState);
