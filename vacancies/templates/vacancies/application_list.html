@@ -1,45 +1,34 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load thumbnail %}
+{% load static %}
 
 {% block title %}{% trans "Bewerbungen" %}{% endblock %}
+{% block style %}{% include 'multiplayer/lobby.css' %}{% endblock %}
 
 {% block content %}
     <h1>{% trans "Bewerbungen" %}</h1>
-    <table>
-        <tr>
-            <th>{% trans "Ziel" %}</th>
-            <th>{% trans "Leerstelle" %}</th>
-            <th>{% trans "Text" %}</th>
-            <th>{% trans "Status" %}</th>
-            <th>{% trans "Aktion" %}</th>
-        </tr>
+    <div class="match-list">
         {% for application in user.applications.all %}
-            <tr>
-                <td><a href="{{ application.vacancy.target.get_absolute_url }}">{{ application.vacancy.target }}</a></td>
-                <td>{{ application.vacancy.description }}</td>
-                <td>{{ application.text }}</td>
-                <td>{{ application.get_status_display }}</td>
-                <td>
-                    {% if application.status == 'pending' %}
-                        <a href="{% url 'vacancies:delete_application' application.id %}">{% trans "Löschen" %}</a>
-                    {% endif %}
-                </td>
-            </tr>
+        <div class="item" style="width: 250px; height: 200px; cursor: pointer;" onclick=openLink("{{ application.vacancy.target.get_absolute_url }}")>
+            <div class="top" style="height: 35%; overflow-y: scroll; scrollbar-width: none; word-wrap: break-word; align-items: center-stretch">
+                <span style="padding: 5px 5px; text-align: center">{{ application.vacancy.target }}: {{ application.vacancy }}</span>
+            </div>
+            <div class="middle" style="height: 45%; top: 36%;">
+                {{ application.message }}
+            </div>
+            <div class="bottom" style="bottom: 0; height: 20%">
+                {% if application.status == 'pending' %}
+                <div class="button-like" onclick=openLink("{% url 'vacancies:delete_application' application.id %}")>
+                    <img src="{% static 'icons/remove.png' %}">
+                    {% trans 'Löschen' %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
         {% endfor %}
-    </table>
+    </div>
     <h2>{% trans "Einladungen" %}</h2>
-    <table>
-        <tr>
-            <th>{% trans "Sender" %}</th>
-            <th>{% trans "Nachricht" %}</th>
-            <th>{% trans "Aktion" %}</th>
-        </tr>
-        {% for invitation in invitations.all %}
-            <tr>
-                <td><a href="{{ invitation.sender.get_absolute_url }}">{{ invitation.sender.verbose }}</a></td>
-                <td>{{ invitation.message }}</td>
-                <td><a href="{% url 'vacancies:accept_invitation' invitation.id %}">{% trans "Annehmen" %}</a> | <a href="{% url 'vacancies:delete_invitation' invitation.id %}">{% trans "Löschen" %}</a></td>
-            </tr>
-        {% endfor %}
-    </table>
+    {% include 'vacancies/invitation_list.html' %}
+    
 {% endblock %}

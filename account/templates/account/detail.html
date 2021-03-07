@@ -7,8 +7,9 @@
 
 {% block content %}
     <h1>{% trans "Profil von" %} {{ viewed_user.username }}</h1>
+    {% if viewed_user.image %}<img src="{{ viewed_user.image.url }}" class="user-photo">{% endif %}
     {% if friendship %}
-        {% if viewed_user.image %}<img src="{{ viewed_user.image.url }}" class="user-photo">{% endif %}
+        
         {% if viewed_user.profile_text %}
             <p class="center-container">
                 <i>
@@ -16,7 +17,7 @@
                 </i>
             </p>
         {% endif %}
-        <div class="button-like" onclick=openLink("{% url 'chat:chat_room' 'account' 'friendship' friendship.id %}")>
+        <div class="button-like" style="margin-top: 10px" onclick=openLink("{% url 'chat:chat_room' 'account' 'friendship' friendship.id %}")>
             <img src="{% static 'icons/chat.png' %}">
             {% trans "Zum Chat" %}
         </div>

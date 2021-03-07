@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans "Leerstelle bearbeiten" %}{% endblock %}
 
 {% block content %}
     <h1>{% trans "Leerstelle bearbeiten" %}</h1>
+    <div class="button-like" onclick=openLink("{% url 'vacancies:delete_vacancy' vacancy.id %}")>
+        <img src="{% static 'icons/remove.png' %}">
+        {% trans 'Löschen' %}
+    </div>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}

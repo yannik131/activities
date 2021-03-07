@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from activity.models import Activity
 from account.models import Location, User
 from . import utils
@@ -28,7 +28,7 @@ def test(request):
 def overview(request, activity_id):
     component_index = int(request.GET.get('component_index', 3))
     chosen_component = request.user.location.get_component(Location.components[component_index])
-    activity = Activity.objects.get(id=activity_id)
+    activity = get_object_or_404(Activity, id=activity_id)
     matches = Match.objects.filter(activity=activity, public=True)
     component = Location.components[component_index]
     matches = [match for match in matches.all() if match.vacancies.count() and match.location.equal_to(request.user.location, component)]
@@ -38,7 +38,7 @@ def overview(request, activity_id):
 
 
 def create_match(request, activity_id):
-    activity = Activity.objects.get(id=activity_id)
+    activity = get_object_or_404(Activity, id=activity_id)
     if request.method == 'POST':
         form = MatchForm(request.POST)
         form.instance.activity = activity
@@ -52,7 +52,7 @@ def create_match(request, activity_id):
 
 
 def edit_match(request, match_id):
-    match = Match.objects.get(id=match_id)
+    match = get_object_or_404(Match, id=match_id)
     if request.method == 'POST':
         form = MatchForm(request.POST, instance=match)
         if form.is_valid():
@@ -64,7 +64,7 @@ def edit_match(request, match_id):
 
 
 def delete_match(request, match_id):
-    match = Match.objects.get(id=match_id)
+    match = get_object_or_404(Match, id=match_id)
     if request.user != match.admin:
         return handler403(request)
     match.delete()
@@ -72,12 +72,12 @@ def delete_match(request, match_id):
 
 
 def match_detail(request, match_id):
-    match = Match.objects.get(id=match_id)
+    match = get_object_or_404(Match, id=match_id)
     return render(request, 'competitions/match_detail.html', dict(match=match, is_member=request.user in match.members.all()))
 
 
 def create_tournament(request, activity_id):
-    activity = Activity.objects.get(id=activity_id)
+    activity = get_object_or_404(Activity, id=activity_id)
     if request.method == 'POST':
         form = TournamentForm(request.POST)
         if form.is_valid():
@@ -95,7 +95,7 @@ def create_tournament(request, activity_id):
 
 
 def edit_tournament(request, tournament_id):
-    tournament = Tournament.objects.get(id=tournament_id)
+    tournament = get_object_or_404(Tournament, id=tournament_id)
     if request.user != tournament.admin:
         return handler403(request)
     if request.method == 'POST':
@@ -109,7 +109,7 @@ def edit_tournament(request, tournament_id):
 
 
 def delete_tournament(request, tournament_id):
-    tournament = Tournament.objects.get(id=tournament_id)
+    tournament = get_object_or_404(Tournament, id=tournament_id)
     if tournament.admin != request.user:
         return handler403(request)
     tournament.delete()
@@ -117,32 +117,32 @@ def delete_tournament(request, tournament_id):
 
 
 def tournament_detail(request, tournament_id):
-    tournament = Tournament.objects.get(id=tournament_id)
+    tournament = get_object_or_404(Tournament, id=tournament_id)
     return render(request, 'competitions/tournament_detail.html', dict(tournament=tournament))
 
 
 def add_tournament_member(request, tournament_id, user_id):
-    tournament = Tournament.objects.get(id=tournament_id)
+    tournament = get_object_or_404(Tournament, id=tournament_id)
     if request.user != tournament.admin:
         return handler403(request)
-    user = User.objects.get(id=user_id)
+    user = get_object_or_404(User, id=user_id)
     tournament.members.add(user)
     return HttpResponseRedirect(request.build_absolute_uri(f"/competitions/edit_tournament/{tournament.id}"))
 
 
 def remove_member(request, model, instance_id, user_id, who):
     if model == "tournament":
-        instance = Tournament.objects.get(id=instance_id)
+        instance = get_object_or_404(Tournament, id=instance_id)
     elif model == "match":
-        instance = Match.objects.get(id=instance_id)
+        instance = get_object_or_404(Match, id=instance_id)
     if who == 'admin':
         if request.user != instance.admin:
             return handler403(request)
-        user = User.objects.get(id=user_id)
+        user = get_object_or_404(User, id=user_id)
         instance.contestants.remove(user)
         return HttpResponseRedirect(request.build_absolute_uri(f"/competitions/edit_{model}/{instance.id}"))
     elif who == 'user':
-        user = User.objects.get(id=user_id)
+        user = get_object_or_404(User, id=user_id)
         if request.user != user:
             return handler403(request)
         instance.contestants.remove(user)
@@ -150,14 +150,14 @@ def remove_member(request, model, instance_id, user_id, who):
 
 
 def tournament_standings(request, tournament_id):
-    tournament = Tournament.objects.get(id=tournament_id)
+    tournament = get_object_or_404(Tournament, id=tournament_id)
     contestants = utils.sorted_player_list(tournament.points, tournament.tie_breaks)
     contestants = [(tournament.Contestant().objects.get(id=int(k)), s, t) for k, s, t in contestants]
     return render(request, 'competitions/full_table.html', dict(tournament=tournament, players=contestants))
 
 
 def game_plan(request, tournament_id, round_number):
-    tournament = Tournament.objects.get(id=tournament_id)
+    tournament = get_object_or_404(Tournament, id=tournament_id)
     try:
         round = tournament.rounds.get(number=round_number)
     except Round.DoesNotExist:
@@ -166,7 +166,7 @@ def game_plan(request, tournament_id, round_number):
 
 
 def generate_next_round(request, tournament_id):
-    tournament = Tournament.objects.get(id=tournament_id)
+    tournament = get_object_or_404(Tournament, id=tournament_id)
     if request.user != tournament.admin:
         return handler403(request)
     n = 1
@@ -186,7 +186,7 @@ def generate_next_round(request, tournament_id):
 
 
 def close_round(request, round_id):
-    round = Round.objects.get(id=round_id)
+    round = get_object_or_404(Round, id=round_id)
     if request.user != round.tournament.admin or round.over:
         return handler403(request)
     if not round.matches_have_results():
@@ -200,7 +200,7 @@ def close_round(request, round_id):
 
 
 def change_score(request, round_id, matchup_index):
-    round = Round.objects.get(id=round_id)
+    round = get_object_or_404(Round, id=round_id)
     if request.user != round.tournament.admin or round.over:
         return handler403(request)
     matchup = json.loads(round.matchups)[matchup_index]

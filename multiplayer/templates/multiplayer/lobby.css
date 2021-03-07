@@ -36,7 +36,7 @@
     height: 30%;
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: center;
     font-weight: bold;
 }
 .match-list .item .top a {
@@ -57,6 +57,7 @@
     bottom: 24%;
     text-align: center;
     overflow-y: scroll;
+    word-wrap: break-word;
     scrollbar-width: none;
     -ms-overflow-style: none;
 }

@@ -5,7 +5,7 @@
     {% for room, target in rooms %}
         <div class="item" onclick="location.href='{{ room.get_absolute_url }}'" style="width: 150px; height: 150px">
             {% if target.image %}
-                <img src="{% thumbnail target.image 200x200 %}" class="image">
+                <img src="{% thumbnail target.image 200x200 %}" class="image" style="max-height: 50%">
             {% else %}
                 <img src="{% static 'icons/users-and-groups-group@32px.png' %}" class="image">
             {% endif %}

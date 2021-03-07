@@ -155,7 +155,7 @@ function handleValue(data) {
     if(data.username == this_user) {
         return;
     }
-    createInfoAlert(info, 1000);
+    createInfoAlert(info, info_duration);
 }
 
 function handlePlay(data) {
@@ -171,7 +171,7 @@ function handlePlay(data) {
     }
     if(data.re_1) {
         setRe(data);
-        createInfoAlert("Re: "+data.re_1+", "+data.re_2, 1000);
+        createInfoAlert("Re: "+data.re_1+", "+data.re_2, info_duration);
     }
     if(data.round) {
         setTimeout(function() {
@@ -207,10 +207,10 @@ function handleStart() {
     mode = "playing";
     createValueButtons();
     if(solist.length) {
-        createInfoAlert(solist + ": " + bid_translations[game_type], 1000);
+        createInfoAlert(solist + ": " + bid_translations[game_type], info_duration);
     }
     else {
-        createInfoAlert("{% trans 'Normalspiel' %}", 1000);
+        createInfoAlert("{% trans 'Normalspiel' %}", info_duration);
     }
 }
 

@@ -16,7 +16,7 @@ from notify.utils import notify
 def group_list(request, id=None):
     if id:
         component_index = int(request.GET.get('component_index', 3))
-        category = Category.objects.get(id=id)
+        category = get_object_or_404(Category, id=id)
         chosen_component = request.user.location.get_component(Location.components[component_index])
         if component_index == 3:
             groups = UserGroup.objects.filter(admin__location__city=chosen_component, category=category)
@@ -44,7 +44,7 @@ def group_detail(request, id):
 
 @login_required
 def edit_group(request, id):
-    group = UserGroup.objects.get(id=id)
+    group = get_object_or_404(UserGroup, id=id)
     if request.user != group.admin:
         return handler403(request)
     if request.method == 'POST':
@@ -60,7 +60,7 @@ def edit_group(request, id):
 
 @login_required
 def create_group(request, id):
-    category = Category.objects.get(id=id)
+    category = get_object_or_404(Category, id=id)
     if request.method == 'POST':
         form = GroupForm(request.POST, files=request.FILES)
         if form.is_valid():
@@ -76,7 +76,7 @@ def create_group(request, id):
 
 @login_required
 def delete_group(request, id):
-    group = UserGroup.objects.get(id=id)
+    group = get_object_or_404(UserGroup, id=id)
     if request.user != group.admin:
         return handler403(request)
     group.delete()
@@ -85,7 +85,7 @@ def delete_group(request, id):
 
 @login_required
 def leave_group(request, id):
-    group = UserGroup.objects.get(id=id)
+    group = get_object_or_404(UserGroup, id=id)
     if request.user in group.members.all():
         if request.user == group.admin:
             return HttpResponse(_('Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest oder löschen Sie die Gruppe.'))
@@ -96,8 +96,8 @@ def leave_group(request, id):
 
 @login_required
 def kick_out(request, group_id, user_id):
-    group = UserGroup.objects.get(id=group_id)
-    user = User.objects.get(id=user_id)
+    group = get_object_or_404(UserGroup, id=group_id)
+    user = get_object_or_404(User, id=user_id)
     if request.user != group.admin or user not in group.members.all():
         return handler403(request)
     group.members.remove(user)

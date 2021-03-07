@@ -38,6 +38,7 @@
     position: relative;
     cursor: pointer;
     overflow: hidden;
+    width: 95%;
 }
 
 .sidemenu .alert a {

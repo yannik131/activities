@@ -34,13 +34,12 @@ eklige weiße nachrichten (bereits freundschaftsanfrage gesendet) durch redirect
 lobby aufhübschen (match erstellen, beitreten sofort)
 aktivitäten vorschlagen: 5 mit den meisten mitgliedern (vorschläge wegklicken), fragebogen ausfüllen
 
-überall .get durch get_object_or_404
-leerstellen zusagen absagen weniger/mehr mitglieder
-viele chatcheck objekte?
-vacancy gelöscht redirect zu account bearbeiten?
-bewerbungen & einladungen .list class
+vacancy gelöscht redirect zu account bearbeiten??
 charakterpunkte zu aktivitäten hinzufügen, fragebogen zur Charakterermittlung
 messages in einigen fällen
 onbeforeunload webrtc
-konferenz ohne mikro
 doko 5 chatmiglieder 2x heinz?
+1s anzeige 1.5
+letzter stich dauerhaft, länger stich
+score anzeigen zwischendurch
+neu drücken button bestätigen

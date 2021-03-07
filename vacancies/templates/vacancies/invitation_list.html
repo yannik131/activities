@@ -1,0 +1,27 @@
+{% load static %}
+{% load i18n %}
+
+<div class="match-list">
+    {% for invitation in invitations.all %}
+    <div class="item" style="width: 250px; height: 200px;">
+        <div class="top" style="height: 35%; overflow-y: scroll; scrollbar-width: none; word-wrap: break-word; align-items: center-stretch; cursor: pointer;"  onclick=openLink("{{ invitation.sender.get_absolute_url }}")>
+            <span style="padding: 5px 5px; text-align: center">{{ invitation.sender }}</span>
+        </div>
+        <div class="middle" style="height: 45%; top: 36%;">
+            {{ invitation.message }}
+        </div>
+        <div class="bottom" style="bottom: 0; height: 20%">
+            <div class="competitive" style="font-size: 16px">
+                <div class="left" onclick=onclick=openLink("{% url 'vacancies:accept_invitation' invitation.id %}")>
+                    <img src="{% static 'icons/accept.png' %}">
+                    {% trans 'Annehmen' %}
+                </div>
+                <div class="right" onclick=openLink("{% url 'vacancies:delete_invitation' invitation.id %}")>
+                    <img src="{% static 'icons/remove.png' %}">
+                    {% trans 'Löschen' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

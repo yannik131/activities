@@ -29,12 +29,10 @@ def user_post_list(request):
 
 @login_required
 def detail(request, username):
-    user = User.objects.get(username=username)
+    user = get_object_or_404(User, username=username)
     if request.user == user:
         return HttpResponseRedirect(request.build_absolute_uri('/account/edit/'))
-    requested = False
-    if FriendRequest.objects.filter(requesting_user=request.user, requested_user=user).exists():
-        requested = True
+    requested = FriendRequest.objects.filter(requesting_user=request.user, requested_user=user).exists()
     friendship = request.user.get_friendship_for(user)
     posts = Post.objects.filter(author=user).all()
     posts, page = shared.paginate(posts, request)
@@ -44,7 +42,7 @@ def detail(request, username):
 @login_required
 def send_friend_request(request, target_id):
     sent = False
-    requested_user = User.objects.get(id=target_id)
+    requested_user = get_object_or_404(User, id=target_id)
     if FriendRequest.objects.filter(requesting_user=request.user, requested_user=requested_user).exists():
         return HttpResponse(
             'Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage senden.')
@@ -98,7 +96,7 @@ def decline_request(request, id):
 
 @login_required
 def delete_request(request, id):
-    friend_request = FriendRequest.objects.get(id=id)
+    friend_request = get_object_or_404(FriendRequest, id=id)
     if (friend_request.requesting_user == request.user and friend_request.status != 'declined') or (friend_request.requested_user == request.user and friend_request.status != 'pending'):
         FriendRequest.objects.filter(id=id).delete()
     else:
@@ -118,7 +116,7 @@ def friend_requests_list(request):
 
 @login_required
 def destroy_friendship(request, id):
-    user = User.objects.get(id=id)
+    user = get_object_or_404(User, id=id)
     friendship = user.get_friendship_for(request.user)
     if friendship:
         friendship.delete()
@@ -173,7 +171,7 @@ def edit_address(request):
 
 @login_required
 def view_friendship(request, id):
-    friendship = Friendship.objects.get(id=id)
+    friendship = get_object_or_404(Friendship, id=id)
     if friendship.to_user == request.user:
         return HttpResponseRedirect(friendship.from_user.get_absolute_url())
     return HttpResponseRedirect(friendship.to_user.get_absolute_url())

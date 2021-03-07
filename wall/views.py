@@ -12,7 +12,7 @@ from account.views import handler403
 
 @login_required
 def create_post(request, app_label, model, id, activity_id=None):
-    ct = ContentType.objects.get(app_label=app_label, model=model)
+    ct = get_object_or_404(ContentType, app_label=app_label, model=model)
     group = None
     if ct == UserGroup.content_type():
         group = ct.get_object_for_this_type(pk=id)
@@ -45,7 +45,7 @@ def delete_post(request, id, path):
 
 @login_required
 def create_comment(request, id, path):
-    post = Post.objects.get(id=id)
+    post = get_object_or_404(Post, id=id)
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():

@@ -126,7 +126,7 @@ function loadGameField(data) {
         displayCards(data, player_list, data.solist);
         var hand = JSON.parse(data[data.solist]);
         for(var i = 0; i < hand.length; i++) {
-            addCardTo(players[data.solist], 1, hand[i], game_type != "n");
+            addCardTo(players[data.solist], 1, hand[i]);
         }
     }
     else {
@@ -165,7 +165,7 @@ function loadGameField(data) {
         createInfoAlert(info+"{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary);
     }
     else if(game_type.length && solist.length) {
-        createInfoAlert(solist + ": " + game_type_translations[game_type], 1000);
+        createInfoAlert(solist + ": " + game_type_translations[game_type], info_duration);
     }
 }
 
@@ -191,7 +191,7 @@ function handleStart(data) {
         }
     }
     updateSortingOrder();
-    createInfoAlert(solist + ": " + game_type_translations[game_type], 1000);
+    createInfoAlert(solist + ": " + game_type_translations[game_type], info_duration);
 }
 
 function setUpNewRound(data) {
@@ -235,7 +235,7 @@ function handlePlay(data) {
         setTimeout(function() {
             clearStacks();
             lastTrickButton();
-        }, 500);
+        }, 1500);
         last_trick = trick;
     }
 }
@@ -278,8 +278,7 @@ function handleTake(data) {
         addCardTo(players[active], 1, deck[1]);
     }
     else {
-        addCardTo(players[active], 1);
-        addCardTo(players[active], 1);
+        addCardTo(players[active], 2);
     }
     handlePutting();
 }
@@ -424,7 +423,7 @@ function createTakeButtons() {
 function handleBidding(data) {
     clearButtons();
     if(data.round) {
-        createInfoAlert("{% trans 'Eingepasst' %}", 1000);
+        createInfoAlert("{% trans 'Eingepasst' %}", info_duration);
         loadGameField(data.round);
         return;
     }
@@ -435,7 +434,7 @@ function handleBidding(data) {
         if(info == "pass") {
             info = bid_translations[info];
         }
-        createInfoAlert(last_bid[1]+": "+info, 500);
+        createInfoAlert(last_bid[1]+": "+info, info_duration);
     }
     if(data.mode == "taking") {
         createTakeButtons();

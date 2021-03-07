@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from usergroups.models import UserGroup
 from .models import Appointment
@@ -9,7 +9,7 @@ from account.views import handler403
 
 @login_required
 def create_appointment(request, id):
-    group = UserGroup.objects.get(id=id)
+    group = get_object_or_404(UserGroup, id=id)
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
         if form.is_valid():
@@ -24,7 +24,7 @@ def create_appointment(request, id):
 
 @login_required
 def delete_appointment(request, id):
-    appointment = Appointment.objects.get(id=id)
+    appointment = get_object_or_404(Appointment, id=id)
     if request.user == appointment.group.admin:
         appointment.delete()
         return HttpResponseRedirect(appointment.group.get_absolute_url())
@@ -33,27 +33,27 @@ def delete_appointment(request, id):
 
 @login_required
 def confirm_appointment(request, id):
-    appointment = Appointment.objects.get(id=id)
+    appointment = get_object_or_404(Appointment, id=id)
     appointment.participants.add(request.user)
     return HttpResponseRedirect(appointment.group.get_absolute_url())
 
 
 @login_required
 def decline_appointment(request, id):
-    appointment = Appointment.objects.get(id=id)
+    appointment = get_object_or_404(Appointment, id=id)
     appointment.cancellations.add(request.user)
     return HttpResponseRedirect(appointment.group.get_absolute_url())
 
 
 @login_required
 def cancel_confirmation(request, id):
-    appointment = Appointment.objects.get(id=id)
+    appointment = get_object_or_404(Appointment, id=id)
     appointment.participants.remove(request.user)
     return HttpResponseRedirect(appointment.group.get_absolute_url())
 
 
 @login_required
 def cancel_cancellation(request, id):
-    appointment = Appointment.objects.get(id=id)
+    appointment = get_object_or_404(Appointment, id=id)
     appointment.cancellations.remove(request.user)
     return HttpResponseRedirect(appointment.group.get_absolute_url())

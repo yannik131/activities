@@ -33,7 +33,7 @@
     <div class="match-list">
         {% for match in user_matches.all %}
             <div class="item">
-                <div class="top">
+                <div class="top" style="justify-content: left">
                     <img src="{% static 'icons/match.png' %}" class="image">{{ match.members.all.count }}/{{ match.member_limit }}
                 </div>
                 

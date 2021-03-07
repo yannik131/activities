@@ -1,5 +1,7 @@
 {% load i18n %}
 
+var info_duration = 1500;
+
 function compare(vs1, vs2) {
     return getCardSortValue(vs1.value+vs1.suit) > getCardSortValue(vs2.value+vs2.suit);
 }

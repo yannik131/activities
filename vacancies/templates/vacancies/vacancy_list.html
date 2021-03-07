@@ -1,42 +1,52 @@
 {% load activity_filter %}
 {% load i18n %}
+{% load static %}
 
-<table>
-    <tr>
-        <th>{% trans "Beschreibung" %}</th>
-        <th>{% trans "Ort" %}</th>
-        <th>{% trans "Geschlecht" %}</th>
-        <th>{% trans "Alter" %}</th>
-        <th>{% trans "Aktion" %}</th>
-    </tr>
+<div class="match-list">
     {% for vacancy in target.vacancies.all %}
     {% with status=user.application_dict|lookup:vacancy.id %}
-        <tr>
-            <td>{{ vacancy.description }}</td>
-            <td>{{ vacancy.location_component_value }}</td>
-            <td>{{ vacancy.sex|default_if_none:"/" }}</td>
-            <td>{{ vacancy.min_age|default_if_none:"/" }} - {{ vacancy.max_age|default_if_none:"/" }}</td>
-            <td>
-                {% if user == target.admin %}
-                    <a href="{% url 'vacancies:edit_vacancy' vacancy.id %}">{% trans "Bearbeiten" %}</a> | <a href="{% url 'vacancies:delete_vacancy' vacancy.id %}">{% trans "Löschen" %}</a>
-                {% elif not is_member %}
-                    {% if not status %}
-                        <a href="{% url 'vacancies:apply_for_vacancy' vacancy.id %}">{% trans "Bewerben" %}</a>
-                    {% else %}
-                        {% if status == 'pending' %}
-                            {% trans "Beworben" %}
-                        {% elif status == 'accepted' %}
-                            {% trans "Angenommen" %}
-                        {% elif status == 'declined' %}
-                            {% trans "Abgelehnt" %}
-                        {% endif %}
-                    {% endif %}
+    <div class="item" style="width: 270px; height: 200px;">
+        <div class="top" style="height: 35%; overflow-y: scroll; scrollbar-width: none; word-wrap: break-word; align-items: center-stretch">
+            <span style="padding: 5px 5px; text-align: center">{{ vacancy.description }}</span>
+        </div>
+        <div class="middle" style="height: 45%; top: 36%;">
+            {% trans 'Ort' %}: {{ vacancy.location_component_value }}<br>
+            {% trans 'Geschlecht' %}: {{ vacancy.sex|default_if_none:"/" }}<br>
+            {% trans 'Alter' %}: {{ vacancy.min_age|default_if_none:"/" }} - {{ vacancy.max_age|default_if_none:"/" }}
+        </div>
+        <div class="bottom" style="bottom: 0; height: 20%">
+            {% if user == target.admin %}
+                <div class="competitive" style="font-size: 16px">
+                    <div class="left" onclick=openLink("{% url 'vacancies:review_vacancy' vacancy.id %}")>
+                        <img src="{% static 'icons/interview.png' %}">
+                        {% trans 'Bewerbungen' %}
+                    </div>
+                    <div class="right" onclick=openLink("{% url 'vacancies:edit_vacancy' vacancy.id %}")>
+                        <img src="{% static 'icons/pen.png' %}">
+                        {% trans 'Bearbeiten' %}
+                    </div>
+                </div>
+            {% elif is_member %}
+                <div class="button-like" onclick=openLink("{% url 'vacancies:review_vacancy' vacancy.id %}")>
+                    <img src="{% static 'icons/interview.png' %}">
+                    {% trans 'Bewerbungen' %}
+                </div>
+            {% else %}
+            
+                {% if not status %}
+                    <div class="button-like" onclick=openLink("{% url 'vacancies:apply_for_vacancy' vacancy.id %}")>
+                        <img src="{% static 'icons/interview.png' %}">
+                        {% trans 'Bewerben' %}
+                    </div>
+                {% else %}
+                    <div class="button-like" style="cursor: default; background-color: darkgray")>
+                        <img src="{% static 'icons/wait.png' %}">
+                        {% trans 'Abwarten' %}
+                    </div>
                 {% endif %}
-                {% if is_member or user == target.admin %}
-                    <a href="{% url 'vacancies:review_vacancy' vacancy.id %}">{% trans "Bewerbungen" %}</a>
-                {% endif %}
-            </td>
-        </tr>
+            {% endif %}     
+        </div>
+    </div>
     {% endwith %}
     {% endfor %}
-</table>
+</div>

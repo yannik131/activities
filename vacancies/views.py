@@ -1,5 +1,5 @@
 from notify.utils import notify
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import VacancyForm, InvitationForm, ApplicationForm
 from vacancies.models import Vacancy, Application, Invitation
@@ -14,7 +14,7 @@ from account.views import handler403
 
 @login_required
 def create_vacancies(request, app_label, model, id):
-    ct = ContentType.objects.get(app_label=app_label, model=model)
+    ct = get_object_or_404(ContentType, app_label=app_label, model=model)
     target = ct.get_object_for_this_type(pk=id)
     if request.method == 'POST':
         form = VacancyForm(request.POST)
@@ -29,7 +29,7 @@ def create_vacancies(request, app_label, model, id):
 
 @login_required
 def create_invitation(request, app_label, model, id):
-    ct = ContentType.objects.get(app_label=app_label, model=model)
+    ct = get_object_or_404(ContentType, app_label=app_label, model=model)
     sender = ct.get_object_for_this_type(pk=id)
     if request.method == 'POST':
         form = InvitationForm(request.POST)
@@ -44,7 +44,7 @@ def create_invitation(request, app_label, model, id):
 
 @login_required
 def edit_vacancy(request, id):
-    vacancy = Vacancy.objects.get(id=id)
+    vacancy = get_object_or_404(Vacancy, id=id)
     if request.user != vacancy.target.admin:
         return handler403(request)
     if request.method == 'POST':
@@ -59,7 +59,7 @@ def edit_vacancy(request, id):
 
 @login_required
 def delete_vacancy(request, id):
-    vacancy = Vacancy.objects.get(id=id)
+    vacancy = get_object_or_404(Vacancy, id=id)
     if request.user != vacancy.target.admin:
         return handler403(request)
     vacancy.delete()
@@ -68,7 +68,7 @@ def delete_vacancy(request, id):
 
 @login_required
 def delete_invitation(request, id):
-    invitation = Invitation.objects.get(id=id)
+    invitation = get_object_or_404(Invitation, id=id)
     if request.user not in [invitation.sender.admin, invitation.target]:
         return handler403(request)
     invitation.delete()
@@ -77,17 +77,17 @@ def delete_invitation(request, id):
 
 @login_required
 def accept_invitation(request, id):
-    invitation = Invitation.objects.get(id=id)
+    invitation = get_object_or_404(Invitation, id=id)
     if invitation.target != request.user:
         return handler403(request)
     invitation.sender.members.add(invitation.target)
     invitation.delete()
-    return HttpResponseRedirect(request.build_absolute_uri("/vacancies/application_list/"))
+    return HttpResponseRedirect(invitation.sender.get_absolute_url())
 
 
 @login_required
 def apply_for_vacancy(request, id):
-    vacancy = Vacancy.objects.get(id=id)
+    vacancy = get_object_or_404(Vacancy, id=id)
     if not request.user.birth_year:
         #TODO: messages
         return HttpResponseRedirect(request.user.get_absolute_url())
@@ -114,7 +114,7 @@ def apply_for_vacancy(request, id):
 
 @login_required
 def review_vacancy(request, id):
-    vacancy = Vacancy.objects.get(id=id)
+    vacancy = get_object_or_404(Vacancy, id=id)
     if request.user == vacancy.target.admin or request.user in vacancy.target.members.all():
         return render(request, 'vacancies/review_vacancy.html', dict(vacancy=vacancy))
     return handler403(request)
@@ -122,7 +122,7 @@ def review_vacancy(request, id):
 
 @login_required
 def accept_application(request, id):
-    application = Application.objects.get(id=id)
+    application = get_object_or_404(Application, id=id)
     if request.user != application.vacancy.target.admin or application.status != 'pending':
         return handler403(request)
     application.vacancy.target.members.add(application.user)
@@ -135,7 +135,7 @@ def accept_application(request, id):
 
 @login_required
 def decline_application(request, id):
-    application = Application.objects.get(id=id)
+    application = get_object_or_404(Application, id=id)
     if request.user != application.vacancy.target.admin or application.status != 'pending':
         return handler403(request)
     application.status = 'declined'
@@ -145,7 +145,7 @@ def decline_application(request, id):
 
 @login_required
 def delete_application(request, id):
-    application = Application.objects.get(id=id)
+    application = get_object_or_404(Application, id=id)
     if request.user == application.vacancy.target.admin and application.status == 'declined' or request.user == application.user and application.status != 'declined':
         application.delete()
         if request.user == application.vacancy.target.admin:

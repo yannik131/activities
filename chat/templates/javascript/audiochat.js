@@ -2,7 +2,7 @@
 {% load i18n %}
 
 
-const button = document.getElementById("join-audio");
+const joinBbutton = document.getElementById("join-audio");
 const remoteAudio = document.getElementById('remote-audio');
 let remoteMediaStream;
 
@@ -82,7 +82,7 @@ function colorize(user, color) {
         var old_color = old_colors[user_span.id];
         var new_color;
         if(!old_color) {
-            old_color = user_span.style.color;
+            old_color = user_span.style.color || "white";
             old_colors[user_span.id] = old_color;
         }
         if(color == "white") {
@@ -91,7 +91,8 @@ function colorize(user, color) {
         else {
             new_color = color;
         }
-        user_span.style.color = new_color? new_color : color;
+        console.log(old_color, new_color, color);
+        user_span.style.color = new_color || color;
     }
 }
 
@@ -103,7 +104,9 @@ function getOrCreatePeerConnection(sender) {
         colorize(sender, 'darkgreen');
         peerConnections[sender] = pc;
         users.push(sender);
-        pc.addTrack(localTrack);
+        if(localTrack) {
+            pc.addTrack(localTrack);
+        }
         pc.ontrack = function(event) {
             remoteMediaStream.addTrack(event.track);
             tracks[sender] = event.track;
@@ -200,31 +203,47 @@ function deletePeerConnection(user) {
     users.splice(users.indexOf(user), 1);
 }
 
-function joinAudio() {
-    navigator.mediaDevices.getUserMedia({audio: true}).then(function(mediaStream) {
-        remoteMediaStream = new MediaStream();
-        remoteAudio.srcObject = remoteMediaStream;
+function negotiate(mediaStream) {
+    remoteMediaStream = new MediaStream();
+    remoteAudio.srcObject = remoteMediaStream;
+    if(mediaStream) {
         localTrack = mediaStream.getAudioTracks()[0];
-        acceptingConnections = true;
-        send({'type': 'rtc', 'action': 'join', 'room_id': '{{ room.id }}'});
-        send({'type': 'chat', 'message': "{{ user }} {% trans 'tritt der Konferenz bei.' %}", 'id': {{ room.id }}});
-        colorize({{ user.id }}, 'darkgreen');
-        var button = document.getElementById('call-button');
-        button.src = "{% static 'icons/hangup.png' %}";
-        button.onclick = leaveAudio;
-        window.onbeforeunload = function() {
+    }
+    acceptingConnections = true;
+    send({'type': 'rtc', 'action': 'join', 'room_id': '{{ room.id }}'});
+    send({'type': 'chat', 'message': "{{ user }} {% trans 'tritt der Konferenz bei.' %}", 'id': {{ room.id }}});
+    colorize({{ user.id }}, 'darkgreen');
+    var joinButton = document.getElementById('call-button');
+    joinButton.src = "{% static 'icons/hangup.png' %}";
+    joinButton.onclick = leaveAudio;
+    window.onbeforeunload = function() {
+        if(localTrack) {
             localTrack.stop();
         }
-    });
+    }
+}
+
+function joinAudio() {
+    if(navigator.mediaDevices) {
+        navigator.mediaDevices.getUserMedia({audio: true}).then(function(mediaStream) {
+            negotiate(mediaStream)
+        });
+    }
+    else {
+        negotiate();
+    }
 }
 
 function leaveAudio() {
     acceptingConnections = false;
-    localTrack.stop();
+    if(localTrack) {
+        localTrack.stop();
+    }
     while(users.length > 0) {
         deletePeerConnection(users[users.length-1]);
     }
     send({'type': 'rtc', 'action': 'leave', 'room_id': '{{ room.id }}'});
+    send({'type': 'chat', 'message': "{{ user }} {% trans 'verlässt die Konferenz.' %}", 'id': {{ room.id }}});
     colorize({{ user.id }}, 'white');
     var button = document.getElementById('call-button');
     button.src = "{% static 'icons/call.png' %}";

@@ -1,13 +1,7 @@
 @media screen and (max-width: 768px) {
-    [class*="col-"] {
-        width: 100%;
-    }
-
     .sidemenu .alert .notification-url {
         width: 80%;
     }
-    
-    
 
     .content {
         color: white;
@@ -51,7 +45,7 @@
     }
 }
 
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 850px) and (orientation: landscape){
     .sidemenu {
         display: block;
         max-height: 80vh;
@@ -64,7 +58,7 @@
     }
 }
 
-@media screen and (min-width: 1220px) {
+@media screen and (min-width: 1220px) and (orientation: landscape) {
     .base-container {
         width: 1200px;
         height: 100%;

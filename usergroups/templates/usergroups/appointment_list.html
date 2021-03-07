@@ -1,0 +1,51 @@
+{% load i18n %}
+{% load static %}
+
+{% for appointment in group.appointments.all %}
+    
+    <div class="appointment">
+        <div class="top" style="font-weight: bold">
+            {{ appointment.location }}, {{ appointment.start_time }}
+        </div>
+        <div class="confirmations" style="margin: 10px 0; padding-bottom: 5px">
+            {% trans "Zusagen" %}: {{ appointment.participants.all|length }}/{{ group.members.all|length }}<br>
+            {% for user in appointment.participants.all %}
+                <a href="{{ user.get_absolute_url }}">{{ user.username }}</a>
+            {% endfor %}
+        </div>
+        <div class="cancellations" style="margin: 10px 0; padding-bottom: 5px;">
+            {% trans "Absagen" %}: {{ appointment.cancellations.all|length }}/{{ group.members.all|length }}<br>
+            {% for user in appointment.cancellations.all %}
+                <a href="{{ user.get_absolute_url }}">{{ user.username }}</a>
+            {% endfor %}
+        </div>
+        {% if user in appointment.participants.all %}
+            <div class="button-like" onclick=openLink("{% url 'scheduling:cancel_confirmation' appointment.id %}")>
+                <img src="{% static 'icons/cross.png' %}">
+                {% trans "Zusage zurücknehmen" %}
+            </div>
+        {% elif user in appointment.cancellations.all %}
+            <div class="button-like" onclick=openLink("{% url 'scheduling:cancel_cancellation' appointment.id %}")>
+                <img src="{% static 'icons/cross.png' %}">
+                {% trans "Absage zurücknehmen" %}
+            </div>
+        {% else %}
+            <div class="competitive">
+                <div class="left" onclick=openLink("{% url 'scheduling:confirm_appointment' appointment.id %}") {% if user == group.admin %}style="width: 33%"{% endif %}>
+                    <img src="{% static 'icons/confirm_appointment.png' %}">
+                    {% trans "Zusagen" %}
+                </div>
+                {% if user == group.admin %}
+                <div class="left" onclick=openLink("{% url 'scheduling:delete_appointment' appointment.id %}")>
+                    <img src="{% static 'icons/remove.png' %}">
+                    {% trans "Löschen" %}
+                </div>
+                {% endif %}
+                <div class="right" onclick=openLink("{% url 'scheduling:decline_appointment' appointment.id %}") {% if user == group.admin %}style="width: 33%"{% endif %}>
+                    <img src="{% static 'icons/decline_appointment.png' %}">
+                    {% trans "Absagen" %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endfor %}

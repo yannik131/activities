@@ -36,6 +36,7 @@ input[type='text'], textarea, select:focus {
     display: grid;
     justify-content: center;
     align-items: center;
+    word-wrap: break-word;
 }
 
 .login {
@@ -380,5 +381,17 @@ select:focus, select:hover {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
     margin: 10px 0px;
+}
+
+.appointment {
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px 5px;
 }
 
