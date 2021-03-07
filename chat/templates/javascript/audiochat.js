@@ -91,7 +91,6 @@ function colorize(user, color) {
         else {
             new_color = color;
         }
-        console.log(old_color, new_color, color);
         user_span.style.color = new_color || color;
     }
 }
@@ -173,7 +172,7 @@ function handleAnswer(data) {
 }
 
 function handleCandidate(data) {
-    const pc = peerConnections[data.sender];
+    const pc = getOrCreatePeerConnection(data.sender);
     pc.addIceCandidate(new RTCIceCandidate(data.candidate))
     .catch(function(reason) {
         console.log('Error handling candidate from', data.sender, ':', reason);
