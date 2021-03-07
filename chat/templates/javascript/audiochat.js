@@ -95,6 +95,19 @@ function colorize(user, color) {
     }
 }
 
+function setOnIceCandidate(pc) {
+    pc.onicecandidate = function(event) {
+        if(event.candidate) {
+            send({
+                'type': 'rtc', 
+                'action': 'candidate', 
+                'candidate': event.candidate,
+                'channel': 'user-'+sender
+            });
+        }
+    }
+}
+
 function getOrCreatePeerConnection(sender) {
     var pc = peerConnections[sender];
     if(!pc) {
@@ -111,16 +124,6 @@ function getOrCreatePeerConnection(sender) {
             tracks[sender] = event.track;
             remoteAudio.play(); //some browsers deactivate autoplay
         }
-        pc.onicecandidate = function(event) {
-            if(event.candidate) {
-                send({
-                    'type': 'rtc', 
-                    'action': 'candidate', 
-                    'candidate': event.candidate,
-                    'channel': 'user-'+sender
-                });
-            }
-        }
     }
     return pc;
 }
@@ -136,6 +139,7 @@ function handleJoin(data) {
             'offer': pc.localDescription,
             'channel': 'user-'+data.sender
         });
+        setOnIceCandidate(pc);
     }).catch(function(reason) {
         console.log('Error setting local sd from local offer?', reason);
     });
@@ -157,6 +161,7 @@ function handleOffer(data) {
             'answer': pc.localDescription,
             'channel': 'user-'+data.sender
         });
+        setOnIceCandidate(pc);
     })
     .catch(function(reason) {
         console.log('Error setting local sd after answer to', data.sender, ':', reason, pc.signalingState);
@@ -172,7 +177,7 @@ function handleAnswer(data) {
 }
 
 function handleCandidate(data) {
-    const pc = getOrCreatePeerConnection(data.sender);
+    const pc = peerConnections[data.sender];
     pc.addIceCandidate(new RTCIceCandidate(data.candidate))
     .catch(function(reason) {
         console.log('Error handling candidate from', data.sender, ':', reason);
