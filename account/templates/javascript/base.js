@@ -92,6 +92,7 @@ function addMessageToChatMenu(data) {
 }
 
 function getWsPrefix() {
+    console.log(location.protocol);
     if(location.protocol == "https:") {
         return "wss://" + window.location.host;
     }
@@ -145,7 +146,7 @@ function connect() {
     }
 
     user_websocket.onclose = function(e) {
-        console.log('User socket closed unexpectedly. Attempting reconnect in 1 second. Code: ', e.code);
+        console.log('User socket closed unexpectedly. Attempting reconnect in 1 second. Code: ', e.code, e);
         setTimeout(function() {
             connect();
         }, 1000);
