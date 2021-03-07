@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-05 23:43+0000\n"
-"PO-Revision-Date: 2021-03-06 00:45+0100\n"
+"POT-Creation-Date: 2021-03-07 18:27+0000\n"
+"PO-Revision-Date: 2021-03-07 19:27+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -27,7 +27,7 @@ msgid "Passwort (erneut)"
 msgstr "Password (again)"
 
 #: account/forms.py:18 account/forms.py:46 vacancies/forms.py:14
-#: vacancies/templates/vacancies/vacancy_list.html:8
+#: vacancies/templates/vacancies/vacancy_list.html:14
 msgid "Geschlecht"
 msgstr "Gender"
 
@@ -71,10 +71,7 @@ msgstr "Age for applications."
 msgid "Ihre Stadt"
 msgstr "Your city"
 
-#: account/forms.py:70 account/templates/account/friend_requests_list.html:14
-#: account/templates/account/friend_requests_list.html:39
-#: usergroups/templates/usergroups/invitation_list.html:7 vacancies/forms.py:54
-#: vacancies/forms.py:98 vacancies/templates/vacancies/application_list.html:34
+#: account/forms.py:70 vacancies/forms.py:54 vacancies/forms.py:98
 #: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:34
 msgid "Nachricht"
 msgstr "Message"
@@ -88,8 +85,7 @@ msgstr ""
 "The message can't be longer than 150 characters. It's {l} characters long. "
 "Fix this."
 
-#: account/forms.py:81 account/templates/account/friend_requests_list.html:13
-#: account/templates/account/friend_requests_list.html:38
+#: account/forms.py:81
 msgid "Nutzername"
 msgstr "User name"
 
@@ -174,11 +170,11 @@ msgstr "rejected your friend request"
 msgid "Ausstehend"
 msgstr "Pending"
 
-#: account/models.py:143 vacancies/templates/vacancies/vacancy_list.html:29
+#: account/models.py:143
 msgid "Angenommen"
 msgstr "Accepted"
 
-#: account/models.py:144 vacancies/templates/vacancies/vacancy_list.html:31
+#: account/models.py:144
 msgid "Abgelehnt"
 msgstr "Declined"
 
@@ -339,30 +335,30 @@ msgstr "Profile of %(username)s"
 msgid "Profil von"
 msgstr "Profile of"
 
-#: account/templates/account/detail.html:21
-#: usergroups/templates/usergroups/group_detail.html:17
+#: account/templates/account/detail.html:22
+#: usergroups/templates/usergroups/group_detail.html:18
 #: vacancies/templates/vacancies/review_vacancy.html:29
 msgid "Zum Chat"
 msgstr "To the chat"
 
-#: account/templates/account/detail.html:23
+#: account/templates/account/detail.html:24
 msgid "ist Mitglied folgender Aktivitäten"
 msgstr "is a member of the following activities"
 
-#: account/templates/account/detail.html:26
+#: account/templates/account/detail.html:27
 msgid "Adresse"
 msgstr "Address"
 
-#: account/templates/account/detail.html:27
+#: account/templates/account/detail.html:28
 msgid "Freundschaft beenden"
 msgstr "End friendship"
 
-#: account/templates/account/detail.html:29
+#: account/templates/account/detail.html:30
 #, python-format
 msgid "Sie sind nicht mit %(user)s befreundet"
 msgstr "You aren't friends with %(user)s"
 
-#: account/templates/account/detail.html:31
+#: account/templates/account/detail.html:32
 msgid ""
 "Sie haben allerdings bereits eine Freundschaftsanfrage gesendet. Diese wurde "
 "entweder abgelehnt oder die Antwort steht noch aus"
@@ -370,16 +366,12 @@ msgstr ""
 "You've already sent a friend request. It was either declined or is still "
 "pending."
 
-#: account/templates/account/detail.html:33
-msgid "Falls Sie das ändern möchten, schicken Sie ihm doch eine"
-msgstr "If you want to change that, sent a"
+#: account/templates/account/detail.html:34
+msgid "Freundschaftsanfrage schicken"
+msgstr "Send friend request"
 
-#: account/templates/account/detail.html:33
-msgid "Freundschaftsanfrage"
-msgstr "friend request"
-
-#: account/templates/account/detail.html:36
-#: usergroups/templates/usergroups/group_detail.html:106
+#: account/templates/account/detail.html:37
+#: usergroups/templates/usergroups/group_detail.html:69
 msgid "Posts"
 msgstr "Posts"
 
@@ -406,7 +398,7 @@ msgstr "You can edit your account with the following form:"
 #: usergroups/templates/usergroups/edit_group.html:12
 #: vacancies/templates/vacancies/create_invitation.html:11
 #: vacancies/templates/vacancies/create_vacancies.html:11
-#: vacancies/templates/vacancies/edit_vacancy.html:11
+#: vacancies/templates/vacancies/edit_vacancy.html:16
 msgid "Fertig"
 msgstr "Done"
 
@@ -443,69 +435,56 @@ msgstr "Change"
 msgid "Neue Adresse gespeichert: <b>%(v0)s</b>"
 msgstr "New address saved: <b>%(v0)s</b>"
 
-#: account/templates/account/friend_requests_list.html:5
-#: account/templates/account/friend_requests_list.html:8
+#: account/templates/account/friend_requests_list.html:6
 msgid "Anfragen"
 msgstr "Requests"
 
-#: account/templates/account/friend_requests_list.html:9
-msgid "Eingegangen"
-msgstr "Received"
+#: account/templates/account/friend_requests_list.html:12
+msgid "Ihre Freunde"
+msgstr "Your friends"
 
 #: account/templates/account/friend_requests_list.html:15
-#: account/templates/account/friend_requests_list.html:40
-#: usergroups/templates/usergroups/group_detail.html:68
-#: usergroups/templates/usergroups/invitation_list.html:8
-#: vacancies/templates/vacancies/application_list.html:14
-#: vacancies/templates/vacancies/application_list.html:35
-#: vacancies/templates/vacancies/review_vacancy.html:20
-#: vacancies/templates/vacancies/vacancy_list.html:10
-msgid "Aktion"
-msgstr "Action"
+msgid "Anfrage senden"
+msgstr "Send request"
 
-#: account/templates/account/friend_requests_list.html:23
-#: vacancies/templates/vacancies/application_list.html:41
+#: account/templates/account/friend_requests_list.html:19
+msgid "Eingegange Anfragen"
+msgstr "Received requests"
+
+#: account/templates/account/friend_requests_list.html:24
+#: competitions/templates/competitions/full_table.html:8
+msgid "Von"
+msgstr "Tournament"
+
+#: account/templates/account/friend_requests_list.html:40
+#: vacancies/templates/vacancies/invitation_list.html:17
 #: vacancies/templates/vacancies/review_vacancy.html:33
 msgid "Annehmen"
 msgstr "Accept"
 
-#: account/templates/account/friend_requests_list.html:23
+#: account/templates/account/friend_requests_list.html:44
 #: vacancies/templates/vacancies/review_vacancy.html:33
 msgid "Ablehnen"
 msgstr "Decline"
 
-#: account/templates/account/friend_requests_list.html:25
-#: account/templates/account/friend_requests_list.html:48
-#: usergroups/templates/usergroups/group_detail.html:95
+#: account/templates/account/friend_requests_list.html:50
+#: account/templates/account/friend_requests_list.html:77
+#: usergroups/templates/usergroups/appointment_list.html:41
 #: usergroups/templates/usergroups/invitation_list.html:16
 #: vacancies/templates/vacancies/application_list.html:24
-#: vacancies/templates/vacancies/application_list.html:41
+#: vacancies/templates/vacancies/edit_vacancy.html:11
+#: vacancies/templates/vacancies/invitation_list.html:21
 #: vacancies/templates/vacancies/review_vacancy.html:35
-#: vacancies/templates/vacancies/vacancy_list.html:21
 msgid "Löschen"
 msgstr "Delete"
 
-#: account/templates/account/friend_requests_list.html:32
-msgid "Keine Anfragen."
-msgstr "No requests."
+#: account/templates/account/friend_requests_list.html:59
+msgid "Gesendete Anfragen"
+msgstr "Sent requests"
 
-#: account/templates/account/friend_requests_list.html:34
-msgid "Gesendet"
-msgstr "Sent"
-
-#: account/templates/account/friend_requests_list.html:55
-msgid "Keine."
-msgstr "None."
-
-#: account/templates/account/friend_requests_list.html:57
-msgid "Eine Anfrage an einen Nutzer senden..."
-msgstr "Send a request to a user..."
-
-#: account/templates/account/friend_requests_list.html:58
-#: account/templates/account/sidemenu.html:15
-#: chat/templates/chat/chat_list.html:14
-msgid "Freunde"
-msgstr "Friends"
+#: account/templates/account/friend_requests_list.html:64
+msgid "An"
+msgstr "To"
 
 #: account/templates/account/home.html:6
 msgid "Home"
@@ -518,7 +497,7 @@ msgstr "Welcome, %(v0)s."
 
 #: account/templates/account/home.html:10
 msgid "Ist irgendwas? Schicken Sie"
-msgstr "Suggestions? send"
+msgstr "Suggestions? Send"
 
 #: account/templates/account/home.html:10
 msgid "eine Freundschaftsanfrage."
@@ -761,6 +740,11 @@ msgstr "Chats"
 msgid "Bewerbungen & Einladungen"
 msgstr "Applications & Invitations"
 
+#: account/templates/account/sidemenu.html:15
+#: chat/templates/chat/chat_list.html:14
+msgid "Freunde"
+msgstr "Friends"
+
 #: account/templates/account/sidemenu.html:16
 #: account/templates/registration/password_change_form.html:4
 #: account/templates/registration/password_change_form.html:7
@@ -780,7 +764,7 @@ msgstr "Your posts"
 
 #: account/templates/account/user_post_list.html:9
 #: activity/templates/activity/detail.html:46
-#: usergroups/templates/usergroups/group_detail.html:108
+#: usergroups/templates/usergroups/group_detail.html:71
 msgid "Post erstellen"
 msgstr "Create post"
 
@@ -966,18 +950,18 @@ msgstr "Activity: {name}"
 msgid "Kategorie: {name}"
 msgstr "Category: {name}"
 
-#: activity/templates/activity/activity_list.html:4
-#: activity/templates/activity/activity_list.html:7
+#: activity/templates/activity/activity_list.html:5
+#: activity/templates/activity/activity_list.html:8
 msgid "Alle Aktivitäten"
 msgstr "All activities"
 
-#: activity/templates/activity/activity_list.html:9
+#: activity/templates/activity/activity_list.html:10
 msgid "Mitglieder anzeigen"
 msgstr "Show members"
 
-#: activity/templates/activity/activity_list.html:21
+#: activity/templates/activity/activity_list.html:22
 #: competitions/templates/competitions/tournament_detail.html:19
-#: usergroups/templates/usergroups/group_detail.html:30
+#: usergroups/templates/usergroups/group_detail.html:31
 #: usergroups/templates/usergroups/loop.html:18
 msgid "Mitglieder"
 msgstr "Members"
@@ -1013,7 +997,7 @@ msgid "Online spielen"
 msgstr "Play online"
 
 #: activity/templates/activity/detail.html:33
-#: usergroups/templates/usergroups/group_detail.html:34
+#: usergroups/templates/usergroups/group_detail.html:35
 msgid "Austreten"
 msgstr "Leave"
 
@@ -1026,7 +1010,7 @@ msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
 msgstr "If you want to see the members, you need to enter the activity."
 
 #: activity/templates/activity/detail.html:42
-#: multiplayer/templates/javascript/lobby.js:48
+#: multiplayer/templates/javascript/lobby.js:46
 msgid "Beitreten"
 msgstr "Join"
 
@@ -1061,9 +1045,13 @@ msgstr "Tournaments"
 msgid "Chat"
 msgstr "Chat"
 
-#: chat/templates/javascript/audiochat.js:216
+#: chat/templates/javascript/audiochat.js:214
 msgid "tritt der Konferenz bei."
 msgstr "is joining the conference."
+
+#: chat/templates/javascript/audiochat.js:246
+msgid "verlässt die Konferenz."
+msgstr "is leaving the conference."
 
 #: chat/templates/javascript/room.js:44
 msgid "Sie"
@@ -1253,17 +1241,12 @@ msgstr "Remove"
 msgid "Tabelle"
 msgstr "Standings"
 
-#: competitions/templates/competitions/full_table.html:8
-msgid "Von"
-msgstr "Tournament"
-
 #: competitions/templates/competitions/full_table.html:11
 msgid "Rang"
 msgstr "Rank"
 
 #: competitions/templates/competitions/full_table.html:12
 #: competitions/templates/competitions/game_plan.html:15
-#: usergroups/templates/usergroups/invitation_list.html:6
 #: vacancies/templates/vacancies/review_vacancy.html:14
 msgid "Nutzer"
 msgstr "User"
@@ -1317,8 +1300,8 @@ msgid "Admin"
 msgstr "Admin"
 
 #: competitions/templates/competitions/match_detail.html:10
-#: usergroups/templates/usergroups/group_detail.html:22
-#: vacancies/templates/vacancies/vacancy_list.html:21
+#: usergroups/templates/usergroups/group_detail.html:23
+#: vacancies/templates/vacancies/vacancy_list.html:26
 msgid "Bearbeiten"
 msgstr "Edit"
 
@@ -1338,7 +1321,7 @@ msgstr "Members"
 
 #: competitions/templates/competitions/match_detail.html:21
 #: competitions/templates/competitions/overview.html:33
-#: usergroups/templates/usergroups/group_detail.html:37
+#: usergroups/templates/usergroups/group_detail.html:38
 msgid "Leerstellen"
 msgstr "Vacancies"
 
@@ -1365,12 +1348,11 @@ msgstr "Tournament"
 
 #: competitions/templates/competitions/overview.html:15
 #: competitions/templates/competitions/overview.html:34 scheduling/forms.py:19
-#: vacancies/templates/vacancies/vacancy_list.html:7
+#: vacancies/templates/vacancies/vacancy_list.html:13
 msgid "Ort"
 msgstr "Location"
 
 #: competitions/templates/competitions/overview.html:25
-#: multiplayer/templates/multiplayer/lobby.html:58
 msgid "Öffentliche Matches"
 msgstr "Public matches"
 
@@ -1461,7 +1443,7 @@ msgstr "There are still matches without results."
 msgid "Spieleranzahl"
 msgstr "Member limit"
 
-#: multiplayer/forms.py:17 multiplayer/models.py:143 multiplayer/views.py:98
+#: multiplayer/forms.py:17 multiplayer/models.py:141 multiplayer/views.py:98
 msgid "Durak"
 msgstr "Durak"
 
@@ -1469,7 +1451,7 @@ msgstr "Durak"
 msgid "Unterstützt werden 2, 3 oder 4 Spieler"
 msgstr "2, 3 or 4 players"
 
-#: multiplayer/forms.py:20 multiplayer/models.py:145 multiplayer/views.py:25
+#: multiplayer/forms.py:20 multiplayer/models.py:143 multiplayer/views.py:25
 #: multiplayer/views.py:100
 msgid "Skat"
 msgstr "Skat"
@@ -1478,12 +1460,12 @@ msgstr "Skat"
 msgid "Unterstützt werden 3 oder 4 Spieler"
 msgstr "3 or 4 players"
 
-#: multiplayer/models.py:147 multiplayer/views.py:27 multiplayer/views.py:102
+#: multiplayer/models.py:145 multiplayer/views.py:27 multiplayer/views.py:102
 msgid "Doppelkopf"
 msgstr "Doppelkopf"
 
 #: multiplayer/templates/javascript/cards.js:419
-#: multiplayer/templates/javascript/skat.js:562
+#: multiplayer/templates/javascript/skat.js:561
 msgid "Ja"
 msgstr "Yes"
 
@@ -1491,11 +1473,11 @@ msgstr "Yes"
 msgid "Nein"
 msgstr "No"
 
-#: multiplayer/templates/javascript/common_sd.js:41
+#: multiplayer/templates/javascript/common_sd.js:43
 msgid "Stich"
 msgstr "Trick"
 
-#: multiplayer/templates/javascript/common_sd.js:43
+#: multiplayer/templates/javascript/common_sd.js:45
 msgid "Okay"
 msgstr "Okay"
 
@@ -1518,19 +1500,19 @@ msgstr "Jacks"
 
 #: multiplayer/templates/javascript/doppelkopf.js:11
 #: multiplayer/templates/javascript/skat.js:14
-#: multiplayer/templates/javascript/skat.js:358
+#: multiplayer/templates/javascript/skat.js:357
 msgid "Kreuz"
 msgstr "Clubs"
 
 #: multiplayer/templates/javascript/doppelkopf.js:12
 #: multiplayer/templates/javascript/skat.js:15
-#: multiplayer/templates/javascript/skat.js:359
+#: multiplayer/templates/javascript/skat.js:358
 msgid "Pik"
 msgstr "Spades"
 
 #: multiplayer/templates/javascript/doppelkopf.js:13
 #: multiplayer/templates/javascript/skat.js:16
-#: multiplayer/templates/javascript/skat.js:360
+#: multiplayer/templates/javascript/skat.js:359
 msgid "Herz"
 msgstr "Hearts"
 
@@ -1555,7 +1537,7 @@ msgid "Keine 30"
 msgstr "No 30"
 
 #: multiplayer/templates/javascript/doppelkopf.js:22
-#: multiplayer/templates/javascript/skat.js:392
+#: multiplayer/templates/javascript/skat.js:391
 msgid "Schwarz"
 msgstr "Black"
 
@@ -1602,7 +1584,7 @@ msgid "Schieben"
 msgstr "Transfer"
 
 #: multiplayer/templates/javascript/skat.js:17
-#: multiplayer/templates/javascript/skat.js:361
+#: multiplayer/templates/javascript/skat.js:360
 msgid "Karo"
 msgstr "Diamonds"
 
@@ -1634,52 +1616,52 @@ msgstr "overbid"
 msgid "Augen"
 msgstr "Points"
 
-#: multiplayer/templates/javascript/skat.js:291
+#: multiplayer/templates/javascript/skat.js:290
 msgid "Drücken"
 msgstr "Put"
 
-#: multiplayer/templates/javascript/skat.js:378
+#: multiplayer/templates/javascript/skat.js:377
 msgid "Ouvert"
 msgstr "Ouvert"
 
-#: multiplayer/templates/javascript/skat.js:381
-#: multiplayer/templates/javascript/skat.js:386
+#: multiplayer/templates/javascript/skat.js:380
+#: multiplayer/templates/javascript/skat.js:385
 msgid "Normal"
 msgstr "Normal"
 
-#: multiplayer/templates/javascript/skat.js:389
+#: multiplayer/templates/javascript/skat.js:388
 msgid "Schneider"
 msgstr "Schneider"
 
-#: multiplayer/templates/javascript/skat.js:395
+#: multiplayer/templates/javascript/skat.js:394
 msgid "Offen"
 msgstr "Ouvert"
 
-#: multiplayer/templates/javascript/skat.js:415
+#: multiplayer/templates/javascript/skat.js:414
 msgid "Aufnehmen"
 msgstr "Take Skat"
 
-#: multiplayer/templates/javascript/skat.js:418
+#: multiplayer/templates/javascript/skat.js:417
 msgid "Hand spielen"
 msgstr "Hand"
 
-#: multiplayer/templates/javascript/skat.js:427
+#: multiplayer/templates/javascript/skat.js:426
 msgid "Eingepasst"
 msgstr "No bid, new game"
 
-#: multiplayer/templates/javascript/skat.js:567
+#: multiplayer/templates/javascript/skat.js:566
 msgid "Passe"
 msgstr "Nah fam"
 
-#: multiplayer/templates/javascript/skat.js:579
+#: multiplayer/templates/javascript/skat.js:578
 msgid "Vorhand"
 msgstr "Forehand"
 
-#: multiplayer/templates/javascript/skat.js:579
+#: multiplayer/templates/javascript/skat.js:578
 msgid "Mittelhand"
 msgstr "Middle"
 
-#: multiplayer/templates/javascript/skat.js:579
+#: multiplayer/templates/javascript/skat.js:578
 msgid "Hinterhand"
 msgstr "Behind"
 
@@ -1707,22 +1689,26 @@ msgid "Online"
 msgstr "Online"
 
 #: multiplayer/templates/multiplayer/lobby.html:32
-msgid "Ihre Matches"
-msgstr "Your matches"
+msgid "Beigetreten"
+msgstr "Joined"
 
-#: multiplayer/templates/multiplayer/lobby.html:46
+#: multiplayer/templates/multiplayer/lobby.html:47
 msgid "Spielen"
 msgstr "Play"
 
-#: multiplayer/templates/multiplayer/lobby.html:49
+#: multiplayer/templates/multiplayer/lobby.html:50
 msgid "Zur Übersicht"
 msgstr "Overview"
+
+#: multiplayer/templates/multiplayer/lobby.html:65
+msgid "Andere"
+msgstr "Others"
 
 #: multiplayer/templates/multiplayer/match.html:27
 msgid "Abbrechen"
 msgstr "Cancel"
 
-#: multiplayer/templates/multiplayer/match.html:31
+#: multiplayer/templates/multiplayer/match.html:34
 msgid "Starten"
 msgstr "Start"
 
@@ -1749,7 +1735,7 @@ msgstr "Appointment on {start}"
 
 #: scheduling/templates/scheduling/create_appointment.html:4
 #: scheduling/templates/scheduling/create_appointment.html:7
-#: usergroups/templates/usergroups/group_detail.html:104
+#: usergroups/templates/usergroups/group_detail.html:67
 msgid "Termin erstellen"
 msgstr "Appointment"
 
@@ -1775,7 +1761,6 @@ msgstr "Admin (user name)"
 
 #: usergroups/forms.py:23 vacancies/forms.py:13
 #: vacancies/templates/vacancies/apply_for_vacancy.html:9
-#: vacancies/templates/vacancies/vacancy_list.html:6
 msgid "Beschreibung"
 msgstr "Description"
 
@@ -1819,6 +1804,24 @@ msgstr "Kicked you out"
 #, python-brace-format
 msgid "Gruppe: {name}"
 msgstr "Group: {name}"
+
+#: usergroups/templates/usergroups/appointment_list.html:11
+#: usergroups/templates/usergroups/appointment_list.html:36
+msgid "Zusagen"
+msgstr "Confirm"
+
+#: usergroups/templates/usergroups/appointment_list.html:17
+#: usergroups/templates/usergroups/appointment_list.html:46
+msgid "Absagen"
+msgstr "Cancel"
+
+#: usergroups/templates/usergroups/appointment_list.html:25
+msgid "Zusage zurücknehmen"
+msgstr "Cancel confirmation"
+
+#: usergroups/templates/usergroups/appointment_list.html:30
+msgid "Absage zurücknehmen"
+msgstr "Cancel cancellation"
 
 #: usergroups/templates/usergroups/category_group_list.html:10
 #: usergroups/templates/usergroups/create_group.html:4
@@ -1889,69 +1892,43 @@ msgstr "The group"
 msgid "erfolgreich gelöscht"
 msgstr "was successfully deleted"
 
-#: usergroups/templates/usergroups/group_detail.html:27
+#: usergroups/templates/usergroups/group_detail.html:28
 msgid "Gruppe gehört zur"
 msgstr "Group belongs to"
 
-#: usergroups/templates/usergroups/group_detail.html:32
+#: usergroups/templates/usergroups/group_detail.html:33
 msgid "Administrator"
 msgstr "Admin"
 
-#: usergroups/templates/usergroups/group_detail.html:42
+#: usergroups/templates/usergroups/group_detail.html:43
 msgid ""
 "Zurzeit gibt es keine Leerstellen. Der Administrator kann welche erstellen"
 msgstr "There are no vacancies at the moment. The admin can create some"
 
-#: usergroups/templates/usergroups/group_detail.html:45
-#: vacancies/templates/vacancies/application_list.html:30
+#: usergroups/templates/usergroups/group_detail.html:46
+#: vacancies/templates/vacancies/application_list.html:31
 msgid "Einladungen"
 msgstr "Invitations"
 
-#: usergroups/templates/usergroups/group_detail.html:52
+#: usergroups/templates/usergroups/group_detail.html:53
 #: vacancies/templates/vacancies/create_vacancies.html:4
 msgid "Leerstellen hinzufügen"
 msgstr "Add vacancy"
 
-#: usergroups/templates/usergroups/group_detail.html:56
+#: usergroups/templates/usergroups/group_detail.html:57
 msgid "Jemanden einladen"
 msgstr "Invite somebody"
 
-#: usergroups/templates/usergroups/group_detail.html:61
+#: usergroups/templates/usergroups/group_detail.html:62
 msgid "Termine"
 msgstr "Appointments"
-
-#: usergroups/templates/usergroups/group_detail.html:64
-msgid "Wann"
-msgstr "When"
-
-#: usergroups/templates/usergroups/group_detail.html:65
-msgid "Wo"
-msgstr "Where"
-
-#: usergroups/templates/usergroups/group_detail.html:66
-#: usergroups/templates/usergroups/group_detail.html:92
-msgid "Zusagen"
-msgstr "Confirm"
-
-#: usergroups/templates/usergroups/group_detail.html:67
-#: usergroups/templates/usergroups/group_detail.html:92
-msgid "Absagen"
-msgstr "Cancel"
-
-#: usergroups/templates/usergroups/group_detail.html:88
-msgid "Zusage zurücknehmen"
-msgstr "Cancel confirmation"
-
-#: usergroups/templates/usergroups/group_detail.html:90
-msgid "Absage zurücknehmen"
-msgstr "Cancel cancellation"
 
 #: usergroups/templates/usergroups/user_group_list.html:4
 #: usergroups/templates/usergroups/user_group_list.html:7
 msgid "Ihre Gruppen"
 msgstr "Your groups"
 
-#: usergroups/views.py:92
+#: usergroups/views.py:91
 msgid ""
 "Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest "
 "oder löschen Sie die Gruppe."
@@ -2039,37 +2016,18 @@ msgstr "Application of {name}"
 msgid "{app} bei {target}"
 msgstr "{app} to {target}"
 
-#: vacancies/templates/vacancies/application_list.html:4
-#: vacancies/templates/vacancies/application_list.html:7
+#: vacancies/templates/vacancies/application_list.html:6
+#: vacancies/templates/vacancies/application_list.html:10
 #: vacancies/templates/vacancies/review_vacancy.html:4
 #: vacancies/templates/vacancies/review_vacancy.html:7
 #: vacancies/templates/vacancies/review_vacancy.html:11
-#: vacancies/templates/vacancies/vacancy_list.html:36
+#: vacancies/templates/vacancies/vacancy_list.html:22
+#: vacancies/templates/vacancies/vacancy_list.html:32
 msgid "Bewerbungen"
 msgstr "Applications"
 
-#: vacancies/templates/vacancies/application_list.html:10
-msgid "Ziel"
-msgstr "Target"
-
-#: vacancies/templates/vacancies/application_list.html:11
-msgid "Leerstelle"
-msgstr "Vacancy"
-
-#: vacancies/templates/vacancies/application_list.html:12
-msgid "Text"
-msgstr "Text"
-
-#: vacancies/templates/vacancies/application_list.html:13
-msgid "Status"
-msgstr "Status"
-
-#: vacancies/templates/vacancies/application_list.html:33
-msgid "Sender"
-msgstr "Sender"
-
 #: vacancies/templates/vacancies/apply_for_vacancy.html:4
-#: vacancies/templates/vacancies/vacancy_list.html:24
+#: vacancies/templates/vacancies/vacancy_list.html:39
 msgid "Bewerben"
 msgstr "Apply"
 
@@ -2098,8 +2056,8 @@ msgstr "Invite user to"
 msgid "Leerstellen zu \"%(v0)s\" hinzufügen"
 msgstr "Add vacancies to \"%(v0)s\""
 
-#: vacancies/templates/vacancies/edit_vacancy.html:4
-#: vacancies/templates/vacancies/edit_vacancy.html:7
+#: vacancies/templates/vacancies/edit_vacancy.html:5
+#: vacancies/templates/vacancies/edit_vacancy.html:8
 msgid "Leerstelle bearbeiten"
 msgstr "Edit vacancy"
 
@@ -2119,15 +2077,19 @@ msgstr "Location"
 msgid "Alter (Geschlecht"
 msgstr "Age (gender)"
 
-#: vacancies/templates/vacancies/vacancy_list.html:9
+#: vacancies/templates/vacancies/review_vacancy.html:20
+msgid "Aktion"
+msgstr "Action"
+
+#: vacancies/templates/vacancies/vacancy_list.html:15
 msgid "Alter"
 msgstr "Age"
 
-#: vacancies/templates/vacancies/vacancy_list.html:27
-msgid "Beworben"
-msgstr "Applied"
+#: vacancies/templates/vacancies/vacancy_list.html:44
+msgid "Abwarten"
+msgstr "Wait"
 
-#: vacancies/views.py:92
+#: vacancies/views.py:95
 #, python-brace-format
 msgid ""
 "Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder "
@@ -2136,17 +2098,17 @@ msgstr ""
 "You don't fulfill the vacancy's criteria (location, age and/or gender). <a "
 "href=\"{link}\">Back</a>"
 
-#: vacancies/views.py:94
+#: vacancies/views.py:97
 msgid "Sie haben sich bereits beworben."
 msgstr "You already applied to this vacancy."
 
-#: vacancies/views.py:96
+#: vacancies/views.py:99
 #, python-brace-format
 msgid "Die Anmeldefrist ist bereits abgelaufen. <a href=\"{link}\">Zurück</a>"
 msgstr ""
 "The application deadline has already expired. <a href=\"{link}\">Back</a>"
 
-#: vacancies/views.py:98
+#: vacancies/views.py:101
 msgid "Sie sind bereits Mitglied."
 msgstr "You already are a member."
 
@@ -2246,6 +2208,45 @@ msgstr " %(v0)s ago"
 #: wall/templates/wall/post/post_loop.html:32
 msgid "Keine"
 msgstr "None"
+
+#~ msgid "Falls Sie das ändern möchten, schicken Sie ihm doch eine"
+#~ msgstr "If you want to change that, sent a"
+
+#~ msgid "Freundschaftsanfrage"
+#~ msgstr "friend request"
+
+#~ msgid "Gesendet"
+#~ msgstr "Sent"
+
+#~ msgid "Keine."
+#~ msgstr "None."
+
+#~ msgid "Eine Anfrage an einen Nutzer senden..."
+#~ msgstr "Send a request to a user..."
+
+#~ msgid "Ihre Matches"
+#~ msgstr "Your matches"
+
+#~ msgid "Wann"
+#~ msgstr "When"
+
+#~ msgid "Wo"
+#~ msgstr "Where"
+
+#~ msgid "Ziel"
+#~ msgstr "Target"
+
+#~ msgid "Leerstelle"
+#~ msgstr "Vacancy"
+
+#~ msgid "Text"
+#~ msgstr "Text"
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "Beworben"
+#~ msgstr "Applied"
 
 #~ msgid "Sie sind mit"
 #~ msgstr "You are friends with"
