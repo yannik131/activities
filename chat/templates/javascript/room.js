@@ -59,12 +59,12 @@ function addMessageToChat(data) {
     }
 };
 
-window.onbeforeunload = function() {
+window.addEventListener('beforeunload', function(e) {
     if(kicked_out) {
         return;
     }
     user_websocket.send(JSON.stringify({'type': 'chat', 'update_check': '', 'id': {{ room.id }}}));
-};
+});
 
 function moveMembers() {
     var padding = 10;

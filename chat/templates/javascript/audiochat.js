@@ -220,11 +220,11 @@ function negotiate(mediaStream) {
     var joinButton = document.getElementById('call-button');
     joinButton.src = "{% static 'icons/hangup.png' %}";
     joinButton.onclick = leaveAudio;
-    window.onbeforeunload = function() {
+    window.addEventListener('beforeunload', function(e) {
         if(localTrack) {
             localTrack.stop();
         }
-    }
+    });
 }
 
 function joinAudio() {

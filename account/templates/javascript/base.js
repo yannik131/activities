@@ -92,7 +92,6 @@ function addMessageToChatMenu(data) {
 }
 
 function getWsPrefix() {
-    console.log(location.protocol);
     if(location.protocol == "https:") {
         return "wss://" + window.location.host;
     }
@@ -146,14 +145,17 @@ function connect() {
     }
 
     user_websocket.onclose = function(e) {
-        console.log('User socket closed unexpectedly. Attempting reconnect in 1 second. Code: ', e.code, e);
+        if(e.code == 1000) {
+            return;
+        }
+        console.log('User socket closed unexpectedly. Attempting reconnect in 1 second. Code: ', e);
         setTimeout(function() {
             connect();
         }, 1000);
     }
 
     user_websocket.onerror = function(err) {
-        console.error('User socket encountered error: ', err.message, 'Closing socket.');
+        console.error('User socket encountered error: ', err, 'Closing socket.');
         user_websocket.close();
     }
 }

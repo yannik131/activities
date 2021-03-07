@@ -24,6 +24,9 @@ function gameConnect(game, match_id, username) {
     }
 
     socket.onclose = function(e) {
+        if(e.code == 1000) {
+            return;
+        }
         console.log('Game socket closed unexpectedly. Attempting reconnect in 1 second. Code:', e.code);
         setTimeout(function() {
             gameConnect(game, match_id, username);

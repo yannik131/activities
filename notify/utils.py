@@ -8,7 +8,6 @@ from shared.shared import log
 
 def _notify(recipient, actor, action, action_object, url):
     notification = Notification.objects.create(recipient=recipient, actor=actor, action=action, action_object=action_object)
-    log("creating notification with action_objects=", action_object, "->", notification)
     channel_name = recipient.channel_name
     if url is None:
         url = notification.get_absolute_url()

@@ -229,7 +229,7 @@ function handlePlay(data) {
     if(data.round) {
         setTimeout(function() {
             setUpNewRound(data);
-        }, 1000);
+        }, 1500);
     }
     else if(data.clear) {
         setTimeout(function() {
