@@ -120,14 +120,9 @@ function getOrCreatePeerConnection(sender) {
             pc.addTrack(localTrack);
         }
         pc.ontrack = function(event) {
-            for(var i = 0; i < users.length; i++) {
-                var track = tracks[users[i]];
-                if(track) {
-                    remoteMediaStream.removeTrack(track);
-                    remoteMediaStream.addTrack(track);
-                }
-            }
+            console.log("attempting to add track", event.track, "from user", sender, "to", remoteMediaStream.getAudioTracks());
             remoteMediaStream.addTrack(event.track);
+            console.log("after:", remoteMediaStream.getAudioTracks());
             tracks[sender] = event.track;
             remoteAudio.play(); //some browsers deactivate autoplay
         }
