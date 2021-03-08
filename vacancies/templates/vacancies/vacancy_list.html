@@ -14,9 +14,9 @@
             {% trans 'Geschlecht' %}: {{ vacancy.sex|default_if_none:"/" }}<br>
             {% trans 'Alter' %}: {{ vacancy.min_age|default_if_none:"/" }} - {{ vacancy.max_age|default_if_none:"/" }}
         </div>
-        <div class="bottom" style="bottom: 0; height: 20%">
+        <div class="bottom" style="height: 20%">
             {% if user == target.admin %}
-                <div class="competitive" style="font-size: 16px">
+                <div class="competitive" style="font-size: 16px;">
                     <div class="left" onclick=openLink("{% url 'vacancies:review_vacancy' vacancy.id %}")>
                         <img src="{% static 'icons/interview.png' %}">
                         {% trans 'Bewerbungen' %}

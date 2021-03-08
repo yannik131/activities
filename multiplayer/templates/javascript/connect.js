@@ -1,6 +1,10 @@
 var socket;
 
 function gameConnect(game, match_id, username) {
+    if(!username) {
+        console.log("connecting to", game, "without a username?");
+        return;
+    }
     socket = new WebSocket(
         getWsPrefix()
         + '/ws/multiplayer/'

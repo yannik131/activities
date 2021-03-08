@@ -87,3 +87,10 @@
 .bottom .button-like:hover {
     background-color: darkgray;
 }
+
+.bottom .competitive {
+    position: absolute; 
+    bottom: 0; 
+    margin-bottom: 0; 
+    width: 100%
+}
