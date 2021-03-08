@@ -3,8 +3,6 @@
 
 
 const joinBbutton = document.getElementById("join-audio");
-const remoteAudio = document.getElementById('remote-audio');
-let remoteMediaStream;
 
 const configuration = {
     "iceServers": [{
@@ -20,8 +18,10 @@ const configuration = {
 };
 
 var peerConnections = {};
-var tracks = {};
 var users = [];
+var remoteAudioElements = {};
+var remoteMediaStreams = {};
+var tracks = {};
 let localTrack;
 var acceptingConnections = false;
 var old_colors = {};
@@ -115,16 +115,19 @@ function getOrCreatePeerConnection(sender) {
         pc = new RTCPeerConnection(configuration);
         colorize(sender, 'darkgreen');
         peerConnections[sender] = pc;
+        var mediaStream = new MediaStream();
+        remoteMediaStreams[sender] = mediaStream;
+        var audio = document.createElement('audio');
+        audio.srcObject = mediaStream;
+        remoteAudioElements[sender] = audio;
         
         if(localTrack) {
             pc.addTrack(localTrack);
         }
         pc.ontrack = function(event) {
-            console.log("attempting to add track", event.track, "from user", sender, "to", remoteMediaStream.getAudioTracks());
-            remoteMediaStream.addTrack(event.track);
-            console.log("after:", remoteMediaStream.getAudioTracks());
+            remoteMediaStreams[sender].addTrack(event.track);
             tracks[sender] = event.track;
-            remoteAudio.play(); //some browsers deactivate autoplay
+            remoteAudioElements[sender].play(); //some browsers deactivate autoplay
         }
         users.push(sender);
     }
@@ -200,8 +203,10 @@ function deletePeerConnection(user) {
     }
     const track = tracks[user];
     if(track) {
-        remoteMediaStream.removeTrack(track);
+        remoteMediaStreams[user].removeTrack(track);
         delete tracks[user];
+        remoteAudioElements[user].remove();
+        delete remoteAudioElements[user];
     }
     pc.close();
     pc.onicecandidate = null;
@@ -213,10 +218,6 @@ function deletePeerConnection(user) {
 function negotiate(mediaStream) {
     if(mediaStream) {
         localTrack = mediaStream.getAudioTracks()[0];
-        if(!remoteMediaStream) {
-            remoteMediaStream = new MediaStream();
-            remoteAudio.srcObject = remoteMediaStream;
-        }
     }
     acceptingConnections = true;
     send({'type': 'rtc', 'action': 'join', 'room_id': '{{ room.id }}'});
