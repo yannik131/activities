@@ -115,15 +115,20 @@ function getOrCreatePeerConnection(sender) {
         pc = new RTCPeerConnection(configuration);
         colorize(sender, 'darkgreen');
         peerConnections[sender] = pc;
-        users.push(sender);
+        
         if(localTrack) {
             pc.addTrack(localTrack);
         }
         pc.ontrack = function(event) {
+            for(var i = 0; i < users.length; i++) {
+                remoteMediaStream.removeTrack(tracks[users[i]]);
+                remoteMediaStream.addTrack(tracks[users[i]]);
+            }
             remoteMediaStream.addTrack(event.track);
             tracks[sender] = event.track;
             remoteAudio.play(); //some browsers deactivate autoplay
         }
+        users.push(sender);
     }
     return pc;
 }

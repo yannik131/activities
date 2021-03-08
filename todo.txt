@@ -35,3 +35,4 @@ messages in einigen fällen
 doko 5 chatmiglieder 2x heinz?
 score anzeigen zwischendurch
 neu drücken button bestätigen
+verhindere caching bei chats um "closed due to suspension" zu vermeiden
