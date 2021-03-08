@@ -15,6 +15,7 @@ def create_appointment(request, id):
         if form.is_valid():
             appointment = form.save(commit=False)
             appointment.group = group
+            appointment.creator = request.user
             appointment.save()
             return HttpResponseRedirect(group.get_absolute_url())
     else:
@@ -25,7 +26,7 @@ def create_appointment(request, id):
 @login_required
 def delete_appointment(request, id):
     appointment = get_object_or_404(Appointment, id=id)
-    if request.user == appointment.group.admin:
+    if request.user in [appointment.group.admin, appointment.creator]:
         appointment.delete()
         return HttpResponseRedirect(appointment.group.get_absolute_url())
     return handler403(request)

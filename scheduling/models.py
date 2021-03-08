@@ -2,6 +2,7 @@ from django.db import models
 from usergroups.models import UserGroup
 from django.utils.translation import gettext_lazy as _
 from shared.shared import GERMAN_DATE_FMT
+from account.models import User
 
 
 class Appointment(models.Model):
@@ -10,6 +11,7 @@ class Appointment(models.Model):
     end_time = models.DateTimeField(null=True, blank=True)
     location = models.CharField(max_length=50)
     group = models.ForeignKey(UserGroup, related_name='appointments', on_delete=models.CASCADE)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='managed_appointments')
 
     class Meta:
         ordering = ['-start_time']

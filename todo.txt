@@ -36,3 +36,9 @@ doko 5 chatmiglieder 2x heinz?
 score anzeigen zwischendurch
 neu drücken button bestätigen
 verhindere caching bei chats um "closed due to suspension" zu vermeiden
+nutzer tritt bei chat aktualisieren gruppe
+chat nochmal raufklicken um zu schließen nachricht erinnerung was auch immer
+ich greife an, der andere nachbar schmeißt sofort eine dazu, hat nur noch eine, muss dann schlucken, angegriffener sieht dann die karte
+nachricht dass man muss wenn man dran ist
+fertig button nach spielende
+durak resize call

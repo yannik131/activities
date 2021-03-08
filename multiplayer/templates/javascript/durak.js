@@ -38,7 +38,7 @@ function processMultiplayerData(data) {
     var delayed = false;
     switch(data.action) {
         case "load_data":
-            delayed = player_list;
+            delayed = Boolean(player_list);
             if(delayed) {
                 delayedCall(loadGameField, data);
             }

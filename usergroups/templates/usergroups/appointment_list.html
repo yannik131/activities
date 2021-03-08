@@ -5,7 +5,7 @@
     
     <div class="appointment">
         <div class="top" style="font-weight: bold">
-            {{ appointment.location }}, {{ appointment.start_time }}
+            {{ appointment.location }}, {{ appointment.start_time }} ({{ appointment.creator }})
         </div>
         <div class="confirmations" style="margin: 10px 0; padding-bottom: 5px">
             {% trans "Zusagen" %}: {{ appointment.participants.all|length }}/{{ group.members.all|length }}<br>
@@ -35,7 +35,7 @@
                     <img src="{% static 'icons/confirm_appointment.png' %}">
                     {% trans "Zusagen" %}
                 </div>
-                {% if user == group.admin %}
+                {% if user == appointment.creator or user == group.admin %}
                 <div class="left" onclick=openLink("{% url 'scheduling:delete_appointment' appointment.id %}")>
                     <img src="{% static 'icons/remove.png' %}">
                     {% trans "Löschen" %}

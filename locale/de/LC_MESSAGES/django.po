@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-07 18:27+0000\n"
+"POT-Creation-Date: 2021-03-08 21:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,103 +92,103 @@ msgstr ""
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr ""
 
-#: account/models.py:18
+#: account/models.py:19
 msgid "männlich"
 msgstr ""
 
-#: account/models.py:19
+#: account/models.py:20
 msgid "weiblich"
 msgstr ""
 
-#: account/models.py:27
+#: account/models.py:28
 msgid "hat erstellt"
 msgstr ""
 
-#: account/models.py:28
+#: account/models.py:29
 msgid "ist jetzt befreundet mit"
 msgstr ""
 
-#: account/models.py:29
+#: account/models.py:30
 msgid "ist nicht mehr befreundet mit"
 msgstr ""
 
-#: account/models.py:30
+#: account/models.py:31
 msgid "hat Ihnen eine Freundschaftsanfrage geschickt"
 msgstr ""
 
-#: account/models.py:31
+#: account/models.py:32
 msgid "ist beigetreten"
 msgstr ""
 
-#: account/models.py:32
+#: account/models.py:33
 msgid "hat verlassen"
 msgstr ""
 
-#: account/models.py:33
+#: account/models.py:34
 msgid "hat zugesagt"
 msgstr ""
 
-#: account/models.py:34
+#: account/models.py:35
 msgid "hat abgesagt"
 msgstr ""
 
-#: account/models.py:35
+#: account/models.py:36
 msgid "hat sich beworben"
 msgstr ""
 
-#: account/models.py:36
+#: account/models.py:37
 msgid "hat etwas gepostet in"
 msgstr ""
 
-#: account/models.py:37
+#: account/models.py:38
 msgid "hat etwas kommentiert"
 msgstr ""
 
-#: account/models.py:38
+#: account/models.py:39
 msgid "hat eure Freundschaft beendet"
 msgstr ""
 
-#: account/models.py:39
+#: account/models.py:40
 msgid "hat Sie eingeladen"
 msgstr ""
 
-#: account/models.py:40
+#: account/models.py:41
 msgid "hat Ihre Freundschaftsanfrage angenommen"
 msgstr ""
 
-#: account/models.py:41
+#: account/models.py:42
 msgid "hat Ihre Freundschaftsanfrage abgelehnt"
 msgstr ""
 
-#: account/models.py:42
+#: account/models.py:43
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr ""
 
-#: account/models.py:142
+#: account/models.py:148
 msgid "Ausstehend"
 msgstr ""
 
-#: account/models.py:143
+#: account/models.py:149
 msgid "Angenommen"
 msgstr ""
 
-#: account/models.py:144
+#: account/models.py:150
 msgid "Abgelehnt"
 msgstr ""
 
-#: account/models.py:188 vacancies/models.py:29
+#: account/models.py:194 vacancies/models.py:29
 msgid "Land"
 msgstr ""
 
-#: account/models.py:189 vacancies/models.py:30
+#: account/models.py:195 vacancies/models.py:30
 msgid "Bundesland"
 msgstr ""
 
-#: account/models.py:190 vacancies/models.py:31
+#: account/models.py:196 vacancies/models.py:31
 msgid "Landkreis"
 msgstr ""
 
-#: account/models.py:191 vacancies/models.py:32
+#: account/models.py:197 vacancies/models.py:32
 msgid "Stadt"
 msgstr ""
 
@@ -504,10 +504,6 @@ msgstr ""
 
 #: account/templates/account/home.html:20
 msgid "Sie sind zurzeit Mitglied folgender Aktivitäten:"
-msgstr ""
-
-#: account/templates/account/home.html:23
-msgid "Sie sind zurzeit kein Mitglied einer Aktivität."
 msgstr ""
 
 #: account/templates/account/jokes.html:2
@@ -877,11 +873,11 @@ msgstr ""
 msgid "Senden"
 msgstr ""
 
-#: activities/settings/base.py:148
+#: activities/settings/base.py:149
 msgid "Deutsch"
 msgstr ""
 
-#: activities/settings/base.py:149
+#: activities/settings/base.py:150
 #, fuzzy
 #| msgid "English"
 msgid "Englisch"
@@ -981,6 +977,138 @@ msgstr ""
 msgid "Keine!"
 msgstr ""
 
+#: character/models.py:9
+msgid "gutmütig"
+msgstr ""
+
+#: character/models.py:10
+msgid "kühn"
+msgstr ""
+
+#: character/models.py:10
+msgid "vorsichtig"
+msgstr ""
+
+#: character/models.py:11
+msgid "froh"
+msgstr ""
+
+#: character/models.py:11
+msgid "melancholisch"
+msgstr ""
+
+#: character/models.py:12
+msgid "schelmisch"
+msgstr ""
+
+#: character/models.py:12
+msgid "ernst"
+msgstr ""
+
+#: character/models.py:13
+msgid "schrullig"
+msgstr ""
+
+#: character/models.py:13
+msgid "unauffällig"
+msgstr ""
+
+#: character/models.py:14
+msgid "entspannt"
+msgstr ""
+
+#: character/models.py:14
+msgid "impulsiv"
+msgstr ""
+
+#: character/models.py:15
+msgid "mutig"
+msgstr ""
+
+#: character/models.py:15
+msgid "ängstlich"
+msgstr ""
+
+#: character/models.py:16
+msgid "einzelgängerisch"
+msgstr ""
+
+#: character/models.py:16
+msgid "gesellig"
+msgstr ""
+
+#: character/models.py:17
+msgid "naiv"
+msgstr ""
+
+#: character/models.py:17
+msgid "skeptisch"
+msgstr ""
+
+#: character/models.py:18
+msgid "frech"
+msgstr ""
+
+#: character/models.py:18
+msgid "höflich"
+msgstr ""
+
+#: character/models.py:19
+msgid "ungestüm"
+msgstr ""
+
+#: character/models.py:19
+msgid "überlegt"
+msgstr ""
+
+#: character/models.py:20
+msgid "ruhig"
+msgstr ""
+
+#: character/models.py:20
+msgid "rastlos"
+msgstr ""
+
+#: character/models.py:21
+msgid "gewieft"
+msgstr ""
+
+#: character/models.py:21
+msgid "ehrlich"
+msgstr ""
+
+#: character/models.py:22
+msgid "ausgelassen"
+msgstr ""
+
+#: character/models.py:22
+msgid "schüchtern"
+msgstr ""
+
+#: character/models.py:23
+msgid "bescheiden"
+msgstr ""
+
+#: character/models.py:23
+msgid "anspruchsvoll"
+msgstr ""
+
+#: character/models.py:24
+msgid "wissbegierig"
+msgstr ""
+
+#: character/models.py:24
+msgid "müßig"
+msgstr ""
+
+#: character/models.py:25
+msgid "geduldig"
+msgstr ""
+
+#: character/models.py:25
+msgid "empathisch"
+msgstr ""
+
 #: chat/templates/chat/chat_list.html:7 chat/templates/chat/chat_list.html:11
 msgid "Chat-Liste"
 msgstr ""
@@ -1004,11 +1132,11 @@ msgstr ""
 msgid "Chat"
 msgstr ""
 
-#: chat/templates/javascript/audiochat.js:214
+#: chat/templates/javascript/audiochat.js:224
 msgid "tritt der Konferenz bei."
 msgstr ""
 
-#: chat/templates/javascript/audiochat.js:246
+#: chat/templates/javascript/audiochat.js:256
 msgid "verlässt die Konferenz."
 msgstr ""
 
@@ -1683,7 +1811,7 @@ msgstr ""
 msgid "Datum & Uhrzeit"
 msgstr ""
 
-#: scheduling/models.py:20
+#: scheduling/models.py:22
 #, python-brace-format
 msgid "Treffen am {start}"
 msgstr ""

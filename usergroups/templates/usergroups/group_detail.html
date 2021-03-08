@@ -63,7 +63,7 @@
         {% include 'usergroups/appointment_list.html' %}
     {% endif %}
     <br/>
-    {% if user == group.admin %}
+    {% if is_member %}
         <div class="button-like" onclick=openLink("{% url 'scheduling:create_appointment' group.id %}")><img src="{% static 'icons/date.png' %}">{% trans "Termin erstellen" %}</div>
     {% endif %}
     <h2>{% trans "Posts" %}</h2>
