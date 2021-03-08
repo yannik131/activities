@@ -121,8 +121,11 @@ function getOrCreatePeerConnection(sender) {
         }
         pc.ontrack = function(event) {
             for(var i = 0; i < users.length; i++) {
-                remoteMediaStream.removeTrack(tracks[users[i]]);
-                remoteMediaStream.addTrack(tracks[users[i]]);
+                var track = tracks[users[i]];
+                if(track) {
+                    remoteMediaStream.removeTrack(track);
+                    remoteMediaStream.addTrack(track);
+                }
             }
             remoteMediaStream.addTrack(event.track);
             tracks[sender] = event.track;
