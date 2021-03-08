@@ -62,7 +62,9 @@ function addNotification(id, text, url) {
 function playSound(url) {
     const audio = new Audio(url);
     audio.volume = 0.5;
-    audio.play();
+    audio.play().catch(function(reason) {
+        console.log('Sound could not be played:', reason);
+    });
 }
 
 function format_time_str(time) {
@@ -99,6 +101,7 @@ function getWsPrefix() {
 }
 
 function connect() {
+    console.log('creating new connection');
     user_websocket = new WebSocket(
         getWsPrefix()
         + '/ws/user/'
@@ -187,4 +190,8 @@ window.addEventListener('resize', resize);
 
 {% if user.is_authenticated %}
     connect();
+    window.addEventListener('beforeunload', function() {
+        user_websocket.close();
+    });
+    
 {% endif %}

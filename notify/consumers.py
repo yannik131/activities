@@ -16,7 +16,6 @@ class NotificationConsumer(WebsocketConsumer):
         self.user = User.objects.get(id=user_id)
         self.user.channel_name = self.channel_name
         self.user.save()
-        log(self.user, 'connect')
         async_to_sync(self.channel_layer.group_add)(
             self.user.channel_group_name,
             self.channel_name
@@ -26,7 +25,6 @@ class NotificationConsumer(WebsocketConsumer):
         self.match = None
 
     def disconnect(self, code):
-        log(self.user.username, 'disconnect')
         user = User.objects.get(id=self.user.id)
         user.channel_name = None
         user.save()

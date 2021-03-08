@@ -20,7 +20,10 @@
         <p>{% blocktrans %}Sie sind zurzeit Mitglied folgender Aktivitäten:{% endblocktrans %}</p>
         {% include "activity/loop.html" with activities=user.activities %}
     {% else %}
-        <p>{% blocktrans %}Sie sind zurzeit kein Mitglied einer Aktivität.{% endblocktrans %}</p>
+       <!--<div class="button-like" onclick=openLink("{% url 'character:overview' %}")>
+           <img src="{% static 'icons/info.png' %}">
+           Fragebogen ausfüllen
+       </div>-->
     {% endif %}
     <br>
 {% endblock %}

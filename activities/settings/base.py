@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'multiplayer.apps.MultiplayerConfig',
     'notify.apps.NotifyConfig',
     'chat',
+    'character',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

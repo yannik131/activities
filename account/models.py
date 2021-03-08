@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.contrib.contenttypes.models import ContentType
 from itertools import chain
 from django.utils.translation import gettext_lazy as _
+from character.models import Character
 
 
 class User(AbstractUser):
@@ -22,7 +23,7 @@ class User(AbstractUser):
     confirmed_appointments = models.ManyToManyField("scheduling.Appointment", related_name='participants')
     cancelled_appointments = models.ManyToManyField("scheduling.Appointment", related_name='cancellations')
     channel_name = models.CharField(max_length=100, null=True)
-
+    character = models.ForeignKey(Character, on_delete=models.CASCADE, null=True)
     action_strings = {
         'created': _('hat erstellt'),
         'has_new_friend': _('ist jetzt befreundet mit'),
@@ -40,10 +41,6 @@ class User(AbstractUser):
         'accepted_friend_request': _('hat Ihre Freundschaftsanfrage angenommen'),
         'declined_friend_request': _('hat Ihre Freundschaftsanfrage abgelehnt'),
         'declined_application': _('hat Ihre Bewerbung abgelehnt')
-    }
-    
-    CHARACTERISTICS = {
-        
     }
 
     def friendships(self):
@@ -104,6 +101,11 @@ class User(AbstractUser):
 
     def application_dict(self):
         return dict([(a.vacancy.id, a.status) for a in self.applications.all()])
+        
+    def init_traits(self):
+        for trait in User.CHARACTER_TRAITS:
+            self.character[trait] = 0
+        self.save()
         
     @property
     def channel_group_name(self):

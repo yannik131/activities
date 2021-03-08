@@ -31,7 +31,8 @@ urlpatterns = [
     path('competitions/', include('competitions.urls')),
     path('vacancies/', include('vacancies.urls')),
     path('notifications/', include('notify.urls')),
-    path('multiplayer/', include('multiplayer.urls'))
+    path('multiplayer/', include('multiplayer.urls')),
+    path('character/', include('character.urls'))
 ]
 
 handler404 = "account.views.handler404"

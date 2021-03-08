@@ -39,6 +39,10 @@ function gameConnect(game, match_id, username) {
     }
 }
 
+window.addEventListener('beforeunload', function() {
+    socket.close();
+});
+
 function sendAction(action) {
     socket.send(JSON.stringify({
         'action': action

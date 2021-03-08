@@ -1,4 +1,3 @@
-search engine friendly url: (request, id) syntax ändern
 suche
 like funktion für posts
 messages runde nicht möglich
@@ -7,8 +6,6 @@ keine nachricht wenn admin beitritt
 DESIGN:
 datepicker, datetimepicker
 
-Lobby:
-Laufende Liste von Nutzern rechts, Liste von Matches links
 
 DURAK_WEBSOCKET LÖSCHEN, USER_WEBSOCKET REICHT!!
 zuschmeißen wartezeit
@@ -28,8 +25,6 @@ took too long to shut down and was killed.
 gekickt -> nachricht
 match bewerbung annehmen server error
 
-audiochat 3-4 personen zerhackstückelt
-game chat unten links button mit popup in der mitte
 eklige weiße nachrichten (bereits freundschaftsanfrage gesendet) durch redirect mit message ersetzen (grün?)
 lobby aufhübschen (match erstellen, beitreten sofort)
 aktivitäten vorschlagen: 5 mit den meisten mitgliedern (vorschläge wegklicken), fragebogen ausfüllen
@@ -37,9 +32,6 @@ aktivitäten vorschlagen: 5 mit den meisten mitgliedern (vorschläge wegklicken)
 vacancy gelöscht redirect zu account bearbeiten??
 charakterpunkte zu aktivitäten hinzufügen, fragebogen zur Charakterermittlung
 messages in einigen fällen
-onbeforeunload webrtc
 doko 5 chatmiglieder 2x heinz?
-1s anzeige 1.5
-letzter stich dauerhaft, länger stich
 score anzeigen zwischendurch
 neu drücken button bestätigen
