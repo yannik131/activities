@@ -208,10 +208,12 @@ function deletePeerConnection(user) {
 }
 
 function negotiate(mediaStream) {
-    remoteMediaStream = new MediaStream();
-    remoteAudio.srcObject = remoteMediaStream;
     if(mediaStream) {
         localTrack = mediaStream.getAudioTracks()[0];
+        if(!remoteMediaStream) {
+            remoteMediaStream = new MediaStream();
+            remoteAudio.srcObject = remoteMediaStream;
+        }
     }
     acceptingConnections = true;
     send({'type': 'rtc', 'action': 'join', 'room_id': '{{ room.id }}'});
@@ -242,8 +244,6 @@ function leaveAudio() {
     acceptingConnections = false;
     if(localTrack) {
         localTrack.stop();
-        remoteAudio.stop();
-        remoteAudio.srcObject = null;
     }
     while(users.length > 0) {
         deletePeerConnection(users[users.length-1]);
