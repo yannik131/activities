@@ -101,7 +101,6 @@ function getWsPrefix() {
 }
 
 function connect() {
-    console.log('creating new connection');
     user_websocket = new WebSocket(
         getWsPrefix()
         + '/ws/user/'

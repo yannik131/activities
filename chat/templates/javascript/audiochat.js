@@ -242,6 +242,8 @@ function leaveAudio() {
     acceptingConnections = false;
     if(localTrack) {
         localTrack.stop();
+        remoteAudio.srcObject = null;
+        remoteAudio.stop();
     }
     while(users.length > 0) {
         deletePeerConnection(users[users.length-1]);
