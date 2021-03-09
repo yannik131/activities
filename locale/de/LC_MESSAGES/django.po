@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-08 21:29+0000\n"
+"POT-Creation-Date: 2021-03-09 20:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,7 +71,7 @@ msgstr ""
 msgid "Ihre Stadt"
 msgstr ""
 
-#: account/forms.py:70 vacancies/forms.py:54 vacancies/forms.py:98
+#: account/forms.py:70 vacancies/forms.py:55 vacancies/forms.py:99
 #: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:34
 msgid "Nachricht"
 msgstr ""
@@ -317,7 +317,12 @@ msgid "Profil von"
 msgstr ""
 
 #: account/templates/account/detail.html:22
-#: usergroups/templates/usergroups/group_detail.html:18
+#: competitions/templates/competitions/match_detail.html:14
+#: competitions/templates/competitions/match_detail.html:24
+#: competitions/templates/competitions/tournament_detail.html:15
+#: competitions/templates/competitions/tournament_detail.html:25
+#: usergroups/templates/usergroups/group_detail.html:17
+#: usergroups/templates/usergroups/group_detail.html:27
 #: vacancies/templates/vacancies/review_vacancy.html:29
 msgid "Zum Chat"
 msgstr ""
@@ -350,7 +355,7 @@ msgid "Freundschaftsanfrage schicken"
 msgstr ""
 
 #: account/templates/account/detail.html:37
-#: usergroups/templates/usergroups/group_detail.html:69
+#: usergroups/templates/usergroups/group_detail.html:71
 msgid "Posts"
 msgstr ""
 
@@ -369,12 +374,12 @@ msgstr ""
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:323
-#: multiplayer/templates/javascript/durak.js:362
-#: multiplayer/templates/javascript/durak.js:372
+#: multiplayer/templates/javascript/durak.js:337
+#: multiplayer/templates/javascript/durak.js:374
+#: multiplayer/templates/javascript/durak.js:383
 #: multiplayer/templates/multiplayer/create_match.html:12
-#: scheduling/templates/scheduling/create_appointment.html:13
-#: usergroups/templates/usergroups/edit_group.html:12
+#: scheduling/templates/scheduling/create_appointment.html:14
+#: usergroups/templates/usergroups/edit_group.html:13
 #: vacancies/templates/vacancies/create_invitation.html:11
 #: vacancies/templates/vacancies/create_vacancies.html:11
 #: vacancies/templates/vacancies/edit_vacancy.html:16
@@ -418,50 +423,50 @@ msgstr ""
 msgid "Anfragen"
 msgstr ""
 
-#: account/templates/account/friend_requests_list.html:12
+#: account/templates/account/friend_requests_list.html:10
 msgid "Ihre Freunde"
 msgstr ""
 
-#: account/templates/account/friend_requests_list.html:15
+#: account/templates/account/friend_requests_list.html:13
 msgid "Anfrage senden"
 msgstr ""
 
-#: account/templates/account/friend_requests_list.html:19
+#: account/templates/account/friend_requests_list.html:17
 msgid "Eingegange Anfragen"
 msgstr ""
 
-#: account/templates/account/friend_requests_list.html:24
+#: account/templates/account/friend_requests_list.html:22
 #: competitions/templates/competitions/full_table.html:8
 msgid "Von"
 msgstr ""
 
-#: account/templates/account/friend_requests_list.html:40
+#: account/templates/account/friend_requests_list.html:38
 #: vacancies/templates/vacancies/invitation_list.html:17
 #: vacancies/templates/vacancies/review_vacancy.html:33
 msgid "Annehmen"
 msgstr ""
 
-#: account/templates/account/friend_requests_list.html:44
+#: account/templates/account/friend_requests_list.html:42
 #: vacancies/templates/vacancies/review_vacancy.html:33
 msgid "Ablehnen"
 msgstr ""
 
-#: account/templates/account/friend_requests_list.html:50
-#: account/templates/account/friend_requests_list.html:77
+#: account/templates/account/friend_requests_list.html:48
+#: account/templates/account/friend_requests_list.html:75
 #: usergroups/templates/usergroups/appointment_list.html:41
 #: usergroups/templates/usergroups/invitation_list.html:16
-#: vacancies/templates/vacancies/application_list.html:24
+#: vacancies/templates/vacancies/application_list.html:23
 #: vacancies/templates/vacancies/edit_vacancy.html:11
 #: vacancies/templates/vacancies/invitation_list.html:21
 #: vacancies/templates/vacancies/review_vacancy.html:35
 msgid "Löschen"
 msgstr ""
 
-#: account/templates/account/friend_requests_list.html:59
+#: account/templates/account/friend_requests_list.html:57
 msgid "Gesendete Anfragen"
 msgstr ""
 
-#: account/templates/account/friend_requests_list.html:64
+#: account/templates/account/friend_requests_list.html:62
 msgid "An"
 msgstr ""
 
@@ -726,13 +731,17 @@ msgid "Ihre Posts"
 msgstr ""
 
 #: account/templates/account/user_post_list.html:9
-#: activity/templates/activity/detail.html:46
-#: usergroups/templates/usergroups/group_detail.html:71
+#: activity/templates/activity/detail.html:50
+#: usergroups/templates/usergroups/group_detail.html:73
 msgid "Post erstellen"
 msgstr ""
 
 #: account/templates/account/user_post_list.html:10
 msgid "Die Posts sind öffentlich auf Ihrer Profilseite sichtbar."
+msgstr ""
+
+#: account/templates/base.html:32
+msgid "OK!"
 msgstr ""
 
 #: account/templates/registration/logged_out.html:4
@@ -873,6 +882,25 @@ msgstr ""
 msgid "Senden"
 msgstr ""
 
+#: account/views.py:49
+msgid ""
+"Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
+"Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
+"senden."
+msgstr ""
+
+#: account/views.py:70
+msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
+msgstr ""
+
+#: account/views.py:105
+msgid "Sie können diese Anfrage nicht löschen."
+msgstr ""
+
+#: account/views.py:126
+msgid "Diese Freundschaft existiert nicht mehr."
+msgstr ""
+
 #: activities/settings/base.py:149
 msgid "Deutsch"
 msgstr ""
@@ -900,7 +928,7 @@ msgstr ""
 msgid "Aktivität: {name}"
 msgstr ""
 
-#: activity/models.py:67
+#: activity/models.py:70
 #, python-brace-format
 msgid "Kategorie: {name}"
 msgstr ""
@@ -915,8 +943,8 @@ msgid "Mitglieder anzeigen"
 msgstr ""
 
 #: activity/templates/activity/activity_list.html:22
-#: competitions/templates/competitions/tournament_detail.html:19
-#: usergroups/templates/usergroups/group_detail.html:31
+#: competitions/templates/competitions/tournament_detail.html:29
+#: usergroups/templates/usergroups/group_detail.html:33
 #: usergroups/templates/usergroups/loop.html:18
 msgid "Mitglieder"
 msgstr ""
@@ -951,25 +979,27 @@ msgstr ""
 msgid "Online spielen"
 msgstr ""
 
-#: activity/templates/activity/detail.html:33
-#: usergroups/templates/usergroups/group_detail.html:35
+#: activity/templates/activity/detail.html:37
+#: competitions/templates/competitions/match_detail.html:35
+#: competitions/templates/competitions/tournament_detail.html:37
+#: usergroups/templates/usergroups/group_detail.html:37
 msgid "Austreten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:34
+#: activity/templates/activity/detail.html:38
 msgid "Suche nach Mitgliedern"
 msgstr ""
 
-#: activity/templates/activity/detail.html:40
+#: activity/templates/activity/detail.html:44
 msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
 msgstr ""
 
-#: activity/templates/activity/detail.html:42
+#: activity/templates/activity/detail.html:46
 #: multiplayer/templates/javascript/lobby.js:46
 msgid "Beitreten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:45
+#: activity/templates/activity/detail.html:49
 msgid "Beiträge"
 msgstr ""
 
@@ -1119,15 +1149,13 @@ msgid "Matches"
 msgstr ""
 
 #: chat/templates/chat/chat_list.html:22
-#: competitions/templates/competitions/overview.html:9
+#: competitions/templates/competitions/overview.html:11
 #: competitions/templates/competitions/user_overview.html:14
 msgid "Turniere"
 msgstr ""
 
-#: chat/templates/chat/room.html:6
-#: competitions/templates/competitions/tournament_detail.html:11
-#: competitions/templates/competitions/tournament_detail.html:14
-#: multiplayer/templates/multiplayer/game.html:33
+#: chat/templates/chat/room.html:6 chat/templates/javascript/room.js:147
+#: multiplayer/templates/multiplayer/game.html:36
 #: vacancies/templates/vacancies/review_vacancy.html:18
 msgid "Chat"
 msgstr ""
@@ -1140,91 +1168,103 @@ msgstr ""
 msgid "verlässt die Konferenz."
 msgstr ""
 
-#: chat/templates/javascript/room.js:44
+#: chat/templates/javascript/room.js:32
+msgid "ist dem Chat beigetreten."
+msgstr ""
+
+#: chat/templates/javascript/room.js:41
+msgid "hat den Chat verlassen."
+msgstr ""
+
+#: chat/templates/javascript/room.js:66
 msgid "Sie"
 msgstr ""
 
-#: chat/views.py:19
+#: chat/templates/javascript/room.js:134
+msgid "Chat schließen"
+msgstr ""
+
+#: chat/views.py:18
 msgid "Diesen Chat-Room gibt es nicht mehr."
 msgstr ""
 
-#: competitions/forms.py:10 competitions/forms.py:37
+#: competitions/forms.py:12 competitions/forms.py:43
 msgid "Austragungsort (Stadt)"
 msgstr ""
 
-#: competitions/forms.py:17
+#: competitions/forms.py:19
 msgid "Wann findet das Match statt?"
 msgstr ""
 
-#: competitions/forms.py:18
+#: competitions/forms.py:20
 msgid "Soll das Match öffentlich unter Matches & Turniere sichtbar sein?"
 msgstr ""
 
-#: competitions/forms.py:19
+#: competitions/forms.py:21
 msgid "Wo genau findet das Match statt?"
 msgstr ""
 
-#: competitions/forms.py:20
+#: competitions/forms.py:22
 msgid "Bitte beschreiben Sie kurz die Spielregeln und das Format des Matches"
 msgstr ""
 
-#: competitions/forms.py:21 competitions/forms.py:50
+#: competitions/forms.py:23 competitions/forms.py:56
 msgid "Mannschaftsspiel"
 msgstr ""
 
-#: competitions/forms.py:43
+#: competitions/forms.py:49
 msgid "Titel des Turniers"
 msgstr ""
 
-#: competitions/forms.py:44
+#: competitions/forms.py:50
 msgid ""
 "Adresse (falls das Turnier an einem einzigen Ort stattfindet, sonst leer "
 "lassen)"
 msgstr ""
 
-#: competitions/forms.py:45
+#: competitions/forms.py:51
 msgid "Turnierbeginn"
 msgstr ""
 
-#: competitions/forms.py:46
+#: competitions/forms.py:52
 msgid "Anmeldeschluss"
 msgstr ""
 
-#: competitions/forms.py:47
+#: competitions/forms.py:53
 msgid "Maximale Teilnehmeranzahl (leer lassen für kein Limit)"
 msgstr ""
 
-#: competitions/forms.py:48
+#: competitions/forms.py:54
 msgid "Rundenanzahl (leer lassen für automatische Ermittlung)"
 msgstr ""
 
-#: competitions/forms.py:49
+#: competitions/forms.py:55
 msgid "Turnierformat und weitere Informationen"
 msgstr ""
 
-#: competitions/forms.py:57
+#: competitions/forms.py:63
 msgid "Anmeldeschluss muss vor Turnierbeginn sein."
 msgstr ""
 
-#: competitions/models.py:35 competitions/models.py:90
+#: competitions/models.py:32 competitions/models.py:72
 msgid "Hat Ihre Bewerbung akzeptiert"
 msgstr ""
 
-#: competitions/models.py:63
+#: competitions/models.py:49
 #, python-brace-format
 msgid "Match am {start}"
 msgstr ""
 
-#: competitions/models.py:89
+#: competitions/models.py:71
 msgid "hat eine neue Runde"
 msgstr ""
 
-#: competitions/models.py:100
+#: competitions/models.py:79
 #, python-brace-format
 msgid "{act}-Turnier am {stamp}"
 msgstr ""
 
-#: competitions/models.py:161
+#: competitions/models.py:129
 msgid "Runde "
 msgstr ""
 
@@ -1243,7 +1283,7 @@ msgid ""
 msgstr ""
 
 #: competitions/templates/competitions/create_match.html:4
-#: competitions/templates/competitions/overview.html:27
+#: competitions/templates/competitions/overview.html:39
 #: multiplayer/templates/multiplayer/lobby.html:13
 msgid "Match erstellen"
 msgstr ""
@@ -1258,7 +1298,7 @@ msgid "Bitte füllen Sie das folgende Formular aus, um ein Match zu erstellen"
 msgstr ""
 
 #: competitions/templates/competitions/create_tournament.html:4
-#: competitions/templates/competitions/overview.html:10
+#: competitions/templates/competitions/overview.html:14
 msgid "Turnier erstellen"
 msgstr ""
 
@@ -1274,34 +1314,36 @@ msgid ""
 "%(v0)s zu erstellen."
 msgstr ""
 
-#: competitions/templates/competitions/edit_match.html:4
+#: competitions/templates/competitions/edit_match.html:5
 msgid "Match bearbeiten"
 msgstr ""
 
-#: competitions/templates/competitions/edit_match.html:7
+#: competitions/templates/competitions/edit_match.html:8
 #, python-format
 msgid "%(v0)s: Bearbeiten"
-msgstr ""
-
-#: competitions/templates/competitions/edit_match.html:8
-msgid "Match löschen"
 msgstr ""
 
 #: competitions/templates/competitions/edit_match.html:10
 msgid "Nutzen Sie das folgende Formular, um das Match zu bearbeiten"
 msgstr ""
 
-#: competitions/templates/competitions/edit_tournament.html:4
-#: competitions/templates/competitions/edit_tournament.html:7
+#: competitions/templates/competitions/edit_match.html:19
+#: competitions/templates/competitions/edit_tournament.html:21
+#: usergroups/templates/usergroups/edit_group.html:20
+msgid "Entfernen"
+msgstr ""
+
+#: competitions/templates/competitions/edit_match.html:24
+msgid "Match löschen"
+msgstr ""
+
+#: competitions/templates/competitions/edit_tournament.html:5
+#: competitions/templates/competitions/edit_tournament.html:8
 msgid "Turnier bearbeiten"
 msgstr ""
 
-#: competitions/templates/competitions/edit_tournament.html:8
-msgid "Turnier löschen"
-msgstr ""
-
 #: competitions/templates/competitions/edit_tournament.html:14
-#: usergroups/templates/usergroups/edit_group.html:15
+#: usergroups/templates/usergroups/edit_group.html:16
 msgid "Mitglieder verwalten"
 msgstr ""
 
@@ -1313,14 +1355,13 @@ msgstr ""
 msgid "Selbst beitreten"
 msgstr ""
 
-#: competitions/templates/competitions/edit_tournament.html:21
-#: usergroups/templates/usergroups/edit_group.html:19
-msgid "Entfernen"
+#: competitions/templates/competitions/edit_tournament.html:26
+msgid "Turnier löschen"
 msgstr ""
 
 #: competitions/templates/competitions/full_table.html:4
 #: competitions/templates/competitions/full_table.html:7
-#: competitions/templates/competitions/tournament_detail.html:17
+#: competitions/templates/competitions/tournament_detail.html:46
 msgid "Tabelle"
 msgstr ""
 
@@ -1370,106 +1411,91 @@ msgstr ""
 msgid "Runde beenden"
 msgstr ""
 
-#: competitions/templates/competitions/match_detail.html:4
-#: competitions/templates/competitions/match_detail.html:7
+#: competitions/templates/competitions/match_detail.html:5
+#: competitions/templates/competitions/match_detail.html:8
 #, python-format
 msgid "Match am %(v0)s"
 msgstr ""
 
-#: competitions/templates/competitions/match_detail.html:8
-#: competitions/templates/competitions/overview.html:14
-#: competitions/templates/competitions/overview.html:32
+#: competitions/templates/competitions/match_detail.html:9
 msgid "Admin"
 msgstr ""
 
-#: competitions/templates/competitions/match_detail.html:10
-#: usergroups/templates/usergroups/group_detail.html:23
+#: competitions/templates/competitions/match_detail.html:18
+#: competitions/templates/competitions/tournament_detail.html:19
+#: usergroups/templates/usergroups/group_detail.html:21
 #: vacancies/templates/vacancies/vacancy_list.html:26
 msgid "Bearbeiten"
 msgstr ""
 
-#: competitions/templates/competitions/match_detail.html:12
-#: multiplayer/templates/multiplayer/match.html:19
-msgid "Verlassen"
-msgstr ""
-
-#: competitions/templates/competitions/match_detail.html:14
+#: competitions/templates/competitions/match_detail.html:27
 #, python-format
 msgid "Ort: %(v0)s, %(v1)s"
 msgstr ""
 
-#: competitions/templates/competitions/match_detail.html:15
+#: competitions/templates/competitions/match_detail.html:28
 msgid "Teilnehmer"
 msgstr ""
 
-#: competitions/templates/competitions/match_detail.html:21
-#: competitions/templates/competitions/overview.html:33
-#: usergroups/templates/usergroups/group_detail.html:38
+#: competitions/templates/competitions/match_detail.html:37
+#: competitions/templates/competitions/tournament_detail.html:53
+#: usergroups/templates/usergroups/group_detail.html:40
 msgid "Leerstellen"
 msgstr ""
 
-#: competitions/templates/competitions/match_detail.html:23
-#: competitions/templates/competitions/tournament_detail.html:25
-msgid "Leerstelle hinzufügen"
+#: competitions/templates/competitions/match_detail.html:42
+#: competitions/templates/competitions/tournament_detail.html:58
+#: usergroups/templates/usergroups/group_detail.html:55
+#: vacancies/templates/vacancies/create_vacancies.html:4
+msgid "Leerstellen hinzufügen"
 msgstr ""
 
-#: competitions/templates/competitions/overview.html:4
+#: competitions/templates/competitions/match_detail.html:46
+#: competitions/templates/competitions/tournament_detail.html:62
+#: usergroups/templates/usergroups/group_detail.html:59
+msgid "Jemanden einladen"
+msgstr ""
+
+#: competitions/templates/competitions/overview.html:5
 #, python-format
 msgid "%(v0)s: Matches & Turniere "
 msgstr ""
 
-#: competitions/templates/competitions/overview.html:7
+#: competitions/templates/competitions/overview.html:9
 #: competitions/templates/competitions/user_overview.html:4
 #: competitions/templates/competitions/user_overview.html:7
 #, python-format
 msgid "%(v0)s: Matches & Turniere"
 msgstr ""
 
-#: competitions/templates/competitions/overview.html:13
-msgid "Turnier"
+#: competitions/templates/competitions/overview.html:26
+#: competitions/templates/competitions/overview.html:51
+msgid "Mitspieler"
 msgstr ""
 
-#: competitions/templates/competitions/overview.html:15
-#: competitions/templates/competitions/overview.html:34 scheduling/forms.py:19
-#: vacancies/templates/vacancies/vacancy_list.html:13
-msgid "Ort"
-msgstr ""
-
-#: competitions/templates/competitions/overview.html:25
+#: competitions/templates/competitions/overview.html:36
 msgid "Öffentliche Matches"
-msgstr ""
-
-#: competitions/templates/competitions/overview.html:31
-msgid "Match"
-msgstr ""
-
-#: competitions/templates/competitions/tournament_detail.html:8
-#, python-format
-msgid "Anmeldeschluss: %(v0)s"
 msgstr ""
 
 #: competitions/templates/competitions/tournament_detail.html:9
 #, python-format
-msgid "Beschreibung: %(v0)s"
+msgid "Anmeldeschluss: %(v0)s"
 msgstr ""
 
-#: competitions/templates/competitions/tournament_detail.html:11
-msgid "Bearbeiten..."
+#: competitions/templates/competitions/tournament_detail.html:33
+#: wall/templates/wall/post/post_loop.html:32
+msgid "Keine"
 msgstr ""
 
-#: competitions/templates/competitions/tournament_detail.html:12
-msgid "Nächste Runde erzeugen"
-msgstr ""
-
-#: competitions/templates/competitions/tournament_detail.html:14
-msgid "Austreten..."
-msgstr ""
-
-#: competitions/templates/competitions/tournament_detail.html:16
+#: competitions/templates/competitions/tournament_detail.html:39
 msgid "Verwalter"
 msgstr ""
 
-#: competitions/templates/competitions/tournament_detail.html:17
+#: competitions/templates/competitions/tournament_detail.html:41
+msgid "Nächste Runde erzeugen"
+msgstr ""
+
+#: competitions/templates/competitions/tournament_detail.html:50
 msgid "Spielplan"
 msgstr ""
 
@@ -1486,39 +1512,48 @@ msgid "Nicht genug Spieler"
 msgstr ""
 
 #: competitions/utils.py:67
-msgid "Schach spielen"
+msgid "Schach"
 msgstr ""
 
-#: competitions/utils.py:69
-msgid "Doppelkopf spielen"
+#: competitions/utils.py:69 multiplayer/models.py:144 multiplayer/views.py:26
+#: multiplayer/views.py:101
+msgid "Doppelkopf"
 msgstr ""
 
 #: competitions/utils.py:71
-msgid "Azul spielen"
+msgid "Azul"
 msgstr ""
 
-#: competitions/utils.py:73
-msgid "Skat spielen"
+#: competitions/utils.py:73 multiplayer/forms.py:20 multiplayer/models.py:142
+#: multiplayer/views.py:24 multiplayer/views.py:99
+msgid "Skat"
 msgstr ""
 
 #: competitions/utils.py:76
-msgid "Gibts doch nicht."
+msgid ""
+"Für dieses Spiel wurde noch kein Rundenalgorithmus geschrieben. Schicken Sie "
+"doch admin eine Freundschaftsanfrage und fragen Sie ihn, ob das noch "
+"implementiert werden könnte!"
 msgstr ""
 
-#: competitions/views.py:90
+#: competitions/views.py:91
 #, python-brace-format
 msgid "{act}-Turnier"
 msgstr ""
 
-#: competitions/views.py:176
+#: competitions/views.py:165
+msgid "Es wurde noch keine Runde erstellt."
+msgstr ""
+
+#: competitions/views.py:178
 msgid "Es stehen noch Ergebnisse der letzten Runde offen."
 msgstr ""
 
-#: competitions/views.py:181
+#: competitions/views.py:186
 msgid "Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden."
 msgstr ""
 
-#: competitions/views.py:193
+#: competitions/views.py:199
 msgid "Es stehen noch Ergebnisse offen."
 msgstr ""
 
@@ -1526,7 +1561,7 @@ msgstr ""
 msgid "Spieleranzahl"
 msgstr ""
 
-#: multiplayer/forms.py:17 multiplayer/models.py:141 multiplayer/views.py:98
+#: multiplayer/forms.py:17 multiplayer/models.py:140 multiplayer/views.py:97
 msgid "Durak"
 msgstr ""
 
@@ -1534,25 +1569,16 @@ msgstr ""
 msgid "Unterstützt werden 2, 3 oder 4 Spieler"
 msgstr ""
 
-#: multiplayer/forms.py:20 multiplayer/models.py:143 multiplayer/views.py:25
-#: multiplayer/views.py:100
-msgid "Skat"
-msgstr ""
-
 #: multiplayer/forms.py:22
 msgid "Unterstützt werden 3 oder 4 Spieler"
 msgstr ""
 
-#: multiplayer/models.py:145 multiplayer/views.py:27 multiplayer/views.py:102
-msgid "Doppelkopf"
-msgstr ""
-
-#: multiplayer/templates/javascript/cards.js:419
-#: multiplayer/templates/javascript/skat.js:561
+#: multiplayer/templates/javascript/cards.js:420
+#: multiplayer/templates/javascript/skat.js:563
 msgid "Ja"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:421
+#: multiplayer/templates/javascript/cards.js:422
 msgid "Nein"
 msgstr ""
 
@@ -1565,7 +1591,7 @@ msgid "Okay"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:7
-#: multiplayer/templates/javascript/doppelkopf.js:421
+#: multiplayer/templates/javascript/doppelkopf.js:422
 msgid "Gesund"
 msgstr ""
 
@@ -1583,19 +1609,19 @@ msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:11
 #: multiplayer/templates/javascript/skat.js:14
-#: multiplayer/templates/javascript/skat.js:357
+#: multiplayer/templates/javascript/skat.js:359
 msgid "Kreuz"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:12
 #: multiplayer/templates/javascript/skat.js:15
-#: multiplayer/templates/javascript/skat.js:358
+#: multiplayer/templates/javascript/skat.js:360
 msgid "Pik"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:13
 #: multiplayer/templates/javascript/skat.js:16
-#: multiplayer/templates/javascript/skat.js:359
+#: multiplayer/templates/javascript/skat.js:361
 msgid "Herz"
 msgstr ""
 
@@ -1620,7 +1646,7 @@ msgid "Keine 30"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:22
-#: multiplayer/templates/javascript/skat.js:391
+#: multiplayer/templates/javascript/skat.js:393
 msgid "Schwarz"
 msgstr ""
 
@@ -1635,9 +1661,9 @@ msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:180
 #: multiplayer/templates/javascript/doppelkopf.js:348
-#: multiplayer/templates/javascript/durak.js:161
+#: multiplayer/templates/javascript/durak.js:160
 #: multiplayer/templates/javascript/skat.js:165
-#: multiplayer/templates/javascript/skat.js:200
+#: multiplayer/templates/javascript/skat.js:202
 msgid "Spiel Nummer"
 msgstr ""
 
@@ -1646,7 +1672,7 @@ msgid "Normalspiel"
 msgstr ""
 
 #: multiplayer/templates/javascript/durak.js:61
-#: multiplayer/templates/javascript/durak.js:211
+#: multiplayer/templates/javascript/durak.js:210
 msgid "SCHLUCKT"
 msgstr ""
 
@@ -1658,16 +1684,16 @@ msgstr ""
 msgid "VERTEIDIGER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:342
+#: multiplayer/templates/javascript/durak.js:354
 msgid "Schlucken"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:352
+#: multiplayer/templates/javascript/durak.js:364
 msgid "Schieben"
 msgstr ""
 
 #: multiplayer/templates/javascript/skat.js:17
-#: multiplayer/templates/javascript/skat.js:360
+#: multiplayer/templates/javascript/skat.js:362
 msgid "Karo"
 msgstr ""
 
@@ -1683,68 +1709,68 @@ msgstr ""
 msgid "Nö"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:202
+#: multiplayer/templates/javascript/skat.js:204
 msgid "gewonnen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:204
+#: multiplayer/templates/javascript/skat.js:206
 msgid "verloren"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:206
+#: multiplayer/templates/javascript/skat.js:208
 msgid "überreizt"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:208
+#: multiplayer/templates/javascript/skat.js:210
 msgid "Augen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:290
+#: multiplayer/templates/javascript/skat.js:292
 msgid "Drücken"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:377
+#: multiplayer/templates/javascript/skat.js:379
 msgid "Ouvert"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:380
-#: multiplayer/templates/javascript/skat.js:385
+#: multiplayer/templates/javascript/skat.js:382
+#: multiplayer/templates/javascript/skat.js:387
 msgid "Normal"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:388
+#: multiplayer/templates/javascript/skat.js:390
 msgid "Schneider"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:394
+#: multiplayer/templates/javascript/skat.js:396
 msgid "Offen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:414
+#: multiplayer/templates/javascript/skat.js:416
 msgid "Aufnehmen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:417
+#: multiplayer/templates/javascript/skat.js:419
 msgid "Hand spielen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:426
+#: multiplayer/templates/javascript/skat.js:428
 msgid "Eingepasst"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:566
+#: multiplayer/templates/javascript/skat.js:568
 msgid "Passe"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:578
+#: multiplayer/templates/javascript/skat.js:580
 msgid "Vorhand"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:578
+#: multiplayer/templates/javascript/skat.js:580
 msgid "Mittelhand"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:578
+#: multiplayer/templates/javascript/skat.js:580
 msgid "Hinterhand"
 msgstr ""
 
@@ -1759,11 +1785,11 @@ msgid ""
 "erstellen."
 msgstr ""
 
-#: multiplayer/templates/multiplayer/game.html:10
+#: multiplayer/templates/multiplayer/game.html:13
 msgid "Spiel beenden, verlassen und zurücksetzen?"
 msgstr ""
 
-#: multiplayer/templates/multiplayer/game.html:11
+#: multiplayer/templates/multiplayer/game.html:14
 msgid "Ciao!"
 msgstr ""
 
@@ -1787,6 +1813,10 @@ msgstr ""
 msgid "Andere"
 msgstr ""
 
+#: multiplayer/templates/multiplayer/match.html:19
+msgid "Verlassen"
+msgstr ""
+
 #: multiplayer/templates/multiplayer/match.html:27
 msgid "Abbrechen"
 msgstr ""
@@ -1795,20 +1825,28 @@ msgstr ""
 msgid "Starten"
 msgstr ""
 
-#: multiplayer/views.py:58
+#: multiplayer/views.py:57
 msgid "Spiel ist bereits voll"
 msgstr ""
 
-#: multiplayer/views.py:74
+#: multiplayer/views.py:73
 msgid "Sie waren zu langsam, das Match war bereits voll."
 msgstr ""
 
-#: scheduling/forms.py:17 usergroups/forms.py:22
+#: multiplayer/views.py:103
+msgid "Dieses Match gibt es nicht."
+msgstr ""
+
+#: scheduling/forms.py:18 usergroups/forms.py:22
 msgid "Name"
 msgstr ""
 
-#: scheduling/forms.py:18
+#: scheduling/forms.py:19
 msgid "Datum & Uhrzeit"
+msgstr ""
+
+#: scheduling/forms.py:20 vacancies/templates/vacancies/vacancy_list.html:13
+msgid "Ort"
 msgstr ""
 
 #: scheduling/models.py:22
@@ -1816,21 +1854,21 @@ msgstr ""
 msgid "Treffen am {start}"
 msgstr ""
 
-#: scheduling/templates/scheduling/create_appointment.html:4
-#: scheduling/templates/scheduling/create_appointment.html:7
-#: usergroups/templates/usergroups/group_detail.html:67
+#: scheduling/templates/scheduling/create_appointment.html:5
+#: scheduling/templates/scheduling/create_appointment.html:8
+#: usergroups/templates/usergroups/group_detail.html:69
 msgid "Termin erstellen"
 msgstr ""
 
-#: scheduling/templates/scheduling/create_appointment.html:9
+#: scheduling/templates/scheduling/create_appointment.html:10
 msgid "Bitte füllen Sie folgendes Formular aus, um ein Treffen zu vereinbaren"
 msgstr ""
 
-#: shared/shared.py:31
+#: shared/shared.py:32
 msgid "Diese Adresse konnte nicht gefunden werden."
 msgstr ""
 
-#: shared/shared.py:33
+#: shared/shared.py:34
 msgid ""
 "Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die "
 "Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
@@ -1853,35 +1891,35 @@ msgstr ""
 msgid "Gruppenbild"
 msgstr ""
 
-#: usergroups/models.py:20
+#: usergroups/models.py:21
 msgid "hat einen neuen Termin"
 msgstr ""
 
-#: usergroups/models.py:21
+#: usergroups/models.py:22
 msgid "hat einen Termin verschoben"
 msgstr ""
 
-#: usergroups/models.py:22
+#: usergroups/models.py:23
 msgid "hat ein neues Mitglied"
 msgstr ""
 
-#: usergroups/models.py:23
+#: usergroups/models.py:24
 msgid "hat ein Mitglied verloren"
 msgstr ""
 
-#: usergroups/models.py:24
+#: usergroups/models.py:25
 msgid "hat eine neue Beschreibung"
 msgstr ""
 
-#: usergroups/models.py:25
+#: usergroups/models.py:26
 msgid "hat Ihre Bewerbung angenommen"
 msgstr ""
 
-#: usergroups/models.py:26
+#: usergroups/models.py:27
 msgid "Hat Sie rausgeschmissen"
 msgstr ""
 
-#: usergroups/models.py:36
+#: usergroups/models.py:37
 #, python-brace-format
 msgid "Gruppe: {name}"
 msgstr ""
@@ -1911,7 +1949,7 @@ msgid "Gruppe erstellen"
 msgstr ""
 
 #: usergroups/templates/usergroups/create_group.html:8
-#: usergroups/templates/usergroups/edit_group.html:8
+#: usergroups/templates/usergroups/edit_group.html:9
 msgid "Gruppe gehört zu"
 msgstr ""
 
@@ -1926,16 +1964,16 @@ msgstr ""
 msgid "Erstellen"
 msgstr ""
 
-#: usergroups/templates/usergroups/edit_group.html:4
+#: usergroups/templates/usergroups/edit_group.html:5
 #: usergroups/templates/usergroups/group_created.html:9
 msgid "Gruppe bearbeiten"
 msgstr ""
 
-#: usergroups/templates/usergroups/edit_group.html:7
+#: usergroups/templates/usergroups/edit_group.html:8
 msgid "Bearbeiten von"
 msgstr ""
 
-#: usergroups/templates/usergroups/edit_group.html:14
+#: usergroups/templates/usergroups/edit_group.html:26
 msgid "Gruppe löschen"
 msgstr ""
 
@@ -1972,34 +2010,25 @@ msgstr ""
 msgid "erfolgreich gelöscht"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:28
+#: usergroups/templates/usergroups/group_detail.html:30
 msgid "Gruppe gehört zur"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:33
+#: usergroups/templates/usergroups/group_detail.html:35
 msgid "Administrator"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:43
+#: usergroups/templates/usergroups/group_detail.html:45
 msgid ""
 "Zurzeit gibt es keine Leerstellen. Der Administrator kann welche erstellen"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:46
-#: vacancies/templates/vacancies/application_list.html:31
+#: usergroups/templates/usergroups/group_detail.html:48
+#: vacancies/templates/vacancies/application_list.html:30
 msgid "Einladungen"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:53
-#: vacancies/templates/vacancies/create_vacancies.html:4
-msgid "Leerstellen hinzufügen"
-msgstr ""
-
-#: usergroups/templates/usergroups/group_detail.html:57
-msgid "Jemanden einladen"
-msgstr ""
-
-#: usergroups/templates/usergroups/group_detail.html:62
+#: usergroups/templates/usergroups/group_detail.html:64
 msgid "Termine"
 msgstr ""
 
@@ -2008,7 +2037,7 @@ msgstr ""
 msgid "Ihre Gruppen"
 msgstr ""
 
-#: usergroups/views.py:91
+#: usergroups/views.py:92
 msgid ""
 "Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest "
 "oder löschen Sie die Gruppe."
@@ -2040,23 +2069,23 @@ msgid ""
 "Komponente aus."
 msgstr ""
 
-#: vacancies/forms.py:68
+#: vacancies/forms.py:69
 #, python-brace-format
 msgid "Keine Gruppe mit dem Namen {name} gefunden."
 msgstr ""
 
-#: vacancies/forms.py:73
+#: vacancies/forms.py:74
 #, python-brace-format
 msgid "Keinen Nutzer mit dem Nutzernamen {name} gefunden."
 msgstr ""
 
-#: vacancies/forms.py:82
+#: vacancies/forms.py:83
 msgid ""
 "Dieser Nutzer bzw. diese Gruppe wurde bereits eingeladen und hat entweder "
 "abgelehnt oder noch nicht zugesagt."
 msgstr ""
 
-#: vacancies/forms.py:85
+#: vacancies/forms.py:86
 msgid "Dieser Nutzer bzw. diese Gruppe ist bereits Mitglied."
 msgstr ""
 
@@ -2095,7 +2124,7 @@ msgid "{app} bei {target}"
 msgstr ""
 
 #: vacancies/templates/vacancies/application_list.html:6
-#: vacancies/templates/vacancies/application_list.html:10
+#: vacancies/templates/vacancies/application_list.html:9
 #: vacancies/templates/vacancies/review_vacancy.html:4
 #: vacancies/templates/vacancies/review_vacancy.html:7
 #: vacancies/templates/vacancies/review_vacancy.html:11
@@ -2274,10 +2303,6 @@ msgstr ""
 #: wall/templates/wall/post/post_loop.html:27
 #, python-format
 msgid " vor %(v0)s"
-msgstr ""
-
-#: wall/templates/wall/post/post_loop.html:32
-msgid "Keine"
 msgstr ""
 
 #~ msgid "German"
