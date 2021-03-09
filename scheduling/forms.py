@@ -8,7 +8,8 @@ from django.utils.translation import gettext_lazy as _
 class AppointmentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['start_time'].initial = timezone.now().strftime(GERMAN_DATE_FMT)
+        self.fields['start_time'].widget.attrs['class'] = 'datetime'
+        
 
     class Meta:
         model = Appointment

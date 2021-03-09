@@ -10,6 +10,7 @@ from wall.models import Post
 from django.utils.translation import gettext_lazy as _
 from account.views import handler403
 from notify.utils import notify
+from django.contrib import messages
 
 
 @login_required
@@ -88,8 +89,9 @@ def leave_group(request, id):
     group = get_object_or_404(UserGroup, id=id)
     if request.user in group.members.all():
         if request.user == group.admin:
-            return HttpResponse(_('Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest oder löschen Sie die Gruppe.'))
-        group.members.remove(request.user)
+            messages.add_message(request, messages.INFO, _('Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest oder löschen Sie die Gruppe.'))
+        else:
+            group.members.remove(request.user)
         return HttpResponseRedirect(group.get_absolute_url())
     return handler403(request)
 

@@ -345,7 +345,8 @@ function loadGameField(data) {
             break;
     }
     if(data.summary) {
-        createInfoAlert("{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary);
+        summary = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary;
+        showScore();
     }
 }
 

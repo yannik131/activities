@@ -2,7 +2,9 @@
     .sidemenu .alert .notification-url {
         width: 80%;
     }
-
+    .competitive {
+        font-size: 16px;
+    }
     .content {
         color: white;
         font-family: "Arial", "Verdana", "Helvectica";

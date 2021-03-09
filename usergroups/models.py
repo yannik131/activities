@@ -5,6 +5,7 @@ from django.urls import reverse
 from vacancies.models import Vacancy, Invitation
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import gettext_lazy as _
+from asgiref.sync import async_to_sync
 
 
 class UserGroup(models.Model):
@@ -46,6 +47,14 @@ class UserGroup(models.Model):
 
     def chat_allowed_for(self, user):
         return user in self.members.all()
+        
+    def broadcast_message(self, message):
+        for member in self.members.all():
+            if member.channel_name:
+                async_to_sync(self.channel_layer.send)(
+                    member.channel_name,
+                    message
+                )
 
     @staticmethod
     def content_type():

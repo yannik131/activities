@@ -4,7 +4,7 @@ from .models import Activity, Category
 from django.db.models import Count, Q
 from account.models import Location
 from wall.models import Post
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from shared.shared import log
 
@@ -48,7 +48,6 @@ def category_detail(request, category_name):
 @login_required
 def join(request, activity_name):
     activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
-    log("join:", request.user.id)
     activity.members.add(request.user)
     return HttpResponseRedirect(activity.get_absolute_url())
 
@@ -57,6 +56,9 @@ def join(request, activity_name):
 def leave(request, activity_name):
     activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
     activity.members.remove(request.user)
+    room_query = request.user.chat_rooms.filter(target_ct=Activity.content_type(), target_id=activity.id)
+    if room_query.exists():
+        room_query.first().members.remove(request.user)
     return HttpResponseRedirect(activity.get_absolute_url())
 
 

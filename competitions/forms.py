@@ -6,7 +6,9 @@ from django.utils.translation import gettext_lazy as _
 
 
 class MatchForm(forms.ModelForm):
-
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['start_time'].widget.attrs['class'] = 'datetime'
     location = forms.CharField(label=_('Austragungsort (Stadt)'))
 
     class Meta:
@@ -33,16 +35,20 @@ class MatchForm(forms.ModelForm):
 
 
 class TournamentForm(forms.ModelForm):
-
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['start_time'].widget.attrs['class'] = 'datetime'
+        self.fields['application_deadline'].widget.attrs['class'] = 'datetime'
+        
     location = forms.CharField(label=_('Austragungsort (Stadt)'))
 
     class Meta:
         model = Tournament
-        fields = ['title', 'address', 'starting_time', 'application_deadline', 'max_members', 'fixed_number_of_rounds', 'format']
+        fields = ['title', 'address', 'start_time', 'application_deadline', 'format']
         labels = {
             'title': _('Titel des Turniers'),
             'address': _('Adresse (falls das Turnier an einem einzigen Ort stattfindet, sonst leer lassen)'),
-            'starting_time': _('Turnierbeginn'),
+            'start_time': _('Turnierbeginn'),
             'application_deadline': _('Anmeldeschluss'),
             'max_members': _('Maximale Teilnehmeranzahl (leer lassen für kein Limit)'),
             'fixed_number_of_rounds': _('Rundenanzahl (leer lassen für automatische Ermittlung)'),
@@ -53,7 +59,7 @@ class TournamentForm(forms.ModelForm):
     def clean(self):
         cd = super().clean()
         self.instance.location = shared.get_location(cd['location'])
-        if cd['application_deadline'] > cd['starting_time']:
+        if cd['application_deadline'] > cd['start_time']:
             raise forms.ValidationError(_('Anmeldeschluss muss vor Turnierbeginn sein.'))
         return cd
 

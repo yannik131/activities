@@ -8,9 +8,10 @@
     <p>
         {% trans "Bitte füllen Sie das folgende Formular aus, um ein Match zu erstellen" %}.
     </p>
-    <form method="post">
+    <form method="post" class="login-form">
         {{ form.as_p }}
         {% csrf_token %}
         <input type="submit" value="{% blocktrans %}Fertig{% endblocktrans %}">
     </form>
+    {% include 'scheduling/datetimepicker.html' %}
 {% endblock %}

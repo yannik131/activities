@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from usergroups.models import UserGroup
 from .models import Appointment
-from django.http import HttpResponseRedirect, HttpResponseForbidden
+from django.http import HttpResponseRedirect
 from .forms import AppointmentForm
 from account.views import handler403
 

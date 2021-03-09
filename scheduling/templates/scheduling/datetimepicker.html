@@ -1,0 +1,13 @@
+{% load static %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.datetimepicker.min.css' %}">
+<script src="{% static 'javascript/jquery.datetimepicker.full.min.js' %}"></script>
+<script>
+    jQuery.datetimepicker.setLocale('{{ request.LANGUAGE_CODE }}');
+    $('.datetime').datetimepicker({
+        format: 'd.m.Y H:i',
+        dayOfWeekStart: 1,
+        closeOnWithoutClick: false
+    });
+</script>

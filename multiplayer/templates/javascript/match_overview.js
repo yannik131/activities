@@ -5,28 +5,6 @@
 var members = {{ match.members.all.count }};
 var member_limit = {{ match.member_limit }};
 
-function addChatMember(username, id, img_src) {
-    var member = document.createElement('div');
-    member.className = 'chat-member';
-    member.onclick = function() {
-        openLink("/account/detail/"+username+"/");
-    }
-    var img = document.createElement('img');
-    if(img_src.length == 0) {
-        img_src = "{% static 'icons/users-and-groups-user@32px.png' %}";
-    }
-    img.src = img_src;
-    member.appendChild(img);
-    var span = document.createElement('span');
-    span.className = username+"-span";
-    span.id = "member-name-"+id;
-    span.style.color = "yellow";
-    span.innerHTML = username;
-    member.appendChild(span);
-    document.querySelector('.chat-members').appendChild(member);
-    moveMembers();
-}
-
 function updateMatchMembers(data) {
     switch(data.info) {
         case "joined":
@@ -40,7 +18,7 @@ function updateMatchMembers(data) {
                     kickUser(this.username);
                 }
             }
-            addChatMember(data.username, data.id, data.url);
+            
             members++;
             break;
         case "left":
@@ -54,13 +32,8 @@ function updateMatchMembers(data) {
                 kicked_out = true;
                 location.href = "{% call_method match 'lobby_url' request %}";
             }
-            var member_span = document.querySelector('.'+data.username+"-span");
-            var parent = member_span.parentElement;
-            parent.remove();
-            deletePeerConnection(data.id);
-            colorize(data.id, 'white');
             members--;
-            moveMembers();
+            deletePeerConnection(data.id);
             break;
         case "start":
             location.href = "/multiplayer/game/{{ match.activity.name }}/" + data.match_id;

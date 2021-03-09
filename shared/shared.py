@@ -5,6 +5,7 @@ from account.models import Location
 from django.utils.translation import gettext_lazy as _
 from django.utils.timezone import now
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.http import HttpResponseNotFound
 
 
 def paginate(object_list, request, limit=3):
@@ -75,6 +76,12 @@ def log(*args):
         for arg in args:
             file.write(str(arg) + " ")
         file.write("\n")
+        
+
+def redirect_before_or_404(request):
+    if "HTTP_REFERER" in request.META:
+        return request.META['HTTP_REFERER']
+    return HttpResponseNotFound()
 
 
 GERMAN_DATE_FMT = '%d.%m.%Y %H:%M'

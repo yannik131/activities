@@ -23,23 +23,14 @@ for connection
 took too long to shut down and was killed.
 
 gekickt -> nachricht
-match bewerbung annehmen server error
-
-eklige weiße nachrichten (bereits freundschaftsanfrage gesendet) durch redirect mit message ersetzen (grün?)
-lobby aufhübschen (match erstellen, beitreten sofort)
 aktivitäten vorschlagen: 5 mit den meisten mitgliedern (vorschläge wegklicken), fragebogen ausfüllen
 
 vacancy gelöscht redirect zu account bearbeiten??
 charakterpunkte zu aktivitäten hinzufügen, fragebogen zur Charakterermittlung
 messages in einigen fällen
 doko 5 chatmiglieder 2x heinz?
-score anzeigen zwischendurch
 neu drücken button bestätigen
 verhindere caching bei chats um "closed due to suspension" zu vermeiden
-nutzer tritt bei chat aktualisieren gruppe
-chat nochmal raufklicken um zu schließen nachricht erinnerung was auch immer
-ich greife an, der andere nachbar schmeißt sofort eine dazu, hat nur noch eine, muss dann schlucken, angegriffener sieht dann die karte
 nachricht dass man muss wenn man dran ist
-fertig button nach spielende
 durak resize call
 competitions!!

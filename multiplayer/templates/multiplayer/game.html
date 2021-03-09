@@ -7,6 +7,9 @@
     <div class="button-like back" onclick="location.href='{% call_method match 'lobby_url' request %}'">
         <img src="{% static 'icons/lobby.png' %}">Lobby
     </div>
+    <div class="button-like score" onclick="showScore()">
+        <img src="{% static 'icons/score.png' %}">Score
+    </div>
     <div class="button-like leave" onclick="createYesNoAlert('{% trans 'Spiel beenden, verlassen und zurücksetzen?' %}', 2, function() { location.href = '{% url 'multiplayer:leave_match' match.activity.name match.id %}'});">
         <img src="{% static 'icons/bye.png' %}">{% trans "Ciao!" %}
     </div>
@@ -30,7 +33,7 @@
         </div>
     </div>
     <div class="button-like chat" id="chat-button" onclick="openChat();">
-        <img src="{% static 'icons/chat.png' %}" id="open-chat-img">{% trans 'Chat' %}
+        <img src="{% static 'icons/chat.png' %}" id="open-chat-img"><span id="chat-button-text">{% trans 'Chat' %}</span>
     </div>
     <div class="game-chat">
         {% include 'chat/chat_window.html' %}

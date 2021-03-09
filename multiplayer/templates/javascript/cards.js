@@ -14,6 +14,7 @@ var buttons = [];
 const field = document.querySelector(".game-field");
 var scale, w, h;
 var button_row = 0;
+var summary;
 
 function getGridPosition(value, suit) {
     var x, y;
@@ -559,6 +560,16 @@ function displayCards(data, player_list, except) {
     }
 }
 
+function showScore() {
+    var info_alert = document.getElementById("info-alert");
+    if(info_alert) {
+        info_alert.remove();
+    }
+    else if(summary) {
+        createInfoAlert(summary);
+    }
+}
+
 function resize() {
     /*To calculate the scale, we substract constant paddings which are
 unaffected by the scale from the divs total width/height and
@@ -575,3 +586,5 @@ overlap of cards.*/
 }
 
 resize();
+
+window.addEventListener('resize', resize);

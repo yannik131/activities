@@ -24,6 +24,28 @@ window.addEventListener('resize', function() {
     window.scrollTo(0, 0);
 });
 
+function handleChatMessage(data) {
+    switch(data.action) {
+        case 'join':
+            addChatMember(data.username, data.user_id, data.url);
+            data.time = new Date();
+            data.message = data.username + " {% trans 'ist dem Chat beigetreten.' %}";
+            addMessageToChat(data);
+            break;
+        case 'leave':
+            var member_span = document.querySelector('.'+data.username+"-span");
+            var parent = member_span.parentElement;
+            parent.remove();
+            moveMembers();
+            data.time = new Date();
+            data.message = data.username + " {% trans 'hat den Chat verlassen.' %}";
+            addMessageToChat(data);
+            break;
+        default:
+            addMessageToChat(data);
+    }
+}
+
 function submitClick() {
     var message = input.innerText;
     while(message.slice(-1).search(whitespaceRegex) != -1) {
@@ -105,10 +127,11 @@ function moveMembers() {
 function openChat() {
     document.querySelector('.game-chat').style.display = "block";
     var button = document.getElementById('chat-button');
-    button.style.backgroundColor = "#2a2a2a";
+    button.style.backgroundColor = "#1a1a1a";
     button.style.color = "white";
     var img = document.getElementById('open-chat-img');
     img.src = "{% static 'icons/leave.png' %}";
+    document.getElementById('chat-button-text').innerHTML = "{% trans 'Chat schließen' %}";
     document.getElementById('chat-button').onclick = closeChat;
     var last_msg = document.getElementById('last-message');
     if(last_msg) {
@@ -121,6 +144,7 @@ function closeChat() {
     document.querySelector('.game-chat').style.display = "none";
     var img = document.getElementById('open-chat-img');
     img.src = "{% static 'icons/chat.png' %}";
+    document.getElementById('chat-button-text').innerHTML = "{% trans 'Chat' %}";
     document.getElementById('chat-button').onclick = openChat;
 }
 
@@ -130,6 +154,28 @@ function positionChat() {
     if(last_msg) {
         middle.scrollTop = last_msg.offsetTop;
     }
+    moveMembers();
+}
+
+function addChatMember(username, id, img_src) {
+    var member = document.createElement('div');
+    member.className = 'chat-member';
+    member.onclick = function() {
+        openLink("/account/detail/"+username+"/");
+    }
+    var img = document.createElement('img');
+    if(img_src.length == 0) {
+        img_src = "{% static 'icons/users-and-groups-user@32px.png' %}";
+    }
+    img.src = img_src;
+    member.appendChild(img);
+    var span = document.createElement('span');
+    span.className = username+"-span";
+    span.id = "member-name-"+id;
+    span.style.color = "yellow";
+    span.innerHTML = username;
+    member.appendChild(span);
+    document.querySelector('.chat-members').appendChild(member);
     moveMembers();
 }
 

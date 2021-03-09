@@ -15,7 +15,6 @@
         {% block style %}{% endblock %}
         {% include 'style/queries.css' %}
     </style>
-    <!--<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
     <link rel="shortcut icon" type="image/png" href="{% static 'icons/users-and-groups-group@32px.png' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -26,6 +25,14 @@
     {% endblock %}
 </div>
 {% if user.is_authenticated %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="django-message" id="django-message">
+            <p>{{ message }}</p>
+            <a class="blue-button" onclick="document.getElementById('django-message').style.display='none';">{% trans "OK!" %}</a>
+        </div>
+    {% endfor %}
+{% endif %}
 {% with latest_messages=user.get_latest_messages %}
     <div class="topmenu" id="topmenu">
         <div class="logo">

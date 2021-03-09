@@ -3,7 +3,7 @@ from activity.models import Activity
 from account.models import Location, User
 from . import utils
 from .forms import MatchForm, TournamentForm, make_matchup_score_form
-from django.http import HttpResponseRedirect, HttpResponseForbidden, HttpResponseServerError
+from django.http import HttpResponseRedirect
 from .models import Match, Tournament, Round
 from shared import shared
 from shared.shared import add
@@ -14,6 +14,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext_lazy as _
 from account.views import handler403
 from usergroups.models import UserGroup
+from django.contrib import messages
 
 
 @login_required
@@ -31,8 +32,8 @@ def overview(request, activity_id):
     activity = get_object_or_404(Activity, id=activity_id)
     matches = Match.objects.filter(activity=activity, public=True)
     component = Location.components[component_index]
-    matches = [match for match in matches.all() if match.vacancies.count() and match.location.equal_to(request.user.location, component)]
-    tournaments = Tournament.objects.filter(activity=activity, starting_time__gt=timezone.now())
+    matches = [match for match in matches.all() if match.location.equal_to(request.user.location, component)]
+    tournaments = Tournament.objects.filter(activity=activity, start_time__gt=timezone.now())
     tournaments = [tournament for tournament in tournaments.all() if tournament.location.equal_to(request.user.location, component)]
     return render(request, 'competitions/overview.html', dict(activity=activity, component_index=component_index, chosen_component=chosen_component, matches=matches, tournaments=tournaments))
 
@@ -47,7 +48,7 @@ def create_match(request, activity_id):
             match = form.save()
             return HttpResponseRedirect(match.get_absolute_url())
     else:
-        form = MatchForm(initial=dict(location=request.user.location.get_component('city'), start_time=timezone.now()))
+        form = MatchForm(initial=dict(location=request.user.location.get_component('city'), start_time=timezone.now().strftime(shared.GERMAN_DATE_FMT)))
     return render(request, 'competitions/create_match.html', dict(form=form, activity=activity))
 
 
@@ -89,8 +90,8 @@ def create_tournament(request, activity_id):
         form = TournamentForm(initial=dict(
             title=_('{act}-Turnier').format(act=str(activity)),
             location=request.user.location.get_component('city'),
-            starting_time=(timezone.now()+datetime.timedelta(days=7)).strftime(shared.GERMAN_DATE_FMT),
-            application_deadline=(timezone.now()+datetime.timedelta(days=6)).strftime(shared.GERMAN_DATE_FMT)))
+            start_time=(timezone.now()+datetime.timedelta(days=14)).strftime(shared.GERMAN_DATE_FMT),
+            application_deadline=(timezone.now()+datetime.timedelta(days=7)).strftime(shared.GERMAN_DATE_FMT)))
     return render(request, 'competitions/create_tournament.html', dict(form=form, activity=activity))
 
 
@@ -118,7 +119,7 @@ def delete_tournament(request, tournament_id):
 
 def tournament_detail(request, tournament_id):
     tournament = get_object_or_404(Tournament, id=tournament_id)
-    return render(request, 'competitions/tournament_detail.html', dict(tournament=tournament))
+    return render(request, 'competitions/tournament_detail.html', dict(tournament=tournament, is_member=request.user in tournament.members.all()))
 
 
 def add_tournament_member(request, tournament_id, user_id):
@@ -139,21 +140,21 @@ def remove_member(request, model, instance_id, user_id, who):
         if request.user != instance.admin:
             return handler403(request)
         user = get_object_or_404(User, id=user_id)
-        instance.contestants.remove(user)
+        instance.members.remove(user)
         return HttpResponseRedirect(request.build_absolute_uri(f"/competitions/edit_{model}/{instance.id}"))
     elif who == 'user':
         user = get_object_or_404(User, id=user_id)
         if request.user != user:
             return handler403(request)
-        instance.contestants.remove(user)
+        instance.members.remove(user)
         return HttpResponseRedirect(instance.get_absolute_url())
 
 
 def tournament_standings(request, tournament_id):
     tournament = get_object_or_404(Tournament, id=tournament_id)
-    contestants = utils.sorted_player_list(tournament.points, tournament.tie_breaks)
-    contestants = [(tournament.Contestant().objects.get(id=int(k)), s, t) for k, s, t in contestants]
-    return render(request, 'competitions/full_table.html', dict(tournament=tournament, players=contestants))
+    members = utils.sorted_player_list(tournament.points, tournament.tie_breaks)
+    members = [(User.objects.get(pk=k), s, t) for k, s, t in members]
+    return render(request, 'competitions/full_table.html', dict(tournament=tournament, players=members))
 
 
 def game_plan(request, tournament_id, round_number):
@@ -161,6 +162,7 @@ def game_plan(request, tournament_id, round_number):
     try:
         round = tournament.rounds.get(number=round_number)
     except Round.DoesNotExist:
+        messages.add_message(request, messages.INFO, _('Es wurde noch keine Runde erstellt.'))
         return HttpResponseRedirect(tournament.get_absolute_url())
     return render(request, 'competitions/game_plan.html', dict(tournament=tournament, round=round, over=round.over, is_admin=request.user == tournament.admin))
 
@@ -173,13 +175,17 @@ def generate_next_round(request, tournament_id):
     if tournament.rounds.all().exists():
         last_round = tournament.rounds.all().last()
         if not last_round.over:
-            return HttpResponseServerError(_('Es stehen noch Ergebnisse der letzten Runde offen.'))
+            messages.add_message(request, messages.INFO, _('Es stehen noch Ergebnisse der letzten Runde offen.'))
+            return HttpResponseRedirect(last_round.get_absolute_url())
         n = last_round.number+1
     try:
         matchups, leftover = utils.get_pairings_for(tournament.activity.name, tournament)
-    except:
-        return HttpResponseServerError(_('Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden.'))
-    round = Round.objects.create(tournament=tournament, number=n, points=dict.fromkeys([str(k) for k in tournament.contestants.all().values_list('id', flat=True)], 0), matchups = json.dumps(matchups), leftover=leftover)
+    except NotImplementedError as error:
+        messages.add_message(request, messages.INFO, str(error))
+    except RuntimeError:
+        messages.add_message(request, messages.INFO, _('Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden.'))
+        return HttpResponseRedirect(tournament.get_absolute_url())
+    round = Round.objects.create(tournament=tournament, number=n, points=dict.fromkeys([str(k) for k in tournament.members.all().values_list('id', flat=True)], 0), matchups = json.dumps(matchups), leftover=leftover)
     tournament.save()
     round.save()
     return HttpResponseRedirect(round.get_absolute_url())
@@ -190,7 +196,8 @@ def close_round(request, round_id):
     if request.user != round.tournament.admin or round.over:
         return handler403(request)
     if not round.matches_have_results():
-        return HttpResponseServerError(_('Es stehen noch Ergebnisse offen.'))
+        messages.add_message(request, messages.INFO, _('Es stehen noch Ergebnisse offen.'))
+        return HttpResponseRedirect(round.get_absolute_url())
     for (k, v) in round.points.items():
         add(round.tournament.points, k, v)
     round.tournament.save()

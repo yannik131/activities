@@ -90,7 +90,6 @@ function cardClicked(value, suit, card) {
             if(transfer_possible && (targets.length == 0 || played_cards.length)) {
                 clearStackCallbacks();
                 createStackWith(card);
-                console.log(move_mode, "-> transfer");
                 move_mode = "transfer";
                 transferCheck();
             }
@@ -118,13 +117,12 @@ function cardClicked(value, suit, card) {
                 return;
             }
         case "attacking":
-            if(!attackingIsPossible() || (stacks.length && !stacksContainValue(value))) {
+            if(!attackingIsPossible() || (stacks.length && !stacksContain(value))) {
                 return;
             }
             move_mode = "attacking";
             createStackWith(card);
             if(!playerHandContains(getVs(stacks[0][0].id).value) || old_stacks.length) {
-                console.log("attacking sends move");
                 sendMove();
             }
             break;
@@ -148,6 +146,7 @@ function loadGameField(data) {
     clear();
     var deck = JSON.parse(data.deck);
     player_list = JSON.parse(data.players);
+    is_taking = Boolean(data.taking);
     positionPlayers(player_list);
     updatePlayerInfo(data);
     trump_suit = data.trump;
@@ -158,7 +157,8 @@ function loadGameField(data) {
     refreshStacks(old_stacks);
     determineGameMode(data);
     if(data.summary) {
-        createInfoAlert("{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary);
+        summary = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary;
+        showScore();
     }
 }
 
@@ -187,7 +187,6 @@ function determineGameMode(data) {
     }
     else if(this_user == data.taking) {
         game_mode = "none";
-        console.log("taking, set to none");
     }
     else if(player_list.length == 4 && player_cards[players[data.attacking]].length == 0 && this_user == before(data.attacking, player_list) && player1_cards.length > 0) {
         game_mode = "helping";
@@ -219,7 +218,17 @@ function handleMove(data) {
     }
     var player = players[data.username];
     removeCardFrom(player, data.n);
-    refreshStacks(old_stacks);
+    if(move_mode == "transfer") {
+        for(var i = 0; i < old_stacks.length; i++) {
+            if(!stacksContain(null, getVs(old_stacks[i][0]).suit)) {
+                addStack(old_stacks[i][0]);
+            }
+        }
+        return;
+    }
+    else {
+        refreshStacks(old_stacks);
+    }
     determineGameMode(data);
 }
 
@@ -234,7 +243,13 @@ function clearStackCallbacks() {
 }
 
 function createStackCallbacks(targets, card) {
-    card.style.top = (parseFloat(card.style.top)-10)+"px";
+    if(card == selected_card) {
+        return;
+    }
+    for(var i = 0; i < player1_cards.length; i++) {
+        player1_cards[i].style.top = field.offsetHeight-h+"px";
+    }
+    card.style.top = field.offsetHeight-h-10+"px";
     selected_card = card;
     for(var i = 0; i < targets.length; i++) {
         var t = targets[i];
@@ -266,16 +281,15 @@ function beatStackWith(card, stack) {
     removePlayerCard(card);
     sendMove();
     if(player1_cards.length == 0 || game_mode == "defending" && allDefended()) {
-        console.log("beatStackWith: no cards or defended, send done");
         sendAction("done");
     }
 }
 
-function stacksContainValue(value) {
+function stacksContain(value, suit) {
     for(var i = 0; i < stacks.length; i++) {
         for(var j = 0; j < stacks[i].length; j++) {
             const vs = getVs(stacks[i][j].id);
-            if(value == vs.value) {
+            if(value == vs.value || suit == vs.suit) {
                 return true;
             }
         }
@@ -323,7 +337,6 @@ function transferCheck() {
         createButton("{% trans 'Fertig' %}", "done", sendMove, button_color);
     }
     else {
-        console.log("transferCheck sends move");
         sendMove();
     }
 }
@@ -334,7 +347,6 @@ function updateButtons() {
     }
     clearButtons();
     if(player1_cards.length == 0 || game_mode == "none") {
-        console.log("updateButtons: no cards, send done, game_mode=", game_mode);
         sendAction("done");
         return;
     }
@@ -362,7 +374,6 @@ function updateButtons() {
             createButton("{% trans 'Fertig' %}", "done", sendMove, button_color);
         }
         else {
-            console.log("1 sends move");
             sendMove();
         }
     }
@@ -370,13 +381,11 @@ function updateButtons() {
     if((game_mode == "attacking" || game_mode == "helping") && (allDefended() || is_taking)) {
         if(attackingIsPossible()) {
             createButton("{% trans 'Fertig' %}", "done", function() {
-                console.log("button pressed, send done");
                 sendAction("done");
                 deleteButton("done");
             }, button_color);
         }
         else {
-            console.log("updateButtons: attacking/helping, send done");
             sendAction("done");
         }
     }
@@ -467,6 +476,7 @@ function setupNewRound(data) {
 }
 
 function handleTransfer(data) {
+    clearStacks();
     refreshStacks(JSON.parse(data.stacks));
     updatePlayerInfo(data);
     old_stacks = JSON.parse(data.stacks);

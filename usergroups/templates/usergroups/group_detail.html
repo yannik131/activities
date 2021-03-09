@@ -3,7 +3,6 @@
 {% load i18n %}
 
 {% block title %}{{ group.name }}{% endblock %}
-{% block style %}{% include 'multiplayer/lobby.css' %}{% endblock %}
 
 {% block content %}
     {% if group.image %}
@@ -11,19 +10,22 @@
     {% endif %}
     <h1 class="center-container">{{ group.verbose }}</h1>
     <p class="center-container">{{ group.description }}</p>
-    {% if is_member %}
-    <div class="competitive">
-        <div class="left" onclick=openLink("{% url 'chat:chat_room' 'usergroups' 'usergroup' group.id %}")>
-            <img src="{% static 'icons/chat.png' %}">
-            {% trans "Zum Chat" %}
-        </div>
-        {% if user == group.admin %}
+    {% if user == group.admin %}
+        <div class="competitive">
+            <div class="left" onclick=openLink("{% url 'chat:chat_room' 'usergroups' 'usergroup' group.id %}")>
+                <img src="{% static 'icons/chat.png' %}">
+                {% trans "Zum Chat" %}
+            </div>
             <div class="right" onclick=openLink("{% url 'usergroups:edit_group' group.id %}")>
                 <img src="{% static 'icons/pen.png' %}">
                 {% trans "Bearbeiten" %}
             </div>
-        {% endif %}
-    </div>
+        </div>
+    {% elif is_member %}
+        <div class="button-like" onclick=openLink("{% url 'chat:chat_room' 'usergroups' 'usergroup' group.id %}")>
+            <img src="{% static 'icons/chat.png' %}">
+            {% trans "Zum Chat" %}
+        </div>
     {% endif %}
     <p>{% trans "Gruppe gehört zur" %} <a href="{{ group.category.get_absolute_url }}">{{ group.category.verbose }}</a></p>
     {% if group.description %}

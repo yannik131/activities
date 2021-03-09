@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% blocktrans with v0=match %}Match am {{ v0 }}{% endblocktrans %}{% endblock %}
 
@@ -7,20 +8,44 @@
     <h1>{% blocktrans with v0=match.start_time %}Match am {{ v0 }}{% endblocktrans %}</h1>
     <h2>{% trans "Admin" %}: <a href="{{ match.admin.get_absolute_url }}">{{ match.admin }}</a></h2>
     {% if user == match.admin %}
-        <p><a href="{% url 'competitions:edit_match' match.id %}">{% blocktrans %}Bearbeiten{% endblocktrans %}</a></p>
-    {% elif match in user.matches.all %}
-        <p><a href="{% url 'competitions:remove_member' 'match' match.id user.id 'user' %}">{% trans "Verlassen" %}</a></p>
+        <div class="competitive">
+            <div class="left" onclick=openLink("{% url 'chat:chat_room' 'competitions' 'match' match.id %}")>
+                <img src="{% static 'icons/chat.png' %}">
+                {% trans "Zum Chat" %}
+            </div>
+            <div class="right" onclick=openLink("{% url 'competitions:edit_match' match.id %}")>
+                <img src="{% static 'icons/pen.png' %}">
+                {% trans "Bearbeiten" %}
+            </div>
+        </div>
+    {% elif is_member %}
+        <div class="button-like" onclick=openLink("{% url 'chat:chat_room' 'competitions' 'match' match.id %}")>
+            <img src="{% static 'icons/chat.png' %}">
+            {% trans "Zum Chat" %}
+        </div>
     {% endif %}
     <h2>{% blocktrans with v0=match.location v1=match.address %}Ort: {{ v0 }}, {{ v1 }}{% endblocktrans %}</h2>
     <h3>{% blocktrans %}Teilnehmer{% endblocktrans %}</h3>
     <ul>
-        {% for member in match.contestants.all %}
+        {% for member in match.members.all %}
             <li><a href="{{ member.get_absolute_url }}">{{ member }}</a></li>
         {% endfor %}
     </ul>
+    {% if is_member %}
+    <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'competitions:remove_member' 'match' match.id user.id 'user' %}")>{% trans "Austreten" %}</button></div></p>
+    {% endif %}
     <h3>{% blocktrans %}Leerstellen{% endblocktrans %}</h3>
-    {% if not match.for_groups and user == match.admin %}
-        <p><a href="{% url 'vacancies:create_vacancies' 'competitions' 'match' match.id %}">{% blocktrans %}Leerstelle hinzufügen{% endblocktrans %}</a></p>
+    {% if user == match.admin %}
+        <div class="competitive">
+            <div class="left" onclick=openLink("{% url 'vacancies:create_vacancies' 'competitions' 'match' match.id %}")>
+                <img src="{% static 'icons/interview.png' %}">
+                {% trans "Leerstellen hinzufügen" %}
+            </div>
+            <div class="right" onclick=openLink("{% url 'vacancies:create_invitation' 'competitions' 'match' match.id %}")>
+                <img src="{% static 'icons/invitation.png' %}">
+                {% trans "Jemanden einladen" %}
+            </div>
+        </div>
     {% endif %}
     {% with target=match %}
         {% include 'vacancies/vacancy_list.html' %}

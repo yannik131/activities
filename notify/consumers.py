@@ -7,6 +7,7 @@ from asgiref.sync import async_to_sync
 from django.utils.timezone import now
 from multiplayer.models import MultiplayerMatch
 from shared.shared import log
+from chat.utils import broadcast
 
 
 class NotificationConsumer(WebsocketConsumer):
@@ -119,21 +120,16 @@ class NotificationConsumer(WebsocketConsumer):
             chat_room=chat_room,
             text=text_data['message'],
             created=time)
-
-        for member in chat_room.members.all():
-            if member.channel_name:
-                async_to_sync(self.channel_layer.send)(
-                    member.channel_name,
-                    {
-                        'type': 'chat_message',
-                        'id': chat_room_id,
-                        'message': text_data['message'],
-                        'username': self.user.username,
-                        'time': timestr,
-                        'origin': log.full_origin(self.user),
-                        'url': chat_room.get_absolute_url()
-                    }
-                )
+            
+        broadcast(chat_room.members.all(), {
+            'type': 'chat_message',
+            'id': chat_room_id,
+            'message': text_data['message'],
+            'username': self.user.username,
+            'time': timestr,
+            'origin': log.full_origin(self.user),
+            'url': chat_room.get_absolute_url()
+        })
                 
     def handle_multiplayer_message(self, text_data):
         if text_data["action"] == "match_list":

@@ -162,10 +162,12 @@ function loadGameField(data) {
         if(game_type.length && solist.length) {
             info += solist + ": " + game_type_translations[game_type] + "\n";
         }
-        createInfoAlert(info+"{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary);
+        summary = info+"{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary;
+        showScore();
     }
     else if(game_type.length && solist.length) {
-        createInfoAlert(solist + ": " + game_type_translations[game_type], info_duration);
+        summary = solist + ": " + game_type_translations[game_type], info_duration;
+        showScore();
     }
 }
 

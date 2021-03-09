@@ -105,6 +105,7 @@ class DurakConsumer(GameConsumer):
                         durak = players_with_cards[0]
                     summary = give_durak_points(data, players, durak)
                     match.start_durak()
+                    data["taking"] = ""
                     if durak:
                         data["defending"] = durak
                         data["attacking"] = before(durak, players)

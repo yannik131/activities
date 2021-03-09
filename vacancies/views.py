@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import VacancyForm, InvitationForm, ApplicationForm
 from vacancies.models import Vacancy, Application, Invitation
 from account.models import User
-from django.http import HttpResponseForbidden, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.contrib.contenttypes.models import ContentType
 from competitions.models import Tournament
 from django.utils import timezone

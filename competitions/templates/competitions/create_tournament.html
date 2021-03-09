@@ -11,4 +11,5 @@
         {% csrf_token %}
         <input type="submit" value="{% blocktrans %}Fertig{% endblocktrans %}">
     </form>
+    {% include 'scheduling/datetimepicker.html' %}
 {% endblock %}

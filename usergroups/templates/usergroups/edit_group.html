@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans "Gruppe bearbeiten" %}{% endblock %}
 
@@ -11,7 +12,7 @@
         {% csrf_token %}
         <input type="submit" value="{% trans "Fertig" %}">
     </form>
-    <p><a href="{% url 'usergroups:delete_group' group.id %}">{% trans "Gruppe löschen" %}</a></p>
+    
     <h2>{% trans "Mitglieder verwalten" %}</h2>
     <ul>
         {% for member in group.members.all %}
@@ -20,4 +21,8 @@
             {% endif %}
         {% endfor %}
     </ul>
+    <div class="button-like" onclick=openLink("{% url 'usergroups:delete_group' group.id %}")>
+        <img src="{% static 'icons/remove.png' %}">
+        {% trans "Gruppe löschen" %}
+    </div>
 {% endblock %}

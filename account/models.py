@@ -201,6 +201,9 @@ class Location(models.Model):
 
     def full_address(self):
         return self.country + ", " + self.state + (", " + self.county if self.county else "") + ", " + self.city
+        
+    def chat_allowed_for(self, user):
+        return user.location == self
 
     @staticmethod
     def get_from_location(location: geopy.location.Location):

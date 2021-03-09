@@ -18,7 +18,6 @@ class Game(models.Model):
 
 class Match(models.Model):
     admin = models.ForeignKey(User, related_name='owned_matches', on_delete=models.CASCADE)
-    is_team_match = models.BooleanField(default=False)  # If this match is part of a tournament within a team based activity, this is true. User created team matches have to be created separately for this to be enabled
     start_time = models.DateTimeField()
     location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='matches')
     address = models.CharField(max_length=30)
@@ -29,8 +28,6 @@ class Match(models.Model):
     public = models.BooleanField(default=True)
     points = HStoreField(default=dict)
     members = models.ManyToManyField(User, related_name='matches')
-    groups = models.ManyToManyField(UserGroup, related_name='matches')
-    for_groups = models.BooleanField(default=False)
     action_strings = {
         'accepted_application': _('Hat Ihre Bewerbung akzeptiert')
     }
@@ -40,17 +37,6 @@ class Match(models.Model):
 
     def chat_allowed_for(self, user):
         return user in self.members.all()
-        
-    def Contestant(self):
-        if self.for_groups:
-            return UserGroup
-        return User
-        
-    @property
-    def contestants(self):
-        if self.for_groups:
-            return self.groups
-        return self.members
 
     @staticmethod
     def content_type():
@@ -74,12 +60,8 @@ class Tournament(models.Model):
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, related_name='tournaments', null=True, blank=True)
     address = models.CharField(max_length=50, null=True, blank=True)
     members = models.ManyToManyField(User, related_name='tournaments')
-    groups = models.ManyToManyField(UserGroup, related_name='tournaments')
-    for_groups = models.BooleanField(default=False)
-    starting_time = models.DateTimeField()
+    start_time = models.DateTimeField()
     application_deadline = models.DateTimeField()
-    max_members = models.PositiveSmallIntegerField(null=True, blank=True)
-    fixed_number_of_rounds = models.PositiveSmallIntegerField(null=True, blank=True)
     format = models.TextField()
     points = HStoreField(default=dict)
     tie_breaks = HStoreField(default=dict)
@@ -90,31 +72,17 @@ class Tournament(models.Model):
         'accepted_application': _('Hat Ihre Bewerbung akzeptiert')
     }
 
-    class Meta:
-        unique_together = ('title', 'location')
-
     def get_absolute_url(self):
         return reverse('competitions:tournament_detail', args=[self.id])
 
     def __str__(self):
-        return _("{act}-Turnier am {stamp}").format(act=self.activity, stamp=self.starting_time.strftime(shared.GERMAN_DATE_FMT))
+        return _("{act}-Turnier am {stamp}").format(act=self.activity, stamp=self.start_time.strftime(shared.GERMAN_DATE_FMT))
 
     def verbose(self):
         return self.__str__()
 
     def chat_allowed_for(self, user):
         return self in user.tournaments.all() or user == self.admin
-        
-    def Contestant(self):
-        if self.for_groups:
-            return UserGroup
-        return User
-        
-    @property
-    def contestants(self):
-        if self.for_groups:
-            return self.groups
-        return self.members
 
     @staticmethod
     def content_type():
@@ -126,7 +94,7 @@ class Tournament(models.Model):
 
 
 class Round(models.Model):
-    starting_time = models.DateTimeField(null=True)
+    start_time = models.DateTimeField(null=True)
     number = models.PositiveSmallIntegerField()
     tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE, related_name='rounds')
     points = HStoreField(default=dict)
@@ -159,3 +127,6 @@ class Round(models.Model):
 
     def __str__(self):
         return _('Runde ') + str(self.number)
+        
+    def verbose(self):
+        return self.__str__()

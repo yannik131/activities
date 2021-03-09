@@ -4,8 +4,8 @@
 <div class="match-list">
     {% for invitation in invitations.all %}
     <div class="item" style="width: 200px; height: 150px; cursor: pointer;" onclick=openLink("{{ invitation.target.get_absolute_url }}")>
-        <div class="top" style="height: 35%; overflow-y: scroll; scrollbar-width: none; word-wrap: break-word; align-items: center-stretch">
-            <span style="padding: 5px 5px; text-align: center">{{ invitation.target }}</span>
+        <div class="top" style="height: 35%;">
+            <span>{{ invitation.target }}</span>
         </div>
         <div class="middle" style="height: 45%; top: 36%;">
             {{ invitation.message }}

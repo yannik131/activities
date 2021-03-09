@@ -1,10 +1,9 @@
-from django.http.response import HttpResponseNotFound
 from shared.shared import log
 from django.shortcuts import render, get_object_or_404
 from .models import MultiplayerMatch
 from .forms import CreateMatchForm
 from activity.models import Activity
-from django.http import HttpResponseRedirect, HttpResponse, HttpResponseServerError
+from django.http import HttpResponseRedirect
 from django.utils.translation import gettext_lazy as _
 from chat.models import ChatRoom
 from django.contrib import messages
@@ -101,5 +100,5 @@ def game(request, match):
         return render(request, 'multiplayer/skat.html', data)
     elif match.activity.name == _("Doppelkopf"):
         return render(request, 'multiplayer/doppelkopf.html', data)
-    return HttpResponseNotFound()
+    messages.add_message(request, messages.INFO, _('Dieses Match gibt es nicht.'))
         

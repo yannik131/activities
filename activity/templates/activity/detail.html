@@ -30,6 +30,10 @@
     </div>
     <span style="clear: both;"></span>
     {% endif %}
+    <div class="button-like" onclick=openLink("{% url 'chat:chat_room' 'activity' 'activity' activity.id %}")>
+        <img src="{% static 'icons/chat.png' %}">
+        Chat
+    </div>
          <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'activity:leave' activity.name %}")>{% trans "Austreten" %}</button></div></p>
         <h3>{% trans "Suche nach Mitgliedern" %}</h3>
         <p>{% include 'activity/location_selection.html' %}</p>

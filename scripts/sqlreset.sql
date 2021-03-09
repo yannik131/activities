@@ -1,10 +1,4 @@
 BEGIN;
-SELECT setval(pg_get_serial_sequence('"competitions_game"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "competitions_game";
-SELECT setval(pg_get_serial_sequence('"competitions_match_members"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "competitions_match_members";
-SELECT setval(pg_get_serial_sequence('"competitions_match_groups"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "competitions_match_groups";
-SELECT setval(pg_get_serial_sequence('"competitions_match"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "competitions_match";
-SELECT setval(pg_get_serial_sequence('"competitions_tournament_members"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "competitions_tournament_members";
-SELECT setval(pg_get_serial_sequence('"competitions_tournament_groups"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "competitions_tournament_groups";
-SELECT setval(pg_get_serial_sequence('"competitions_tournament"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "competitions_tournament";
-SELECT setval(pg_get_serial_sequence('"competitions_round"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "competitions_round";
+SELECT setval(pg_get_serial_sequence('"character_character_suggestions"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "character_character_suggestions";
+SELECT setval(pg_get_serial_sequence('"character_character"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "character_character";
 COMMIT;

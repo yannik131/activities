@@ -1,45 +1,61 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% blocktrans with v0=activity.name %}{{ v0 }}: Matches & Turniere {% endblocktrans %}{% endblock %}
+
 
 {% block content %}
     <h1>{% blocktrans with v0=activity.name %}{{ v0 }}: Matches & Turniere{% endblocktrans %}</h1>
     <p>{% include 'activity/location_selection.html' %}</p>
     <h2>{% blocktrans %}Turniere{% endblocktrans %}</h2>
-    <p><a href="{% url 'competitions:create_tournament' activity.id %}">{% blocktrans %}Turnier erstellen{% endblocktrans %}</a></p>
-    <table>
-        <tr>
-            <th>{% blocktrans %}Turnier{% endblocktrans %}</th>
-            <th>{% blocktrans %}Admin{% endblocktrans %}</th>
-            <th>{% blocktrans %}Ort{% endblocktrans %}</th>
-        </tr>
+    <div class="button-like" onclick=openLink("{% url 'competitions:create_tournament' activity.id %}")>
+        <img src="{% static 'icons/tournament.png' %}">
+        {% blocktrans %}Turnier erstellen{% endblocktrans %}
+    </div>
+    <div class="match-list">
         {% for tournament in tournaments %}
-            <tr>
-                <td><a href="{{ tournament.get_absolute_url }}">{{ tournament.title }}</a></td>
-                <td><a href="{{ tournament.admin.get_absolute_url }}">{{ tournament.admin }}</a></td>
-                <td>{{ tournament.location }}</td>
-            </tr>
+            <div class="item" style="cursor: pointer" onclick=openLink("{{ tournament.get_absolute_url }}")>
+                <div class="top">
+                    {{ tournament.title }}
+                </div>
+                <div class="middle">
+                    {{ tournament.location.city }}: {{ tournament.start_time }}
+                </div>
+                <div class="bottom" style="text-align: center;">
+                    {{ tournament.members.all.count }} {% trans 'Mitspieler' %}
+                </div>
+                {% if user == tournament.admin %}
+                <img src="{% static 'icons/admin.png' %}" class="icon">
+                {% elif user in tournament.members.all %}
+                <img src="{% static 'icons/member.png' %}" class="icon">
+                {% endif %}
+            </div>
         {% endfor %}
-    </table>
+    </div>
     <h2>{% blocktrans %}Öffentliche Matches{% endblocktrans %}</h2>
-    <p>
-        <a href="{% url 'competitions:create_match' activity.id %}">{% blocktrans %}Match erstellen{% endblocktrans %}</a>
-    </p>
-    <table>
-        <tr>
-            <th>{% blocktrans %}Match{% endblocktrans %}</th>
-            <th>{% blocktrans %}Admin{% endblocktrans %}</th>
-            <th>{% blocktrans %}Leerstellen{% endblocktrans %}</th>
-            <th>{% blocktrans %}Ort{% endblocktrans %}</th>
-        </tr>
+    <div class="button-like" onclick=openLink("{% url 'competitions:create_match' activity.id %}")>
+        <img src="{% static 'icons/match.png' %}">
+        {% blocktrans %}Match erstellen{% endblocktrans %}
+    </div>
+    <div class="match-list">
         {% for match in matches %}
-            <tr>
-                <td><a href="{{ match.get_absolute_url }}">{{ match.start_time }}</a></td>
-                <td><a href="{{ match.admin.get_absolute_url }}">{{ match.admin }}</a></td>
-                <td>{{ match.vacancies.count }}</td>
-                <th>{{ match.location }}</th>
-            </tr>
+            <div class="item" style="cursor: pointer" onclick=openLink("{{ match.get_absolute_url }}")>
+                <div class="top">
+                    
+                </div>
+                <div class="middle">
+                    {{ match.location.city }}: {{ match.start_time }}
+                </div>
+                <div class="bottom">
+                    {{ match.members.all.count }} {% trans 'Mitspieler' %}
+                </div>
+                {% if user == match.admin %}
+                <img src="{% static 'icons/admin.png' %}" class="icon">
+                {% elif user in match.members.all %}
+                <img src="{% static 'icons/member.png' %}" class="icon">
+                {% endif %}
+            </div>
         {% endfor %}
-    </table>
+    </div>
 {% endblock %}

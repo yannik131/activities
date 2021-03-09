@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% blocktrans %}Match bearbeiten{% endblocktrans %}{% endblock %}
 
 {% block content %}
     <h1>{% blocktrans with v0=match %}{{ v0 }}: Bearbeiten{% endblocktrans %}</h1>
-    <h2><a href="{% url 'competitions:delete_match' match.id %}">{% blocktrans %}Match löschen{% endblocktrans %}</a></h2>
     <p>
         {% trans "Nutzen Sie das folgende Formular, um das Match zu bearbeiten" %}.
     </p>
@@ -14,5 +14,14 @@
         {% csrf_token %}
         <input type="submit" value="{% blocktrans %}Fertig{% endblocktrans %}">
     </form>
-
+    <ul>
+        {% for member in tournament.members.all %}
+            <li><a href="{{ member.get_absolute_url }}">{{ member }}</a> <a href="{% url 'competitions:remove_member' 'tournament' tournament.id member.id 'admin' %}">{% blocktrans %}Entfernen{% endblocktrans %}</a></li>
+        {% endfor %}
+    </ul>
+    <div class="button-like" onclick=openLink("{% url 'competitions:delete_match' match.id %}")>
+        <img src="{% static 'icons/remove.png' %}">
+        {% trans "Match löschen" %}
+    </div>
+    {% include 'scheduling/datetimepicker.html' %}
 {% endblock %}

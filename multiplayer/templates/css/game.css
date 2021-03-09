@@ -29,6 +29,12 @@
     right: 0;
 }
 
+.score {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
 .game::selection {
     background: transparent;
 }

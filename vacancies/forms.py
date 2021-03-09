@@ -41,11 +41,12 @@ class InvitationForm(forms.ModelForm):
             self.fields['user'].disabled = True
             self.fields['user'].required = False
         else:
-            self.fields['group'].disabled = True
-            self.fields['group'].required = False
+            pass
+            #self.fields['group'].disabled = True
+            #self.fields['group'].required = False
 
     user = forms.CharField(label='Nutzername')
-    group = forms.CharField(label='Gruppenname')
+    #group = forms.CharField(label='Gruppenname')
 
     class Meta:
         model = Invitation

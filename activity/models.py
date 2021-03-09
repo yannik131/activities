@@ -48,6 +48,9 @@ class Activity(TranslatableModel):
             return request.build_absolute_uri(f'/multiplayer/lobby/{self.name}/')
         else:
             return f'/multiplayer/lobby/{self.name}/'
+            
+    def chat_allowed_for(self, user):
+        return user.activities.filter(pk=self.pk).exists()
 
 
 class Category(TranslatableModel):

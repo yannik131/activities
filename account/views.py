@@ -2,13 +2,15 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm
 from .models import Location, FriendRequest, User, Friendship
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, HttpResponseNotFound, HttpResponseServerError
+from django.http import HttpResponseRedirect
 from django.utils import timezone
 from .templatetags import account_tags
 from notify.utils import notify
 from wall.models import Post
 from shared import shared
 from activities.language_subdomain_middleware import get_prefix
+from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 
 
 @login_required
@@ -44,8 +46,8 @@ def send_friend_request(request, target_id):
     sent = False
     requested_user = get_object_or_404(User, id=target_id)
     if FriendRequest.objects.filter(requesting_user=request.user, requested_user=requested_user).exists():
-        return HttpResponse(
-            'Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage senden.')
+        messages.add_message(request, messages.INFO, _('Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage senden.'))
+        return HttpResponseRedirect(requested_user.get_absolute_url())
     if request.method == 'POST':
         form = FriendRequestForm(request.POST)
         if form.is_valid():
@@ -65,8 +67,8 @@ def send_custom_friend_request(request):
             message = form.cleaned_data['message']
             user = User.objects.get(username=form.cleaned_data['username'])
             if user == request.user:
-                return HttpResponse(
-                'Haha. Sehr lustig. Hast du nichts besseres zu tun als zu gucken ob das funktioniert? Nein? Ich auch nicht...')
+                messages.add_message(request, messages.INFO, _('Sie können sich nicht selbst eine Freundschaftsanfrage schicken.'))
+                return HttpResponseRedirect(request.build_absolute_uri('/account/friend_requests_list/'))
             fr, created = FriendRequest.objects.get_or_create(requesting_user=request.user, requested_user=user, request_message=message)
             if not created:
                 fr.request_message = message
@@ -100,7 +102,7 @@ def delete_request(request, id):
     if (friend_request.requesting_user == request.user and friend_request.status != 'declined') or (friend_request.requested_user == request.user and friend_request.status != 'pending'):
         FriendRequest.objects.filter(id=id).delete()
     else:
-        return HttpResponse('Nö.')
+        messages.add_message(request, messages.INFO, _('Sie können diese Anfrage nicht löschen.'))
     return HttpResponseRedirect(request.build_absolute_uri('/account/friend_requests_list/'))
 
 
@@ -120,6 +122,9 @@ def destroy_friendship(request, id):
     friendship = user.get_friendship_for(request.user)
     if friendship:
         friendship.delete()
+    else:
+        messages.add_message(request, messages.INFO, _('Diese Freundschaft existiert nicht mehr.'))
+        return HttpResponseRedirect(request.build_absolute_uri('/account/friend_requests_list/'))
     if request.user == friendship.to_user:
         recipient = friendship.from_user
     else:

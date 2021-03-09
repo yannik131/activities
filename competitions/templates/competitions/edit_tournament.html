@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% blocktrans %}Turnier bearbeiten{% endblocktrans %}{% endblock %}
 
 {% block content %}
     <h1>{% trans "Turnier bearbeiten" %}: <a href="{{ tournament.get_absolute_url }}">{{ tournament }}</a></h1>
-    <h2><a href="{% url 'competitions:delete_tournament' tournament.id %}">{% blocktrans %}Turnier löschen{% endblocktrans %}</a></h2>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
@@ -21,4 +21,9 @@
             <li><a href="{{ member.get_absolute_url }}">{{ member }}</a> <a href="{% url 'competitions:remove_member' 'tournament' tournament.id member.id 'admin' %}">{% blocktrans %}Entfernen{% endblocktrans %}</a></li>
         {% endfor %}
     </ul>
+    <div class="button-like" onclick=openLink("{% url 'competitions:delete_tournament' tournament.id %}")>
+        <img src="{% static 'icons/remove.png' %}">
+        {% trans "Turnier löschen" %}
+    </div>
+    {% include 'scheduling/datetimepicker.html' %}
 {% endblock %}

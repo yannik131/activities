@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans "Termin erstellen" %}{% endblock %}
 
@@ -12,4 +13,5 @@
         {% csrf_token %}
         <input type="submit" value="{% trans "Fertig" %}">
     </form>
+    {% include 'scheduling/datetimepicker.html' %}
 {% endblock %}

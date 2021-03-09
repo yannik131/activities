@@ -1,30 +1,67 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{{ tournament }}{% endblock %}
 
 {% block content %}
     <h1>{{ tournament }}</h1>
     <p>{% blocktrans with v0=tournament.application_deadline %}Anmeldeschluss: {{ v0 }}{% endblocktrans %}</p>
-    <p>{% blocktrans with v0=tournament.format %}Beschreibung: {{ v0 }}{% endblocktrans %}</p>
+    <p style="text-align: center; font-style: italic;">{{ tournament.format }}</p>
     {% if user == tournament.admin %}
-        <p><a href="{% url 'competitions:edit_tournament' tournament.id %}">{% blocktrans %}Bearbeiten...{% endblocktrans %}</a> | <a href="{% url 'chat:chat_room' 'competitions' 'tournament' tournament.id %}">{% blocktrans %}Chat{% endblocktrans %}</a></p>
-        <p><a href="{% url 'competitions:generate_next_round' tournament.id %}">{% blocktrans %}Nächste Runde erzeugen{% endblocktrans %}</a></p>
-    {% elif tournament in user.tournaments.all %}
-        <p><a href="{% url 'competitions:remove_member' 'tournament' tournament.id user.id 'user' %}">{% blocktrans %}Austreten...{% endblocktrans %}</a> | <a href="{% url 'chat:chat_room' 'competitions' 'tournament' tournament.id %}">{% blocktrans %}Chat{% endblocktrans %}</a></p>
+        <div class="competitive">
+            <div class="left" onclick=openLink("{% url 'chat:chat_room' 'competitions' 'tournament' tournament.id %}")>
+                <img src="{% static 'icons/chat.png' %}">
+                {% trans "Zum Chat" %}
+            </div>
+            <div class="right" onclick=openLink("{% url 'competitions:edit_tournament' tournament.id %}")>
+                <img src="{% static 'icons/pen.png' %}">
+                {% trans "Bearbeiten" %}
+            </div>
+        </div>
+    {% elif is_member %}
+        <div class="button-like" onclick=openLink("{% url 'chat:chat_room' 'competitions' 'tournament' tournament.id %}")>
+            <img src="{% static 'icons/chat.png' %}">
+            {% trans "Zum Chat" %}
+        </div>
     {% endif %}
-    <h2>{% trans "Verwalter" %}: <a href="{{ tournament.admin.get_absolute_url }}">{{ tournament.admin }}</a></h2>
-    <h2><a href="{% url 'competitions:tournament_standings' tournament.id %}">{% blocktrans %}Tabelle{% endblocktrans %}</a> | <a href="{% url 'competitions:game_plan' tournament.id 1 %}">{% blocktrans %}Spielplan{% endblocktrans %}</a></h2>
     <p>
         {% trans "Mitglieder" %}:
-        {% for member in tournament.contestants.all %}
+        {% for member in tournament.members.all %}
             <a href="{{ member.get_absolute_url }}">{{ member }}</a>{% if forloop.last %}.{% else %},{% endif %}
+            {% empty %}
+            {% trans 'Keine' %}
         {% endfor %}
     </p>
-    {% if not tournament.for_groups and user == tournament.admin %}
-        <p><a href="{% url 'vacancies:create_vacancies' 'competitions' 'tournament' tournament.id %}">{% blocktrans %}Leerstelle hinzufügen{% endblocktrans %}</a></p>
-    {% elif tournament.for_groups and user == tournament.admin %}
-        <p>TODO</p>
+    {% if is_member %}
+    <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'competitions:remove_member' 'tournament' tournament.id user.id 'user' %}")>{% trans "Austreten" %}</button></div></p>
+    {% endif %}
+    <h2>{% trans "Verwalter" %}: <a href="{{ tournament.admin.get_absolute_url }}">{{ tournament.admin }}</a></h2>
+    {% if user == tournament.admin %}
+        <p><a href="{% url 'competitions:generate_next_round' tournament.id %}">{% blocktrans %}Nächste Runde erzeugen{% endblocktrans %}</a></p>
+    {% endif %}
+    <div class="competitive">
+        <div class="left" onclick=openLink("{% url 'competitions:tournament_standings' tournament.id %}")>
+            <img src="{% static 'icons/leaderboard.png' %}">
+            {% trans "Tabelle" %}
+        </div>
+        <div class="right" onclick=openLink("{% url 'competitions:game_plan' tournament.id tournament.rounds.all.count %}")>
+            <img src="{% static 'icons/plan.png' %}">
+            {% trans "Spielplan" %}
+        </div>
+    </div>
+    <h3>{% blocktrans %}Leerstellen{% endblocktrans %}</h3>
+    {% if user == tournament.admin %}
+        <div class="competitive">
+            <div class="left" onclick=openLink("{% url 'vacancies:create_vacancies' 'competitions' 'tournament' tournament.id %}")>
+                <img src="{% static 'icons/interview.png' %}">
+                {% trans "Leerstellen hinzufügen" %}
+            </div>
+            <div class="right" onclick=openLink("{% url 'vacancies:create_invitation' 'competitions' 'tournament' tournament.id %}")>
+                <img src="{% static 'icons/invitation.png' %}">
+                {% trans "Jemanden einladen" %}
+            </div>
+        </div>
     {% endif %}
     {% with target=tournament %}
         {% include 'vacancies/vacancy_list.html' %}
