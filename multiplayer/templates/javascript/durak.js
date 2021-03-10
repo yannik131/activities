@@ -14,19 +14,13 @@ var is_taking;
 
 function defineSortValues(trump_suit) {
     var suits = ["d", "h", "s", "c"];
-    var count = 100;
     for(var i = 0; i < suits.length; i++) {
-        if(suits[i] == trump_suit) {
-            suit_values[suits[i]] = 400;
-        }
-        else {
-            suit_values[suits[i]] = count;
-            count += 100;
-        }
+        suit_values[suits[i]] = i+1;
     }
-    var values= ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+    suit_values[trump_suit] = 1000;
+    var values= ["6", "7", "8", "9", "10", "J", "Q", "K", "A"];
     for(var i = 0; i < values.length; i++) {
-        value_values[values[i]] = i;
+        value_values[values[i]] = (i+1)*100;
     }
 }
 

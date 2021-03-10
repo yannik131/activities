@@ -45,7 +45,7 @@
             <img src="{% static 'icons/leaderboard.png' %}">
             {% trans "Tabelle" %}
         </div>
-        <div class="right" onclick=openLink("{% url 'competitions:game_plan' tournament.id tournament.rounds.all.count %}")>
+        <div class="right" onclick=openLink("{% url 'competitions:game_plan' tournament.id tournament.rounds.count %}")>
             <img src="{% static 'icons/plan.png' %}">
             {% trans "Spielplan" %}
         </div>

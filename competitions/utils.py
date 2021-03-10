@@ -62,7 +62,7 @@ def swiss_pairings_danish_skat(points, team_sizes=None):
 
 
 def get_pairings_for(activity_name, tournament):
-    if tournament.members.all().count() <= 1:
+    if tournament.members.count() <= 1:
         raise RuntimeError(_('Nicht genug Spieler'))
     if activity_name == _('Schach'):
         return swiss_pairings_danish_standard(tournament.points, tournament.tie_breaks)

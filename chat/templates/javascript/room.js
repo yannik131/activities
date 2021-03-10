@@ -79,6 +79,9 @@ function addMessageToChat(data) {
         var button = document.getElementById('chat-button');
         button.style.backgroundColor = "red";
     }
+    if(!isMe) {
+        playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/click_x.wav");
+    }
 };
 
 window.addEventListener('beforeunload', function(e) {

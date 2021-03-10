@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
 from .templatetags import chat_tags
 from account.models import Friendship
 from usergroups.models import UserGroup
@@ -10,7 +9,6 @@ from django.utils.timezone import now
 from account.views import handler403
 
 
-@login_required
 def chat_room(request, app_label, model, id):
     try:
         chat_room = ChatRoom.get(app_label, model, id)
@@ -25,7 +23,6 @@ def chat_room(request, app_label, model, id):
     return render(request, 'chat/room.html', dict(room=chat_room, friendship=model == 'friendship'))
 
 
-@login_required
 def chat_list(request):
     request.user.save()
     chat_rooms = request.user.chat_rooms.all()

@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import gettext_lazy as _
 from parler.models import TranslatableModel, TranslatedFields
+from django.contrib.postgres.fields import HStoreField
         
 
 class Activity(TranslatableModel):
@@ -21,6 +22,7 @@ class Activity(TranslatableModel):
     )
     type = models.CharField(max_length=20, choices=TYPE_CHOICES, null=True)
     online = models.BooleanField(default=False)
+    trait_weights = HStoreField(default=dict)
     
 
     class Meta:

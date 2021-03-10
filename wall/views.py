@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm, CommentForm
-from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from .models import Post, Comment
 from account.models import User
@@ -10,7 +9,6 @@ from shared.shared import slashify
 from account.views import handler403
 
 
-@login_required
 def create_post(request, app_label, model, id, activity_id=None):
     ct = get_object_or_404(ContentType, app_label=app_label, model=model)
     group = None
@@ -34,7 +32,6 @@ def create_post(request, app_label, model, id, activity_id=None):
     return render(request, 'wall/post/create_post.html', dict(form=form, target=form.instance.target))
 
 
-@login_required
 def delete_post(request, id, path):
     post = get_object_or_404(Post, id=id) 
     if request.user == post.author:
@@ -43,7 +40,6 @@ def delete_post(request, id, path):
     return handler403(request)
 
 
-@login_required
 def create_comment(request, id, path):
     post = get_object_or_404(Post, id=id)
     if request.method == 'POST':
@@ -59,7 +55,6 @@ def create_comment(request, id, path):
     return render(request, 'wall/post/create_comment.html', dict(form=form))
 
 
-@login_required
 def delete_comment(request, id, path):
     comment = get_object_or_404(Comment, id=id)
     if comment.author == request.user:

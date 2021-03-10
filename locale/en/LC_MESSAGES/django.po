@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-09 20:25+0000\n"
-"PO-Revision-Date: 2021-03-09 21:32+0100\n"
+"PO-Revision-Date: 2021-03-09 22:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -1907,7 +1907,7 @@ msgstr "Appointment on {start}"
 #: scheduling/templates/scheduling/create_appointment.html:8
 #: usergroups/templates/usergroups/group_detail.html:69
 msgid "Termin erstellen"
-msgstr "Appointment"
+msgstr "Create appointment"
 
 #: scheduling/templates/scheduling/create_appointment.html:10
 msgid "Bitte füllen Sie folgendes Formular aus, um ein Treffen zu vereinbaren"

@@ -2,7 +2,7 @@
 {% load static %}
 {% load account_tags %}
 
-var members = {{ match.members.all.count }};
+var members = {{ match.members.count }};
 var member_limit = {{ match.member_limit }};
 
 function updateMatchMembers(data) {

@@ -23,7 +23,7 @@
                     {{ tournament.location.city }}: {{ tournament.start_time }}
                 </div>
                 <div class="bottom" style="text-align: center;">
-                    {{ tournament.members.all.count }} {% trans 'Mitspieler' %}
+                    {{ tournament.members.count }} {% trans 'Mitspieler' %}
                 </div>
                 {% if user == tournament.admin %}
                 <img src="{% static 'icons/admin.png' %}" class="icon">
@@ -48,7 +48,7 @@
                     {{ match.location.city }}: {{ match.start_time }}
                 </div>
                 <div class="bottom">
-                    {{ match.members.all.count }} {% trans 'Mitspieler' %}
+                    {{ match.members.count }} {% trans 'Mitspieler' %}
                 </div>
                 {% if user == match.admin %}
                 <img src="{% static 'icons/admin.png' %}" class="icon">

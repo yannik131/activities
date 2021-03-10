@@ -568,6 +568,9 @@ function showScore() {
     else if(summary) {
         createInfoAlert(summary);
     }
+    else {
+        createInfoAlert("{% trans 'Es wurde noch kein Spiel beendet.\n' %}");
+    }
 }
 
 function resize() {

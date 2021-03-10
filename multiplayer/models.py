@@ -86,7 +86,7 @@ class MultiplayerMatch(models.Model):
         return self.activity.lobby_url(request)
         
     def is_full(self):
-        return self.members.all().count() == self.member_limit
+        return self.members.count() == self.member_limit
         
     def get_position_of(self, member):
         for k, v in self.member_positions.items():
@@ -196,7 +196,7 @@ class MultiplayerMatch(models.Model):
         
 
     def start_durak(self):
-        players, deck = self.create_players(6, "6", "7", "8", "9", "10")
+        players, deck = self.create_players(6, "6", "7", "8", "9", "10", "J", "Q", "K", "A")
         self.game_data["trump"] = deck[-1][-1]
         self.game_data["attacking"] = players[0]
         self.game_data["defending"] = players[1]

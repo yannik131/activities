@@ -192,6 +192,9 @@ function handleCandidate(data) {
 
 function handleLeave(data) {
     deletePeerConnection(data.sender);
+    data.message = data.username+" {% trans 'verlässt die Konferenz.' %}";
+    data.time = new Date();
+    addMessageToChat(data);
 }
 
 function deletePeerConnection(user) {
@@ -253,7 +256,6 @@ function leaveAudio() {
         deletePeerConnection(users[users.length-1]);
     }
     send({'type': 'rtc', 'action': 'leave', 'room_id': '{{ room.id }}'});
-    send({'type': 'chat', 'message': "{{ user }} {% trans 'verlässt die Konferenz.' %}", 'id': {{ room.id }}});
     colorize({{ user.id }}, 'white');
     var button = document.getElementById('call-button');
     button.src = "{% static 'icons/call.png' %}";

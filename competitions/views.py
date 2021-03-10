@@ -10,14 +10,12 @@ from shared.shared import add
 from django.utils import timezone
 import datetime
 import json
-from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext_lazy as _
 from account.views import handler403
 from usergroups.models import UserGroup
 from django.contrib import messages
 
 
-@login_required
 def user_overview(request):
     return render(request, 'competitions/user_overview.html')
 
@@ -25,7 +23,6 @@ def user_overview(request):
 def test(request):
     return render(request, 'competitions/cards.html')
 
-@login_required
 def overview(request, activity_id):
     component_index = int(request.GET.get('component_index', 3))
     chosen_component = request.user.location.get_component(Location.components[component_index])

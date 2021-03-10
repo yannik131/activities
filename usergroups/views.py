@@ -1,7 +1,6 @@
 from shared.shared import paginate
 from django.shortcuts import render, get_object_or_404
 from activity.models import Category
-from django.contrib.auth.decorators import login_required
 from .forms import GroupForm
 from .models import UserGroup
 from account.models import Location, User
@@ -13,7 +12,6 @@ from notify.utils import notify
 from django.contrib import messages
 
 
-@login_required
 def group_list(request, id=None):
     if id:
         component_index = int(request.GET.get('component_index', 3))
@@ -32,7 +30,6 @@ def group_list(request, id=None):
         return render(request, 'usergroups/user_group_list.html')
 
 
-@login_required
 def group_detail(request, id):
     group = get_object_or_404(UserGroup, id=id)
     is_in_group = request.user in group.members.all()
@@ -43,7 +40,6 @@ def group_detail(request, id):
     return render(request, 'usergroups/group_detail.html', dict(group=group, is_member=is_in_group, posts=posts, page=page))
 
 
-@login_required
 def edit_group(request, id):
     group = get_object_or_404(UserGroup, id=id)
     if request.user != group.admin:
@@ -59,7 +55,6 @@ def edit_group(request, id):
     return render(request, 'usergroups/edit_group.html', dict(group=group, form=form))
 
 
-@login_required
 def create_group(request, id):
     category = get_object_or_404(Category, id=id)
     if request.method == 'POST':
@@ -75,7 +70,6 @@ def create_group(request, id):
     return render(request, 'usergroups/create_group.html', dict(category=category, form=form))
 
 
-@login_required
 def delete_group(request, id):
     group = get_object_or_404(UserGroup, id=id)
     if request.user != group.admin:
@@ -84,7 +78,6 @@ def delete_group(request, id):
     return render(request, 'usergroups/group_deleted.html', dict(group=group))
 
 
-@login_required
 def leave_group(request, id):
     group = get_object_or_404(UserGroup, id=id)
     if request.user in group.members.all():
@@ -96,7 +89,6 @@ def leave_group(request, id):
     return handler403(request)
 
 
-@login_required
 def kick_out(request, group_id, user_id):
     group = get_object_or_404(UserGroup, id=group_id)
     user = get_object_or_404(User, id=user_id)

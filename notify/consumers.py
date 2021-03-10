@@ -30,7 +30,7 @@ class NotificationConsumer(WebsocketConsumer):
         user.channel_name = None
         user.save()
         if self.rtc_room_id:
-            self.rtc_send({'action': 'disconnect'}, {'room_id': self.rtc_room_id})
+            self.rtc_send({'action': 'disconnect', 'username': user.username}, {'room_id': self.rtc_room_id})
         async_to_sync(self.channel_layer.group_discard)(
             self.user.channel_group_name,
             self.channel_name
@@ -83,7 +83,8 @@ class NotificationConsumer(WebsocketConsumer):
             })
         elif text_data['action'] == 'leave':
             self.rtc_send({
-                'action': 'leave'
+                'action': 'leave',
+                'username': self.user.username
             }, text_data)
         elif text_data['action'] == 'request_show':
             self.rtc_send({

@@ -78,4 +78,4 @@ def online_count():
 
 @register.simple_tag
 def total_count():
-    return User.objects.all().count()
+    return User.objects.count()

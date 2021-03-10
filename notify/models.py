@@ -7,7 +7,7 @@ from django.urls import reverse
 
 
 class Notification(models.Model):
-    recipient = models.ForeignKey(User, on_delete=models.CASCADE)
+    recipient = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notifications')
 
     actor_ct = models.ForeignKey(ContentType, related_name='notify_actor', on_delete=models.CASCADE)
     actor_id = models.PositiveIntegerField()
