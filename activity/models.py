@@ -7,12 +7,15 @@ from parler.models import TranslatableModel, TranslatedFields
 from django.contrib.postgres.fields import HStoreField
         
 
+def activity_directory_path(instance, filename):
+        return f"activities/{instance.name}.{filename.split('.')[-1]}"
+
 class Activity(TranslatableModel):
     translations = TranslatedFields(
         name=models.CharField(max_length=30,  db_index=True),
         description=models.CharField(max_length=150, blank=True)
     )
-    image = models.ImageField(upload_to='activities/', blank=True, null=True)
+    image = models.ImageField(upload_to=activity_directory_path, blank=True, null=True)
     members = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='activities', blank=True)
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, related_name='activities', null=True, blank=True)
     TYPE_CHOICES = (
@@ -24,7 +27,6 @@ class Activity(TranslatableModel):
     online = models.BooleanField(default=False)
     trait_weights = HStoreField(default=dict, blank=True)
     
-
     class Meta:
         verbose_name_plural = 'activities'
 
@@ -54,13 +56,15 @@ class Activity(TranslatableModel):
     def chat_allowed_for(self, user):
         return user.activities.filter(pk=self.pk).exists()
 
+def category_directory_path(instance, filename):
+        return f"categories/{instance.name}.{filename.split('.')[-1]}"
 
 class Category(TranslatableModel):
     translations = TranslatedFields(
         name=models.CharField(max_length=30, unique=True, db_index=True),
         description=models.CharField(max_length=150, blank=True)
     )
-    image = models.ImageField(upload_to='images/categories/', blank=True, null=True)
+    image = models.ImageField(upload_to=category_directory_path, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'categories'

@@ -8,7 +8,6 @@ from itertools import chain
 from django.utils.translation import gettext_lazy as _
 from character.models import Character
 
-
 class User(AbstractUser):
     profile_text = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True, null=True)
