@@ -26,7 +26,7 @@ class Match(models.Model):
     round = models.ForeignKey('Round', on_delete=models.CASCADE, related_name='matches', null=True, blank=True)
     # TODO: Depending on activity this should have a more meaningful default value in the form
     public = models.BooleanField(default=True)
-    points = HStoreField(default=dict)
+    points = HStoreField(default=dict, blank=True)
     members = models.ManyToManyField(User, related_name='matches')
     action_strings = {
         'accepted_application': _('Hat Ihre Bewerbung akzeptiert')
@@ -63,8 +63,8 @@ class Tournament(models.Model):
     start_time = models.DateTimeField()
     application_deadline = models.DateTimeField()
     format = models.TextField()
-    points = HStoreField(default=dict)
-    tie_breaks = HStoreField(default=dict)
+    points = HStoreField(default=dict, blank=True)
+    tie_breaks = HStoreField(default=dict, blank=True)
     over = models.BooleanField(default=False)
 
     action_strings = {
@@ -97,7 +97,7 @@ class Round(models.Model):
     start_time = models.DateTimeField(null=True)
     number = models.PositiveSmallIntegerField()
     tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE, related_name='rounds')
-    points = HStoreField(default=dict)
+    points = HStoreField(default=dict, blank=True)
     matchups = models.JSONField(null=True)
     over = models.BooleanField(default=False)
     leftover = models.PositiveIntegerField(null=True)

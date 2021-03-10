@@ -22,7 +22,7 @@ class Activity(TranslatableModel):
     )
     type = models.CharField(max_length=20, choices=TYPE_CHOICES, null=True)
     online = models.BooleanField(default=False)
-    trait_weights = HStoreField(default=dict)
+    trait_weights = HStoreField(default=dict, blank=True)
     
 
     class Meta:

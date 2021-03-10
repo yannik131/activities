@@ -24,7 +24,7 @@ class Character(models.Model):
         'inquisitive': _('wissbegierig'), 'idle': _('müßig'),
         'patient': _('geduldig'), 'empathic': _('empathisch')
     }
-    values = HStoreField(default=dict)
+    values = HStoreField(default=dict, blank=True)
     current_question = models.PositiveSmallIntegerField(default=1)
     suggestions = models.ManyToManyField(Activity, related_name='suggested_to')
 
