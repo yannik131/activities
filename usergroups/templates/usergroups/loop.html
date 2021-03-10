@@ -1,10 +1,10 @@
 {% load static %}
 {% load i18n %}
+{% load thumbnail %}
 
 <div class="list">
     {% for group in groups %}
         <div class="item" onclick="location.href='{{ group.get_absolute_url }}'">
-            {% load thumbnail %}
             {% if group.image %}
                 <img src="{% thumbnail group.image 200x200 %}" class="image">
             {% else %}

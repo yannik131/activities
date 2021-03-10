@@ -12,7 +12,7 @@ class Activity(TranslatableModel):
         name=models.CharField(max_length=30,  db_index=True),
         description=models.CharField(max_length=150, blank=True)
     )
-    image = models.ImageField(upload_to='images/activities/', blank=True, null=True)
+    image = models.ImageField(upload_to='activities/', blank=True, null=True)
     members = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='activities', blank=True)
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, related_name='activities', null=True, blank=True)
     TYPE_CHOICES = (
