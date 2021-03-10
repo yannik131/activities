@@ -5,6 +5,8 @@
 /.idea/*
 /logs/*
 /dump.rdb
-/media/*
+/media/post/*
+/media/groups/*
+/media/users/*
 /log.log
 /scripts/csv/*
