@@ -1,0 +1,68 @@
+mühle geduldig 2, genügsam 1
+lesen introvertiert 2, klug 1
+risiko gesellig 1, extrovertiert 2, offen
+catan strategisch, scharfsinnig
+carcassonne strategisch, scharfsinnig
+flöte musikalisch, kreativ
+violine hartnäckig, diszipliniert, musikalisch
+fahrrad sportlich, einsam, abenteuerlustig
+tischtennis geschickt, sportlich, ausdauernd, gesellig
+badminton gesellig, schrullig, geschickt, strategisch
+segeln einsam, hydrophil, naturverbunden
+kanu hydrophil, ausgeglichen, naturverbunden
+volleyball draufgängerisch, teamfähig, gesellig
+poker strategisch, berechnend, scharfsinnig
+konzerte gesellig, musikalisch, ausgelassen
+klavier musikalisch, geduldig, einfühlsam
+eishockey draufgängerisch, kühn, mutig, sportlich, ausdauernd, teamfähig
+golf spießig, anspruchsvoll, schnöselig
+kegeln gesellig, entspannt, anspruchslos
+snooker anspruchsvoll, berechnend, geduldig, geschickt
+billard gesellig, geschickt
+basketball teamfähig, sportlich, draufgängerisch
+fußball teamfähig, ausdauernd, geschickt
+tennis ausdauernd, sportlich, anspruchsvoll
+skat berechnend, strategisch, geduldig
+durak gesellig, strategisch, berechnend
+schwimmen hydrophil, einsam, ausdauernd
+laufen einsam, ausdauernd, naturverbunden
+netflixen entspannt, zeitgemäß, neugierig
+gitarre musikalisch, ausdauernd, geschickt
+doppelkopf berechnend, gesellig
+schach geduldig, scharfsinnig, vorausschauend
+azul gesellig, vorausschauend, geduldig
+
+
+essen: kochen, backen, barhopping, kaffee und kuchen, fast food
+
+kochen, fotographieren, backen, nähen, stricken, blut spenden, haustier, tanzen, bouldern, klettern, wandern, politik, feiern, barhopping, basteln, malen, gartenarbeit, töpfern, picknicken, beauty, shopping, yoga, reisen, tauchen, kaffee und kuchen, tattoos, zoo, diy, fast food, hund, katze, religion, astrologie
+musikgenre?
+berufe
+
++2 ausgeglichen, +1 einsam
++1 kühn, +1 ungestüm
+2 ausgelassen, 1 einsam
+2 ausgelassen
+3 mutig, 1 entspannt
+1 ausgeglichen, 2 entspannt
+2 ausgeglichen
+2 kühn
+2 ungestüm
+2 schrullig
+3 mutig
+2 naiv
+3 mutig
+2 gutmütig
+2 furchtsam
+2 kühn
+2 entspannt
+
+ausgeglichen 3
+einsam 2
+kühn 5
+ungestüm 3
+ausgelassen 4
+mutig 9
+entspannt 5
+
+

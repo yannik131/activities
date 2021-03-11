@@ -7,7 +7,7 @@
     <div class="button-like back" onclick="location.href='{% call_method match 'lobby_url' request %}'">
         <img src="{% static 'icons/lobby.png' %}">Lobby
     </div>
-    <div class="button-like score" onclick="showScore()">
+    <div class="button-like score" onclick="showScore(true)">
         <img src="{% static 'icons/score.png' %}">Score
     </div>
     <div class="button-like leave" onclick="createYesNoAlert('{% trans 'Spiel beenden, verlassen und zurücksetzen?' %}', 2, function() { location.href = '{% url 'multiplayer:leave_match' match.activity.name match.id %}'});">

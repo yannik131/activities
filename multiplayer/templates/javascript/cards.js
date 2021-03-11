@@ -15,6 +15,7 @@ const field = document.querySelector(".game-field");
 var scale, w, h;
 var button_row = 0;
 var summary;
+var info_timeout;
 
 function getGridPosition(value, suit) {
     var x, y;
@@ -349,7 +350,7 @@ function createButton(text, id, callback, color) {
     var button = document.createElement("button");
     button.type = "button";
     if(field.offsetWidth < 600) {
-        button.style.fontSize = "14pt";
+        button.style.fontSize = "18pt";
     }
     else {
         button.style.fontSize = "24pt";
@@ -425,8 +426,12 @@ function createYesNoAlert(info, zIndex, callback) {
 }
 
 function createInfoAlert(info, timeout) {
-    if(document.getElementById("info-alert")) {
-        return;
+    const old = document.getElementById("info-alert");
+    if(old) {
+        old.remove();
+        if(info_timeout) {
+            clearTimeout(info_timeout);
+        }
     }
     info = info.replace(/(?:\r\n|\r|\n)/g, '<br>');
     var info_alert = document.createElement("div");
@@ -436,7 +441,7 @@ function createInfoAlert(info, timeout) {
     if(timeout) {
         info_alert.style.zIndex = 1;
         info_alert.style.border = "1px solid gray";
-        setTimeout(function() {
+        info_timeout = setTimeout(function() {
             document.getElementById("info-alert").remove();
         }, timeout);
     }
@@ -444,6 +449,7 @@ function createInfoAlert(info, timeout) {
         createInfoButton("Okay", null, info_alert);
     }
     field.appendChild(info_alert);
+    info_alert;
 }
 
 function createInfoButton(text, button_callback, info_alert) {
@@ -560,16 +566,19 @@ function displayCards(data, player_list, except) {
     }
 }
 
-function showScore() {
+function showScore(toggle) {
     var info_alert = document.getElementById("info-alert");
     if(info_alert) {
-        info_alert.remove();
+        if(toggle) {
+            info_alert.remove();
+        }
+        return;
     }
     else if(summary) {
         createInfoAlert(summary);
     }
     else {
-        createInfoAlert("{% trans 'Es wurde noch kein Spiel beendet.\n' %}");
+        alercreateInfoAlert("{% trans 'Es wurde noch kein Spiel beendet.\n' %}");
     }
 }
 

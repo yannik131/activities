@@ -115,6 +115,8 @@
     left: 15%;
     right: 15%;
     border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
     z-index: 1;
 }
 
