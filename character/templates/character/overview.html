@@ -21,11 +21,6 @@
 </div>
 <h2>{% trans 'Noch kein Testergebnis!' %}</h2>
 {% else %}
-<div class="button-like" id="reset" onclick=reset()>
-    <img src="{% static 'icons/attention.png' %}">
-    <span id="reset-text">{% trans 'Zurücksetzen' %}</span>
-</div>
-
 <h2 id="nh">{% trans 'Neurotizismus' %}: </h2>
 
 <div class="character-overview" id="ns">
@@ -50,6 +45,11 @@
 
 <div class="character-overview" id="as">
     
+</div>
+<span style="clear: both"></span>
+<div class="button-like" id="reset" onclick=reset()>
+    <img src="{% static 'icons/attention.png' %}">
+    <span id="reset-text">{% trans 'Zurücksetzen' %}</span>
 </div>
 {% endif %}
 {% endblock %}

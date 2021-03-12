@@ -19,7 +19,7 @@ const categories = {
     'art': "{% trans 'Ästhetik' %}",
     'emo': "{% trans 'Gefühle' %}",
     'adv': "{% trans 'Abenteuer' %}",
-    'int': "{% trans 'Leistungsstreben' %}",
+    'int': "{% trans 'Intellekt' %}",
     'lib': "{% trans 'Liberalität' %}",
 
     'tru': "{% trans 'Vertrauen' %}", //Agreeableness

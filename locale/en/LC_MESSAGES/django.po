@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 13:48+0000\n"
-"PO-Revision-Date: 2021-03-12 14:48+0100\n"
+"POT-Creation-Date: 2021-03-12 18:08+0000\n"
+"PO-Revision-Date: 2021-03-12 19:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -532,6 +532,10 @@ msgstr "Your posts"
 msgid "Sie sind zurzeit Mitglied folgender Aktivitäten:"
 msgstr "You are currently a member of the following activities:"
 
+#: account/templates/account/home.html:23
+msgid "Aktivitäten finden"
+msgstr "Find activities"
+
 #: account/templates/account/jokes.html:2
 msgid ""
 "Steht son Typ mit seinem Wagen vor der Tanke, schaut sich um, macht den Tank "
@@ -1050,276 +1054,197 @@ msgstr "Posts"
 msgid "Keine!"
 msgstr "None!"
 
-#: character/models.py:9
-msgid "gutmütig"
-msgstr "docile"
+#: character/templates/character/overview.html:5
+msgid "Charakter"
+msgstr "Character"
 
-#: character/models.py:10
-msgid "kühn"
-msgstr "hardy"
+#: character/templates/character/overview.html:12
+msgid "Charakterübersicht"
+msgstr "Character overview"
 
-#: character/models.py:10
-msgid "vorsichtig"
-msgstr "careful"
+#: character/templates/character/overview.html:14
+#, python-format
+msgid "Sie haben bisher %(n)s von 120 Fragen beantwortet."
+msgstr "So far you've answered %(n)s of 120 questions."
 
-#: character/models.py:11
-msgid "froh"
-msgstr "jolly"
+#: character/templates/character/overview.html:18
+msgid "Zurücksetzen"
+msgstr "Reset"
 
-#: character/models.py:11
-msgid "melancholisch"
-msgstr "melancholic"
+#: character/templates/character/overview.html:24
+msgid "Zum Fragebogen"
+msgstr "Questionnaire"
 
-#: character/models.py:12
-msgid "schelmisch"
-msgstr "impish"
+#: character/templates/character/overview.html:26
+msgid "Noch kein Testergebnis!"
+msgstr "No test result yet!"
 
-#: character/models.py:12
-msgid "ernst"
-msgstr "serious"
+#: character/templates/character/overview.html:28
+msgid "Neurotizismus"
+msgstr "Neuroticism"
 
-#: character/models.py:13
-msgid "schrullig"
-msgstr "quirky"
+#: character/templates/character/overview.html:33
+msgid "Extraversion"
+msgstr "Extraversion"
 
-#: character/models.py:13
-msgid "unauffällig"
-msgstr "ordinary"
+#: character/templates/character/overview.html:38
+msgid "Offenheit für Erfahrungen"
+msgstr "Openness to experience"
 
-#: character/models.py:14
-msgid "entspannt"
-msgstr "relaxed"
+#: character/templates/character/overview.html:43
+msgid "Gewissenhaftigkeit"
+msgstr "Conscientiousness"
 
-#: character/models.py:14
-msgid "impulsiv"
-msgstr "impulsive"
+#: character/templates/character/overview.html:48
+msgid "Verträglichkeit"
+msgstr "Agreeableness"
 
-#: character/models.py:15
-msgid "mutig"
-msgstr "brave"
-
-#: character/models.py:15
-msgid "ängstlich"
-msgstr "anxious"
-
-#: character/models.py:16
-msgid "einzelgängerisch"
-msgstr "solitary"
-
-#: character/models.py:16
-msgid "gesellig"
-msgstr "social"
-
-#: character/models.py:17
-msgid "naiv"
-msgstr "naive"
-
-#: character/models.py:17
-msgid "skeptisch"
-msgstr "sceptical"
-
-#: character/models.py:18
-msgid "frech"
-msgstr "sassy"
-
-#: character/models.py:18
-msgid "höflich"
-msgstr "polite"
-
-#: character/models.py:19
-msgid "ungestüm"
-msgstr "hasty"
-
-#: character/models.py:19
-msgid "überlegt"
-msgstr "rational"
-
-#: character/models.py:20
-msgid "ruhig"
-msgstr "calm"
-
-#: character/models.py:20
-msgid "rastlos"
-msgstr "restless"
-
-#: character/models.py:21
-msgid "gewieft"
-msgstr "sly"
-
-#: character/models.py:21
-msgid "ehrlich"
-msgstr "honest"
-
-#: character/models.py:22
-msgid "ausgelassen"
-msgstr "exuberant"
-
-#: character/models.py:22
-msgid "schüchtern"
-msgstr "timid"
-
-#: character/models.py:23
-msgid "bescheiden"
-msgstr "modest"
-
-#: character/models.py:23
-msgid "anspruchsvoll"
-msgstr "demanding"
-
-#: character/models.py:24
-msgid "wissbegierig"
-msgstr "inquisitive"
-
-#: character/models.py:24
-msgid "müßig"
-msgstr "idle"
-
-#: character/models.py:25
-msgid "geduldig"
-msgstr "patient"
-
-#: character/models.py:25
-msgid "empathisch"
-msgstr "empathic"
-
-#: character/templates/character/quiz.html:4
+#: character/templates/character/quiz.html:5
+#: character/templates/character/quiz.html:9
 msgid "Fragebogen"
 msgstr "Questionnaire"
 
-#: character/templates/character/quiz.html:9
-msgid "Ich verlange Qualität."
-msgstr "I demand quality."
+#: character/templates/character/quiz.html:12
+msgid "Zur Charakterübersicht"
+msgstr "Character overview"
 
-#: character/templates/character/quiz.html:10
+#: character/templates/character/quiz.html:16
 msgid "Trifft stark zu"
 msgstr "Very accurate"
 
-#: character/templates/character/quiz.html:11
+#: character/templates/character/quiz.html:17
 msgid "Trifft überhaupt nicht zu"
 msgstr "Very inaccurate"
 
-#: character/templates/character/quiz.html:16
+#: character/templates/character/quiz.html:22
 msgid "Weiter"
 msgstr "Next"
 
-#: character/templates/javascript/quiz.js:4
+#: character/templates/javascript/categories.js:4
 msgid "Ängstlichkeit"
 msgstr "Anxiety"
 
-#: character/templates/javascript/quiz.js:5
+#: character/templates/javascript/categories.js:5
 msgid "Reizbarkeit"
 msgstr "Anxiety"
 
-#: character/templates/javascript/quiz.js:6
+#: character/templates/javascript/categories.js:6
 msgid "Depression"
 msgstr "Depression"
 
-#: character/templates/javascript/quiz.js:7
+#: character/templates/javascript/categories.js:7
 msgid "Soziale Befangenheit"
 msgstr "Self-conciousness"
 
-#: character/templates/javascript/quiz.js:8
+#: character/templates/javascript/categories.js:8
 msgid "Impulsivität"
 msgstr "Immoderation"
 
-#: character/templates/javascript/quiz.js:9
+#: character/templates/javascript/categories.js:9
 msgid "Verletzlichkeit"
 msgstr "Vulnerability"
 
-#: character/templates/javascript/quiz.js:11
+#: character/templates/javascript/categories.js:11
 msgid "Herzlichkeit"
 msgstr "Friendliness"
 
-#: character/templates/javascript/quiz.js:12
+#: character/templates/javascript/categories.js:12
 msgid "Geselligkeit"
 msgstr "Gregariousness"
 
-#: character/templates/javascript/quiz.js:13
+#: character/templates/javascript/categories.js:13
 msgid "Durchsetzungsfähigkeit"
 msgstr "Assertiveness"
 
-#: character/templates/javascript/quiz.js:14 wall/forms.py:36
+#: character/templates/javascript/categories.js:14 wall/forms.py:36
 msgid "Aktivität"
 msgstr "Activity"
 
-#: character/templates/javascript/quiz.js:15
+#: character/templates/javascript/categories.js:15
 msgid "Erlebnishunger"
 msgstr "Excitement-seeking"
 
-#: character/templates/javascript/quiz.js:16
+#: character/templates/javascript/categories.js:16
 msgid "Frohsinn"
 msgstr "Cheerfulness"
 
-#: character/templates/javascript/quiz.js:18
+#: character/templates/javascript/categories.js:18
 msgid "Fantasie"
 msgstr "Imagination"
 
-#: character/templates/javascript/quiz.js:19
+#: character/templates/javascript/categories.js:19
 msgid "Ästhetik"
 msgstr "Artistic interests"
 
-#: character/templates/javascript/quiz.js:20
+#: character/templates/javascript/categories.js:20
 msgid "Gefühle"
 msgstr "Emotionality"
 
-#: character/templates/javascript/quiz.js:21
-msgid "Handlungen"
+#: character/templates/javascript/categories.js:21
+msgid "Abenteuer"
 msgstr "Adventurousness"
 
-#: character/templates/javascript/quiz.js:22
-#: character/templates/javascript/quiz.js:35
-msgid "Leistungsstreben"
+#: character/templates/javascript/categories.js:22
+msgid "Intellekt"
 msgstr "Intellect"
 
-#: character/templates/javascript/quiz.js:23
+#: character/templates/javascript/categories.js:23
 msgid "Liberalität"
 msgstr "Liberalism"
 
-#: character/templates/javascript/quiz.js:25
+#: character/templates/javascript/categories.js:25
 msgid "Vertrauen"
 msgstr "Trust"
 
-#: character/templates/javascript/quiz.js:26
+#: character/templates/javascript/categories.js:26
 msgid "Moralität"
 msgstr "Morality"
 
-#: character/templates/javascript/quiz.js:27
+#: character/templates/javascript/categories.js:27
 msgid "Altruismus"
 msgstr "Altruism"
 
-#: character/templates/javascript/quiz.js:28
+#: character/templates/javascript/categories.js:28
 msgid "Entgegenkommen"
 msgstr "Cooperation"
 
-#: character/templates/javascript/quiz.js:29
+#: character/templates/javascript/categories.js:29
 msgid "Bescheidenheit"
 msgstr "Modesty"
 
-#: character/templates/javascript/quiz.js:30
+#: character/templates/javascript/categories.js:30
 msgid "Gutherzigkeit"
 msgstr "Sympathy"
 
-#: character/templates/javascript/quiz.js:32
+#: character/templates/javascript/categories.js:32
 msgid "Kompetenz"
 msgstr "Self-efficacy"
 
-#: character/templates/javascript/quiz.js:33
+#: character/templates/javascript/categories.js:33
 msgid "Ordentlichkeit"
 msgstr "Orderliness"
 
-#: character/templates/javascript/quiz.js:34
+#: character/templates/javascript/categories.js:34
 msgid "Pflichtbewusstsein"
 msgstr "Dutifulness"
 
-#: character/templates/javascript/quiz.js:36
+#: character/templates/javascript/categories.js:35
+msgid "Leistungsstreben"
+msgstr "Intellect"
+
+#: character/templates/javascript/categories.js:36
 msgid "Selbstdisziplin"
 msgstr "Self-discipline"
 
-#: character/templates/javascript/quiz.js:37
+#: character/templates/javascript/categories.js:37
 msgid "Besonnenheit"
 msgstr "Cautiousness"
 
-#: character/templates/javascript/quiz.js:53
+#: character/templates/javascript/overview.js:28
+msgid "Klicke erneut zum Zurücksetzen."
+msgstr "Click again to reset."
+
+#: character/templates/javascript/quiz.js:5
 msgid ""
 "Ich kann mit viel Information auf einmal umgehen.Ich misstraue Menschen.Ich "
 "vermeide Menschenansammlungen.Ich vermeide Fehler.Ich breche Regeln.Ich habe "
@@ -1428,6 +1353,10 @@ msgstr ""
 "lead the way.I am not bothered by disorder.I can talk others into doing "
 "things.I am interested in many things.I am not interested in abstract ideas."
 "I believe that too much tax money goes to support artists."
+
+#: character/templates/javascript/quiz.js:13
+msgid "Alle Fragen wurden beantwortet!"
+msgstr "All question have been answered!"
 
 #: chat/templates/chat/chat_list.html:7 chat/templates/chat/chat_list.html:11
 msgid "Chat-Liste"
@@ -2617,6 +2546,111 @@ msgstr "[Delete]"
 msgid " vor %(v0)s"
 msgstr " %(v0)s ago"
 
+#~ msgid "gutmütig"
+#~ msgstr "docile"
+
+#~ msgid "kühn"
+#~ msgstr "hardy"
+
+#~ msgid "vorsichtig"
+#~ msgstr "careful"
+
+#~ msgid "froh"
+#~ msgstr "jolly"
+
+#~ msgid "melancholisch"
+#~ msgstr "melancholic"
+
+#~ msgid "schelmisch"
+#~ msgstr "impish"
+
+#~ msgid "ernst"
+#~ msgstr "serious"
+
+#~ msgid "schrullig"
+#~ msgstr "quirky"
+
+#~ msgid "unauffällig"
+#~ msgstr "ordinary"
+
+#~ msgid "entspannt"
+#~ msgstr "relaxed"
+
+#~ msgid "impulsiv"
+#~ msgstr "impulsive"
+
+#~ msgid "mutig"
+#~ msgstr "brave"
+
+#~ msgid "ängstlich"
+#~ msgstr "anxious"
+
+#~ msgid "einzelgängerisch"
+#~ msgstr "solitary"
+
+#~ msgid "gesellig"
+#~ msgstr "social"
+
+#~ msgid "naiv"
+#~ msgstr "naive"
+
+#~ msgid "skeptisch"
+#~ msgstr "sceptical"
+
+#~ msgid "frech"
+#~ msgstr "sassy"
+
+#~ msgid "höflich"
+#~ msgstr "polite"
+
+#~ msgid "ungestüm"
+#~ msgstr "hasty"
+
+#~ msgid "überlegt"
+#~ msgstr "rational"
+
+#~ msgid "ruhig"
+#~ msgstr "calm"
+
+#~ msgid "rastlos"
+#~ msgstr "restless"
+
+#~ msgid "gewieft"
+#~ msgstr "sly"
+
+#~ msgid "ehrlich"
+#~ msgstr "honest"
+
+#~ msgid "ausgelassen"
+#~ msgstr "exuberant"
+
+#~ msgid "schüchtern"
+#~ msgstr "timid"
+
+#~ msgid "bescheiden"
+#~ msgstr "modest"
+
+#~ msgid "anspruchsvoll"
+#~ msgstr "demanding"
+
+#~ msgid "wissbegierig"
+#~ msgstr "inquisitive"
+
+#~ msgid "müßig"
+#~ msgstr "idle"
+
+#~ msgid "geduldig"
+#~ msgstr "patient"
+
+#~ msgid "empathisch"
+#~ msgstr "empathic"
+
+#~ msgid "Ich verlange Qualität."
+#~ msgstr "I demand quality."
+
+#~ msgid "Handlungen"
+#~ msgstr "Adventurousness"
+
 #~ msgid "Leerstelle hinzufügen"
 #~ msgstr "Add vacancy"
 
@@ -2899,9 +2933,6 @@ msgstr " %(v0)s ago"
 
 #~ msgid "vor %(v0)s"
 #~ msgstr "%(v0)s ago"
-
-#~ msgid "Noch keine Neuigkeiten"
-#~ msgstr "No news yet"
 
 #~ msgid "ist einer Aktivität beigetreten:"
 #~ msgstr "joined an activity:"
