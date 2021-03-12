@@ -1,0 +1,7 @@
+categories = {
+    'anx', 'ang', 'dep', 'con', 'imm', 'vul', 
+    'fri', 'gre', 'ass', 'act', 'exc', 'che', 
+    'ima', 'art', 'emo', 'adv', 'int', 'lib', 
+    'tru', 'mor', 'alt', 'coo', 'mod', 'sym', 
+    'eff', 'ord', 'dut', 'ach', 'dis', 'cau'
+}

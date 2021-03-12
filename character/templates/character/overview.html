@@ -1,7 +1,60 @@
 {% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
 
-{% block title %}Charakter{% endblock %}
+{% block title %}{% trans 'Charakter' %}{% endblock %}
+{% block style %}
+{% include 'css/quiz.css' %}
+{% include 'css/game.css' %}
+{% endblock %}
 
 {% block content %}
+<h1>{% trans 'Charakterübersicht' %}</h1>
+<div class="center-container">
+    <b>{% blocktrans with n=user.character.current_question %}Sie haben bisher {{ n }} von 120 Fragen beantwortet.{% endblocktrans %}</b>
+</div>
+<p></p>
+{% if user.character.current_question != 120 %}
+<div class="button-like" onclick=openLink("{% url 'character:quiz' %}")>
+    <img src="{% static 'icons/question.png' %}">
+    {% trans 'Zum Fragebogen' %}
+</div>
+<h2>{% trans 'Noch kein Testergebnis!' %}</h2>
+{% else %}
+<div class="button-like" id="reset" onclick=reset()>
+    <img src="{% static 'icons/attention.png' %}">
+    <span id="reset-text">{% trans 'Zurücksetzen' %}</span>
+</div>
 
+<h2 id="nh">{% trans 'Neurotizismus' %}: </h2>
+
+<div class="character-overview" id="ns">
+    
+</div>
+<h2 id="eh">{% trans 'Extraversion' %}: </h2>
+
+<div class="character-overview" id="es">
+    
+</div>
+<h2 id="oh">{% trans 'Offenheit für Erfahrungen' %}: </h2>
+
+<div class="character-overview" id="os">
+    
+</div>
+<h2 id="ch">{% trans 'Gewissenhaftigkeit' %}: </h2>
+
+<div class="character-overview" id="cs">
+    
+</div>
+<h2 id="ah">{% trans 'Verträglichkeit' %}: </h2>
+
+<div class="character-overview" id="as">
+    
+</div>
+{% endif %}
+{% endblock %}
+
+{% block domready %}
+{% include 'javascript/categories.js' %}
+{% include 'javascript/overview.js' %}
 {% endblock %}

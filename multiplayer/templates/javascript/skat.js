@@ -580,4 +580,6 @@ function updatePlayerPositions(forehand) {
     player_positions = {[forehand]: "{% trans 'Vorhand' %}", [middle]: "{% trans 'Mittelhand' %}", [behind]: "{% trans 'Hinterhand' %}"};
 }
 
-gameConnect('skat', '{{ match.id }}', '{{ user.username }}');
+window.addEventListener('load', function() {
+    gameConnect('skat', '{{ match.id }}', '{{ user.username }}');
+});

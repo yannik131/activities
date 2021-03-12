@@ -600,3 +600,7 @@ overlap of cards.*/
 resize();
 
 window.addEventListener('resize', resize);
+
+if(window.document.documentMode) {
+    alert("{% trans 'Internet Explorer wird nicht unterstützt!' %}");
+}

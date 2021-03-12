@@ -22,7 +22,7 @@ class User(AbstractUser):
     confirmed_appointments = models.ManyToManyField("scheduling.Appointment", related_name='participants')
     cancelled_appointments = models.ManyToManyField("scheduling.Appointment", related_name='cancellations')
     channel_name = models.CharField(max_length=100, null=True)
-    character = models.ForeignKey(Character, on_delete=models.CASCADE, null=True)
+    character = models.ForeignKey(Character, on_delete=models.SET_NULL, null=True)
     action_strings = {
         'created': _('hat erstellt'),
         'has_new_friend': _('ist jetzt befreundet mit'),

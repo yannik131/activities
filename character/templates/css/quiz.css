@@ -1,0 +1,71 @@
+.question {
+    background-color: #1a1a1a;
+    text-align: center;
+    padding: 5px 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.info {
+    font-weight: bold;
+}
+
+.info.left {
+    float: left;
+    color: darkgreen;
+}
+
+.info.right {
+    float: right;
+    color: red;
+}
+
+.slider {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 25px;
+    appearance: none;
+    
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: white; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: white; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+  
+  h2 {
+      text-align: center; 
+      margin-bottom: 5px;
+  }
+  
+  .three {
+    float: left; 
+    width: 33%; 
+    text-align: center;
+  }
+  
+  .two {
+      float: left;
+      width: 50%;
+      text-align: center;
+      margin-top: 10px;
+  }
+  
+  .character-overview {
+      margin-top: 15px;
+      margin-bottom: 100px;
+      font-weight: bold;
+  }

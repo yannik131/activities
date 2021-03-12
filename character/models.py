@@ -3,31 +3,34 @@ from django.contrib.postgres.fields.hstore import HStoreField
 from django.utils.translation import gettext_lazy as _
 from activity.models import Activity
 from django.urls import reverse
+import json
+
+BIG_FIVE = {
+    'n': ['anx', 'ang', 'dep', 'con', 'imm', 'vul'],
+    'e': ['fri', 'gre', 'ass', 'act', 'exc', 'che'],
+    'o': ['ima', 'art', 'emo', 'adv', 'int', 'lib'],
+    'a': ['tru', 'mor', 'alt', 'coo', 'mod', 'sym'],
+    'c': ['eff', 'ord', 'dut', 'ach', 'dis', 'cau']
+}
 
 class Character(models.Model):
-    TRAITS = {
-        'docile': _('gutmütig'),
-        'hardy': _('kühn'), 'careful': _('vorsichtig'),
-        'jolly': _('froh'), 'melancholic': _('melancholisch'),
-        'impish': _('schelmisch'), 'serious': _('ernst'),
-        'quirky': _('schrullig'), 'ordinary': _('unauffällig'),
-        'relaxed': _('entspannt'), 'impulsive': _('impulsiv'),
-        'brave': _('mutig'), 'anxious': _('ängstlich'),
-        'solitary': _('einzelgängerisch'), 'social': _('gesellig'),
-        'naive': _('naiv'), 'sceptical': _('skeptisch'),
-        'sassy': _('frech'), 'polite': _('höflich'),
-        'hasty': _('ungestüm'), 'rational': _('überlegt'),
-        'calm': _('ruhig'), 'restless': _('rastlos'),
-        'sly': _('gewieft'), 'honest': _('ehrlich'),
-        'exuberant': _('ausgelassen'), 'timid': _('schüchtern'),
-        'modest': _('bescheiden'), 'demanding': _('anspruchsvoll'),
-        'inquisitive': _('wissbegierig'), 'idle': _('müßig'),
-        'patient': _('geduldig'), 'empathic': _('empathisch')
-    }
-    values = HStoreField(default=dict, blank=True)
-    current_question = models.PositiveSmallIntegerField(default=1)
+    traits = HStoreField(default=dict, blank=True)
+    current_question = models.PositiveSmallIntegerField(default=0)
     suggestions = models.ManyToManyField(Activity, related_name='suggested_to')
+    
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.init_traits()
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('character:overview', args=[])
-    
+        
+    def init_traits(self):
+        for big in BIG_FIVE:
+            for trait in BIG_FIVE[big]:
+                self.traits[trait] = 0
+                
+    @property
+    def traits_json(self):
+        return json.dumps(self.traits)

@@ -1,11 +1,34 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans 'Fragebogen' %}{% endblock %}
+{% block style %}{% include 'css/quiz.css' %}{% endblock %}
 
 {% block content %}
-<div class="question" id="anxiety+1">
-    {% trans 'Ich mache mir oft Sorgen.' %}
-    <input type="range" min="1" max="100" class="slider">
+<h1>{% trans 'Fragebogen' %}</h1>
+<div class="button-like" style="margin-bottom: 15px;" onclick=openLink("{% url 'character:overview' %}")>
+    <img src="{% static 'icons/questionnaire.png' %}">
+    {% trans 'Zur Charakterübersicht' %}
 </div>
+<div class="question" id="anxiety+1">
+    <span id="current-question"></span> <br><br>
+    <span class="info left">{% trans 'Trifft stark zu' %}</span>
+    <span class="info right">{% trans 'Trifft überhaupt nicht zu' %}</span>
+    <input type="range" min="1" max="5" class="slider" id="slider">
+    <p style="clear: both"></p>
+    <div class="center-container">
+        <div class="blue-button" onclick=next() id="send-button">
+            {% trans 'Weiter' %}
+        </div>
+    </div>
+</div>
+<div class="center-container" style="margin-top: 15px; font-size: 24px">
+    <b><span id="info-box"></span></b>
+</div>
+{% endblock %}
+
+{% block domready %}
+{% include 'javascript/categories.js' %}
+{% include 'javascript/quiz.js' %}
 {% endblock %}

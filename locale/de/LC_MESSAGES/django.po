@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-09 20:25+0000\n"
+"POT-Creation-Date: 2021-03-12 13:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,103 +92,103 @@ msgstr ""
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr ""
 
-#: account/models.py:19
+#: account/models.py:18
 msgid "männlich"
 msgstr ""
 
-#: account/models.py:20
+#: account/models.py:19
 msgid "weiblich"
 msgstr ""
 
-#: account/models.py:28
+#: account/models.py:27
 msgid "hat erstellt"
 msgstr ""
 
-#: account/models.py:29
+#: account/models.py:28
 msgid "ist jetzt befreundet mit"
 msgstr ""
 
-#: account/models.py:30
+#: account/models.py:29
 msgid "ist nicht mehr befreundet mit"
 msgstr ""
 
-#: account/models.py:31
+#: account/models.py:30
 msgid "hat Ihnen eine Freundschaftsanfrage geschickt"
 msgstr ""
 
-#: account/models.py:32
+#: account/models.py:31
 msgid "ist beigetreten"
 msgstr ""
 
-#: account/models.py:33
+#: account/models.py:32
 msgid "hat verlassen"
 msgstr ""
 
-#: account/models.py:34
+#: account/models.py:33
 msgid "hat zugesagt"
 msgstr ""
 
-#: account/models.py:35
+#: account/models.py:34
 msgid "hat abgesagt"
 msgstr ""
 
-#: account/models.py:36
+#: account/models.py:35
 msgid "hat sich beworben"
 msgstr ""
 
-#: account/models.py:37
+#: account/models.py:36
 msgid "hat etwas gepostet in"
 msgstr ""
 
-#: account/models.py:38
+#: account/models.py:37
 msgid "hat etwas kommentiert"
 msgstr ""
 
-#: account/models.py:39
+#: account/models.py:38
 msgid "hat eure Freundschaft beendet"
 msgstr ""
 
-#: account/models.py:40
+#: account/models.py:39
 msgid "hat Sie eingeladen"
 msgstr ""
 
-#: account/models.py:41
+#: account/models.py:40
 msgid "hat Ihre Freundschaftsanfrage angenommen"
 msgstr ""
 
-#: account/models.py:42
+#: account/models.py:41
 msgid "hat Ihre Freundschaftsanfrage abgelehnt"
 msgstr ""
 
-#: account/models.py:43
+#: account/models.py:42
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr ""
 
-#: account/models.py:148
+#: account/models.py:147
 msgid "Ausstehend"
 msgstr ""
 
-#: account/models.py:149
+#: account/models.py:148
 msgid "Angenommen"
 msgstr ""
 
-#: account/models.py:150
+#: account/models.py:149
 msgid "Abgelehnt"
 msgstr ""
 
-#: account/models.py:194 vacancies/models.py:29
+#: account/models.py:193 vacancies/models.py:29
 msgid "Land"
 msgstr ""
 
-#: account/models.py:195 vacancies/models.py:30
+#: account/models.py:194 vacancies/models.py:30
 msgid "Bundesland"
 msgstr ""
 
-#: account/models.py:196 vacancies/models.py:31
+#: account/models.py:195 vacancies/models.py:31
 msgid "Landkreis"
 msgstr ""
 
-#: account/models.py:197 vacancies/models.py:32
+#: account/models.py:196 vacancies/models.py:32
 msgid "Stadt"
 msgstr ""
 
@@ -374,9 +374,9 @@ msgstr ""
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:337
-#: multiplayer/templates/javascript/durak.js:374
-#: multiplayer/templates/javascript/durak.js:383
+#: multiplayer/templates/javascript/durak.js:331
+#: multiplayer/templates/javascript/durak.js:368
+#: multiplayer/templates/javascript/durak.js:377
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:14
 #: usergroups/templates/usergroups/edit_group.html:13
@@ -455,7 +455,7 @@ msgstr ""
 #: account/templates/account/friend_requests_list.html:75
 #: usergroups/templates/usergroups/appointment_list.html:41
 #: usergroups/templates/usergroups/invitation_list.html:16
-#: vacancies/templates/vacancies/application_list.html:23
+#: vacancies/templates/vacancies/application_list.html:22
 #: vacancies/templates/vacancies/edit_vacancy.html:11
 #: vacancies/templates/vacancies/invitation_list.html:21
 #: vacancies/templates/vacancies/review_vacancy.html:35
@@ -901,34 +901,34 @@ msgstr ""
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr ""
 
-#: activities/settings/base.py:149
+#: activities/settings/base.py:154
 msgid "Deutsch"
 msgstr ""
 
-#: activities/settings/base.py:150
+#: activities/settings/base.py:155
 #, fuzzy
 #| msgid "English"
 msgid "Englisch"
 msgstr "Englisch"
 
-#: activity/models.py:18
+#: activity/models.py:22
 msgid "kompetitiv"
 msgstr ""
 
-#: activity/models.py:19
+#: activity/models.py:23
 msgid "kreativ"
 msgstr ""
 
-#: activity/models.py:20
+#: activity/models.py:24
 msgid "konsumorientiert"
 msgstr ""
 
-#: activity/models.py:33
+#: activity/models.py:37
 #, python-brace-format
 msgid "Aktivität: {name}"
 msgstr ""
 
-#: activity/models.py:70
+#: activity/models.py:76
 #, python-brace-format
 msgid "Kategorie: {name}"
 msgstr ""
@@ -1139,6 +1139,206 @@ msgstr ""
 msgid "empathisch"
 msgstr ""
 
+#: character/templates/character/quiz.html:4
+msgid "Fragebogen"
+msgstr ""
+
+#: character/templates/character/quiz.html:9
+msgid "Ich verlange Qualität."
+msgstr ""
+
+#: character/templates/character/quiz.html:10
+msgid "Trifft stark zu"
+msgstr ""
+
+#: character/templates/character/quiz.html:11
+msgid "Trifft überhaupt nicht zu"
+msgstr ""
+
+#: character/templates/character/quiz.html:16
+msgid "Weiter"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:4
+msgid "Ängstlichkeit"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:5
+msgid "Reizbarkeit"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:6
+msgid "Depression"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:7
+msgid "Soziale Befangenheit"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:8
+msgid "Impulsivität"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:9
+msgid "Verletzlichkeit"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:11
+msgid "Herzlichkeit"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:12
+msgid "Geselligkeit"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:13
+msgid "Durchsetzungsfähigkeit"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:14 wall/forms.py:36
+msgid "Aktivität"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:15
+msgid "Erlebnishunger"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:16
+msgid "Frohsinn"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:18
+msgid "Fantasie"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:19
+msgid "Ästhetik"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:20
+msgid "Gefühle"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:21
+msgid "Handlungen"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:22
+#: character/templates/javascript/quiz.js:35
+msgid "Leistungsstreben"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:23
+msgid "Liberalität"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:25
+msgid "Vertrauen"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:26
+msgid "Moralität"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:27
+msgid "Altruismus"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:28
+msgid "Entgegenkommen"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:29
+msgid "Bescheidenheit"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:30
+msgid "Gutherzigkeit"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:32
+msgid "Kompetenz"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:33
+msgid "Ordentlichkeit"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:34
+msgid "Pflichtbewusstsein"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:36
+msgid "Selbstdisziplin"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:37
+msgid "Besonnenheit"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:53
+msgid ""
+"Ich kann mit viel Information auf einmal umgehen.Ich misstraue Menschen.Ich "
+"vermeide Menschenansammlungen.Ich vermeide Fehler.Ich breche Regeln.Ich habe "
+"selten emotionale Höhen oder Tiefen.Ich involviere andere in dem was ich tue."
+"Ich liebe Blumen.Ich fühle mich wohl in meiner Haut.Ich lasse meine Sachen "
+"herumliegen.Ich bin anderen gegenüber argwöhnisch.Ich bin nicht leicht zu "
+"amüsieren.Ich mag keine überfüllten Veranstaltungen.Ich mag keine laute "
+"Musik.Ich lobe mich selten selbst.Ich kehre anderen den Rücken zu.Ich freue "
+"mich wie ein Kind.Ich bleibe im Hintergrund.Ich versuche mir nicht über "
+"Hilfsbedürftige Gedanken zu machen.Ich besuche gerne neue Orte.Ich fühle die "
+"Emotionen anderer.Ich bleibe unter Druck ruhig.Ich schäme mich nicht so "
+"leicht.Ich interessiere mich nicht wirklich für andere.Ich weiß, wie man "
+"Regeln umgehen kann.Ich mag keine Kunst.Ich denke, Kriminelle sollten eher "
+"Hilfe als Bestrafungen erhalten.Ich räume gerne auf.Ich beleidige andere "
+"Menschen.Ich denke nicht, dass es ein wirkliches richtig oder falsch gibt."
+"Ich werde leicht wütend.Ich habe meine Bedürfnisse unter Kontrolle.Ich "
+"beschwere mich selten.Ich verstehe Menschen nicht, die emotional werden.Ich "
+"fange Dinge an ohne nachzudenken.Ich bin immer beschäftigt.Ich weiß, was ich "
+"kann.Ich mache mir Sorgen über Dinge.Ich reagiere schnell.Ich bin nicht hoch "
+"motiviert, Erfolg zu haben.Ich schätze Situationen falsch ein.Ich leide "
+"unter der Trauer anderer.Ich habe eine scharfe Zunge.Ich bin gerne Teil "
+"einer Gruppe.Ich verliere mich in meinen Problemen.Ich habe Mitleid mit "
+"Obdachlosen.Ich passe mich leicht neuen Situationen an.Ich schaue mir ungern "
+"Tanzvorstellungen an.Ich habe oft schlechte Laune.Ich lasse es gerne ruhig "
+"angehen.Ich denke, dass alles gut wird.Ich habe für jeden ein gutes Wort.Ich "
+"vermeide philosophische Diskussionen.Ich bevorzuge es, während der "
+"Nationalhymne aufzustehen.Ich verliere mich selten in Gedanken.Ich bin "
+"leicht zufriedenzustellen.Ich liebe Tagträume.Ich suche Abenteuer.Ich fühle "
+"mich bei anderen wohl.Ich fange mit Aufgaben direkt an.Ich erledige "
+"Hausarbeiten vernünftig.Ich behindere die Pläne anderer.Ich mag mich nicht."
+"Ich übernehme das Kommando.Ich höre auf mein Gewissen.Ich muntere andere auf."
+"Ich bin leicht eingeschüchtert.Ich liebe es, anspruchsvolle Lektüre zu lesen."
+"Ich widerstehe leicht Versuchungen.Ich bin selten gereizt.Ich halte mich an "
+"die Regeln.Ich breche meine Versprechen.Ich werde von Gefühlen überwältigt."
+"Ich bringe mich ins Zentrum der Aufmerksamkeit.Ich fühle mich nur bei "
+"Freunden wohl.Ich tue Dinge auf die konventionelle Art.Ich bin hervorragend "
+"in dem, was ich tue.Ich liebe das Leben.Ich verbringe Zeit damit, über Dinge "
+"zu reflektieren.Ich arbeite gerade genug, um zurechtzukommen. Ich handle "
+"gerne aus einer Laune heraus.Ich habe Schwierigkeiten, mir Dinge "
+"vorzustellen.Ich werde von Ereignissen überwältigt.Ich bin selten deprimiert."
+"Ich arbeite hart.Ich würde niemals Drachenfliegen oder bungee jumping gehen."
+"Ich fühle mich verzweifelt.Ich versuche, den Regeln zu folgen.Ich wähle "
+"meine Worte mit Bedacht.Ich tendiere dazu, weichherzige Menschen nicht zu "
+"mögen.Ich verschwende meine Zeit.Ich tue Dinge, die ich später bereue.Ich "
+"bin selten albern.Ich störe mich nicht an schwierigen sozialen Situationen."
+"Ich rede nicht gerne über mich.Ich setze Pläne in die Tat um.Ich sehe das "
+"Schöne in Dingen, die andere vielleicht nicht bemerken.Ich bin gerne Teil "
+"einer lauten Menge.Ich bin ein Gewohnheitsmensch.Ich habe wenig beizutragen."
+"Ich untersuche gerne mich und mein Leben.Ich nehme mir gerne Zeit.Ich weiß "
+"nicht, warum ich einige Dinge tue, die ich tue.Ich bin schwer kennenzulernen."
+"Ich würde niemals Steuern hinterziehen.Ich halte mich an den Plan.Ich denke, "
+"dass ich besser als andere bin.Ich befremde andere Menschen.Ich habe "
+"Schwierigkeiten, mit Aufgaben anzufangen.Ich lasse mich nicht leicht durch "
+"Ereignisse aus der Ruhe bringen.Ich sorge dafür, dass sich andere wohlfühlen."
+"Ich komme leicht über Rückschläge hinweg.Ich mag keine Konfrontationen.Ich "
+"glaube an das Gute im Menschen.Ich warte darauf, dass andere die Richtung "
+"weisen.Ich störe mich nicht an Unordnung.Ich kann andere dazu überreden, "
+"Dinge zu tun.Ich bin an vielen Dingen interessiert.Ich habe kein Interesse "
+"an abstrakten Ideen.Ich denke, dass zu viel Steuergeld für die Unterstützung "
+"von Künstlern ausgegeben wird."
+msgstr ""
+
 #: chat/templates/chat/chat_list.html:7 chat/templates/chat/chat_list.html:11
 msgid "Chat-Liste"
 msgstr ""
@@ -1154,18 +1354,18 @@ msgstr ""
 msgid "Turniere"
 msgstr ""
 
-#: chat/templates/chat/room.html:6 chat/templates/javascript/room.js:147
+#: chat/templates/chat/room.html:6 chat/templates/javascript/room.js:150
 #: multiplayer/templates/multiplayer/game.html:36
 #: vacancies/templates/vacancies/review_vacancy.html:18
 msgid "Chat"
 msgstr ""
 
-#: chat/templates/javascript/audiochat.js:224
-msgid "tritt der Konferenz bei."
+#: chat/templates/javascript/audiochat.js:195
+msgid "verlässt die Konferenz."
 msgstr ""
 
-#: chat/templates/javascript/audiochat.js:256
-msgid "verlässt die Konferenz."
+#: chat/templates/javascript/audiochat.js:227
+msgid "tritt der Konferenz bei."
 msgstr ""
 
 #: chat/templates/javascript/room.js:32
@@ -1180,11 +1380,11 @@ msgstr ""
 msgid "Sie"
 msgstr ""
 
-#: chat/templates/javascript/room.js:134
+#: chat/templates/javascript/room.js:137
 msgid "Chat schließen"
 msgstr ""
 
-#: chat/views.py:18
+#: chat/views.py:16
 msgid "Diesen Chat-Room gibt es nicht mehr."
 msgstr ""
 
@@ -1536,24 +1736,24 @@ msgid ""
 "implementiert werden könnte!"
 msgstr ""
 
-#: competitions/views.py:91
+#: competitions/views.py:88
 #, python-brace-format
 msgid "{act}-Turnier"
 msgstr ""
 
-#: competitions/views.py:165
+#: competitions/views.py:162
 msgid "Es wurde noch keine Runde erstellt."
 msgstr ""
 
-#: competitions/views.py:178
+#: competitions/views.py:175
 msgid "Es stehen noch Ergebnisse der letzten Runde offen."
 msgstr ""
 
-#: competitions/views.py:186
+#: competitions/views.py:183
 msgid "Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden."
 msgstr ""
 
-#: competitions/views.py:199
+#: competitions/views.py:196
 msgid "Es stehen noch Ergebnisse offen."
 msgstr ""
 
@@ -1573,13 +1773,21 @@ msgstr ""
 msgid "Unterstützt werden 3 oder 4 Spieler"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:420
+#: multiplayer/templates/javascript/cards.js:421
 #: multiplayer/templates/javascript/skat.js:563
 msgid "Ja"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:422
+#: multiplayer/templates/javascript/cards.js:423
 msgid "Nein"
+msgstr ""
+
+#: multiplayer/templates/javascript/cards.js:581
+msgid "Es wurde noch kein Spiel beendet.\\n"
+msgstr ""
+
+#: multiplayer/templates/javascript/cards.js:605
+msgid "Internet Explorer wird nicht unterstützt!"
 msgstr ""
 
 #: multiplayer/templates/javascript/common_sd.js:43
@@ -1661,7 +1869,7 @@ msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:180
 #: multiplayer/templates/javascript/doppelkopf.js:348
-#: multiplayer/templates/javascript/durak.js:160
+#: multiplayer/templates/javascript/durak.js:154
 #: multiplayer/templates/javascript/skat.js:165
 #: multiplayer/templates/javascript/skat.js:202
 msgid "Spiel Nummer"
@@ -1671,24 +1879,24 @@ msgstr ""
 msgid "Normalspiel"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:61
-#: multiplayer/templates/javascript/durak.js:210
+#: multiplayer/templates/javascript/durak.js:55
+#: multiplayer/templates/javascript/durak.js:204
 msgid "SCHLUCKT"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:169
+#: multiplayer/templates/javascript/durak.js:163
 msgid "ANGREIFER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:172
+#: multiplayer/templates/javascript/durak.js:166
 msgid "VERTEIDIGER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:354
+#: multiplayer/templates/javascript/durak.js:348
 msgid "Schlucken"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:364
+#: multiplayer/templates/javascript/durak.js:358
 msgid "Schieben"
 msgstr ""
 
@@ -2024,7 +2232,7 @@ msgid ""
 msgstr ""
 
 #: usergroups/templates/usergroups/group_detail.html:48
-#: vacancies/templates/vacancies/application_list.html:30
+#: vacancies/templates/vacancies/application_list.html:29
 msgid "Einladungen"
 msgstr ""
 
@@ -2037,7 +2245,7 @@ msgstr ""
 msgid "Ihre Gruppen"
 msgstr ""
 
-#: usergroups/views.py:92
+#: usergroups/views.py:85
 msgid ""
 "Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest "
 "oder löschen Sie die Gruppe."
@@ -2123,8 +2331,8 @@ msgstr ""
 msgid "{app} bei {target}"
 msgstr ""
 
-#: vacancies/templates/vacancies/application_list.html:6
-#: vacancies/templates/vacancies/application_list.html:9
+#: vacancies/templates/vacancies/application_list.html:5
+#: vacancies/templates/vacancies/application_list.html:8
 #: vacancies/templates/vacancies/review_vacancy.html:4
 #: vacancies/templates/vacancies/review_vacancy.html:7
 #: vacancies/templates/vacancies/review_vacancy.html:11
@@ -2196,32 +2404,28 @@ msgstr ""
 msgid "Abwarten"
 msgstr ""
 
-#: vacancies/views.py:95
+#: vacancies/views.py:87
 #, python-brace-format
 msgid ""
 "Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder "
 "Geschlecht) nicht. <a href=\"{link}\">Zurück</a>"
 msgstr ""
 
-#: vacancies/views.py:97
+#: vacancies/views.py:89
 msgid "Sie haben sich bereits beworben."
 msgstr ""
 
-#: vacancies/views.py:99
+#: vacancies/views.py:91
 #, python-brace-format
 msgid "Die Anmeldefrist ist bereits abgelaufen. <a href=\"{link}\">Zurück</a>"
 msgstr ""
 
-#: vacancies/views.py:101
+#: vacancies/views.py:93
 msgid "Sie sind bereits Mitglied."
 msgstr ""
 
 #: wall/forms.py:35
 msgid "Kategorie (erforderlich)"
-msgstr ""
-
-#: wall/forms.py:36
-msgid "Aktivität"
 msgstr ""
 
 #: wall/forms.py:37

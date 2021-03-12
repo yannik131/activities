@@ -8,6 +8,7 @@ from django.utils.timezone import now
 from multiplayer.models import MultiplayerMatch
 from shared.shared import log
 from chat.utils import broadcast
+from multiplayer.utils import change
 
 
 class NotificationConsumer(WebsocketConsumer):
@@ -106,6 +107,8 @@ class NotificationConsumer(WebsocketConsumer):
             self.handle_multiplayer_message(text_data)
         elif text_data['type'] == 'rtc':
             self.handle_rtc_message(text_data)
+        elif text_data['type'] == 'character':
+            self.handle_character_message(text_data)
 
     def handle_chat_message(self, text_data):
         chat_room_id = text_data['id']
@@ -144,6 +147,11 @@ class NotificationConsumer(WebsocketConsumer):
                 self.match = MultiplayerMatch.objects.get(pk=text_data['match_id'])
             self.match.remove_member(User.objects.get(username=text_data['username']))
             
+    def handle_character_message(self, text_data):
+        user = User.objects.get(id=self.user.id)
+        change(user.character.traits, text_data['trait'], text_data['value'])
+        user.character.current_question += 1
+        user.character.save()
         
     def chat_message(self, event):
         self.send(text_data=json.dumps(event))
