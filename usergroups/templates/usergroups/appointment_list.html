@@ -5,7 +5,7 @@
     
     <div class="appointment">
         <div class="top" style="font-weight: bold">
-            {{ appointment.location }}, {{ appointment.start_time }} ({{ appointment.creator }})
+            {{ appointment.location }}, {{ appointment.start_time }} ({{ appointment.creator }}): {{ appointment.name }}
         </div>
         <div class="confirmations" style="margin: 10px 0; padding-bottom: 5px">
             {% trans "Zusagen" %}: {{ appointment.participants.all|length }}/{{ group.members.all|length }}<br>

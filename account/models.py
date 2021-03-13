@@ -109,6 +109,14 @@ class User(AbstractUser):
     @property
     def channel_group_name(self):
         return f"user-{self.id}"
+        
+    @property
+    def get_notifications(self):
+        notifications = self.notifications.all()
+        for notification in notifications:
+            if notification.action_object_id and notification.action_object is None:
+                notification.delete()
+        return notifications
 
 
 class Friendship(models.Model):

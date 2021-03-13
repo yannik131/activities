@@ -16,7 +16,7 @@
     <a href="{% url 'account:password_change' %}" {% active_if request 'password' %}><img src="{% static 'icons/password.png' %}">{% blocktrans %}Passwort ändern{% endblocktrans %}</a>
     <a href="{% url 'account:edit' %}" {% active_if request 'account' %}><img src="{% static 'icons/pen.png' %}">{% blocktrans %}Account bearbeiten{% endblocktrans %}</a>
     <a href="{% url 'account:logout' %}"><img src="{% static 'icons/logout.png' %}">{% blocktrans %}Ausloggen{% endblocktrans %}</a>
-    {% for notification in user.notifications.all %}
+    {% for notification in user.get_notifications %}
     {% with notification_id=notification.id %}
 
         <div class="alert" id="notification-{{ notification_id }}">
