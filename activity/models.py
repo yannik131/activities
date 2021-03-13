@@ -24,9 +24,14 @@ class Activity(TranslatableModel):
         ('creative', _('kreativ')),
         ('consumption', _('konsumorientiert'))
     )
-    type = models.CharField(max_length=20, choices=TYPE_CHOICES, null=True)
+    type = models.CharField(max_length=20, choices=TYPE_CHOICES, null=True, blank=True)
     online = models.BooleanField(default=False)
     trait_weights = HStoreField(default=dict, blank=True)
+    
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.init_traits()
+        super().save(*args, **kwargs)
     
     class Meta:
         verbose_name_plural = 'activities'

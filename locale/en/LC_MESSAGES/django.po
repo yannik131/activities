@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-13 09:17+0000\n"
-"PO-Revision-Date: 2021-03-13 10:18+0100\n"
+"POT-Creation-Date: 2021-03-13 13:26+0000\n"
+"PO-Revision-Date: 2021-03-13 14:26+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -166,31 +166,31 @@ msgstr "declined your friend request"
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr "rejected your friend request"
 
-#: account/models.py:147
+#: account/models.py:157
 msgid "Ausstehend"
 msgstr "Pending"
 
-#: account/models.py:148
+#: account/models.py:158
 msgid "Angenommen"
 msgstr "Accepted"
 
-#: account/models.py:149
+#: account/models.py:159
 msgid "Abgelehnt"
 msgstr "Declined"
 
-#: account/models.py:193 vacancies/models.py:29
+#: account/models.py:203 vacancies/models.py:29
 msgid "Land"
 msgstr "Country"
 
-#: account/models.py:194 vacancies/models.py:30
+#: account/models.py:204 vacancies/models.py:30
 msgid "Bundesland"
 msgstr "State"
 
-#: account/models.py:195 vacancies/models.py:31
+#: account/models.py:205 vacancies/models.py:31
 msgid "Landkreis"
 msgstr "County"
 
-#: account/models.py:196 vacancies/models.py:32
+#: account/models.py:206 vacancies/models.py:32
 msgid "Stadt"
 msgstr "City"
 
@@ -588,19 +588,23 @@ msgid ""
 msgstr "Please send me your jokes. I don’t know any good ones."
 
 #: account/templates/account/pagination.html:6
+#: account/templates/account/pagination_component.html:6
 msgid "Vorige"
 msgstr "Previous"
 
 #: account/templates/account/pagination.html:9
+#: account/templates/account/pagination_component.html:9
 msgid "Seite"
 msgstr "Page"
 
 #: account/templates/account/pagination.html:9
+#: account/templates/account/pagination_component.html:9
 #: wall/templates/wall/post/post_loop.html:9
 msgid "von"
 msgstr "of"
 
 #: account/templates/account/pagination.html:12
+#: account/templates/account/pagination_component.html:12
 msgid "Nächste"
 msgstr "Next"
 
@@ -958,24 +962,24 @@ msgstr "German"
 msgid "Englisch"
 msgstr "English"
 
-#: activity/models.py:22
+#: activity/models.py:23
 msgid "kompetitiv"
 msgstr "competitive"
 
-#: activity/models.py:23
+#: activity/models.py:24
 msgid "kreativ"
 msgstr "creative"
 
-#: activity/models.py:24
+#: activity/models.py:25
 msgid "konsumorientiert"
 msgstr "consumption"
 
-#: activity/models.py:37
+#: activity/models.py:38
 #, python-brace-format
 msgid "Aktivität: {name}"
 msgstr "Activity: {name}"
 
-#: activity/models.py:76
+#: activity/models.py:83
 #, python-brace-format
 msgid "Kategorie: {name}"
 msgstr "Category: {name}"
@@ -989,7 +993,7 @@ msgstr "All activities"
 msgid "Mitglieder anzeigen"
 msgstr "Show members"
 
-#: activity/templates/activity/activity_list.html:22
+#: activity/templates/activity/activity_list.html:23
 #: competitions/templates/competitions/tournament_detail.html:29
 #: usergroups/templates/usergroups/group_detail.html:33
 #: usergroups/templates/usergroups/loop.html:18
@@ -1095,7 +1099,7 @@ msgstr "Conscientiousness"
 msgid "Verträglichkeit"
 msgstr "Agreeableness"
 
-#: character/templates/character/overview.html:53
+#: character/templates/character/overview.html:54
 msgid "Zurücksetzen"
 msgstr "Reset"
 
@@ -1120,123 +1124,123 @@ msgstr "Very inaccurate"
 msgid "Weiter"
 msgstr "Next"
 
-#: character/templates/javascript/categories.js:4
+#: character/templates/javascript/categories.js:5
 msgid "Ängstlichkeit"
 msgstr "Anxiety"
 
-#: character/templates/javascript/categories.js:5
+#: character/templates/javascript/categories.js:6
 msgid "Reizbarkeit"
 msgstr "Anxiety"
 
-#: character/templates/javascript/categories.js:6
+#: character/templates/javascript/categories.js:7
 msgid "Depression"
 msgstr "Depression"
 
-#: character/templates/javascript/categories.js:7
+#: character/templates/javascript/categories.js:8
 msgid "Soziale Befangenheit"
 msgstr "Self-conciousness"
 
-#: character/templates/javascript/categories.js:8
+#: character/templates/javascript/categories.js:9
 msgid "Impulsivität"
 msgstr "Immoderation"
 
-#: character/templates/javascript/categories.js:9
+#: character/templates/javascript/categories.js:10
 msgid "Verletzlichkeit"
 msgstr "Vulnerability"
 
-#: character/templates/javascript/categories.js:11
+#: character/templates/javascript/categories.js:13
 msgid "Herzlichkeit"
 msgstr "Friendliness"
 
-#: character/templates/javascript/categories.js:12
+#: character/templates/javascript/categories.js:14
 msgid "Geselligkeit"
 msgstr "Gregariousness"
 
-#: character/templates/javascript/categories.js:13
+#: character/templates/javascript/categories.js:15
 msgid "Durchsetzungsfähigkeit"
 msgstr "Assertiveness"
 
-#: character/templates/javascript/categories.js:14 wall/forms.py:36
+#: character/templates/javascript/categories.js:16 wall/forms.py:36
 msgid "Aktivität"
 msgstr "Activity"
 
-#: character/templates/javascript/categories.js:15
+#: character/templates/javascript/categories.js:17
 msgid "Erlebnishunger"
 msgstr "Excitement-seeking"
 
-#: character/templates/javascript/categories.js:16
+#: character/templates/javascript/categories.js:18
 msgid "Frohsinn"
 msgstr "Cheerfulness"
 
-#: character/templates/javascript/categories.js:18
+#: character/templates/javascript/categories.js:21
 msgid "Fantasie"
 msgstr "Imagination"
 
-#: character/templates/javascript/categories.js:19
+#: character/templates/javascript/categories.js:22
 msgid "Ästhetik"
 msgstr "Artistic interests"
 
-#: character/templates/javascript/categories.js:20
+#: character/templates/javascript/categories.js:23
 msgid "Gefühle"
 msgstr "Emotionality"
 
-#: character/templates/javascript/categories.js:21
+#: character/templates/javascript/categories.js:24
 msgid "Abenteuer"
 msgstr "Adventurousness"
 
-#: character/templates/javascript/categories.js:22
+#: character/templates/javascript/categories.js:25
 msgid "Intellekt"
 msgstr "Intellect"
 
-#: character/templates/javascript/categories.js:23
+#: character/templates/javascript/categories.js:26
 msgid "Liberalität"
 msgstr "Liberalism"
 
-#: character/templates/javascript/categories.js:25
+#: character/templates/javascript/categories.js:29
 msgid "Vertrauen"
 msgstr "Trust"
 
-#: character/templates/javascript/categories.js:26
+#: character/templates/javascript/categories.js:30
 msgid "Moralität"
 msgstr "Morality"
 
-#: character/templates/javascript/categories.js:27
+#: character/templates/javascript/categories.js:31
 msgid "Altruismus"
 msgstr "Altruism"
 
-#: character/templates/javascript/categories.js:28
-msgid "Entgegenkommen"
+#: character/templates/javascript/categories.js:32
+msgid "Kooperativität"
 msgstr "Cooperation"
 
-#: character/templates/javascript/categories.js:29
+#: character/templates/javascript/categories.js:33
 msgid "Bescheidenheit"
 msgstr "Modesty"
 
-#: character/templates/javascript/categories.js:30
+#: character/templates/javascript/categories.js:34
 msgid "Gutherzigkeit"
 msgstr "Sympathy"
 
-#: character/templates/javascript/categories.js:32
+#: character/templates/javascript/categories.js:37
 msgid "Kompetenz"
 msgstr "Self-efficacy"
 
-#: character/templates/javascript/categories.js:33
+#: character/templates/javascript/categories.js:38
 msgid "Ordentlichkeit"
 msgstr "Orderliness"
 
-#: character/templates/javascript/categories.js:34
+#: character/templates/javascript/categories.js:39
 msgid "Pflichtbewusstsein"
 msgstr "Dutifulness"
 
-#: character/templates/javascript/categories.js:35
+#: character/templates/javascript/categories.js:40
 msgid "Leistungsstreben"
 msgstr "Intellect"
 
-#: character/templates/javascript/categories.js:36
+#: character/templates/javascript/categories.js:41
 msgid "Selbstdisziplin"
 msgstr "Self-discipline"
 
-#: character/templates/javascript/categories.js:37
+#: character/templates/javascript/categories.js:42
 msgid "Besonnenheit"
 msgstr "Cautiousness"
 
@@ -1354,7 +1358,7 @@ msgstr ""
 "things.I am interested in many things.I am not interested in abstract ideas."
 "I believe that too much tax money goes to support artists."
 
-#: character/templates/javascript/quiz.js:13
+#: character/templates/javascript/quiz.js:14
 msgid "Alle Fragen wurden beantwortet!"
 msgstr "All question have been answered!"
 
@@ -2545,6 +2549,9 @@ msgstr "[Delete]"
 #, python-format
 msgid " vor %(v0)s"
 msgstr " %(v0)s ago"
+
+#~ msgid "Entgegenkommen"
+#~ msgstr "Cooperation"
 
 #~ msgid "gutmütig"
 #~ msgstr "docile"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-13 09:17+0000\n"
+"POT-Creation-Date: 2021-03-13 13:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -164,31 +164,31 @@ msgstr ""
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr ""
 
-#: account/models.py:147
+#: account/models.py:157
 msgid "Ausstehend"
 msgstr ""
 
-#: account/models.py:148
+#: account/models.py:158
 msgid "Angenommen"
 msgstr ""
 
-#: account/models.py:149
+#: account/models.py:159
 msgid "Abgelehnt"
 msgstr ""
 
-#: account/models.py:193 vacancies/models.py:29
+#: account/models.py:203 vacancies/models.py:29
 msgid "Land"
 msgstr ""
 
-#: account/models.py:194 vacancies/models.py:30
+#: account/models.py:204 vacancies/models.py:30
 msgid "Bundesland"
 msgstr ""
 
-#: account/models.py:195 vacancies/models.py:31
+#: account/models.py:205 vacancies/models.py:31
 msgid "Landkreis"
 msgstr ""
 
-#: account/models.py:196 vacancies/models.py:32
+#: account/models.py:206 vacancies/models.py:32
 msgid "Stadt"
 msgstr ""
 
@@ -555,19 +555,23 @@ msgid ""
 msgstr ""
 
 #: account/templates/account/pagination.html:6
+#: account/templates/account/pagination_component.html:6
 msgid "Vorige"
 msgstr ""
 
 #: account/templates/account/pagination.html:9
+#: account/templates/account/pagination_component.html:9
 msgid "Seite"
 msgstr ""
 
 #: account/templates/account/pagination.html:9
+#: account/templates/account/pagination_component.html:9
 #: wall/templates/wall/post/post_loop.html:9
 msgid "von"
 msgstr ""
 
 #: account/templates/account/pagination.html:12
+#: account/templates/account/pagination_component.html:12
 msgid "Nächste"
 msgstr ""
 
@@ -915,24 +919,24 @@ msgstr ""
 msgid "Englisch"
 msgstr "Englisch"
 
-#: activity/models.py:22
+#: activity/models.py:23
 msgid "kompetitiv"
 msgstr ""
 
-#: activity/models.py:23
+#: activity/models.py:24
 msgid "kreativ"
 msgstr ""
 
-#: activity/models.py:24
+#: activity/models.py:25
 msgid "konsumorientiert"
 msgstr ""
 
-#: activity/models.py:37
+#: activity/models.py:38
 #, python-brace-format
 msgid "Aktivität: {name}"
 msgstr ""
 
-#: activity/models.py:76
+#: activity/models.py:83
 #, python-brace-format
 msgid "Kategorie: {name}"
 msgstr ""
@@ -946,7 +950,7 @@ msgstr ""
 msgid "Mitglieder anzeigen"
 msgstr ""
 
-#: activity/templates/activity/activity_list.html:22
+#: activity/templates/activity/activity_list.html:23
 #: competitions/templates/competitions/tournament_detail.html:29
 #: usergroups/templates/usergroups/group_detail.html:33
 #: usergroups/templates/usergroups/loop.html:18
@@ -1052,7 +1056,7 @@ msgstr ""
 msgid "Verträglichkeit"
 msgstr ""
 
-#: character/templates/character/overview.html:53
+#: character/templates/character/overview.html:54
 msgid "Zurücksetzen"
 msgstr ""
 
@@ -1077,123 +1081,123 @@ msgstr ""
 msgid "Weiter"
 msgstr ""
 
-#: character/templates/javascript/categories.js:4
+#: character/templates/javascript/categories.js:5
 msgid "Ängstlichkeit"
 msgstr ""
 
-#: character/templates/javascript/categories.js:5
+#: character/templates/javascript/categories.js:6
 msgid "Reizbarkeit"
 msgstr ""
 
-#: character/templates/javascript/categories.js:6
+#: character/templates/javascript/categories.js:7
 msgid "Depression"
 msgstr ""
 
-#: character/templates/javascript/categories.js:7
+#: character/templates/javascript/categories.js:8
 msgid "Soziale Befangenheit"
 msgstr ""
 
-#: character/templates/javascript/categories.js:8
+#: character/templates/javascript/categories.js:9
 msgid "Impulsivität"
 msgstr ""
 
-#: character/templates/javascript/categories.js:9
+#: character/templates/javascript/categories.js:10
 msgid "Verletzlichkeit"
 msgstr ""
 
-#: character/templates/javascript/categories.js:11
+#: character/templates/javascript/categories.js:13
 msgid "Herzlichkeit"
 msgstr ""
 
-#: character/templates/javascript/categories.js:12
+#: character/templates/javascript/categories.js:14
 msgid "Geselligkeit"
 msgstr ""
 
-#: character/templates/javascript/categories.js:13
+#: character/templates/javascript/categories.js:15
 msgid "Durchsetzungsfähigkeit"
 msgstr ""
 
-#: character/templates/javascript/categories.js:14 wall/forms.py:36
+#: character/templates/javascript/categories.js:16 wall/forms.py:36
 msgid "Aktivität"
 msgstr ""
 
-#: character/templates/javascript/categories.js:15
+#: character/templates/javascript/categories.js:17
 msgid "Erlebnishunger"
 msgstr ""
 
-#: character/templates/javascript/categories.js:16
+#: character/templates/javascript/categories.js:18
 msgid "Frohsinn"
 msgstr ""
 
-#: character/templates/javascript/categories.js:18
+#: character/templates/javascript/categories.js:21
 msgid "Fantasie"
 msgstr ""
 
-#: character/templates/javascript/categories.js:19
+#: character/templates/javascript/categories.js:22
 msgid "Ästhetik"
 msgstr ""
 
-#: character/templates/javascript/categories.js:20
+#: character/templates/javascript/categories.js:23
 msgid "Gefühle"
 msgstr ""
 
-#: character/templates/javascript/categories.js:21
+#: character/templates/javascript/categories.js:24
 msgid "Abenteuer"
 msgstr ""
 
-#: character/templates/javascript/categories.js:22
+#: character/templates/javascript/categories.js:25
 msgid "Intellekt"
 msgstr ""
 
-#: character/templates/javascript/categories.js:23
+#: character/templates/javascript/categories.js:26
 msgid "Liberalität"
 msgstr ""
 
-#: character/templates/javascript/categories.js:25
+#: character/templates/javascript/categories.js:29
 msgid "Vertrauen"
 msgstr ""
 
-#: character/templates/javascript/categories.js:26
+#: character/templates/javascript/categories.js:30
 msgid "Moralität"
 msgstr ""
 
-#: character/templates/javascript/categories.js:27
+#: character/templates/javascript/categories.js:31
 msgid "Altruismus"
 msgstr ""
 
-#: character/templates/javascript/categories.js:28
-msgid "Entgegenkommen"
-msgstr ""
-
-#: character/templates/javascript/categories.js:29
-msgid "Bescheidenheit"
-msgstr ""
-
-#: character/templates/javascript/categories.js:30
-msgid "Gutherzigkeit"
-msgstr ""
-
 #: character/templates/javascript/categories.js:32
-msgid "Kompetenz"
+msgid "Kooperativität"
 msgstr ""
 
 #: character/templates/javascript/categories.js:33
-msgid "Ordentlichkeit"
+msgid "Bescheidenheit"
 msgstr ""
 
 #: character/templates/javascript/categories.js:34
-msgid "Pflichtbewusstsein"
-msgstr ""
-
-#: character/templates/javascript/categories.js:35
-msgid "Leistungsstreben"
-msgstr ""
-
-#: character/templates/javascript/categories.js:36
-msgid "Selbstdisziplin"
+msgid "Gutherzigkeit"
 msgstr ""
 
 #: character/templates/javascript/categories.js:37
+msgid "Kompetenz"
+msgstr ""
+
+#: character/templates/javascript/categories.js:38
+msgid "Ordentlichkeit"
+msgstr ""
+
+#: character/templates/javascript/categories.js:39
+msgid "Pflichtbewusstsein"
+msgstr ""
+
+#: character/templates/javascript/categories.js:40
+msgid "Leistungsstreben"
+msgstr ""
+
+#: character/templates/javascript/categories.js:41
+msgid "Selbstdisziplin"
+msgstr ""
+
+#: character/templates/javascript/categories.js:42
 msgid "Besonnenheit"
 msgstr ""
 
@@ -1264,7 +1268,7 @@ msgid ""
 "von Künstlern ausgegeben wird."
 msgstr ""
 
-#: character/templates/javascript/quiz.js:13
+#: character/templates/javascript/quiz.js:14
 msgid "Alle Fragen wurden beantwortet!"
 msgstr ""
 

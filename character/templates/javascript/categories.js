@@ -1,38 +1,43 @@
 {% load i18n %}
 
 const categories = {
-    'anx': "{% trans 'Ängstlichkeit' %}", //Neuroticism
-    'ang': "{% trans 'Reizbarkeit' %}",
-    'dep': "{% trans 'Depression' %}",
-    'con': "{% trans 'Soziale Befangenheit' %}",
-    'imm': "{% trans 'Impulsivität' %}",
-    'vul': "{% trans 'Verletzlichkeit' %}",
+    //Neuroticism
+    'anx': "{% trans 'Ängstlichkeit' %}", //anxiety
+    'ang': "{% trans 'Reizbarkeit' %}", //anger
+    'dep': "{% trans 'Depression' %}", //depression
+    'con': "{% trans 'Soziale Befangenheit' %}", //self-consciousness
+    'imm': "{% trans 'Impulsivität' %}", //immoderation
+    'vul': "{% trans 'Verletzlichkeit' %}", //vulnerability
+    
+     //Extraversion
+    'fri': "{% trans 'Herzlichkeit' %}", //friendliness
+    'gre': "{% trans 'Geselligkeit' %}", //gregariousness
+    'ass': "{% trans 'Durchsetzungsfähigkeit' %}", //assertiveness
+    'act': "{% trans 'Aktivität' %}", //activity level
+    'exc': "{% trans 'Erlebnishunger' %}", //excitement-seeking
+    'che': "{% trans 'Frohsinn' %}", //cheerfulness
+    
+     //Openness
+    'ima': "{% trans 'Fantasie' %}", //imagination
+    'art': "{% trans 'Ästhetik' %}", //artistik interests
+    'emo': "{% trans 'Gefühle' %}", //emotionality
+    'adv': "{% trans 'Abenteuer' %}", //adventurousness
+    'int': "{% trans 'Intellekt' %}", //intellect
+    'lib': "{% trans 'Liberalität' %}", //liberalism
 
-    'fri': "{% trans 'Herzlichkeit' %}", //Extraversion
-    'gre': "{% trans 'Geselligkeit' %}",
-    'ass': "{% trans 'Durchsetzungsfähigkeit' %}",
-    'act': "{% trans 'Aktivität' %}",
-    'exc': "{% trans 'Erlebnishunger' %}",
-    'che': "{% trans 'Frohsinn' %}",
+     //Agreeableness
+    'tru': "{% trans 'Vertrauen' %}", //trust
+    'mor': "{% trans 'Moralität' %}", //morality
+    'alt': "{% trans 'Altruismus' %}", //altruism
+    'coo': "{% trans 'Kooperativität' %}", //cooperation
+    'mod': "{% trans 'Bescheidenheit' %}", //modesty
+    'sym': "{% trans 'Gutherzigkeit' %}", //sympathy
 
-    'ima': "{% trans 'Fantasie' %}", //Openness
-    'art': "{% trans 'Ästhetik' %}",
-    'emo': "{% trans 'Gefühle' %}",
-    'adv': "{% trans 'Abenteuer' %}",
-    'int': "{% trans 'Intellekt' %}",
-    'lib': "{% trans 'Liberalität' %}",
-
-    'tru': "{% trans 'Vertrauen' %}", //Agreeableness
-    'mor': "{% trans 'Moralität' %}",
-    'alt': "{% trans 'Altruismus' %}",
-    'coo': "{% trans 'Entgegenkommen' %}",
-    'mod': "{% trans 'Bescheidenheit' %}",
-    'sym': "{% trans 'Gutherzigkeit' %}",
-
-    'eff': "{% trans 'Kompetenz' %}", //Conscientiousness
-    'ord': "{% trans 'Ordentlichkeit' %}",
-    'dut': "{% trans 'Pflichtbewusstsein' %}",
-    'ach': "{% trans 'Leistungsstreben' %}",
-    'dis': "{% trans 'Selbstdisziplin' %}",
-    'cau': "{% trans 'Besonnenheit' %}"
+    //Conscientiousness
+    'eff': "{% trans 'Kompetenz' %}", //self-efficacy
+    'ord': "{% trans 'Ordentlichkeit' %}", //orderliness
+    'dut': "{% trans 'Pflichtbewusstsein' %}", //dutifulness
+    'ach': "{% trans 'Leistungsstreben' %}", //achievement-striving
+    'dis': "{% trans 'Selbstdisziplin' %}", //self-discipline
+    'cau': "{% trans 'Besonnenheit' %}" //cautiousness
 }
