@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-13 13:26+0000\n"
-"PO-Revision-Date: 2021-03-13 16:59+0100\n"
+"PO-Revision-Date: 2021-03-13 17:58+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -2005,11 +2005,11 @@ msgstr "Forehand"
 
 #: multiplayer/templates/javascript/skat.js:580
 msgid "Mittelhand"
-msgstr "Middle"
+msgstr "Middlehand"
 
 #: multiplayer/templates/javascript/skat.js:580
 msgid "Hinterhand"
-msgstr "Behind"
+msgstr "Rearhand"
 
 #: multiplayer/templates/multiplayer/create_match.html:7
 msgid "Online-Match erstellen"

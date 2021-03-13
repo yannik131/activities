@@ -8,6 +8,11 @@
 {% block content %}
     {% if activity.image %}
         <img src="{{ activity.image.url }}" width="200px" class="activity-full-image">
+        <div class="center-container img-description">
+            <a href="{% if activity.image_source %}{{ activity.image_source }}{% else %}{% url 'activity:no_source' %}{% endif %}">
+                [{% trans 'Quelle' %}]
+            </a>
+        </div>
     {% endif %}
     <h1 class="center-container">{{ activity.verbose }}</h1>
     <p class="center-container"><i>{{ activity.description }}</i></p>

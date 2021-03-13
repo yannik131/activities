@@ -9,5 +9,6 @@ urlpatterns = [
     path('detail/<str:activity_name>/', views.detail, name='detail'),
     path('list/', views.activity_list, name='list'),
     path('category_detail/<str:category_name>/', views.category_detail, name='category_detail'),
-    path('category_list/', views.category_list, name='category_list')
+    path('category_list/', views.category_list, name='category_list'),
+    path('no_source/', views.no_source, name='no_source')
 ]

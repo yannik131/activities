@@ -80,4 +80,8 @@ def activity_list(request):
                   {'activities': activities,
                    'component_index': component_index,
                    'components': request.user.location.as_dict()})
+                   
+                   
+def no_source(request):
+    return render(request, 'activity/no_source.html')
          

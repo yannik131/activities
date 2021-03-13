@@ -523,3 +523,9 @@ select:focus, select:hover {
     margin-bottom: 0; 
     width: 100%
 }
+
+.img-description {
+    margin-top: 5px;
+    font-size: 10px;
+    font-style: italic;
+}

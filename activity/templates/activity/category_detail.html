@@ -7,6 +7,11 @@
 {% block content %}
     {% if category.image %}
         <img src="{{ category.image.url }}" width="200px" class="category-full-image">
+        <div class="center-container img-description">
+            <a href="{% if category.image_source %}{{ category.image_source }}{% else %}{% url 'activity:no_source' %}{% endif %}">
+                [{% trans 'Quelle' %}]
+            </a>
+        </div>
     {% endif %}
     <h1 class="center-container">{{ category.verbose }}</h1>
     <p class="center-container"><i>{{ category.description }}</i></p>
