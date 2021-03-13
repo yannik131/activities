@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-13 13:26+0000\n"
-"PO-Revision-Date: 2021-03-13 18:54+0100\n"
+"POT-Creation-Date: 2021-03-13 18:56+0000\n"
+"PO-Revision-Date: 2021-03-13 19:57+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -772,7 +772,7 @@ msgid "Ihre Posts"
 msgstr "Your posts"
 
 #: account/templates/account/user_post_list.html:9
-#: activity/templates/activity/detail.html:50
+#: activity/templates/activity/detail.html:55
 #: usergroups/templates/usergroups/group_detail.html:73
 msgid "Post erstellen"
 msgstr "Create post"
@@ -962,24 +962,24 @@ msgstr "German"
 msgid "Englisch"
 msgstr "English"
 
-#: activity/models.py:23
+#: activity/models.py:25
 msgid "kompetitiv"
 msgstr "competitive"
 
-#: activity/models.py:24
+#: activity/models.py:26
 msgid "kreativ"
 msgstr "creative"
 
-#: activity/models.py:25
+#: activity/models.py:27
 msgid "konsumorientiert"
 msgstr "consumption"
 
-#: activity/models.py:38
+#: activity/models.py:45
 #, python-brace-format
 msgid "Aktivität: {name}"
 msgstr "Activity: {name}"
 
-#: activity/models.py:83
+#: activity/models.py:91
 #, python-brace-format
 msgid "Kategorie: {name}"
 msgstr "Category: {name}"
@@ -990,25 +990,34 @@ msgid "Alle Aktivitäten"
 msgstr "All activities"
 
 #: activity/templates/activity/activity_list.html:10
+msgid "Suche: "
+msgstr "Search: "
+
+#: activity/templates/activity/activity_list.html:15
 msgid "Mitglieder anzeigen"
 msgstr "Show members"
 
-#: activity/templates/activity/activity_list.html:23
+#: activity/templates/activity/activity_list.html:28
 #: competitions/templates/competitions/tournament_detail.html:29
 #: usergroups/templates/usergroups/group_detail.html:33
 #: usergroups/templates/usergroups/loop.html:18
 msgid "Mitglieder"
 msgstr "Members"
 
-#: activity/templates/activity/category_detail.html:14
+#: activity/templates/activity/category_detail.html:12
+#: activity/templates/activity/detail.html:13
+msgid "Quelle"
+msgstr "Source"
+
+#: activity/templates/activity/category_detail.html:19
 msgid "Zu den Gruppen"
 msgstr "Groups"
 
-#: activity/templates/activity/category_detail.html:15
+#: activity/templates/activity/category_detail.html:20
 msgid "Folgende Aktivitäten gehören zu dieser Kategorie"
 msgstr "The following activities belong to this category"
 
-#: activity/templates/activity/category_detail.html:18
+#: activity/templates/activity/category_detail.html:23
 msgid "Posts in"
 msgstr "Posts in"
 
@@ -1021,42 +1030,55 @@ msgstr "All categories"
 msgid "Hier eine Liste aller verfügbaren Kategorien"
 msgstr "Here's a list of all available categories"
 
-#: activity/templates/activity/detail.html:22
+#: activity/templates/activity/detail.html:27
 msgid "Offline spielen"
 msgstr "Play offline"
 
-#: activity/templates/activity/detail.html:27
+#: activity/templates/activity/detail.html:32
 #: multiplayer/templates/multiplayer/create_match.html:4
 msgid "Online spielen"
 msgstr "Play online"
 
-#: activity/templates/activity/detail.html:37
+#: activity/templates/activity/detail.html:42
 #: competitions/templates/competitions/match_detail.html:35
 #: competitions/templates/competitions/tournament_detail.html:37
 #: usergroups/templates/usergroups/group_detail.html:37
 msgid "Austreten"
 msgstr "Leave"
 
-#: activity/templates/activity/detail.html:38
+#: activity/templates/activity/detail.html:43
 msgid "Suche nach Mitgliedern"
 msgstr "Members"
 
-#: activity/templates/activity/detail.html:44
+#: activity/templates/activity/detail.html:49
 msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
 msgstr "If you want to see the members, you need to enter the activity."
 
-#: activity/templates/activity/detail.html:46
+#: activity/templates/activity/detail.html:51
 #: multiplayer/templates/javascript/lobby.js:46
 msgid "Beitreten"
 msgstr "Join"
 
-#: activity/templates/activity/detail.html:49
+#: activity/templates/activity/detail.html:54
 msgid "Beiträge"
 msgstr "Posts"
 
 #: activity/templates/activity/loop.html:13
 msgid "Keine!"
 msgstr "None!"
+
+#: activity/templates/activity/no_source.html:4
+#: activity/templates/activity/no_source.html:7
+msgid "Keine Quelle gefunden"
+msgstr "No source found"
+
+#: activity/templates/activity/no_source.html:9
+msgid ""
+"Das Bild hab ich wohl irgendwo aus dem Internet gezogen. Falls Sie Anspruch "
+"auf das Urheberrecht erheben wollen, schicken Sie mir eine Nachricht: "
+msgstr ""
+"Seems like I found this picture somewhere on the internet. In case it's "
+"yours and you want be credited, send me a message: "
 
 #: character/templates/character/overview.html:5
 msgid "Charakter"
@@ -1079,27 +1101,27 @@ msgstr "Questionnaire"
 msgid "Noch kein Testergebnis!"
 msgstr "No test result yet!"
 
-#: character/templates/character/overview.html:24
+#: character/templates/character/overview.html:25
 msgid "Neurotizismus"
 msgstr "Neuroticism"
 
-#: character/templates/character/overview.html:29
+#: character/templates/character/overview.html:31
 msgid "Extraversion"
 msgstr "Extraversion"
 
-#: character/templates/character/overview.html:34
+#: character/templates/character/overview.html:37
 msgid "Offenheit für Erfahrungen"
 msgstr "Openness to experience"
 
-#: character/templates/character/overview.html:39
+#: character/templates/character/overview.html:43
 msgid "Gewissenhaftigkeit"
 msgstr "Conscientiousness"
 
-#: character/templates/character/overview.html:44
+#: character/templates/character/overview.html:49
 msgid "Verträglichkeit"
 msgstr "Agreeableness"
 
-#: character/templates/character/overview.html:54
+#: character/templates/character/overview.html:62
 msgid "Zurücksetzen"
 msgstr "Reset"
 

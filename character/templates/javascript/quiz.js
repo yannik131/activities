@@ -17,6 +17,7 @@ if(current_question == 120) {
 else {
     question_span.innerHTML = questions[current_question]+".";
 }
+counter.innerHTML = (current_question+1)+"/120";
 
 function next() {
     var current_trait = traits[current_question];
@@ -39,7 +40,7 @@ function next() {
         button.onclick = next;
         button.style.backgroundColor = "#0087f7";
         info.innerHTML = "";
-        counter.innerHTML = current_question+"/120";
+        counter.innerHTML = (current_question+1)+"/120";
         
         if(current_question == 120) {
             openLink("{% url 'character:overview' %}");
