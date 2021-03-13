@@ -149,8 +149,13 @@ class NotificationConsumer(WebsocketConsumer):
             
     def handle_character_message(self, text_data):
         user = User.objects.get(id=self.user.id)
-        change(user.character.traits, text_data['trait'], text_data['value'])
-        user.character.current_question += 1
+        if text_data["action"] == "back":
+            user.character.current_question -= 1
+            change(user.character.traits, text_data['trait'], -text_data['value'])
+        else:
+            user.character.current_question += 1
+            change(user.character.traits, text_data['trait'], text_data['value'])
+        
         user.character.save()
         
     def chat_message(self, event):

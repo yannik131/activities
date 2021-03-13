@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-13 18:56+0000\n"
+"POT-Creation-Date: 2021-03-13 19:23+0000\n"
 "PO-Revision-Date: 2021-03-13 19:57+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1143,6 +1143,11 @@ msgid "Trifft überhaupt nicht zu"
 msgstr "Very inaccurate"
 
 #: character/templates/character/quiz.html:22
+#: usergroups/templates/usergroups/group_created.html:8
+msgid "Zurück"
+msgstr "Back"
+
+#: character/templates/character/quiz.html:25
 msgid "Weiter"
 msgstr "Next"
 
@@ -1380,7 +1385,7 @@ msgstr ""
 "things.I am interested in many things.I am not interested in abstract ideas."
 "I believe that too much tax money goes to support artists."
 
-#: character/templates/javascript/quiz.js:14
+#: character/templates/javascript/quiz.js:15
 msgid "Alle Fragen wurden beantwortet!"
 msgstr "All question have been answered!"
 
@@ -2254,10 +2259,6 @@ msgstr "created"
 #: usergroups/templates/usergroups/group_created.html:8
 msgid "Die Gruppe wurde erfolgreich erstellt"
 msgstr "Group was successfully created"
-
-#: usergroups/templates/usergroups/group_created.html:8
-msgid "Zurück"
-msgstr "Back"
 
 #: usergroups/templates/usergroups/group_deleted.html:4
 #: usergroups/templates/usergroups/group_deleted.html:7

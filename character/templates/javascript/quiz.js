@@ -8,6 +8,7 @@ var current_question = {{ user.character.current_question }};
 var question_span = document.getElementById('current-question');
 var slider = document.getElementById('slider');
 const button = document.getElementById('send-button');
+const back_button = document.getElementById('back-button');
 const info = document.getElementById('info-box');
 const counter = document.getElementById('counter');
 if(current_question == 120) {
@@ -18,6 +19,8 @@ else {
     question_span.innerHTML = questions[current_question]+".";
 }
 counter.innerHTML = (current_question+1)+"/120";
+var last_trait = null;
+var last_value = null;
 
 function next() {
     var current_trait = traits[current_question];
@@ -27,24 +30,36 @@ function next() {
     if(key == "+") {
         value = 6-value;
     }
-    send({'type': 'character', 'trait': current_trait, 'value': value});
+    last_trait = current_trait;
+    last_value = value;
+    back_button.style.display = "flex";
+    send({'type': 'character', 'action': 'next', 'trait': current_trait, 'value': value});
     current_question++;
     button.onclick = null;
     button.style.backgroundColor = "#8fc8f7";
     info.innerHTML = "+"+value+" "+categories[current_trait];
     if(current_question != 120) {
         question_span.innerHTML = questions[current_question]+".";
+        counter.innerHTML = (current_question+1)+"/120";
     }
     slider.value = 3;
+    
     setTimeout(function() {
         button.onclick = next;
         button.style.backgroundColor = "#0087f7";
         info.innerHTML = "";
-        counter.innerHTML = (current_question+1)+"/120";
-        
         if(current_question == 120) {
             openLink("{% url 'character:overview' %}");
         }
 
     }, 2000);
+}
+
+function back() {
+    slider.value = 3;
+    back_button.style.display = "none";
+    current_question--;
+    counter.innerHTML = (current_question+1)+"/120";
+    question_span.innerHTML = questions[current_question]+".";
+    send({'type': 'character', 'action': 'back', 'trait': last_trait, 'value': last_value});
 }

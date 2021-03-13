@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-13 18:56+0000\n"
+"POT-Creation-Date: 2021-03-13 19:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1098,6 +1098,11 @@ msgid "Trifft überhaupt nicht zu"
 msgstr ""
 
 #: character/templates/character/quiz.html:22
+#: usergroups/templates/usergroups/group_created.html:8
+msgid "Zurück"
+msgstr ""
+
+#: character/templates/character/quiz.html:25
 msgid "Weiter"
 msgstr ""
 
@@ -1288,7 +1293,7 @@ msgid ""
 "von Künstlern ausgegeben wird."
 msgstr ""
 
-#: character/templates/javascript/quiz.js:14
+#: character/templates/javascript/quiz.js:15
 msgid "Alle Fragen wurden beantwortet!"
 msgstr ""
 
@@ -2152,10 +2157,6 @@ msgstr ""
 
 #: usergroups/templates/usergroups/group_created.html:8
 msgid "Die Gruppe wurde erfolgreich erstellt"
-msgstr ""
-
-#: usergroups/templates/usergroups/group_created.html:8
-msgid "Zurück"
 msgstr ""
 
 #: usergroups/templates/usergroups/group_deleted.html:4

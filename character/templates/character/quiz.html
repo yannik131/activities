@@ -17,7 +17,10 @@
     <span class="info right">{% trans 'Trifft überhaupt nicht zu' %}</span>
     <input type="range" min="1" max="5" class="slider" id="slider">
     <p style="clear: both"></p>
-    <div class="center-container" style="position: relative">
+    <div class="button-container" style="position: relative">
+        <div class="blue-button" style="background-color: darkred; display: none; margin-right: 10px" onclick=back() id="back-button">
+            {% trans 'Zurück' %}
+        </div>
         <div class="blue-button" onclick=next() id="send-button">
             {% trans 'Weiter' %}
         </div>
