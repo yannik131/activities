@@ -6,6 +6,11 @@
 
 {% block content %}
     <h1>{% trans "Alle Aktivitäten" %}</h1>
+    <div class="search-bar">
+        {% trans 'Suche: ' %}
+        <input type="search" id="search-input" class="search-input" name="activity-search" value="{{ search_string|default_if_none:'' }}">
+        <img src="{% static '/icons/search.png' %}" onclick=search() height="25px" style="margin-left: 5px; cursor: pointer">
+    </div>
     <p>
         {% trans "Mitglieder anzeigen" %}: <br/>
         {% include 'activity/location_selection.html' %}
@@ -31,5 +36,6 @@
     {% include "account/pagination_component.html" with page=activities %}
     <script>
         {% include 'javascript/list.js' %}
+        {% include 'javascript/search.js' %}
     </script>
 {% endblock %}

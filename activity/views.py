@@ -63,7 +63,7 @@ def category_list(request):
     return render(request, 'activity/category_list.html', dict(categories=categories))
 
 
-def activity_list(request):
+def activity_list(request, search_string=None):
     component_index = int(request.GET.get('component_index', 3))
     component = Location.components[component_index]
     chosen_component = request.user.location.get_component(component)
@@ -75,11 +75,14 @@ def activity_list(request):
         activities = Activity.objects.annotate(count=Count('members', filter=Q(members__location__state=chosen_component))).order_by('-count')
     else:
         activities = Activity.objects.annotate(count=Count('members', filter=Q(members__location__country=chosen_component))).order_by('-count')
+    if search_string:
+        activities = activities.filter(translations__name__icontains=search_string)
     activities, page = paginate(activities, request, 15)
     return render(request, 'activity/activity_list.html',
                   {'activities': activities,
                    'component_index': component_index,
-                   'components': request.user.location.as_dict()})
+                   'components': request.user.location.as_dict(),
+                   'search_string': search_string})
                    
                    
 def no_source(request):
