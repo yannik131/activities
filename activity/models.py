@@ -66,7 +66,6 @@ class Activity(TranslatableModel):
         for big in BIG_FIVE:
             for trait in BIG_FIVE[big]:
                 self.trait_weights[trait] = 0
-        self.save()
 
 def category_directory_path(instance, filename):
         return f"categories/{instance.name}.{filename.split('.')[-1]}"
