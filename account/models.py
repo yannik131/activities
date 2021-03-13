@@ -112,10 +112,12 @@ class User(AbstractUser):
         
     @property
     def get_notifications(self):
-        notifications = self.notifications.all()
-        for notification in notifications:
-            if notification.action_object_id and notification.action_object is None:
+        notifications = []
+        for notification in self.notifications.all():
+            if notification.action_object_id and not notification.action_object:
                 notification.delete()
+            else:
+                notifications.append(notification)
         return notifications
 
 
