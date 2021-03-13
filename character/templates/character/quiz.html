@@ -17,11 +17,15 @@
     <span class="info right">{% trans 'Trifft überhaupt nicht zu' %}</span>
     <input type="range" min="1" max="5" class="slider" id="slider">
     <p style="clear: both"></p>
-    <div class="center-container">
+    <div class="center-container" style="position: relative">
         <div class="blue-button" onclick=next() id="send-button">
             {% trans 'Weiter' %}
         </div>
+        <div class="counter" id="counter">
+            {{ user.character.current_question }}/120
+        </div>
     </div>
+    
 </div>
 <div class="center-container" style="margin-top: 15px; font-size: 24px">
     <b><span id="info-box"></span></b>

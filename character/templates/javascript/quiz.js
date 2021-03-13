@@ -9,6 +9,7 @@ var question_span = document.getElementById('current-question');
 var slider = document.getElementById('slider');
 const button = document.getElementById('send-button');
 const info = document.getElementById('info-box');
+const counter = document.getElementById('counter');
 if(current_question == 120) {
     question_span.innerHTML = "{% trans 'Alle Fragen wurden beantwortet!' %}";
     button.onclick = null;
@@ -38,6 +39,7 @@ function next() {
         button.onclick = next;
         button.style.backgroundColor = "#0087f7";
         info.innerHTML = "";
+        counter.innerHTML = current_question+"/120";
         
         if(current_question == 120) {
             openLink("{% url 'character:overview' %}");

@@ -4,6 +4,7 @@
     padding: 5px 5px;
     font-weight: bold;
     font-size: 20px;
+    border-radius: 5px;
 }
 
 .info {
@@ -70,4 +71,10 @@
       margin-top: 15px;
       margin-bottom: 120px;
       font-weight: bold;
+  }
+  
+  .counter {
+      position: absolute;
+      bottom: 0;
+      right: 0;
   }

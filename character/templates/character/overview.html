@@ -48,10 +48,12 @@
 </div>
 <span style="clear: both"></span>
 {% endif %}
+{% if user.character.current_question > 0 %}
 <div class="button-like" id="reset" onclick=reset()>
     <img src="{% static 'icons/attention.png' %}">
     <span id="reset-text">{% trans 'Zurücksetzen' %}</span>
 </div>
+{% endif %}
 {% endblock %}
 
 {% block domready %}

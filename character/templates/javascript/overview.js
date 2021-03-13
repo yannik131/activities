@@ -36,7 +36,9 @@ for(var i = 0; i < 5; i++) {
     list = BIG_FIVE[letters[i]];
     title = document.getElementById(letters[i]+'h');
     subtext = document.getElementById(letters[i]+"s");
-    console.log(letters[i]+"s", subtext, title);
+    if(!subtext) {
+        break;
+    }
     for(var j = 0; j < 5; j++) {
         trait = list[j];
         val = parseInt(traits[trait]);
