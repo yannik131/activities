@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-13 13:26+0000\n"
-"PO-Revision-Date: 2021-03-13 14:26+0100\n"
+"PO-Revision-Date: 2021-03-13 16:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -1130,7 +1130,7 @@ msgstr "Anxiety"
 
 #: character/templates/javascript/categories.js:6
 msgid "Reizbarkeit"
-msgstr "Anxiety"
+msgstr "Anger"
 
 #: character/templates/javascript/categories.js:7
 msgid "Depression"
