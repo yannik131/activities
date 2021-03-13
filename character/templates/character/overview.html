@@ -21,38 +21,42 @@
 </div>
 <h2>{% trans 'Noch kein Testergebnis!' %}</h2>
 {% else %}
-<h2 id="nh">{% trans 'Neurotizismus' %}: </h2>
+<div class="test-container">
+    <h2 id="nh">{% trans 'Neurotizismus' %}: </h2>
 
-<div class="character-overview" id="ns">
-    
-</div>
-<br>
-<h2 id="eh">{% trans 'Extraversion' %}: </h2>
+    <div class="character-overview" id="ns">
+        
+    </div>
+    <br>
+    <h2 id="eh">{% trans 'Extraversion' %}: </h2>
 
-<div class="character-overview" id="es">
-    
-</div>
-<br>
-<h2 id="oh">{% trans 'Offenheit für Erfahrungen' %}: </h2>
+    <div class="character-overview" id="es">
+        
+    </div>
+    <br>
+    <h2 id="oh">{% trans 'Offenheit für Erfahrungen' %}: </h2>
 
-<div class="character-overview" id="os">
-    
-</div>
-<br>
-<h2 id="ch">{% trans 'Gewissenhaftigkeit' %}: </h2>
+    <div class="character-overview" id="os">
+        
+    </div>
+    <br>
+    <h2 id="ch">{% trans 'Gewissenhaftigkeit' %}: </h2>
 
-<div class="character-overview" id="cs">
-    
-</div>
-<br>
-<h2 id="ah">{% trans 'Verträglichkeit' %}: </h2>
+    <div class="character-overview" id="cs">
+        
+    </div>
+    <br>
+    <h2 id="ah">{% trans 'Verträglichkeit' %}: </h2>
 
-<div class="character-overview" id="as">
-    
+    <div class="character-overview" id="as">
+        
+    </div>
 </div>
+
 <span style="clear: both"></span>
 {% endif %}
 {% if user.character.current_question > 0 %}
+<p></p>
 <div class="button-like" id="reset" onclick=reset()>
     <img src="{% static 'icons/attention.png' %}">
     <span id="reset-text">{% trans 'Zurücksetzen' %}</span>

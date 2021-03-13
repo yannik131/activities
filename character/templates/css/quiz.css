@@ -63,7 +63,6 @@
   
   .character-overview {
       margin-top: 15px;
-      margin-bottom: 120px;
       font-weight: bold;
   }
   
@@ -71,4 +70,9 @@
       position: absolute;
       bottom: 0;
       right: 0;
+  }
+  
+  .test-container {
+      display: flex;
+      flex-direction: column;
   }
