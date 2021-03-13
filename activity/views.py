@@ -5,7 +5,7 @@ from account.models import Location
 from wall.models import Post
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from shared.shared import log
+from shared.shared import log, paginate
 
 
 def detail(request, activity_name):
@@ -75,7 +75,7 @@ def activity_list(request):
         activities = Activity.objects.annotate(count=Count('members', filter=Q(members__location__state=chosen_component))).order_by('-count')
     else:
         activities = Activity.objects.annotate(count=Count('members', filter=Q(members__location__country=chosen_component))).order_by('-count')
-    
+    activities, page = paginate(activities, request, 15)
     return render(request, 'activity/activity_list.html',
                   {'activities': activities,
                    'component_index': component_index,

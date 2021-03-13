@@ -5,6 +5,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import gettext_lazy as _
 from parler.models import TranslatableModel, TranslatedFields
 from django.contrib.postgres.fields import HStoreField
+from character.utils import BIG_FIVE
         
 
 def activity_directory_path(instance, filename):
@@ -55,6 +56,12 @@ class Activity(TranslatableModel):
             
     def chat_allowed_for(self, user):
         return user.activities.filter(pk=self.pk).exists()
+        
+    def init_traits(self):
+        for big in BIG_FIVE:
+            for trait in BIG_FIVE[big]:
+                self.trait_weights[trait] = 0
+        self.save()
 
 def category_directory_path(instance, filename):
         return f"categories/{instance.name}.{filename.split('.')[-1]}"

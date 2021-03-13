@@ -10,6 +10,7 @@
         {% trans "Mitglieder anzeigen" %}: <br/>
         {% include 'activity/location_selection.html' %}
     </p>
+    {% include "account/pagination_component.html" with page=activities %}
     <div class="list">
     {% for activity in activities %}
         <div class="item" onclick="location.href='{{ activity.get_absolute_url }}'">
@@ -27,4 +28,8 @@
         </div>
     {% endfor %}
     </div>
+    {% include "account/pagination_component.html" with page=activities %}
+    <script>
+        {% include 'javascript/list.js' %}
+    </script>
 {% endblock %}
