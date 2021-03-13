@@ -39,23 +39,18 @@ for(var i = 0; i < 5; i++) {
     if(!subtext) {
         break;
     }
-    for(var j = 0; j < 5; j++) {
+    for(var j = 0; j < 6; j++) {
         trait = list[j];
         val = parseInt(traits[trait]);
         sum += val;
         span = document.createElement('span');
-        if(j < 3) {
-            span.className = "three";
-        }
-        else {
-            span.className = "two";
-        }
+        span.className = "three";
         percent = (val-4)/16;
         span.style.color = get_color(percent, i == 0);
         span.innerHTML += (categories[trait]+": "+Math.round(percent*100)+"% ");
         subtext.appendChild(span);
     }
-    percent = (sum-20)/80;
+    percent = (sum-24)/96;
     title.style.color = get_color(percent, i == 0);
     title.innerHTML += Math.round(percent*100)+"%";
 }

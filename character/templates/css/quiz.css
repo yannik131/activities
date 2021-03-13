@@ -54,17 +54,11 @@
   
   .three {
     float: left; 
-    width: 33%; 
+    width: 30%; 
     text-align: center;
     word-wrap: break-word;
-  }
-  
-  .two {
-      float: left;
-      width: 50%;
-      text-align: center;
-      word-wrap: break-word;
-      margin-top: 10px;
+    padding-right: 5px;
+    margin-bottom: 20px;
   }
   
   .character-overview {
