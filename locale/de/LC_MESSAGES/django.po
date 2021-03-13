@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 18:08+0000\n"
+"POT-Creation-Date: 2021-03-13 09:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1024,36 +1024,36 @@ msgstr ""
 msgid "Sie haben bisher %(n)s von 120 Fragen beantwortet."
 msgstr ""
 
-#: character/templates/character/overview.html:18
-msgid "Zurücksetzen"
-msgstr ""
-
-#: character/templates/character/overview.html:24
+#: character/templates/character/overview.html:20
 msgid "Zum Fragebogen"
 msgstr ""
 
-#: character/templates/character/overview.html:26
+#: character/templates/character/overview.html:22
 msgid "Noch kein Testergebnis!"
 msgstr ""
 
-#: character/templates/character/overview.html:28
+#: character/templates/character/overview.html:24
 msgid "Neurotizismus"
 msgstr ""
 
-#: character/templates/character/overview.html:33
+#: character/templates/character/overview.html:29
 msgid "Extraversion"
 msgstr ""
 
-#: character/templates/character/overview.html:38
+#: character/templates/character/overview.html:34
 msgid "Offenheit für Erfahrungen"
 msgstr ""
 
-#: character/templates/character/overview.html:43
+#: character/templates/character/overview.html:39
 msgid "Gewissenhaftigkeit"
 msgstr ""
 
-#: character/templates/character/overview.html:48
+#: character/templates/character/overview.html:44
 msgid "Verträglichkeit"
+msgstr ""
+
+#: character/templates/character/overview.html:53
+msgid "Zurücksetzen"
 msgstr ""
 
 #: character/templates/character/quiz.html:5
@@ -1243,9 +1243,9 @@ msgid ""
 "gerne aus einer Laune heraus.Ich habe Schwierigkeiten, mir Dinge "
 "vorzustellen.Ich werde von Ereignissen überwältigt.Ich bin selten deprimiert."
 "Ich arbeite hart.Ich würde niemals Drachenfliegen oder bungee jumping gehen."
-"Ich fühle mich verzweifelt.Ich versuche, den Regeln zu folgen.Ich wähle "
-"meine Worte mit Bedacht.Ich tendiere dazu, weichherzige Menschen nicht zu "
-"mögen.Ich verschwende meine Zeit.Ich tue Dinge, die ich später bereue.Ich "
+"Ich fühle mich verzweifelt.Ich bezahle meine Rechnungen rechtzeitig.Ich "
+"wähle meine Worte mit Bedacht.Ich tendiere dazu, weichherzige Menschen nicht "
+"zu mögen.Ich verschwende meine Zeit.Ich tue Dinge, die ich später bereue.Ich "
 "bin selten albern.Ich störe mich nicht an schwierigen sozialen Situationen."
 "Ich rede nicht gerne über mich.Ich setze Pläne in die Tat um.Ich sehe das "
 "Schöne in Dingen, die andere vielleicht nicht bemerken.Ich bin gerne Teil "

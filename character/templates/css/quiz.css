@@ -55,17 +55,19 @@
     float: left; 
     width: 33%; 
     text-align: center;
+    word-wrap: break-word;
   }
   
   .two {
       float: left;
       width: 50%;
       text-align: center;
+      word-wrap: break-word;
       margin-top: 10px;
   }
   
   .character-overview {
       margin-top: 15px;
-      margin-bottom: 100px;
+      margin-bottom: 120px;
       font-weight: bold;
   }
