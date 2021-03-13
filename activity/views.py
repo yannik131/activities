@@ -77,7 +77,7 @@ def activity_list(request, search_string=None):
         activities = Activity.objects.annotate(count=Count('members', filter=Q(members__location__country=chosen_component))).order_by('-count')
     if search_string:
         activities = activities.filter(translations__name__icontains=search_string)
-    activities, page = paginate(activities, request, 15)
+    activities, page = paginate(activities, request, 12)
     return render(request, 'activity/activity_list.html',
                   {'activities': activities,
                    'component_index': component_index,

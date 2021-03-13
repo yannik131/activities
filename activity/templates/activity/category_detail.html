@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+{% load thumbnail %}
 
 {% block title %}{{ category.name }}{% endblock %}
 
 {% block content %}
     {% if category.image %}
-        <img src="{{ category.image.url }}" width="200px" class="category-full-image">
+        <img src="{% thumbnail category.image 400x400 %}" class="category-full-image">
         <div class="center-container img-description">
             <a href="{% if category.image_source %}{{ category.image_source }}{% else %}{% url 'activity:no_source' %}{% endif %}">
                 [{% trans 'Quelle' %}]
