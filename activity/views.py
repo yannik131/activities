@@ -68,13 +68,13 @@ def activity_list(request, search_string=None):
     component = Location.components[component_index]
     chosen_component = request.user.location.get_component(component)
     if component_index == 3:
-        activities = Activity.objects.annotate(count=Count('members', filter=Q(members__location__city=chosen_component))).order_by('-count')
+        activities = Activity.objects.annotate(count=Count('members', filter=Q(members__location__city=chosen_component))).order_by('-count', '-pk')
     elif component_index == 2:
-        activities = Activity.objects.annotate(count=Count('members', filter=Q(members__location__county=chosen_component))).order_by('-count')
+        activities = Activity.objects.annotate(count=Count('members', filter=Q(members__location__county=chosen_component))).order_by('-count', '-pk')
     elif component_index == 1:
-        activities = Activity.objects.annotate(count=Count('members', filter=Q(members__location__state=chosen_component))).order_by('-count')
+        activities = Activity.objects.annotate(count=Count('members', filter=Q(members__location__state=chosen_component))).order_by('-count', '-pk')
     else:
-        activities = Activity.objects.annotate(count=Count('members', filter=Q(members__location__country=chosen_component))).order_by('-count')
+        activities = Activity.objects.annotate(count=Count('members', filter=Q(members__location__country=chosen_component))).order_by('-count', '-pk')
     if search_string:
         activities = activities.filter(translations__name__icontains=search_string)
     activities, page = paginate(activities, request, 12)
