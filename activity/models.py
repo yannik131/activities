@@ -37,6 +37,7 @@ class Activity(TranslatableModel):
     
     class Meta:
         verbose_name_plural = 'activities'
+        ordering = ['-pk', 'type']
 
     def __str__(self):
         return self.name
