@@ -18,9 +18,12 @@
     <h1 class="center-container">{{ activity.verbose }}</h1>
     <p class="center-container"><i>{{ activity.description }}</i></p>
     <p class="center-container"><i><span id="info"></span></i></p>
-    {% if activity.category %}
-        <h2><a href="{{ activity.category.get_absolute_url }}">{{ activity.category.verbose }}</a></h2>
-    {% endif %}
+    <h2>
+        {% trans 'Gehört zu: ' %}
+        {% for category in activity.categories.all %}
+            <a href="{{ category.get_absolute_url }}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </h2>
     
     {% if is_member %}
     {% if activity.type == 'competitive' %}

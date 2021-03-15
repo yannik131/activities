@@ -22,7 +22,6 @@ class Activity(TranslatableModel):
     image_url = models.URLField(null=True, blank=True)
     image_source = models.URLField(null=True, blank=True)
     members = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='activities', blank=True)
-    category = models.ForeignKey('Category', on_delete=models.SET_NULL, related_name='activities', null=True, blank=True)
     TYPE_CHOICES = (
         ('competitive', _('kompetitiv')),
         ('creative', _('kreativ')),
@@ -82,6 +81,8 @@ class Category(TranslatableModel):
     image = models.ImageField(upload_to=category_directory_path, blank=True, null=True)
     image_url = models.URLField(null=True, blank=True)
     image_source = models.URLField(null=True, blank=True)
+    activities = models.ManyToManyField(Activity, related_name='categories', blank=True)
+    parent_category = models.ForeignKey('Category', related_name='sub_categories', on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = 'categories'

@@ -35,3 +35,4 @@ nachricht dass man muss wenn man dran ist
 durak resize call
 notifications von gelöschten targets mitlöschen (termin erstellt -> termin gelöscht -> keine nachricht insgesamt)
 Fehler links kommt rechts spielt ich bin dran ohne karte von rechts zu sehen, er hat wohl done geschickt
+musikgenres, literaturgenres, weitere unterteilungen.. -> N kategorien: berufe, musikgenres, freizeitaktivitäten, ...
