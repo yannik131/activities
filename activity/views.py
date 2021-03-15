@@ -59,7 +59,7 @@ def leave(request, activity_name):
 
 
 def category_list(request):
-    categories = Category.objects.all()
+    categories = Category.objects.annotate(count=Count('activities')).filter(count__gt=0) #TODO lieber visible?
     return render(request, 'activity/category_list.html', dict(categories=categories))
 
 
