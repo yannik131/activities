@@ -66,7 +66,7 @@ function processMultiplayerData(data) {
 function delayedCall(callback, arg) {
     var timeout = 0;
     if(game_mode != "defending" && (!attackingIsPossible() || is_taking)) {
-        timeout = 500;
+        timeout = 1000;
     }
     setTimeout(function() {
         callback(arg);
