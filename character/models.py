@@ -52,4 +52,5 @@ class Character(models.Model):
                 scores.append((activity, round(score/max_score*100)))
         scores = sorted(scores, key=lambda t: t[1])
         for score in scores[:5]:
+            log(score)
             Suggestion.objects.create(character=self, activity=score[0], score=score[1])

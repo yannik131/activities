@@ -15,8 +15,9 @@ def overview(request):
         character.save()
         request.user.character = character
         request.user.save()
-    request.user.character.activity_suggestions.all().delete()
-    request.user.character.calculate_suggestions()
+    if request.user.character.current_question == 120:
+        request.user.character.activity_suggestions.all().delete()
+        request.user.character.calculate_suggestions()
     return render(request, 'character/overview.html')
     
 

@@ -16,18 +16,15 @@
     </div>
     {% endif %}
     <div class="button-like" onclick=openLink("{% url 'account:user_post_list' %}")><img src="{% static 'icons/post.png' %}">{% blocktrans %}Zu Ihren Posts{% endblocktrans %}</div>
+    <p>{% blocktrans %}Sie sind zurzeit Mitglied folgender Aktivitäten:{% endblocktrans %}</p>
+    <div class="button-like" style="margin-bottom: 15px;" onclick=openLink("{% url 'character:overview' %}")>
+        <img src="{% static 'icons/questionnaire.png' %}">
+        {% trans 'Aktivitäten finden' %}
+    </div>
     {% if user.activities.all %}
-        <p>{% blocktrans %}Sie sind zurzeit Mitglied folgender Aktivitäten:{% endblocktrans %}</p>
-        <div class="button-like" style="margin-bottom: 15px;" onclick=openLink("{% url 'character:overview' %}")>
-            <img src="{% static 'icons/questionnaire.png' %}">
-            {% trans 'Aktivitäten finden' %}
-        </div>
         {% include "activity/loop.html" with activities=user.activities %}
     {% else %}
-       <!--<div class="button-like" onclick=openLink("{% url 'character:overview' %}")>
-           <img src="{% static 'icons/info.png' %}">
-           Fragebogen ausfüllen
-       </div>-->
+       <div>{% trans 'Hier ist noch nichts!' %}</div>
     {% endif %}
     <br>
 {% endblock %}
