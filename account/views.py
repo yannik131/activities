@@ -8,6 +8,7 @@ from .templatetags import account_tags
 from notify.utils import notify
 from wall.models import Post
 from shared import shared
+from .utils import get_location
 from activities.language_subdomain_middleware import get_prefix
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
@@ -140,7 +141,7 @@ def register(request):
         if user_form.is_valid() and location_form.is_valid():
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data['password'])
-            new_user.location = shared.get_location(location_form.cleaned_data['address'])
+            new_user.location =get_location(location_form.cleaned_data['address'])
             new_user.save()
             return render(request, 'account/register_done.html', {'new_user': new_user})
     else:
@@ -166,7 +167,7 @@ def edit_address(request):
     if request.method == 'POST':
         location_form = LocationForm(request.POST)
         if location_form.is_valid():
-            request.user.location = shared.get_location(location_form.cleaned_data['address'])
+            request.user.location = get_location(location_form.cleaned_data['address'])
             request.user.save()
             sent = True
     else:

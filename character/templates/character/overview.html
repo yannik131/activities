@@ -21,6 +21,25 @@
 </div>
 <h2>{% trans 'Noch kein Testergebnis!' %}</h2>
 {% else %}
+<h2>{% trans 'Empfohlene Aktivitäten' %}</h2>
+<div class="list">
+    {% for suggestion in user.character.activity_suggestions.all %}
+        <div class="item" onclick="location.href='{{ suggestion.activity.get_absolute_url }}'">
+        {% load thumbnail %}
+            <img src="{% thumbnail suggestion.activity.image 200x200 %}" class="image">
+            <div class="title">
+                {{ suggestion.activity }}
+            </div>
+            <div class="subtext">
+                {% trans "Score" %}: {{ suggestion.score }}%
+            </div>
+            {% if activity in user.activities.all %}
+                <img src="{% static 'icons/member.png' %}" class="icon">
+            {% endif %}
+        </div>
+    {% endfor %}
+    </div>
+<h2>{% trans 'Charakter' %}</h2>
 <div class="test-container">
     <h2 id="nh">{% trans 'Neurotizismus' %}: </h2>
 
@@ -67,4 +86,5 @@
 {% block domready %}
 {% include 'javascript/categories.js' %}
 {% include 'javascript/overview.js' %}
+{% include 'javascript/list.js' %}
 {% endblock %}

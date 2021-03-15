@@ -4,12 +4,14 @@ from django.urls import reverse
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import gettext_lazy as _
 from parler.models import TranslatableModel, TranslatedFields
-from django.contrib.postgres.fields import HStoreField
-from character.utils import BIG_FIVE
+from character.utils import BIG_FIVE, create_trait_dict
+from django.contrib.postgres.fields.hstore import HStoreField
+import json
         
 
 def activity_directory_path(instance, filename):
         return f"activities/{instance.name}.{filename.split('.')[-1]}"
+    
 
 class Activity(TranslatableModel):
     translations = TranslatedFields(
@@ -32,7 +34,7 @@ class Activity(TranslatableModel):
     
     def save(self, *args, **kwargs):
         if not self.pk:
-            self.init_traits()
+            self.trait_weights = create_trait_dict()
         super().save(*args, **kwargs)
     
     class Meta:
@@ -65,10 +67,9 @@ class Activity(TranslatableModel):
     def chat_allowed_for(self, user):
         return user.activities.filter(pk=self.pk).exists()
         
-    def init_traits(self):
-        for big in BIG_FIVE:
-            for trait in BIG_FIVE[big]:
-                self.trait_weights[trait] = 0
+    @property
+    def weights_json(self):
+        return json.dumps(self.trait_weights)
 
 def category_directory_path(instance, filename):
         return f"categories/{instance.name}.{filename.split('.')[-1]}"

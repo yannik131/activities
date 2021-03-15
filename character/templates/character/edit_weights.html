@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block title %}{% trans 'Gewichte verteilen' %}{% endblock %}
+
+{% block style %}
+{% include 'css/quiz.css' %}
+{% endblock %}
+
+{% block content %}
+    {% if activity.image %}
+        <img src="{% thumbnail activity.image 400x400 %}" class="activity-full-image">
+    {% endif %}
+    <h1 class="center-container">{{ activity.verbose }}</h1>
+    <p class="center-container"><i><span id="info"></span></i></p>
+    <div>
+        <span style="float: left">
+            {% if before %}
+                <a href="{% url 'character:edit_weights' before.id %}">
+                    {{ before }}
+                </a>
+            {% endif %}
+        </span>
+        <span style="float: right">
+            {% if next %}
+                <a href="{% url 'character:edit_weights' next.id %}">
+                    {{ next }}
+                </a>
+            {% endif %}
+        </span>
+    </div>
+    <div class="test-container">
+        <h2 id="nh">{% trans 'Neurotizismus' %}: </h2>
+    
+        <div class="character-overview" id="ns">
+            
+        </div>
+        <br>
+        <h2 id="eh">{% trans 'Extraversion' %}: </h2>
+    
+        <div class="character-overview" id="es">
+            
+        </div>
+        <br>
+        <h2 id="oh">{% trans 'Offenheit für Erfahrungen' %}: </h2>
+    
+        <div class="character-overview" id="os">
+            
+        </div>
+        <br>
+        <h2 id="ch">{% trans 'Gewissenhaftigkeit' %}: </h2>
+    
+        <div class="character-overview" id="cs">
+            
+        </div>
+        <br>
+        <h2 id="ah">{% trans 'Verträglichkeit' %}: </h2>
+    
+        <div class="character-overview" id="as">
+            
+        </div>
+    </div>
+    <br>
+    <div class="center-container">
+        <div class="blue-button" style="background-color: gray;" id="save">
+            {% trans 'Speichern' %}
+        </div>
+    </div>
+   <br>
+    
+{% endblock %}
+
+{% block domready %}
+{% include 'javascript/categories.js' %}
+{% include 'javascript/display_weights.js' %}
+{% include 'javascript/edit_weights.js' %}
+{% endblock %}

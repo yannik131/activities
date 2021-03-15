@@ -1,26 +1,10 @@
 {% load i18n %}
 
-const BIG_FIVE = {
-    'n': ['anx', 'ang', 'dep', 'con', 'imm', 'vul'],
-    'e': ['fri', 'gre', 'ass', 'act', 'exc', 'che'],
-    'o': ['ima', 'art', 'emo', 'adv', 'int', 'lib'],
-    'a': ['tru', 'mor', 'alt', 'coo', 'mod', 'sym'],
-    'c': ['eff', 'ord', 'dut', 'ach', 'dis', 'cau']
-}
-const letters = ['n', 'e', 'o', 'a', 'c'];
+
 var sum = 0;
 
 const traits = JSON.parse('{{ user.character.traits_json|safe }}');
 var list, title, subtext, trait, val, span, percent;
-
-function get_color(percent, reverse) {
-    if(!reverse) {
-        return "rgb("+((1-percent)*255)+","+(percent*255)+",0)";
-    }
-    else {
-        return "rgb("+(percent*255)+","+((1-percent)*255)+",0)";
-    }
-}
 
 function reset() {
     var button = document.getElementById('reset');

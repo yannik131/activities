@@ -9,6 +9,7 @@ from multiplayer.models import MultiplayerMatch
 from shared.shared import log
 from chat.utils import broadcast
 from multiplayer.utils import change
+from activity.models import Activity
 
 
 class NotificationConsumer(WebsocketConsumer):
@@ -148,15 +149,20 @@ class NotificationConsumer(WebsocketConsumer):
             self.match.remove_member(User.objects.get(username=text_data['username']))
             
     def handle_character_message(self, text_data):
-        user = User.objects.get(id=self.user.id)
-        if text_data["action"] == "back":
+        if text_data['action'] == 'back':
+            user = User.objects.get(id=self.user.id)
             user.character.current_question -= 1
             change(user.character.traits, text_data['trait'], -text_data['value'])
-        else:
+            user.character.save()
+        elif text_data['action'] == 'next':
+            user = User.objects.get(id=self.user.id)
             user.character.current_question += 1
             change(user.character.traits, text_data['trait'], text_data['value'])
-        
-        user.character.save()
+            user.character.save()
+        elif text_data['action'] == 'weights':
+            activity = Activity.objects.get(id=text_data['id'])
+            activity.trait_weights = json.loads(text_data['weights'])
+            activity.save()
         
     def chat_message(self, event):
         self.send(text_data=json.dumps(event))

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from account.models import User
-from shared import shared
+from .utils import get_location
 from django.utils.translation import gettext_lazy as _
 
 
@@ -62,7 +62,7 @@ class LocationForm(forms.Form):
 
     def clean(self):
         cd = super().clean()
-        _ = shared.get_location(cd['address'])
+        _ = get_location(cd['address'])
         return cd
 
 

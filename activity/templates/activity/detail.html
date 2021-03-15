@@ -17,9 +17,11 @@
     {% endif %}
     <h1 class="center-container">{{ activity.verbose }}</h1>
     <p class="center-container"><i>{{ activity.description }}</i></p>
+    <p class="center-container"><i><span id="info"></span></i></p>
     {% if activity.category %}
         <h2><a href="{{ activity.category.get_absolute_url }}">{{ activity.category.verbose }}</a></h2>
     {% endif %}
+    
     {% if is_member %}
     {% if activity.type == 'competitive' %}
     <div class="competitive">
@@ -40,6 +42,9 @@
         <img src="{% static 'icons/chat.png' %}">
         Chat
     </div>
+    {% if user.is_staff %}
+    <a class="center-container" style="font-weight: bold; margin-top: 10px" href="{% url 'character:edit_weights' activity.id %}">{% trans 'Gewichtungen bearbeiten' %}</a>
+    {% endif %}
          <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'activity:leave' activity.name %}")>{% trans "Austreten" %}</button></div></p>
         <h3>{% trans "Suche nach Mitgliedern" %}</h3>
         <p>{% include 'activity/location_selection.html' %}</p>
@@ -55,4 +60,13 @@
     <h3>{% trans "Beiträge" %} {{ chosen_component|inim }}</h3>
     <div class="button-like" onclick=openLink("{% url 'wall:create_post' 'activity' 'activity' activity.id activity.id %}")><img src="{% static 'icons/post.png' %}">{% blocktrans %}Post erstellen{% endblocktrans %}</div>
     {% include 'wall/post/post_loop.html' %}
+{% endblock %}
+
+{% block domready %}
+{% include 'javascript/categories.js' %}
+{% include 'javascript/display_weights.js' %}
+displayWeights(JSON.parse('{{ activity.weights_json|safe }}'));
+if(info.innerText.length == 0) {
+    info.parentElement.parentElement.style.display = "none";
+}
 {% endblock %}

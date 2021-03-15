@@ -11,6 +11,7 @@ const button = document.getElementById('send-button');
 const back_button = document.getElementById('back-button');
 const info = document.getElementById('info-box');
 const counter = document.getElementById('counter');
+const time = document.getElementById('time');
 if(current_question == 120) {
     question_span.innerHTML = "{% trans 'Alle Fragen wurden beantwortet!' %}";
     button.onclick = null;
@@ -18,9 +19,15 @@ if(current_question == 120) {
 else {
     question_span.innerHTML = questions[current_question]+".";
 }
-counter.innerHTML = (current_question+1)+"/120";
+
 var last_trait = null;
 var last_value = null;
+
+function update() {
+    counter.innerHTML = (current_question+1)+"/120";
+time.innerHTML = Math.ceil((120-(current_question))*7/60)+" min";
+    slider.value = 3;
+}
 
 function next() {
     var current_trait = traits[current_question];
@@ -40,9 +47,9 @@ function next() {
     info.innerHTML = "+"+value+" "+categories[current_trait];
     if(current_question != 120) {
         question_span.innerHTML = questions[current_question]+".";
-        counter.innerHTML = (current_question+1)+"/120";
+        update();
     }
-    slider.value = 3;
+    
     
     setTimeout(function() {
         button.onclick = next;
@@ -52,7 +59,7 @@ function next() {
             openLink("{% url 'character:overview' %}");
         }
 
-    }, 2000);
+    }, 20);
 }
 
 function back() {
@@ -63,3 +70,5 @@ function back() {
     question_span.innerHTML = questions[current_question]+".";
     send({'type': 'character', 'action': 'back', 'trait': last_trait, 'value': last_value});
 }
+
+update();

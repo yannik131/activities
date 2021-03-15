@@ -41,3 +41,22 @@ const categories = {
     'dis': "{% trans 'Selbstdisziplin' %}", //self-discipline
     'cau': "{% trans 'Besonnenheit' %}" //cautiousness
 }
+
+function get_color(percent, reverse) {
+    if(!reverse) {
+        return "rgb("+((1-percent)*255)+","+(percent*255)+",0)";
+    }
+    else {
+        return "rgb("+(percent*255)+","+((1-percent)*255)+",0)";
+    }
+}
+
+const BIG_FIVE = {
+    'n': ['anx', 'ang', 'dep', 'con', 'imm', 'vul'],
+    'e': ['fri', 'gre', 'ass', 'act', 'exc', 'che'],
+    'o': ['ima', 'art', 'emo', 'adv', 'int', 'lib'],
+    'a': ['tru', 'mor', 'alt', 'coo', 'mod', 'sym'],
+    'c': ['eff', 'ord', 'dut', 'ach', 'dis', 'cau']
+}
+
+const letters = ['n', 'e', 'o', 'a', 'c'];
