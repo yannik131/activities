@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-16 19:25+0000\n"
+"POT-Creation-Date: 2021-03-16 19:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1110,13 +1110,14 @@ msgstr ""
 
 #: character/templates/character/overview.html:24
 msgid ""
-"Die hier angebotenen Persönlichkeitstests basieren auf <a href=\"https://"
-"ipip.ori.org/newNEOKey.htm\" target=\"_blank\">frei verfügbaren Fragen</a>, "
-"die auf den <a href=\"https://de.wikipedia.org/wiki/Big_Five_(Psychologie)\" "
-"target=\"_blank\">Big Five</a> der Persönlichkeitspsychologie fußen."
-"<br><br>Der offizielle NEO-PI-R Persönlichkeitstest umfasst 240 Fragen. "
-"Weniger Fragen sind zwar schneller zu beantworten, liefern aber ein unter "
-"Wiederholung instabileres Testergebnis."
+"Die hier angebotenen Persönlichkeitstests wurden in Anlehnung an den NEO-PI-"
+"R Test erstellt und basieren auf <a href=\"https://ipip.ori.org/newNEOKey.htm"
+"\" target=\"_blank\">frei verfügbaren Fragen</a>, die auf den <a href="
+"\"https://de.wikipedia.org/wiki/Big_Five_(Psychologie)\" target=\"_blank"
+"\">Big Five</a> der Persönlichkeitspsychologie fußen.<br><br>Der offizielle "
+"NEO-PI-R Persönlichkeitstest umfasst 240 Fragen. Weniger Fragen sind zwar "
+"schneller zu beantworten, liefern aber ein unter Wiederholung instabileres "
+"Testergebnis."
 msgstr ""
 
 #: character/templates/character/overview.html:29
@@ -1139,6 +1140,13 @@ msgstr ""
 
 #: character/templates/character/overview.html:99
 msgid "Zurücksetzen"
+msgstr ""
+
+#: character/templates/character/overview.html:103
+msgid ""
+"Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Nur die "
+"Punktsumme in den Kategorien wird zum Berechnen von Empfehlungen verwendet "
+"und für sonst nichts."
 msgstr ""
 
 #: character/templates/character/quiz.html:5
