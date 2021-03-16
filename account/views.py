@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm
+from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm, AccountDeleteForm
 from .models import Location, FriendRequest, User, Friendship
 from django.http import HttpResponseRedirect
 from django.utils import timezone
@@ -181,6 +181,17 @@ def view_friendship(request, id):
     if friendship.to_user == request.user:
         return HttpResponseRedirect(friendship.from_user.get_absolute_url())
     return HttpResponseRedirect(friendship.to_user.get_absolute_url())
+    
+
+def delete(request):
+    if request.method == 'POST':
+        delete_form = AccountDeleteForm(request.POST)
+        if delete_form.is_valid():
+            request.user.delete()
+            return HttpResponseRedirect(request.build_absolute_uri('/'))
+    else:
+        delete_form = AccountDeleteForm()
+    return render(request, 'account/delete.html', dict(delete_form=delete_form))
 
 
 def handler404(request, exception=None):

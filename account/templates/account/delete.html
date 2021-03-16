@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Account löschen' %}{% endblock %}
+
+{% block content %}
+<div>{% trans 'Klicken Sie auf den Button, um Ihren Account zu löschen.' %}</div>
+<form method="post" class="login-form">
+    {{ delete_form.as_p }}
+    {% csrf_token %}
+    <input type="submit" value="{% blocktrans %}Löschen{% endblocktrans %}">
+</form>
+{% endblock %}
+

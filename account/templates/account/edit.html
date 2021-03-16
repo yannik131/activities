@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% blocktrans %}Account bearbeiten{% endblocktrans %}{% endblock %}
 
@@ -12,10 +13,15 @@
         <input type="submit" value="{% blocktrans %}Fertig{% endblocktrans %}">
     </form>
     <p>{% blocktrans %}Das sind Ihre aktuellen Addressdaten:{% endblocktrans %}</p>
+    <p><a href="{% url 'account:edit_address' %}">{% blocktrans %}Klicken Sie hier, falls Sie ihre Adresse ändern möchten.{% endblocktrans %}</a></p>
     <ul>
         {% for key, value in location.items %}
             <li>{{ key }}: <b>{% if value %}{{ value }} {% else %} {% trans "Ohne" %} {% endif %}</b></li>
         {% endfor %}
     </ul>
-    <p><a href="{% url 'account:edit_address' %}">{% blocktrans %}Klicken Sie hier, falls Sie ihre Adresse ändern möchten.{% endblocktrans %}</a></p>
+    
+    <div class="button-like" id="delete" onclick=openLink("{% url 'account:delete' %}")>
+        <img src="{% static 'icons/attention.png' %}">
+        <span id="reset-text">{% trans 'Account löschen' %}</span>
+    </div>
 {% endblock %}

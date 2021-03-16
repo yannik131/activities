@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-16 19:55+0000\n"
-"PO-Revision-Date: 2021-03-16 20:56+0100\n"
+"POT-Creation-Date: 2021-03-16 21:25+0000\n"
+"PO-Revision-Date: 2021-03-16 22:26+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -93,6 +93,14 @@ msgstr "User name"
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr "There is no user with the user name {name}"
+
+#: account/forms.py:90
+msgid "Wirklich löschen?"
+msgstr "Really delete?"
+
+#: account/forms.py:95
+msgid "Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen."
+msgstr ""
 
 #: account/models.py:18
 msgid "männlich"
@@ -316,6 +324,27 @@ msgstr ""
 msgid "Mir doch egal!"
 msgstr "I don't care!"
 
+#: account/templates/account/delete.html:4
+#: account/templates/account/edit.html:25
+msgid "Account löschen"
+msgstr "Delete your account"
+
+#: account/templates/account/delete.html:7
+msgid "Klicken Sie auf den Button, um Ihren Account zu löschen."
+msgstr "Click the button to delete your account."
+
+#: account/templates/account/delete.html:11
+#: account/templates/account/friend_requests_list.html:48
+#: account/templates/account/friend_requests_list.html:75
+#: usergroups/templates/usergroups/appointment_list.html:41
+#: usergroups/templates/usergroups/invitation_list.html:16
+#: vacancies/templates/vacancies/application_list.html:22
+#: vacancies/templates/vacancies/edit_vacancy.html:11
+#: vacancies/templates/vacancies/invitation_list.html:21
+#: vacancies/templates/vacancies/review_vacancy.html:35
+msgid "Löschen"
+msgstr "Delete"
+
 #: account/templates/account/destroy_friendship.html:4
 #: account/templates/account/destroy_friendship.html:7
 msgid "Freundschaft beendet"
@@ -380,16 +409,16 @@ msgstr "Send friend request"
 msgid "Posts"
 msgstr "Posts"
 
-#: account/templates/account/edit.html:4 account/templates/account/edit.html:7
+#: account/templates/account/edit.html:5 account/templates/account/edit.html:8
 #: account/templates/account/sidemenu.html:17
 msgid "Account bearbeiten"
 msgstr "Edit account"
 
-#: account/templates/account/edit.html:8
+#: account/templates/account/edit.html:9
 msgid "Bearbeiten Sie Ihren Account mit folgendem Formular:"
 msgstr "You can edit your account with the following form:"
 
-#: account/templates/account/edit.html:12
+#: account/templates/account/edit.html:13
 #: competitions/templates/competitions/change_score.html:12
 #: competitions/templates/competitions/create_match.html:14
 #: competitions/templates/competitions/create_tournament.html:12
@@ -407,17 +436,17 @@ msgstr "You can edit your account with the following form:"
 msgid "Fertig"
 msgstr "Done"
 
-#: account/templates/account/edit.html:14
+#: account/templates/account/edit.html:15
 msgid "Das sind Ihre aktuellen Addressdaten:"
 msgstr "This is your current address information:"
 
-#: account/templates/account/edit.html:17
-msgid "Ohne"
-msgstr "None"
-
-#: account/templates/account/edit.html:20
+#: account/templates/account/edit.html:16
 msgid "Klicken Sie hier, falls Sie ihre Adresse ändern möchten."
 msgstr "Click here if you want to change your address."
+
+#: account/templates/account/edit.html:19
+msgid "Ohne"
+msgstr "None"
 
 #: account/templates/account/edit_address.html:4
 #: account/templates/account/edit_address.html:7
@@ -471,17 +500,6 @@ msgstr "Accept"
 #: vacancies/templates/vacancies/review_vacancy.html:33
 msgid "Ablehnen"
 msgstr "Decline"
-
-#: account/templates/account/friend_requests_list.html:48
-#: account/templates/account/friend_requests_list.html:75
-#: usergroups/templates/usergroups/appointment_list.html:41
-#: usergroups/templates/usergroups/invitation_list.html:16
-#: vacancies/templates/vacancies/application_list.html:22
-#: vacancies/templates/vacancies/edit_vacancy.html:11
-#: vacancies/templates/vacancies/invitation_list.html:21
-#: vacancies/templates/vacancies/review_vacancy.html:35
-msgid "Löschen"
-msgstr "Delete"
 
 #: account/templates/account/friend_requests_list.html:57
 msgid "Gesendete Anfragen"
@@ -1197,11 +1215,11 @@ msgstr "Suggested activities"
 msgid "Score"
 msgstr "Score"
 
-#: character/templates/character/overview.html:103
+#: character/templates/character/overview.html:104
 msgid "Zurücksetzen"
 msgstr "Reset"
 
-#: character/templates/character/overview.html:107
+#: character/templates/character/overview.html:109
 msgid ""
 "Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich "
 "die errechneten Punktesummen in den Kategorien werden für die Berechnung von "

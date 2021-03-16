@@ -85,3 +85,13 @@ class CustomFriendRequestForm(FriendRequestForm):
         if not User.objects.filter(username=cd['username']).exists():
             raise forms.ValidationError(_('Es gibt keinen Nutzer mit dem Nutzernamen {name}').format(name=cd["username"]))
         return cd
+        
+class AccountDeleteForm(forms.Form):
+    okay = forms.BooleanField(label=_('Wirklich löschen?'))
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        if not cleaned_data.get('okay'):
+            raise forms.ValidationError(_('Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen.'))
+        return cleaned_data
+    

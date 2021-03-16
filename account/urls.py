@@ -27,5 +27,6 @@ urlpatterns = [
     path('delete_request/<int:id>/', views.delete_request, name='delete_request'),
     path('user_post_list/', views.user_post_list, name='user_post_list'),
     path('view_friendship/<int:id>/', views.view_friendship, name='view_friendship'),
-    path('about/', views.about, name='about')
+    path('about/', views.about, name='about'),
+    path('delete/', views.delete, name='delete')
 ]
