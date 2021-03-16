@@ -10,15 +10,34 @@
 
 {% block content %}
 <h1>{% trans 'Charakterübersicht' %}</h1>
-<div class="center-container">
-    <b>{% blocktrans with n=user.character.current_question %}Sie haben bisher {{ n }} von 120 Fragen beantwortet.{% endblocktrans %}</b>
-</div>
-<p></p>
-{% if user.character.current_question != 120 %}
-<div class="button-like" onclick=openLink("{% url 'character:quiz' %}")>
-    <img src="{% static 'icons/question.png' %}">
-    {% trans 'Zum Fragebogen' %}
-</div>
+{% if user.character.question_limit %}
+    <div class="center-container">
+        <b>{% blocktrans with n=user.character.current_question max=user.character.question_limit %}Sie haben bisher {{ n }} von {{ max }} Fragen beantwortet.{% endblocktrans %}</b>
+    </div>
+    <p></p>
+    <div class="button-like" onclick=openLink("{% url 'character:quiz' %}")>
+        <img src="{% static 'icons/question.png' %}">
+        {% trans 'Zum Fragebogen' %}
+    </div>
+{% else %}
+    <div class="center-container">
+        <b>{% trans 'Die hier angebotenen Persönlichkeitstests basieren auf <a href="https://ipip.ori.org/newNEOKey.htm" target="_blank">frei verfügbaren Fragen</a>, die auf den <a href="https://de.wikipedia.org/wiki/Big_Five_(Psychologie)" target="_blank">Big Five</a> der Persönlichkeitspsychologie fußen.<br><br>Der offizielle NEO-PI-R Persönlichkeitstest umfasst 240 Fragen. Weniger Fragen sind zwar schneller zu beantworten, liefern aber ein unter Wiederholung instabileres Testergebnis.' %}</b>
+    </div>
+    <p></p>
+    <div class="button-like" onclick=openLink("{% url 'character:quiz' 60 %}")>
+        <img src="{% static 'icons/question.png' %}">
+        60 {% trans 'Fragen' %} (~7 min)
+    </div><br>
+    <div class="button-like" onclick=openLink("{% url 'character:quiz' 120 %}")>
+        <img src="{% static 'icons/question.png' %}">
+        120 {% trans 'Fragen' %} (~14 min)
+    </div><br>
+    <div class="button-like" onclick=openLink("{% url 'character:quiz' 240 %}")>
+        <img src="{% static 'icons/question.png' %}">
+        240 {% trans 'Fragen' %} (~28 min)
+    </div>
+{% endif %}
+{% if user.character.current_question != user.character.question_limit %}
 <h2>{% trans 'Noch kein Testergebnis!' %}</h2>
 {% else %}
 <h2>{% trans 'Empfohlene Aktivitäten' %}</h2>
@@ -74,13 +93,11 @@
 
 <span style="clear: both"></span>
 {% endif %}
-{% if user.character.current_question > 0 %}
 <p></p>
 <div class="button-like" id="reset" onclick=reset()>
     <img src="{% static 'icons/attention.png' %}">
     <span id="reset-text">{% trans 'Zurücksetzen' %}</span>
 </div>
-{% endif %}
 {% endblock %}
 
 {% block domready %}

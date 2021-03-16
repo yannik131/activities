@@ -1,5 +1,14 @@
 {% load i18n %}
 
+{% with limit=user.character.question_limit %}
+const limit = {{ limit }};
+{% if limit == 240 %}
+    {% include 'javascript/question240.js' %}
+{% elif limit == 120 %}
+    {% include 'javascript/question120.js' %}
+{% else %}
+    {% include 'javascript/question60.js' %}
+{% endif %}
 
 
 var current_question = {{ user.character.current_question }};
@@ -10,7 +19,7 @@ const back_button = document.getElementById('back-button');
 const info = document.getElementById('info-box');
 const counter = document.getElementById('counter');
 const time = document.getElementById('time');
-if(current_question == 120) {
+if(current_question == limit) {
     question_span.innerHTML = "{% trans 'Alle Fragen wurden beantwortet!' %}";
     button.onclick = null;
 }
@@ -22,8 +31,8 @@ var last_trait = null;
 var last_value = null;
 
 function update() {
-    counter.innerHTML = (current_question+1)+"/120";
-time.innerHTML = Math.ceil((120-(current_question))*7/60)+" min";
+    counter.innerHTML = (current_question+1)+"/{{ limit }}";
+time.innerHTML = Math.ceil((limit-(current_question))*7/60)+" min";
     slider.value = 3;
 }
 
@@ -43,7 +52,7 @@ function next() {
     button.onclick = null;
     button.style.backgroundColor = "#8fc8f7";
     info.innerHTML = "+"+value+" "+categories[current_trait];
-    if(current_question != 120) {
+    if(current_question != limit) {
         question_span.innerHTML = questions[current_question]+".";
         update();
     }
@@ -53,20 +62,21 @@ function next() {
         button.onclick = next;
         button.style.backgroundColor = "#0087f7";
         info.innerHTML = "";
-        if(current_question == 120) {
+        if(current_question == limit) {
             openLink("{% url 'character:overview' %}");
         }
 
-    }, 2000);
+    }, 20);
 }
 
 function back() {
     slider.value = 3;
     back_button.style.display = "none";
     current_question--;
-    counter.innerHTML = (current_question+1)+"/120";
+    counter.innerHTML = (current_question+1)+"/{{ limit }}";
     question_span.innerHTML = questions[current_question]+".";
     send({'type': 'character', 'action': 'back', 'trait': last_trait, 'value': last_value});
 }
 
 update();
+{% endwith %}
