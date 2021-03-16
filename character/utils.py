@@ -6,9 +6,6 @@ BIG_FIVE = {
     'c': ['eff', 'ord', 'dut', 'ach', 'dis', 'cau']
 }
 
-MAX_TRAIT_VALUE = 20 # 4 questions, 1-5 points each
-MIN_TRAIT_VALUE = 4
-
 
 def to_numbers(d):
     return dict([(k, int(v)) for k, v in d.items()])

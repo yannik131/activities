@@ -20,6 +20,7 @@ class Suggestion(models.Model):
 class Character(models.Model):
     traits = HStoreField(default=dict, blank=True)
     current_question = models.PositiveSmallIntegerField(default=0)
+    question_limit = models.PositiveSmallIntegerField(default=120)
     suggested_activities = models.ManyToManyField(Activity, related_name='suggested_to', through=Suggestion)
     
     def save(self, *args, **kwargs):
@@ -35,6 +36,8 @@ class Character(models.Model):
         return json.dumps(self.traits)
         
     def calculate_suggestions(self):
+        MAX_TRAIT_VALUE = 10*self.question_limit/60
+        MIN_TRAIT_VALUE = 2*self.question_limit/60
         user_traits = to_numbers(self.traits)
         scores = []
         for activity in Activity.objects.all():
