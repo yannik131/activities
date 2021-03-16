@@ -74,10 +74,9 @@ class DurakConsumer(GameConsumer):
             }
         elif text_data['action'] == "done":
             done_list = json.loads(data['done_list'])
-            if(str(self.username) not in done_list):
-                done_list.append(str(self.username))
+            if(self.username not in done_list):
+                done_list.append(self.username)
             
-            # defending player sends done when all is defended
             if len(done_list) == len(players):
                 if data["taking"]:
                     hand = json.loads(data[data["taking"]])
@@ -104,14 +103,14 @@ class DurakConsumer(GameConsumer):
                     if players_with_cards:
                         durak = players_with_cards[0]
                     summary = give_durak_points(data, players, durak)
-                    match.start_durak()
-                    data["taking"] = ""
                     if durak:
                         data["defending"] = durak
                         data["attacking"] = before(durak, players)
                     else:
                         data["attacking"] = data["first"]
                         data["defending"] = after(data["attacking"], players)
+                    match.start_durak()
+                    data["taking"] = ""
                     message["data"] = match.game_data
                     message["data"]["summary"] = summary
                     message["data"]["game_number"] = data["game_number"]

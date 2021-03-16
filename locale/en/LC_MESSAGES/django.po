@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-13 19:23+0000\n"
-"PO-Revision-Date: 2021-03-13 19:57+0100\n"
+"POT-Creation-Date: 2021-03-16 11:55+0000\n"
+"PO-Revision-Date: 2021-03-16 12:56+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -395,9 +395,9 @@ msgstr "You can edit your account with the following form:"
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:331
-#: multiplayer/templates/javascript/durak.js:368
-#: multiplayer/templates/javascript/durak.js:377
+#: multiplayer/templates/javascript/durak.js:334
+#: multiplayer/templates/javascript/durak.js:371
+#: multiplayer/templates/javascript/durak.js:380
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:14
 #: usergroups/templates/usergroups/edit_group.html:13
@@ -528,13 +528,17 @@ msgstr "Otherwise you can't reset your password and/or apply to vacancies!"
 msgid "Zu Ihren Posts"
 msgstr "Your posts"
 
-#: account/templates/account/home.html:20
+#: account/templates/account/home.html:19
 msgid "Sie sind zurzeit Mitglied folgender Aktivitäten:"
 msgstr "You are currently a member of the following activities:"
 
-#: account/templates/account/home.html:23
+#: account/templates/account/home.html:22
 msgid "Aktivitäten finden"
 msgstr "Find activities"
+
+#: account/templates/account/home.html:27
+msgid "Hier ist noch nichts!"
+msgstr "Nothing here!"
 
 #: account/templates/account/jokes.html:2
 msgid ""
@@ -772,7 +776,7 @@ msgid "Ihre Posts"
 msgstr "Your posts"
 
 #: account/templates/account/user_post_list.html:9
-#: activity/templates/activity/detail.html:55
+#: activity/templates/activity/detail.html:64
 #: usergroups/templates/usergroups/group_detail.html:73
 msgid "Post erstellen"
 msgstr "Create post"
@@ -933,7 +937,19 @@ msgstr "Enter your email address to reset your password."
 msgid "Senden"
 msgstr "Send"
 
-#: account/views.py:49
+#: account/utils.py:16
+msgid "Diese Adresse konnte nicht gefunden werden."
+msgstr "This address could not be found."
+
+#: account/utils.py:18
+msgid ""
+"Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die "
+"Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
+msgstr ""
+"There is no city connected to this address. Please explicitly give the "
+"city's name (villages/districts may not be recognised)."
+
+#: account/views.py:50
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
@@ -942,15 +958,15 @@ msgstr ""
 "You've already sent a friend request to this user. As long as he doesn't "
 "delete it you can't send another one."
 
-#: account/views.py:70
+#: account/views.py:71
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr "You can't send yourself a friend request."
 
-#: account/views.py:105
+#: account/views.py:106
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr "You can't delete this request."
 
-#: account/views.py:126
+#: account/views.py:127
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr "This friendship doesn't exist anymore."
 
@@ -962,24 +978,24 @@ msgstr "German"
 msgid "Englisch"
 msgstr "English"
 
-#: activity/models.py:25
+#: activity/models.py:26
 msgid "kompetitiv"
 msgstr "competitive"
 
-#: activity/models.py:26
+#: activity/models.py:27
 msgid "kreativ"
 msgstr "creative"
 
-#: activity/models.py:27
+#: activity/models.py:28
 msgid "konsumorientiert"
 msgstr "consumption"
 
-#: activity/models.py:45
+#: activity/models.py:47
 #, python-brace-format
 msgid "Aktivität: {name}"
 msgstr "Activity: {name}"
 
-#: activity/models.py:91
+#: activity/models.py:94
 #, python-brace-format
 msgid "Kategorie: {name}"
 msgstr "Category: {name}"
@@ -1004,20 +1020,20 @@ msgstr "Show members"
 msgid "Mitglieder"
 msgstr "Members"
 
-#: activity/templates/activity/category_detail.html:12
-#: activity/templates/activity/detail.html:13
+#: activity/templates/activity/category_detail.html:13
+#: activity/templates/activity/detail.html:14
 msgid "Quelle"
 msgstr "Source"
 
-#: activity/templates/activity/category_detail.html:19
+#: activity/templates/activity/category_detail.html:20
 msgid "Zu den Gruppen"
 msgstr "Groups"
 
-#: activity/templates/activity/category_detail.html:20
+#: activity/templates/activity/category_detail.html:21
 msgid "Folgende Aktivitäten gehören zu dieser Kategorie"
 msgstr "The following activities belong to this category"
 
-#: activity/templates/activity/category_detail.html:23
+#: activity/templates/activity/category_detail.html:24
 msgid "Posts in"
 msgstr "Posts in"
 
@@ -1030,36 +1046,44 @@ msgstr "All categories"
 msgid "Hier eine Liste aller verfügbaren Kategorien"
 msgstr "Here's a list of all available categories"
 
-#: activity/templates/activity/detail.html:27
+#: activity/templates/activity/detail.html:22
+msgid "Gehört zu: "
+msgstr "Belongs to:"
+
+#: activity/templates/activity/detail.html:33
 msgid "Offline spielen"
 msgstr "Play offline"
 
-#: activity/templates/activity/detail.html:32
+#: activity/templates/activity/detail.html:38
 #: multiplayer/templates/multiplayer/create_match.html:4
 msgid "Online spielen"
 msgstr "Play online"
 
-#: activity/templates/activity/detail.html:42
+#: activity/templates/activity/detail.html:49
+msgid "Gewichtungen bearbeiten"
+msgstr "Edit weights"
+
+#: activity/templates/activity/detail.html:51
 #: competitions/templates/competitions/match_detail.html:35
 #: competitions/templates/competitions/tournament_detail.html:37
 #: usergroups/templates/usergroups/group_detail.html:37
 msgid "Austreten"
 msgstr "Leave"
 
-#: activity/templates/activity/detail.html:43
+#: activity/templates/activity/detail.html:52
 msgid "Suche nach Mitgliedern"
 msgstr "Members"
 
-#: activity/templates/activity/detail.html:49
+#: activity/templates/activity/detail.html:58
 msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
 msgstr "If you want to see the members, you need to enter the activity."
 
-#: activity/templates/activity/detail.html:51
+#: activity/templates/activity/detail.html:60
 #: multiplayer/templates/javascript/lobby.js:46
 msgid "Beitreten"
 msgstr "Join"
 
-#: activity/templates/activity/detail.html:54
+#: activity/templates/activity/detail.html:63
 msgid "Beiträge"
 msgstr "Posts"
 
@@ -1080,7 +1104,41 @@ msgstr ""
 "Seems like I found this picture somewhere on the internet. In case it's "
 "yours and you want be credited, send me a message: "
 
+#: character/templates/character/edit_weights.html:5
+msgid "Gewichte verteilen"
+msgstr "Distribute weights"
+
+#: character/templates/character/edit_weights.html:34
+#: character/templates/character/overview.html:44
+msgid "Neurotizismus"
+msgstr "Neuroticism"
+
+#: character/templates/character/edit_weights.html:40
+#: character/templates/character/overview.html:50
+msgid "Extraversion"
+msgstr "Extraversion"
+
+#: character/templates/character/edit_weights.html:46
+#: character/templates/character/overview.html:56
+msgid "Offenheit für Erfahrungen"
+msgstr "Openness to experience"
+
+#: character/templates/character/edit_weights.html:52
+#: character/templates/character/overview.html:62
+msgid "Gewissenhaftigkeit"
+msgstr "Conscientiousness"
+
+#: character/templates/character/edit_weights.html:58
+#: character/templates/character/overview.html:68
+msgid "Verträglichkeit"
+msgstr "Agreeableness"
+
+#: character/templates/character/edit_weights.html:67
+msgid "Speichern"
+msgstr "Save"
+
 #: character/templates/character/overview.html:5
+#: character/templates/character/overview.html:42
 msgid "Charakter"
 msgstr "Character"
 
@@ -1101,27 +1159,15 @@ msgstr "Questionnaire"
 msgid "Noch kein Testergebnis!"
 msgstr "No test result yet!"
 
-#: character/templates/character/overview.html:25
-msgid "Neurotizismus"
-msgstr "Neuroticism"
+#: character/templates/character/overview.html:24
+msgid "Empfohlene Aktivitäten"
+msgstr "Suggested activities"
 
-#: character/templates/character/overview.html:31
-msgid "Extraversion"
-msgstr "Extraversion"
+#: character/templates/character/overview.html:34
+msgid "Score"
+msgstr "Score"
 
-#: character/templates/character/overview.html:37
-msgid "Offenheit für Erfahrungen"
-msgstr "Openness to experience"
-
-#: character/templates/character/overview.html:43
-msgid "Gewissenhaftigkeit"
-msgstr "Conscientiousness"
-
-#: character/templates/character/overview.html:49
-msgid "Verträglichkeit"
-msgstr "Agreeableness"
-
-#: character/templates/character/overview.html:62
+#: character/templates/character/overview.html:81
 msgid "Zurücksetzen"
 msgstr "Reset"
 
@@ -1271,7 +1317,21 @@ msgstr "Self-discipline"
 msgid "Besonnenheit"
 msgstr "Cautiousness"
 
-#: character/templates/javascript/overview.js:28
+#: character/templates/javascript/edit_weights.js:29
+#: character/templates/javascript/edit_weights.js:89
+msgid "Niedrig"
+msgstr "Low"
+
+#: character/templates/javascript/edit_weights.js:34
+#: character/templates/javascript/edit_weights.js:67
+msgid "Hoch"
+msgstr "High"
+
+#: character/templates/javascript/edit_weights.js:121
+msgid "Noch keine Gewichte verteilt!"
+msgstr "No weights have yet been distributed."
+
+#: character/templates/javascript/overview.js:12
 msgid "Klicke erneut zum Zurücksetzen."
 msgstr "Click again to reset."
 
@@ -1385,7 +1445,7 @@ msgstr ""
 "things.I am interested in many things.I am not interested in abstract ideas."
 "I believe that too much tax money goes to support artists."
 
-#: character/templates/javascript/quiz.js:15
+#: character/templates/javascript/quiz.js:16
 msgid "Alle Fragen wurden beantwortet!"
 msgstr "All question have been answered!"
 
@@ -1438,35 +1498,35 @@ msgstr "Close chat"
 msgid "Diesen Chat-Room gibt es nicht mehr."
 msgstr "This chat room doesn't exist any more."
 
-#: competitions/forms.py:12 competitions/forms.py:43
+#: competitions/forms.py:13 competitions/forms.py:44
 msgid "Austragungsort (Stadt)"
 msgstr "Location (city)"
 
-#: competitions/forms.py:19
+#: competitions/forms.py:20
 msgid "Wann findet das Match statt?"
 msgstr "When does the match start?"
 
-#: competitions/forms.py:20
+#: competitions/forms.py:21
 msgid "Soll das Match öffentlich unter Matches & Turniere sichtbar sein?"
 msgstr "Should the match be publicly visible?"
 
-#: competitions/forms.py:21
+#: competitions/forms.py:22
 msgid "Wo genau findet das Match statt?"
 msgstr "Where exactly does the match take place?"
 
-#: competitions/forms.py:22
+#: competitions/forms.py:23
 msgid "Bitte beschreiben Sie kurz die Spielregeln und das Format des Matches"
 msgstr "Please describe the rules and the format of the match briefly"
 
-#: competitions/forms.py:23 competitions/forms.py:56
+#: competitions/forms.py:24 competitions/forms.py:57
 msgid "Mannschaftsspiel"
 msgstr "Team game"
 
-#: competitions/forms.py:49
+#: competitions/forms.py:50
 msgid "Titel des Turniers"
 msgstr "Tournament title"
 
-#: competitions/forms.py:50
+#: competitions/forms.py:51
 msgid ""
 "Adresse (falls das Turnier an einem einzigen Ort stattfindet, sonst leer "
 "lassen)"
@@ -1474,27 +1534,27 @@ msgstr ""
 "Address (in case the tournament takes place in one single location, "
 "otherwise leave blank)"
 
-#: competitions/forms.py:51
+#: competitions/forms.py:52
 msgid "Turnierbeginn"
 msgstr "Tournament start"
 
-#: competitions/forms.py:52
+#: competitions/forms.py:53
 msgid "Anmeldeschluss"
 msgstr "Deadline"
 
-#: competitions/forms.py:53
+#: competitions/forms.py:54
 msgid "Maximale Teilnehmeranzahl (leer lassen für kein Limit)"
 msgstr "Member limit (leave blank for no limit)"
 
-#: competitions/forms.py:54
+#: competitions/forms.py:55
 msgid "Rundenanzahl (leer lassen für automatische Ermittlung)"
 msgstr "Number of rounds (leave blank for automatic calculation)"
 
-#: competitions/forms.py:55
+#: competitions/forms.py:56
 msgid "Turnierformat und weitere Informationen"
 msgstr "Format of the tournament and other information"
 
-#: competitions/forms.py:63
+#: competitions/forms.py:64
 msgid "Anmeldeschluss muss vor Turnierbeginn sein."
 msgstr "The application deadline must end before the tournament starts."
 
@@ -1925,7 +1985,7 @@ msgstr "Contra"
 
 #: multiplayer/templates/javascript/doppelkopf.js:180
 #: multiplayer/templates/javascript/doppelkopf.js:348
-#: multiplayer/templates/javascript/durak.js:154
+#: multiplayer/templates/javascript/durak.js:157
 #: multiplayer/templates/javascript/skat.js:165
 #: multiplayer/templates/javascript/skat.js:202
 msgid "Spiel Nummer"
@@ -1936,23 +1996,23 @@ msgid "Normalspiel"
 msgstr "Normal game"
 
 #: multiplayer/templates/javascript/durak.js:55
-#: multiplayer/templates/javascript/durak.js:204
+#: multiplayer/templates/javascript/durak.js:207
 msgid "SCHLUCKT"
 msgstr "GOBBLING"
 
-#: multiplayer/templates/javascript/durak.js:163
+#: multiplayer/templates/javascript/durak.js:166
 msgid "ANGREIFER"
 msgstr "ATTACKER"
 
-#: multiplayer/templates/javascript/durak.js:166
+#: multiplayer/templates/javascript/durak.js:169
 msgid "VERTEIDIGER"
 msgstr "DEFENDER"
 
-#: multiplayer/templates/javascript/durak.js:348
+#: multiplayer/templates/javascript/durak.js:351
 msgid "Schlucken"
 msgstr "Gobble"
 
-#: multiplayer/templates/javascript/durak.js:358
+#: multiplayer/templates/javascript/durak.js:361
 msgid "Schieben"
 msgstr "Transfer"
 
@@ -2127,18 +2187,6 @@ msgstr "Create appointment"
 #: scheduling/templates/scheduling/create_appointment.html:10
 msgid "Bitte füllen Sie folgendes Formular aus, um ein Treffen zu vereinbaren"
 msgstr "Please fill in the following form to schedule an appointment"
-
-#: shared/shared.py:32
-msgid "Diese Adresse konnte nicht gefunden werden."
-msgstr "This address could not be found."
-
-#: shared/shared.py:34
-msgid ""
-"Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die "
-"Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
-msgstr ""
-"There is no city connected to this address. Please explicitly give the "
-"city's name (villages/districts may not be recognised)."
 
 #: usergroups/forms.py:16
 msgid "Administrator (Nutzername)"
@@ -2704,9 +2752,6 @@ msgstr " %(v0)s ago"
 
 #~ msgid "Azul spielen"
 #~ msgstr "Playing Azul"
-
-#~ msgid "Gibts doch nicht."
-#~ msgstr "No way."
 
 #~ msgid "Sie sind zurzeit kein Mitglied einer Aktivität."
 #~ msgstr "You aren't a member of an activity. Why don't you join one? :)"

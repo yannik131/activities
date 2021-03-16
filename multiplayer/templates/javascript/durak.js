@@ -94,6 +94,9 @@ function cardClicked(value, suit, card) {
                 }
             }
             else if(targets.length == 1) {
+                if(move_mode == "transfer") {
+                    return;
+                }
                 clearStackCallbacks();
                 move_mode = "beating";
                 beatStackWith(card, targets[0]);
