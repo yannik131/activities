@@ -11,8 +11,8 @@
     <img src="{% static 'icons/questionnaire.png' %}">
     {% trans 'Zur Charakterübersicht' %}
 </div>
-<div class="question" id="anxiety+1">
-    <span id="current-question"></span> <br><br>
+<div class="question">
+    <div id="current-question"></div> <br>
     <span class="info left">{% trans 'Trifft stark zu' %}</span>
     <span class="info right">{% trans 'Trifft überhaupt nicht zu' %}</span>
     <input type="range" min="1" max="5" class="slider" id="slider">
@@ -33,7 +33,7 @@
     </div>
     
 </div>
-<div class="center-container" style="margin-top: 15px; font-size: 24px">
+<div class="center-container" style="margin-top: 15px; font-size: 24px; min-height: 40px">
     <b><span id="info-box"></span></b>
 </div>
 {% endblock %}

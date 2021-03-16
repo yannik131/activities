@@ -97,12 +97,15 @@
 
 <span style="clear: both"></span>
 {% endif %}
+{% if user.character.question_limit %}
 <p></p>
 <div class="button-like" id="reset" onclick=reset()>
     <img src="{% static 'icons/attention.png' %}">
     <span id="reset-text">{% trans 'Zurücksetzen' %}</span>
 </div>
 <br>
+{% endif %}
+
 <div class="center-container" style="color: yellow">
     <b>{% trans 'Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich die errechneten Punktesummen in den Kategorien werden für die Berechnung von Empfehlungen verwendet und für sonst nichts.' %}</b>
 </div>
