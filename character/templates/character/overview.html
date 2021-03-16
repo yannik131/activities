@@ -24,6 +24,10 @@
         <b>{% trans 'Die hier angebotenen Persönlichkeitstests wurden in Anlehnung an den NEO-PI-R Test erstellt und basieren auf <a href="https://ipip.ori.org/newNEOKey.htm" target="_blank">frei verfügbaren Fragen</a>, die auf den <a href="https://de.wikipedia.org/wiki/Big_Five_(Psychologie)" target="_blank">Big Five</a> der Persönlichkeitspsychologie fußen.<br><br>Der offizielle NEO-PI-R Persönlichkeitstest umfasst 240 Fragen. Weniger Fragen sind zwar schneller zu beantworten, liefern aber ein unter Wiederholung instabileres Testergebnis.' %}</b>
     </div>
     <p></p>
+    <div class="center-container">
+        <b>{% trans 'Bitte wählen Sie eine der drei Optionen aus.' %}</b>
+    </div>
+    <br>
     <div class="button-like" onclick=openLink("{% url 'character:quiz' 60 %}")>
         <img src="{% static 'icons/question.png' %}">
         60 {% trans 'Fragen' %} (~7 min)
@@ -100,7 +104,7 @@
 </div>
 <br>
 <div class="center-container" style="color: yellow">
-    <b>{% trans 'Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Nur die Punktsumme in den Kategorien wird zum Berechnen von Empfehlungen verwendet und für sonst nichts.' %}</b>
+    <b>{% trans 'Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich die errechneten Punktesummen in den Kategorien werden für die Berechnung von Empfehlungen verwendet und für sonst nichts.' %}</b>
 </div>
 {% endblock %}
 

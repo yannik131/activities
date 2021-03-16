@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-16 19:45+0000\n"
-"PO-Revision-Date: 2021-03-16 20:48+0100\n"
+"POT-Creation-Date: 2021-03-16 19:55+0000\n"
+"PO-Revision-Date: 2021-03-16 20:56+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -1109,27 +1109,27 @@ msgid "Gewichte verteilen"
 msgstr "Distribute weights"
 
 #: character/templates/character/edit_weights.html:34
-#: character/templates/character/overview.html:63
+#: character/templates/character/overview.html:67
 msgid "Neurotizismus"
 msgstr "Neuroticism"
 
 #: character/templates/character/edit_weights.html:40
-#: character/templates/character/overview.html:69
+#: character/templates/character/overview.html:73
 msgid "Extraversion"
 msgstr "Extraversion"
 
 #: character/templates/character/edit_weights.html:46
-#: character/templates/character/overview.html:75
+#: character/templates/character/overview.html:79
 msgid "Offenheit für Erfahrungen"
 msgstr "Openness to experience"
 
 #: character/templates/character/edit_weights.html:52
-#: character/templates/character/overview.html:81
+#: character/templates/character/overview.html:85
 msgid "Gewissenhaftigkeit"
 msgstr "Conscientiousness"
 
 #: character/templates/character/edit_weights.html:58
-#: character/templates/character/overview.html:87
+#: character/templates/character/overview.html:91
 msgid "Verträglichkeit"
 msgstr "Agreeableness"
 
@@ -1138,7 +1138,7 @@ msgid "Speichern"
 msgstr "Save"
 
 #: character/templates/character/overview.html:5
-#: character/templates/character/overview.html:61
+#: character/templates/character/overview.html:65
 msgid "Charakter"
 msgstr "Character"
 
@@ -1175,36 +1175,40 @@ msgstr ""
 "time to answer, but might yield less consistent results if the test is taken "
 "more than once."
 
-#: character/templates/character/overview.html:29
+#: character/templates/character/overview.html:28
+msgid "Bitte wählen Sie eine der drei Optionen aus."
+msgstr "Please choose one of the following options."
+
 #: character/templates/character/overview.html:33
 #: character/templates/character/overview.html:37
+#: character/templates/character/overview.html:41
 msgid "Fragen"
 msgstr "Questions"
 
-#: character/templates/character/overview.html:41
+#: character/templates/character/overview.html:45
 msgid "Noch kein Testergebnis!"
 msgstr "No test result yet!"
 
-#: character/templates/character/overview.html:43
+#: character/templates/character/overview.html:47
 msgid "Empfohlene Aktivitäten"
 msgstr "Suggested activities"
 
-#: character/templates/character/overview.html:53
+#: character/templates/character/overview.html:57
 msgid "Score"
 msgstr "Score"
 
-#: character/templates/character/overview.html:99
+#: character/templates/character/overview.html:103
 msgid "Zurücksetzen"
 msgstr "Reset"
 
-#: character/templates/character/overview.html:103
+#: character/templates/character/overview.html:107
 msgid ""
-"Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Nur die "
-"Punktsumme in den Kategorien wird zum Berechnen von Empfehlungen verwendet "
-"und für sonst nichts."
+"Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich "
+"die errechneten Punktesummen in den Kategorien werden für die Berechnung von "
+"Empfehlungen verwendet und für sonst nichts."
 msgstr ""
-"Answers to individual questions are <u>not saved</u>. Only the score in the "
-"respective categories is used to calculate suggestions and for nothing else."
+"Answers to individual questions are <u>not saved</u>. Only the scores in the "
+"respective categories are used to calculate suggestions and for nothing else."
 
 #: character/templates/character/quiz.html:5
 #: character/templates/character/quiz.html:9
@@ -3157,9 +3161,6 @@ msgstr " %(v0)s ago"
 #~ "Notwendig, um in Ihrer Nähe nach Leuten suchen zu können. Nur für Ihre "
 #~ "Freunde sichtbar."
 #~ msgstr "Required to look for people in your area. Only visible to friends."
-
-#~ msgid "Bitte geben Sie eine Stadt ein"
-#~ msgstr "Please enter a city name"
 
 #~ msgid ""
 #~ "Der Name darf nicht länger als 30, die Beschreibung nicht länger als 150 "

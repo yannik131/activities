@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-16 19:45+0000\n"
+"POT-Creation-Date: 2021-03-16 19:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1062,27 +1062,27 @@ msgid "Gewichte verteilen"
 msgstr ""
 
 #: character/templates/character/edit_weights.html:34
-#: character/templates/character/overview.html:63
+#: character/templates/character/overview.html:67
 msgid "Neurotizismus"
 msgstr ""
 
 #: character/templates/character/edit_weights.html:40
-#: character/templates/character/overview.html:69
+#: character/templates/character/overview.html:73
 msgid "Extraversion"
 msgstr ""
 
 #: character/templates/character/edit_weights.html:46
-#: character/templates/character/overview.html:75
+#: character/templates/character/overview.html:79
 msgid "Offenheit für Erfahrungen"
 msgstr ""
 
 #: character/templates/character/edit_weights.html:52
-#: character/templates/character/overview.html:81
+#: character/templates/character/overview.html:85
 msgid "Gewissenhaftigkeit"
 msgstr ""
 
 #: character/templates/character/edit_weights.html:58
-#: character/templates/character/overview.html:87
+#: character/templates/character/overview.html:91
 msgid "Verträglichkeit"
 msgstr ""
 
@@ -1091,7 +1091,7 @@ msgid "Speichern"
 msgstr ""
 
 #: character/templates/character/overview.html:5
-#: character/templates/character/overview.html:61
+#: character/templates/character/overview.html:65
 msgid "Charakter"
 msgstr ""
 
@@ -1120,33 +1120,37 @@ msgid ""
 "Testergebnis."
 msgstr ""
 
-#: character/templates/character/overview.html:29
+#: character/templates/character/overview.html:28
+msgid "Bitte wählen Sie eine der drei Optionen aus."
+msgstr ""
+
 #: character/templates/character/overview.html:33
 #: character/templates/character/overview.html:37
+#: character/templates/character/overview.html:41
 msgid "Fragen"
 msgstr ""
 
-#: character/templates/character/overview.html:41
+#: character/templates/character/overview.html:45
 msgid "Noch kein Testergebnis!"
 msgstr ""
 
-#: character/templates/character/overview.html:43
+#: character/templates/character/overview.html:47
 msgid "Empfohlene Aktivitäten"
 msgstr ""
 
-#: character/templates/character/overview.html:53
+#: character/templates/character/overview.html:57
 msgid "Score"
 msgstr ""
 
-#: character/templates/character/overview.html:99
+#: character/templates/character/overview.html:103
 msgid "Zurücksetzen"
 msgstr ""
 
-#: character/templates/character/overview.html:103
+#: character/templates/character/overview.html:107
 msgid ""
-"Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Nur die "
-"Punktsumme in den Kategorien wird zum Berechnen von Empfehlungen verwendet "
-"und für sonst nichts."
+"Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich "
+"die errechneten Punktesummen in den Kategorien werden für die Berechnung von "
+"Empfehlungen verwendet und für sonst nichts."
 msgstr ""
 
 #: character/templates/character/quiz.html:5
