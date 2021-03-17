@@ -12,12 +12,7 @@
     <div style="float: left">{% trans 'Nutzer gesamt: ' %}{% total_count %}</div>
     <div style="float: right">{% trans 'Online: ' %} {% online_count %}</div>
         <h1>{% blocktrans %}Einloggen{% endblocktrans %}</h1>
-        {% if form.errors %}
-            <p>{% trans "Fehler beim Einloggen" %}: {{ form.non_field_errors }}</p>
-            <p><a href="{% url 'account:login' %}">{% trans "Zurück zum Login" %}</a></p>
-            <p>{% trans "Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der Account möglicherweise gesperrt." %}
-            </p>
-        {% else %}
+        
         <p><strong>{% trans "Willkommen bei myactivities.net! :)" %}</strong></p>
         <!--<div class="button-like" onclick=openLink("{% url 'account:about' %}")><img src="{% static 'icons/question.png' %}">{% trans "Was ist das hier?" %}</div>-->
             <p>{% trans "Bitte nutzen Sie das folgende Formular zum einloggen:" %}</p>
@@ -27,7 +22,6 @@
                 <input type="hidden" name="next" value="{{ next }}">
                 <input type="submit" value="{% trans "Einloggen" %}">
             </form>
-        {% endif %}
         <div class="competitive" style="margin: 10px 0; font-size: 16px;">
             <div class="left" onclick=openLink("{% url 'account:password_reset' %}")>
                 <img src="{% static 'icons/password_reset.png' %}">

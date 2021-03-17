@@ -1,18 +1,26 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load cookielaw_tags %}
+{% load account_tags %}
 
 {% block title %}{% blocktrans %}Registrieren{% endblocktrans %}{% endblock %}
 
 {% block content %}
-<div class="register">
-    <h1>{% blocktrans %}Registrieren{% endblocktrans %}</h1>
-    <p>{% blocktrans %}Sie können sich mit dem folgenden Formular registrieren. {% endblocktrans %}</p>
-    <form method="post">
-        {{ user_form.as_p }}
-        {% trans "Wo hängen Sie meistens rum?" %}
-        {{ location_form.as_p }}
-        {% csrf_token %}
-        <input type="submit" value="{% blocktrans %}Registrieren{% endblocktrans %}">
-    </form>
+    <div class="center-container">
+    <div class="login">
+    <div style="float: left">{% trans 'Nutzer gesamt: ' %}{% total_count %}</div>
+    <div style="float: right">{% trans 'Online: ' %} {% online_count %}</div>
+        <h1>{% blocktrans %}Registrieren{% endblocktrans %}</h1>
+        
+        <p><strong>{% trans "Willkommen bei myactivities.net! :)" %}</strong></p>
+            <p>{% trans "Bitte nutzen Sie das folgende Formular zum registrieren:" %}</p>
+            <form method="post" class="login-form">
+                {{ user_form.as_p }}
+                {% csrf_token %}
+                {% trans "Wo hängen Sie meistens rum?" %}
+                {{ location_form.as_p }}
+                <input type="submit" value="{% trans "Registrieren" %}">
+            </form>
+    </div>
     </div>
 {% endblock %}

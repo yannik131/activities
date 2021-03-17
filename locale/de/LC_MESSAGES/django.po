@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-16 21:25+0000\n"
+"POT-Creation-Date: 2021-03-17 21:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,86 +18,117 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: account/forms.py:9
+#: account/forms.py:13 account/forms.py:147
 msgid "Passwort"
 msgstr ""
 
-#: account/forms.py:11
+#: account/forms.py:15
 msgid "Passwort (erneut)"
 msgstr ""
 
-#: account/forms.py:18 account/forms.py:46 vacancies/forms.py:14
+#: account/forms.py:22 account/forms.py:69 vacancies/forms.py:14
 #: vacancies/templates/vacancies/vacancy_list.html:14
 msgid "Geschlecht"
 msgstr ""
 
-#: account/forms.py:19 account/forms.py:47
+#: account/forms.py:23 account/forms.py:70
 msgid "Geburtsjahr"
 msgstr ""
 
-#: account/forms.py:23
-msgid "15 Zeichen oder weniger!"
+#: account/forms.py:24
+msgid "E-Mail Adresse"
 msgstr ""
 
-#: account/forms.py:30
-msgid "Passwörter stimmen nicht überein!"
+#: account/forms.py:38 account/forms.py:60
+msgid "Ihr Nutzername kann keine E-Mail sein. Das wäre verwirrend, oder?"
 msgstr ""
 
-#: account/forms.py:36
-msgid "Nutzername zu lang (max. 15 Zeichen)"
-msgstr ""
-
-#: account/forms.py:48
-msgid "Profiltext"
+#: account/forms.py:43
+msgid "Es gibt schon einen Nutzer mit dieser E-Mail-Adresse."
 msgstr ""
 
 #: account/forms.py:49
-msgid "Profilbild"
-msgstr ""
-
-#: account/forms.py:53
-msgid "Falls Sie mal das Passwort zurücksetzen müssen. Optional."
-msgstr ""
-
-#: account/forms.py:54
-msgid "Für Bewerbungen."
+msgid "Passwörter stimmen nicht überein!"
 msgstr ""
 
 #: account/forms.py:55
+msgid "Nutzername zu lang (max. 15 Zeichen)"
+msgstr ""
+
+#: account/forms.py:71
+msgid "Profiltext"
+msgstr ""
+
+#: account/forms.py:72
+msgid "Profilbild"
+msgstr ""
+
+#: account/forms.py:76
+msgid "Für Login und Passwort-Zurücksetzen."
+msgstr ""
+
+#: account/forms.py:77
+msgid "Für Bewerbungen."
+msgstr ""
+
+#: account/forms.py:78
 msgid "Altersermittlung für Bewerbungen."
 msgstr ""
 
-#: account/forms.py:61
+#: account/forms.py:85
+msgid ""
+"Sie müssen mindestens 3 Jahre alt sein, um diese Seite überhaupt nutzen zu "
+"können. Jüngere Menschen haben noch kein Gedächtnis."
+msgstr ""
+
+#: account/forms.py:87
+msgid ""
+"Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind."
+msgstr ""
+
+#: account/forms.py:95
 msgid "Ihre Stadt"
 msgstr ""
 
-#: account/forms.py:70 vacancies/forms.py:55 vacancies/forms.py:99
+#: account/forms.py:104 vacancies/forms.py:55 vacancies/forms.py:99
 #: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:34
 msgid "Nachricht"
 msgstr ""
 
-#: account/forms.py:76
+#: account/forms.py:110
 #, python-brace-format
 msgid ""
 "Die Nachricht darf nicht länger als 150 Zeichen sein, ist aber {l} Zeichen "
 "lang."
 msgstr ""
 
-#: account/forms.py:81
+#: account/forms.py:115
 msgid "Nutzername"
 msgstr ""
 
-#: account/forms.py:86
+#: account/forms.py:120
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr ""
 
-#: account/forms.py:90
+#: account/forms.py:124
 msgid "Wirklich löschen?"
 msgstr ""
 
-#: account/forms.py:95
+#: account/forms.py:129
 msgid "Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen."
+msgstr ""
+
+#: account/forms.py:146
+msgid "E-Mail"
+msgstr ""
+
+#: account/forms.py:153
+msgid "Nutzer nicht gefunden."
+msgstr ""
+
+#: account/forms.py:155
+msgid "Passwort falsch."
 msgstr ""
 
 #: account/models.py:18
@@ -172,31 +203,31 @@ msgstr ""
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr ""
 
-#: account/models.py:157
+#: account/models.py:160
 msgid "Ausstehend"
 msgstr ""
 
-#: account/models.py:158
+#: account/models.py:161
 msgid "Angenommen"
 msgstr ""
 
-#: account/models.py:159
+#: account/models.py:162
 msgid "Abgelehnt"
 msgstr ""
 
-#: account/models.py:203 vacancies/models.py:29
+#: account/models.py:206 vacancies/models.py:29
 msgid "Land"
 msgstr ""
 
-#: account/models.py:204 vacancies/models.py:30
+#: account/models.py:207 vacancies/models.py:30
 msgid "Bundesland"
 msgstr ""
 
-#: account/models.py:205 vacancies/models.py:31
+#: account/models.py:208 vacancies/models.py:31
 msgid "Landkreis"
 msgstr ""
 
-#: account/models.py:206 vacancies/models.py:32
+#: account/models.py:209 vacancies/models.py:32
 msgid "Stadt"
 msgstr ""
 
@@ -597,18 +628,33 @@ msgstr ""
 msgid "Nächste"
 msgstr ""
 
-#: account/templates/account/register.html:4
-#: account/templates/account/register.html:8
-#: account/templates/account/register.html:15
-#: account/templates/registration/login.html:38
+#: account/templates/account/register.html:6
+#: account/templates/account/register.html:13
+#: account/templates/account/register.html:22
+#: account/templates/registration/login.html:32
 msgid "Registrieren"
 msgstr ""
 
-#: account/templates/account/register.html:9
-msgid "Sie können sich mit dem folgenden Formular registrieren. "
+#: account/templates/account/register.html:11
+#: account/templates/registration/login.html:12
+msgid "Nutzer gesamt: "
 msgstr ""
 
 #: account/templates/account/register.html:12
+#: account/templates/registration/login.html:13
+msgid "Online: "
+msgstr ""
+
+#: account/templates/account/register.html:15
+#: account/templates/registration/login.html:16
+msgid "Willkommen bei myactivities.net! :)"
+msgstr ""
+
+#: account/templates/account/register.html:16
+msgid "Bitte nutzen Sie das folgende Formular zum registrieren:"
+msgstr ""
+
+#: account/templates/account/register.html:20
 msgid "Wo hängen Sie meistens rum?"
 msgstr ""
 
@@ -618,12 +664,9 @@ msgid "Registriert"
 msgstr ""
 
 #: account/templates/account/register_done.html:8
-#, python-format
-msgid "Sie haben sich erfolgreich mit dem Nutzernamen %(v0)s registriert"
-msgstr ""
-
-#: account/templates/account/register_done.html:8
-msgid "Sie können sich jetzt einloggen."
+msgid ""
+"Ihnen wurde soeben eine Aktivierungs-E-Mail zugesendet. Klicken Sie auf den "
+"Link in der E-Mail, um Ihren Account zu aktivieren."
 msgstr ""
 
 #: account/templates/account/request_accepted.html:4
@@ -774,6 +817,32 @@ msgstr ""
 msgid "OK!"
 msgstr ""
 
+#: account/templates/registration/activation_email.html:3 account/views.py:214
+msgid "E-Mail Aktivierung"
+msgstr ""
+
+#: account/templates/registration/activation_email.html:5
+msgid "Hallo"
+msgstr ""
+
+#: account/templates/registration/activation_email.html:6
+msgid ""
+"Ihr Account wurde erfolgreich erstellt. Klicken Sie auf den folgenden Link, "
+"um ihn zu aktivieren."
+msgstr ""
+
+#: account/templates/registration/activation_failed.html:7
+msgid "Aktivierung fehlgeschlagen"
+msgstr ""
+
+#: account/templates/registration/activation_failed.html:10
+msgid "Aktivierung fehlgeschlagen."
+msgstr ""
+
+#: account/templates/registration/activation_failed.html:11
+msgid "Der Aktivierungslink ist ungültig."
+msgstr ""
+
 #: account/templates/registration/logged_out.html:4
 #: account/templates/registration/logged_out.html:7
 msgid "Ausgeloggt"
@@ -789,45 +858,19 @@ msgstr ""
 
 #: account/templates/registration/login.html:7
 #: account/templates/registration/login.html:14
-#: account/templates/registration/login.html:28
+#: account/templates/registration/login.html:23
 msgid "Einloggen"
 msgstr ""
 
-#: account/templates/registration/login.html:12
-msgid "Nutzer gesamt: "
-msgstr ""
-
-#: account/templates/registration/login.html:13
-msgid "Online: "
-msgstr ""
-
-#: account/templates/registration/login.html:16
-msgid "Fehler beim Einloggen"
-msgstr ""
-
 #: account/templates/registration/login.html:17
-msgid "Zurück zum Login"
-msgstr ""
-
-#: account/templates/registration/login.html:18
-msgid ""
-"Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der "
-"Account möglicherweise gesperrt."
-msgstr ""
-
-#: account/templates/registration/login.html:21
-msgid "Willkommen bei myactivities.net! :)"
-msgstr ""
-
-#: account/templates/registration/login.html:22
 msgid "Was ist das hier?"
 msgstr ""
 
-#: account/templates/registration/login.html:23
+#: account/templates/registration/login.html:18
 msgid "Bitte nutzen Sie das folgende Formular zum einloggen:"
 msgstr ""
 
-#: account/templates/registration/login.html:34
+#: account/templates/registration/login.html:28
 #: account/templates/registration/password_reset_complete.html:4
 #: account/templates/registration/password_reset_confirm.html:4
 #: account/templates/registration/password_reset_confirm.html:7
@@ -922,23 +965,31 @@ msgid ""
 "Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
 msgstr ""
 
-#: account/views.py:50
+#: account/views.py:58
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
 "senden."
 msgstr ""
 
-#: account/views.py:71
+#: account/views.py:79
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr ""
 
-#: account/views.py:106
+#: account/views.py:114
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr ""
 
-#: account/views.py:127
+#: account/views.py:135
 msgid "Diese Freundschaft existiert nicht mehr."
+msgstr ""
+
+#: account/views.py:169
+msgid "Änderungen gespeichert."
+msgstr ""
+
+#: account/views.py:214
+msgid "Aktivierungs-E-Mail"
 msgstr ""
 
 #: activities/settings/base.py:154

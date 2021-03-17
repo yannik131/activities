@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm, AccountDeleteForm
+from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm, AccountDeleteForm, LoginForm
 from .models import Location, FriendRequest, User, Friendship
 from django.http import HttpResponseRedirect
 from django.utils import timezone
@@ -12,6 +12,14 @@ from .utils import get_location
 from activities.language_subdomain_middleware import get_prefix
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.core.mail import EmailMultiAlternatives
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_bytes, force_text
+from django.conf import settings
+from django.urls import reverse
+from django.template.loader import render_to_string
+from django.contrib.auth import login as auth_login
 
 
 @login_required
@@ -141,8 +149,10 @@ def register(request):
         if user_form.is_valid() and location_form.is_valid():
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data['password'])
-            new_user.location =get_location(location_form.cleaned_data['address'])
+            new_user.location = get_location(location_form.cleaned_data['address'])
+            new_user.is_active = False
             new_user.save()
+            send_account_activation_email(request, new_user)
             return render(request, 'account/register_done.html', {'new_user': new_user})
     else:
         user_form = UserRegistrationForm(initial=dict(birth_year=1990))
@@ -156,6 +166,7 @@ def edit(request):
         user_form = UserEditForm(instance=request.user, data=request.POST, files=request.FILES)
         if user_form.is_valid():
             user_form.save()
+            messages.add_message(request, messages.INFO, _('Änderungen gespeichert.'))
     else:
         user_form = UserEditForm(instance=request.user)
     return render(request, 'account/edit.html', {'user_form': user_form, 'location': request.user.location.as_dict()})
@@ -192,7 +203,47 @@ def delete(request):
     else:
         delete_form = AccountDeleteForm()
     return render(request, 'account/delete.html', dict(delete_form=delete_form))
+    
+def send_account_activation_email(request, user):
+    from_email = settings.DEFAULT_FROM_EMAIL
+    recipients = [user.email]
+    uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
+    token = default_token_generator.make_token(user)
+    activation_url = request.build_absolute_uri(f'/account/activate/{uidb64}/{token}/')
+    html_content = render_to_string('registration/activation_email.html', dict(user=user, activation_url=activation_url))
+    email = EmailMultiAlternatives(_('E-Mail Aktivierung'), _('Aktivierungs-E-Mail'), settings.DEFAULT_FROM_EMAIL, recipients)
+    email.attach_alternative(html_content, 'text/html')
+    email.send()
+    
 
+def activate(request, uidb64=None, token=None):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except User.DoesNotExist:
+        user = None
+    if user and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+        auth_login(request, user)
+        return HttpResponseRedirect(request.build_absolute_uri('/'))
+    else:
+        return HttpResponseRedirect(request.build_absolute_uri('/account/activation_failed/'))
+        
+def activation_failed(request):
+    return render(request, 'registration/activation_failed.html')
+
+
+def login(request):
+    if request.method == 'POST':
+        login_form = LoginForm(request.POST)
+        if login_form.is_valid():
+            user = login_form.user
+            auth_login(request, user)
+            return HttpResponseRedirect(request.build_absolute_uri('/'))
+    else:
+        login_form = LoginForm()
+    return render(request, 'registration/login.html', dict(form=login_form))
 
 def handler404(request, exception=None):
     return render(request, "account/404.html", dict())

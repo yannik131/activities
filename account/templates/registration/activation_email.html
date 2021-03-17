@@ -1,0 +1,9 @@
+{% load i18n %}
+<html>
+    <title>{% trans 'E-Mail Aktivierung' %}</title>
+    <body>
+        <p>{% trans 'Hallo' %} {{ user }}!</p>
+        <p>{% trans 'Ihr Account wurde erfolgreich erstellt. Klicken Sie auf den folgenden Link, um ihn zu aktivieren.' %}</p>
+        <p><a href='{{ activation_url }}'>{{ activation_url }}</a></p>
+    </body>
+</html>

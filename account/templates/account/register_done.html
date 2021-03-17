@@ -5,5 +5,5 @@
 
 {% block content %}
     <h1>{% blocktrans %}Registriert{% endblocktrans %}</h1>
-    <p>{% blocktrans with v0=new_user.username %}Sie haben sich erfolgreich mit dem Nutzernamen {{ v0 }} registriert{% endblocktrans %}. <a href="{% url 'account:login' %}">{% blocktrans %}Sie können sich jetzt einloggen.{% endblocktrans %}</a></p>
+    <p>{% blocktrans %}Ihnen wurde soeben eine Aktivierungs-E-Mail zugesendet. Klicken Sie auf den Link in der E-Mail, um Ihren Account zu aktivieren.{% endblocktrans %}</a></p>
 {% endblock %}

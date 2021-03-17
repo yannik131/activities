@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-16 21:25+0000\n"
-"PO-Revision-Date: 2021-03-16 22:26+0100\n"
+"POT-Creation-Date: 2021-03-17 21:21+0000\n"
+"PO-Revision-Date: 2021-03-17 22:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -18,65 +18,88 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.2\n"
 
-#: account/forms.py:9
+#: account/forms.py:13 account/forms.py:147
 msgid "Passwort"
 msgstr "Password"
 
-#: account/forms.py:11
+#: account/forms.py:15
 msgid "Passwort (erneut)"
 msgstr "Password (again)"
 
-#: account/forms.py:18 account/forms.py:46 vacancies/forms.py:14
+#: account/forms.py:22 account/forms.py:69 vacancies/forms.py:14
 #: vacancies/templates/vacancies/vacancy_list.html:14
 msgid "Geschlecht"
 msgstr "Gender"
 
-#: account/forms.py:19 account/forms.py:47
+#: account/forms.py:23 account/forms.py:70
 msgid "Geburtsjahr"
 msgstr "Birth year"
 
-#: account/forms.py:23
-msgid "15 Zeichen oder weniger!"
-msgstr "15 characters or less!"
+#: account/forms.py:24
+msgid "E-Mail Adresse"
+msgstr "E-mail address"
 
-#: account/forms.py:30
+#: account/forms.py:38 account/forms.py:60
+msgid "Ihr Nutzername kann keine E-Mail sein. Das wäre verwirrend, oder?"
+msgstr ""
+"Your username can't be an email address. That would be confusing, wouldn't "
+"it?"
+
+#: account/forms.py:43
+msgid "Es gibt schon einen Nutzer mit dieser E-Mail-Adresse."
+msgstr "An account with this email already exists."
+
+#: account/forms.py:49
 msgid "Passwörter stimmen nicht überein!"
 msgstr "Passwords don't match!"
 
-#: account/forms.py:36
+#: account/forms.py:55
 msgid "Nutzername zu lang (max. 15 Zeichen)"
 msgstr "Username too long (15 chars max)."
 
-#: account/forms.py:48
+#: account/forms.py:71
 msgid "Profiltext"
 msgstr "Profile text"
 
-#: account/forms.py:49
+#: account/forms.py:72
 msgid "Profilbild"
 msgstr "Profile picture"
 
-#: account/forms.py:53
-msgid "Falls Sie mal das Passwort zurücksetzen müssen. Optional."
-msgstr "In case you want to reset the password. Optional."
+#: account/forms.py:76
+msgid "Für Login und Passwort-Zurücksetzen."
+msgstr "Required for login and password reset."
 
-#: account/forms.py:54
+#: account/forms.py:77
 msgid "Für Bewerbungen."
 msgstr "For applications."
 
-#: account/forms.py:55
+#: account/forms.py:78
 msgid "Altersermittlung für Bewerbungen."
 msgstr "Age for applications."
 
-#: account/forms.py:61
+#: account/forms.py:85
+msgid ""
+"Sie müssen mindestens 3 Jahre alt sein, um diese Seite überhaupt nutzen zu "
+"können. Jüngere Menschen haben noch kein Gedächtnis."
+msgstr ""
+"You need to be at least 3 years of age to use this site. Younger people "
+"don't have a memory yet."
+
+#: account/forms.py:87
+msgid ""
+"Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind."
+msgstr "It's statistically really unlikely that you are older than 120."
+
+#: account/forms.py:95
 msgid "Ihre Stadt"
 msgstr "Your city"
 
-#: account/forms.py:70 vacancies/forms.py:55 vacancies/forms.py:99
+#: account/forms.py:104 vacancies/forms.py:55 vacancies/forms.py:99
 #: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:34
 msgid "Nachricht"
 msgstr "Message"
 
-#: account/forms.py:76
+#: account/forms.py:110
 #, python-brace-format
 msgid ""
 "Die Nachricht darf nicht länger als 150 Zeichen sein, ist aber {l} Zeichen "
@@ -85,22 +108,34 @@ msgstr ""
 "The message can't be longer than 150 characters. It's {l} characters long. "
 "Fix this."
 
-#: account/forms.py:81
+#: account/forms.py:115
 msgid "Nutzername"
 msgstr "User name"
 
-#: account/forms.py:86
+#: account/forms.py:120
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr "There is no user with the user name {name}"
 
-#: account/forms.py:90
+#: account/forms.py:124
 msgid "Wirklich löschen?"
 msgstr "Really delete?"
 
-#: account/forms.py:95
+#: account/forms.py:129
 msgid "Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen."
-msgstr ""
+msgstr "Please confirm that you want to delete your account."
+
+#: account/forms.py:146
+msgid "E-Mail"
+msgstr "E-mail"
+
+#: account/forms.py:153
+msgid "Nutzer nicht gefunden."
+msgstr "User not found."
+
+#: account/forms.py:155
+msgid "Passwort falsch."
+msgstr "Password incorrect."
 
 #: account/models.py:18
 msgid "männlich"
@@ -174,31 +209,31 @@ msgstr "declined your friend request"
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr "rejected your friend request"
 
-#: account/models.py:157
+#: account/models.py:160
 msgid "Ausstehend"
 msgstr "Pending"
 
-#: account/models.py:158
+#: account/models.py:161
 msgid "Angenommen"
 msgstr "Accepted"
 
-#: account/models.py:159
+#: account/models.py:162
 msgid "Abgelehnt"
 msgstr "Declined"
 
-#: account/models.py:203 vacancies/models.py:29
+#: account/models.py:206 vacancies/models.py:29
 msgid "Land"
 msgstr "Country"
 
-#: account/models.py:204 vacancies/models.py:30
+#: account/models.py:207 vacancies/models.py:30
 msgid "Bundesland"
 msgstr "State"
 
-#: account/models.py:205 vacancies/models.py:31
+#: account/models.py:208 vacancies/models.py:31
 msgid "Landkreis"
 msgstr "County"
 
-#: account/models.py:206 vacancies/models.py:32
+#: account/models.py:209 vacancies/models.py:32
 msgid "Stadt"
 msgstr "City"
 
@@ -630,18 +665,33 @@ msgstr "of"
 msgid "Nächste"
 msgstr "Next"
 
-#: account/templates/account/register.html:4
-#: account/templates/account/register.html:8
-#: account/templates/account/register.html:15
-#: account/templates/registration/login.html:38
+#: account/templates/account/register.html:6
+#: account/templates/account/register.html:13
+#: account/templates/account/register.html:22
+#: account/templates/registration/login.html:32
 msgid "Registrieren"
 msgstr "Register"
 
-#: account/templates/account/register.html:9
-msgid "Sie können sich mit dem folgenden Formular registrieren. "
-msgstr "Fill in the following form to register. "
+#: account/templates/account/register.html:11
+#: account/templates/registration/login.html:12
+msgid "Nutzer gesamt: "
+msgstr "Total users: "
 
 #: account/templates/account/register.html:12
+#: account/templates/registration/login.html:13
+msgid "Online: "
+msgstr "Online: "
+
+#: account/templates/account/register.html:15
+#: account/templates/registration/login.html:16
+msgid "Willkommen bei myactivities.net! :)"
+msgstr "Welcome to myactivities.net! :)"
+
+#: account/templates/account/register.html:16
+msgid "Bitte nutzen Sie das folgende Formular zum registrieren:"
+msgstr "Please use the following form to register:"
+
+#: account/templates/account/register.html:20
 msgid "Wo hängen Sie meistens rum?"
 msgstr "Where do you usually hang out?"
 
@@ -651,13 +701,12 @@ msgid "Registriert"
 msgstr "Registered"
 
 #: account/templates/account/register_done.html:8
-#, python-format
-msgid "Sie haben sich erfolgreich mit dem Nutzernamen %(v0)s registriert"
-msgstr "You've successfully registered with the user name %(v0)s"
-
-#: account/templates/account/register_done.html:8
-msgid "Sie können sich jetzt einloggen."
-msgstr "You can now log in."
+msgid ""
+"Ihnen wurde soeben eine Aktivierungs-E-Mail zugesendet. Klicken Sie auf den "
+"Link in der E-Mail, um Ihren Account zu aktivieren."
+msgstr ""
+"You've been sent an activation email. Click the link in said email to "
+"activate your account."
 
 #: account/templates/account/request_accepted.html:4
 #: account/templates/account/request_accepted.html:7
@@ -807,6 +856,33 @@ msgstr "Posts are publicly visible on your profile page."
 msgid "OK!"
 msgstr "OK!"
 
+#: account/templates/registration/activation_email.html:3 account/views.py:214
+msgid "E-Mail Aktivierung"
+msgstr "E-mail activation"
+
+#: account/templates/registration/activation_email.html:5
+msgid "Hallo"
+msgstr "Hello"
+
+#: account/templates/registration/activation_email.html:6
+msgid ""
+"Ihr Account wurde erfolgreich erstellt. Klicken Sie auf den folgenden Link, "
+"um ihn zu aktivieren."
+msgstr ""
+"Your account has been successfully created. Click the link to activate it."
+
+#: account/templates/registration/activation_failed.html:7
+msgid "Aktivierung fehlgeschlagen"
+msgstr "Activation failed"
+
+#: account/templates/registration/activation_failed.html:10
+msgid "Aktivierung fehlgeschlagen."
+msgstr "Activation failed."
+
+#: account/templates/registration/activation_failed.html:11
+msgid "Der Aktivierungslink ist ungültig."
+msgstr "The activation link is not valid."
+
 #: account/templates/registration/logged_out.html:4
 #: account/templates/registration/logged_out.html:7
 msgid "Ausgeloggt"
@@ -822,47 +898,19 @@ msgstr "log in again."
 
 #: account/templates/registration/login.html:7
 #: account/templates/registration/login.html:14
-#: account/templates/registration/login.html:28
+#: account/templates/registration/login.html:23
 msgid "Einloggen"
 msgstr "Login"
 
-#: account/templates/registration/login.html:12
-msgid "Nutzer gesamt: "
-msgstr "Total users: "
-
-#: account/templates/registration/login.html:13
-msgid "Online: "
-msgstr "Online: "
-
-#: account/templates/registration/login.html:16
-msgid "Fehler beim Einloggen"
-msgstr "Error logging in"
-
 #: account/templates/registration/login.html:17
-msgid "Zurück zum Login"
-msgstr "Back to login"
-
-#: account/templates/registration/login.html:18
-msgid ""
-"Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der "
-"Account möglicherweise gesperrt."
-msgstr ""
-"Does the problem persist in spite of using the correct user name and "
-"password? Maybe your account has been banned."
-
-#: account/templates/registration/login.html:21
-msgid "Willkommen bei myactivities.net! :)"
-msgstr "Welcome to myactivities.net! :)"
-
-#: account/templates/registration/login.html:22
 msgid "Was ist das hier?"
 msgstr "What’s this about?"
 
-#: account/templates/registration/login.html:23
+#: account/templates/registration/login.html:18
 msgid "Bitte nutzen Sie das folgende Formular zum einloggen:"
 msgstr "Please use the following form to log in:"
 
-#: account/templates/registration/login.html:34
+#: account/templates/registration/login.html:28
 #: account/templates/registration/password_reset_complete.html:4
 #: account/templates/registration/password_reset_confirm.html:4
 #: account/templates/registration/password_reset_confirm.html:7
@@ -967,7 +1015,7 @@ msgstr ""
 "There is no city connected to this address. Please explicitly give the "
 "city's name (villages/districts may not be recognised)."
 
-#: account/views.py:50
+#: account/views.py:58
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
@@ -976,17 +1024,25 @@ msgstr ""
 "You've already sent a friend request to this user. As long as he doesn't "
 "delete it you can't send another one."
 
-#: account/views.py:71
+#: account/views.py:79
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr "You can't send yourself a friend request."
 
-#: account/views.py:106
+#: account/views.py:114
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr "You can't delete this request."
 
-#: account/views.py:127
+#: account/views.py:135
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr "This friendship doesn't exist anymore."
+
+#: account/views.py:169
+msgid "Änderungen gespeichert."
+msgstr "Changes saved."
+
+#: account/views.py:214
+msgid "Aktivierungs-E-Mail"
+msgstr "Activation email"
 
 #: activities/settings/base.py:154
 msgid "Deutsch"
@@ -2951,6 +3007,40 @@ msgstr "[Delete]"
 msgid " vor %(v0)s"
 msgstr " %(v0)s ago"
 
+#~ msgid "Zum Einloggen und Passwort-Zurücksetzen"
+#~ msgstr "Required for login and password reset."
+
+#~ msgid "Password"
+#~ msgstr "Password"
+
+#~ msgid "15 Zeichen oder weniger!"
+#~ msgstr "15 characters or less!"
+
+#~ msgid "Falls Sie mal das Passwort zurücksetzen müssen. Optional."
+#~ msgstr "In case you want to reset the password. Optional."
+
+#~ msgid "Sie können sich mit dem folgenden Formular registrieren. "
+#~ msgstr "Fill in the following form to register. "
+
+#~ msgid "Sie haben sich erfolgreich mit dem Nutzernamen %(v0)s registriert"
+#~ msgstr "You've successfully registered with the user name %(v0)s"
+
+#~ msgid "Sie können sich jetzt einloggen."
+#~ msgstr "You can now log in."
+
+#~ msgid "Fehler beim Einloggen"
+#~ msgstr "Error logging in"
+
+#~ msgid "Zurück zum Login"
+#~ msgstr "Back to login"
+
+#~ msgid ""
+#~ "Besteht das Problem trotz korrektem Nutzernamen und Passwort, ist der "
+#~ "Account möglicherweise gesperrt."
+#~ msgstr ""
+#~ "Does the problem persist in spite of using the correct user name and "
+#~ "password? Maybe your account has been banned."
+
 #~ msgid "Entgegenkommen"
 #~ msgstr "Cooperation"
 
@@ -3201,9 +3291,6 @@ msgstr " %(v0)s ago"
 
 #~ msgid "Hier registrieren."
 #~ msgstr "Register here."
-
-#~ msgid "Erforderlich für eine Passwort-Zurücksetzung."
-#~ msgstr "Required for password reset."
 
 #~ msgid ""
 #~ "Herzlich willkommen auf myactivities.net. Sieht alles noch ein wenig "

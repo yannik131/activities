@@ -27,7 +27,7 @@ body {
     float: right;
 }
 
-input[type='text'], textarea, select:focus {
+input, textarea, select {
     font-size: 16px;
 }
 
@@ -547,4 +547,8 @@ select:focus, select:hover {
     font-size: 16px;
     float: left;
     margin-left: 10px;
+}
+
+.errorlist {
+    color: yellow;
 }

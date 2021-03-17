@@ -5,7 +5,7 @@ from . import views
 app_name = 'account'
 
 urlpatterns = [
-    path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True), name='login'),
+    path('login/', views.login, name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
@@ -28,5 +28,7 @@ urlpatterns = [
     path('user_post_list/', views.user_post_list, name='user_post_list'),
     path('view_friendship/<int:id>/', views.view_friendship, name='view_friendship'),
     path('about/', views.about, name='about'),
-    path('delete/', views.delete, name='delete')
+    path('delete/', views.delete, name='delete'),
+    path('activation_failed/', views.activation_failed, name='activation_failed'),
+    path('activate/<uidb64>/<token>/', views.activate, name='activate')
 ]
