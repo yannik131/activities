@@ -90,6 +90,7 @@ function addApplet(div, trait) {
             positive_button.innerHTML = "{% trans 'Niedrig' %}";
         }
         weight_button.innerHTML = weights[trait][1]+"x";
+        weight_button.state = weights[trait][1];
     }
     div.appendChild(applet);
     //button farbe nach neurotizität oder nicht rot/grün machen
