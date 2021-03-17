@@ -183,12 +183,12 @@ LOGOUT_URL = 'account:logout'
 
 # Email stuff
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'myactivities.net@gmail.com'
-EMAIL_HOST_PASSWORD = 'I like cool dogs.'
+EMAIL_HOST = 'smtp.web.de'
+EMAIL_HOST_USER = 'myactivities.net@web.de'
+EMAIL_HOST_PASSWORD = 'My new password!'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'admin@myactivities.net'
+DEFAULT_FROM_EMAIL = 'myactivities.net@web.de'
 
 AUTH_USER_MODEL = 'account.User'
 

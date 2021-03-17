@@ -195,11 +195,11 @@ def delete(request):
 
 
 def handler404(request, exception=None):
-    return render(request, "account/404.html", dict(exception=exception))
+    return render(request, "account/404.html", dict())
     
     
 def handler403(request, exception=None):
-    return render(request, "account/403.html", dict(exception=exception))
+    return render(request, "account/403.html", dict())
 
 
 def handler500(request):
