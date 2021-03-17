@@ -4,6 +4,7 @@
 var weights = JSON.parse('{{ activity.weights_json|safe }}');
 
 const save_button = document.getElementById('save');
+const max_weight = 5;
 
 function imgClick(event) {
     if(!this.state) {
@@ -43,7 +44,7 @@ function weightClick(event) {
         return;
     }
     this.state++;
-    if(this.state == 4) {
+    if(this.state == max_weight+1) {
         this.state = 1;
     }
     weights[this.trait][1] = this.state;

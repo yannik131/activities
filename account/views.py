@@ -17,7 +17,6 @@ from django.core.mail import EmailMultiAlternatives
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes, force_text
 from django.conf import settings
-from django.urls import reverse
 from django.template.loader import render_to_string
 from django.contrib.auth import login as auth_login
 
