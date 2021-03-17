@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-17 21:26+0000\n"
-"PO-Revision-Date: 2021-03-17 22:26+0100\n"
+"POT-Creation-Date: 2021-03-17 21:35+0000\n"
+"PO-Revision-Date: 2021-03-17 22:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -126,8 +126,8 @@ msgid "Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen."
 msgstr "Please confirm that you want to delete your account."
 
 #: account/forms.py:151
-msgid "E-Mail"
-msgstr "E-mail"
+msgid "E-Mail oder Nutzername"
+msgstr "E-mail or username"
 
 #: account/forms.py:158
 msgid "Nutzer nicht gefunden."
@@ -3003,6 +3003,9 @@ msgstr "[Delete]"
 #, python-format
 msgid " vor %(v0)s"
 msgstr " %(v0)s ago"
+
+#~ msgid "E-Mail"
+#~ msgstr "E-mail"
 
 #~ msgid "Zum Einloggen und Passwort-Zurücksetzen"
 #~ msgstr "Required for login and password reset."

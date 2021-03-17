@@ -148,7 +148,7 @@ def authenticate(user_input, password):
     return False
 
 class LoginForm(forms.Form):
-    user_input = forms.CharField(max_length=25, label=_('E-Mail'))
+    user_input = forms.CharField(max_length=25, label=_('E-Mail oder Nutzername'))
     password = forms.CharField(max_length=100, label=_('Passwort'), widget=forms.PasswordInput())
     
     def clean(self):
