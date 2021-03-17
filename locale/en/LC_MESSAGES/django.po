@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-17 21:21+0000\n"
-"PO-Revision-Date: 2021-03-17 22:18+0100\n"
+"POT-Creation-Date: 2021-03-17 21:26+0000\n"
+"PO-Revision-Date: 2021-03-17 22:26+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.2\n"
 
-#: account/forms.py:13 account/forms.py:147
+#: account/forms.py:13 account/forms.py:152
 msgid "Passwort"
 msgstr "Password"
 
@@ -26,12 +26,12 @@ msgstr "Password"
 msgid "Passwort (erneut)"
 msgstr "Password (again)"
 
-#: account/forms.py:22 account/forms.py:69 vacancies/forms.py:14
+#: account/forms.py:22 account/forms.py:73 vacancies/forms.py:14
 #: vacancies/templates/vacancies/vacancy_list.html:14
 msgid "Geschlecht"
 msgstr "Gender"
 
-#: account/forms.py:23 account/forms.py:70
+#: account/forms.py:23 account/forms.py:74
 msgid "Geburtsjahr"
 msgstr "Birth year"
 
@@ -57,27 +57,27 @@ msgstr "Passwords don't match!"
 msgid "Nutzername zu lang (max. 15 Zeichen)"
 msgstr "Username too long (15 chars max)."
 
-#: account/forms.py:71
+#: account/forms.py:75
 msgid "Profiltext"
 msgstr "Profile text"
 
-#: account/forms.py:72
+#: account/forms.py:76
 msgid "Profilbild"
 msgstr "Profile picture"
 
-#: account/forms.py:76
+#: account/forms.py:80
 msgid "Für Login und Passwort-Zurücksetzen."
 msgstr "Required for login and password reset."
 
-#: account/forms.py:77
+#: account/forms.py:81
 msgid "Für Bewerbungen."
 msgstr "For applications."
 
-#: account/forms.py:78
+#: account/forms.py:82
 msgid "Altersermittlung für Bewerbungen."
 msgstr "Age for applications."
 
-#: account/forms.py:85
+#: account/forms.py:90
 msgid ""
 "Sie müssen mindestens 3 Jahre alt sein, um diese Seite überhaupt nutzen zu "
 "können. Jüngere Menschen haben noch kein Gedächtnis."
@@ -85,21 +85,21 @@ msgstr ""
 "You need to be at least 3 years of age to use this site. Younger people "
 "don't have a memory yet."
 
-#: account/forms.py:87
+#: account/forms.py:92
 msgid ""
 "Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind."
 msgstr "It's statistically really unlikely that you are older than 120."
 
-#: account/forms.py:95
+#: account/forms.py:100
 msgid "Ihre Stadt"
 msgstr "Your city"
 
-#: account/forms.py:104 vacancies/forms.py:55 vacancies/forms.py:99
+#: account/forms.py:109 vacancies/forms.py:55 vacancies/forms.py:99
 #: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:34
 msgid "Nachricht"
 msgstr "Message"
 
-#: account/forms.py:110
+#: account/forms.py:115
 #, python-brace-format
 msgid ""
 "Die Nachricht darf nicht länger als 150 Zeichen sein, ist aber {l} Zeichen "
@@ -108,32 +108,32 @@ msgstr ""
 "The message can't be longer than 150 characters. It's {l} characters long. "
 "Fix this."
 
-#: account/forms.py:115
+#: account/forms.py:120
 msgid "Nutzername"
 msgstr "User name"
 
-#: account/forms.py:120
+#: account/forms.py:125
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr "There is no user with the user name {name}"
 
-#: account/forms.py:124
+#: account/forms.py:129
 msgid "Wirklich löschen?"
 msgstr "Really delete?"
 
-#: account/forms.py:129
+#: account/forms.py:134
 msgid "Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen."
 msgstr "Please confirm that you want to delete your account."
 
-#: account/forms.py:146
+#: account/forms.py:151
 msgid "E-Mail"
 msgstr "E-mail"
 
-#: account/forms.py:153
+#: account/forms.py:158
 msgid "Nutzer nicht gefunden."
 msgstr "User not found."
 
-#: account/forms.py:155
+#: account/forms.py:160
 msgid "Passwort falsch."
 msgstr "Password incorrect."
 
@@ -563,19 +563,16 @@ msgstr "a friend request."
 
 #: account/templates/account/home.html:13
 msgid ""
-"Schließen Sie Ihre Anmeldung ab, indem Sie Alter, E-Mail-Adresse und "
-"Geschlecht nachtragen: "
-msgstr "Finish your registration by specifying your age, e-mail and gender: "
+"Schließen Sie Ihre Anmeldung ab, indem Sie Alter und Geschlecht nachtragen: "
+msgstr "Finish your registration by specifying your age and gender: "
 
 #: account/templates/account/home.html:14
 msgid "Profil vervollständigen"
 msgstr "Complete registration"
 
 #: account/templates/account/home.html:15
-msgid ""
-"Ansonsten können Sie Ihr Passwort nicht zurücksetzen und/oder sich auf "
-"Leerstellen bewerben."
-msgstr "Otherwise you can't reset your password and/or apply to vacancies!"
+msgid "Ansonsten können Sie sich nicht auf Leerstellen bewerben."
+msgstr "Otherwise you can't apply to vacancies."
 
 #: account/templates/account/home.html:18
 msgid "Zu Ihren Posts"

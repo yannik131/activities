@@ -61,6 +61,10 @@ class UserRegistrationForm(forms.ModelForm):
 
 
 class UserEditForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].required = True
+    
     class Meta:
         model = get_user_model()
         fields = ('email', 'username', 'sex', 'birth_year', 'profile_text', 'image')
@@ -75,7 +79,8 @@ class UserEditForm(forms.ModelForm):
         help_texts = {
             'email': _('Für Login und Passwort-Zurücksetzen.'),
             'sex': _('Für Bewerbungen.'),
-            'birth_year': _('Altersermittlung für Bewerbungen.')
+            'birth_year': _('Altersermittlung für Bewerbungen.'),
+            'username': ''
         }
         
     def clean_birth_year(self):

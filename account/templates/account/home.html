@@ -10,9 +10,9 @@
 	<p>{% blocktrans with v0=user.username %}Willkommen, {{ v0 }}.{% endblocktrans %} {% trans 'Ist irgendwas? Schicken Sie' %} <a href="{% url 'account:detail' 'admin' %}">admin</a> {% trans 'eine Freundschaftsanfrage.' %}</p>
     {% if missing_fields %}
     <div class="missing-stuff">
-    {% trans 'Schließen Sie Ihre Anmeldung ab, indem Sie Alter, E-Mail-Adresse und Geschlecht nachtragen: ' %} 
+    {% trans 'Schließen Sie Ihre Anmeldung ab, indem Sie Alter und Geschlecht nachtragen: ' %} 
     <div class="button-like" onclick=openLink("{% url 'account:edit' %}")><img src="{% static 'icons/pen.png' %}">{% blocktrans %}Profil vervollständigen{% endblocktrans %}</div>
-    {% trans 'Ansonsten können Sie Ihr Passwort nicht zurücksetzen und/oder sich auf Leerstellen bewerben.' %}
+    {% trans 'Ansonsten können Sie sich nicht auf Leerstellen bewerben.' %}
     </div>
     {% endif %}
     <div class="button-like" onclick=openLink("{% url 'account:user_post_list' %}")><img src="{% static 'icons/post.png' %}">{% blocktrans %}Zu Ihren Posts{% endblocktrans %}</div>
