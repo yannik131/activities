@@ -183,12 +183,12 @@ LOGOUT_URL = 'account:logout'
 
 # Email stuff
 
-EMAIL_HOST = 'smtp.web.de'
-EMAIL_HOST_USER = 'yannik131@web.de'
-EMAIL_HOST_PASSWORD = 'Nämlich_auf_web.de'
-EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.myactivities.net'
+EMAIL_HOST_USER = 'admin@myactivities.net'
+EMAIL_HOST_PASSWORD = 'The cool email password.'
+EMAIL_PORT = 25
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'yannik131@web.de'
+DEFAULT_FROM_EMAIL = 'admin@myactivities.net'
 
 AUTH_USER_MODEL = 'account.User'
 

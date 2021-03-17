@@ -66,7 +66,7 @@ function next() {
             openLink("{% url 'character:overview' %}");
         }
 
-    }, 2000);
+    }, 20);
 }
 
 function back() {
