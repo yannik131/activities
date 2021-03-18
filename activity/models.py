@@ -31,11 +31,6 @@ class Activity(TranslatableModel):
     online = models.BooleanField(default=False)
     trait_weights = HStoreField(default=dict, blank=True)
     
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            self.trait_weights = create_trait_dict()
-        super().save(*args, **kwargs)
-    
     class Meta:
         verbose_name_plural = 'activities'
         ordering = ['-pk', 'type']
