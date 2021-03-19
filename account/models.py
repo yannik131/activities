@@ -41,9 +41,6 @@ class User(AbstractUser):
         'declined_friend_request': _('hat Ihre Freundschaftsanfrage abgelehnt'),
         'declined_application': _('hat Ihre Bewerbung abgelehnt')
     }
-    
-    class Meta:
-        unique_together = ['email']
 
     def friendships(self):
         return list(chain(self.from_friendships.all(), self.to_friendships.all()))

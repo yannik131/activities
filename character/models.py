@@ -14,7 +14,7 @@ class Suggestion(models.Model):
     score = models.PositiveSmallIntegerField()
     
     class Meta:
-        ordering = ['character', '-score']
+        ordering = ['character', '-score', 'activity']
     
 
 class Character(models.Model):
