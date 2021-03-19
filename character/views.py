@@ -9,6 +9,7 @@ from django.http import HttpResponseForbidden, HttpResponseRedirect
 from character.utils import create_trait_dict
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
+from shared.shared import paginate
 
 
 # Create your views here.
@@ -21,7 +22,8 @@ def overview(request):
     if request.user.character.current_question == request.user.character.question_limit:
         request.user.character.activity_suggestions.all().delete()
         request.user.character.calculate_suggestions()
-    return render(request, 'character/overview.html')
+        suggestions, page = paginate(request.user.character.activity_suggestions.all(), request, 6)
+    return render(request, 'character/overview.html', dict(suggestions=suggestions, start=(int(page)-1)*6))
     
 
 def quiz(request, limit=None):

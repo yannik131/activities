@@ -45,13 +45,14 @@
 <h2>{% trans 'Noch kein Testergebnis!' %}</h2>
 {% else %}
 <h2>{% trans 'Empfohlene Aktivitäten' %}</h2>
+{% include "account/pagination_component.html" with page=suggestions %}
 <div class="list">
-    {% for suggestion in user.character.activity_suggestions.all %}
+    {% for suggestion in suggestions %}
         <div class="item" onclick="location.href='{{ suggestion.activity.get_absolute_url }}'">
         {% load thumbnail %}
             <img src="{% thumbnail suggestion.activity.image 200x200 %}" class="image">
             <div class="title">
-                {{ forloop.counter }}. {{ suggestion.activity }}
+                {{ forloop.counter|add:start }}. {{ suggestion.activity }}
             </div>
             <div class="subtext">
                 {% trans "Score" %}: {{ suggestion.score }}%
