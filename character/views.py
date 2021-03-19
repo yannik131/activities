@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from account.models import User
 from .models import Character
 from shared.shared import log
-from activity.models import Activity
+from activity.models import Activity, Category
 from .utils import BIG_FIVE
 import json
 from django.http import HttpResponseForbidden, HttpResponseRedirect
@@ -10,27 +10,24 @@ from character.utils import create_trait_dict
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from shared.shared import paginate, log
+from django.db.models.aggregates import Count
 
 
 # Create your views here.
-def overview(request):
+def overview(request, category_name=None):
     if not request.user.character:
         character = Character()
         character.save()
         request.user.character = character
         request.user.save()
-    if request.user.character.current_question == request.user.character.question_limit:
-        request.user.character.activity_suggestions.all().delete()
-        request.user.character.calculate_suggestions()
-        suggestions = request.user.character.activity_suggestions.all()
-        log("all"+"-"*10)
-        for suggestion in suggestions:
-            log(suggestion.activity.name, suggestion.score)
-        suggestions, page = paginate(request.user.character.activity_suggestions.all(), request, 6)
-        log("paginated"+"-"*10)
-        for suggestion in suggestions:
-            log(suggestion.activity.name, suggestion.score)
-    return render(request, 'character/overview.html', dict(suggestions=suggestions, start=(int(page)-1)*6))
+    if request.user.character.presentable:
+        if category_name:
+            category = Category.objects.get(translations__name=category_name, translations__language_code=request.LANGUAGE_CODE)
+        else:
+            category = Category.objects.get(translations__name="Freizeit", translations__language_code="de")
+        suggestions = request.user.character.get_or_create_suggestions().filter(activity__in=category.activities.all())
+        suggestions, page = paginate(suggestions, request, 6)
+    return render(request, 'character/overview.html', dict(suggestions=suggestions, start=(int(page)-1)*6, categories=Category.objects.annotate(count=Count('activities')).filter(count__gt=0), chosen_category=category))
     
 
 def quiz(request, limit=None):
@@ -44,11 +41,7 @@ def quiz(request, limit=None):
     
     
 def reset_quiz(request):
-    request.user.character.current_question = 0
-    request.user.character.question_limit = None
-    request.user.character.traits = create_trait_dict()
-    request.user.character.activity_suggestions.all().delete()
-    request.user.character.save()
+    request.user.character.reset()
     return HttpResponseRedirect(request.build_absolute_uri('/character/overview/'))
     
     

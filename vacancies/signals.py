@@ -22,8 +22,8 @@ def application_created(instance: Application, created, **kwargs):
 
 @receiver(pre_save, sender=Application)
 def application_saved(instance: Application, **kwargs):
-    previous = Application.objects.filter(id=instance.id).first()
-    if previous:
+    if instance.pk is not None:
+        previous = Application.objects.get(id=instance.id)
         if previous.status != instance.status:
             ChatRoom.get_for_target(instance).delete()
             if instance.status == 'declined':

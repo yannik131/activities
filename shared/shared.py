@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.utils.timezone import now
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseNotFound
+from datetime import timedelta
 
 
 def paginate(object_list, request, limit=3):
@@ -67,6 +68,9 @@ def redirect_before_or_404(request):
     if "HTTP_REFERER" in request.META:
         return request.META['HTTP_REFERER']
     return HttpResponseNotFound()
+    
+def long_ago():
+    return now()-timedelta(weeks=1000)
 
 
 GERMAN_DATE_FMT = '%d.%m.%Y %H:%M'

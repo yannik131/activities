@@ -24,7 +24,9 @@
             <a href="{{ category.get_absolute_url }}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
         {% endfor %}
     </h2>
-    
+    {% if user.is_staff %}
+    <a class="center-container" style="font-weight: bold; margin-bottom: 10px; font-size: 24px" href="{% url 'character:edit_weights' activity.id %}">{% trans 'Gewichtungen bearbeiten' %}</a>
+    {% endif %}
     {% if is_member %}
     {% if activity.type == 'competitive' %}
     <div class="competitive">
@@ -45,9 +47,6 @@
         <img src="{% static 'icons/chat.png' %}">
         Chat
     </div>
-    {% if user.is_staff %}
-    <a class="center-container" style="font-weight: bold; margin-top: 10px" href="{% url 'character:edit_weights' activity.id %}">{% trans 'Gewichtungen bearbeiten' %}</a>
-    {% endif %}
          <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'activity:leave' activity.name %}")>{% trans "Austreten" %}</button></div></p>
         <h3>{% trans "Suche nach Mitgliedern" %}</h3>
         <p>{% include 'activity/location_selection.html' %}</p>

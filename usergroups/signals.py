@@ -37,8 +37,8 @@ def group_created(instance, created, **kwargs):
 
 @receiver(pre_save, sender=UserGroup)
 def group_changed(instance, **kwargs):
-    previous: UserGroup = UserGroup.objects.filter(id=instance.id).first()
-    if previous:
+    if instance.pk is not None:
+        previous: UserGroup = UserGroup.objects.get(id=instance.id)
         if previous.description != instance.description:
             notify(instance.members.all().exclude(id=instance.admin.id), instance, 'updated_description')
             

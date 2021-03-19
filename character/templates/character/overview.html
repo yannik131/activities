@@ -41,10 +41,22 @@
         240 {% trans 'Fragen' %} (~28 min)
     </div>
 {% endif %}
-{% if user.character.current_question != user.character.question_limit %}
+{% if not user.character.presentable %}
 <h2>{% trans 'Noch kein Testergebnis!' %}</h2>
 {% else %}
-<h2>{% trans 'Empfohlene Aktivitäten' %}</h2>
+<h2>{% trans 'Empfohlene Aktivitäten in ' %}<a href="{{ chosen_category.get_absolute_url }}">{{ chosen_category.verbose }}</a></h2>
+<div>{% trans 'Andere Kategorie wählen: ' %}</div>
+<div class="activity-horizontal-list">
+    {% for category in categories %}
+    <div class="item {% if category == chosen_category %}selected{% endif %}" onclick="location.href='{% url 'character:overview' category.name %}'">
+        {% load thumbnail %}
+        <img src="{% thumbnail category.image 200x200 %}" class="photo">
+        <div class="title">
+            {{ category }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% include "account/pagination_component.html" with page=suggestions %}
 <div class="list">
     {% for suggestion in suggestions %}

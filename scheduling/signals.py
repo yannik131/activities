@@ -36,7 +36,7 @@ def appointment_created(instance: Appointment, created, **kwargs):
 
 @receiver(pre_save, sender=Appointment)
 def appointment_saved(instance: Appointment, **kwargs):
-    previous = Appointment.objects.filter(id=instance.id).first()
-    if previous:
+    if instance.pk is not None:
+        previous = Appointment.objects.get(id=instance.id)
         if previous.start_time != instance.start_time:
             notify(instance.group.members.all(), instance.group.admin, 'has_moved_appointment', instance)
