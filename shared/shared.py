@@ -14,8 +14,10 @@ def paginate(object_list, request, limit=3):
         objects = paginator.page(page)
     except PageNotAnInteger:
         objects = paginator.page(1)
+        page = 1
     except EmptyPage:
         objects = paginator.page(paginator.num_pages)
+        page = paginator.num_pages
     return objects, page
 
 
