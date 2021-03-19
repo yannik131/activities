@@ -51,7 +51,7 @@
         {% load thumbnail %}
             <img src="{% thumbnail suggestion.activity.image 200x200 %}" class="image">
             <div class="title">
-                {{ suggestion.activity }}
+                {{ forloop.counter }}. {{ suggestion.activity }}
             </div>
             <div class="subtext">
                 {% trans "Score" %}: {{ suggestion.score }}%

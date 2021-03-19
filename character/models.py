@@ -54,5 +54,5 @@ class Character(models.Model):
             if max_score > 0:
                 scores.append((activity, round(score/max_score*100)))
         scores = sorted(scores, key=lambda t: t[1])
-        for score in scores[:5]:
+        for score in scores[:10]:
             Suggestion.objects.create(character=self, activity=score[0], score=score[1])

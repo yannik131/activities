@@ -10,6 +10,10 @@ from datetime import datetime
 
 
 class UserRegistrationForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].required = True
+        
     password = forms.CharField(label=_('Passwort'),
                                widget=forms.PasswordInput)
     password2 = forms.CharField(label=_('Passwort (erneut)'),
