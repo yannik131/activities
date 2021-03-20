@@ -23,6 +23,13 @@
     .sidemenu {
         display: none;
     }
+    .activity-horizontal-list {
+        max-height: 200px;
+        overflow-y: scroll;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin-bottom: 5px;
+    }
     
     .list .item {
         width: 125px;

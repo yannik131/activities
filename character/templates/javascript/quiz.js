@@ -63,10 +63,11 @@ function next() {
         button.style.backgroundColor = "#0087f7";
         info.innerHTML = "";
         if(current_question == limit) {
+            send({'type': 'character', 'action': 'done'});
             openLink("{% url 'character:overview' %}");
         }
 
-    }, 2000);
+    }, 20);
 }
 
 function back() {

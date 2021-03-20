@@ -3,6 +3,9 @@
 {% load static %}
 {% include "account/pagination.html" with page=posts %}
 <p></p>
+<script>
+    {% include 'javascript/post.js' %}
+</script>
 {% for post in posts %}
     <div class="post">
     <b><i>
@@ -10,6 +13,10 @@
         {% if post.author == user %}
             <a href="{% url 'wall:delete_post' post.id request.path %}">{% blocktrans %}[Löschen]{% endblocktrans %}</a>
         {% endif %}</i></b>
+        <br>
+        <div class="likes">
+            {{ post.liked_by.count }}x <img src="{% static 'icons/like.png' %}" height="25px"> {{ post.disliked_by.count }}x <img src="{% static 'icons/dislike.png' %}" height="25px">
+        </div>
         {{ post.message|markdown }}
         {% if post.audio %}
             <audio controls>
@@ -22,11 +29,46 @@
         {% elif post.image %}
             <img src="{{ post.image.url }}" style="width:320px;">
         {% endif %}
-        {% for comment in post.comments.all %}
-            <br/>
-            <a href="{{ comment.author.get_absolute_url }}">{{ comment.author }}</a>, {% blocktrans with v0=comment.created|timesince %} vor {{ v0 }}{% endblocktrans %}{% if comment.author == user %} <a href="{% url 'wall:delete_comment' comment.id request.path %}">{% blocktrans %}[Löschen]{% endblocktrans %}</a>{% endif %}: {{ comment.message }}
-        {% endfor %}
-        <div class="button-like" onclick=openLink("{% url 'wall:create_comment' post.id request.path %}")><img src="{% static 'icons/comment.png' %}">{% blocktrans %}Kommentieren{% endblocktrans %}</div>
+        <div style="max-height: 200px; overflow-y: scroll;">
+            {% for comment in post.comments.all %}
+                <br/>
+                <a href="{{ comment.author.get_absolute_url }}">{{ comment.author }}</a>, {% blocktrans with v0=comment.created|timesince %} vor {{ v0 }}{% endblocktrans %}{% if comment.author == user %} <a href="{% url 'wall:delete_comment' comment.id request.path %}">{% blocktrans %}[Löschen]{% endblocktrans %}</a>{% endif %}: {{ comment.message }}
+            {% endfor %}
+        </div>
+        <div class="competitive" style="margin-bottom: 5px; margin-top: 5px;" id="{{ post.id }}-comp" style="font-size: 16px">
+        {% if user in post.liked_by.all %}
+                <div class="left" id="{{ post.id }}-left" onclick=openLink("{% url 'wall:create_comment' post.id request.path %}")>
+                    <img src="{% static 'icons/comment.png' %}">
+                    {% blocktrans %}Kommentieren{% endblocktrans %}
+                </div>
+                <div class="right" id="{{ post.id }}-right" onclick=remove_like({{ post.id }})>
+                    <img src="{% static 'icons/remove.png' %}">
+                    {% trans 'Like zurücknehmen' %}
+                </div>
+            </div>
+        {% elif user in post.disliked_by.all %}
+                <div class="left" id="{{ post.id }}-left" onclick=openLink("{% url 'wall:create_comment' post.id request.path %}")>
+                    <img src="{% static 'icons/comment.png' %}">
+                    {% blocktrans %}Kommentieren{% endblocktrans %}
+                </div>
+                <div class="right" onclick=remove_dislike({{ post.id }})>
+                    <img src="{% static 'icons/remove.png' %}">
+                    {% trans 'Dislike zurücknehmen' %}
+                </div>
+            </div>
+        {% else %}
+                <div class="left" id="{{ post.id }}-left" style="width: 33%" onclick=openLink("{% url 'wall:create_comment' post.id request.path %}")>
+                    <img src="{% static 'icons/comment.png' %}">
+                    {% blocktrans %}Kommentieren{% endblocktrans %}
+                </div>
+                <div class="left" id="{{ post.id }}-middle" style="width: 33%" onclick=like({{ post.id }})>
+                    <img src="{% static 'icons/like.png' %}">
+                </div>
+                <div class="right" id="{{ post.id }}-right"  style="width: 33%" onclick=dislike({{ post.id }})>
+                    <img src="{% static 'icons/dislike.png' %}">
+                </div>
+            </div>
+        {% endif %}
     </div>
     {% empty %}
         <b>{% trans "Keine" %}.</b>

@@ -18,3 +18,12 @@ def create_trait_dict(default=0):
             traits[trait] = default
     return traits
     
+def calc_score(score, reference, inverted):
+    if score < reference:
+        result = 50/reference*score
+    else:
+        result = 50/(100-reference)*score+100-5000/(100-reference)
+    if inverted:
+        return 100-result
+    return result
+    

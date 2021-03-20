@@ -1,6 +1,7 @@
 from django.db.models.signals import pre_save, post_save, post_delete, m2m_changed
 from django.dispatch import receiver
-from .models import Activity, ActivityChange
+from .models import Activity
+from character.models import Global
 from notify.utils import notify
 from account.models import User
 from shared.shared import log
@@ -24,6 +25,6 @@ def activity_saved(instance, **kwargs):
     if instance.pk is not None:
         previous = Activity.objects.get(pk=instance.pk)
         if previous.trait_weights != instance.trait_weights:
-            change = ActivityChange.objects.first()
+            change = Global.get()
             change.last_update = timezone.now()
             change.save()

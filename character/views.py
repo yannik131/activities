@@ -20,6 +20,9 @@ def overview(request, category_name=None):
         character.save()
         request.user.character = character
         request.user.save()
+    suggestions = None
+    page = 0
+    category = None
     if request.user.character.presentable:
         if category_name:
             category = Category.objects.get(translations__name=category_name, translations__language_code=request.LANGUAGE_CODE)

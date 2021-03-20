@@ -5,6 +5,7 @@ from usergroups.models import UserGroup
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from shared.shared import paginate
+from django.utils.translation import gettext_lazy as _
 
 
 class Post(models.Model):
@@ -21,7 +22,8 @@ class Post(models.Model):
     media_mime_type = models.CharField(max_length=50, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='posts')
     activity = models.ForeignKey(Activity, on_delete=models.CASCADE, related_name='posts', null=True, blank=True)
-    users_liked = models.ManyToManyField(User, related_name='liked_posts')
+    liked_by = models.ManyToManyField(User, related_name='liked_posts')
+    disliked_by = models.ManyToManyField(User, related_name='disliked_posts')
 
     class Meta:
         ordering = ('-created',)
@@ -44,6 +46,17 @@ class Post(models.Model):
             else:
                 object_list = post_list.filter(author__location__country=chosen_component)
         return paginate(object_list, request)
+        
+    def __str__(self):
+        return _('Post vom ') + str(self.created)
+        
+    def verbose(self):
+        if len(self.message) > 0:
+            return self.message[:10]
+        return self.__str__()
+        
+    def get_absolute_url(self):
+        return self.target.get_absolute_url()
 
 
 class Comment(models.Model):

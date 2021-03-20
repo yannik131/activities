@@ -61,3 +61,4 @@ def delete_comment(request, id, path):
         comment.delete()
         return HttpResponseRedirect(request.build_absolute_uri(slashify(path)))
     return handler403(request)
+    

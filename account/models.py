@@ -22,7 +22,7 @@ class User(AbstractUser):
     confirmed_appointments = models.ManyToManyField("scheduling.Appointment", related_name='participants')
     cancelled_appointments = models.ManyToManyField("scheduling.Appointment", related_name='cancellations')
     channel_name = models.CharField(max_length=100, null=True)
-    character = models.ForeignKey(Character, on_delete=models.SET_NULL, null=True)
+    character = models.OneToOneField(Character, on_delete=models.SET_NULL, null=True, related_name='user')
     action_strings = {
         'created': _('hat erstellt'),
         'has_new_friend': _('ist jetzt befreundet mit'),
@@ -39,7 +39,9 @@ class User(AbstractUser):
         'invited': _('hat Sie eingeladen'),
         'accepted_friend_request': _('hat Ihre Freundschaftsanfrage angenommen'),
         'declined_friend_request': _('hat Ihre Freundschaftsanfrage abgelehnt'),
-        'declined_application': _('hat Ihre Bewerbung abgelehnt')
+        'declined_application': _('hat Ihre Bewerbung abgelehnt'),
+        'likes': _('gefällt'),
+        'dislikes': _('missfällt')
     }
 
     def friendships(self):

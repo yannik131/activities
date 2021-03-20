@@ -10,6 +10,8 @@ from shared.shared import log
 from chat.utils import broadcast
 from multiplayer.utils import change
 from activity.models import Activity
+from wall.models import Post
+from character.models import Global
 
 
 class NotificationConsumer(WebsocketConsumer):
@@ -110,6 +112,8 @@ class NotificationConsumer(WebsocketConsumer):
             self.handle_rtc_message(text_data)
         elif text_data['type'] == 'character':
             self.handle_character_message(text_data)
+        elif text_data['type'] == 'wall':
+            self.handle_wall_message(text_data)
 
     def handle_chat_message(self, text_data):
         chat_room_id = text_data['id']
@@ -163,7 +167,20 @@ class NotificationConsumer(WebsocketConsumer):
             activity = Activity.objects.get(id=text_data['id'])
             activity.trait_weights = json.loads(text_data['weights'])
             activity.save()
-        
+        elif text_data['action'] == 'done':
+            Global.normalize_traits()
+            
+    def handle_wall_message(self, text_data):
+        post = Post.objects.get(pk=text_data['id'])
+        if text_data['action'] == 'like':
+            post.liked_by.add(self.user)
+        elif text_data['action'] == 'dislike':
+            post.disliked_by.add(self.user)
+        elif text_data['action'] == 'remove_like':
+            post.liked_by.remove(self.user)
+        elif text_data['action'] == 'remove_dislike':
+            post.disliked_by.remove(self.user)
+    
     def chat_message(self, event):
         self.send(text_data=json.dumps(event))
 

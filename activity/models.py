@@ -69,10 +69,6 @@ class Activity(TranslatableModel):
 def category_directory_path(instance, filename):
         return f"categories/{instance.name}.{filename.split('.')[-1]}"
         
-        
-class ActivityChange(models.Model):
-    last_update = models.DateTimeField(default=timezone.now)
-    
 
 class Category(TranslatableModel):
     translations = TranslatedFields(
