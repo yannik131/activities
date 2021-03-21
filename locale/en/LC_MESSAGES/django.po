@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-21 15:27+0000\n"
-"PO-Revision-Date: 2021-03-21 16:28+0100\n"
+"POT-Creation-Date: 2021-03-21 15:57+0000\n"
+"PO-Revision-Date: 2021-03-21 16:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -821,6 +821,7 @@ msgid "Kategorien"
 msgstr "Categories"
 
 #: account/templates/account/sidemenu.html:12
+#: competitions/templates/competitions/user_overview.html:5
 msgid "Matches & Turniere"
 msgstr "Matches & Tournaments"
 
@@ -1850,13 +1851,13 @@ msgid "Chat-Liste"
 msgstr "Chat-list"
 
 #: chat/templates/chat/chat_list.html:16
-#: competitions/templates/competitions/user_overview.html:8
+#: competitions/templates/competitions/user_overview.html:24
 msgid "Matches"
 msgstr "Matches"
 
 #: chat/templates/chat/chat_list.html:22
 #: competitions/templates/competitions/overview.html:11
-#: competitions/templates/competitions/user_overview.html:14
+#: competitions/templates/competitions/user_overview.html:30
 msgid "Turniere"
 msgstr "Tournaments"
 
@@ -2172,8 +2173,6 @@ msgid "%(v0)s: Matches & Turniere "
 msgstr "%(v0)s: Matches & Tournaments "
 
 #: competitions/templates/competitions/overview.html:9
-#: competitions/templates/competitions/user_overview.html:4
-#: competitions/templates/competitions/user_overview.html:7
 #, python-format
 msgid "%(v0)s: Matches & Turniere"
 msgstr "%(v0)s: Matches & Tournaments"
@@ -2209,11 +2208,32 @@ msgstr "Generate next round"
 msgid "Spielplan"
 msgstr "Match schedule"
 
-#: competitions/templates/competitions/user_overview.html:15
+#: competitions/templates/competitions/user_overview.html:8
+#: multiplayer/templates/multiplayer/lobby.html:19
+msgid "Online"
+msgstr "Online"
+
+#: competitions/templates/competitions/user_overview.html:12
+msgid "Durak-Lobby"
+msgstr "Durak lobby"
+
+#: competitions/templates/competitions/user_overview.html:16
+msgid "Skat-Lobby"
+msgstr "Skat lobby"
+
+#: competitions/templates/competitions/user_overview.html:20
+msgid "Doko-Lobby"
+msgstr "Doko lobby"
+
+#: competitions/templates/competitions/user_overview.html:23
+msgid "Offline"
+msgstr "Offline"
+
+#: competitions/templates/competitions/user_overview.html:31
 msgid "Verwaltete Turniere:"
 msgstr "As admin:"
 
-#: competitions/templates/competitions/user_overview.html:21
+#: competitions/templates/competitions/user_overview.html:37
 msgid "Als Teilnehmer:"
 msgstr "As member:"
 
@@ -2248,24 +2268,24 @@ msgstr ""
 "There has not yet been written a round algorithm for this game. Send admin a "
 "friend request and ask him if he can write one :)"
 
-#: competitions/views.py:88
+#: competitions/views.py:91
 #, python-brace-format
 msgid "{act}-Turnier"
 msgstr "{act}-tournament"
 
-#: competitions/views.py:162
+#: competitions/views.py:165
 msgid "Es wurde noch keine Runde erstellt."
 msgstr "No rounds have been created."
 
-#: competitions/views.py:175
+#: competitions/views.py:178
 msgid "Es stehen noch Ergebnisse der letzten Runde offen."
 msgstr "There are still matches without results in the last round."
 
-#: competitions/views.py:183
+#: competitions/views.py:186
 msgid "Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden."
 msgstr "No teams can be formed with this number of players."
 
-#: competitions/views.py:196
+#: competitions/views.py:199
 msgid "Es stehen noch Ergebnisse offen."
 msgstr "There are still matches without results."
 
@@ -2512,10 +2532,6 @@ msgstr "Close, leave and reset the game?"
 #: multiplayer/templates/multiplayer/game.html:14
 msgid "Ciao!"
 msgstr "Ciao!"
-
-#: multiplayer/templates/multiplayer/lobby.html:19
-msgid "Online"
-msgstr "Online"
 
 #: multiplayer/templates/multiplayer/lobby.html:32
 msgid "Beigetreten"
