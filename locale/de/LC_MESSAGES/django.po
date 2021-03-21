@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-21 15:57+0000\n"
+"POT-Creation-Date: 2021-03-21 18:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,6 +129,10 @@ msgstr ""
 
 #: account/forms.py:164
 msgid "Passwort falsch."
+msgstr ""
+
+#: account/forms.py:166
+msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr ""
 
 #: account/models.py:18
@@ -1143,27 +1147,27 @@ msgid "Gewichte verteilen"
 msgstr ""
 
 #: character/templates/character/edit_weights.html:34
-#: character/templates/character/overview.html:80
+#: character/templates/character/overview.html:81
 msgid "Neurotizismus"
 msgstr ""
 
 #: character/templates/character/edit_weights.html:40
-#: character/templates/character/overview.html:86
+#: character/templates/character/overview.html:87
 msgid "Extraversion"
 msgstr ""
 
 #: character/templates/character/edit_weights.html:46
-#: character/templates/character/overview.html:92
+#: character/templates/character/overview.html:93
 msgid "Offenheit für Erfahrungen"
 msgstr ""
 
 #: character/templates/character/edit_weights.html:52
-#: character/templates/character/overview.html:98
+#: character/templates/character/overview.html:99
 msgid "Gewissenhaftigkeit"
 msgstr ""
 
 #: character/templates/character/edit_weights.html:58
-#: character/templates/character/overview.html:104
+#: character/templates/character/overview.html:105
 msgid "Verträglichkeit"
 msgstr ""
 
@@ -1222,11 +1226,18 @@ msgstr ""
 msgid "Score"
 msgstr ""
 
-#: character/templates/character/overview.html:117
+#: character/templates/character/overview.html:79
+#, python-format
+msgid ""
+"Werte verglichen mit den Durchschnittswerten. <br>+50%%: Maximal "
+"überdurchschnittlich, -50%%: Maximal unterdurchschnittlich"
+msgstr ""
+
+#: character/templates/character/overview.html:118
 msgid "Zurücksetzen"
 msgstr ""
 
-#: character/templates/character/overview.html:122
+#: character/templates/character/overview.html:123
 msgid ""
 "Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich "
 "die errechneten Punktesummen in den Kategorien werden für die Berechnung von "

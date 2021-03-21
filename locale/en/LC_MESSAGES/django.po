@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-21 15:57+0000\n"
-"PO-Revision-Date: 2021-03-21 16:59+0100\n"
+"POT-Creation-Date: 2021-03-21 18:01+0000\n"
+"PO-Revision-Date: 2021-03-21 19:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -136,6 +136,10 @@ msgstr "User not found."
 #: account/forms.py:164
 msgid "Passwort falsch."
 msgstr "Password incorrect."
+
+#: account/forms.py:166
+msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
+msgstr "The account has not yet been activated! Check your e-mails."
 
 #: account/models.py:18
 msgid "männlich"
@@ -1195,27 +1199,27 @@ msgid "Gewichte verteilen"
 msgstr "Distribute weights"
 
 #: character/templates/character/edit_weights.html:34
-#: character/templates/character/overview.html:80
+#: character/templates/character/overview.html:81
 msgid "Neurotizismus"
 msgstr "Neuroticism"
 
 #: character/templates/character/edit_weights.html:40
-#: character/templates/character/overview.html:86
+#: character/templates/character/overview.html:87
 msgid "Extraversion"
 msgstr "Extraversion"
 
 #: character/templates/character/edit_weights.html:46
-#: character/templates/character/overview.html:92
+#: character/templates/character/overview.html:93
 msgid "Offenheit für Erfahrungen"
 msgstr "Openness to experience"
 
 #: character/templates/character/edit_weights.html:52
-#: character/templates/character/overview.html:98
+#: character/templates/character/overview.html:99
 msgid "Gewissenhaftigkeit"
 msgstr "Conscientiousness"
 
 #: character/templates/character/edit_weights.html:58
-#: character/templates/character/overview.html:104
+#: character/templates/character/overview.html:105
 msgid "Verträglichkeit"
 msgstr "Agreeableness"
 
@@ -1282,11 +1286,20 @@ msgstr "Choose a category: "
 msgid "Score"
 msgstr "Score"
 
-#: character/templates/character/overview.html:117
+#: character/templates/character/overview.html:79
+#, python-format
+msgid ""
+"Werte verglichen mit den Durchschnittswerten. <br>+50%%: Maximal "
+"überdurchschnittlich, -50%%: Maximal unterdurchschnittlich"
+msgstr ""
+"Values compared to the average. <br>+50%%: Maximally above average, -50%%: "
+"Maximally below average"
+
+#: character/templates/character/overview.html:118
 msgid "Zurücksetzen"
 msgstr "Reset"
 
-#: character/templates/character/overview.html:122
+#: character/templates/character/overview.html:123
 msgid ""
 "Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich "
 "die errechneten Punktesummen in den Kategorien werden für die Berechnung von "
