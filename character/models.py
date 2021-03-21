@@ -98,7 +98,7 @@ class Global(models.Model):
             return
         single = Global.get()
         characters = Character.objects.filter(current_question=F('question_limit'))
-        protection_count = 15
+        protection_count = 10
         n = characters.count()+protection_count
         summed_traits = create_trait_dict(default=50*protection_count)
         for traits, limit in characters.values_list('traits', 'question_limit'):
