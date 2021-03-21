@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-17 21:35+0000\n"
-"PO-Revision-Date: 2021-03-17 22:36+0100\n"
+"POT-Creation-Date: 2021-03-21 15:27+0000\n"
+"PO-Revision-Date: 2021-03-21 16:28+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -18,66 +18,66 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.2\n"
 
-#: account/forms.py:13 account/forms.py:152
+#: account/forms.py:17 account/forms.py:156
 msgid "Passwort"
 msgstr "Password"
 
-#: account/forms.py:15
+#: account/forms.py:19
 msgid "Passwort (erneut)"
 msgstr "Password (again)"
 
-#: account/forms.py:22 account/forms.py:73 vacancies/forms.py:14
+#: account/forms.py:26 account/forms.py:77 vacancies/forms.py:14
 #: vacancies/templates/vacancies/vacancy_list.html:14
 msgid "Geschlecht"
 msgstr "Gender"
 
-#: account/forms.py:23 account/forms.py:74
+#: account/forms.py:27 account/forms.py:78
 msgid "Geburtsjahr"
 msgstr "Birth year"
 
-#: account/forms.py:24
+#: account/forms.py:28
 msgid "E-Mail Adresse"
 msgstr "E-mail address"
 
-#: account/forms.py:38 account/forms.py:60
+#: account/forms.py:42 account/forms.py:64
 msgid "Ihr Nutzername kann keine E-Mail sein. Das wäre verwirrend, oder?"
 msgstr ""
 "Your username can't be an email address. That would be confusing, wouldn't "
 "it?"
 
-#: account/forms.py:43
+#: account/forms.py:47
 msgid "Es gibt schon einen Nutzer mit dieser E-Mail-Adresse."
 msgstr "An account with this email already exists."
 
-#: account/forms.py:49
+#: account/forms.py:53
 msgid "Passwörter stimmen nicht überein!"
 msgstr "Passwords don't match!"
 
-#: account/forms.py:55
+#: account/forms.py:59
 msgid "Nutzername zu lang (max. 15 Zeichen)"
 msgstr "Username too long (15 chars max)."
 
-#: account/forms.py:75
+#: account/forms.py:79
 msgid "Profiltext"
 msgstr "Profile text"
 
-#: account/forms.py:76
+#: account/forms.py:80
 msgid "Profilbild"
 msgstr "Profile picture"
 
-#: account/forms.py:80
+#: account/forms.py:84
 msgid "Für Login und Passwort-Zurücksetzen."
 msgstr "Required for login and password reset."
 
-#: account/forms.py:81
+#: account/forms.py:85
 msgid "Für Bewerbungen."
 msgstr "For applications."
 
-#: account/forms.py:82
+#: account/forms.py:86
 msgid "Altersermittlung für Bewerbungen."
 msgstr "Age for applications."
 
-#: account/forms.py:90
+#: account/forms.py:94
 msgid ""
 "Sie müssen mindestens 3 Jahre alt sein, um diese Seite überhaupt nutzen zu "
 "können. Jüngere Menschen haben noch kein Gedächtnis."
@@ -85,21 +85,21 @@ msgstr ""
 "You need to be at least 3 years of age to use this site. Younger people "
 "don't have a memory yet."
 
-#: account/forms.py:92
+#: account/forms.py:96
 msgid ""
 "Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind."
 msgstr "It's statistically really unlikely that you are older than 120."
 
-#: account/forms.py:100
+#: account/forms.py:104
 msgid "Ihre Stadt"
 msgstr "Your city"
 
-#: account/forms.py:109 vacancies/forms.py:55 vacancies/forms.py:99
+#: account/forms.py:113 vacancies/forms.py:55 vacancies/forms.py:99
 #: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:34
 msgid "Nachricht"
 msgstr "Message"
 
-#: account/forms.py:115
+#: account/forms.py:119
 #, python-brace-format
 msgid ""
 "Die Nachricht darf nicht länger als 150 Zeichen sein, ist aber {l} Zeichen "
@@ -108,32 +108,32 @@ msgstr ""
 "The message can't be longer than 150 characters. It's {l} characters long. "
 "Fix this."
 
-#: account/forms.py:120
+#: account/forms.py:124
 msgid "Nutzername"
 msgstr "User name"
 
-#: account/forms.py:125
+#: account/forms.py:129
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr "There is no user with the user name {name}"
 
-#: account/forms.py:129
+#: account/forms.py:133
 msgid "Wirklich löschen?"
 msgstr "Really delete?"
 
-#: account/forms.py:134
+#: account/forms.py:138
 msgid "Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen."
 msgstr "Please confirm that you want to delete your account."
 
-#: account/forms.py:151
+#: account/forms.py:155
 msgid "E-Mail oder Nutzername"
 msgstr "E-mail or username"
 
-#: account/forms.py:158
+#: account/forms.py:162
 msgid "Nutzer nicht gefunden."
 msgstr "User not found."
 
-#: account/forms.py:160
+#: account/forms.py:164
 msgid "Passwort falsch."
 msgstr "Password incorrect."
 
@@ -209,31 +209,39 @@ msgstr "declined your friend request"
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr "rejected your friend request"
 
-#: account/models.py:160
+#: account/models.py:43
+msgid "gefällt"
+msgstr "likes"
+
+#: account/models.py:44
+msgid "missfällt"
+msgstr "dislikes"
+
+#: account/models.py:159
 msgid "Ausstehend"
 msgstr "Pending"
 
-#: account/models.py:161
+#: account/models.py:160
 msgid "Angenommen"
 msgstr "Accepted"
 
-#: account/models.py:162
+#: account/models.py:161
 msgid "Abgelehnt"
 msgstr "Declined"
 
-#: account/models.py:206 vacancies/models.py:29
+#: account/models.py:205 vacancies/models.py:29
 msgid "Land"
 msgstr "Country"
 
-#: account/models.py:207 vacancies/models.py:30
+#: account/models.py:206 vacancies/models.py:30
 msgid "Bundesland"
 msgstr "State"
 
-#: account/models.py:208 vacancies/models.py:31
+#: account/models.py:207 vacancies/models.py:31
 msgid "Landkreis"
 msgstr "County"
 
-#: account/models.py:209 vacancies/models.py:32
+#: account/models.py:208 vacancies/models.py:32
 msgid "Stadt"
 msgstr "City"
 
@@ -360,7 +368,7 @@ msgid "Mir doch egal!"
 msgstr "I don't care!"
 
 #: account/templates/account/delete.html:4
-#: account/templates/account/edit.html:25
+#: account/templates/account/edit.html:29
 msgid "Account löschen"
 msgstr "Delete your account"
 
@@ -483,6 +491,14 @@ msgstr "Click here if you want to change your address."
 msgid "Ohne"
 msgstr "None"
 
+#: account/templates/account/edit.html:24
+#: account/templates/registration/password_change_form.html:4
+#: account/templates/registration/password_change_form.html:7
+#: account/templates/registration/password_reset_done.html:4
+#: account/templates/registration/password_reset_done.html:7
+msgid "Passwort ändern"
+msgstr "Change password"
+
 #: account/templates/account/edit_address.html:4
 #: account/templates/account/edit_address.html:7
 msgid "Adresse ändern"
@@ -583,8 +599,8 @@ msgid "Sie sind zurzeit Mitglied folgender Aktivitäten:"
 msgstr "You are currently a member of the following activities:"
 
 #: account/templates/account/home.html:22
-msgid "Aktivitäten finden"
-msgstr "Find activities"
+msgid "Persönlichkeitstest & Empfehlungen"
+msgstr "Personality test & suggestions"
 
 #: account/templates/account/home.html:27
 msgid "Hier ist noch nichts!"
@@ -653,7 +669,7 @@ msgstr "Page"
 
 #: account/templates/account/pagination.html:9
 #: account/templates/account/pagination_component.html:9
-#: wall/templates/wall/post/post_loop.html:9
+#: wall/templates/wall/post/post_loop.html:12
 msgid "von"
 msgstr "of"
 
@@ -791,44 +807,42 @@ msgid "Homepage"
 msgstr "Homepage"
 
 #: account/templates/account/sidemenu.html:9
+#: character/templates/character/overview.html:5
+#: character/templates/character/overview.html:78
+msgid "Charakter"
+msgstr "Character"
+
+#: account/templates/account/sidemenu.html:10
 msgid "Aktivitäten"
 msgstr "Activities"
 
-#: account/templates/account/sidemenu.html:10
+#: account/templates/account/sidemenu.html:11
 msgid "Kategorien"
 msgstr "Categories"
 
-#: account/templates/account/sidemenu.html:11
+#: account/templates/account/sidemenu.html:12
 msgid "Matches & Turniere"
 msgstr "Matches & Tournaments"
 
-#: account/templates/account/sidemenu.html:12
+#: account/templates/account/sidemenu.html:13
 #: chat/templates/chat/chat_list.html:12
 #: usergroups/templates/usergroups/category_group_list.html:5
 #: usergroups/templates/usergroups/category_group_list.html:8
 msgid "Gruppen"
 msgstr "Groups"
 
-#: account/templates/account/sidemenu.html:13
+#: account/templates/account/sidemenu.html:14
 msgid "Chats"
 msgstr "Chats"
 
-#: account/templates/account/sidemenu.html:14
+#: account/templates/account/sidemenu.html:15
 msgid "Bewerbungen & Einladungen"
 msgstr "Applications & Invitations"
 
-#: account/templates/account/sidemenu.html:15
+#: account/templates/account/sidemenu.html:16
 #: chat/templates/chat/chat_list.html:14
 msgid "Freunde"
 msgstr "Friends"
-
-#: account/templates/account/sidemenu.html:16
-#: account/templates/registration/password_change_form.html:4
-#: account/templates/registration/password_change_form.html:7
-#: account/templates/registration/password_reset_done.html:4
-#: account/templates/registration/password_reset_done.html:7
-msgid "Passwort ändern"
-msgstr "Change password"
 
 #: account/templates/account/sidemenu.html:18
 msgid "Ausloggen"
@@ -840,7 +854,7 @@ msgid "Ihre Posts"
 msgstr "Your posts"
 
 #: account/templates/account/user_post_list.html:9
-#: activity/templates/activity/detail.html:64
+#: activity/templates/activity/detail.html:63
 #: usergroups/templates/usergroups/group_detail.html:73
 msgid "Post erstellen"
 msgstr "Create post"
@@ -853,7 +867,7 @@ msgstr "Posts are publicly visible on your profile page."
 msgid "OK!"
 msgstr "OK!"
 
-#: account/templates/registration/activation_email.html:3 account/views.py:214
+#: account/templates/registration/activation_email.html:3 account/views.py:213
 msgid "E-Mail Aktivierung"
 msgstr "E-mail activation"
 
@@ -1012,7 +1026,7 @@ msgstr ""
 "There is no city connected to this address. Please explicitly give the "
 "city's name (villages/districts may not be recognised)."
 
-#: account/views.py:58
+#: account/views.py:57
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
@@ -1021,23 +1035,23 @@ msgstr ""
 "You've already sent a friend request to this user. As long as he doesn't "
 "delete it you can't send another one."
 
-#: account/views.py:79
+#: account/views.py:78
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr "You can't send yourself a friend request."
 
-#: account/views.py:114
+#: account/views.py:113
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr "You can't delete this request."
 
-#: account/views.py:135
+#: account/views.py:134
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr "This friendship doesn't exist anymore."
 
-#: account/views.py:169
+#: account/views.py:168
 msgid "Änderungen gespeichert."
 msgstr "Changes saved."
 
-#: account/views.py:214
+#: account/views.py:213
 msgid "Aktivierungs-E-Mail"
 msgstr "Activation email"
 
@@ -1049,24 +1063,24 @@ msgstr "German"
 msgid "Englisch"
 msgstr "English"
 
-#: activity/models.py:26
+#: activity/models.py:27
 msgid "kompetitiv"
 msgstr "competitive"
 
-#: activity/models.py:27
+#: activity/models.py:28
 msgid "kreativ"
 msgstr "creative"
 
-#: activity/models.py:28
+#: activity/models.py:29
 msgid "konsumorientiert"
 msgstr "consumption"
 
-#: activity/models.py:47
+#: activity/models.py:43
 #, python-brace-format
 msgid "Aktivität: {name}"
 msgstr "Activity: {name}"
 
-#: activity/models.py:94
+#: activity/models.py:91
 #, python-brace-format
 msgid "Kategorie: {name}"
 msgstr "Category: {name}"
@@ -1119,42 +1133,42 @@ msgstr "Here's a list of all available categories"
 
 #: activity/templates/activity/detail.html:22
 msgid "Gehört zu: "
-msgstr "Belongs to:"
+msgstr "Belongs to: "
 
-#: activity/templates/activity/detail.html:33
+#: activity/templates/activity/detail.html:28
+msgid "Gewichtungen bearbeiten"
+msgstr "Edit weights"
+
+#: activity/templates/activity/detail.html:35
 msgid "Offline spielen"
 msgstr "Play offline"
 
-#: activity/templates/activity/detail.html:38
+#: activity/templates/activity/detail.html:40
 #: multiplayer/templates/multiplayer/create_match.html:4
 msgid "Online spielen"
 msgstr "Play online"
 
-#: activity/templates/activity/detail.html:49
-msgid "Gewichtungen bearbeiten"
-msgstr "Edit weights"
-
-#: activity/templates/activity/detail.html:51
+#: activity/templates/activity/detail.html:50
 #: competitions/templates/competitions/match_detail.html:35
 #: competitions/templates/competitions/tournament_detail.html:37
 #: usergroups/templates/usergroups/group_detail.html:37
 msgid "Austreten"
 msgstr "Leave"
 
-#: activity/templates/activity/detail.html:52
+#: activity/templates/activity/detail.html:51
 msgid "Suche nach Mitgliedern"
 msgstr "Members"
 
-#: activity/templates/activity/detail.html:58
+#: activity/templates/activity/detail.html:57
 msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
 msgstr "If you want to see the members, you need to enter the activity."
 
-#: activity/templates/activity/detail.html:60
+#: activity/templates/activity/detail.html:59
 #: multiplayer/templates/javascript/lobby.js:46
 msgid "Beitreten"
 msgstr "Join"
 
-#: activity/templates/activity/detail.html:63
+#: activity/templates/activity/detail.html:62
 msgid "Beiträge"
 msgstr "Posts"
 
@@ -1180,38 +1194,33 @@ msgid "Gewichte verteilen"
 msgstr "Distribute weights"
 
 #: character/templates/character/edit_weights.html:34
-#: character/templates/character/overview.html:67
+#: character/templates/character/overview.html:80
 msgid "Neurotizismus"
 msgstr "Neuroticism"
 
 #: character/templates/character/edit_weights.html:40
-#: character/templates/character/overview.html:73
+#: character/templates/character/overview.html:86
 msgid "Extraversion"
 msgstr "Extraversion"
 
 #: character/templates/character/edit_weights.html:46
-#: character/templates/character/overview.html:79
+#: character/templates/character/overview.html:92
 msgid "Offenheit für Erfahrungen"
 msgstr "Openness to experience"
 
 #: character/templates/character/edit_weights.html:52
-#: character/templates/character/overview.html:85
+#: character/templates/character/overview.html:98
 msgid "Gewissenhaftigkeit"
 msgstr "Conscientiousness"
 
 #: character/templates/character/edit_weights.html:58
-#: character/templates/character/overview.html:91
+#: character/templates/character/overview.html:104
 msgid "Verträglichkeit"
 msgstr "Agreeableness"
 
 #: character/templates/character/edit_weights.html:67
 msgid "Speichern"
 msgstr "Save"
-
-#: character/templates/character/overview.html:5
-#: character/templates/character/overview.html:65
-msgid "Charakter"
-msgstr "Character"
 
 #: character/templates/character/overview.html:12
 msgid "Charakterübersicht"
@@ -1261,18 +1270,22 @@ msgid "Noch kein Testergebnis!"
 msgstr "No test result yet!"
 
 #: character/templates/character/overview.html:47
-msgid "Empfohlene Aktivitäten"
-msgstr "Suggested activities"
+msgid "Empfohlene Aktivitäten in "
+msgstr "Suggested activities in "
 
-#: character/templates/character/overview.html:57
+#: character/templates/character/overview.html:48
+msgid "Andere Kategorie wählen: "
+msgstr "Choose a category: "
+
+#: character/templates/character/overview.html:70
 msgid "Score"
 msgstr "Score"
 
-#: character/templates/character/overview.html:104
+#: character/templates/character/overview.html:117
 msgid "Zurücksetzen"
 msgstr "Reset"
 
-#: character/templates/character/overview.html:109
+#: character/templates/character/overview.html:122
 msgid ""
 "Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich "
 "die errechneten Punktesummen in den Kategorien werden für die Berechnung von "
@@ -1427,19 +1440,19 @@ msgstr "Self-discipline"
 msgid "Besonnenheit"
 msgstr "Cautiousness"
 
-#: character/templates/javascript/edit_weights.js:29
-#: character/templates/javascript/edit_weights.js:89
+#: character/templates/javascript/edit_weights.js:30
+#: character/templates/javascript/edit_weights.js:90
 msgid "Niedrig"
 msgstr "Low"
 
-#: character/templates/javascript/edit_weights.js:34
-#: character/templates/javascript/edit_weights.js:67
+#: character/templates/javascript/edit_weights.js:35
+#: character/templates/javascript/edit_weights.js:68
 msgid "Hoch"
 msgstr "High"
 
-#: character/templates/javascript/edit_weights.js:121
+#: character/templates/javascript/edit_weights.js:123
 msgid "Noch keine Gewichte verteilt!"
-msgstr "No weights have yet been distributed."
+msgstr "No weights have yet been distributed!"
 
 #: character/templates/javascript/overview.js:14
 msgid "Klicke erneut zum Zurücksetzen."
@@ -1828,7 +1841,7 @@ msgstr ""
 msgid "Alle Fragen wurden beantwortet!"
 msgstr "All question have been answered!"
 
-#: character/views.py:30
+#: character/views.py:39
 msgid "Wählen Sie zuerst einen der drei Fragebogen aus, bevor Sie beginnen."
 msgstr "Please choose on of the three questionnaires before you start."
 
@@ -2180,7 +2193,7 @@ msgid "Anmeldeschluss: %(v0)s"
 msgstr "Deadline %(v0)s"
 
 #: competitions/templates/competitions/tournament_detail.html:33
-#: wall/templates/wall/post/post_loop.html:32
+#: wall/templates/wall/post/post_loop.html:74
 msgid "Keine"
 msgstr "None"
 
@@ -2968,8 +2981,24 @@ msgstr "This activity is not in the selected category."
 msgid "Kommentar"
 msgstr "Comment"
 
+#: wall/models.py:51
+msgid "Post vom "
+msgstr "Post on the "
+
+#: wall/templates/javascript/post.js:28
+#: wall/templates/wall/post/post_loop.html:46
+msgid "Like zurücknehmen"
+msgstr "Delete like"
+
+#: wall/templates/javascript/post.js:31
+#: wall/templates/wall/post/post_loop.html:56
+msgid "Dislike zurücknehmen"
+msgstr "Delete dislike"
+
 #: wall/templates/wall/post/create_comment.html:4
-#: wall/templates/wall/post/post_loop.html:29
+#: wall/templates/wall/post/post_loop.html:42
+#: wall/templates/wall/post/post_loop.html:52
+#: wall/templates/wall/post/post_loop.html:62
 msgid "Kommentieren"
 msgstr "Comment"
 
@@ -2994,15 +3023,18 @@ msgstr ""
 "Attention: Posts are public. Watch your language and don't upload "
 "copyrighted, offensive or inappropriate material."
 
-#: wall/templates/wall/post/post_loop.html:11
-#: wall/templates/wall/post/post_loop.html:27
+#: wall/templates/wall/post/post_loop.html:14
+#: wall/templates/wall/post/post_loop.html:35
 msgid "[Löschen]"
 msgstr "[Delete]"
 
-#: wall/templates/wall/post/post_loop.html:27
+#: wall/templates/wall/post/post_loop.html:35
 #, python-format
 msgid " vor %(v0)s"
 msgstr " %(v0)s ago"
+
+#~ msgid "Aktivitäten finden"
+#~ msgstr "Find activities"
 
 #~ msgid "E-Mail"
 #~ msgstr "E-mail"
