@@ -62,7 +62,6 @@ for(var i = 0; i < 5; i++) {
     }
     percent = (sum-MIN_TRAIT_VALUE*6)/(6*(MAX_TRAIT_VALUE-MIN_TRAIT_VALUE));
     score = calc_score(percent*100, normalized_sum/6);
-    console.log(normalized_sum/6, percent, score);
     diff = Math.round(score-50);
     prefix = diff >= 0? "+" : "";
     title.style.color = get_color(score/100, i == 0);
