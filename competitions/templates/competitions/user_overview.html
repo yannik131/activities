@@ -1,10 +1,26 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
-{% block title %}{% blocktrans with v0=user.username %}{{ v0 }}: Matches & Turniere{% endblocktrans %}{% endblock %}
+{% block title %}{% blocktrans %}Matches & Turniere{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>{% blocktrans with v0=user.username %}{{ v0 }}: Matches & Turniere{% endblocktrans %}</h1>
+    <h1 class="center-container">{% trans 'Online' %}</h2>
+    <div class="competitive">
+        <div class="left" style="width: 33%" onclick=openLink("{% url 'multiplayer:lobby' durak.name %}")>
+            <img src="{% static 'icons/lobby.png' %}">
+            {% blocktrans %}Durak-Lobby{% endblocktrans %}
+        </div>
+        <div class="left" style="width: 33%" onclick=openLink("{% url 'multiplayer:lobby' skat.name %}")>
+            <img src="{% static 'icons/lobby.png' %}">
+            {% trans 'Skat-Lobby' %}
+        </div>
+        <div class="right" style="width: 33%" onclick=openLink("{% url 'multiplayer:lobby' doko.name %}")>
+            <img src="{% static 'icons/lobby.png' %}">
+            {% trans 'Doko-Lobby' %}
+        </div>
+    </div>
+    <h1 class="center-container">{% trans 'Offline' %}</h1>
     <h2>{% blocktrans %}Matches{% endblocktrans %}</h2>
     <ul>
         {% for match in user.matches.all %}

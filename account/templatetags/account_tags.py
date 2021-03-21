@@ -34,7 +34,7 @@ SECTIONS = {
     'chat': ['/chat'],
     'vacancies': ['/vacancies'],
     'friends': ['/account/friend'],
-    'account': ['/account/edit', '/account/password_change'],
+    'account': ['/account/edit', '/account/password_change', '/account/delete'],
     'character': ['/character']
 }
 

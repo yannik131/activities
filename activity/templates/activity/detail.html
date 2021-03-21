@@ -17,7 +17,7 @@
     {% endif %}
     <h1 class="center-container">{{ activity.verbose }}</h1>
     <p class="center-container"><i>{{ activity.description }}</i></p>
-    <p class="center-container"><i><span id="info"></span></i></p>
+    <p class="center-container"><b><i><span id="info"></span></i></b></p>
     <h2>
         {% trans 'Gehört zu: ' %}
         {% for category in activity.categories.all %}

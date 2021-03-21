@@ -17,7 +17,10 @@ from django.contrib import messages
 
 
 def user_overview(request):
-    return render(request, 'competitions/user_overview.html')
+    durak = Activity.objects.get(translations__language_code='de', translations__name='Durak')
+    skat = Activity.objects.get(translations__language_code='de', translations__name='Skat')
+    doko = Activity.objects.get(translations__language_code='de', translations__name='Doppelkopf')
+    return render(request, 'competitions/user_overview.html', dict(durak=durak, skat=skat, doko=doko))
 
 
 def test(request):
