@@ -162,5 +162,7 @@ class LoginForm(forms.Form):
             raise forms.ValidationError(_('Nutzer nicht gefunden.'))
         elif self.user is False:
             raise forms.ValidationError(_('Passwort falsch.'))
+        elif self.user.is_active is False:
+            raise forms.ValidationError(_('Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails.'))
         return cd
     
