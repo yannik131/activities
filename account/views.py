@@ -241,6 +241,8 @@ def login(request):
             auth_login(request, user)
             return HttpResponseRedirect(request.build_absolute_uri('/'))
     else:
+        if request.user.is_authenticated:
+            return HttpResponseRedirect(request.build_absolute_uri('/'))
         login_form = LoginForm()
     return render(request, 'registration/login.html', dict(form=login_form))
 
