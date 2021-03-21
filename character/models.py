@@ -66,7 +66,7 @@ class Character(models.Model):
             for trait in activity.trait_weights:
                 weight = json.loads(activity.trait_weights[trait])
                 percent = round((user_traits[trait]-MIN_TRAIT_VALUE)/(MAX_TRAIT_VALUE-MIN_TRAIT_VALUE)*100)
-                score += weight[1]*calc_score(percent, normalized[trait], weight[0])
+                score += weight[1]*calc_score(percent, normalized[trait], weight[0] == 0)
                 max_score += weight[1]*100
             scores.append((activity, round(score/max_score*100)))
         scores = sorted(scores, key=lambda t: t[1])
