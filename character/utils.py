@@ -19,9 +19,14 @@ def create_trait_dict(default=0):
     return traits
     
 def calc_score(score, reference, inverted):
-    result = 50/(100-reference)*score+100-5000/(100-reference)
+    if reference >= 50:
+        result = 50/(100-reference)*score+100-5000/(100-reference)
+    else:
+        result = 50/reference*score
     if result < 0:
         result = 0
+    elif result > 100:
+        result = 100
     if inverted:
         return 100-result
     return result
