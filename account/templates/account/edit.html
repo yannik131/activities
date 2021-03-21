@@ -19,7 +19,11 @@
             <li>{{ key }}: <b>{% if value %}{{ value }} {% else %} {% trans "Ohne" %} {% endif %}</b></li>
         {% endfor %}
     </ul>
-    
+    <div class="button-like" onclick=openLink("{% url 'account:password_change' %}")>
+        <img src="{% static 'icons/password.png' %}">
+        {% trans 'Passwort ändern' %}
+    </div>
+    <br>
     <div class="button-like" id="delete" onclick=openLink("{% url 'account:delete' %}")>
         <img src="{% static 'icons/attention.png' %}">
         <span id="reset-text">{% trans 'Account löschen' %}</span>

@@ -25,40 +25,29 @@ def new_request_number_string(user):
     number = len(changed_requests(user))
     return n_parenthesis(number)
 
+SECTIONS = {
+    'home': ['/account/'],
+    'activities': ['/activity/list', '/activity/detail'],
+    'categories': ['/activity/category'],
+    'competitions': ['/multiplayer', '/competitions'],
+    'groups': ['/usergroups'],
+    'chat': ['/chat'],
+    'vacancies': ['/vacancies'],
+    'friends': ['/account/friend'],
+    'account': ['/account/edit', '/account/password_change'],
+    'character': ['/character']
+}
 
 @register.simple_tag
 def active_if(request, section):
     okay = mark_safe('class="active"')
     path = request.path
     if section == 'home':
-        if path == '/account/':
+        if path == SECTIONS['home'][0]:
             return okay
-    elif section == 'activities':
-        if path.startswith('/activity/list') or path.startswith('/activity/detail'):
-            return okay
-    elif section == 'categories':
-        if path.startswith('/activity/category'):
-            return okay
-    elif section == 'competitions':
-        if path.startswith('/competitions/'):
-            return okay
-    elif section == 'groups':
-        if path.startswith('/usergroups/'):
-            return okay
-    elif section == 'chat':
-        if path.startswith('/chat/'):
-            return okay
-    elif section == 'vacancies':
-        if path.startswith('/vacancies/'):
-            return okay
-    elif section == 'friends':
-        if path.startswith('/account/friend'):
-            return okay
-    elif section == 'password':
-        if path.startswith('/account/password_change'):
-            return okay
-    elif section == 'account':
-        if path.startswith('/account/edit'):
+        return ""
+    for p in SECTIONS[section]:
+        if path.startswith(p):
             return okay
     return ""
     

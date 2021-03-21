@@ -19,7 +19,7 @@
     <p>{% blocktrans %}Sie sind zurzeit Mitglied folgender Aktivitäten:{% endblocktrans %}</p>
     <div class="button-like" style="margin-bottom: 15px;" onclick=openLink("{% url 'character:overview' %}")>
         <img src="{% static 'icons/questionnaire.png' %}">
-        {% trans 'Aktivitäten finden' %}
+        {% trans 'Persönlichkeitstest & Empfehlungen' %}
     </div>
     {% if user.activities.all %}
         {% include "activity/loop.html" with activities=user.activities %}
