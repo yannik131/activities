@@ -26,14 +26,14 @@ def new_request_number_string(user):
     return n_parenthesis(number)
 
 SECTIONS = {
-    'home': ['/account/'],
+    'home': '/account/',
     'activities': ['/activity/list', '/activity/detail'],
     'categories': ['/activity/category'],
     'competitions': ['/multiplayer', '/competitions'],
     'groups': ['/usergroups'],
     'chat': ['/chat'],
     'vacancies': ['/vacancies'],
-    'friends': ['/account/friend'],
+    'friends': ['/account/friend', '/account/people_list'],
     'account': ['/account/edit', '/account/password_change', '/account/delete'],
     'character': ['/character']
 }
@@ -43,7 +43,7 @@ def active_if(request, section):
     okay = mark_safe('class="active"')
     path = request.path
     if section == 'home':
-        if path == SECTIONS['home'][0]:
+        if path == SECTIONS['home']:
             return okay
         return ""
     for p in SECTIONS[section]:

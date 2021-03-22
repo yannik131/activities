@@ -251,6 +251,17 @@ def login(request):
     return render(request, 'registration/login.html', dict(form=login_form))
     
     
+def people_list(request):
+    people = list()
+    for user in request.user.location.population.exclude(id=request.user.id):
+        if user.character and request.user.character:
+            people.append([user, request.user.character.congruence_with(user.character)])
+        else:
+            people.append([user, None])
+    people = sorted(people, key=lambda t: t[1] if t[1] else 0, reverse=True)
+    return render(request, 'account/people_list.html', dict(people=people))
+    
+    
 def impressum(request):
     return render(request, 'account/impressum.html')
 

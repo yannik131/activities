@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load thumbnail %}
+{% load static %}
+
+{% block title %}{% trans 'Personenliste' %}{% endblock %}
+
+{% block content %}
+<h2>{% trans 'Liste von Personen in' %}: {{ request.user.location.full_address }}</h2>
+<div class="center-container"><i>{% trans 'Sortiert nach Charakterübereinstimmung in %' %}</i></div>
+<div class="list">
+    {% for user, score in people %}
+        <div class="item" onclick="location.href='{{ user.get_absolute_url }}'" style="width: 150px; height: 150px">
+            {% if user.image %}
+                <img src="{% thumbnail user.image 200x200 %}" class="image" style="max-height: 50%">
+            {% else %}
+                <img src="{% static 'icons/users-and-groups-user@32px.png' %}" class="image">
+            {% endif %}
+            <div class="title">
+                {{ user }}{% if score %}: {{ score }}{% endif %}
+            </div>
+        </div>
+        {% empty %}
+            <div style="margin-top: 10px; font-weight: bold">{% trans 'Tote Hose! Hier ist ja echt niemand. Empfehlen Sie die Seite doch Ihren Freunden und schauen Sie, wie gut eure Charaktere übereinstimmen und welche Aktivitäten ihr vielleicht ausprobieren könnt :)' %}</div>
+    {% endfor %}
+</div>
+{% endblock %}

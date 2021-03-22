@@ -3,15 +3,21 @@
 {% load static %}
 {% load thumbnail %}
 
-{% block title %}{% blocktrans %}Anfragen{% endblocktrans %}{% endblock %}
+{% block title %}{% blocktrans %}Freunde{% endblocktrans %}{% endblock %}
 
 
 {% block content %}
     <h1 class="center-container">{% blocktrans %}Ihre Freunde{% endblocktrans %}</h1>
-    <div class="button-like" onclick=openLink("{% url 'account:send_custom_friend_request' %}")>
-        <img src="{% static 'icons/friendship.png' %}">
-        {% trans 'Anfrage senden' %}
+    <div class="competitive">
+        <div class="left" onclick=openLink("{% url 'account:send_custom_friend_request' %}")>
+            <img src="{% static 'icons/friendship.png' %}">
+            {% trans 'Anfrage senden' %}
+        </div>
+        <div class="right" onclick=openLink("{% url 'account:people_list' %}")>
+            <img src="{% static 'icons/friendship.png' %}">{% blocktrans %}In Ihrer Nähe suchen{% endblocktrans %}
+        </div>
     </div>
+    
     {% include 'account/user_loop.html' with users=user.friends %}
     {% if received_friend_requests %}
         <h1 class="center-container">{% trans 'Eingegange Anfragen' %}</h1>

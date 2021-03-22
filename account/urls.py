@@ -31,5 +31,6 @@ urlpatterns = [
     path('delete/', views.delete, name='delete'),
     path('activation_failed/', views.activation_failed, name='activation_failed'),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
-    path('impressum/', views.impressum, name='impressum')
+    path('impressum/', views.impressum, name='impressum'),
+    path('people_list/', views.people_list, name='people_list')
 ]

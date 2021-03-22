@@ -16,6 +16,7 @@
     </div>
     {% endif %}
     <div class="button-like" onclick=openLink("{% url 'account:user_post_list' %}")><img src="{% static 'icons/post.png' %}">{% blocktrans %}Zu Ihren Posts{% endblocktrans %}</div>
+    <div class="button-like" style="margin-top: 10px" onclick=openLink("{% url 'account:people_list' %}")><img src="{% static 'icons/friendship.png' %}">{% blocktrans %}Freunde in Ihrer Nähe finden{% endblocktrans %}</div>
     <p>{% blocktrans %}Sie sind zurzeit Mitglied folgender Aktivitäten:{% endblocktrans %}</p>
     <div class="button-like" style="margin-bottom: 15px;" onclick=openLink("{% url 'character:overview' %}")>
         <img src="{% static 'icons/questionnaire.png' %}">
