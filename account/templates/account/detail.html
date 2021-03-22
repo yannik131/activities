@@ -8,6 +8,11 @@
 {% block content %}
     <h1>{% trans "Profil von" %} {{ viewed_user.username }}</h1>
     {% if viewed_user.image %}<img src="{{ viewed_user.image.url }}" class="user-photo">{% endif %}
+    {% if score %}
+        <div class="center-container" style="margin-top: 10px; font-weight: bold;">
+            {% trans 'Charakterübereinstimmung' %}: {{ score }}%
+        </div>
+    {% endif %}
     {% if friendship %}
         
         {% if viewed_user.profile_text %}
@@ -21,11 +26,7 @@
             <img src="{% static 'icons/chat.png' %}">
             {% trans "Zum Chat" %}
         </div>
-        {% if score %}
-            <div class="center-container" style="margin-top: 10px; font-weight: bold;">
-                {% trans 'Charakterübereinstimmung' %}: {{ score }}%
-            </div>
-        {% endif %}
+        
         <p>{{ viewed_user.username }} {% trans "ist Mitglied folgender Aktivitäten" %}:</p>
         {% include "activity/loop.html" with activities=viewed_user.activities own=user.activities.all %}
         <div class="profile-rest">
