@@ -65,9 +65,6 @@
     .topmenu .logo .icon {
         display: none;
     }
-    footer {
-        left: 255px;
-    }
 }
 
 @media screen and (min-width: 1220px) and (orientation: landscape) {
@@ -94,9 +91,6 @@
 
     .envelope {
         display: none;
-    }
-    footer {
-        left: 0;
     }
 }
 
