@@ -46,7 +46,10 @@ def detail(request, username):
     friendship = request.user.get_friendship_for(user)
     posts = Post.objects.filter(author=user).all()
     posts, page = shared.paginate(posts, request)
-    score = request.user.character.congruence_with(user.character)
+    if request.character and user.character:
+        score = request.user.character.congruence_with(user.character)
+    else:
+        score = None
     return render(request, 'account/detail.html', {'viewed_user': user, 'friendship': friendship, 'requested': requested, 'posts': posts, 'score': score})
 
 
