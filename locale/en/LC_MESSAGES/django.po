@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-22 13:49+0000\n"
-"PO-Revision-Date: 2021-03-22 14:52+0100\n"
+"POT-Creation-Date: 2021-03-22 16:41+0000\n"
+"PO-Revision-Date: 2021-03-22 17:41+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -422,24 +422,28 @@ msgstr "Profile of"
 msgid "Zum Chat"
 msgstr "To the chat"
 
-#: account/templates/account/detail.html:24
+#: account/templates/account/detail.html:26
+msgid "Charakterübereinstimmung"
+msgstr "Character congruence"
+
+#: account/templates/account/detail.html:29
 msgid "ist Mitglied folgender Aktivitäten"
 msgstr "is a member of the following activities"
 
-#: account/templates/account/detail.html:27
+#: account/templates/account/detail.html:32
 msgid "Adresse"
 msgstr "Address"
 
-#: account/templates/account/detail.html:28
+#: account/templates/account/detail.html:33
 msgid "Freundschaft beenden"
 msgstr "End friendship"
 
-#: account/templates/account/detail.html:30
+#: account/templates/account/detail.html:35
 #, python-format
 msgid "Sie sind nicht mit %(user)s befreundet"
 msgstr "You aren't friends with %(user)s"
 
-#: account/templates/account/detail.html:32
+#: account/templates/account/detail.html:37
 msgid ""
 "Sie haben allerdings bereits eine Freundschaftsanfrage gesendet. Diese wurde "
 "entweder abgelehnt oder die Antwort steht noch aus"
@@ -447,11 +451,11 @@ msgstr ""
 "You've already sent a friend request. It was either declined or is still "
 "pending."
 
-#: account/templates/account/detail.html:34
+#: account/templates/account/detail.html:39
 msgid "Freundschaftsanfrage schicken"
 msgstr "Send friend request"
 
-#: account/templates/account/detail.html:37
+#: account/templates/account/detail.html:42
 #: usergroups/templates/usergroups/group_detail.html:71
 msgid "Posts"
 msgstr "Posts"
@@ -901,7 +905,7 @@ msgstr "Posts are publicly visible on your profile page."
 msgid "OK!"
 msgstr "OK!"
 
-#: account/templates/registration/activation_email.html:3 account/views.py:213
+#: account/templates/registration/activation_email.html:3 account/views.py:214
 msgid "E-Mail Aktivierung"
 msgstr "E-mail activation"
 
@@ -1060,7 +1064,7 @@ msgstr ""
 "There is no city connected to this address. Please explicitly give the "
 "city's name (villages/districts may not be recognised)."
 
-#: account/views.py:57
+#: account/views.py:58
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
@@ -1069,23 +1073,23 @@ msgstr ""
 "You've already sent a friend request to this user. As long as he doesn't "
 "delete it you can't send another one."
 
-#: account/views.py:78
+#: account/views.py:79
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr "You can't send yourself a friend request."
 
-#: account/views.py:113
+#: account/views.py:114
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr "You can't delete this request."
 
-#: account/views.py:134
+#: account/views.py:135
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr "This friendship doesn't exist anymore."
 
-#: account/views.py:168
+#: account/views.py:169
 msgid "Änderungen gespeichert."
 msgstr "Changes saved."
 
-#: account/views.py:213
+#: account/views.py:214
 msgid "Aktivierungs-E-Mail"
 msgstr "Activation email"
 

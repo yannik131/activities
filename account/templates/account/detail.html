@@ -21,8 +21,13 @@
             <img src="{% static 'icons/chat.png' %}">
             {% trans "Zum Chat" %}
         </div>
+        {% if score %}
+            <div class="center-container" style="margin-top: 10px; font-weight: bold;">
+                {% trans 'Charakterübereinstimmung' %}: {{ score }}%
+            </div>
+        {% endif %}
         <p>{{ viewed_user.username }} {% trans "ist Mitglied folgender Aktivitäten" %}:</p>
-        {% include "activity/loop.html" with activities=viewed_user.activities %}
+        {% include "activity/loop.html" with activities=viewed_user.activities own=user.activities.all %}
         <div class="profile-rest">
             <p>{% trans "Adresse" %}: {{ viewed_user.location.full_address }}</p>
             <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'account:destroy_friendship' viewed_user.id %}")>{% trans "Freundschaft beenden" %}</button></div></p>

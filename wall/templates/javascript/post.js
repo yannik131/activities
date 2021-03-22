@@ -33,13 +33,17 @@ function shrink_to_two(post_id, is_liked) {
 }
 
 function like(post_id) {
-    send({'type': 'wall', 'action': 'like', 'id': post_id});
-    shrink_to_two(post_id, true);
+    setTimeout(function() {
+        send({'type': 'wall', 'action': 'like', 'id': post_id});
+        shrink_to_two(post_id, true);
+    }, 100);
 }
 
 function dislike(post_id) {
-    send({'type': 'wall', 'action': 'dislike', 'id': post_id});
-    shrink_to_two(post_id, false);
+    setTimeout(function() {
+        send({'type': 'wall', 'action': 'dislike', 'id': post_id});
+        shrink_to_two(post_id, false);
+    }, 100);
 }
 
 function expand_to_three(post_id) {

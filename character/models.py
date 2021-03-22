@@ -45,6 +45,19 @@ class Character(models.Model):
     @property
     def presentable(self):
         return self.current_question == self.question_limit
+        
+    def congruence_with(self, character):
+        if not (self.presentable and character.presentable):
+            return None
+        score = 0
+        MAX_SELF_TRAIT_VALUE = 5*self.question_limit/30
+        MIN_SELF_TRAIT_VALUE = 1*self.question_limit/30
+        MAX_OTHER_TRAIT_VALUE = 5*character.question_limit/30
+        MIN_OTHER_TRAIT_VALUE = 1*character.question_limit/30
+        for trait in self.traits:
+            score += abs((int(character.traits[trait])-MIN_OTHER_TRAIT_VALUE)/(MAX_OTHER_TRAIT_VALUE-MIN_OTHER_TRAIT_VALUE)-(int(self.traits[trait])-MIN_SELF_TRAIT_VALUE)/(MAX_SELF_TRAIT_VALUE-MIN_SELF_TRAIT_VALUE))
+        score /= 0.3
+        return round(100-score)
     
     def get_or_create_suggestions(self):
         if not self.last_calculation or self.last_calculation < Global.get().last_update:
