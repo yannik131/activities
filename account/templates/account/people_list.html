@@ -17,7 +17,7 @@
                 <img src="{% static 'icons/users-and-groups-user@32px.png' %}" class="image">
             {% endif %}
             <div class="title">
-                {{ user }}{% if score %}: {{ score }}{% endif %}
+                {{ user }}{% if score %}: {{ score }}%{% endif %}
             </div>
         </div>
         {% empty %}
