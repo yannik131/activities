@@ -245,6 +245,10 @@ def login(request):
             return HttpResponseRedirect(request.build_absolute_uri('/'))
         login_form = LoginForm()
     return render(request, 'registration/login.html', dict(form=login_form))
+    
+    
+def impressum(request):
+    return render(request, 'account/impressum.html')
 
 def handler404(request, exception=None):
     return render(request, "account/404.html", dict())

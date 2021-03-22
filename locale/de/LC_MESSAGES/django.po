@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-21 18:01+0000\n"
+"POT-Creation-Date: 2021-03-22 13:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -585,6 +585,20 @@ msgstr ""
 msgid "Hier ist noch nichts!"
 msgstr ""
 
+#: account/templates/account/impressum.html:4
+#: account/templates/account/impressum.html:7 account/templates/base.html:110
+msgid "Impressum"
+msgstr ""
+
+#: account/templates/account/impressum.html:8
+msgid ""
+"Mein Name ist Yannik Schroeder und ich habe diese Website zusammengebastelt. "
+"Die Idee hier ist, zu sehen, welche Aktivitäten in Ihrer Nähe viele "
+"Mitglieder haben und welche zu Ihnen passen. Ein paar davon kann man gleich "
+"hier online machen (Kartenspiele). Bei Fragen und Anregungen schicken Sie "
+"mir doch eine E-Mail: myactivities.net@web.de"
+msgstr ""
+
 #: account/templates/account/jokes.html:2
 msgid ""
 "Steht son Typ mit seinem Wagen vor der Tanke, schaut sich um, macht den Tank "
@@ -624,25 +638,35 @@ msgid ""
 "Schimmel gewünscht oder was?"
 msgstr ""
 
-#: account/templates/account/pagination.html:6
-#: account/templates/account/pagination_component.html:6
+#: account/templates/account/pagination.html:7
+#: account/templates/account/pagination_component.html:7
+msgid "Erste"
+msgstr ""
+
+#: account/templates/account/pagination.html:9
+#: account/templates/account/pagination_component.html:9
 msgid "Vorige"
-msgstr ""
-
-#: account/templates/account/pagination.html:9
-#: account/templates/account/pagination_component.html:9
-msgid "Seite"
-msgstr ""
-
-#: account/templates/account/pagination.html:9
-#: account/templates/account/pagination_component.html:9
-#: wall/templates/wall/post/post_loop.html:12
-msgid "von"
 msgstr ""
 
 #: account/templates/account/pagination.html:12
 #: account/templates/account/pagination_component.html:12
+msgid "Seite"
+msgstr ""
+
+#: account/templates/account/pagination.html:12
+#: account/templates/account/pagination_component.html:12
+#: wall/templates/wall/post/post_loop.html:12
+msgid "von"
+msgstr ""
+
+#: account/templates/account/pagination.html:15
+#: account/templates/account/pagination_component.html:15
 msgid "Nächste"
+msgstr ""
+
+#: account/templates/account/pagination.html:17
+#: account/templates/account/pagination_component.html:17
+msgid "Letzte"
 msgstr ""
 
 #: account/templates/account/register.html:6
@@ -829,7 +853,7 @@ msgstr ""
 msgid "Die Posts sind öffentlich auf Ihrer Profilseite sichtbar."
 msgstr ""
 
-#: account/templates/base.html:32
+#: account/templates/base.html:33
 msgid "OK!"
 msgstr ""
 
@@ -1241,7 +1265,7 @@ msgstr ""
 msgid ""
 "Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich "
 "die errechneten Punktesummen in den Kategorien werden für die Berechnung von "
-"Empfehlungen verwendet und für sonst nichts."
+"Empfehlungen gespeichert und für sonst nichts."
 msgstr ""
 
 #: character/templates/character/quiz.html:5

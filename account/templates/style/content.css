@@ -6,10 +6,13 @@ html {
 body {
     height: 100vh;
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .base-container {
     position: relative;
+    flex-grow: 1;
 }
 
 .content {
@@ -563,4 +566,19 @@ select:focus, select:hover {
 
 .errorlist {
     color: yellow;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    font-size: 12px;
+    text-align: center;
+    display: none;
+    height: 20px;
+    color: white;
+}
+
+footer a {
+    margin-right: 10px;
 }

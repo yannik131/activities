@@ -57,7 +57,7 @@
     </div>
     {% endfor %}
 </div>
-{% include "account/pagination_component.html" with page=suggestions %}
+{% include "account/pagination.html" with page=suggestions %}
 <div class="list">
     {% for suggestion in suggestions %}
         <div class="item" onclick="location.href='{{ suggestion.activity.get_absolute_url }}'">
@@ -120,7 +120,7 @@
 <br>
 {% endif %}
 <div class="center-container" style="color: yellow">
-    <b>{% trans 'Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich die errechneten Punktesummen in den Kategorien werden für die Berechnung von Empfehlungen verwendet und für sonst nichts.' %}</b>
+    <b>{% trans 'Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich die errechneten Punktesummen in den Kategorien werden für die Berechnung von Empfehlungen gespeichert und für sonst nichts.' %}</b>
 </div>
 {% endblock %}
 

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-21 18:01+0000\n"
-"PO-Revision-Date: 2021-03-21 19:02+0100\n"
+"POT-Creation-Date: 2021-03-22 13:49+0000\n"
+"PO-Revision-Date: 2021-03-22 14:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -610,6 +610,25 @@ msgstr "Personality test & suggestions"
 msgid "Hier ist noch nichts!"
 msgstr "Nothing here!"
 
+#: account/templates/account/impressum.html:4
+#: account/templates/account/impressum.html:7 account/templates/base.html:110
+msgid "Impressum"
+msgstr ""
+
+#: account/templates/account/impressum.html:8
+msgid ""
+"Mein Name ist Yannik Schroeder und ich habe diese Website zusammengebastelt. "
+"Die Idee hier ist, zu sehen, welche Aktivitäten in Ihrer Nähe viele "
+"Mitglieder haben und welche zu Ihnen passen. Ein paar davon kann man gleich "
+"hier online machen (Kartenspiele). Bei Fragen und Anregungen schicken Sie "
+"mir doch eine E-Mail: myactivities.net@web.de"
+msgstr ""
+"My name is Yannik Schroeder and I created this little website. The idea is "
+"to see how many people in your area like which activities and which might "
+"suit your personality best. A few you can even do online right away (bunch "
+"of card games). If you want to contact me, you can send me an email at: "
+"myactivities.net@web.de"
+
 #: account/templates/account/jokes.html:2
 msgid ""
 "Steht son Typ mit seinem Wagen vor der Tanke, schaut sich um, macht den Tank "
@@ -661,26 +680,36 @@ msgid ""
 "Schimmel gewünscht oder was?"
 msgstr "Please send me your jokes. I don’t know any good ones."
 
-#: account/templates/account/pagination.html:6
-#: account/templates/account/pagination_component.html:6
+#: account/templates/account/pagination.html:7
+#: account/templates/account/pagination_component.html:7
+msgid "Erste"
+msgstr "Last"
+
+#: account/templates/account/pagination.html:9
+#: account/templates/account/pagination_component.html:9
 msgid "Vorige"
 msgstr "Previous"
 
-#: account/templates/account/pagination.html:9
-#: account/templates/account/pagination_component.html:9
+#: account/templates/account/pagination.html:12
+#: account/templates/account/pagination_component.html:12
 msgid "Seite"
 msgstr "Page"
 
-#: account/templates/account/pagination.html:9
-#: account/templates/account/pagination_component.html:9
+#: account/templates/account/pagination.html:12
+#: account/templates/account/pagination_component.html:12
 #: wall/templates/wall/post/post_loop.html:12
 msgid "von"
 msgstr "of"
 
-#: account/templates/account/pagination.html:12
-#: account/templates/account/pagination_component.html:12
+#: account/templates/account/pagination.html:15
+#: account/templates/account/pagination_component.html:15
 msgid "Nächste"
 msgstr "Next"
+
+#: account/templates/account/pagination.html:17
+#: account/templates/account/pagination_component.html:17
+msgid "Letzte"
+msgstr "First"
 
 #: account/templates/account/register.html:6
 #: account/templates/account/register.html:13
@@ -868,7 +897,7 @@ msgstr "Create post"
 msgid "Die Posts sind öffentlich auf Ihrer Profilseite sichtbar."
 msgstr "Posts are publicly visible on your profile page."
 
-#: account/templates/base.html:32
+#: account/templates/base.html:33
 msgid "OK!"
 msgstr "OK!"
 
@@ -1303,10 +1332,11 @@ msgstr "Reset"
 msgid ""
 "Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich "
 "die errechneten Punktesummen in den Kategorien werden für die Berechnung von "
-"Empfehlungen verwendet und für sonst nichts."
+"Empfehlungen gespeichert und für sonst nichts."
 msgstr ""
 "Answers to individual questions are <u>not saved</u>. Only the scores in the "
-"respective categories are used to calculate suggestions and for nothing else."
+"respective categories are saved to calculate suggestions and for nothing "
+"else."
 
 #: character/templates/character/quiz.html:5
 #: character/templates/character/quiz.html:9
@@ -1348,7 +1378,7 @@ msgstr "Depression"
 
 #: character/templates/javascript/categories.js:8
 msgid "Soziale Befangenheit"
-msgstr "Self-conciousness"
+msgstr "Self-consciousness"
 
 #: character/templates/javascript/categories.js:9
 msgid "Impulsivität"

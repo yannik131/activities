@@ -180,6 +180,13 @@ function resize() {
     if(content) {
         content.style.height = window.innerHeight-50+"px";
     }
+    var body = document.body,
+    html = document.documentElement;
+
+    var height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+    var footer = document.getElementById('footer');
+    footer.style.top = height-20+"px";
+    footer.style.display = "block";
 }
 
 window.addEventListener('load', resize);
