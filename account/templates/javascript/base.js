@@ -41,6 +41,24 @@ function activateMenu(element_id) {
     }
 }
 
+function createMessage(text) {
+    var container = document.querySelector('.base-container');
+    var message = document.createElement('div');
+    message.className = 'django-message';
+    var p = document.createElement('p');
+    p.innerHTML = text;
+    message.appendChild(p);
+    var button = document.createElement('a');
+    button.className = 'blue-button';
+    button.onclick = function() {
+        document.querySelector('.django-message').remove();
+    }
+    button.innerHTML = '{% trans 'OK!' %}';
+    message.appendChild(button);
+    container.appendChild(message);
+
+}
+
 function changeCount(element_id, value) {
     count = document.getElementById(element_id);
     var oldValue = parseInt(count.textContent);
@@ -158,6 +176,7 @@ function connect() {
                         break;
                     case 'list':
                         if(!data.html) {
+                            createMessage("{% trans 'Sie haben noch keine Chats. Finden Sie Freunde, Gruppen, Aktivitäten etc., um zu chatten!' %}");
                             return;
                         }
                         var menu = document.getElementById('right-chat');

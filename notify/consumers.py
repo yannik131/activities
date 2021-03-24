@@ -102,6 +102,7 @@ class NotificationConsumer(WebsocketConsumer):
                 'type': 'chat_message',
                 'action': 'list',
             })) 
+            return
         rooms_with_news = self.user.rooms_with_news()
         rooms = sorted(rooms, key=lambda t: t[0].target_ct.model)
         rooms = sorted(rooms, key=lambda t: 1 if t[0].id in rooms_with_news else 0, reverse=True)

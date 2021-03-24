@@ -459,6 +459,7 @@ function createInfoButton(text, button_callback, info_alert) {
     var button = document.createElement("button");
     button.type = "button";
     button.onclick = function() {
+        console.log('click!');
         info_alert.remove();
         if(button_callback) {
             button_callback();
@@ -472,7 +473,7 @@ function createInfoButton(text, button_callback, info_alert) {
         button.style.fontSize = "18pt";
     }
     button.innerHTML = text;
-    info_alert.innerHTML += "<br>";
+    info_alert.appendChild(document.createElement('br'));
     info_alert.appendChild(button);
     return button;
 }
