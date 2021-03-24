@@ -112,7 +112,7 @@
 <span style="clear: both"></span>
 {% endif %}
 {% if user.character.question_limit %}
-<p></p>
+<br>
 <div class="button-like" id="reset" onclick=reset()>
     <img src="{% static 'icons/attention.png' %}">
     <span id="reset-text">{% trans 'Zurücksetzen' %}</span>
@@ -126,8 +126,9 @@
 
 {% block domready %}
 {% include 'javascript/categories.js' %}
+{% include 'javascript/overview.js' %}
 {% if user.character.presentable %}
-    {% include 'javascript/overview.js' %}
     {% include 'javascript/list.js' %}
+    displayResults();
 {% endif %}
 {% endblock %}
