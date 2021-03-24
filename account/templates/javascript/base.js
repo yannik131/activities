@@ -131,7 +131,7 @@ function addMessageToChatMenu(data) {
     var item = document.getElementById('chat-item-'+data.room_id);
     if(item) {
         var chat = document.getElementById('chat-window-'+data.room_id);
-        if(window.getComputedStyle(chat).display == 'none') {
+        if(!chat || window.getComputedStyle(chat).display == 'none') {
             var parent = item.parentElement;
             item.remove();
             parent.insertBefore(item, parent.firstChild);
