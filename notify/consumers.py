@@ -90,30 +90,30 @@ class NotificationConsumer(WebsocketConsumer):
             self.generate_chat_list(text_data)
             
     def generate_chat_list(self, text_data):
-        rooms = []
-        for room in self.user.chat_rooms.all():
-            if room.target is None:
-                continue
-            elif hasattr(room.target, 'get_other_user'):
-                rooms.append((room, room.target.get_other_user(self.user)))
-            else:
-                rooms.append((room, room.target))
-        if not rooms:
+        with translation.override(text_data['language_code']):
+            rooms = []
+            for room in self.user.chat_rooms.all():
+                if room.target is None:
+                    continue
+                elif hasattr(room.target, 'get_other_user'):
+                    rooms.append((room, room.target.get_other_user(self.user)))
+                else:
+                    rooms.append((room, room.target))
+            if not rooms:
+                self.send(json.dumps({
+                    'type': 'chat_message',
+                    'action': 'list',
+                })) 
+                return
+            rooms_with_news = self.user.rooms_with_news()
+            rooms = sorted(rooms, key=lambda t: t[0].target_ct.model)
+            rooms = sorted(rooms, key=lambda t: 1 if t[0].id in rooms_with_news else 0, reverse=True)
+            chat_list = render_to_string('chat/chat_list.html', dict(rooms=rooms, rooms_with_news=self.user.rooms_with_news(), rooms_with_news_count=len(rooms_with_news), friendship=rooms[0][0].target_ct.model == "friendship" if len(rooms) else None))
             self.send(json.dumps({
                 'type': 'chat_message',
                 'action': 'list',
+                'html': chat_list
             })) 
-            return
-        rooms_with_news = self.user.rooms_with_news()
-        rooms = sorted(rooms, key=lambda t: t[0].target_ct.model)
-        rooms = sorted(rooms, key=lambda t: 1 if t[0].id in rooms_with_news else 0, reverse=True)
-        with translation.override(text_data['language_code']):
-            chat_list = render_to_string('chat/chat_list.html', dict(rooms=rooms, rooms_with_news=self.user.rooms_with_news(), rooms_with_news_count=len(rooms_with_news), friendship=rooms[0][0].target_ct.model == "friendship" if len(rooms) else None))
-        self.send(json.dumps({
-            'type': 'chat_message',
-            'action': 'list',
-            'html': chat_list
-        })) 
             
     def distribute_chat_message(self, text_data):
         chat_room_id = text_data['id']
