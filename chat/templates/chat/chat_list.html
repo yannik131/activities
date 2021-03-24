@@ -1,29 +1,28 @@
-{% extends 'base.html' %}
 {% load i18n %}
-{% load activity_filter %}
-{% load chat_tags %}
-{% load account_tags %}
+{% load thumbnail %}
+{% load static %}
 
-{% block title %}{% trans "Chat-Liste" %}{% endblock %}
 
-{% block content %}
-{% with new_messages=user.get_latest_messages %}
-    <h1>{% trans "Chat-Liste" %}</h1>
-    {% if group_rooms %}<h2>{% trans "Gruppen" %}</h2>{% endif %}
-    {% include 'chat/room_loop.html' with default_img='icons/users-and-groups-group@32px.png' rooms=group_rooms %}
-    {% if friend_rooms %}<h2>{% trans "Freunde" %}</h2>{% endif %}
-    {% include 'chat/room_loop.html' with default_img='icons/users-and-groups-user@32px.png' rooms=friend_rooms %}
-    {% if match_rooms %}<h2>{% trans "Matches" %}</h2>{% endif %}
-    {% for room, target in match_rooms %}
-        <p>
-            <a href="{{ room.get_absolute_url }}">{{ room.target.verbose }}</a>{% chat_star new_messages room.id %}
-        </p>
+<div class="chat-list">
+    {% for room, target in rooms %}
+        <div class="chat-item" id="chat-item-{{ room.id }}" onclick="requestChatWindow({{ room.id }})">
+            <div class="chat-list-image">
+                {% if target.image %}
+                    <img src="{% thumbnail target.image 200x200 %}">
+                {% else %}
+                    <img src="{% static 'icons/users-and-groups-group@32px.png' %}">
+                {% endif %}
+            </div>
+            <div class="chat-list-title">
+                {{ target }}
+            </div>
+            <div class="chat-bell">
+                <img src="{% static 'icons/bell.png' %}" id="chat-bell-{{ room.id }}" {% if forloop.counter0 >= rooms_with_news_count %}style="display: none"{% endif %}>
+            </div>
+        </div>
     {% endfor %}
-    {% if tournament_rooms %}<h2>{% trans "Turniere" %}</h2>{% endif %}
-    {% for room, target in tournament_rooms %}
-        <p>
-            <a href="{{ room.get_absolute_url }}">{{ room.target.verbose }}</a>{% chat_star new_messages room.id %}
-        </p>
-    {% endfor %}
-{% endwith %}
-{% endblock %}
+</div>
+<div class="live-chat" id="live-chat">
+    
+</div>
+

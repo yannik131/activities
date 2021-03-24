@@ -1,5 +1,5 @@
 .topmenu {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -37,8 +37,8 @@
 }
 
 #profile-link {
-    margin-left: 10px;
     float: right;
+    margin-left: 10px;
 }
 
 #profile-image {
@@ -48,6 +48,11 @@
 .topmenu a {
     text-decoration: none;
     float: right;
+}
+
+.topmenu img {
+    max-height: 40px;
+    margin-left: 10px;
 }
 
 .topmenu .logo a {

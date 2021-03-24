@@ -8,7 +8,7 @@
 {% block style%}{% include 'css/match.css' %}{% endblock %}
 
 {% block content %}
-    <div class="match-chat">
+    <div class="match-chat" id="chat-window-{{ room.id }}">
         {% include 'chat/chat_window.html' %}
     </div>
     <div class="match-members">
@@ -29,7 +29,7 @@
                 <div class="left" style="width: 33%" onclick="location.href='{% call_method match 'lobby_url' request %}'">
                     <img src="{% static 'icons/lobby.png' %}">Lobby
                 </div>
-                <div class="right" style="width: 33%" onclick="startMatch()">
+                <div class="right" style="width: 34%" onclick="startMatch()">
                     <img src="{% static 'icons/start.png' %}">
                     {% trans "Starten" %}
                 </div>
@@ -65,8 +65,6 @@
 {% endblock %}
 {% block domready %}
 {% if is_member %}
-    {% include 'javascript/room.js' %}
-    {% include 'javascript/audiochat.js' %}
     {% include 'javascript/match_overview.js' %}
 {% endif %}
 {% endblock %}

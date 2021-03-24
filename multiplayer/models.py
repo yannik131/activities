@@ -7,10 +7,11 @@ import uuid
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 from .utils import after, create_deck
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _, gettext as __
 import json
 from multiplayer.utils import change
 from shared.shared import log
+from django.contrib.contenttypes.models import ContentType
 
 
 class MultiplayerMatch(models.Model):
@@ -24,7 +25,8 @@ class MultiplayerMatch(models.Model):
     admin = models.ForeignKey(User, related_name='admin_matches', on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.activity.name
+        return self.activity.name+__('-Match')
+        
     
     @staticmethod
     def last():
@@ -34,6 +36,10 @@ class MultiplayerMatch(models.Model):
     def match_list_for(activity_id):
         matches = MultiplayerMatch.objects.filter(activity__id=activity_id)
         return [(match.id, [v for k, v in match.member_positions.items() if v], match.member_limit) for match in matches if not match.is_full()]
+        
+    @staticmethod
+    def content_type():
+        return ContentType.objects.get(app_label='multiplayer', model='multiplayermatch')
         
     def add_member(self, user):
         for k, v in self.member_positions.items():
@@ -196,7 +202,7 @@ class MultiplayerMatch(models.Model):
         
 
     def start_durak(self):
-        players, deck = self.create_players(6, "8", "9", "10", "J", "Q", "K", "A")
+        players, deck = self.create_players(6, "6", "7", "8", "9", "10", "J", "Q", "K", "A")
         self.game_data["trump"] = deck[-1][-1]
         self.game_data["attacking"] = players[0]
         self.game_data["defending"] = players[1]

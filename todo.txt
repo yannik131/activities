@@ -40,3 +40,10 @@ musikgenres, literaturgenres, weitere unterteilungen.. -> N kategorien: berufe, 
 3. übrige gewichte verteilen
 4. für jede aktivität ein applet
 5. impressum!
+
+chat spiel direkt zum spiel
+durak erster +1 nicht?
+lobby -> game konferenz beibehalten
+2x notifications für 1x freundschaftsanfrage annehmen?
+
+optimierung: chat cache, aktualisierung bei beitritt/austritt

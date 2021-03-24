@@ -9,7 +9,6 @@ var mode; //playing or undefined/null
 var solist;
 var no_take = "";
 var ouvert = false;
-var last_trick;
 var game_type_translations = {
     "c": "{% trans 'Kreuz' %}",
     "s": "{% trans 'Pik' %}",
@@ -502,7 +501,6 @@ function playerHasTrump() {
 }
 
 function cardClicked(value, suit, card) {
-    console.log("card clicked:", value, suit);
     if(active != this_user || mode != "playing") {
         return;
     }

@@ -53,7 +53,7 @@ function expand_to_three(post_id) {
     const middle = document.createElement('div');
     middle.className = "left";
     middle.style.width = "33%";
-    right.style.width = "33%";
+    right.style.width = "34%";
     middle.id = post_id+'-middle';
     var img = document.createElement('img');
     img.src = like_img;

@@ -1,9 +1,6 @@
 {% load static %}
 {% load i18n %}
 
-
-const joinBbutton = document.getElementById("join-audio");
-
 const configuration = {
     "iceServers": [{
         urls: 'turn:turn.myactivities.net:5349',
@@ -25,27 +22,29 @@ var tracks = {};
 let localTrack;
 var acceptingConnections = false;
 var old_colors = {};
+var audio_room_id;
 
 function requestShow() {
-    send({'type': 'rtc', 'action': 'request_show', 'room_id': {{ room.id }}});
+    send({'type': 'rtc', 'action': 'request_show', 'room_id': room_id});
 }
-
-user_websocket.addEventListener('open', requestShow);
 
 function handleRTCMessage(data) {
     switch(data.action) {
         case 'join':
-            colorize(data.sender, 'darkgreen');
+            colorize(data.user_id, data.room_id, 'darkgreen');
             break;
         case 'leave':
         case 'disconnect':
-            colorize(data.sender, 'white');
+            colorize(data.user_id, data.room_id, 'white');
             break;
         case 'request_show':
-            send({'type': 'rtc', 'action': 'show', 'room_id': {{ room.id }}, 'live': acceptingConnections});
+            if(data.room_id != audio_room_id) {
+                return;
+            }
+            send({'type': 'rtc', 'action': 'show', 'room_id': room_id, 'live': acceptingConnections});
             break;
         case 'show':
-            colorize(data.sender, data.live? 'darkgreen': 'white');
+            colorize(data.user_id, data.room_id, data.live? 'darkgreen': 'white');
             break;
         default:
             break;
@@ -53,7 +52,7 @@ function handleRTCMessage(data) {
     if(!acceptingConnections) {
         return;
     }
-    console.log(data.sender, "sent", data.action);
+    console.log(data.user_id, "sent", data.action);
     switch(data.action) {
         case 'join':
             handleJoin(data);
@@ -76,8 +75,8 @@ function handleRTCMessage(data) {
     }
 }
 
-function colorize(user, color) {
-    var user_span = document.getElementById('member-name-'+user);
+function colorize(user_id, room_id, color) {
+    var user_span = document.getElementById(room_id+'-member-name-'+user_id);
     if(user_span) {
         var old_color = old_colors[user_span.id];
         var new_color;
@@ -113,7 +112,7 @@ function getOrCreatePeerConnection(sender) {
     if(!pc) {
         console.log("creating peer connection for", sender);
         pc = new RTCPeerConnection(configuration);
-        colorize(sender, 'darkgreen');
+        colorize(sender, audio_room_id, 'darkgreen');
         peerConnections[sender] = pc;
         var mediaStream = new MediaStream();
         remoteMediaStreams[sender] = mediaStream;
@@ -135,7 +134,7 @@ function getOrCreatePeerConnection(sender) {
 }
 
 function handleJoin(data) {
-    const pc = getOrCreatePeerConnection(data.sender);
+    const pc = getOrCreatePeerConnection(data.user_id);
     pc.createOffer().then(function(offer) {
         return pc.setLocalDescription(new RTCSessionDescription(offer));
     }).then(function() {
@@ -143,16 +142,16 @@ function handleJoin(data) {
             'type': 'rtc',
             'action': 'offer',
             'offer': pc.localDescription,
-            'channel': 'user-'+data.sender
+            'channel': 'user-'+data.user_id
         });
-        setOnIceCandidate(pc, data.sender);
+        setOnIceCandidate(pc, data.user_id);
     }).catch(function(reason) {
         console.log('Error setting local sd from local offer?', reason);
     });
 }
 
 function handleOffer(data) {
-    const pc = getOrCreatePeerConnection(data.sender);
+    const pc = getOrCreatePeerConnection(data.user_id);
     pc.setRemoteDescription(new RTCSessionDescription(data.offer))
     .then(function() {
         return pc.createAnswer();
@@ -165,33 +164,33 @@ function handleOffer(data) {
             'type': 'rtc',
             'action': 'answer',
             'answer': pc.localDescription,
-            'channel': 'user-'+data.sender
+            'channel': 'user-'+data.user_id
         });
-        setOnIceCandidate(pc, data.sender);
+        setOnIceCandidate(pc, data.user_id);
     })
     .catch(function(reason) {
-        console.log('Error setting local sd after answer to', data.sender, ':', reason, pc.signalingState);
+        console.log('Error setting local sd after answer to', data.user_id, ':', reason, pc.signalingState);
     });
 }
 
 function handleAnswer(data) {
-    const pc = peerConnections[data.sender];
+    const pc = peerConnections[data.user_id];
     pc.setRemoteDescription(new RTCSessionDescription(data.answer))
     .catch(function(reason) {
-        console.log('Error handling answer from', data.sender, ':', reason);
+        console.log('Error handling answer from', data.user_id, ':', reason);
     })
 }
 
 function handleCandidate(data) {
-    const pc = peerConnections[data.sender];
+    const pc = peerConnections[data.user_id];
     pc.addIceCandidate(new RTCIceCandidate(data.candidate))
     .catch(function(reason) {
-        console.log('Error handling candidate from', data.sender, ':', reason);
+        console.log('Error handling candidate from', data.user_id, ':', reason);
     });
 }
 
 function handleLeave(data) {
-    deletePeerConnection(data.sender);
+    deletePeerConnection(data.user_id);
     data.message = data.username+" {% trans 'verlässt die Konferenz.' %}";
     data.time = new Date();
     addMessageToChat(data);
@@ -223,10 +222,10 @@ function negotiate(mediaStream) {
         localTrack = mediaStream.getAudioTracks()[0];
     }
     acceptingConnections = true;
-    send({'type': 'rtc', 'action': 'join', 'room_id': '{{ room.id }}'});
-    send({'type': 'chat', 'message': "{{ user }} {% trans 'tritt der Konferenz bei.' %}", 'id': {{ room.id }}});
-    colorize({{ user.id }}, 'darkgreen');
-    var joinButton = document.getElementById('call-button');
+    send({'type': 'rtc', 'action': 'join', 'room_id': audio_room_id});
+    send({'type': 'chat', 'action': 'sent', 'message': "{{ user }} {% trans 'tritt der Konferenz bei.' %}", 'id': audio_room_id});
+    colorize({{ user.id }}, audio_room_id, 'darkgreen');
+    var joinButton = document.getElementById('call-button-'+audio_room_id);
     joinButton.src = "{% static 'icons/hangup.png' %}";
     joinButton.onclick = leaveAudio;
     window.addEventListener('beforeunload', function(e) {
@@ -237,6 +236,10 @@ function negotiate(mediaStream) {
 }
 
 function joinAudio() {
+    if(acceptingConnections) {
+        leaveAudio();
+    }
+    audio_room_id = room_id;
     if(navigator.mediaDevices) {
         navigator.mediaDevices.getUserMedia({audio: true}).then(function(mediaStream) {
             negotiate(mediaStream)
@@ -255,9 +258,9 @@ function leaveAudio() {
     while(users.length > 0) {
         deletePeerConnection(users[users.length-1]);
     }
-    send({'type': 'rtc', 'action': 'leave', 'room_id': '{{ room.id }}'});
-    colorize({{ user.id }}, 'white');
-    var button = document.getElementById('call-button');
+    send({'type': 'rtc', 'action': 'leave', 'room_id': audio_room_id});
+    colorize({{ user.id }}, audio_room_id, 'white');
+    var button = document.getElementById('call-button-'+audio_room_id);
     button.src = "{% static 'icons/call.png' %}";
     button.onclick = joinAudio;
 }

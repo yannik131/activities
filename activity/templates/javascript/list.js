@@ -1,7 +1,7 @@
 function position() {
     const items = document.getElementsByClassName('item');
     const list = document.querySelector('.list');
-    list.style.marginLeft = 10+"px";
+    list.style.left = 10+"px";
 
     var right_edge = -1;
     for(var i = 0; i < items.length; i++) {

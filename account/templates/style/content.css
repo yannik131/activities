@@ -427,7 +427,7 @@ select:focus, select:hover {
     left: 30%;
     right: 30%;
     border-radius: 10px;
-    z-index: 1000;
+    z-index: 10001;
     font-family: "Arial", "Verdana", "Helvectica";
     padding-bottom: 25px;
 }
@@ -582,3 +582,4 @@ footer {
 footer a {
     margin-right: 10px;
 }
+

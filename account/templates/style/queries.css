@@ -54,19 +54,6 @@
     }
 }
 
-@media screen and (min-width: 850px) and (orientation: landscape){
-    .sidemenu {
-        display: block;
-        max-height: 80vh;
-    }
-    .content {
-        left: 255px;
-    }
-    .topmenu .logo .icon {
-        display: none;
-    }
-}
-
 @media screen and (min-width: 1220px) and (orientation: landscape) {
     .base-container {
         width: 1200px;
@@ -80,16 +67,13 @@
     }
     .sidemenu {
         display: block;
+        max-height: 80vh;
     }
+    .sidemenu.clicked {
+        background-color: none;
+    }
+    
     .topmenu .logo .icon {
-        display: none;
-    }
-    .chat-menu {
-        display: block;
-        width: 250px;
-    }
-
-    .envelope {
         display: none;
     }
 }

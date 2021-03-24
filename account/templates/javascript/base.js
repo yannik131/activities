@@ -1,13 +1,44 @@
+{% load i18n %}
+
 var user_websocket;
 
 function activateMenu(element_id) {
+    var content = document.querySelector('.content');
     const menu = document.getElementById(element_id);
-    if(menu.className == "chat-menu" && parseInt(document.getElementById("messages-count").textContent) == 0)
-        return;
-    if(menu.className == element_id)
-        menu.className += " clicked";
-    else
-        menu.className = element_id;
+    var widescreen = window.innerWidth >= 850;
+    if(element_id == 'right-chat') {
+        if(menu) {
+            if(menu.style.display != "none") {
+                menu.style.display = "none";
+                if(widescreen) {
+                    content.style.right = 0;
+                }
+            }
+            else {
+                menu.style.display = "flex";
+                if(widescreen) {
+                    content.style.right = "355px";
+                }
+            }
+        }
+        else {
+            send({'type': 'chat', 'action': 'list'});
+        }
+        count = document.getElementById('messages-count');
+        count.innerHTML = "";
+    }
+    else {
+        if(menu.className == element_id)
+            menu.className += " clicked";
+        else
+            menu.className = element_id;
+    }
+    if(typeof game_resize == 'function') {
+        game_resize();
+    }
+    if(typeof position == 'function') {
+        position();
+    }
 }
 
 function changeCount(element_id, value) {
@@ -43,19 +74,22 @@ function removeNotification(id, notification_url) {
 }
 
 function addNotification(id, text, url) {
-    const sidemenu = document.getElementById("sidemenu");
-    sidemenu.innerHTML += (
-        '<div class="alert" id="notification-'
-        + id
-        + '"><a class="notification-url" onclick="removeNotification('
-        + id 
-        + ', \''
-        + url 
-        + '\')">'
-        + text
-        + '</a><div class="closebtn-container" onclick="removeNotification('
-        + id
-        + ');"><div class="closebtn"">&times;</span></div>');
+    const alert_list = document.getElementById("alert-list");
+    var alert = document.createElement('div');
+    alert.className = 'alert';
+    alert.id = 'notification-'+id;
+    alert.style.fontWeight = 'bold';
+    alert.innerHTML = (
+        '<a class="notification-url" onclick="removeNotification('+id+', \''+url+'\')">'+ 
+            text+ 
+        '</a>'+
+    '<div class="closebtn-container" onclick="removeNotification('+id+');">'+
+        '<div class="closebtn"">'+
+            '&times;'+
+        '</div>'+
+    '</div>'
+    );
+    alert_list.insertBefore(alert, alert_list.firstChild);
     changeCount("notifications-count", 1);
 }
 
@@ -76,20 +110,18 @@ function format_time_str(time) {
 }
 
 function addMessageToChatMenu(data) {
-    const menu = document.getElementById("chat-menu");
-    menu.innerHTML += (
-        '<div class="chat-box" id="room-' +
-        data.id +
-        '"><a href="' +
-        data.url +
-        '"><span class="room-name">' +
-        data.origin +
-        ': </span><span class="message"><span class="message-date">' +
-        format_time_str(data.time) +
-        ': </span><span class="message-content">' +
-        data.message +
-        '</span></span></a></div>'
-    );
+    var item = document.getElementById('chat-item-'+data.room_id);
+    if(item) {
+        var chat = document.getElementById('chat-window-'+data.room_id);
+        if(window.getComputedStyle(chat).display == 'none') {
+            var parent = item.parentElement;
+            item.remove();
+            parent.insertBefore(item, parent.firstChild);
+            var bell = document.getElementById('chat-bell-'+data.room_id);
+            bell.style.display = 'flex';
+        }
+        
+    }
     changeCount("messages-count", 1);
 }
 
@@ -111,16 +143,59 @@ function connect() {
         const data = JSON.parse(e.data);
         switch(data.type) {
             case "chat_message":
-                var chat = document.getElementById("full-chat-" + data.id)
-                if(chat) {
-                    handleChatMessage(data);
-                }
-                else if(!data.action) {
-                    addMessageToChatMenu(data);
-                    playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/click_x.wav");
+                switch(data.action) {
+                    case 'room':
+                        var chat = document.getElementById('live-chat');
+                        var div = document.createElement('div');
+                        div.className = 'chat-window';
+                        div.id = 'chat-window-'+data.id;
+                        div.innerHTML = data.html;
+                        chat.appendChild(div);
+                        showChat(div, data.id);
+                        init_chat(data.id);
+                        positionChat();
+                        requestShow();
+                        break;
+                    case 'list':
+                        if(!data.html) {
+                            return;
+                        }
+                        var menu = document.getElementById('right-chat');
+                        if(!menu) {
+                            var container = document.getElementById('base-container');
+                            var div = document.createElement('div');
+                            div.innerHTML = data.html;
+                            div.className = 'right-chat';
+                            div.id ='right-chat';
+                            div.style.display = 'none';
+                            container.appendChild(div);
+                            {% if current_chat_room %}
+                                requestChatWindow({{ current_chat_room.id }});
+                            {% endif %}
+                            activateMenu('right-chat');
+                        }
+                        break;
+                    case 'sent':
+                    case 'leave':
+                    case 'join':
+                        var chat = document.getElementById('chat-window-'+data.room_id);
+                        if(chat) {
+                            handleChatMessage(data);
+                        }
+                        if(data.action == 'sent' && data.username != "{{ user.username }}") {
+                            addMessageToChatMenu(data);
+                            playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/click_x.wav");
+                        }
+                        break;
+                    default:
+                        console.error('Unknown chat action', data.action);
                 }
                 break;
             case "notification":
+                if(data.action == "close") {
+                    alert("{% trans 'Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie nur einen Tab für myactivities.net :)' %}");
+                    return;
+                }
                 addNotification(data.id, data.text, data.url);
                 playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/boing_x.wav")
                 break;
@@ -187,6 +262,33 @@ function resize() {
     var footer = document.getElementById('footer');
     footer.style.top = height-20+"px";
     footer.style.display = "block";
+}
+
+function showChat(chat, id) {
+    var chats = document.getElementsByClassName('chat-window');
+    for(var i = 0; i < chats.length; i++) {
+        chats[i].style.display = "none";
+    }
+    chat.style.display = 'flex';
+    room_id = id;
+    var bell = document.getElementById('chat-bell-'+room_id);
+    bell.style.display = "none";
+    var items = document.getElementsByClassName('chat-item');
+    for(var i = 0; i < items.length; i++) {
+        items[i].style.backgroundColor = 'darkgray';
+    }
+    var item = document.getElementById('chat-item-'+id);
+    item.style.backgroundColor = 'darkcyan';
+}
+
+function requestChatWindow(room_id) {
+    var chat = document.getElementById('chat-window-'+room_id);
+    if(chat) {
+        showChat(chat, room_id);
+    }
+    else {
+        send({'type': 'chat', 'action': 'room', 'id': room_id});
+    }
 }
 
 window.addEventListener('load', resize);

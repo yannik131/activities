@@ -126,6 +126,8 @@
 
 {% block domready %}
 {% include 'javascript/categories.js' %}
-{% include 'javascript/overview.js' %}
-{% include 'javascript/list.js' %}
+{% if user.character.presentable %}
+    {% include 'javascript/overview.js' %}
+    {% include 'javascript/list.js' %}
+{% endif %}
 {% endblock %}

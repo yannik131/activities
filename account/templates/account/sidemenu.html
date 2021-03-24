@@ -11,20 +11,21 @@
     <a href="{% url 'activity:category_list' %}" {% active_if request 'categories' %}><img src="{% static 'icons/category.png' %}">{% blocktrans %}Kategorien{% endblocktrans %}</a>
     <a href="{% url 'competitions:user_overview' %}" {% active_if request 'competitions' %}><img src="{% static 'icons/tournament.png' %}">{% blocktrans %}Matches & Turniere{% endblocktrans %}</a>
     <a href="{% url 'usergroups:group_list' %}" {% active_if request 'groups' %}><img src="{% static 'icons/group.png' %}">{% blocktrans %}Gruppen{% endblocktrans %}</a>
-    <a href="{% url 'chat:chat_list' %}" {% active_if request 'chat' %}><img src="{% static 'icons/chat.png' %}">{% trans "Chats" %}</a>
     <a href="{% url 'vacancies:application_list' %}" {% active_if request 'vacancies' %}><img src="{% static 'icons/interview.png' %}">{% trans "Bewerbungen & Einladungen" %} {% invitation_number_string user %}</a>
     <a href="{% url 'account:friend_requests_list' %}" {% active_if request 'friends' %}><img src="{% static 'icons/friendship.png' %}">{% trans "Freunde" %}{% new_request_number_string user %}</a>
     <a href="{% url 'account:edit' %}" {% active_if request 'account' %}><img src="{% static 'icons/pen.png' %}">{% blocktrans %}Account bearbeiten{% endblocktrans %}</a>
     <a href="{% url 'account:logout' %}"><img src="{% static 'icons/logout.png' %}">{% blocktrans %}Ausloggen{% endblocktrans %}</a>
-    {% for notification in user.get_notifications %}
-    {% with notification_id=notification.id %}
+    <div id="alert-list">
+        {% for notification in user.get_notifications %}
+        {% with notification_id=notification.id %}
 
-        <div class="alert" id="notification-{{ notification_id }}">
-            <a class="notification-url" onclick="removeNotification({{ notification_id }}, '{{ notification.get_absolute_url }}');">{{ notification }}</a>
-            <div class="closebtn-container" onclick="removeNotification({{ notification_id }});">
-                <div class="closebtn">&times;</div>
+            <div class="alert" id="notification-{{ notification_id }}">
+                <a class="notification-url" onclick="removeNotification({{ notification_id }}, '{{ notification.get_absolute_url }}');">{{ notification }}</a>
+                <div class="closebtn-container" onclick="removeNotification({{ notification_id }});">
+                    <div class="closebtn">&times;</div>
+                </div>
             </div>
-        </div>
-    {% endwith %}
-    {% endfor %}
+        {% endwith %}
+        {% endfor %}
+    </div>
 </div>

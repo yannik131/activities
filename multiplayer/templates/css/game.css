@@ -120,6 +120,10 @@
     z-index: 1;
 }
 
+.info-alert-button {
+    margin-top: 10px;
+}
+
 .game-chat {
     display: none;
     position: absolute;

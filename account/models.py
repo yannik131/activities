@@ -62,6 +62,14 @@ class User(AbstractUser):
                 log_entries.append(messages.last())
         log_entries = sorted(log_entries, key=lambda entry: entry.created)
         return log_entries
+        
+    def rooms_with_news(self):
+        chat_checks = self.last_chat_checks.all()
+        rooms = []
+        for check in chat_checks:
+            if check.new_messages():
+                rooms.append(check.room.id)
+        return rooms
 
     def get_absolute_url(self):
         return reverse('account:detail', args=[self.username])

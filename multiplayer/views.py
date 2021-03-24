@@ -93,7 +93,7 @@ def leave_match(request, match):
 def game(request, match):
     if not match.is_full():
         return HttpResponseRedirect(match.get_absolute_url())
-    data = dict(match=match, room=ChatRoom.get_for_target(match))
+    data = dict(match=match, current_chat_room=ChatRoom.get_for_target(match))
     if match.activity.name == _('Durak'):
         return render(request, 'multiplayer/durak.html', data)
     elif match.activity.name == _("Skat"):

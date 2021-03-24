@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .templatetags import chat_tags
 from account.models import Friendship
 from usergroups.models import UserGroup
@@ -25,20 +25,16 @@ def chat_room(request, app_label, model, id):
 
 def chat_list(request):
     request.user.save()
-    chat_rooms = request.user.chat_rooms.all()
-    group_rooms = []
-    friend_rooms = []
-    match_rooms = []
-    tournament_rooms = []
-    for room in chat_rooms:
+    rooms = []
+    for room in request.user.chat_rooms.all():
         if type(room.target) is UserGroup:
-            group_rooms.append((room, room.target))
+            rooms.append((room, room.target))
         elif type(room.target) is Friendship:
-            friend_rooms.append((room, room.target.get_other_user(request.user)))
+            rooms.append((room, room.target.get_other_user(request.user)))
         elif type(room.target) is Match:
-            match_rooms.append((room, room.target))
+            rooms.append((room, room.target))
         elif type(room.target) is Tournament:
-            tournament_rooms.append((room, room.target))
+            rooms.append((room, room.target))
 
     def key(t):
         return t[0].title_for(request.user)

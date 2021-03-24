@@ -33,8 +33,8 @@ class GameConsumer(WebsocketConsumer):
         
         
     def receive(self, text_data=None):
-        text_data = json.loads(text_data)
         with redis_lock.Lock(conn, self.match_id):
+            text_data = json.loads(text_data)
             message = self.get_message(text_data)
             if not "data" in message:
                 return

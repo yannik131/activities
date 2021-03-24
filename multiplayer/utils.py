@@ -419,15 +419,3 @@ def give_durak_points(data, players, durak):
         summary.append([f"{player}: {'+' if points >= 0 else ''}{points} -> {data[player+'_points']}\n", data[player+'_points']])
     summary = sorted(summary, key=lambda t: t[1], reverse=True)
     return "".join([t[0] for t in summary])
-    
-
-def random_name():
-    with open("multiplayer/random_names.txt", "r") as f:
-        names = f.readlines()
-        if not names:
-            raise RuntimeError("Out of names.")
-    with open("multiplayer/random_names.txt", "w") as f:
-        f.writelines(names[1:])
-    return names[0][:-1]
-    
-    

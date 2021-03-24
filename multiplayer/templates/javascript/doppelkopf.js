@@ -31,7 +31,6 @@ var contra_value;
 var m_show;
 var player_info = {};
 var re;
-var last_trick;
 var value_ncards;
 
 {% include 'javascript/common_sd.js' %}
@@ -263,7 +262,6 @@ function createValueButtons() {
                 trans = "{% trans 'Kontra' %}";
             }
         }
-        console.log("button, last bid:", last_bid, "value:", value);
         createButton(trans, value, function() {
             sendValue(value);
         });
@@ -284,7 +282,6 @@ function setRe(data) {
 }
 
 function handleBid(data) {
-    console.log("bid, game_type: ", data.game_type);
     if(data.game_type) {
         game_type = data.game_type;
         setRe(data);

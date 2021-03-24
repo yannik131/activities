@@ -16,6 +16,7 @@ var scale, w, h;
 var button_row = 0;
 var summary;
 var info_timeout;
+var beat_right = false;
 
 function getGridPosition(value, suit) {
     var x, y;
@@ -153,6 +154,7 @@ function addCardTo(player, n, type) {
         }
         else {
             card = createCard("rear");
+            card.id = "rear";
         }
         card.style.transform += "rotate("+vars.rotation+"deg)";
         vars.cards.push(card);
@@ -229,6 +231,7 @@ function addBottomCardToDeck(type) {
     card.style.top = -10-1/3*h+"px";
     card.style.left = 0+"px";
     card.id = "deck-0";
+    card.type = type;
     card.zIndex = 0;
     field.appendChild(card);
     deck.splice(0, 0, card);
@@ -285,11 +288,11 @@ function addStack(type, row, column) {
     field.appendChild(card);
 }
 
-function beatStack(n, type, right) {
+function beatStack(n, type) {
     const stack = stacks[n-1];
     const card = createCard(type);
     
-    if(right) {
+    if(beat_right) {
         card.style.top = stack[stack.length-1].style.top;
         card.style.left = parseInt(stack[stack.length-1].style.left)+0.4*w+"px";
     }
@@ -303,7 +306,7 @@ function beatStack(n, type, right) {
     field.appendChild(card);
 }
 
-function refreshStacks(new_stacks, right) {
+function refreshStacks(new_stacks) {
     if(new_stacks.length < stacks.length) {
         while(stacks.length > new_stacks.length) {
             for(var i = 0; i < stacks[stacks.length-1].length; i++) {
@@ -318,7 +321,7 @@ function refreshStacks(new_stacks, right) {
         }
         for(var j = 1; j < new_stacks[i].length; j++) {
             if(typeof stacks[i][j] == "undefined") {
-                beatStack(i+1, new_stacks[i][j], right);
+                beatStack(i+1, new_stacks[i][j]);
             }
         }
     }
@@ -469,6 +472,7 @@ function createInfoButton(text, button_callback, info_alert) {
         button.style.fontSize = "18pt";
     }
     button.innerHTML = text;
+    info_alert.innerHTML += "<br>";
     info_alert.appendChild(button);
     return button;
 }
@@ -499,13 +503,16 @@ function playerHandContains(value, suit, except_value) {
     return getPlayerCards(value, suit, except_value).length != 0;
 }
 
-function clearStacks() {
+function clearStacks(keep_last_trick) {
     for(var i = 0; i < stacks.length; i++) {
         for(var j = 0; j < stacks[i].length; j++) {
             stacks[i][j].remove();
         }
     }
     stacks = [];
+    if(keep_last_trick) {
+        return;
+    }
     var card = document.getElementById("last_trick0");
     if(card) {
         deleteButton("last_trick");
@@ -578,11 +585,11 @@ function showScore(toggle) {
         createInfoAlert(summary);
     }
     else {
-       createInfoAlert("{% trans 'Es wurde noch kein Spiel beendet.\n' %}");
+       createInfoAlert("{% trans 'Es wurde noch kein Spiel beendet.' %}");
     }
 }
 
-function resize() {
+function game_resize() {
     /*To calculate the scale, we substract constant paddings which are
 unaffected by the scale from the divs total width/height and
 divide the result by the space requirements of the cards on the
@@ -590,16 +597,68 @@ durak game field. The smaller value is then used to prevent
 overlap of cards.*/
     var scale1 = (field.offsetWidth-40)/(123*3+192*2/3);
     var scale2 = (field.offsetHeight-10)/(192*3+192*2/3+192/4*2);
-    scale = scale1 < scale2? scale1 : scale2;
+    scale = Math.min(scale1, scale2);
 
     w = 123*scale;
     h = 192*scale;
-    //TODO: MAYBE resize?
+    //update player cards
+    for(var i = 1; i < 5; i++) {
+        var cards = player_cards[i];
+        var types = [];
+        while(cards.length) {
+            var card = cards.pop();
+            card.remove();
+            types.push(card.id);
+        }
+        while(types.length) {
+            var type = types.pop();
+            addCardTo(i, 1, type != "rear"? type : null);
+        }
+    }
+    //update deck
+    var type = null;
+    var n = deck.length;
+    while(deck.length) {
+        var card = deck.pop();
+        card.remove();
+        if(card.type) {
+            type = card.type;
+        }
+    }
+    if(type) { //durak
+        addCardsToDeck(n-1, type);
+    }
+    else { //not durak
+        if(n) { 
+            addCardsToDeck(n);
+        }
+    }
+    //update stacks
+    var stack_copy = getConvertedStack();
+    clearStacks(true);
+    refreshStacks(stack_copy);
+    //update last trick
+    if(document.getElementById('last_trick0')) {
+        toggleLastTrick();
+        toggleLastTrick();
+    }
+    //update buttons
+    var buttons_copy = [];
+    while(buttons.length) {
+        var button = buttons.pop();
+        button.remove();
+        buttons_copy.splice(0, 0, button);
+    }
+    button_row = 0;
+    while(buttons_copy.length) {
+        var button = buttons_copy.pop();
+        createButton(button.innerText, button.id, button.onclick);
+    }
 }
 
-resize();
+game_resize();
 
-window.addEventListener('resize', resize);
+window.addEventListener('resize', game_resize);
 
 if(window.document.documentMode) {
     alert("{% trans 'Internet Explorer wird nicht unterstützt!' %}");
