@@ -12,7 +12,7 @@
         </div>
     {% endif %}
     <div class="chat-members" id='chat-members-{{ room_id }}'>
-        {% for member in room.members.all %}
+        {% for member in room.members.all|slice:":15" %}
         {% if friendship and member != user or not friendship %}
             <div class="chat-member" id="member-{{ forloop.counter0 }}" onclick='openLink("{{ member.get_absolute_url }}")'>
                 {% if member.image %}

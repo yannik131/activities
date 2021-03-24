@@ -13,7 +13,7 @@
                     <img src="{% static 'icons/users-and-groups-group@32px.png' %}">
                 {% endif %}
             </div>
-            <div class="chat-list-title">
+            <div class="chat-list-title"{% if target.channel_name %}style="color: yellow"{% endif %}>
                 {{ target }}
             </div>
             <div class="chat-bell">

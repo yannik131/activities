@@ -8,6 +8,7 @@
 {% block content %}
 <h2>{% trans 'Liste von Personen in' %}: {{ request.user.location.full_address }}</h2>
 <div class="center-container"><i>{% trans 'Sortiert nach Charakterübereinstimmung in %' %}</i></div>
+{% include "account/pagination.html" with page=people %}
 <div class="list">
     {% for user, score in people %}
         <div class="item" onclick="location.href='{{ user.get_absolute_url }}'" style="width: 150px; height: 150px">

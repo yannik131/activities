@@ -258,6 +258,7 @@ def people_list(request):
         else:
             people.append([user, None])
     people = sorted(people, key=lambda t: t[1] if t[1] else 0, reverse=True)
+    people, page = shared.paginate(people, request, 12)
     return render(request, 'account/people_list.html', dict(people=people))
     
     
