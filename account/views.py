@@ -252,7 +252,7 @@ def login(request):
     
 def people_list(request):
     people = list()
-    for user in request.user.location.population.exclude(id=request.user.id):
+    for user in request.user.location.population.exclude(id=request.user.id)[:30]:
         if user.character and request.user.character:
             people.append([user, request.user.character.congruence_with(user.character)])
         else:
