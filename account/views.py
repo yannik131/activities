@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm, AccountDeleteForm, LoginForm
 from .models import Location, FriendRequest, User, Friendship
 from django.http import HttpResponseRedirect
-from django.utils import timezone
+from django.utils import timezone, translation
 from .templatetags import account_tags
 from notify.utils import notify
 from wall.models import Post
@@ -212,7 +212,8 @@ def send_account_activation_email(request, user):
     uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
     token = default_token_generator.make_token(user)
     activation_url = request.build_absolute_uri(f'/account/activate/{uidb64}/{token}/')
-    html_content = render_to_string('registration/activation_email.html', dict(user=user, activation_url=activation_url, LANGUAGE_CODE=request.LANGUAGE_CODE))
+    with translation.override(request.LANGUAGE_CODE):
+        html_content = render_to_string('registration/activation_email.html', dict(user=user, activation_url=activation_url, LANGUAGE_CODE=request.LANGUAGE_CODE))
     email = EmailMultiAlternatives(_('E-Mail Aktivierung'), _('Aktivierungs-E-Mail'), settings.DEFAULT_FROM_EMAIL, recipients)
     email.attach_alternative(html_content, 'text/html')
     email.send()
