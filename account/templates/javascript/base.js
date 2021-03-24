@@ -22,7 +22,7 @@ function activateMenu(element_id) {
             }
         }
         else {
-            send({'type': 'chat', 'action': 'list'});
+            send({'type': 'chat', 'action': 'list', 'language_code': '{{ request.LANGUAGE_CODE }}'});
         }
         count = document.getElementById('messages-count');
         count.innerHTML = "";

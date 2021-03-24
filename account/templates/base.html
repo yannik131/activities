@@ -80,8 +80,8 @@
 {% endif %}
 
 <script>
+    {% include 'javascript/base.js' %}
     {% if user.is_authenticated %}
-        {% include 'javascript/base.js' %}
         {% include 'javascript/room.js' %}
         {% include 'javascript/audiochat.js' %}
     {% endif %}
