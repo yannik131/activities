@@ -19,6 +19,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.contrib.auth import login as auth_login
+from django.urls import reverse
 
 
 @login_required
@@ -250,6 +251,9 @@ def login(request):
         login_form = LoginForm()
     return render(request, 'registration/login.html', dict(form=login_form))
     
+def password_change_done(request):
+    messages.add_message(request, messages.INFO, _('Passwort erfolgreich geändert.'))
+    return HttpResponseRedirect(reverse('account:edit'))
     
 def people_list(request):
     people = list()
