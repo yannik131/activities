@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-24 17:42+0000\n"
+"POT-Creation-Date: 2021-03-25 13:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -290,53 +290,32 @@ msgid "Willkommen!"
 msgstr ""
 
 #: account/templates/account/about.html:11
-msgid "Moin. Kurz und bündig:"
+msgid "Ermitteln Sie Ihre Persönlichkeit durch einfache Fragen!"
 msgstr ""
 
-#: account/templates/account/about.html:13
-msgid "Sie registrieren sich und geben die Stadt an, in der Sie wohnen."
-msgstr ""
-
-#: account/templates/account/about.html:14
+#: account/templates/account/about.html:19
 msgid ""
-"Sie suchen ne Band/Spielegruppe etc.? Kategorien -> Musik/Brettspiele -> Zu "
-"den Gruppen -> Bewerben bzw. selbst erstellen -> Terminplanung, Chat, "
-"Leerstellen"
+"Anschließend werden Ihnen Aktivitäten empfohlen, die zu Ihnen passen "
+"könnten. Sie können auch nach Leuten in Ihrer Nähe suchen, die einen "
+"ähnlichen Charakter haben wie Sie!"
 msgstr ""
 
-#: account/templates/account/about.html:15
+#: account/templates/account/about.html:25
 msgid ""
-"Sie wollen Durak/Doko/Skat zocken? Aktivitäten -> Durak/Skat/Doppelkopf -> "
-"Beitreten -> Online spielen -> Match erstellen/beitreten"
+"Sie können per Text und Audiokonferenz chatten und nebenbei sogar einige "
+"Kartenspiele spielen."
 msgstr ""
 
-#: account/templates/account/about.html:16
+#: account/templates/account/about.html:31
 msgid ""
-"Sie wollen sich offline zum Spielen treffen? Aktivitäten -> Durak/Azul/... -"
-"> Turniere & Matches -> Bewerben/Selbst ein Treffen erstellen"
+"Aktivitäten in Ihrer Nähe werden nach Mitgliederzahl sortiert. So können Sie "
+"sehen, was beliebt ist und was nicht."
 msgstr ""
 
-#: account/templates/account/about.html:17
+#: account/templates/account/about.html:37
 msgid ""
-"Sie wollen sehen wo man gut spazieren/schwimmen/was auch immer gehen kann? "
-"Aktivitäten -> Spazieren/Schwimmen/WasAuchImmer -> Posts in Ihrer Nähe "
-"anschauen (von Gruppen und Personen)"
-msgstr ""
-
-#: account/templates/account/about.html:18
-msgid "Und vieles mehr.. einfach ausprobieren. Kostet ja nix."
-msgstr ""
-
-#: account/templates/account/about.html:22
-msgid ""
-"Treten Sie Aktivitäten bei, chatten Sie mit Leuten in Ihrer Nähe und lesen/"
-"erstellen Sie Posts!"
-msgstr ""
-
-#: account/templates/account/about.html:28
-msgid ""
-"Klicken Sie auf den Beitreten-Button unten rechts, um dem Audiochat eines "
-"Spiels beizutreten!"
+"Außerdem können Sie Gruppen und Gruppentermine organisieren, Beiträge in den "
+"Aktivitäten posten, liken und disliken und vieles mehr!"
 msgstr ""
 
 #: account/templates/account/banner.html:29
@@ -692,7 +671,7 @@ msgstr ""
 msgid "Sortiert nach Charakterübereinstimmung in %%"
 msgstr ""
 
-#: account/templates/account/people_list.html:24
+#: account/templates/account/people_list.html:25
 msgid ""
 "Tote Hose! Hier ist ja echt niemand. Empfehlen Sie die Seite doch Ihren "
 "Freunden und schauen Sie, wie gut eure Charaktere übereinstimmen und welche "
@@ -889,7 +868,7 @@ msgid ""
 "nur einen Tab für myactivities.net :)"
 msgstr ""
 
-#: account/templates/registration/activation_email.html:3 account/views.py:216
+#: account/templates/registration/activation_email.html:3 account/views.py:217
 msgid "E-Mail Aktivierung"
 msgstr ""
 
@@ -1060,7 +1039,7 @@ msgstr ""
 msgid "Änderungen gespeichert."
 msgstr ""
 
-#: account/views.py:216
+#: account/views.py:217
 msgid "Aktivierungs-E-Mail"
 msgstr ""
 

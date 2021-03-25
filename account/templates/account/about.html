@@ -7,29 +7,33 @@
 
 {% block content %}
 <h1>{% trans "Willkommen!" %}</h1>
-<p>
-        {% blocktrans %}Moin. Kurz und bündig:{% endblocktrans %}
-        <ol>
-                <li>{% blocktrans %}Sie registrieren sich und geben die Stadt an, in der Sie wohnen.{% endblocktrans %}</li>
-                <li>{% blocktrans %}Sie suchen ne Band/Spielegruppe etc.? Kategorien -> Musik/Brettspiele -> Zu den Gruppen -> Bewerben bzw. selbst erstellen -> Terminplanung, Chat, Leerstellen{% endblocktrans %}</li>
-                <li>{% blocktrans %}Sie wollen Durak/Doko/Skat zocken? Aktivitäten -> Durak/Skat/Doppelkopf -> Beitreten -> Online spielen -> Match erstellen/beitreten{% endblocktrans %}</li>
-                <li>{% blocktrans %}Sie wollen sich offline zum Spielen treffen? Aktivitäten -> Durak/Azul/... -> Turniere & Matches -> Bewerben/Selbst ein Treffen erstellen{% endblocktrans %}</li>
-                <li>{% blocktrans %}Sie wollen sehen wo man gut spazieren/schwimmen/was auch immer gehen kann? Aktivitäten -> Spazieren/Schwimmen/WasAuchImmer -> Posts in Ihrer Nähe anschauen (von Gruppen und Personen){% endblocktrans %}</li>
-                <li>{% blocktrans %}Und vieles mehr.. einfach ausprobieren. Kostet ja nix.{% endblocktrans %}</li>
-        </ol>
-</p>
 <div class="center-container">
-<p>{% trans "Treten Sie Aktivitäten bei, chatten Sie mit Leuten in Ihrer Nähe und lesen/erstellen Sie Posts!" %}</p>
+<p>{% trans "Ermitteln Sie Ihre Persönlichkeit durch einfache Fragen!" %}</p>
 {% if prefix == 'de' %}
-<img src="{% static 'profile_de.png' %}" class="about-picture">
+<img src="{% static 'questions_de.png' %}" class="about-picture">
+<img src="{% static 'charakter_de.png' %}" class="about-picture">
 {% else %}
-<img src="{% static 'profile_en.png' %}" class="about-picture">
+<img src="{% static 'questions_en.png' %}" class="about-picture">
+<img src="{% static 'charakter_en.png' %}" class="about-picture">
 {% endif %}
-<p>{% trans "Klicken Sie auf den Beitreten-Button unten rechts, um dem Audiochat eines Spiels beizutreten!" %}</p>
+<p>{% trans "Anschließend werden Ihnen Aktivitäten empfohlen, die zu Ihnen passen könnten. Sie können auch nach Leuten in Ihrer Nähe suchen, die einen ähnlichen Charakter haben wie Sie!" %}</p>
+{% if prefix == 'de' %}
+<img src="{% static 'suggestions_de.png' %}" class="about-picture">
+{% else %}
+<img src="{% static 'suggestions_en.png' %}" class="about-picture">
+{% endif %}
+<p>{% trans "Sie können per Text und Audiokonferenz chatten und nebenbei sogar einige Kartenspiele spielen." %}</p>
 {% if prefix == 'de' %}
 <img src="{% static 'game_de.png' %}" class="about-picture">
 {% else %}
 <img src="{% static 'game_en.png' %}" class="about-picture">
 {% endif %}
+<p>{% trans "Aktivitäten in Ihrer Nähe werden nach Mitgliederzahl sortiert. So können Sie sehen, was beliebt ist und was nicht." %}</p>
+{% if prefix == 'de' %}
+<img src="{% static 'activities_de.png' %}" class="about-picture">
+{% else %}
+<img src="{% static 'activities_en.png' %}" class="about-picture">
+{% endif %}
+<p>{% trans 'Außerdem können Sie Gruppen und Gruppentermine organisieren, Beiträge in den Aktivitäten posten, liken und disliken und vieles mehr!' %}</p>
 </div>
 {% endblock %}

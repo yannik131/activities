@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-24 17:42+0000\n"
-"PO-Revision-Date: 2021-03-24 18:43+0100\n"
+"POT-Creation-Date: 2021-03-25 13:32+0000\n"
+"PO-Revision-Date: 2021-03-25 14:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -297,67 +297,41 @@ msgid "Willkommen!"
 msgstr "Welcome!"
 
 #: account/templates/account/about.html:11
-msgid "Moin. Kurz und bündig:"
-msgstr "Hi. In short:"
+msgid "Ermitteln Sie Ihre Persönlichkeit durch einfache Fragen!"
+msgstr "Determine your personality through easy questions!"
 
-#: account/templates/account/about.html:13
-msgid "Sie registrieren sich und geben die Stadt an, in der Sie wohnen."
-msgstr "You register with the city you live in."
-
-#: account/templates/account/about.html:14
+#: account/templates/account/about.html:19
 msgid ""
-"Sie suchen ne Band/Spielegruppe etc.? Kategorien -> Musik/Brettspiele -> Zu "
-"den Gruppen -> Bewerben bzw. selbst erstellen -> Terminplanung, Chat, "
-"Leerstellen"
+"Anschließend werden Ihnen Aktivitäten empfohlen, die zu Ihnen passen "
+"könnten. Sie können auch nach Leuten in Ihrer Nähe suchen, die einen "
+"ähnlichen Charakter haben wie Sie!"
 msgstr ""
-"You’re looking for a band/play group/whatever? Categories -> Music/Board "
-"games -> Groups -> Apply or create one yourself -> Scheduling, Chat, "
-"Vacancies/Applications"
+"After the test you'll get activity suggestions tailored to your personality. "
+"You can even look for people in your area with a similar test score!"
 
-#: account/templates/account/about.html:15
+#: account/templates/account/about.html:25
 msgid ""
-"Sie wollen Durak/Doko/Skat zocken? Aktivitäten -> Durak/Skat/Doppelkopf -> "
-"Beitreten -> Online spielen -> Match erstellen/beitreten"
+"Sie können per Text und Audiokonferenz chatten und nebenbei sogar einige "
+"Kartenspiele spielen."
 msgstr ""
-"You wanna play Durak/Doppelkopf/Skat? Activities -> Durak/Doppelkopf/Skat -> "
-"Join -> Play online -> Create/Join match"
+"You can chat and make audio conferences, and even play a few card games "
+"online!"
 
-#: account/templates/account/about.html:16
+#: account/templates/account/about.html:31
 msgid ""
-"Sie wollen sich offline zum Spielen treffen? Aktivitäten -> Durak/Azul/... -"
-"> Turniere & Matches -> Bewerben/Selbst ein Treffen erstellen"
+"Aktivitäten in Ihrer Nähe werden nach Mitgliederzahl sortiert. So können Sie "
+"sehen, was beliebt ist und was nicht."
 msgstr ""
-"You wanna meet people offline to play board games? Activities -> Azul/Chess/"
-"Durak/… -> Tournaments & Matches -> Apply to/Create matches or tournaments "
-"in your area"
+"Activities are sorted by members in your area. This way you can see what is "
+"popular and what isn't."
 
-#: account/templates/account/about.html:17
+#: account/templates/account/about.html:37
 msgid ""
-"Sie wollen sehen wo man gut spazieren/schwimmen/was auch immer gehen kann? "
-"Aktivitäten -> Spazieren/Schwimmen/WasAuchImmer -> Posts in Ihrer Nähe "
-"anschauen (von Gruppen und Personen)"
+"Außerdem können Sie Gruppen und Gruppentermine organisieren, Beiträge in den "
+"Aktivitäten posten, liken und disliken und vieles mehr!"
 msgstr ""
-"You wanna know where in your area one can take a walk/go swimming/what "
-"movies are in on netflix/…? Activities -> Strolling/Swimming/Netflix -> "
-"Posts in your area/Post yourself"
-
-#: account/templates/account/about.html:18
-msgid "Und vieles mehr.. einfach ausprobieren. Kostet ja nix."
-msgstr "And a lot more… just check it out. It’s free."
-
-#: account/templates/account/about.html:22
-msgid ""
-"Treten Sie Aktivitäten bei, chatten Sie mit Leuten in Ihrer Nähe und lesen/"
-"erstellen Sie Posts!"
-msgstr "Join activities, chat with people in your area and create/read posts!"
-
-#: account/templates/account/about.html:28
-msgid ""
-"Klicken Sie auf den Beitreten-Button unten rechts, um dem Audiochat eines "
-"Spiels beizutreten!"
-msgstr ""
-"Press the join button in the bottom right corner to join the audio chat of a "
-"game!"
+"Additionally you can organise groups and meetings, like, dislike and share "
+"posts in every activity and much more!"
 
 #: account/templates/account/banner.html:29
 msgid ""
@@ -734,7 +708,7 @@ msgstr "List of people in"
 msgid "Sortiert nach Charakterübereinstimmung in %%"
 msgstr "Sorted by character congruence in %%"
 
-#: account/templates/account/people_list.html:24
+#: account/templates/account/people_list.html:25
 msgid ""
 "Tote Hose! Hier ist ja echt niemand. Empfehlen Sie die Seite doch Ihren "
 "Freunden und schauen Sie, wie gut eure Charaktere übereinstimmen und welche "
@@ -939,7 +913,7 @@ msgstr ""
 "Connection closed because a new tab was opened! Please only use one tab for "
 "myactivities.net :)"
 
-#: account/templates/registration/activation_email.html:3 account/views.py:216
+#: account/templates/registration/activation_email.html:3 account/views.py:217
 msgid "E-Mail Aktivierung"
 msgstr "E-mail activation"
 
@@ -1123,7 +1097,7 @@ msgstr "This friendship doesn't exist anymore."
 msgid "Änderungen gespeichert."
 msgstr "Changes saved."
 
-#: account/views.py:216
+#: account/views.py:217
 msgid "Aktivierungs-E-Mail"
 msgstr "Activation email"
 
@@ -3122,6 +3096,61 @@ msgstr "[Delete]"
 #, python-format
 msgid " vor %(v0)s"
 msgstr " %(v0)s ago"
+
+#~ msgid "Moin. Kurz und bündig:"
+#~ msgstr "Hi. In short:"
+
+#~ msgid "Sie registrieren sich und geben die Stadt an, in der Sie wohnen."
+#~ msgstr "You register with the city you live in."
+
+#~ msgid ""
+#~ "Sie suchen ne Band/Spielegruppe etc.? Kategorien -> Musik/Brettspiele -> "
+#~ "Zu den Gruppen -> Bewerben bzw. selbst erstellen -> Terminplanung, Chat, "
+#~ "Leerstellen"
+#~ msgstr ""
+#~ "You’re looking for a band/play group/whatever? Categories -> Music/Board "
+#~ "games -> Groups -> Apply or create one yourself -> Scheduling, Chat, "
+#~ "Vacancies/Applications"
+
+#~ msgid ""
+#~ "Sie wollen Durak/Doko/Skat zocken? Aktivitäten -> Durak/Skat/Doppelkopf -"
+#~ "> Beitreten -> Online spielen -> Match erstellen/beitreten"
+#~ msgstr ""
+#~ "You wanna play Durak/Doppelkopf/Skat? Activities -> Durak/Doppelkopf/Skat "
+#~ "-> Join -> Play online -> Create/Join match"
+
+#~ msgid ""
+#~ "Sie wollen sich offline zum Spielen treffen? Aktivitäten -> Durak/"
+#~ "Azul/... -> Turniere & Matches -> Bewerben/Selbst ein Treffen erstellen"
+#~ msgstr ""
+#~ "You wanna meet people offline to play board games? Activities -> Azul/"
+#~ "Chess/Durak/… -> Tournaments & Matches -> Apply to/Create matches or "
+#~ "tournaments in your area"
+
+#~ msgid ""
+#~ "Sie wollen sehen wo man gut spazieren/schwimmen/was auch immer gehen "
+#~ "kann? Aktivitäten -> Spazieren/Schwimmen/WasAuchImmer -> Posts in Ihrer "
+#~ "Nähe anschauen (von Gruppen und Personen)"
+#~ msgstr ""
+#~ "You wanna know where in your area one can take a walk/go swimming/what "
+#~ "movies are in on netflix/…? Activities -> Strolling/Swimming/Netflix -> "
+#~ "Posts in your area/Post yourself"
+
+#~ msgid "Und vieles mehr.. einfach ausprobieren. Kostet ja nix."
+#~ msgstr "And a lot more… just check it out. It’s free."
+
+#~ msgid ""
+#~ "Treten Sie Aktivitäten bei, chatten Sie mit Leuten in Ihrer Nähe und "
+#~ "lesen/erstellen Sie Posts!"
+#~ msgstr ""
+#~ "Join activities, chat with people in your area and create/read posts!"
+
+#~ msgid ""
+#~ "Klicken Sie auf den Beitreten-Button unten rechts, um dem Audiochat eines "
+#~ "Spiels beizutreten!"
+#~ msgstr ""
+#~ "Press the join button in the bottom right corner to join the audio chat "
+#~ "of a game!"
 
 #~ msgid "Impressum"
 #~ msgstr "About"

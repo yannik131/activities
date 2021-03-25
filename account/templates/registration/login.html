@@ -14,7 +14,7 @@
         <h1>{% blocktrans %}Einloggen{% endblocktrans %}</h1>
         
         <p><strong>{% trans "Willkommen bei myactivities.net! :)" %}</strong></p>
-        <!--<div class="button-like" onclick=openLink("{% url 'account:about' %}")><img src="{% static 'icons/question.png' %}">{% trans "Was ist das hier?" %}</div>-->
+        <div class="button-like" onclick=openLink("{% url 'account:about' %}")><img src="{% static 'icons/question.png' %}">{% trans "Was ist das hier?" %}</div>
             <p>{% trans "Bitte nutzen Sie das folgende Formular zum einloggen:" %}</p>
             <form method="post" action="{% url 'account:login' %}" class="login-form">
                 {{ form.as_p }}
