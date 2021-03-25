@@ -568,7 +568,7 @@ select:focus, select:hover {
     color: yellow;
 }
 
-footer {
+.footer {
     position: absolute;
     left: 0;
     right: 0;
@@ -577,9 +577,10 @@ footer {
     display: none;
     height: 20px;
     color: white;
+    z-index: -1;
 }
 
-footer a {
+.footer a {
     margin-right: 10px;
 }
 
