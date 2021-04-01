@@ -117,14 +117,13 @@ function getOffsetForPlayer(player, n) {
                 offset = w-field.offsetWidth/n; 
                 break;
             case 2: 
-                offset = 2*h/3+w-(field.offsetHeight+h+w)/n;
+                offset = (2*h/3+w*n-field.offsetHeight+h+w)/n;
                 break;
             case 3: 
                 offset = (1.1*w+w*n-field.offsetWidth)/n; 
                 break;
             case 4: 
-                offset = 2*h/3+w-(field.offsetHeight+h+w)/n;
-                break;
+                offset = (2*h/3+w*n-field.offsetHeight+h+w)/n;
         }
     }
     if(offset < 0) {
