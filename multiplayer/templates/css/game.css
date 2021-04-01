@@ -12,33 +12,72 @@
     position: absolute;
     left: 0px;
     top: 0px;
-    bottom: 0px;
+    bottom: 70px;
     right: 0px;
-    max-width: 800px;
+    max-width: 850px;
 }
 
 .back {
     position: absolute;
     top: 0;
     left: 0;
-    z-index = 0;
+    z-index: 1;
 }
 
 .leave {
     position: absolute;
     top: 0;
     right: 0;
-    z-index = 0;
+    z-index: 1;
 }
 
 .score {
     position: absolute;
     bottom: 0;
     left: 0;
+    z-index: 2;
 }
 
 .game::selection {
     background: transparent;
+}
+
+#game-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: black;
+    position: absolute;
+}
+
+.info-div {
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+}
+
+.info-div.dealer a {
+    color: yellow;
+}
+
+.info-div.small-blind a {
+    color: violet;
+}
+
+.info-div.big-blind a {
+    color: pink;
+}
+.info-div.active a {
+    color: red;
+}
+
+.text {
+    margin-left: 5px;
 }
 
 .player1-info {
@@ -48,22 +87,16 @@
     right: 40px;
     height: 40px;
     text-align: center;
+    z-index: 1;
+    background-color: #2d2d2d;
 }
 
 .player2-info {
     position: absolute;
-    bottom: 40px;
-    top: 0;
+    top: 40px;
     left: 0;
     width: 40px;
-}
-
-.player2-info .text {
-    position: absolute;
-    text-align: center;
-    width: 500px;
-    transform: rotate(90deg);
-    transform-origin: 20px 50%;
+    bottom: 40px;
 }
 
 .player3-info {
@@ -78,17 +111,9 @@
 .player4-info {
     position: absolute;
     bottom: 40px;
-    top: 0;
+    top: 40px;
     right: 0;
     width: 40px;
-}
-
-.player4-info .text {
-    position: absolute;
-    text-align: center;
-    width: 500px;
-    transform: rotate(90deg);
-    transform-origin: 20px 50%;
 }
 
 .game-field {
@@ -116,6 +141,8 @@
     top: 30%;
     left: 15%;
     right: 15%;
+    max-height: 40%;
+    overflow-y: scroll;
     border-radius: 10px;
     font-size: 18px;
     font-weight: bold;

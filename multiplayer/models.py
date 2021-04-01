@@ -4,14 +4,17 @@ from account.models import User
 from django.contrib.postgres.fields import HStoreField
 from django.shortcuts import reverse
 import uuid
+from django.utils import timezone
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
-from .utils import after, create_deck
+from .utils import after, create_deck, determine_dealer
 from django.utils.translation import gettext_lazy as _, gettext as __
 import json
 from multiplayer.utils import change
 from shared.shared import log
 from django.contrib.contenttypes.models import ContentType
+import random
+from datetime import datetime, timedelta
 
 
 class MultiplayerMatch(models.Model):
@@ -26,11 +29,10 @@ class MultiplayerMatch(models.Model):
     
     def __str__(self):
         return self.activity.name+__('-Match')
-        
     
     @staticmethod
     def last():
-        return MultiplayerMatch.objects.all().last()
+        return MultiplayerMatch.objects.last()
     
     @staticmethod
     def match_list_for(activity_id):
@@ -142,18 +144,22 @@ class MultiplayerMatch(models.Model):
             }, direct=True)
         
     def start(self):
+        self.in_progress = False
         self.game_data = {"type": "multiplayer", "action": "load_data", "game_number": "-1"}
-        if self.activity.name == _("Durak"):
+        if self.activity.german_name == "Durak":
             self.start_durak()
-        elif self.activity.name == _("Skat"):
+        elif self.activity.german_name == "Skat":
             self.start_skat()
-        elif self.activity.name == _("Doppelkopf"):
+        elif self.activity.german_name == "Doppelkopf":
             self.start_doppelkopf()
+        elif self.activity.german_name == 'Poker':
+            self.start_poker()
         # if self.in_progress return? TODO
         players = json.loads(self.game_data["players"])
         self.game_data["started"] = players[0]
-        for player in players:
-            self.game_data[player+"_points"] = "0"
+        if self.activity.german_name != 'Poker':
+            for player in players:
+                self.game_data[player+"_points"] = "0"
         self.in_progress = True
         self.save()
         self.broadcast_data(
@@ -167,10 +173,13 @@ class MultiplayerMatch(models.Model):
             
     def create_players(self, n, *deck):
         deck = create_deck(*deck)
-        players = []
-        for k, v in self.member_positions.items():
-            players.append(v)
-        self.game_data["players"] = json.dumps(players)
+        if 'players' not in self.game_data:
+            players = []
+            for k, v in self.member_positions.items():
+                players.append(v)
+            self.game_data["players"] = json.dumps(players)
+        else:
+            players = json.loads(self.game_data['players'])
         for player in players:
             self.game_data[player] = json.dumps(deck[:n])
             deck = deck[n:]
@@ -234,3 +243,47 @@ class MultiplayerMatch(models.Model):
             self.game_data[player+"_bid"] = ""
         change(self.game_data, "game_number", 1)
         
+    def start_poker(self):
+        players, deck = self.create_players(2, "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A")
+        self.game_data['type'] = 'multiplayer'
+        self.game_data['deck'] = json.dumps(deck[:5])
+        
+        self.game_data['cards'] = json.dumps([])
+        self.game_data['show_list'] = json.dumps([])
+        if not self.in_progress:
+            self.game_data['blinds'] = json.dumps([[10, 20], [20, 40], [30, 60], [50, 100], [100, 200], [150, 300], [200, 400], [400, 800], [800, 1600]])
+            self.game_data['dealer'] = ''
+            self.game_data['blind_duration'] = 20
+            self.game_data['blind_time'] = (timezone.now()+timedelta(minutes=int(self.game_data['blind_duration']))).isoformat()
+            self.game_data['blind_level'] = 0
+            self.game_data['alive'] = json.dumps(players)
+            for player in players:
+                self.game_data[player+'_stack'] = 20*100
+                self.game_data[player+'_bet'] = 0
+        alive = json.loads(self.game_data['alive'])
+        for player in alive:
+            self.game_data[player+'_bet'] = 0
+            if int(self.game_data[player+'_stack']) <= 0:
+                alive.remove(player)
+                self.game_data[player+'_stack'] = 0
+        self.game_data['alive'] = json.dumps(alive)
+        if len(alive) == 1:
+            self.game_data['winner'] = alive[0]
+            return
+        blinds = [[10, 20], [20, 40], [30, 60], [50, 100], [100, 200], [150, 300], [200, 400], [400, 800], [800, 1600]]
+        if int(self.game_data['blind_level']) < len(blinds)-1 and timezone.now() > datetime.fromisoformat(self.game_data['blind_time']):
+            change(self.game_data, 'blind_level', 1)
+            self.game_data['blind_time'] = (timezone.now()+timedelta(minutes=int(self.game_data['blind_duration']))).isoformat()
+        determine_dealer(self.game_data)
+        small_blind, big_blind = blinds[int(self.game_data['blind_level'])]
+        change(self.game_data, self.game_data['small_blind']+'_stack', -small_blind)
+        change(self.game_data, self.game_data['small_blind']+'_bet', small_blind)
+        change(self.game_data, self.game_data['big_blind']+'_stack', -big_blind)
+        change(self.game_data, self.game_data['big_blind']+'_bet', big_blind)
+        self.game_data['pot'] = small_blind+big_blind
+        self.game_data['highest_bet_user'] = ""
+        self.game_data['highest_bet_value'] = big_blind
+        self.game_data['previous_raise'] = big_blind
+        #todo cant pay blindes -> all in
+        change(self.game_data, 'game_number', 1)
+        self.game_data['active'] = after(self.game_data['big_blind'], players)

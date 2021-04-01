@@ -10,11 +10,10 @@
     font-size: 32px;
     font-family: "Arial", "Verdana", "Helvectica";
     margin-bottom: 10px;
-    overflow: hidden;
 }
 
 .topmenu .logo {
-    width: 20%;
+    width: 10%;
     float: left;
 }
 

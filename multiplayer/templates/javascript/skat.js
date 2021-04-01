@@ -2,7 +2,6 @@
 
 var player_list;
 var game_type; //d, c, g, ...
-var this_user = "{{ user }}";
 var player_positions; //uname:pos
 var active;
 var mode; //playing or undefined/null
@@ -65,7 +64,6 @@ function getCardSortValue(type) {
 }
 
 function processMultiplayerData(data) {
-    console.log("received: " + data.action + " active: " + data.active);
     if(data.active) {
         active = data.active;
     }
@@ -122,7 +120,7 @@ function loadGameField(data) {
         addCardsToDeck(3, false);
     }
     if(ouvert) {
-        displayCards(data, player_list, data.solist);
+        displayCards(data, player_list, [data.solist]);
         var hand = JSON.parse(data[data.solist]);
         for(var i = 0; i < hand.length; i++) {
             addCardTo(players[data.solist], 1, hand[i]);

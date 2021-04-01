@@ -1,7 +1,6 @@
 {% load i18n %}
 
 var game_mode = "none";
-var this_user = '{{ user }}';
 var played_cards = [];
 var player_list;
 var move_mode = "none";

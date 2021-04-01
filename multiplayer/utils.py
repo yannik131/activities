@@ -2,6 +2,7 @@ import random
 import json
 from shared.shared import log
 from django.utils.translation import gettext as _
+from .poker_score import highest_combo
 
 
 def change(dictionary, key, change):
@@ -38,11 +39,13 @@ def cycle_slice(start_index, arr):
     
 
 def after(el, arr):
-    return arr[((arr.index(el)+1)%len(arr)+len(arr))%len(arr)]
+    n = len(arr)
+    return arr[((arr.index(el)+1)%n+n)%n]
 
 
 def before(el, arr):
-    return arr[((arr.index(el)-1)%len(arr)+len(arr))%len(arr)]
+    n = len(arr)
+    return arr[((arr.index(el)-1)%n+n)%n]
 
 
 def left_player(player, players, data):
@@ -419,3 +422,151 @@ def give_durak_points(data, players, durak):
         summary.append([f"{player}: {'+' if points >= 0 else ''}{points} -> {data[player+'_points']}\n", data[player+'_points']])
     summary = sorted(summary, key=lambda t: t[1], reverse=True)
     return "".join([t[0] for t in summary])
+    
+
+def determine_dealer(data):
+    players = json.loads(data['alive'])
+    if not data['dealer']:
+        data['dealer'] = random.choice(players)
+    else:
+        data['dealer'] = after(data['dealer'], players)
+    if len(players) == 2:
+        data['small_blind'] = data['dealer']
+        data['big_blind'] = after(data['dealer'], players)
+    else:
+        data['small_blind'] = after(data['dealer'], players)
+        data['big_blind'] = after(data['small_blind'], players)
+        
+def no_fold(data, active=None):
+    players = json.loads(data['alive'])
+    if active is None:
+        active = players[0]
+    result = []
+    for user in cycle_slice(players.index(active), players):
+        if data[user+'_bet'] != 'fold':
+            result.append(user)
+    return result
+    
+    
+def player_or(func, name, data):
+    if data[data[name]+'_bet'] != 'fold':
+        return data[name]
+    else:
+        players = json.loads(data['alive'])
+        player = func(data[name], players)
+        while data[player+'_bet'] == 'fold':
+            player = func(player, players)
+        return player
+    
+def get_next_round_number(data, action, active):
+    cards = json.loads(data['cards'])
+    n = len(cards)
+    alive = no_fold(data, after(active, json.loads(data['alive'])))
+    total_players = json.loads(data['alive'])
+    if n == 0 and action == 'check':
+        return 2
+    elif (action == 'call' or action == 'fold') and alive[0] == data['highest_bet_user']:
+        if n == 0:
+            return 2
+        else:
+            return n
+    elif action == 'check':
+        if len(total_players) == 2: # head to head
+            if active == data['big_blind']:
+                return n
+        else:
+            if active == player_or(before, 'dealer', data):
+                return n
+    return None
+    
+def start_round(data):
+    deck = json.loads(data['deck'])
+    cards = json.loads(data['cards'])
+    if len(cards) == 0:
+        cards = deck[:3]
+        deck = deck[3:]
+    else:
+        cards.append(deck[0])
+        del deck[0]
+    data['cards'] = json.dumps(cards)
+    data['deck'] = json.dumps(deck)
+    data['highest_bet_user'] = ''
+    players = json.loads(data['alive'])
+    active = player_or(after, 'small_blind', data)
+    data['active'] = no_fold(data, active)[0]
+    
+def showdown(data):
+    winners = []
+    common_cards = json.loads(data.cards)
+    scores = [[user, round(highest_combo(common_cards, json.loads(data[user])))] for user in no_fold(data)]
+    scores = sorted(scores, key=lambda t: t[1][0], reverse=True)
+    winners.append(scores[0])
+    for score in scores[1:]:
+        if score[1][0] == winners[0][1][0]:
+            winners.append(score)
+        else:
+            break
+    
+def determine_forced_player(data):
+    if data['highest_bet_user']:
+        return data['highest_bet_user']
+    else:
+        return after(data['dealer'], no_fold(data))
+        
+def determine_winners_poker(data):
+    players = [] #[bet, user, score, name]
+    common_cards = json.loads(data['cards'])
+    show_list = json.loads(data['show_list'])
+    for player in no_fold(data):
+        if player in show_list:
+            hand = json.loads(data[player])
+            score, name = highest_combo(common_cards, hand)
+        else:
+            score, name = highest_combo(common_cards, [])
+        players.append([int(data[player+'_bet']),
+                        player,
+                        score,
+                        name])
+    pots = create_pots(players)
+    summary = ""
+    for i in range(len(pots)):
+        pot = pots[i]
+        if i == 0:
+            summary += 'Main Pot:\n'
+        else:
+            summary += f'Side Pot {i}:\n'
+        total_reward = pot[0]
+        each = int(pot[0]/len(pot[1]))
+        summary += f'HAND{pot[1][0][1]}HAND\n'
+        for player in pot[1]:
+            change(data, player[0]+'_stack', each)
+            summary += f'{player[0]} +{each}\n'
+        leftover = total_reward-each*len(pot[1])
+        if leftover:
+            player = random.choice(pot[1])
+            change(data, player[0]+'_stack', leftover)
+            summary += f'{player[0]} +{leftover}\n'
+    data['summary'] = summary
+    return summary
+    
+def create_pots(players):
+    players = sorted(players, key=lambda l: l[0], reverse=True)
+    pots = [] #[chips, [[user, name]]]
+    while True:
+        pots.append(create_pot(players))
+        players = [player for player in players if player[0]]
+        if not players or players[-1][0] == players[0][0]:
+            break
+    if len(players) > 0:
+        pots.append(create_pot(players, True))
+    return pots
+            
+def create_pot(players, ignore_score=False):
+    min_bet = players[-1][0]
+    pot = [min_bet*len(players), []]
+    max_score = max(players, key=lambda l: l[2])[2]
+    for player in players:
+        player[0] -= min_bet
+        if ignore_score or player[2] == max_score:
+            pot[1].append([player[1], player[3]])
+    return pot

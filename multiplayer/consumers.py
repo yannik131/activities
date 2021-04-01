@@ -31,13 +31,20 @@ class GameConsumer(WebsocketConsumer):
     def multiplayer(self, event):
         self.send(text_data=json.dumps(event))
         
-        
     def receive(self, text_data=None):
         with redis_lock.Lock(conn, self.match_id):
             text_data = json.loads(text_data)
-            message = self.get_message(text_data)
-            if not "data" in message:
-                return
+            match = MultiplayerMatch.objects.get(pk=self.match_id)
+            data = match.game_data
+            message = {"group": True}
+            if text_data["action"] == "request_data":
+                message["data"] = data
+                message["group"] = False
+            else:
+                self.handle_move(text_data, data, match, message)
+                match.save()
+                if not "data" in message:
+                    return
             if message["group"]:
                 message["data"]["type"] = "multiplayer"
                 async_to_sync(self.channel_layer.group_send)(
@@ -45,19 +52,13 @@ class GameConsumer(WebsocketConsumer):
                     message["data"]
                 )
             else:
-                self.send(text_data=json.dumps(message["data"]))
+                self.multiplayer(message['data'])
+                
             
 class DurakConsumer(GameConsumer):
-    def get_message(self, text_data):
-        match = MultiplayerMatch.objects.get(pk=self.match_id)
-        data = match.game_data
+    def handle_move(self, text_data, data, match, message):
         players = json.loads(data["players"])
-        message = {"group": True}
-        if text_data['action'] == "request_data":
-            message["data"] = data
-            message["group"] = False
-            return message
-        elif text_data['action'] in ["beating", "attacking"]:
+        if text_data['action'] in ["beating", "attacking"]:
             data["stacks"] = text_data["stacks"]
             data[self.username] = text_data["hand"]
             if not data["first"] and len(json.loads(text_data["hand"])) == 0:
@@ -144,19 +145,10 @@ class DurakConsumer(GameConsumer):
                 "defending": data["defending"],
                 "stacks": data["stacks"]
             }
-        match.save()
-        return message
             
 class SkatConsumer(GameConsumer):
-    def get_message(self, text_data):
-        match = MultiplayerMatch.objects.get(pk=self.match_id)
-        data = match.game_data
-        message = {"group": True}
-        if text_data["action"] == "request_data":
-            message["data"] = data
-            message["group"] = False
-            return message
-        elif text_data["action"] == "play":
+    def handle_move(self, text_data, data, match, message):
+        if text_data["action"] == "play":
             handle_play("skat", data, text_data, self.username, message, match)
         elif text_data["action"] == "declare":
             data["game_type"] = text_data["game"][0]
@@ -229,14 +221,9 @@ class SkatConsumer(GameConsumer):
                 data["forehand"] = data["started"]
                 data["active"] = after(data["forehand"], players)
                 message["data"]["round"] = match.game_data
-        match.save()
-        return message
 
 class DoppelkopfConsumer(GameConsumer):
-    def get_message(self, text_data):
-        match = MultiplayerMatch.objects.get(pk=self.match_id)
-        data = match.game_data
-        message = {"group": True}
+    def handle_move(self, text_data, data, match, message):
         players = json.loads(data["players"])
         if text_data["action"] == "request_data":
             message["data"] = data
@@ -295,5 +282,119 @@ class DoppelkopfConsumer(GameConsumer):
                 "who": text_data["who"],
                 "value_ncards": data["value_ncards"]
             }
-        match.save()
-        return message
+
+class PokerConsumer(GameConsumer):
+    def handle_move(self, text_data, data, match, message):
+        if self.username not in json.loads(data['alive']):
+            return
+        if text_data['action'] == 'fold':
+            data[self.username+'_bet'] = 'fold'
+            message['data'] = {
+                'action': 'fold',
+                'user': self.username
+            }
+            remaining_players = no_fold(data)
+            if len(remaining_players) == 1:
+                change(data, remaining_players[0]+'_stack', int(data['pot']))
+                message['data']['pot'] = data['pot']
+                match.start_poker()
+                message['data']['new_game_data'] = match.game_data
+                message['data']['winner'] = remaining_players[0]
+                return
+        elif text_data['action'] == 'raise':
+            change(data, self.username+'_bet', int(text_data['to_pay']))
+            data['highest_bet_value'] = data[self.username+'_bet']
+            data['previous_raise'] = int(text_data['value'])
+            change(data, self.username+'_stack', -int(text_data['to_pay']))
+            change(data, 'pot', int(text_data['to_pay']))
+            data['highest_bet_user'] = self.username
+            
+            message['data'] = {
+                'action': 'raise',
+                'user': self.username,
+                'value': text_data['value'],
+                'stack': data[self.username+'_stack'],
+                'pot': data['pot']
+            }
+        elif text_data['action'] == 'call':
+            data[self.username+'_bet'] = data['highest_bet_value']
+            change(data, self.username+'_stack', -int(text_data['value']))
+            change(data, 'pot', int(text_data['value']))
+            message['data'] = {
+                'action': 'call',
+                'user': self.username,
+                'stack': data[self.username+'_stack'],
+                'pot': data['pot']
+            }
+        elif text_data['action'] == 'check':
+            message['data'] = {
+                'action': 'check',
+                'user': self.username,
+                'stack': data[self.username+'_stack']
+            }
+        elif text_data['action'] == 'show':
+            if text_data['value'] == '1':
+                show_list = json.loads(data['show_list'])
+                show_list.append(self.username)
+                data['show_list'] = json.dumps(show_list)
+                message['data'] = {
+                    'user': self.username,
+                    'action': 'show',
+                    'hand': data[self.username]
+                }
+            else:
+                message['data'] = {
+                    'action': 'show',
+                }
+            data['active'] = after(data['active'], no_fold(data))
+            message['data']['active'] = data['active']
+            if data['active'] == determine_forced_player(data):
+                summary = determine_winners_poker(data)
+                match.start_poker()
+                message['data']['new_game_data'] = match.game_data
+                message['data']['summary'] = summary
+                message['data']['active'] = ''
+            return
+        
+        next_round_number = get_next_round_number(data, text_data['action'], data['active'])
+        if next_round_number:
+            if next_round_number == 5:
+                forced_player = determine_forced_player(data)
+                message['data']['forced'] = forced_player
+                show_list = json.loads(data['show_list'])
+                show_list.append(forced_player)
+                data['show_list'] = json.dumps(show_list)
+                data['active'] = after(forced_player, no_fold(data))
+                message['data']['hand'] = data[forced_player]
+            else:
+                start_round(data)
+                message['data']['cards'] = data['cards']
+                message['data']['new_round'] = "1"
+        else:
+            if text_data['action'] == 'fold':
+                players = json.loads(data['alive'])
+                active = after(data['active'], players)
+                while data[active+'_bet'] == 'fold':
+                    active = after(data['active'], players)
+                data['active'] = active
+            else:
+                data['active'] = after(data['active'], no_fold(data))
+        
+        message['data']['active'] = data['active']
+        
+    def clean(self, data):
+        del data['deck']
+        for player in json.loads(data['alive']):
+            if player != self.username and data[player+'_bet'] != 'show':
+                del data[player]
+        
+    def multiplayer(self, event):
+        """
+        #TODO: figure security out, this method won't work, because the event variable will not be deepcopied for every user. maybe deepcopying?
+        if 'deck' in event:
+            self.clean(event)
+        elif 'new_game_data' in event:
+            if 'deck' in event['new_game_data']:
+                self.clean(event['new_game_data'])
+        """
+        self.send(text_data=json.dumps(event))

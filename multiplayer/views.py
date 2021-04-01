@@ -21,9 +21,10 @@ def lobby(request, activity_name):
 def create_match(request, activity_name):
     activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
     match = None
-    if activity.name == _("Skat"):
+    name = activity.german_name
+    if name == "Skat":
         match = MultiplayerMatch.objects.create(activity=activity, member_limit=3, admin=request.user)
-    elif activity.name == _("Doppelkopf"):
+    elif name == "Doppelkopf":
         match = MultiplayerMatch.objects.create(activity=activity, member_limit=4, admin=request.user)
     if request.method == 'POST':
         form = CreateMatchForm(request.POST)
@@ -32,7 +33,7 @@ def create_match(request, activity_name):
             match = form.save(commit=False)
             match.activity = activity
             match.admin = request.user
-            match.save()
+            match.save() 
     else:
         form = CreateMatchForm()
     if match:
@@ -94,11 +95,5 @@ def game(request, match):
     if not match.is_full():
         return HttpResponseRedirect(match.get_absolute_url())
     data = dict(match=match, current_chat_room=ChatRoom.get_for_target(match))
-    if match.activity.name == _('Durak'):
-        return render(request, 'multiplayer/durak.html', data)
-    elif match.activity.name == _("Skat"):
-        return render(request, 'multiplayer/skat.html', data)
-    elif match.activity.name == _("Doppelkopf"):
-        return render(request, 'multiplayer/doppelkopf.html', data)
-    messages.add_message(request, messages.INFO, _('Dieses Match gibt es nicht.'))
+    return render(request, 'multiplayer/game.html', data)
         

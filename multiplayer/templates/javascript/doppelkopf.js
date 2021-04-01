@@ -1,6 +1,5 @@
 {% load i18n %}
 
-var this_user = '{{ user }}';
 var game_type;
 var mode;
 const bid_translations = {
@@ -337,7 +336,7 @@ function loadGameField(data) {
             handleStart();
             var trick = JSON.parse(data.trick);
             if(trick.length) {
-                refreshStacks([JSON.parse(data.trick)], true);
+                refreshStacks([JSON.parse(data.trick)]);
             }
             break;
     }

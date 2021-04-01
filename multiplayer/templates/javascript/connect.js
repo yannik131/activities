@@ -47,6 +47,10 @@ window.addEventListener('beforeunload', function() {
     socket.close();
 });
 
+function game_send(message) {
+    socket.send(JSON.stringify(message));
+}
+
 function sendAction(action) {
     socket.send(JSON.stringify({
         'action': action

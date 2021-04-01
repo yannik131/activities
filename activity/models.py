@@ -48,6 +48,10 @@ class Activity(TranslatableModel):
     @property
     def channel_group_name(self):
         return f"activity-{self.id}"
+        
+    @property
+    def german_name(self):
+        return self.translations.get(language_code='de').name
 
     @staticmethod
     def content_type():

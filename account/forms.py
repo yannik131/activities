@@ -55,8 +55,8 @@ class UserRegistrationForm(forms.ModelForm):
         
     def clean_username(self):
         username = self.cleaned_data['username']
-        if len(username) > 15:
-            raise forms.ValidationError(_('Nutzername zu lang (max. 15 Zeichen)'))
+        if len(username) > 10:
+            raise forms.ValidationError(_('Nutzername zu lang (max. 10 Zeichen)'))
         try: 
             validate_email(username)
         except ValidationError:

@@ -1,12 +1,11 @@
 {% load static %}
 {% load i18n %}
 
-var player1_cards = [];
-var player2_cards = [];
-var player3_cards = [];
-var player4_cards = [];
-var player_cards = {1: player1_cards, 2: player2_cards, 3: player3_cards, 4: player4_cards}
-var players = {}; //username -> 1-4
+var player_cards = {1: [], 2: [], 3: [], 4: [],
+                    5: [], 6: [], 7: [], 8: [],
+                    9: [], 10: []};
+var player1_cards = player_cards[1];
+var players = {}; //username -> 1-10
 var suit_values = {}, value_values = {};
 var deck = [];
 var stacks = [];
@@ -17,6 +16,8 @@ var button_row = 0;
 var summary;
 var info_timeout;
 var beat_right = false;
+const this_user = '{{ user }}';
+var is_poker = false;
 
 function getGridPosition(value, suit) {
     var x, y;
@@ -74,21 +75,57 @@ function createCard(type, clickable=false) {
     return card;
 }
 
+function getPlayerVariables(player) {
+    var default_rotation = {1: 0, 2: 90, 3: 0, 4: -90};
+    var poker_rotation = {1: 0, 2: 90, 3: 90, 4: 0, 5: 0, 6: 0, 7: -90, 8: -90, 9: -90, 10: 0}
+    if(is_poker) {
+        return {rotation: poker_rotation[player], cards: player_cards[player]}
+    }
+    return {rotation: default_rotation[player], cards: player_cards[player]}
+}
+
 function getOffsetForPlayer(player, n) {
     var offset;
-    switch(player) {
-        case 1: 
-            offset = w-field.offsetWidth/n; 
+    if(is_poker) {
+        const p1 = 20, p2 = 30;
+        switch(player) {
+            case 1:
+                offset = w-((field.offsetWidth-1/3*h-p1)/2-p2)/n;
+                break;
+            case 2:
+            case 3:
+                offset = w-((field.offsetHeight-1/3*h-2*p1-h)/2-p2)/n;
+                break;
+            case 4:
+            case 5:
+            case 6:
+                offset = w-(field.offsetWidth/3-p2)/(n+1);
+                break;
+            case 7:
+            case 8:
+            case 9:
+                offset = w-((field.offsetHeight-h/3-p1)/3-p2)/n;
             break;
-        case 2: 
-            offset = (2*h/3+w*n-field.offsetHeight+h+w)/n;
-            break;
-        case 3: 
-            offset = (1.1*w+w*n-field.offsetWidth)/n; 
-            break;
-        case 4: 
-            offset = (2*h/3+w*n-field.offsetHeight+h+w)/n;
-            break;
+            case 10:
+                offset = w-((field.offsetWidth-h/3-p1)/2-p2)/n;
+                break;
+        }
+    }
+    else {
+        switch(player) {
+            case 1: 
+                offset = w-field.offsetWidth/n; 
+                break;
+            case 2: 
+                offset = 2*h/3+w-(field.offsetHeight+h+w)/n;
+                break;
+            case 3: 
+                offset = (1.1*w+w*n-field.offsetWidth)/n; 
+                break;
+            case 4: 
+                offset = 2*h/3+w-(field.offsetHeight+h+w)/n;
+                break;
+        }
     }
     if(offset < 0) {
         offset = 0;
@@ -96,60 +133,73 @@ function getOffsetForPlayer(player, n) {
     return offset;
 }
 
-
-function getPlayerVariables(player) {
-    var rotation;
-    var cards;
-    switch(player) {
-        case 1:
-            rotation = 0;
-            cards = player1_cards;
-            break;
-        case 2:
-            rotation = 90;
-            cards = player2_cards;
-            break;
-        case 3:
-            rotation = 0;
-            cards = player3_cards;
-            break;
-        case 4:
-            rotation = -90;
-            cards = player4_cards;
-            break;
-    }
-    return {rotation: rotation, cards: cards}
-}
-
 function positionCard(player, card, i, n) {
     const offset = getOffsetForPlayer(player, n);
-    switch(player) {
-        case 1:
-            card.style.left = i*w-offset*i+"px";
-            card.style.top = field.offsetHeight-h+"px";
-            break;
-        case 2:
-            card.style.top = 2*h/3+w*i-offset*i+"px";
-            card.style.left = 1/3*h+"px";
-            break;
-        case 3:
-            card.style.left = w+10+w*i-offset*i+"px";
-            card.style.top = -2/3*h+"px";
-            break;
-        case 4:
-            card.style.top = w+h/2+w*i-offset*i+"px";
-            card.style.right = -2/3*h-(123-h)+"px";
-            break;
+    if(is_poker) {
+        const p1 = 20, p2 = 20;
+        const left_box_height = field.offsetHeight-h-2*p1-1/3*h;
+        const right_box_height = field.offsetHeight-h/3-p1;
+        const bottom_box_width = field.offsetWidth-h/3-p1;
+        switch(player) {
+            case 1:
+                card.style.left = i*w-offset*i+"px";
+                card.style.top = field.offsetHeight-h+"px";
+                break;
+            case 2:
+                card.style.top = field.offsetHeight-h-p1-w-w*i+i*offset+"px";
+                card.style.left = 1/3*h+"px";
+                break;
+            case 3:
+                card.style.top = field.offsetHeight-h-p1-left_box_height/2-w-w*i+i*offset+"px";
+                card.style.left = 1/3*h+"px";
+                break;
+            case 4:
+            case 5:
+            case 6:
+                card.style.top = -2/3*h+"px";
+                card.style.left = (player-4)*field.offsetWidth/3+w*i-i*offset+"px";
+                break;
+            case 7:
+            case 8:
+            case 9:
+                card.style.right = -2/3*h-(123-h)+"px";
+                card.style.top = h/3+p1+(player-6)*(right_box_height/3)-w*i+i*offset+"px";
+                break;
+            case 10:
+                card.style.top = field.offsetHeight-1/3*h+"px";
+                card.style.left = bottom_box_width-w-w*i+i*offset+"px";
+                break;
+        }
+    }
+    else {
+        switch(player) {
+            case 1:
+                card.style.left = i*w-offset*i+"px";
+                card.style.top = field.offsetHeight-h+"px";
+                break;
+            case 2:
+                card.style.top = 2*h/3+w*i-offset*i+"px";
+                card.style.left = 1/3*h+"px";
+                break;
+            case 3:
+                card.style.left = w+10+w*i-offset*i+"px";
+                card.style.top = -2/3*h+"px";
+                break;
+            case 4:
+                card.style.top = w+h/2+w*i-offset*i+"px";
+                card.style.right = -2/3*h-(123-h)+"px";
+                break;
+        }
     }
 }
 
-function addCardTo(player, n, type) {
+function addCardTo(player, n, type, not_clickable) {
     var new_cards = [];
     const vars = getPlayerVariables(player);
     var card;
     for(var i = 0; i < n; i++) {
         if(type) {
-            card = createCard(type, player == 1);
+            card = createCard(type, player == 1 && !not_clickable);
             card.id = type;
         }
         else {
@@ -428,7 +478,7 @@ function createYesNoAlert(info, zIndex, callback) {
     field.appendChild(info_alert);
 }
 
-function createInfoAlert(info, timeout) {
+function createInfoAlert(info, timeout, no_button) {
     const old = document.getElementById("info-alert");
     if(old) {
         old.remove();
@@ -448,19 +498,42 @@ function createInfoAlert(info, timeout) {
             document.getElementById("info-alert").remove();
         }, timeout);
     }
-    else {
+    else if(!no_button) {
         createInfoButton("Okay", null, info_alert);
     }
     field.appendChild(info_alert);
-    info_alert;
+    return info_alert;
 }
 
-function createInfoButton(text, button_callback, info_alert) {
+function createInputAlert(message, callback) {
+    var info_alert = createInfoAlert(message, null, true);
+    var input = document.createElement('input');
+    input.addEventListener('keyup', function(event) {
+        if(event.which == 13) {
+            if(callback(input.value)) {
+                input.parentElement.remove();
+            }
+        }
+    });
+    info_alert.appendChild(document.createElement('br'));
+    info_alert.appendChild(input);
+    createInfoButton('{% trans 'Senden' %}', function() {
+        if(callback(input.value)) {
+            input.parentElement.remove();
+        }
+    }, info_alert, true);
+    createInfoButton('{% trans 'Abbrechen' %}', function() {
+        input.parentElement.remove();
+    }, info_alert, true);
+}
+
+function createInfoButton(text, button_callback, info_alert, no_auto_remove) {
     var button = document.createElement("button");
     button.type = "button";
     button.onclick = function() {
-        console.log('click!');
-        info_alert.remove();
+        if(!no_auto_remove) {
+            info_alert.remove();
+        }
         if(button_callback) {
             button_callback();
         }
@@ -537,28 +610,128 @@ function positionPlayers(player_list) {
 function changeInfoFor(username, info, important) {
     var player = players[username];
     var player_info = document.getElementById("player"+player);
-    player_info.innerHTML = (
-        "<a href='/account/detail/" +
-        username + 
-        "/'>" +
-        username +
-        "</a> " +
-        info
+    var info_div = document.getElementById("info-div-"+username);
+    const content = (
+        "<a href='/account/detail/"+username+"/'>"+
+            username+
+        "</a>"+
+        "<span class='text'>"+
+            info+
+        "</span>"
     );
+    if(!info_div) {
+        info_div = document.createElement('div');
+        info_div.className = 'info-div';
+        info_div.id = "info-div-"+username;
+        info_div.innerHTML = content;
+        player_info.appendChild(info_div);
+        const rotation = getPlayerVariables(player).rotation;
+        switch(rotation) {
+            case 90:
+                info_div.style.transform = 'rotate(90deg)';
+                info_div.style.transformOrigin = 'bottom left';
+                player_info.style.height = field.offsetHeight+"px";
+                info_div.style.top = (field.offsetHeight-80-parseInt(window.getComputedStyle(info_div).width))/2+"px";
+                break;
+            case -90:
+                info_div.style.transform = 'rotate(-270deg)';
+                info_div.style.transformOrigin = 'bottom left';
+                player_info.style.height = field.offsetHeight+"px";
+                info_div.style.top = (field.offsetHeight-80-parseInt(window.getComputedStyle(info_div).width))/2+"px";
+                break;
+            default:
+                info_div.style.left = (field.offsetWidth-parseInt(window.getComputedStyle(info_div).width))/2+"px";
+        }
+        
+    }
     if(important) {
-        player_info.style.fontWeight = "bold";
-        player_info.style.color = "red";
+        info_div.style.fontWeight = "bold";
+        info_div.style.color = "red";
     }
     else {
-        player_info.style.fontWeight = "normal";
-        player_info.style.color = "white";
+        info_div.style.fontWeight = "normal";
+        info_div.style.color = "white";
     }
+    info_div.innerHTML = content;
+}
+
+function displayText(message) {
+    var text = document.getElementById('game-text');
+    if(!text) {
+        text = document.createElement('div');
+        text.id = "game-text";
+        text.style.width = w+"px";
+        text.style.height = h+"px";
+        const padding = {x: 10, y: h/4};
+        const top_left = {x: 1/3*h+10, y: 2/3*h+10};
+        text.style.left = top_left.x+2*(w+padding.x)+"px";
+        text.style.top = top_left.y+(h+padding.y)*1+"px";
+        field.appendChild(text);
+    }
+    message = message.replace(/(?:\r\n|\r|\n)/g, '<br>');
+    text.innerHTML = message;
+}
+
+function changePokerInfoFor(player, username, info) {
+    var info_div = document.getElementById("info-div-"+username);
+    var created = false;
+    if(!info_div) {
+        info_div = document.createElement('div');
+        var length = w*2-getOffsetForPlayer(player, 2);
+        info_div.style.width = length+"px";
+        info_div.className = 'info-div';
+        info_div.id = "info-div-"+username;
+        created = true;
+    }
+    var player_info;
+    switch(player) {
+        case 1:
+        case 10:
+            player_info = document.getElementById('player1');
+            info_div.style.left = player_cards[player][player == 1? 0 : 1].style.left;
+            break;
+        case 2:
+        case 3:
+            player_info = document.getElementById('player2');
+            info_div.style.top = parseInt(player_cards[player][1].style.top)-40+"px";
+            info_div.style.transformOrigin = "bottom left";
+            info_div.style.transform = "rotate(90deg)";
+            break;
+        case 4:
+        case 5:
+        case 6:
+            player_info = document.getElementById('player3');
+            
+            info_div.style.left = player_cards[player][0].style.left;
+            break;
+        case 7:
+        case 8:
+        case 9:
+            player_info = document.getElementById('player4');
+            info_div.style.transformOrigin = "bottom left";
+            info_div.style.transform = "rotate(-270deg)";
+            info_div.style.top = parseInt(player_cards[player][1].style.top)-110+"px";
+            break;
+    }
+   info_div.innerHTML = (
+    "<a href='/account/detail/"+username+"/'>"+
+        username+
+    "</a> "+(info != undefined? (
+    "<span class='text'> ("+
+        info+
+    ")</div>") : "")
+    );
+    if(created) {
+        player_info.appendChild(info_div);
+    }
+    
+    return info_div;
 }
 
 function displayCards(data, player_list, except) {
     for(var i = 0; i < player_list.length; i++) {
         var username = player_list[i];
-        if(username == except) {
+        if(except && except.indexOf(username) != -1) {
             continue;
         }
         var player_index = players[username];
@@ -603,7 +776,7 @@ overlap of cards.*/
     w = 123*scale;
     h = 192*scale;
     //update player cards
-    for(var i = 1; i < 5; i++) {
+    for(var i = 1; i < 11; i++) {
         var cards = player_cards[i];
         var types = [];
         while(cards.length) {
@@ -613,7 +786,7 @@ overlap of cards.*/
         }
         while(types.length) {
             var type = types.pop();
-            addCardTo(i, 1, type != "rear"? type : null);
+            addCardTo(i, 1, type != "rear"? type : null, is_poker);
         }
     }
     //update deck
@@ -655,6 +828,32 @@ overlap of cards.*/
         var button = buttons_copy.pop();
         createButton(button.innerText, button.id, button.onclick);
     }
+    //update info in poker
+    if(is_poker) {
+        const info_divs = document.getElementsByClassName('info-div');
+        for(var i = 0; i < info_divs.length; i++) {
+            const username = info_divs[i].id.split('-')[2];
+            var info = info_divs[i].innerText.split(username)[1].slice(2, -1);
+            info_divs[i].remove();
+            changePokerInfoFor(players[username], username, info);
+        }
+        var text = document.getElementById('game-text');
+        if(text) {
+            const message = text.innerHTML;
+            text.remove();
+            displayText(message);
+        }
+    }
+    else {
+        const info_divs = document.getElementsByClassName('info-div');
+        for(var i = 0; i < info_divs.length; i++) {
+            const username = info_divs[i].id.split('-')[2];
+            var info = info_divs[i].innerText.split(username)[1];
+            const important = info_divs[i].style.color == 'red';
+            info_divs[i].remove();
+            changeInfoFor(username, info, important);
+        }
+    }
 }
 
 game_resize();
@@ -664,3 +863,7 @@ window.addEventListener('resize', game_resize);
 if(window.document.documentMode) {
     alert("{% trans 'Internet Explorer wird nicht unterstützt!' %}");
 }
+
+window.addEventListener('load', function() {
+    document.querySelector('.footer').style.display = 'none';
+});
