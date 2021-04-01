@@ -20,7 +20,6 @@ HAND_TRANSLATIONS = {
 }
 
 function processMultiplayerData(data) {
-    console.log(data);
     switch(data.action) {
         case "load_data":
             loadGameField(data);
