@@ -8,9 +8,6 @@ var member_limit = {{ match.member_limit }};
 function updateMatchMembers(data) {
     switch(data.info) {
         case "joined":
-            if(parseInt(data.position) > 4) {
-                return;
-            }
             var username = document.getElementById('grid-member-'+data.position);
             username.innerHTML = data.username;
             if('{{ user }}' == '{{ match.admin }}') {
