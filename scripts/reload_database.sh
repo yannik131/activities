@@ -7,6 +7,6 @@ source scripts/comp.sh
 find . -name migrations -type d -exec rm -rf {} \;
 sudo $option psql -c "drop database activities;"
 sudo $option psql -c "create database activities;"
-sudo -u postgres pg_restore -d activities backup/backup.sql
+sudo $option pg_restore -d activities backup.sql
 python3 manage.py makemigrations account activity chat competitions scheduling usergroups vacancies wall notify multiplayer character
 python3 manage.py migrate --fake 
