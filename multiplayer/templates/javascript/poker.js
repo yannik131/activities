@@ -73,7 +73,7 @@ function handleShow(data) {
             var hands = Object.keys(HAND_TRANSLATIONS);
             for(var i = 0; i < hands.length; i++) {
                 var hand = 'HAND'+hands[i]+'HAND';
-                summary = summary.replace(hand, HAND_TRANSLATIONS[hands[i]]);
+                summary = summary.replaceAll(hand, HAND_TRANSLATIONS[hands[i]]);
             }
             createInfoAlert(summary);
             var button = document.querySelector('.info-alert-button');

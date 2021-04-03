@@ -64,7 +64,6 @@ function toggleLastTrick() {
         }
     }
     else {
-        console.log('creating');
         for(var i = 0; i < last_trick.length; i++) {
             var card = createCard(last_trick[i]);
             card.id = "last_trick"+i;

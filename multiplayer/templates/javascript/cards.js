@@ -823,8 +823,8 @@ overlap of cards.*/
         buttons_copy.splice(0, 0, button);
     }
     button_row = 0;
-    while(buttons_copy.length) {
-        var button = buttons_copy.pop();
+    for(var i = 0; i <buttons_copy.length; i++) {
+        var button = buttons_copy[i];
         createButton(button.innerText, button.id, button.onclick);
     }
     //update info in poker
