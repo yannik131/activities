@@ -9,6 +9,7 @@ from competitions.models import Tournament
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from account.views import handler403
+from django.contrib import messages
 
 
 def create_vacancies(request, app_label, model, id):
@@ -83,27 +84,34 @@ def accept_invitation(request, id):
 def apply_for_vacancy(request, id):
     vacancy = get_object_or_404(Vacancy, id=id)
     if not request.user.birth_year:
-        #TODO: messages
+        messages.add_message(request, messages.INFO, _('Bitte ergänzen Sie Ihr Profil (Geburtsjahr und Geschlecht), um sich bewerben zu können.'))
         return HttpResponseRedirect(request.user.get_absolute_url())
-    if not request.user.satisfies_requirements_of(vacancy):
-        return handler403(request, _('Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder Geschlecht) nicht. <a href=\"{link}\">Zurück</a>').format(link=vacancy.target.get_absolute_url()))
+        
+    elif not request.user.satisfies_requirements_of(vacancy):
+        messages.add_message(request, messages.INFO, _('Sie erfüllen die Voraussetzungen der Leerstelle nicht.'))
+        
     elif request.user.applications.filter(vacancy=vacancy).exists():
-        return handler403(request, _('Sie haben sich bereits beworben.'))
+        messages.add_message(request, messages.INFO, _('Sie haben sich bereits beworben.'))
+        
     elif type(vacancy.target) is Tournament and vacancy.target.application_deadline < timezone.now():
-        return handler403(request, _('Die Anmeldefrist ist bereits abgelaufen. <a href=\"{link}\">Zurück</a>').format(link=vacancy.target.get_absolute_url()))
-    if request.user in vacancy.target.members.all():
-        return handler403(request, _('Sie sind bereits Mitglied.'))
-    if request.method == 'POST':
-        form = ApplicationForm(request.POST)
-        if form.is_valid():
-            application = form.save(commit=False)
-            application.vacancy = vacancy
-            application.user = request.user
-            application.save()
-            return HttpResponseRedirect(vacancy.target.get_absolute_url())
+        messages.add_message(request, messages.INFO, _('Die Anmeldefrist ist bereits abgelaufen.'))
+        
+    elif request.user in vacancy.target.members.all():
+        messages.add_message(request, messages.INFO, _('Sie sind bereits Mitglied.'))
+        
     else:
-        form = ApplicationForm()
-    return render(request, 'vacancies/apply_for_vacancy.html', dict(form=form, vacancy=vacancy))
+        if request.method == 'POST':
+            form = ApplicationForm(request.POST)
+            if form.is_valid():
+                application = form.save(commit=False)
+                application.vacancy = vacancy
+                application.user = request.user
+                application.save()
+                return HttpResponseRedirect(vacancy.target.get_absolute_url())
+        else:
+            form = ApplicationForm()
+        return render(request, 'vacancies/apply_for_vacancy.html', dict(form=form, vacancy=vacancy))
+    return HttpResponseRedirect(vacancy.target.get_absolute_url())
 
 
 def review_vacancy(request, id):

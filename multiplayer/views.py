@@ -11,10 +11,11 @@ from account.models import User
 from .decorators import guard_match
 
 
-def lobby(request, activity_name):
+def lobby(request, activity_name, guarded=0):
     activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
-    if activity not in request.user.activities.all():
+    if guarded and not request.user.activities.filter(pk=activity.id).exists():
         activity.members.add(request.user)
+        messages.add_message(request, messages.INFO, _('Sie sind der Aktivität {name} beigetreten.').format(name=activity.name))
     online_list = activity.members.filter(channel_name__isnull=False)
     user_matches = request.user.multiplayer_matches.filter(activity__id=activity.id)
     return render(request, 'multiplayer/lobby.html', dict(activity=activity, online_list=online_list, user_matches=user_matches))

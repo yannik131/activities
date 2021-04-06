@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-06 16:09+0000\n"
-"PO-Revision-Date: 2021-04-06 18:14+0200\n"
+"POT-Creation-Date: 2021-04-06 17:44+0000\n"
+"PO-Revision-Date: 2021-04-06 19:45+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -288,7 +288,7 @@ msgstr ""
 
 #: account/templates/account/about.html:6
 #: account/templates/account/impressum.html:4
-#: account/templates/account/impressum.html:7 account/templates/base.html:92
+#: account/templates/account/impressum.html:7 account/templates/base.html:91
 msgid "Info"
 msgstr "About"
 
@@ -2698,11 +2698,16 @@ msgstr "Leave"
 msgid "Starten"
 msgstr "Start"
 
-#: multiplayer/views.py:58
+#: multiplayer/views.py:18
+#, python-brace-format
+msgid "Sie sind der Aktivität {name} beigetreten."
+msgstr "You joined the activity {name}."
+
+#: multiplayer/views.py:61
 msgid "Spiel ist bereits voll"
 msgstr "Game is full"
 
-#: multiplayer/views.py:74
+#: multiplayer/views.py:77
 msgid "Sie waren zu langsam, das Match war bereits voll."
 msgstr "Too slow. Match is already full."
 
@@ -3054,26 +3059,25 @@ msgstr "Age"
 msgid "Abwarten"
 msgstr "Wait"
 
-#: vacancies/views.py:89
-#, python-brace-format
+#: vacancies/views.py:87
 msgid ""
-"Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder "
-"Geschlecht) nicht. <a href=\"{link}\">Zurück</a>"
-msgstr ""
-"You don't fulfill the vacancy's criteria (location, age and/or gender). <a "
-"href=\"{link}\">Back</a>"
+"Bitte ergänzen Sie Ihr Profil (Geburtsjahr und Geschlecht), um sich bewerben "
+"zu können."
+msgstr "Please complete your profile (birth year and gender) before you apply."
 
 #: vacancies/views.py:91
+msgid "Sie erfüllen die Voraussetzungen der Leerstelle nicht."
+msgstr "You don't fulfil the vacancy's criteria (location, age and/or gender)."
+
+#: vacancies/views.py:94
 msgid "Sie haben sich bereits beworben."
 msgstr "You already applied to this vacancy."
 
-#: vacancies/views.py:93
-#, python-brace-format
-msgid "Die Anmeldefrist ist bereits abgelaufen. <a href=\"{link}\">Zurück</a>"
-msgstr ""
-"The application deadline has already expired. <a href=\"{link}\">Back</a>"
+#: vacancies/views.py:97
+msgid "Die Anmeldefrist ist bereits abgelaufen."
+msgstr "The application deadline has already expired."
 
-#: vacancies/views.py:95
+#: vacancies/views.py:100
 msgid "Sie sind bereits Mitglied."
 msgstr "You already are a member."
 
@@ -3679,9 +3683,6 @@ msgstr " %(v0)s ago"
 
 #~ msgid "vor %(v0)s"
 #~ msgstr "%(v0)s ago"
-
-#~ msgid "ist einer Aktivität beigetreten:"
-#~ msgstr "joined an activity:"
 
 #~ msgid "hat eine Aktivität verlassen:"
 #~ msgstr "Left an activity:"

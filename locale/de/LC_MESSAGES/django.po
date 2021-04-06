@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-06 16:09+0000\n"
+"POT-Creation-Date: 2021-04-06 17:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -281,7 +281,7 @@ msgstr ""
 
 #: account/templates/account/about.html:6
 #: account/templates/account/impressum.html:4
-#: account/templates/account/impressum.html:7 account/templates/base.html:92
+#: account/templates/account/impressum.html:7 account/templates/base.html:91
 msgid "Info"
 msgstr ""
 
@@ -2458,11 +2458,16 @@ msgstr ""
 msgid "Starten"
 msgstr ""
 
-#: multiplayer/views.py:58
+#: multiplayer/views.py:18
+#, python-brace-format
+msgid "Sie sind der Aktivität {name} beigetreten."
+msgstr ""
+
+#: multiplayer/views.py:61
 msgid "Spiel ist bereits voll"
 msgstr ""
 
-#: multiplayer/views.py:74
+#: multiplayer/views.py:77
 msgid "Sie waren zu langsam, das Match war bereits voll."
 msgstr ""
 
@@ -2811,23 +2816,25 @@ msgstr ""
 msgid "Abwarten"
 msgstr ""
 
-#: vacancies/views.py:89
-#, python-brace-format
+#: vacancies/views.py:87
 msgid ""
-"Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder "
-"Geschlecht) nicht. <a href=\"{link}\">Zurück</a>"
+"Bitte ergänzen Sie Ihr Profil (Geburtsjahr und Geschlecht), um sich bewerben "
+"zu können."
 msgstr ""
 
 #: vacancies/views.py:91
+msgid "Sie erfüllen die Voraussetzungen der Leerstelle nicht."
+msgstr ""
+
+#: vacancies/views.py:94
 msgid "Sie haben sich bereits beworben."
 msgstr ""
 
-#: vacancies/views.py:93
-#, python-brace-format
-msgid "Die Anmeldefrist ist bereits abgelaufen. <a href=\"{link}\">Zurück</a>"
+#: vacancies/views.py:97
+msgid "Die Anmeldefrist ist bereits abgelaufen."
 msgstr ""
 
-#: vacancies/views.py:95
+#: vacancies/views.py:100
 msgid "Sie sind bereits Mitglied."
 msgstr ""
 
