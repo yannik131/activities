@@ -49,5 +49,8 @@ lobby -> game konferenz beibehalten
 optimierung: chat cache, aktualisierung bei beitritt/austritt
 match overview keine aktualisierung bei chat beitreten
 
-poker, auto check wenn alle anderen spieler all in
-poker, no fold fehler bei raise all in
+undefined verlässt die konferenz
+
+img onload movembers not defined
+
+all in -> split -> call -1990
