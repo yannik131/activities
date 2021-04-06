@@ -3,10 +3,12 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from account.models import User
 from django.utils import timezone
+from datetime import timedelta
 from django.urls import reverse
 
 
 class Notification(models.Model):
+    LIFESPAN = timedelta(days=7)
     recipient = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notifications')
 
     actor_ct = models.ForeignKey(ContentType, related_name='notify_actor', on_delete=models.CASCADE)
@@ -30,6 +32,10 @@ class Notification(models.Model):
         if not self.action_object:
             return self.actor.get_absolute_url()
         return self.action_object.get_absolute_url()
+        
+    @property
+    def should_be_deleted(self):
+        return self.action_object_id and not self.action_object or self.actor is None or timezone.now()-self.timestamp > Notification.LIFESPAN
 
     def __str__(self):
         model = self.actor_ct.model_class()

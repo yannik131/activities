@@ -124,7 +124,7 @@ class User(AbstractUser):
     def get_notifications(self):
         notifications = []
         for notification in self.notifications.all():
-            if notification.action_object_id and not notification.action_object or notification.actor is None:
+            if notification.should_be_deleted:
                 notification.delete()
             else:
                 notifications.append(notification)
