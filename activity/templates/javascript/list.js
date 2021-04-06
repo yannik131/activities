@@ -18,6 +18,6 @@ function position() {
     list.style.marginLeft = (empty_space/2)+"px";
 }
 
-position();
-
 window.addEventListener('resize', position);
+
+window.addEventListener('load', position);

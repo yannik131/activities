@@ -1,6 +1,6 @@
 {% load i18n %}
 
-const limit = {{ user.character.question_limit }};
+const limit = parseInt('{{ user.character.question_limit }}');
 const MAX_TRAIT_VALUE = 5*limit/30;
 const MIN_TRAIT_VALUE = 1*limit/30;
 var sum = 0;
@@ -69,4 +69,7 @@ function displayResults() {
         title.style.color = get_color(score/100, i == 0);
         title.innerHTML += prefix+diff+"%";
     }
+    resize();
 }
+
+window.addEventListener('load', displayResults);

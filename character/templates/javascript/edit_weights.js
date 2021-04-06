@@ -3,7 +3,7 @@
 
 var weights = JSON.parse('{{ activity.weights_json|safe }}');
 
-const save_button = document.getElementById('save');
+let save_button;
 const max_weight = 5;
 
 function imgClick(event) {
@@ -93,35 +93,6 @@ function addApplet(div, trait) {
         weight_button.state = weights[trait][1];
     }
     div.appendChild(applet);
-    //button farbe nach neurotizität oder nicht rot/grün machen
-    //daneben gewichtung 1-3x
-}
-
-for(var i = 0; i < letters.length; i++) {
-    var list = BIG_FIVE[letters[i]];
-    var subtext = document.getElementById(letters[i]+"s");
-    var left = document.createElement('div');
-    var right = document.createElement('div');
-    left.className = 'trait-left';
-    right.className = 'trait-right';
-    subtext.appendChild(left);
-    subtext.appendChild(right);
-    for(var j = 0; j < list.length; j++) {
-        var trait = list[j];
-        if(j < 3) {
-            addApplet(left, trait);
-        }
-        else {
-            addApplet(right, trait);
-        }
-    }
-}
-
-displayWeights(weights);
-
-if(info.innerText.length == 0) {
-    info.innerHTML += "{% trans 'Noch keine Gewichte verteilt!' %}";
-    info.style.color = "yellow";
 }
 
 function save() {
@@ -138,3 +109,34 @@ function update() {
         save_button.style.backgroundColor = 'darkgreen';
     }
 }
+
+window.addEventListener('load', function() {
+    save_button = document.getElementById('save');
+        
+    for(var i = 0; i < letters.length; i++) {
+        var list = BIG_FIVE[letters[i]];
+        var subtext = document.getElementById(letters[i]+"s");
+        var left = document.createElement('div');
+        var right = document.createElement('div');
+        left.className = 'trait-left';
+        right.className = 'trait-right';
+        subtext.appendChild(left);
+        subtext.appendChild(right);
+        for(var j = 0; j < list.length; j++) {
+            var trait = list[j];
+            if(j < 3) {
+                addApplet(left, trait);
+            }
+            else {
+                addApplet(right, trait);
+            }
+        }
+    }
+
+    displayWeights(weights);
+
+    if(info.innerText.length == 0) {
+        info.innerHTML += "{% trans 'Noch keine Gewichte verteilt!' %}";
+        info.style.color = "yellow";
+    }
+})

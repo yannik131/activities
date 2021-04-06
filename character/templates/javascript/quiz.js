@@ -1,7 +1,12 @@
 {% load i18n %}
 
 {% with limit=user.character.question_limit %}
-const limit = {{ limit }};
+let limit;
+var current_question = null;
+{% if limit %}
+limit = {{ limit }};
+current_question = {{ user.character.current_question }};
+{% endif %}
 {% if limit == 240 %}
     {% include 'javascript/question240.js' %}
 {% elif limit == 120 %}
@@ -10,29 +15,15 @@ const limit = {{ limit }};
     {% include 'javascript/question60.js' %}
 {% endif %}
 
-
-var current_question = {{ user.character.current_question }};
-var question_span = document.getElementById('current-question');
-var slider = document.getElementById('slider');
-const button = document.getElementById('send-button');
-const back_button = document.getElementById('back-button');
-const info = document.getElementById('info-box');
-const counter = document.getElementById('counter');
-const time = document.getElementById('time');
-if(current_question == limit) {
-    question_span.innerHTML = "{% trans 'Alle Fragen wurden beantwortet!' %}";
-    button.onclick = null;
-}
-else {
-    question_span.innerHTML = questions[current_question]+".";
-}
+var question_span, slider;
+let button, back_button, info, counter, time;
 
 var last_trait = null;
 var last_value = null;
 
 function update() {
     counter.innerHTML = (current_question+1)+"/{{ limit }}";
-time.innerHTML = Math.ceil((limit-(current_question))*7/60)+" min";
+    time.innerHTML = Math.ceil((limit-(current_question))*7/60)+" min";
     slider.value = 3;
 }
 
@@ -57,7 +48,6 @@ function next() {
         update();
     }
     
-    
     setTimeout(function() {
         button.onclick = next;
         button.style.backgroundColor = "#0087f7";
@@ -79,5 +69,21 @@ function back() {
     send({'type': 'character', 'action': 'back', 'trait': last_trait, 'value': last_value});
 }
 
-update();
+window.addEventListener('load', function() {
+    question_span = document.getElementById('current-question');
+    slider = document.getElementById('slider');
+    button = document.getElementById('send-button');
+    back_button = document.getElementById('back-button');
+    info = document.getElementById('info-box');
+    counter = document.getElementById('counter');
+    time = document.getElementById('time');
+    if(current_question == limit) {
+        question_span.innerHTML = "{% trans 'Alle Fragen wurden beantwortet!' %}";
+        button.onclick = null;
+    }
+    else {
+        question_span.innerHTML = questions[current_question]+".";
+    }
+    update();
+})
 {% endwith %}

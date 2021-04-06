@@ -129,6 +129,6 @@
 {% include 'javascript/overview.js' %}
 {% if user.character.presentable %}
     {% include 'javascript/list.js' %}
-    displayResults();
+    window.addEventListener('load', displayResults);
 {% endif %}
 {% endblock %}
