@@ -24,7 +24,7 @@ class UserGroup(models.Model):
         'has_lost_member': _('hat ein Mitglied verloren'),
         'updated_description': _('hat eine neue Beschreibung'),
         'accepted_application': _('hat Ihre Bewerbung angenommen'),
-        'kicked_you_out': _("Hat Sie rausgeschmissen")
+        'kicked_you_out': _("hat Sie rausgeschmissen")
     }
 
     class Meta:

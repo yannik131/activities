@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-25 13:32+0000\n"
+"POT-Creation-Date: 2021-04-06 16:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,7 +52,7 @@ msgid "Passwörter stimmen nicht überein!"
 msgstr ""
 
 #: account/forms.py:59
-msgid "Nutzername zu lang (max. 15 Zeichen)"
+msgid "Nutzername zu lang (max. 10 Zeichen)"
 msgstr ""
 
 #: account/forms.py:79
@@ -281,7 +281,7 @@ msgstr ""
 
 #: account/templates/account/about.html:6
 #: account/templates/account/impressum.html:4
-#: account/templates/account/impressum.html:7 account/templates/base.html:93
+#: account/templates/account/impressum.html:7 account/templates/base.html:92
 msgid "Info"
 msgstr ""
 
@@ -431,9 +431,9 @@ msgstr ""
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:334
-#: multiplayer/templates/javascript/durak.js:371
-#: multiplayer/templates/javascript/durak.js:380
+#: multiplayer/templates/javascript/durak.js:333
+#: multiplayer/templates/javascript/durak.js:370
+#: multiplayer/templates/javascript/durak.js:379
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:14
 #: usergroups/templates/usergroups/edit_group.html:13
@@ -852,7 +852,7 @@ msgstr ""
 msgid "Die Posts sind öffentlich auf Ihrer Profilseite sichtbar."
 msgstr ""
 
-#: account/templates/base.html:33 account/templates/javascript/base.js:56
+#: account/templates/base.html:41 account/templates/javascript/base.js:56
 msgid "OK!"
 msgstr ""
 
@@ -868,7 +868,7 @@ msgid ""
 "nur einen Tab für myactivities.net :)"
 msgstr ""
 
-#: account/templates/registration/activation_email.html:3 account/views.py:217
+#: account/templates/registration/activation_email.html:3 account/views.py:218
 msgid "E-Mail Aktivierung"
 msgstr ""
 
@@ -1000,6 +1000,7 @@ msgid ""
 msgstr ""
 
 #: account/templates/registration/password_reset_form.html:12
+#: multiplayer/templates/javascript/cards.js:520
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
 #: wall/templates/wall/post/create_comment.html:11
 #: wall/templates/wall/post/create_post.html:13
@@ -1016,38 +1017,42 @@ msgid ""
 "Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
 msgstr ""
 
-#: account/views.py:61
+#: account/views.py:62
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
 "senden."
 msgstr ""
 
-#: account/views.py:82
+#: account/views.py:83
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr ""
 
-#: account/views.py:116
+#: account/views.py:117
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr ""
 
-#: account/views.py:137
+#: account/views.py:138
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr ""
 
-#: account/views.py:171
+#: account/views.py:172
 msgid "Änderungen gespeichert."
 msgstr ""
 
-#: account/views.py:217
+#: account/views.py:218
 msgid "Aktivierungs-E-Mail"
 msgstr ""
 
-#: activities/settings/base.py:154
+#: account/views.py:255
+msgid "Passwort erfolgreich geändert."
+msgstr ""
+
+#: activities/settings/base.py:161
 msgid "Deutsch"
 msgstr ""
 
-#: activities/settings/base.py:155
+#: activities/settings/base.py:162
 #, fuzzy
 #| msgid "English"
 msgid "Englisch"
@@ -1070,7 +1075,7 @@ msgstr ""
 msgid "Aktivität: {name}"
 msgstr ""
 
-#: activity/models.py:91
+#: activity/models.py:95
 #, python-brace-format
 msgid "Kategorie: {name}"
 msgstr ""
@@ -1258,6 +1263,7 @@ msgid "Andere Kategorie wählen: "
 msgstr ""
 
 #: character/templates/character/overview.html:70
+#: multiplayer/templates/multiplayer/game.html:50
 msgid "Score"
 msgstr ""
 
@@ -1435,7 +1441,7 @@ msgstr ""
 msgid "Hoch"
 msgstr ""
 
-#: character/templates/javascript/edit_weights.js:123
+#: character/templates/javascript/edit_weights.js:139
 msgid "Noch keine Gewichte verteilt!"
 msgstr ""
 
@@ -1659,7 +1665,7 @@ msgid ""
 "Ich tue Dinge, die ich später bereue."
 msgstr ""
 
-#: character/templates/javascript/quiz.js:23
+#: character/templates/javascript/quiz.js:81
 msgid "Alle Fragen wurden beantwortet!"
 msgstr ""
 
@@ -1667,7 +1673,7 @@ msgstr ""
 msgid "Wählen Sie zuerst einen der drei Fragebogen aus, bevor Sie beginnen."
 msgstr ""
 
-#: chat/templates/chat/room.html:6 chat/templates/javascript/room.js:162
+#: chat/templates/chat/room.html:6
 #: vacancies/templates/vacancies/review_vacancy.html:18
 msgid "Chat"
 msgstr ""
@@ -1689,11 +1695,8 @@ msgid "hat den Chat verlassen."
 msgstr ""
 
 #: chat/templates/javascript/room.js:75
+#: multiplayer/templates/javascript/poker.js:60
 msgid "Sie"
-msgstr ""
-
-#: chat/templates/javascript/room.js:149
-msgid "Chat schließen"
 msgstr ""
 
 #: chat/views.py:16
@@ -1888,7 +1891,7 @@ msgid "Nutzer"
 msgstr ""
 
 #: competitions/templates/competitions/full_table.html:13
-#: multiplayer/templates/javascript/doppelkopf.js:180
+#: multiplayer/templates/javascript/doppelkopf.js:179
 msgid "Punkte"
 msgstr ""
 
@@ -1979,7 +1982,7 @@ msgid "%(v0)s: Matches & Turniere"
 msgstr ""
 
 #: competitions/templates/competitions/overview.html:11
-#: competitions/templates/competitions/user_overview.html:30
+#: competitions/templates/competitions/user_overview.html:34
 msgid "Turniere"
 msgstr ""
 
@@ -2031,19 +2034,23 @@ msgstr ""
 msgid "Doko-Lobby"
 msgstr ""
 
-#: competitions/templates/competitions/user_overview.html:23
+#: competitions/templates/competitions/user_overview.html:25
+msgid "Poker-Lobby"
+msgstr ""
+
+#: competitions/templates/competitions/user_overview.html:27
 msgid "Offline"
 msgstr ""
 
-#: competitions/templates/competitions/user_overview.html:24
+#: competitions/templates/competitions/user_overview.html:28
 msgid "Matches"
 msgstr ""
 
-#: competitions/templates/competitions/user_overview.html:31
+#: competitions/templates/competitions/user_overview.html:35
 msgid "Verwaltete Turniere:"
 msgstr ""
 
-#: competitions/templates/competitions/user_overview.html:37
+#: competitions/templates/competitions/user_overview.html:41
 msgid "Als Teilnehmer:"
 msgstr ""
 
@@ -2055,8 +2062,7 @@ msgstr ""
 msgid "Schach"
 msgstr ""
 
-#: competitions/utils.py:69 multiplayer/models.py:150 multiplayer/views.py:26
-#: multiplayer/views.py:101
+#: competitions/utils.py:69
 msgid "Doppelkopf"
 msgstr ""
 
@@ -2064,8 +2070,7 @@ msgstr ""
 msgid "Azul"
 msgstr ""
 
-#: competitions/utils.py:73 multiplayer/forms.py:20 multiplayer/models.py:148
-#: multiplayer/views.py:24 multiplayer/views.py:99
+#: competitions/utils.py:73
 msgid "Skat"
 msgstr ""
 
@@ -2076,24 +2081,24 @@ msgid ""
 "implementiert werden könnte!"
 msgstr ""
 
-#: competitions/views.py:91
+#: competitions/views.py:92
 #, python-brace-format
 msgid "{act}-Turnier"
 msgstr ""
 
-#: competitions/views.py:165
+#: competitions/views.py:166
 msgid "Es wurde noch keine Runde erstellt."
 msgstr ""
 
-#: competitions/views.py:178
+#: competitions/views.py:179
 msgid "Es stehen noch Ergebnisse der letzten Runde offen."
 msgstr ""
 
-#: competitions/views.py:186
+#: competitions/views.py:187
 msgid "Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden."
 msgstr ""
 
-#: competitions/views.py:199
+#: competitions/views.py:200
 msgid "Es stehen noch Ergebnisse offen."
 msgstr ""
 
@@ -2101,32 +2106,33 @@ msgstr ""
 msgid "Spieleranzahl"
 msgstr ""
 
-#: multiplayer/forms.py:17 multiplayer/models.py:146 multiplayer/views.py:97
-msgid "Durak"
-msgstr ""
-
 #: multiplayer/forms.py:19
 msgid "Unterstützt werden 2, 3 oder 4 Spieler"
 msgstr ""
 
 #: multiplayer/forms.py:22
-msgid "Unterstützt werden 3 oder 4 Spieler"
+msgid "Unterstützt werden 2-10 Spieler"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:424
-#: multiplayer/templates/javascript/skat.js:561
+#: multiplayer/templates/javascript/cards.js:474
+#: multiplayer/templates/javascript/skat.js:559
 msgid "Ja"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:426
+#: multiplayer/templates/javascript/cards.js:476
 msgid "Nein"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:589
+#: multiplayer/templates/javascript/cards.js:525
+#: multiplayer/templates/multiplayer/match.html:27
+msgid "Abbrechen"
+msgstr ""
+
+#: multiplayer/templates/javascript/cards.js:762
 msgid "Es wurde noch kein Spiel beendet."
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:665
+#: multiplayer/templates/javascript/cards.js:862
 msgid "Internet Explorer wird nicht unterstützt!"
 msgstr ""
 
@@ -2138,187 +2144,267 @@ msgstr ""
 msgid "Okay"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:7
-#: multiplayer/templates/javascript/doppelkopf.js:419
+#: multiplayer/templates/javascript/doppelkopf.js:6
+#: multiplayer/templates/javascript/doppelkopf.js:418
 msgid "Gesund"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:8
+#: multiplayer/templates/javascript/doppelkopf.js:7
 msgid "Hochzeit"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:9
+#: multiplayer/templates/javascript/doppelkopf.js:8
 msgid "Damen"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:10
+#: multiplayer/templates/javascript/doppelkopf.js:9
 msgid "Buben"
+msgstr ""
+
+#: multiplayer/templates/javascript/doppelkopf.js:10
+#: multiplayer/templates/javascript/skat.js:12
+#: multiplayer/templates/javascript/skat.js:356
+msgid "Kreuz"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:11
 #: multiplayer/templates/javascript/skat.js:13
-#: multiplayer/templates/javascript/skat.js:358
-msgid "Kreuz"
+#: multiplayer/templates/javascript/skat.js:357
+msgid "Pik"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:12
 #: multiplayer/templates/javascript/skat.js:14
-#: multiplayer/templates/javascript/skat.js:359
-msgid "Pik"
-msgstr ""
-
-#: multiplayer/templates/javascript/doppelkopf.js:13
-#: multiplayer/templates/javascript/skat.js:15
-#: multiplayer/templates/javascript/skat.js:360
+#: multiplayer/templates/javascript/skat.js:358
 msgid "Herz"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:14
+#: multiplayer/templates/javascript/doppelkopf.js:13
 msgid "Trumpf"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:15
+#: multiplayer/templates/javascript/doppelkopf.js:14
 msgid "Fleischlos"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:19
+#: multiplayer/templates/javascript/doppelkopf.js:18
 msgid "Keine 90"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:20
+#: multiplayer/templates/javascript/doppelkopf.js:19
 msgid "Keine 60"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:21
+#: multiplayer/templates/javascript/doppelkopf.js:20
 msgid "Keine 30"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:22
-#: multiplayer/templates/javascript/skat.js:392
+#: multiplayer/templates/javascript/doppelkopf.js:21
+#: multiplayer/templates/javascript/skat.js:390
 msgid "Schwarz"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:25
+#: multiplayer/templates/javascript/doppelkopf.js:24
 msgid "Re"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:26
-#: multiplayer/templates/javascript/doppelkopf.js:262
+#: multiplayer/templates/javascript/doppelkopf.js:25
+#: multiplayer/templates/javascript/doppelkopf.js:261
 msgid "Kontra"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:179
-#: multiplayer/templates/javascript/doppelkopf.js:345
-#: multiplayer/templates/javascript/durak.js:157
-#: multiplayer/templates/javascript/skat.js:164
-#: multiplayer/templates/javascript/skat.js:201
+#: multiplayer/templates/javascript/doppelkopf.js:178
+#: multiplayer/templates/javascript/doppelkopf.js:344
+#: multiplayer/templates/javascript/durak.js:156
+#: multiplayer/templates/javascript/skat.js:162
+#: multiplayer/templates/javascript/skat.js:199
 msgid "Spiel Nummer"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:212
+#: multiplayer/templates/javascript/doppelkopf.js:211
 msgid "Normalspiel"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:55
-#: multiplayer/templates/javascript/durak.js:207
+#: multiplayer/templates/javascript/durak.js:54
+#: multiplayer/templates/javascript/durak.js:206
 msgid "SCHLUCKT"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:166
+#: multiplayer/templates/javascript/durak.js:165
 msgid "ANGREIFER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:169
+#: multiplayer/templates/javascript/durak.js:168
 msgid "VERTEIDIGER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:351
+#: multiplayer/templates/javascript/durak.js:350
 msgid "Schlucken"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:361
+#: multiplayer/templates/javascript/durak.js:360
 msgid "Schieben"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:16
-#: multiplayer/templates/javascript/skat.js:361
+#: multiplayer/templates/javascript/poker.js:10
+msgid "High Card"
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:11
+msgid "Ein Paar"
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:12
+msgid "Zwei Paare"
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:13
+msgid "Drilling"
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:14
+msgid "Straße"
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:15
+msgid "Flush"
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:16
+msgid "Full House"
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:17
+msgid "Vierling"
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:18
+msgid "Straight Flush"
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:19
+msgid "Royal Flush"
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:146
+msgid "Gewonnen: "
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:178
+msgid "Gewinner: "
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:246
+msgid "Änderung um "
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:272
+msgid "Sie können nicht zweimal hintereinander raisen."
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:276
+msgid "Mindesteinsatz: "
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:280
+msgid "Geben Sie eine Zahl ein."
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:283
+msgid "Beachten Sie den Mindesteinsatz."
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:286
+msgid "So viel Kohle haben Sie nicht."
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:332
+msgid "Zeigen"
+msgstr ""
+
+#: multiplayer/templates/javascript/poker.js:333
+msgid "Nicht zeigen"
+msgstr ""
+
+#: multiplayer/templates/javascript/skat.js:15
+#: multiplayer/templates/javascript/skat.js:359
 msgid "Karo"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:17
+#: multiplayer/templates/javascript/skat.js:16
 msgid "Grand"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:18
+#: multiplayer/templates/javascript/skat.js:17
 msgid "Null"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:21
+#: multiplayer/templates/javascript/skat.js:20
 msgid "Nö"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:203
+#: multiplayer/templates/javascript/skat.js:201
 msgid "gewonnen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:205
+#: multiplayer/templates/javascript/skat.js:203
 msgid "verloren"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:207
+#: multiplayer/templates/javascript/skat.js:205
 msgid "überreizt"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:209
+#: multiplayer/templates/javascript/skat.js:207
 msgid "Augen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:291
+#: multiplayer/templates/javascript/skat.js:289
 msgid "Drücken"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:378
+#: multiplayer/templates/javascript/skat.js:376
 msgid "Ouvert"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:381
-#: multiplayer/templates/javascript/skat.js:386
+#: multiplayer/templates/javascript/skat.js:379
+#: multiplayer/templates/javascript/skat.js:384
 msgid "Normal"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:389
+#: multiplayer/templates/javascript/skat.js:387
 msgid "Schneider"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:395
+#: multiplayer/templates/javascript/skat.js:393
 msgid "Offen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:415
+#: multiplayer/templates/javascript/skat.js:413
 msgid "Aufnehmen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:418
+#: multiplayer/templates/javascript/skat.js:416
 msgid "Hand spielen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:427
+#: multiplayer/templates/javascript/skat.js:425
 msgid "Eingepasst"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:566
+#: multiplayer/templates/javascript/skat.js:564
 msgid "Passe"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:578
+#: multiplayer/templates/javascript/skat.js:576
 msgid "Vorhand"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:578
+#: multiplayer/templates/javascript/skat.js:576
 msgid "Mittelhand"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:578
+#: multiplayer/templates/javascript/skat.js:576
 msgid "Hinterhand"
 msgstr ""
 
@@ -2333,11 +2419,18 @@ msgid ""
 "erstellen."
 msgstr ""
 
-#: multiplayer/templates/multiplayer/game.html:13
+#: multiplayer/templates/multiplayer/game.html:35
+#: multiplayer/templates/multiplayer/game.html:46
+msgid "Lobby"
+msgstr ""
+
+#: multiplayer/templates/multiplayer/game.html:37
+#: multiplayer/templates/multiplayer/game.html:52
 msgid "Spiel beenden, verlassen und zurücksetzen?"
 msgstr ""
 
-#: multiplayer/templates/multiplayer/game.html:14
+#: multiplayer/templates/multiplayer/game.html:38
+#: multiplayer/templates/multiplayer/game.html:53
 msgid "Ciao!"
 msgstr ""
 
@@ -2361,24 +2454,16 @@ msgstr ""
 msgid "Verlassen"
 msgstr ""
 
-#: multiplayer/templates/multiplayer/match.html:27
-msgid "Abbrechen"
-msgstr ""
-
 #: multiplayer/templates/multiplayer/match.html:34
 msgid "Starten"
 msgstr ""
 
-#: multiplayer/views.py:57
+#: multiplayer/views.py:58
 msgid "Spiel ist bereits voll"
 msgstr ""
 
-#: multiplayer/views.py:73
+#: multiplayer/views.py:74
 msgid "Sie waren zu langsam, das Match war bereits voll."
-msgstr ""
-
-#: multiplayer/views.py:103
-msgid "Dieses Match gibt es nicht."
 msgstr ""
 
 #: scheduling/forms.py:18 usergroups/forms.py:22
@@ -2450,7 +2535,7 @@ msgid "hat Ihre Bewerbung angenommen"
 msgstr ""
 
 #: usergroups/models.py:27
-msgid "Hat Sie rausgeschmissen"
+msgid "hat Sie rausgeschmissen"
 msgstr ""
 
 #: usergroups/models.py:37
@@ -2726,23 +2811,23 @@ msgstr ""
 msgid "Abwarten"
 msgstr ""
 
-#: vacancies/views.py:87
+#: vacancies/views.py:89
 #, python-brace-format
 msgid ""
 "Sie erfüllen die nötigen Voraussetzungen der Leerstelle (Ort, Alter und/oder "
 "Geschlecht) nicht. <a href=\"{link}\">Zurück</a>"
 msgstr ""
 
-#: vacancies/views.py:89
+#: vacancies/views.py:91
 msgid "Sie haben sich bereits beworben."
 msgstr ""
 
-#: vacancies/views.py:91
+#: vacancies/views.py:93
 #, python-brace-format
 msgid "Die Anmeldefrist ist bereits abgelaufen. <a href=\"{link}\">Zurück</a>"
 msgstr ""
 
-#: vacancies/views.py:93
+#: vacancies/views.py:95
 msgid "Sie sind bereits Mitglied."
 msgstr ""
 
