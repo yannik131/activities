@@ -19,6 +19,9 @@ var beat_right = false;
 const this_user = '{{ user }}';
 var is_poker = false;
 
+const default_rotation = {1: 0, 2: 90, 3: 0, 4: -90};
+const poker_rotation = {1: 0, 2: 90, 3: 90, 4: 0, 5: 0, 6: 0, 7: -90, 8: -90, 9: -90, 10: 0};
+
 function getGridPosition(value, suit) {
     var x, y;
     switch(value) {
@@ -76,8 +79,6 @@ function createCard(type, clickable=false) {
 }
 
 function getPlayerVariables(player) {
-    var default_rotation = {1: 0, 2: 90, 3: 0, 4: -90};
-    var poker_rotation = {1: 0, 2: 90, 3: 90, 4: 0, 5: 0, 6: 0, 7: -90, 8: -90, 9: -90, 10: 0}
     if(is_poker) {
         return {rotation: poker_rotation[player], cards: player_cards[player]}
     }
@@ -135,7 +136,7 @@ function getOffsetForPlayer(player, n) {
 function positionCard(player, card, i, n) {
     const offset = getOffsetForPlayer(player, n);
     if(is_poker) {
-        const p1 = 20, p2 = 20;
+        const p1 = 20;
         const left_box_height = field.offsetHeight-h-2*p1-1/3*h;
         const right_box_height = field.offsetHeight-h/3-p1;
         const bottom_box_width = field.offsetWidth-h/3-p1;

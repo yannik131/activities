@@ -89,21 +89,19 @@ function addMessageToChat(data) {
 };
 
 window.addEventListener('beforeunload', function(e) {
-    if(kicked_out) {
+    if(kicked_out || !room_id) {
         return;
     }
     user_websocket.send(JSON.stringify({'type': 'chat', 'update_check': '', 'id': room_id}));
 });
 
 function moveMembers(id) {
-    console.log('move ', id);
     if(!room_id) {
         init_chat(id);
     }
     room_imgs_loaded[id]++;
     var members_div = document.getElementById('chat-members-'+room_id);
     var all_members = members_div.getElementsByClassName('chat-member');
-    console.log(room_imgs_loaded[id], all_members.length);
     if(room_imgs_loaded[id] < all_members.length) {
         return;
     }

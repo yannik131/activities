@@ -48,6 +48,7 @@ function updateMatchList(data) {
         item.appendChild(bottom);
         list.appendChild(item);
     }
+    resize();
 }
 
 function requestMatchList() {

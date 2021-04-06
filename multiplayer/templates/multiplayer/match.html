@@ -38,7 +38,7 @@
         <div class="member-grid">
             <table>
                 {% for username, position in members %}
-                    {% if forloop.counter == 1 or forloop.counter == 3 %}<tr>{% endif %}
+                    {% if not forloop.counter|divisibleby:2 %}<tr>{% endif %}
                     <td>
                         <div class="grid-overview">
                             <div class="number">{{ forloop.counter }}: </div>
@@ -56,7 +56,7 @@
                             </div>
                         </div>
                     </td>
-                    {% if forloop.counter == 2 or forloop.counter == 4 %}</tr>{% endif %}
+                    {% if forloop.counter|divisibleby:2 %}</tr>{% endif %}
                 {% endfor %}
             </table>
         </div>

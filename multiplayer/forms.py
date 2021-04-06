@@ -19,4 +19,4 @@ class CreateMatchForm(forms.ModelForm):
                 raise forms.ValidationError(_("Unterstützt werden 2, 3 oder 4 Spieler"))
         elif self.activity.german_name == 'Poker':
             if member_limit < 2 or member_limit > 10:
-                raise forms.ValidationError(_("Unterstützt werden 3 oder 10 Spieler"))
+                raise forms.ValidationError(_("Unterstützt werden 2-10 Spieler"))

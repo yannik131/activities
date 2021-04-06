@@ -316,7 +316,8 @@ window.addEventListener('resize', resize);
 {% if user.is_authenticated %}
     connect();
     window.addEventListener('beforeunload', function() {
-        user_websocket.close();
+        if(user_websocket.readyState != 2 && user_websocket.readyState != 3) {
+            user_websocket.close();
+        }
     });
-    
 {% endif %}

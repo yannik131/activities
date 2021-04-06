@@ -67,8 +67,11 @@
 {% block domready %}
 {% include 'javascript/categories.js' %}
 {% include 'javascript/display_weights.js' %}
-displayWeights(JSON.parse('{{ activity.weights_json|safe }}'));
-if(info.innerText.length == 0) {
-    info.parentElement.parentElement.style.display = "none";
-}
+window.addEventListener('load', function() {
+        displayWeights(JSON.parse('{{ activity.weights_json|safe }}'));
+    if(info.innerText.length == 0) {
+        info.parentElement.parentElement.style.display = "none";
+    }
+});
+
 {% endblock %}

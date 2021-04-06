@@ -18,7 +18,6 @@ function updateMatchMembers(data) {
                     kickUser(this.username);
                 }
             }
-            
             members++;
             break;
         case "left":

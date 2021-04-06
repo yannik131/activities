@@ -1,5 +1,4 @@
 function displayWeights(activity_weights) {
-    console.log(activity_weights);
     var info = document.getElementById('info');
     for(var i = 0; i < letters.length; i++) {
         var list = BIG_FIVE[letters[i]];

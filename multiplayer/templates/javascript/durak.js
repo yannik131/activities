@@ -7,7 +7,7 @@ var move_mode = "none";
 var old_stacks = [];
 var selected_card;
 var defending;
-var button_color = "red";
+var button_color = "white";
 var trump_suit;
 var is_taking;
 
