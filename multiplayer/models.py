@@ -274,9 +274,9 @@ class MultiplayerMatch(models.Model):
         determine_dealer(self.game_data)
         small_blind, big_blind = blinds[int(self.game_data['blind_level'])]
         change(self.game_data, self.game_data['small_blind']+'_stack', -small_blind, guard_zero=True)
-        self.game_data['small_blind']+'_bet' = small_blind
+        self.game_data[self.game_data['small_blind']+'_bet'] = small_blind
         change(self.game_data, self.game_data['big_blind']+'_stack', -big_blind, guard_zero=True)
-        self.game_data['big_blind']+'_bet' = big_blind
+        self.game_data[self.game_data['big_blind']+'_bet'] = big_blind
         self.game_data['pot'] = small_blind+big_blind
         self.game_data['highest_bet_user'] = ""
         self.game_data['highest_bet_value'] = big_blind
