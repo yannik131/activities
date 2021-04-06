@@ -51,7 +51,5 @@ function startMatch() {
 }
 
 function kickUser(username) {
-    console.log('kicking', username);
     send({'type': 'multiplayer', 'action': 'kick_user', 'username': username, 'match_id': {{ match.id }}});
 }
-

@@ -476,4 +476,6 @@ function sendBid(bid) {
     }));
 }
 
-gameConnect('doppelkopf', '{{ match.id }}', '{{ user.username }}');
+window.addEventListener('load', function() {
+    gameConnect('doppelkopf', '{{ match.id }}', '{{ user.username }}');
+});

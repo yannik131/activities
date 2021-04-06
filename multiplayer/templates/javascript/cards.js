@@ -10,7 +10,7 @@ var suit_values = {}, value_values = {};
 var deck = [];
 var stacks = [];
 var buttons = [];
-const field = document.querySelector(".game-field");
+let field;
 var scale, w, h;
 var button_row = 0;
 var summary;
@@ -855,8 +855,6 @@ overlap of cards.*/
     }
 }
 
-game_resize();
-
 window.addEventListener('resize', game_resize);
 
 if(window.document.documentMode) {
@@ -865,4 +863,6 @@ if(window.document.documentMode) {
 
 window.addEventListener('load', function() {
     document.querySelector('.footer').style.display = 'none';
+    field = document.querySelector(".game-field");
+    game_resize();
 });

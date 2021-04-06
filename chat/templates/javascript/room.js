@@ -96,12 +96,14 @@ window.addEventListener('beforeunload', function(e) {
 });
 
 function moveMembers(id) {
+    console.log('move ', id);
     if(!room_id) {
         init_chat(id);
     }
     room_imgs_loaded[id]++;
     var members_div = document.getElementById('chat-members-'+room_id);
     var all_members = members_div.getElementsByClassName('chat-member');
+    console.log(room_imgs_loaded[id], all_members.length);
     if(room_imgs_loaded[id] < all_members.length) {
         return;
     }
@@ -137,32 +139,6 @@ function moveMembers(id) {
     }
 }
 
-function openChat() {
-    console.log('openChat!');
-    document.querySelector('.game-chat').style.display = "block";
-    document.getElementById('chat-window-{{ room.id }}').style.display = "flex";
-    var button = document.getElementById('chat-button');
-    button.style.backgroundColor = "#1a1a1a";
-    button.style.color = "white";
-    var img = document.getElementById('open-chat-img');
-    img.src = "{% static 'icons/leave.png' %}";
-    document.getElementById('chat-button-text').innerHTML = "{% trans 'Chat schließen' %}";
-    document.getElementById('chat-button').onclick = closeChat;
-    var last_msg = document.getElementById('last-message');
-    if(last_msg) {
-        document.querySelector('.chat-middle').scrollTop = last_msg.offsetTop;
-    }
-    moveMembers();
-}
-
-function closeChat() {
-    document.querySelector('.game-chat').style.display = "none";
-    var img = document.getElementById('open-chat-img');
-    img.src = "{% static 'icons/chat.png' %}";
-    document.getElementById('chat-button-text').innerHTML = "{% trans 'Chat' %}";
-    document.getElementById('chat-button').onclick = openChat;
-}
-
 function positionChat() {
     var chat_window = document.getElementById('chat-window-'+room_id);
     if(!chat_window) {
@@ -173,7 +149,6 @@ function positionChat() {
         var middle = document.getElementById('middle-'+room_id);
         middle.scrollTop = last_msg.offsetTop;
     }
-    moveMembers();
 }
 
 function addChatMember(username, user_id, room_id, img_src) {
@@ -205,7 +180,3 @@ function addChatMember(username, user_id, room_id, img_src) {
 window.addEventListener('resize', positionChat);
 
 window.addEventListener('load', positionChat);
-
-{% if room %}
-    init_chat({{ room.id }});
-{% endif %}

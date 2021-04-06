@@ -485,4 +485,7 @@ function handleTransfer(data) {
     
 }
 
-gameConnect('durak', '{{ match.id }}', '{{ user.username }}');
+window.addEventListener('load', function() {
+    gameConnect('durak', '{{ match.id }}', '{{ user.username }}');
+});
+

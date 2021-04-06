@@ -58,7 +58,9 @@ function requestMatchList() {
     }));
 }
 
-user_websocket.onopen = function() {
-    requestMatchList();
-}
-setInterval(requestMatchList, 5000);
+window.addEventListener('load', function() {
+    user_websocket.onopen = function() {
+        requestMatchList();
+    }
+    setInterval(requestMatchList, 5000);
+});

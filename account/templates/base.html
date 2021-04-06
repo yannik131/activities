@@ -20,6 +20,15 @@
 </head>
 <body>
 <div class="base-container" id='base-container'>
+<script>
+    {% include 'javascript/base.js' %}
+    {% if user.is_authenticated %}
+        {% include 'javascript/room.js' %}
+        {% include 'javascript/audiochat.js' %}
+    {% endif %}
+    {% block domready %}
+    {% endblock %}
+</script>
 <div class="content">
     {% block content %}
     {% endblock %}
@@ -77,16 +86,6 @@
         document.getElementsByClassName("content")[0].style.right = 0;
     </script>
 {% endif %}
-
-<script>
-    {% include 'javascript/base.js' %}
-    {% if user.is_authenticated %}
-        {% include 'javascript/room.js' %}
-        {% include 'javascript/audiochat.js' %}
-    {% endif %}
-    {% block domready %}
-    {% endblock %}
-</script>
 </div>
 <div class="footer" id="footer">
     <br><br>
