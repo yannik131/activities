@@ -20,6 +20,10 @@
             {% trans 'Doko-Lobby' %}
         </div>
     </div>
+    <div class="button-like" onclick=openLink("{% url 'multiplayer:lobby' poker.name %}")>
+        <img src="{% static 'icons/lobby.png' %}">
+        {% blocktrans %}Poker-Lobby{% endblocktrans %}
+    </div>
     <h1 class="center-container">{% trans 'Offline' %}</h1>
     <h2>{% blocktrans %}Matches{% endblocktrans %}</h2>
     <ul>

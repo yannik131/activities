@@ -20,7 +20,8 @@ def user_overview(request):
     durak = Activity.objects.get(translations__language_code='de', translations__name='Durak')
     skat = Activity.objects.get(translations__language_code='de', translations__name='Skat')
     doko = Activity.objects.get(translations__language_code='de', translations__name='Doppelkopf')
-    return render(request, 'competitions/user_overview.html', dict(durak=durak, skat=skat, doko=doko))
+    poker = Activity.objects.get(translations__language_code='de', translations__name='Poker')
+    return render(request, 'competitions/user_overview.html', dict(durak=durak, skat=skat, doko=doko, poker=poker))
 
 
 def test(request):
