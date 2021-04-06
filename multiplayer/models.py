@@ -245,9 +245,7 @@ class MultiplayerMatch(models.Model):
         
     def start_poker(self):
         players, deck = self.create_players(2, "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A")
-        self.game_data['type'] = 'multiplayer'
         self.game_data['deck'] = json.dumps(deck[:5])
-        
         self.game_data['cards'] = json.dumps([])
         self.game_data['show_list'] = json.dumps([])
         if not self.in_progress:
@@ -261,14 +259,11 @@ class MultiplayerMatch(models.Model):
                 self.game_data[player+'_stack'] = 20*100
                 self.game_data[player+'_bet'] = 0
         alive = json.loads(self.game_data['alive'])
-        for player in alive:
-            self.game_data[player+'_bet'] = 0
-            if int(self.game_data[player+'_stack']) <= 0:
-                alive.remove(player)
-                self.game_data[player+'_stack'] = 0
+        alive = [user for user in alive if int(self.game_data[user+'_stack']) > 0]
         self.game_data['alive'] = json.dumps(alive)
         if len(alive) == 1:
             self.game_data['winner'] = alive[0]
+            self.delete()
             return
         blinds = [[10, 20], [20, 40], [30, 60], [50, 100], [100, 200], [150, 300], [200, 400], [400, 800], [800, 1600]]
         if int(self.game_data['blind_level']) < len(blinds)-1 and timezone.now() > datetime.fromisoformat(self.game_data['blind_time']):
@@ -276,14 +271,13 @@ class MultiplayerMatch(models.Model):
             self.game_data['blind_time'] = (timezone.now()+timedelta(minutes=int(self.game_data['blind_duration']))).isoformat()
         determine_dealer(self.game_data)
         small_blind, big_blind = blinds[int(self.game_data['blind_level'])]
-        change(self.game_data, self.game_data['small_blind']+'_stack', -small_blind)
+        change(self.game_data, self.game_data['small_blind']+'_stack', -small_blind, guard_zero=True)
         change(self.game_data, self.game_data['small_blind']+'_bet', small_blind)
-        change(self.game_data, self.game_data['big_blind']+'_stack', -big_blind)
+        change(self.game_data, self.game_data['big_blind']+'_stack', -big_blind, guard_zero=True)
         change(self.game_data, self.game_data['big_blind']+'_bet', big_blind)
         self.game_data['pot'] = small_blind+big_blind
         self.game_data['highest_bet_user'] = ""
         self.game_data['highest_bet_value'] = big_blind
         self.game_data['previous_raise'] = big_blind
-        #todo cant pay blindes -> all in
         change(self.game_data, 'game_number', 1)
         self.game_data['active'] = after(self.game_data['big_blind'], players)

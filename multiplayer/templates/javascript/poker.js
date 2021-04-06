@@ -332,6 +332,9 @@ function updateButtons() {
             createButton('{% trans 'Zeigen' %}', 'show', show);
             createButton('{% trans 'Nicht zeigen' %}', 'noshow', noshow);
         }
+        else if(my_stack == 0) {
+            setTimeout(check, 500);
+        }
         else if(cards.length == 0) {
             if(!highest_bet_user && my_bet == highest_bet_value) { //everyone called, i am big blind
                 createButton('Check', 'check', check);
@@ -341,9 +344,6 @@ function updateButtons() {
                 createBetButtons();
             }
             
-        }
-        else if(my_stack == 0) {
-            setTimeout(check, 500);
         }
         else {
             if(my_bet == highest_bet_value) {

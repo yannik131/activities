@@ -47,3 +47,7 @@ lobby -> game konferenz beibehalten
 2x notifications für 1x freundschaftsanfrage annehmen?
 
 optimierung: chat cache, aktualisierung bei beitritt/austritt
+match overview keine aktualisierung bei chat beitreten
+
+poker, auto check wenn alle anderen spieler all in
+poker, no fold fehler bei raise all in

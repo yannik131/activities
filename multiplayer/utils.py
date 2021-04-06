@@ -5,9 +5,11 @@ from django.utils.translation import gettext as _
 from .poker_score import highest_combo
 
 
-def change(dictionary, key, change):
+def change(dictionary, key, change, guard_zero=False):
     dictionary[key] = int(dictionary[key])+change
-    
+    if guard_zero:
+        if dictionary[key] < 0:
+            dictionary[key] = 0
 
 def create_deck(*ranks):
     colors = ["c", "h", "s", "d"]
@@ -511,7 +513,7 @@ def determine_forced_player(data):
     if data['highest_bet_user']:
         return data['highest_bet_user']
     else:
-        return after(data['dealer'], no_fold(data))
+        return after(player_or(after, 'dealer', data), no_fold(data))
         
 def determine_winners_poker(data):
     players = [] #[bet, user, score, name]
