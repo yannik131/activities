@@ -66,6 +66,8 @@ def delete_invitation(request, id):
     if request.user not in [invitation.sender.admin, invitation.target]:
         return handler403(request)
     invitation.delete()
+    if invitation.sender_ct != User.content_type():
+        return HttpResponseRedirect(invitation.sender.get_absolute_url())
     return HttpResponseRedirect(request.build_absolute_uri("/vacancies/application_list/"))
 
 
