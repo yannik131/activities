@@ -16,9 +16,8 @@
     <a href="{% url 'account:edit' %}" {% active_if request 'account' %}><img src="{% static 'icons/pen.png' %}">{% blocktrans %}Account bearbeiten{% endblocktrans %}</a>
     <a href="{% url 'account:logout' %}"><img src="{% static 'icons/logout.png' %}">{% blocktrans %}Ausloggen{% endblocktrans %}</a>
     <div id="alert-list">
-        {% for notification in user.get_notifications %}
+        {% for notification in notifications %}
         {% with notification_id=notification.id %}
-
             <div class="alert" id="notification-{{ notification_id }}">
                 <a class="notification-url" onclick="removeNotification({{ notification_id }}, '{{ notification.get_absolute_url }}');">{{ notification }}</a>
                 <div class="closebtn-container" onclick="removeNotification({{ notification_id }});">

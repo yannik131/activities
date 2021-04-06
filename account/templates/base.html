@@ -42,11 +42,11 @@
         </div>
     {% endfor %}
 {% endif %}
-{% with latest_messages=user.get_latest_messages %}
+{% with latest_messages=user.get_latest_messages notifications=user.get_notifications count=user.notifications.count %}
     <div class="topmenu" id="topmenu">
         <div class="logo">
             <a class="icon" href="javascript:void(0);" onclick="activateMenu('sidemenu');">
-                &#9776;<sup><strong><span style="color: orange;" id="notifications-count">{% with count=user.notifications.count %}{% if count > 0 %}{{ count }}{% endif %}{% endwith %}</span></strong></sup>
+                &#9776;<sup><strong><span style="color: orange;" id="notifications-count">{% if count > 0 %}{{ count }}{% endif %}</span></strong></sup>
             </a>
         </div>
         <div class="search"><a href="{% url 'account:home' %}"> </a></div>
@@ -67,7 +67,6 @@
             </div>
         </div>
     </div>
-
     {% include 'account/sidemenu.html' %}
 {% endwith %}
 
