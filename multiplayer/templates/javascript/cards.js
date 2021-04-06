@@ -619,30 +619,30 @@ function changeInfoFor(username, info, important) {
             info+
         "</span>"
     );
-    if(!info_div) {
-        info_div = document.createElement('div');
-        info_div.className = 'info-div';
-        info_div.id = "info-div-"+username;
-        info_div.innerHTML = content;
-        player_info.appendChild(info_div);
-        const rotation = getPlayerVariables(player).rotation;
-        switch(rotation) {
-            case 90:
-                info_div.style.transform = 'rotate(90deg)';
-                info_div.style.transformOrigin = 'bottom left';
-                player_info.style.height = field.offsetHeight+"px";
-                info_div.style.top = (field.offsetHeight-80-parseInt(window.getComputedStyle(info_div).width))/2+"px";
-                break;
-            case -90:
-                info_div.style.transform = 'rotate(-270deg)';
-                info_div.style.transformOrigin = 'bottom left';
-                player_info.style.height = field.offsetHeight+"px";
-                info_div.style.top = (field.offsetHeight-80-parseInt(window.getComputedStyle(info_div).width))/2+"px";
-                break;
-            default:
-                info_div.style.left = (field.offsetWidth-parseInt(window.getComputedStyle(info_div).width))/2+"px";
-        }
-        
+    if(info_div) {
+        info_div.remove();
+    }
+    info_div = document.createElement('div');
+    info_div.className = 'info-div';
+    info_div.id = "info-div-"+username;
+    info_div.innerHTML = content;
+    player_info.appendChild(info_div);
+    const rotation = getPlayerVariables(player).rotation;
+    switch(rotation) {
+        case 90:
+            info_div.style.transform = 'rotate(90deg)';
+            info_div.style.transformOrigin = 'bottom left';
+            player_info.style.height = field.offsetHeight+"px";
+            info_div.style.top = (field.offsetHeight-80-parseInt(window.getComputedStyle(info_div).width))/2+"px";
+            break;
+        case -90:
+            info_div.style.transform = 'rotate(-270deg)';
+            info_div.style.transformOrigin = 'bottom left';
+            player_info.style.height = field.offsetHeight+"px";
+            info_div.style.top = (field.offsetHeight-80-parseInt(window.getComputedStyle(info_div).width))/2+"px";
+            break;
+        default:
+            info_div.style.left = (field.offsetWidth-parseInt(window.getComputedStyle(info_div).width))/2+"px";
     }
     if(important) {
         info_div.style.fontWeight = "bold";
