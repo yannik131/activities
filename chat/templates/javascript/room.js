@@ -26,6 +26,7 @@ function init_chat(pk) {
     window.addEventListener('resize', function() {
         window.scrollTo(0, 0);
     });
+    requestShow();
 }
 
 function handleChatMessage(data) {

@@ -42,7 +42,6 @@ musikgenres, literaturgenres, weitere unterteilungen.. -> N kategorien: berufe, 
 5. impressum!
 
 chat spiel direkt zum spiel
-durak erster +1 nicht?
 lobby -> game konferenz beibehalten
 2x notifications für 1x freundschaftsanfrage annehmen?
 
@@ -54,3 +53,8 @@ undefined verlässt die konferenz
 img onload movembers not defined
 
 all in -> split -> call -1990
+
+durak done mit sternchen anzeigen?
+DOMException: Remote description indicates ICE restart but offer did not request ICE restart (new remote description changes either the ice-ufrag or ice-pwd)
+durak erster +1 nicht?
+durak ist angreifer?

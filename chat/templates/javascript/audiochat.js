@@ -25,6 +25,7 @@ var old_colors = {};
 var audio_room_id;
 
 function requestShow() {
+    console.log('request show with room id', room_id);
     send({'type': 'rtc', 'action': 'request_show', 'room_id': room_id});
 }
 

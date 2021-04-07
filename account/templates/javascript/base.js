@@ -172,7 +172,6 @@ function connect() {
                         showChat(div, data.id);
                         init_chat(data.id);
                         positionChat();
-                        requestShow();
                         break;
                     case 'list':
                         if(!data.html) {

@@ -40,7 +40,7 @@ class NotificationConsumer(WebsocketConsumer):
         user.channel_name = None
         user.save()
         if self.rtc_room_id:
-            self.rtc_send({'action': 'disconnect', 'user_id': user.id, 'username': self.username}, {'room_id': self.rtc_room_id})
+            self.rtc_send({'action': 'disconnect', 'user_id': user.id, 'username': self.user.username}, {'room_id': self.rtc_room_id})
         async_to_sync(self.channel_layer.group_discard)(
             self.user.channel_group_name,
             self.channel_name
