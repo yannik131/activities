@@ -25,13 +25,10 @@ var old_colors = {};
 var audio_room_id;
 
 function requestShow() {
-    console.log('request show with room id', room_id);
     if(user_websocket.readyState != user_websocket.OPEN) {
-        console.log('hook');
         user_websocket.addEventListener('open', requestShow);
         return;
     }
-    console.log('send');
     send({'type': 'rtc', 'action': 'request_show', 'room_id': room_id});
 }
 
@@ -59,7 +56,7 @@ function handleRTCMessage(data) {
     if(!acceptingConnections) {
         return;
     }
-    console.log(data.user_id, "sent", data.action);
+    //console.log(data.user_id, "sent", data.action);
     switch(data.action) {
         case 'join':
             handleJoin(data);
@@ -117,7 +114,7 @@ function setOnIceCandidate(pc, sender) {
 function getOrCreatePeerConnection(sender) {
     var pc = peerConnections[sender];
     if(!pc) {
-        console.log("creating peer connection for", sender);
+        //console.log("creating peer connection for", sender);
         pc = new RTCPeerConnection(configuration);
         colorize(sender, audio_room_id, 'darkgreen');
         peerConnections[sender] = pc;
@@ -204,10 +201,8 @@ function handleLeave(data) {
 }
 
 function deletePeerConnection(user) {
-    console.log('Attempting to delete connection for', user);
     const pc = peerConnections[user];
     if(!pc) {
-        console.log('No connection found, aborting');
         return;
     }
     const track = tracks[user];

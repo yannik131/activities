@@ -24,6 +24,7 @@ def create_deck(*ranks):
 def deal_cards(data, players):
     deck = json.loads(data["deck"])
     data["stacks"] = json.dumps([])
+    first = data['first']
     if deck:
         player_cycle = cycle_slice(players.index(data["started"]), players)
         for player in player_cycle:
@@ -33,6 +34,9 @@ def deal_cards(data, players):
                     hand.append(deck[0])
                     del deck[0]
                 data[player] = json.dumps(hand)
+                if player == first:
+                    data['first'] = ''
+                    log('unsetting', player, 'as first after dealing cards')
         data["deck"] = json.dumps(deck)
     
 
@@ -425,6 +429,10 @@ def give_durak_points(data, players, durak):
     summary = sorted(summary, key=lambda t: t[1], reverse=True)
     return "".join([t[0] for t in summary])
     
+
+"""
+Poker stuff
+"""
 
 def determine_dealer(data):
     players = json.loads(data['alive'])
