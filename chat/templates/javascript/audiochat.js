@@ -26,6 +26,12 @@ var audio_room_id;
 
 function requestShow() {
     console.log('request show with room id', room_id);
+    if(user_websocket.readyState != user_websocket.OPEN) {
+        console.log('hook');
+        user_websocket.addEventListener('open', requestShow);
+        return;
+    }
+    console.log('send');
     send({'type': 'rtc', 'action': 'request_show', 'room_id': room_id});
 }
 
