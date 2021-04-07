@@ -29,7 +29,7 @@ function updateMatchMembers(data) {
             }
             if(data.username === "{{ user.username }}") {
                 kicked_out = true;
-                location.href = "{% call_method match 'lobby_url' request %}";
+                location.href = "/multiplayer/lobby/{{ match.activity.name }}/kicked/";
             }
             members--;
             deletePeerConnection(data.id);

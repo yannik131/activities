@@ -33,7 +33,6 @@ class NotificationConsumer(WebsocketConsumer):
         )
         self.accept()
         self.rtc_room_id = None
-        self.match = None
 
     def disconnect(self, code):
         user = User.objects.get(id=self.user.id)
@@ -159,9 +158,8 @@ class NotificationConsumer(WebsocketConsumer):
                 'match_list': json.dumps(MultiplayerMatch.match_list_for(text_data["activity_id"]))
             }))
         elif text_data["action"] == "kick_user":
-            if not self.match:
-                self.match = MultiplayerMatch.objects.get(pk=text_data['match_id'])
-            self.match.remove_member(User.objects.get(username=text_data['username']))
+            match = MultiplayerMatch.objects.get(pk=text_data['match_id'])
+            match.remove_member(User.objects.get(username=text_data['username']))
             
     def handle_rtc_message(self, text_data):
         if text_data["action"] == "join":

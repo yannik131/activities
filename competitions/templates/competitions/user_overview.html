@@ -7,20 +7,20 @@
 {% block content %}
     <h1 class="center-container">{% trans 'Online' %}</h2>
     <div class="competitive">
-        <div class="left" style="width: 33%" onclick=openLink("{% url 'multiplayer:lobby' durak.name 1 %}")>
+        <div class="left" style="width: 33%" onclick=openLink("{% url 'multiplayer:lobby' durak.name 'guarded' %}")>
             <img src="{% static 'icons/lobby.png' %}">
             {% blocktrans %}Durak-Lobby{% endblocktrans %}
         </div>
-        <div class="left" style="width: 33%" onclick=openLink("{% url 'multiplayer:lobby' skat.name 1 %}")>
+        <div class="left" style="width: 33%" onclick=openLink("{% url 'multiplayer:lobby' skat.name 'guarded' %}")>
             <img src="{% static 'icons/lobby.png' %}">
             {% trans 'Skat-Lobby' %}
         </div>
-        <div class="right" style="width: 34%" onclick=openLink("{% url 'multiplayer:lobby' doko.name 1 %}")>
+        <div class="right" style="width: 34%" onclick=openLink("{% url 'multiplayer:lobby' doko.name 'guarded' %}")>
             <img src="{% static 'icons/lobby.png' %}">
             {% trans 'Doko-Lobby' %}
         </div>
     </div>
-    <div class="button-like" onclick=openLink("{% url 'multiplayer:lobby' poker.name 1 %}")>
+    <div class="button-like" onclick=openLink("{% url 'multiplayer:lobby' poker.name 'guarded' %}")>
         <img src="{% static 'icons/lobby.png' %}">
         {% blocktrans %}Poker-Lobby{% endblocktrans %}
     </div>

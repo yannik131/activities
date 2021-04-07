@@ -37,24 +37,16 @@ notifications von gelöschten targets mitlöschen (termin erstellt -> termin gel
 Fehler links kommt rechts spielt ich bin dran ohne karte von rechts zu sehen, er hat wohl done geschickt
 musikgenres, literaturgenres, weitere unterteilungen.. -> N kategorien: berufe, musikgenres, freizeitaktivitäten, ...
 
-3. übrige gewichte verteilen
 4. für jede aktivität ein applet
 5. impressum!
 
-chat spiel direkt zum spiel
 lobby -> game konferenz beibehalten
-2x notifications für 1x freundschaftsanfrage annehmen?
 
 optimierung: chat cache, aktualisierung bei beitritt/austritt
 match overview keine aktualisierung bei chat beitreten
-
-undefined verlässt die konferenz
-
-img onload movembers not defined
 
 all in -> split -> call -1990
 
 durak done mit sternchen anzeigen?
 DOMException: Remote description indicates ICE restart but offer did not request ICE restart (new remote description changes either the ice-ufrag or ice-pwd)
 durak erster +1 nicht?
-durak ist angreifer?

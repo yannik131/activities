@@ -10,6 +10,7 @@ var defending;
 var button_color = "white";
 var trump_suit;
 var is_taking;
+var done_list = [];
 
 function defineSortValues(trump_suit) {
     var suits = ["d", "h", "s", "c"];
@@ -28,7 +29,9 @@ function getCardSortValue(type) {
 }
 
 function processMultiplayerData(data) {
+    console.log(data);
     var delayed = false;
+    done_list = JSON.parse(data.done_list);
     switch(data.action) {
         case "load_data":
             delayed = Boolean(player_list);
@@ -50,8 +53,7 @@ function processMultiplayerData(data) {
             handleTransfer(data);
             break;
         case "take":
-            is_taking = true;
-            changeInfoFor(defending, " ({% trans 'SCHLUCKT' %})");
+            handleTake();
             break;
         case "abort":
             location.href = data.url;
@@ -60,6 +62,28 @@ function processMultiplayerData(data) {
     if(!delayed) {
         updateButtons();
     }
+}
+
+function updateDone() {
+    for(var i = 0; i < player_list.length; i++) {
+        var username = player_list[i];
+        makeYellow(username);
+    }
+}
+
+function makeYellow(username) {
+    var player_info = document.getElementById("info-div-"+username);
+    if(done_list.indexOf(username) != -1) {
+        player_info.className += " yellow";
+    }
+    else {
+        player_info.className = 'info-div';
+    }
+}
+
+function handleTake() {
+    is_taking = true;
+    changeInfoFor(defending, " ({% trans 'SCHLUCKT' %})");
 }
 
 function delayedCall(callback, arg) {
@@ -165,7 +189,7 @@ function updatePlayerInfo(data) {
             changeInfoFor(username, "({% trans 'ANGREIFER' %})");
         }
         else if(username == data.defending) {
-            changeInfoFor(username, " ({% trans 'VERTEIDIGER' %})", true);
+            changeInfoFor(username, " ({% trans 'VERTEIDIGER' %})");
         }
         else {
             changeInfoFor(username, "");
@@ -204,6 +228,7 @@ function determineGameMode(data) {
     if(data.taking) {
         is_taking = true;
         changeInfoFor(data.taking, " ({% trans 'SCHLUCKT' %})");
+        makeYellow(data.taking);
     }
 }
 
@@ -277,7 +302,7 @@ function beatStackWith(card, stack) {
     removePlayerCard(card);
     sendMove();
     if(player1_cards.length == 0 || game_mode == "defending" && allDefended()) {
-        sendAction("done");
+        sendDone();
     }
 }
 
@@ -341,9 +366,10 @@ function updateButtons() {
     if(!player_list) {
         return;
     }
+    updateDone();
     clearButtons();
     if(player1_cards.length == 0 || game_mode == "none") {
-        sendAction("done");
+        sendDone();
         return;
     }
     if(!is_taking && game_mode == "defending" && undefendedCardCount()) {
@@ -376,15 +402,22 @@ function updateButtons() {
     
     if((game_mode == "attacking" || game_mode == "helping") && (allDefended() || is_taking)) {
         if(attackingIsPossible()) {
-            createButton("{% trans 'Fertig' %}", "done", function() {
-                sendAction("done");
-                deleteButton("done");
-            }, button_color);
+            createDoneButton();
         }
         else {
-            sendAction("done");
+            sendDone();
         }
     }
+}
+
+function createDoneButton() {
+    if(done_list && done_list.indexOf(this_user) != -1) {
+        return;
+    }
+    createButton("{% trans 'Fertig' %}", "done", function() {
+        sendAction("done");
+        deleteButton('done');
+    }, button_color);
 }
 
 function undefendedCardCount() {
@@ -483,6 +516,13 @@ function handleTransfer(data) {
         return;
     }
     
+}
+
+function sendDone() {
+    if(done_list.indexOf(this_user) != -1) {
+        return;
+    }
+    sendAction('done');
 }
 
 window.addEventListener('load', function() {

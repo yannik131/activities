@@ -8,6 +8,7 @@ var mode; //playing or undefined/null
 var solist;
 var no_take = "";
 var ouvert = false;
+const bid_values = [18, 20, 22, 23, 24, 27, 30, 33, 35, 36, 40, 44, 45, 46, 48, 50, 54, 55, 59, 60, 63, 66, 70, 72, 77, 80, 81, 84, 88, 90, 96, 99, 100, 108, 110, 117, 120, 121, 126, 130, 132, 135, 140, 143, 144, 150, 154, 156, 160, 165, 168, 176, 180, 192, 216];
 var game_type_translations = {
     "c": "{% trans 'Kreuz' %}",
     "s": "{% trans 'Pik' %}",
@@ -542,7 +543,10 @@ function createBidButtons(active, highest_bid, more) {
     if(this_user != active) {
         return;
     }
-    bid_values = [18, 20, 22, 23, 24, 27, 30, 33, 35, 36, 40, 44, 45, 46, 48, 50, 54, 55, 59, 60, 63, 66, 70, 72, 77, 84, 96, 120, 144, 168];
+    if(highest_bid && highest_bid[0] == bid_values[bid_values.length-1]) {
+        sendBid('pass');
+        return;
+    }
     if(more && highest_bid) {
         var bid = next(highest_bid[0], bid_values);
         createButton(bid, bid, function() {

@@ -11,11 +11,13 @@ from account.models import User
 from .decorators import guard_match
 
 
-def lobby(request, activity_name, guarded=0):
+def lobby(request, activity_name, extra=None):
     activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
-    if guarded and not request.user.activities.filter(pk=activity.id).exists():
+    if extra == 'guarded' and not request.user.activities.filter(pk=activity.id).exists():
         activity.members.add(request.user)
         messages.add_message(request, messages.INFO, _('Sie sind der Aktivität {name} beigetreten.').format(name=activity.name))
+    elif extra == 'kicked':
+        messages.add_message(request, messages.INFO, _('Sie wurden aus dem Spiel gekickt. Bitte treten Sie nur wieder bei, wenn Sie sich sicher sind, dass das ein Versehen war.'))
     online_list = activity.members.filter(channel_name__isnull=False)
     user_matches = request.user.multiplayer_matches.filter(activity__id=activity.id)
     return render(request, 'multiplayer/lobby.html', dict(activity=activity, online_list=online_list, user_matches=user_matches))

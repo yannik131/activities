@@ -66,6 +66,18 @@
     color: yellow;
 }
 
+.info-div.yellow a {
+    color: yellow;
+}
+
+.info-div.yellow {
+    color: yellow;
+}
+
+.info-div.yellow span {
+    color: yellow;
+}
+
 .info-div.small-blind a {
     color: violet;
 }

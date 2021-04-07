@@ -64,7 +64,7 @@ class MultiplayerMatch(models.Model):
         
     def remove_member(self, member):
         for k, v in self.member_positions.items():
-            if str(v) == member.username:
+            if v == member.username:
                 self.member_positions[k] = ""
                 self.save()
                 break

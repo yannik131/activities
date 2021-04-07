@@ -78,6 +78,9 @@ class DurakConsumer(GameConsumer):
             done_list = json.loads(data['done_list'])
             if(self.username not in done_list):
                 done_list.append(self.username)
+            message['data'] = {
+                
+            }
             
             if len(done_list) == len(players):
                 if data["taking"]:
@@ -121,13 +124,16 @@ class DurakConsumer(GameConsumer):
                     message["data"] = match.game_data
                     message["data"]["summary"] = summary
                     message["data"]["game_number"] = data["game_number"]
+                    
+                    return
                 else:
                     data["defending"] = left_player(data["attacking"], players, data)
                     data["started"] = data["attacking"]
                     done_list = []
                     message["data"] = {
                         "action": "new_round",
-                        "data": data
+                        "data": data,
+                        'username': self.username
                     }
             data['done_list'] = json.dumps(done_list)
         elif text_data["action"] == "take":
@@ -152,6 +158,7 @@ class DurakConsumer(GameConsumer):
                 "defending": data["defending"],
                 "stacks": data["stacks"]
             }
+        message['data']['done_list'] = data['done_list']
             
 class SkatConsumer(GameConsumer):
     def handle_move(self, text_data, data, match, message):
