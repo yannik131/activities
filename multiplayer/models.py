@@ -215,7 +215,7 @@ class MultiplayerMatch(models.Model):
 
     def start_durak(self):
         log('-------------Starting Durak round-------------')
-        players, deck = self.create_players(6, "10", "J", "Q", "K", "A")
+        players, deck = self.create_players(6, "8", "9", "10", "J", "Q", "K", "A")
         self.game_data["trump"] = deck[-1][-1]
         self.game_data["stacks"] = json.dumps([])
         self.game_data["done_list"] = json.dumps([])

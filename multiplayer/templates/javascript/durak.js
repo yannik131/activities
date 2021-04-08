@@ -29,9 +29,10 @@ function getCardSortValue(type) {
 }
 
 function processMultiplayerData(data) {
-    console.log(data);
     var delayed = false;
-    done_list = JSON.parse(data.done_list);
+    if(data.done_list) {
+        done_list = JSON.parse(data.done_list);
+    }
     switch(data.action) {
         case "load_data":
             delayed = Boolean(player_list);
@@ -41,7 +42,7 @@ function processMultiplayerData(data) {
             else {
                 loadGameField(data);
             }
-            break;
+            return;
         case "play":
             handleMove(data);
             break;
@@ -57,11 +58,28 @@ function processMultiplayerData(data) {
             break;
         case "abort":
             location.href = data.url;
-            break;
+            return;
+        case 'done':
+            updateDone();
+            return;
     }
     if(!delayed) {
         updateButtons();
+        if((player1_cards.length == 0 || game_mode == "none") && !(data.action == 'play' && data.username == this_user)) {
+            console.log(new Date(), '2: done after', data.action);
+            sendDone();
+            return;
+        }
+        else if((game_mode == "attacking" || game_mode == "helping") && (allDefended() || is_taking)) {
+            if(!attackingIsPossible()) {
+                console.log(new Date(), '3: done after', data.action);
+                sendDone();
+                return;
+            }
+        }
     }
+    updateDone();
+    
 }
 
 function updateDone() {
@@ -176,6 +194,7 @@ function loadGameField(data) {
     old_stacks = JSON.parse(data.stacks);
     refreshStacks(old_stacks);
     determineGameMode(data);
+    updateDone();
     if(data.summary) {
         summary = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary;
         showScore();
@@ -302,6 +321,7 @@ function beatStackWith(card, stack) {
     removePlayerCard(card);
     sendMove();
     if(player1_cards.length == 0 || game_mode == "defending" && allDefended()) {
+        console.log(new Date(), '1: done');
         sendDone();
     }
 }
@@ -366,10 +386,8 @@ function updateButtons() {
     if(!player_list) {
         return;
     }
-    updateDone();
     clearButtons();
     if(player1_cards.length == 0 || game_mode == "none") {
-        sendDone();
         return;
     }
     if(!is_taking && game_mode == "defending" && undefendedCardCount()) {
@@ -403,9 +421,6 @@ function updateButtons() {
     if((game_mode == "attacking" || game_mode == "helping") && (allDefended() || is_taking)) {
         if(attackingIsPossible()) {
             createDoneButton();
-        }
-        else {
-            sendDone();
         }
     }
 }
@@ -515,14 +530,16 @@ function handleTransfer(data) {
     if(game_mode == "attacking") {
         return;
     }
-    
 }
 
 function sendDone() {
     if(done_list.indexOf(this_user) != -1) {
         return;
     }
+    console.log(new Date(), 'sending done with list:', done_list);
     sendAction('done');
+    done_list.push(this_user);
+    updateDone();
 }
 
 window.addEventListener('load', function() {

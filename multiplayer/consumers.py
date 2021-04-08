@@ -41,7 +41,10 @@ class GameConsumer(WebsocketConsumer):
                 message["data"] = data
                 message["group"] = False
             else:
+                old = json.loads(data['done_list'])
+                log('handling', text_data['action'], 'from', self.username, data['done_list'])
                 self.handle_move(text_data, data, match, message)
+                log('->', data['done_list'])
                 match.save()
                 if not "data" in message:
                     return
@@ -76,13 +79,17 @@ class DurakConsumer(GameConsumer):
             }
         elif text_data['action'] == "done":
             done_list = json.loads(data['done_list'])
-            if(self.username not in done_list):
+            if self.username not in done_list:
                 done_list.append(self.username)
-            message['data'] = {
-                
-            }
+                message['data'] = {
+                    'action': 'done'
+                }
+            else:
+                log('invalid done from', self.username, ': already in list!')
+                return
             
             if len(done_list) == len(players):
+                log('all are done, checking...')
                 if data["taking"]:
                     hand = json.loads(data[data["taking"]])
                     stacks = json.loads(data["stacks"])
@@ -121,10 +128,12 @@ class DurakConsumer(GameConsumer):
                         data["defending"] = after(data["attacking"], players)
                     log('attacking:', data['attacking'], 'defending:', data['defending'])
                     match.start_durak()
+                    if len(players) == 4:
+                        data['done_list'] = json.dumps([before(data['attacking'], players)])
+                        message['data']['done_list'] = data['done_list']
                     message["data"] = match.game_data
                     message["data"]["summary"] = summary
                     message["data"]["game_number"] = data["game_number"]
-                    
                     return
                 else:
                     data["defending"] = left_player(data["attacking"], players, data)
@@ -135,6 +144,7 @@ class DurakConsumer(GameConsumer):
                         "data": data,
                         'username': self.username
                     }
+                    log('sent new round, empty done_list')
             data['done_list'] = json.dumps(done_list)
         elif text_data["action"] == "take":
             data["done_list"] = json.dumps([str(self.username)])
