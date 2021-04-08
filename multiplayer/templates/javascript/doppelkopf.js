@@ -111,7 +111,7 @@ function getCardSortValue(type) {
 }
 
 function processMultiplayerData(data) {
-    console.log("received: " + data.action + " active: " + data.active);
+    //console.log("received: " + data.action + " active: " + data.active);
     if(data.active) {
         active = data.active;
     }

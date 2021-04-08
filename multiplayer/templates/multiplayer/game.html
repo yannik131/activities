@@ -27,18 +27,6 @@
         </div>
     </div>
 </div>
-{% if match.activity.german_name == 'Poker' %}
-<div class="competitive" style="position: absolute;
-    bottom: 0px; left: 0; right: 0;">
-    <div class="left" onclick="location.href='{% call_method match 'lobby_url' request %}'">
-        <img src="{% static 'icons/lobby.png' %}">
-        {% blocktrans %}Lobby{% endblocktrans %}
-    </div>
-    <div class="right" onclick="createYesNoAlert('{% trans 'Spiel beenden, verlassen und zurücksetzen?' %}', 2, function() { location.href = '{% url 'multiplayer:leave_match' match.activity.name match.id %}'});">
-        <img src="{% static 'icons/bye.png' %}">{% trans "Ciao!" %}
-    </div>
-</div>
-{% else %}
 <div class="competitive" style="position: absolute;
     bottom: 0px; left: 0; right: 0;">
     <div class="left" style="width: 33%" onclick="location.href='{% call_method match 'lobby_url' request %}'">
@@ -46,14 +34,18 @@
         {% blocktrans %}Lobby{% endblocktrans %}
     </div>
     <div class="left" style="width: 33%" onclick="showScore(true)">
-        <img src="{% static 'icons/score.png' %}">
-        {% trans 'Score' %}
+        {% if match.activity.german_name == 'Poker' %}
+            <img src="{% static 'icons/chip.png' %}">
+            {% trans 'Blinds' %}
+        {% else %}
+            <img src="{% static 'icons/score.png' %}">
+            {% trans 'Score' %}
+        {% endif %}
     </div>
     <div class="right" style="width: 34%" onclick="createYesNoAlert('{% trans 'Spiel beenden, verlassen und zurücksetzen?' %}', 2, function() { location.href = '{% url 'multiplayer:leave_match' match.activity.name match.id %}'});">
         <img src="{% static 'icons/bye.png' %}">{% trans "Ciao!" %}
     </div>
 </div>
-{% endif %}
 {% endblock %}
 
 {% block domready %}

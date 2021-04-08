@@ -41,10 +41,7 @@ class GameConsumer(WebsocketConsumer):
                 message["data"] = data
                 message["group"] = False
             else:
-                old = json.loads(data['done_list'])
-                log('handling', text_data['action'], 'from', self.username, data['done_list'])
                 self.handle_move(text_data, data, match, message)
-                log('->', data['done_list'])
                 match.save()
                 if not "data" in message:
                     return
@@ -341,8 +338,9 @@ class PokerConsumer(GameConsumer):
                 'pot': data['pot']
             }
         elif text_data['action'] == 'call':
-            data[self.username+'_bet'] = data['highest_bet_value']
             change(data, self.username+'_stack', -int(text_data['value']))
+            change(data, self.username+'_bet', int(text_data['value']))
+            
             change(data, 'pot', int(text_data['value']))
             message['data'] = {
                 'action': 'call',

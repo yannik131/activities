@@ -1,16 +1,4 @@
 suche
-like funktion für posts
-messages runde nicht möglich
-keine nachricht wenn admin beitritt
-
-DESIGN:
-datepicker, datetimepicker
-
-
-DURAK_WEBSOCKET LÖSCHEN, USER_WEBSOCKET REICHT!!
-zuschmeißen wartezeit
-schieben, noch eine karte möglich, aber schlagen auch??
-schieben mit 2 gegner karten möglich
 
 Application instance 
 <Task pending name='Task-323' coro=<StaticFilesWrapper.__call__()
@@ -22,19 +10,11 @@ for connection
 <WebRequest at 0x7f83087b7550 method=GET uri=/multiplayer/enter_match/Doppelkopf/73/ clientproto=HTTP/1.1> 
 took too long to shut down and was killed.
 
-gekickt -> nachricht
 aktivitäten vorschlagen: 5 mit den meisten mitgliedern (vorschläge wegklicken), fragebogen ausfüllen
 
-vacancy gelöscht redirect zu account bearbeiten??
-charakterpunkte zu aktivitäten hinzufügen, fragebogen zur Charakterermittlung
-messages in einigen fällen
 doko 5 chatmiglieder 2x heinz?
 neu drücken button bestätigen
 verhindere caching bei chats um "closed due to suspension" zu vermeiden
-nachricht dass man muss wenn man dran ist
-durak resize call
-notifications von gelöschten targets mitlöschen (termin erstellt -> termin gelöscht -> keine nachricht insgesamt)
-Fehler links kommt rechts spielt ich bin dran ohne karte von rechts zu sehen, er hat wohl done geschickt
 musikgenres, literaturgenres, weitere unterteilungen.. -> N kategorien: berufe, musikgenres, freizeitaktivitäten, ...
 
 4. für jede aktivität ein applet
@@ -45,8 +25,4 @@ lobby -> game konferenz beibehalten
 optimierung: chat cache, aktualisierung bei beitritt/austritt
 match overview keine aktualisierung bei chat beitreten
 
-all in -> split -> call -1990
-
-durak done mit sternchen anzeigen?
 DOMException: Remote description indicates ICE restart but offer did not request ICE restart (new remote description changes either the ice-ufrag or ice-pwd)
-durak erster +1 nicht?

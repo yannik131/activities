@@ -481,6 +481,10 @@ function createYesNoAlert(info, zIndex, callback) {
 function createInfoAlert(info, timeout, no_button) {
     const old = document.getElementById("info-alert");
     if(old) {
+        var button = document.querySelector('.info-alert-button');
+        if(button) {
+            button.dispatchEvent(new Event('click'));
+        }
         old.remove();
         if(info_timeout) {
             clearTimeout(info_timeout);

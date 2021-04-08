@@ -240,13 +240,11 @@ function loadGameField(data) {
     const blinds = JSON.parse(data.blinds);
     const level = parseInt(data.blind_level);
     var next_blinds;
-    var info = "Small Blind: "+blinds[level][0]+"\nBig Blind: "+blinds[level][1];
+    summary = "Small Blind: "+blinds[level][0]+"\nBig Blind: "+blinds[level][1];
     if(level < blinds.length-1) {
         next_blinds = blinds[level+1];
-        info += "\n{% trans 'Änderung um ' %}"+format_time_str(data.blind_time).split(', ')[1]+":\nSmall Blind: "+next_blinds[0]+"\nBig Blind: "+next_blinds[1];
+        summary += "\n{% trans 'Änderung um ' %}"+format_time_str(data.blind_time).split(', ')[1]+":\nSmall Blind: "+next_blinds[0]+"\nBig Blind: "+next_blinds[1];
     }
-    
-    createInfoAlert(info);
 }
 
 function hideCardsOf(player) {

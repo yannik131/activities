@@ -459,14 +459,12 @@ def no_fold(data, active=None):
     
     
 def player_or(func, name, data):
-    if data[data[name]+'_bet'] != 'fold':
-        return data[name]
-    else:
-        players = json.loads(data['alive'])
-        player = func(data[name], players)
-        while data[player+'_bet'] == 'fold':
-            player = func(player, players)
-        return player
+    players = json.loads(data['players'])
+    alive = json.loads(data['alive'])
+    player = data[name]
+    while data[player+'_bet'] == 'fold' or player not in alive:
+        player = func(player, players)
+    return player
     
 def get_next_round_number(data, action, active):
     cards = json.loads(data['cards'])

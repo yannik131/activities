@@ -55,7 +55,6 @@ function lastTrickButton() {
 
 function toggleLastTrick() {
     if(document.getElementById("last_trick0")) {
-        console.log('deleting');
         for(var i = 0; i < last_trick.length; i++) {
             var card = document.getElementById("last_trick"+i);
             if(card) {

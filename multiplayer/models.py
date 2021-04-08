@@ -7,7 +7,7 @@ import uuid
 from django.utils import timezone
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
-from .utils import after, create_deck, determine_dealer
+from .utils import player_or, after, create_deck, determine_dealer
 from django.utils.translation import gettext_lazy as _, gettext as __
 import json
 from multiplayer.utils import change
@@ -262,7 +262,7 @@ class MultiplayerMatch(models.Model):
                 self.game_data[player+'_bet'] = 0
         alive = json.loads(self.game_data['alive'])
         alive = [user for user in alive if int(self.game_data[user+'_stack']) > 0]
-        for user in alive:
+        for user in players:
             self.game_data[user+'_bet'] = 0
         self.game_data['alive'] = json.dumps(alive)
         if len(alive) == 1:
@@ -284,4 +284,4 @@ class MultiplayerMatch(models.Model):
         self.game_data['highest_bet_value'] = big_blind
         self.game_data['previous_raise'] = big_blind
         change(self.game_data, 'game_number', 1)
-        self.game_data['active'] = after(self.game_data['big_blind'], players)
+        self.game_data['active'] = after(self.game_data['big_blind'], alive)
