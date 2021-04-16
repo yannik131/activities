@@ -199,6 +199,7 @@ function loadGameField(data) {
         summary = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary;
         showScore();
     }
+    updateButtons();
 }
 
 function updatePlayerInfo(data) {
