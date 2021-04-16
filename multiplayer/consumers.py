@@ -54,7 +54,6 @@ class GameConsumer(WebsocketConsumer):
             else:
                 self.multiplayer(message['data'])
                 
-            
 class DurakConsumer(GameConsumer):
     def handle_move(self, text_data, data, match, message):
         players = json.loads(data["players"])
