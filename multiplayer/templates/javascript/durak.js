@@ -92,7 +92,7 @@ function updateDone() {
 function makeYellow(username) {
     var player_info = document.getElementById("info-div-"+username);
     if(done_list.indexOf(username) != -1) {
-        player_info.className += " yellow";
+        player_info.className += " dealer";
     }
     else {
         player_info.className = 'info-div';
