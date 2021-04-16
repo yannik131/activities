@@ -108,11 +108,9 @@ function updateActive(data) {
     if(active) {
         var div = document.getElementById('info-div-'+active);
         if(active == dealer) {
-            div.style.color = "yellow";
             div.className = 'info-div dealer';
         }
         else {
-            div.style.color = "white";
             div.className = 'info-div';
         }
     }
@@ -121,7 +119,6 @@ function updateActive(data) {
         return;
     }
     var div = document.getElementById('info-div-'+data.active);
-    div.style.color = 'red';
     div.className = 'info-div active';
 }
 
@@ -229,11 +226,9 @@ function loadGameField(data) {
     for(var i = 0; i < player_list.length; i++) {
         var info_div = changePokerInfoFor(players[player_list[i]], player_list[i], data[player_list[i]+'_stack']);
         if(player_list[i] == data.dealer) {
-            info_div.style.color = 'yellow';
             info_div.className += " dealer";
         }
         if(player_list[i] == data.active) {
-            info_div.style.color = 'red';
             info_div.className += " active";
         }
     }

@@ -62,31 +62,20 @@
     height: 40px;
 }
 
-.info-div.dealer a {
-    color: yellow;
-}
-
-.info-div.yellow a {
-    color: yellow;
-}
-
-.info-div.yellow {
-    color: yellow;
-}
-
-.info-div.yellow span {
-    color: yellow;
-}
-
-.info-div.small-blind a {
-    color: violet;
-}
-
-.info-div.big-blind a {
-    color: pink;
-}
-.info-div.active a {
+.active {
     color: red;
+}
+
+.active a {
+    color: red;
+}
+
+.dealer {
+    color: yellow;
+}
+
+.dealer a {
+    color: yellow;
 }
 
 .text {

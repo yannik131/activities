@@ -721,10 +721,10 @@ function changePokerInfoFor(player, username, info) {
    info_div.innerHTML = (
     "<a href='/account/detail/"+username+"/'>"+
         username+
-    "</a> "+(info != undefined? (
-    "<span class='text'> ("+
+    "</a>"+(info != undefined? (
+    ":<span class='text'>"+
         info+
-    ")</div>") : "")
+    "</span>") : "")
     );
     if(created) {
         player_info.appendChild(info_div);
@@ -838,9 +838,11 @@ overlap of cards.*/
         const info_divs = document.getElementsByClassName('info-div');
         for(var i = 0; i < info_divs.length; i++) {
             const username = info_divs[i].id.split('-')[2];
-            var info = info_divs[i].innerText.split(username)[1].slice(2, -1);
+            var info = info_divs[i].getElementsByClassName('text')[0];
+            var className = info_divs[i].className;
             info_divs[i].remove();
-            changePokerInfoFor(players[username], username, info);
+            info = changePokerInfoFor(players[username], username, info? info.innerText : undefined);
+            info.className = className;
         }
         var text = document.getElementById('game-text');
         if(text) {

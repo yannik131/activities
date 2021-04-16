@@ -27,3 +27,39 @@ DOMException: Remote description indicates ICE restart but offer did not request
 
 chat öffnen, scroll zum aktuellen chat
 chats durchnummieren oder sonst irgendwie unterscheiden (Skat-Match, Skat-Match, ..)
+
+Internal Server Error: /multiplayer/start_match/Poker/84/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/asgiref/sync.py", line 330, in thread_handler
+    raise exc_info[1]
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/django/core/handlers/exception.py", line 38, in inner
+    response = await get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/django/core/handlers/base.py", line 231, in _get_response_async
+    response = await wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/asgiref/sync.py", line 296, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/asyncio/tasks.py", line 455, in wait_for
+    return await fut
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/asgiref/sync.py", line 334, in thread_handler
+    return func(*args, **kwargs)
+  File "/Users/yannikschroeder/Dokumente/activities/multiplayer/decorators.py", line 11, in wrapper
+    return func(request, match.first(), *args)
+  File "/Users/yannikschroeder/Dokumente/activities/multiplayer/views.py", line 71, in start_match
+    match.start()
+  File "/Users/yannikschroeder/Dokumente/activities/multiplayer/models.py", line 173, in start
+    self.broadcast_data(
+  File "/Users/yannikschroeder/Dokumente/activities/multiplayer/models.py", line 121, in broadcast_data
+    async_to_sync(channel_layer.group_send)(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/asgiref/sync.py", line 139, in __call__
+    return call_result.result()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/concurrent/futures/_base.py", line 432, in result
+    return self.__get_result()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/concurrent/futures/_base.py", line 388, in __get_result
+    raise self._exception
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/asgiref/sync.py", line 204, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/channels_redis/core.py", line 646, in group_send
+    await connection.zremrangebyscore(
+aioredis.errors.ConnectionForcedCloseError

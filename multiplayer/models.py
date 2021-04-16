@@ -47,7 +47,7 @@ class MultiplayerMatch(models.Model):
         return ContentType.objects.get(app_label='multiplayer', model='multiplayermatch')
         
     def add_member(self, user):
-        with redis_lock.Lock(conn, self.match_id):
+        with redis_lock.Lock(conn, str(self.id)):
             for k, v in self.member_positions.items():
                 if not v:
                     self.member_positions[k] = user.username
@@ -67,7 +67,7 @@ class MultiplayerMatch(models.Model):
             self.members.add(user)
         
     def remove_member(self, member):
-        with redis_lock.Lock(conn, self.match_id):
+        with redis_lock.Lock(conn, str(self.id)):
             for k, v in self.member_positions.items():
                 if v == member.username:
                     self.member_positions[k] = ""
