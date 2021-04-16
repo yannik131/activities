@@ -519,6 +519,7 @@ function createInputAlert(message, callback) {
             }
         }
     });
+    input.type = 'number';
     info_alert.appendChild(document.createElement('br'));
     info_alert.appendChild(input);
     createInfoButton('{% trans 'Senden' %}', function() {

@@ -15,6 +15,9 @@ from shared.shared import log
 from django.contrib.contenttypes.models import ContentType
 import random
 from datetime import datetime, timedelta
+from redis import StrictRedis
+conn = StrictRedis(host="localhost", port=6655)
+import redis_lock
 
 
 class MultiplayerMatch(models.Model):
@@ -44,45 +47,47 @@ class MultiplayerMatch(models.Model):
         return ContentType.objects.get(app_label='multiplayer', model='multiplayermatch')
         
     def add_member(self, user):
-        for k, v in self.member_positions.items():
-            if not v:
-                self.member_positions[k] = user.username
-                self.save()
-                break
-        self.broadcast_data(
-            {
-                'action': 'members_changed',
-                "match_id": self.id,
-                "info": "joined",
-                "position": k,
-                "username": user.username,
-                'id': user.id
-            }, 
-            direct=True
-        )
-        self.members.add(user)
-        
-    def remove_member(self, member):
-        for k, v in self.member_positions.items():
-            if v == member.username:
-                self.member_positions[k] = ""
-                self.save()
-                break
-        if self.in_progress:
-            self.abort()
-        else:
+        with redis_lock.Lock(conn, self.match_id):
+            for k, v in self.member_positions.items():
+                if not v:
+                    self.member_positions[k] = user.username
+                    self.save()
+                    break
             self.broadcast_data(
                 {
                     'action': 'members_changed',
                     "match_id": self.id,
-                    "info": "left",
+                    "info": "joined",
                     "position": k,
-                    "username": member.username,
-                    'id': member.id
-                },
+                    "username": user.username,
+                    'id': user.id
+                }, 
                 direct=True
             )
-        self.members.remove(member)
+            self.members.add(user)
+        
+    def remove_member(self, member):
+        with redis_lock.Lock(conn, self.match_id):
+            for k, v in self.member_positions.items():
+                if v == member.username:
+                    self.member_positions[k] = ""
+                    self.save()
+                    break
+            if self.in_progress:
+                self.abort()
+            else:
+                self.broadcast_data(
+                    {
+                        'action': 'members_changed',
+                        "match_id": self.id,
+                        "info": "left",
+                        "position": k,
+                        "username": member.username,
+                        'id': member.id
+                    },
+                    direct=True
+                )
+            self.members.remove(member)
         
     def chat_allowed_for(self, user):
         return self.members.filter(pk=user.id).exists()
