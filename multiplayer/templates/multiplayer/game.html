@@ -42,7 +42,7 @@
             {% trans 'Score' %}
         {% endif %}
     </div>
-    <div class="right" style="width: 34%" onclick="createYesNoAlert('{% trans 'Spiel beenden, verlassen und zurücksetzen?' %}', 2, function() { location.href = '{% url 'multiplayer:leave_match' match.activity.name match.id %}'});">
+    <div class="right" style="width: 34%" onclick="createYesNoAlert('{% trans 'Verlassen Sie das Spiel bitte nur, wenn Sie es auch später nicht mehr fortführen wollen. Spiel verlassen und dadurch zurücksetzen?' %}', 2, function() { location.href = '{% url 'multiplayer:leave_match' match.activity.name match.id %}'});">
         <img src="{% static 'icons/bye.png' %}">{% trans "Ciao!" %}
     </div>
 </div>

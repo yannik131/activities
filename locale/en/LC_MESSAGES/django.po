@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-06 17:44+0000\n"
-"PO-Revision-Date: 2021-04-06 19:45+0200\n"
+"POT-Creation-Date: 2021-04-25 19:33+0000\n"
+"PO-Revision-Date: 2021-04-25 21:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -451,9 +451,9 @@ msgstr "You can edit your account with the following form:"
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:333
-#: multiplayer/templates/javascript/durak.js:370
 #: multiplayer/templates/javascript/durak.js:379
+#: multiplayer/templates/javascript/durak.js:415
+#: multiplayer/templates/javascript/durak.js:433
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:14
 #: usergroups/templates/usergroups/edit_group.html:13
@@ -898,14 +898,14 @@ msgstr "Posts are publicly visible on your profile page."
 msgid "OK!"
 msgstr "OK!"
 
-#: account/templates/javascript/base.js:179
+#: account/templates/javascript/base.js:178
 msgid ""
 "Sie haben noch keine Chats. Finden Sie Freunde, Gruppen, Aktivitäten etc., "
 "um zu chatten!"
 msgstr ""
 "You don't have any chats yet. Find friends, groups, activities etc. to chat!"
 
-#: account/templates/javascript/base.js:215
+#: account/templates/javascript/base.js:214
 msgid ""
 "Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie "
 "nur einen Tab für myactivities.net :)"
@@ -1054,7 +1054,7 @@ msgid ""
 msgstr "Enter your email address to reset your password."
 
 #: account/templates/registration/password_reset_form.html:12
-#: multiplayer/templates/javascript/cards.js:520
+#: multiplayer/templates/javascript/cards.js:525
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
 #: wall/templates/wall/post/create_comment.html:11
 #: wall/templates/wall/post/create_post.html:13
@@ -1329,7 +1329,7 @@ msgid "Andere Kategorie wählen: "
 msgstr "Choose a category: "
 
 #: character/templates/character/overview.html:70
-#: multiplayer/templates/multiplayer/game.html:50
+#: multiplayer/templates/multiplayer/game.html:42
 msgid "Score"
 msgstr "Score"
 
@@ -1912,23 +1912,23 @@ msgstr "Please choose on of the three questionnaires before you start."
 msgid "Chat"
 msgstr "Chat"
 
-#: chat/templates/javascript/audiochat.js:194
+#: chat/templates/javascript/audiochat.js:198
 msgid "verlässt die Konferenz."
 msgstr "is leaving the conference."
 
-#: chat/templates/javascript/audiochat.js:226
+#: chat/templates/javascript/audiochat.js:228
 msgid "tritt der Konferenz bei."
 msgstr "is joining the conference."
 
-#: chat/templates/javascript/room.js:36
+#: chat/templates/javascript/room.js:37
 msgid "ist dem Chat beigetreten."
 msgstr "entered the chat."
 
-#: chat/templates/javascript/room.js:46
+#: chat/templates/javascript/room.js:47
 msgid "hat den Chat verlassen."
 msgstr "left the chat."
 
-#: chat/templates/javascript/room.js:75
+#: chat/templates/javascript/room.js:76
 #: multiplayer/templates/javascript/poker.js:60
 msgid "Sie"
 msgstr "You"
@@ -2355,7 +2355,7 @@ msgid "Unterstützt werden 2-10 Spieler"
 msgstr "2-10 players are supported"
 
 #: multiplayer/templates/javascript/cards.js:474
-#: multiplayer/templates/javascript/skat.js:559
+#: multiplayer/templates/javascript/skat.js:563
 msgid "Ja"
 msgstr "Yes"
 
@@ -2363,16 +2363,16 @@ msgstr "Yes"
 msgid "Nein"
 msgstr "No"
 
-#: multiplayer/templates/javascript/cards.js:525
+#: multiplayer/templates/javascript/cards.js:530
 #: multiplayer/templates/multiplayer/match.html:27
 msgid "Abbrechen"
 msgstr "Cancel"
 
-#: multiplayer/templates/javascript/cards.js:762
+#: multiplayer/templates/javascript/cards.js:767
 msgid "Es wurde noch kein Spiel beendet."
 msgstr "No game has been completed."
 
-#: multiplayer/templates/javascript/cards.js:862
+#: multiplayer/templates/javascript/cards.js:869
 msgid "Internet Explorer wird nicht unterstützt!"
 msgstr "Internet Explorer is not supported!"
 
@@ -2402,20 +2402,20 @@ msgid "Buben"
 msgstr "Jacks"
 
 #: multiplayer/templates/javascript/doppelkopf.js:10
-#: multiplayer/templates/javascript/skat.js:12
-#: multiplayer/templates/javascript/skat.js:356
+#: multiplayer/templates/javascript/skat.js:13
+#: multiplayer/templates/javascript/skat.js:357
 msgid "Kreuz"
 msgstr "Clubs"
 
 #: multiplayer/templates/javascript/doppelkopf.js:11
-#: multiplayer/templates/javascript/skat.js:13
-#: multiplayer/templates/javascript/skat.js:357
+#: multiplayer/templates/javascript/skat.js:14
+#: multiplayer/templates/javascript/skat.js:358
 msgid "Pik"
 msgstr "Spades"
 
 #: multiplayer/templates/javascript/doppelkopf.js:12
-#: multiplayer/templates/javascript/skat.js:14
-#: multiplayer/templates/javascript/skat.js:358
+#: multiplayer/templates/javascript/skat.js:15
+#: multiplayer/templates/javascript/skat.js:359
 msgid "Herz"
 msgstr "Hearts"
 
@@ -2440,7 +2440,7 @@ msgid "Keine 30"
 msgstr "No 30"
 
 #: multiplayer/templates/javascript/doppelkopf.js:21
-#: multiplayer/templates/javascript/skat.js:390
+#: multiplayer/templates/javascript/skat.js:391
 msgid "Schwarz"
 msgstr "Black"
 
@@ -2455,9 +2455,9 @@ msgstr "Contra"
 
 #: multiplayer/templates/javascript/doppelkopf.js:178
 #: multiplayer/templates/javascript/doppelkopf.js:344
-#: multiplayer/templates/javascript/durak.js:156
-#: multiplayer/templates/javascript/skat.js:162
-#: multiplayer/templates/javascript/skat.js:199
+#: multiplayer/templates/javascript/durak.js:199
+#: multiplayer/templates/javascript/skat.js:163
+#: multiplayer/templates/javascript/skat.js:200
 msgid "Spiel Nummer"
 msgstr "Game number"
 
@@ -2465,24 +2465,24 @@ msgstr "Game number"
 msgid "Normalspiel"
 msgstr "Normal game"
 
-#: multiplayer/templates/javascript/durak.js:54
-#: multiplayer/templates/javascript/durak.js:206
+#: multiplayer/templates/javascript/durak.js:104
+#: multiplayer/templates/javascript/durak.js:250
 msgid "SCHLUCKT"
 msgstr "GOBBLING"
 
-#: multiplayer/templates/javascript/durak.js:165
+#: multiplayer/templates/javascript/durak.js:209
 msgid "ANGREIFER"
 msgstr "ATTACKER"
 
-#: multiplayer/templates/javascript/durak.js:168
+#: multiplayer/templates/javascript/durak.js:212
 msgid "VERTEIDIGER"
 msgstr "DEFENDER"
 
-#: multiplayer/templates/javascript/durak.js:350
+#: multiplayer/templates/javascript/durak.js:395
 msgid "Schlucken"
 msgstr "Gobble"
 
-#: multiplayer/templates/javascript/durak.js:360
+#: multiplayer/templates/javascript/durak.js:405
 msgid "Schieben"
 msgstr "Transfer"
 
@@ -2526,125 +2526,125 @@ msgstr "Straight Flush"
 msgid "Royal Flush"
 msgstr "Royal Flush"
 
-#: multiplayer/templates/javascript/poker.js:146
+#: multiplayer/templates/javascript/poker.js:143
 msgid "Gewonnen: "
 msgstr "Winner: "
 
-#: multiplayer/templates/javascript/poker.js:178
+#: multiplayer/templates/javascript/poker.js:175
 msgid "Gewinner: "
 msgstr "Winner: "
 
-#: multiplayer/templates/javascript/poker.js:246
+#: multiplayer/templates/javascript/poker.js:241
 msgid "Änderung um "
 msgstr "Change at "
 
-#: multiplayer/templates/javascript/poker.js:272
+#: multiplayer/templates/javascript/poker.js:265
 msgid "Sie können nicht zweimal hintereinander raisen."
 msgstr "You can't raise two times in a row."
 
-#: multiplayer/templates/javascript/poker.js:276
+#: multiplayer/templates/javascript/poker.js:269
 msgid "Mindesteinsatz: "
 msgstr "Minimum bet: "
 
-#: multiplayer/templates/javascript/poker.js:280
+#: multiplayer/templates/javascript/poker.js:273
 msgid "Geben Sie eine Zahl ein."
 msgstr "Enter a number."
 
-#: multiplayer/templates/javascript/poker.js:283
+#: multiplayer/templates/javascript/poker.js:276
 msgid "Beachten Sie den Mindesteinsatz."
 msgstr "That's below the minimum bet."
 
-#: multiplayer/templates/javascript/poker.js:286
+#: multiplayer/templates/javascript/poker.js:279
 msgid "So viel Kohle haben Sie nicht."
 msgstr "You don't have that much."
 
-#: multiplayer/templates/javascript/poker.js:332
+#: multiplayer/templates/javascript/poker.js:325
 msgid "Zeigen"
 msgstr "Show"
 
-#: multiplayer/templates/javascript/poker.js:333
+#: multiplayer/templates/javascript/poker.js:326
 msgid "Nicht zeigen"
 msgstr "Don't show"
 
-#: multiplayer/templates/javascript/skat.js:15
-#: multiplayer/templates/javascript/skat.js:359
+#: multiplayer/templates/javascript/skat.js:16
+#: multiplayer/templates/javascript/skat.js:360
 msgid "Karo"
 msgstr "Diamonds"
 
-#: multiplayer/templates/javascript/skat.js:16
+#: multiplayer/templates/javascript/skat.js:17
 msgid "Grand"
 msgstr "Grand"
 
-#: multiplayer/templates/javascript/skat.js:17
+#: multiplayer/templates/javascript/skat.js:18
 msgid "Null"
 msgstr "Null"
 
-#: multiplayer/templates/javascript/skat.js:20
+#: multiplayer/templates/javascript/skat.js:21
 msgid "Nö"
 msgstr "Nah fam"
 
-#: multiplayer/templates/javascript/skat.js:201
+#: multiplayer/templates/javascript/skat.js:202
 msgid "gewonnen"
 msgstr "won"
 
-#: multiplayer/templates/javascript/skat.js:203
+#: multiplayer/templates/javascript/skat.js:204
 msgid "verloren"
 msgstr "lost"
 
-#: multiplayer/templates/javascript/skat.js:205
+#: multiplayer/templates/javascript/skat.js:206
 msgid "überreizt"
 msgstr "overbid"
 
-#: multiplayer/templates/javascript/skat.js:207
+#: multiplayer/templates/javascript/skat.js:208
 msgid "Augen"
 msgstr "Points"
 
-#: multiplayer/templates/javascript/skat.js:289
+#: multiplayer/templates/javascript/skat.js:290
 msgid "Drücken"
 msgstr "Put"
 
-#: multiplayer/templates/javascript/skat.js:376
+#: multiplayer/templates/javascript/skat.js:377
 msgid "Ouvert"
 msgstr "Ouvert"
 
-#: multiplayer/templates/javascript/skat.js:379
-#: multiplayer/templates/javascript/skat.js:384
+#: multiplayer/templates/javascript/skat.js:380
+#: multiplayer/templates/javascript/skat.js:385
 msgid "Normal"
 msgstr "Normal"
 
-#: multiplayer/templates/javascript/skat.js:387
+#: multiplayer/templates/javascript/skat.js:388
 msgid "Schneider"
 msgstr "Schneider"
 
-#: multiplayer/templates/javascript/skat.js:393
+#: multiplayer/templates/javascript/skat.js:394
 msgid "Offen"
 msgstr "Ouvert"
 
-#: multiplayer/templates/javascript/skat.js:413
+#: multiplayer/templates/javascript/skat.js:414
 msgid "Aufnehmen"
 msgstr "Take Skat"
 
-#: multiplayer/templates/javascript/skat.js:416
+#: multiplayer/templates/javascript/skat.js:417
 msgid "Hand spielen"
 msgstr "Hand"
 
-#: multiplayer/templates/javascript/skat.js:425
+#: multiplayer/templates/javascript/skat.js:426
 msgid "Eingepasst"
 msgstr "No bid, new game"
 
-#: multiplayer/templates/javascript/skat.js:564
+#: multiplayer/templates/javascript/skat.js:568
 msgid "Passe"
 msgstr "Nah fam"
 
-#: multiplayer/templates/javascript/skat.js:576
+#: multiplayer/templates/javascript/skat.js:580
 msgid "Vorhand"
 msgstr "Forehand"
 
-#: multiplayer/templates/javascript/skat.js:576
+#: multiplayer/templates/javascript/skat.js:580
 msgid "Mittelhand"
 msgstr "Middlehand"
 
-#: multiplayer/templates/javascript/skat.js:576
+#: multiplayer/templates/javascript/skat.js:580
 msgid "Hinterhand"
 msgstr "Rearhand"
 
@@ -2659,18 +2659,23 @@ msgid ""
 "erstellen."
 msgstr "Please fill in the following form to create an online %(name)s-match."
 
-#: multiplayer/templates/multiplayer/game.html:35
-#: multiplayer/templates/multiplayer/game.html:46
+#: multiplayer/templates/multiplayer/game.html:34
 msgid "Lobby"
 msgstr "Lobby"
 
-#: multiplayer/templates/multiplayer/game.html:37
-#: multiplayer/templates/multiplayer/game.html:52
-msgid "Spiel beenden, verlassen und zurücksetzen?"
-msgstr "Close, leave and reset the game?"
+#: multiplayer/templates/multiplayer/game.html:39
+msgid "Blinds"
+msgstr "Blinds"
 
-#: multiplayer/templates/multiplayer/game.html:38
-#: multiplayer/templates/multiplayer/game.html:53
+#: multiplayer/templates/multiplayer/game.html:45
+msgid ""
+"Verlassen Sie das Spiel bitte nur, wenn Sie es auch später nicht mehr "
+"fortführen wollen. Spiel verlassen und dadurch zurücksetzen?"
+msgstr ""
+"Please only leave the game if you don't want to return to this particular "
+"match. Leave and reset the match?"
+
+#: multiplayer/templates/multiplayer/game.html:46
 msgid "Ciao!"
 msgstr "Ciao!"
 
@@ -2703,11 +2708,19 @@ msgstr "Start"
 msgid "Sie sind der Aktivität {name} beigetreten."
 msgstr "You joined the activity {name}."
 
-#: multiplayer/views.py:61
+#: multiplayer/views.py:20
+msgid ""
+"Sie wurden aus dem Spiel gekickt. Bitte treten Sie nur wieder bei, wenn Sie "
+"sich sicher sind, dass das ein Versehen war."
+msgstr ""
+"You've been kicked from the game. Please rejoin only if you're sure that "
+"this wasn't on purpose."
+
+#: multiplayer/views.py:63
 msgid "Spiel ist bereits voll"
 msgstr "Game is full"
 
-#: multiplayer/views.py:77
+#: multiplayer/views.py:79
 msgid "Sie waren zu langsam, das Match war bereits voll."
 msgstr "Too slow. Match is already full."
 
@@ -3185,6 +3198,9 @@ msgstr "[Delete]"
 #, python-format
 msgid " vor %(v0)s"
 msgstr " %(v0)s ago"
+
+#~ msgid "Spiel beenden, verlassen und zurücksetzen?"
+#~ msgstr "Close, leave and reset the game?"
 
 #~ msgid "Chat schließen"
 #~ msgstr "Close chat"

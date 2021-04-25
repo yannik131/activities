@@ -200,7 +200,7 @@ function connect() {
                         if(chat) {
                             handleChatMessage(data);
                         }
-                        if(data.action == 'sent' && data.username != "{{ user.username }}") {
+                        else if(data.action == 'sent' && data.username != "{{ user.username }}") {
                             addMessageToChatMenu(data);
                             playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/click_x.wav");
                         }
