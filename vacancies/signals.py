@@ -1,4 +1,4 @@
-from django.db.models.signals import m2m_changed, post_delete, post_save, pre_save
+from django.db.models.signals import m2m_changed, post_save, pre_save, pre_delete
 from django.dispatch import receiver
 from vacancies.models import Vacancy, Invitation, Application
 from notify.utils import notify
@@ -30,7 +30,7 @@ def application_saved(instance: Application, **kwargs):
                 notify(instance.user, instance.vacancy.target.admin, 'declined_application', instance, url=instance.vacancy.target.get_absolute_url())
 
 
-@receiver(post_delete, sender=Application)
+@receiver(pre_delete, sender=Application)
 def application_deleted(instance: Application, **kwargs):
     room = ChatRoom.get_for_target(instance)
     room.delete()

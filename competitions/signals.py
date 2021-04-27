@@ -1,4 +1,4 @@
-from django.db.models.signals import m2m_changed, post_delete, post_save, pre_save
+from django.db.models.signals import m2m_changed, post_save, pre_save, pre_delete
 from django.dispatch import receiver
 from .models import Match, Tournament, Round
 from notify.utils import notify
@@ -50,7 +50,7 @@ def match_created(instance, created, **kwargs):
         instance.members.add(instance.admin)
 
 
-@receiver(post_delete, sender=Match)
+@receiver(pre_delete, sender=Match)
 def match_deleted(instance, **kwargs):
     room = ChatRoom.get_for_target(instance)
     room.delete()
@@ -64,7 +64,7 @@ def tournament_created(instance, created, **kwargs):
     room.members.add(instance.admin)
 
 
-@receiver(post_delete, sender=Tournament)
+@receiver(pre_delete, sender=Tournament)
 def tournament_deleted(instance, **kwargs):
     room = ChatRoom.get_for_target(instance)
     room.delete()

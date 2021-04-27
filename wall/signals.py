@@ -1,4 +1,4 @@
-from django.db.models.signals import post_save, post_delete, m2m_changed
+from django.db.models.signals import post_save, m2m_changed, pre_delete
 from django.dispatch import receiver
 from .models import Post, Comment
 from notify.utils import notify
@@ -14,7 +14,7 @@ def post_created(instance: Post, created, **kwargs):
         notify(instance.author.friends(), instance.author, 'posted_in', instance.target)
 
 
-@receiver(post_delete, sender=Post)
+@receiver(pre_delete, sender=Post)
 def post_deleted(instance: Post, **kwargs):
     file = xor_get([instance.audio, instance.video, instance.image])
     if file and os.path.isfile(file.path):

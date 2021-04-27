@@ -1,4 +1,4 @@
-from django.db.models.signals import post_save, m2m_changed, post_delete, pre_save
+from django.db.models.signals import post_save, m2m_changed, pre_save
 from django.dispatch import receiver
 from .models import Appointment
 from account.models import User

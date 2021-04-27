@@ -96,3 +96,4 @@ aioredis.errors.ConnectionForcedCloseError
 doppelter klick bei nachricht
 konferenz falsch zuogeordnet
 skat denkt ich spielte hand nach wegklicken von skat
+chatroom nicht gelöscht wenn freundschaft gekündigt -> bleibende chatlogentries mit user.get_latest_messages > 0

@@ -1,5 +1,5 @@
 from django.dispatch import receiver
-from django.db.models.signals import m2m_changed, post_save, post_delete, pre_save
+from django.db.models.signals import m2m_changed, post_save, pre_save, pre_delete
 from .models import User, Friendship, FriendRequest
 from notify.utils import notify
 from chat.models import ChatRoom
@@ -20,6 +20,6 @@ def friendship_saved(instance: Friendship, created, **kwargs):
         room.members.add(instance.to_user)
 
 
-@receiver(post_delete, sender=Friendship)
+@receiver(pre_delete, sender=Friendship)
 def friendship_destroyed(instance: Friendship, **kwargs):
     ChatRoom.get_for_target(instance).delete()

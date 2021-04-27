@@ -1,4 +1,4 @@
-from django.db.models.signals import m2m_changed, post_delete, post_save, pre_save
+from django.db.models.signals import m2m_changed, post_save, pre_save, pre_delete
 from django.dispatch import receiver
 from .models import UserGroup
 from vacancies.models import Vacancy, Invitation, Application
@@ -43,7 +43,7 @@ def group_changed(instance, **kwargs):
         if previous.description != instance.description:
             notify(instance.members.all().exclude(id=instance.admin.id), instance, 'updated_description')
             
-@receiver(post_delete, sender=UserGroup)
+@receiver(pre_delete, sender=UserGroup)
 def group_deleted(instance, **kwargs):
     room = ChatRoom.get_for_target(instance)
     room.delete()

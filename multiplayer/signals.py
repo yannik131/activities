@@ -1,4 +1,4 @@
-from django.db.models.signals import m2m_changed, post_delete, post_save, pre_save
+from django.db.models.signals import m2m_changed, pre_delete, post_save, pre_save
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
 from .models import MultiplayerMatch
@@ -19,7 +19,7 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
         room.members.remove(member)
         
         
-@receiver(post_delete, sender=MultiplayerMatch)
+@receiver(pre_delete, sender=MultiplayerMatch)
 def match_deleted(instance, **kwargs):
     room = ChatRoom.get_for_target(instance)
     room.delete()
