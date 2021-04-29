@@ -753,7 +753,7 @@ function displayCards(data, player_list, except) {
 }
 
 function showScore(toggle) {
-    var info_alert = document.getElementById("info-alert");
+    var info_alert = document.getElementById("score-alert");
     if(info_alert) {
         if(toggle) {
             info_alert.remove();
@@ -761,11 +761,12 @@ function showScore(toggle) {
         return;
     }
     else if(summary) {
-        createInfoAlert(summary);
+        info_alert = createInfoAlert(summary);
     }
     else {
-       createInfoAlert("{% trans 'Es wurde noch kein Spiel beendet.' %}");
+       info_alert = createInfoAlert("{% trans 'Es wurde noch kein Spiel beendet.' %}");
     }
+    info_alert.id = 'score-alert';
 }
 
 function game_resize() {
@@ -861,6 +862,16 @@ overlap of cards.*/
             changeInfoFor(username, info, important);
         }
     }
+}
+
+function leaveGame() {
+    createYesNoAlert(
+        "{% trans 'Verlassen Sie das Spiel bitte nur, wenn Sie es auch später nicht mehr fortführen wollen. Spiel verlassen und dadurch zurücksetzen?' %}", 
+        2, 
+        function() { 
+            location.href = "{% url 'multiplayer:leave_match' match.activity.name match.id %}";
+        }
+    );
 }
 
 window.addEventListener('resize', game_resize);

@@ -93,7 +93,6 @@ aioredis.errors.ConnectionForcedCloseError
 2021-04-09 08:44:16: -------------Starting Durak round------------- 
 2021-04-15 20:21:31: -------------Starting Durak round------------- 
 
-doppelter klick bei nachricht
-konferenz falsch zuogeordnet
 skat denkt ich spielte hand nach wegklicken von skat
 chatroom nicht gelöscht wenn freundschaft gekündigt -> bleibende chatlogentries mit user.get_latest_messages > 0
+chat minimieren nach größenänderung des browsers

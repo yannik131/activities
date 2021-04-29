@@ -52,14 +52,15 @@ class NotificationConsumer(WebsocketConsumer):
     def rtc_send(self, data, text_data=None):
         data['type'] = 'rtc'
         data['user_id'] = self.user.id
-        data['room_id'] = self.rtc_room_id
         if 'channel' in data:
+            data['room_id'] = self.rtc_room_id
             async_to_sync(self.channel_layer.group_send)(
                 data['channel'],
                 data
             )
         else:
-            chat_room = ChatRoom.objects.get(id=self.rtc_room_id)
+            data['room_id'] = text_data.get('room_id', self.rtc_room_id)
+            chat_room = ChatRoom.objects.get(id=data['room_id'])
             for member in chat_room.members.all():
                 if member.channel_name:
                     async_to_sync(self.channel_layer.send)(
@@ -163,6 +164,7 @@ class NotificationConsumer(WebsocketConsumer):
             
     def handle_rtc_message(self, text_data):
         if text_data["action"] == "join":
+            self.rtc_room_id = text_data['room_id']
             self.rtc_send({
                 'action': 'join'
             }, text_data)
@@ -190,7 +192,6 @@ class NotificationConsumer(WebsocketConsumer):
                 'username': self.user.username
             }, text_data)
         elif text_data['action'] == 'request_show':
-            self.rtc_room_id = text_data['room_id']
             self.rtc_send({
                 'action': 'request_show'
             }, text_data)

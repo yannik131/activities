@@ -53,7 +53,7 @@ function handleRTCMessage(data) {
         default:
             break;
     }
-    if(!acceptingConnections) {
+    if(!acceptingConnections || data.room_id != audio_room_id) {
         return;
     }
     //console.log(data.user_id, "sent", data.action);

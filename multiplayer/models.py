@@ -272,7 +272,6 @@ class MultiplayerMatch(models.Model):
         self.game_data['alive'] = json.dumps(alive)
         if len(alive) == 1:
             self.game_data['winner'] = alive[0]
-            self.delete()
             return
         blinds = [[10, 20], [20, 40], [30, 60], [50, 100], [100, 200], [150, 300], [200, 400], [400, 800], [800, 1600]]
         if int(self.game_data['blind_level']) < len(blinds)-1 and timezone.now() > datetime.fromisoformat(self.game_data['blind_time']):

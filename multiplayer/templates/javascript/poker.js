@@ -172,8 +172,8 @@ function getCardSortValue(type) {
 
 function loadGameField(data) {
     if(data.winner) {
-        alert('{% trans 'Gewinner: ' %}'+data.winner);
-        location.href = '{{ match.lobby_url }}';
+        createInfoAlert('{% trans 'Gewinner: ' %}'+data.winner);
+        clearButtons();
         return;
     }
     var player_list = JSON.parse(data.players);
@@ -266,7 +266,8 @@ function raise() {
     }
     else {
         let minimum_bet = previous_raise;
-        createInputAlert("{% trans 'Mindesteinsatz: ' %}"+minimum_bet, function(bet) {
+        var all_in = my_stack-highest_bet_value+my_bet;
+        createInputAlert("{% trans 'Mindesteinsatz: ' %}"+minimum_bet+", all-in: "+all_in, function(bet) {
             var value = parseInt(bet);
             var to_pay = highest_bet_value-my_bet+value;
             if(isNaN(value)) {
@@ -275,8 +276,8 @@ function raise() {
             else if(value < minimum_bet && value != my_stack) {
                 alert("{% trans 'Beachten Sie den Mindesteinsatz.' %}");
             }
-            else if(to_pay > my_stack && value != my_stack) {
-                alert("{% trans 'So viel Kohle haben Sie nicht.' %}");
+            else if(to_pay > my_stack) {
+                alert("{% trans 'So viel Kohle haben Sie nicht. Es fehlen: ' %}"+(to_pay-my_stack));
             }
             else {
                 game_send({'action': 'raise', 'to_pay': to_pay, 'value': value});
