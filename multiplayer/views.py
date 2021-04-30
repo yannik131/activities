@@ -1,7 +1,7 @@
 from shared.shared import log
 from django.shortcuts import render, get_object_or_404
 from .models import MultiplayerMatch
-from .forms import CreateMatchForm
+from .forms import CreateMatchForm, PokerMatchForm
 from activity.models import Activity
 from django.http import HttpResponseRedirect
 from django.utils.translation import gettext_lazy as _
@@ -32,15 +32,23 @@ def create_match(request, activity_name):
     elif name == "Doppelkopf":
         match = MultiplayerMatch.objects.create(activity=activity, member_limit=4, admin=request.user)
     if request.method == 'POST':
-        form = CreateMatchForm(request.POST)
+        if name == 'Poker':
+            form = PokerMatchForm(request.POST)
+        else:
+            form = CreateMatchForm(request.POST)
         form.activity = activity
         if form.is_valid():
             match = form.save(commit=False)
             match.activity = activity
             match.admin = request.user
+            if name == 'Poker':
+                match.options['blind_duration'] = form.cleaned_data['blind_duration']
             match.save() 
     else:
-        form = CreateMatchForm()
+        if name == 'Poker':
+            form = PokerMatchForm()
+        else:
+            form = CreateMatchForm()
     if match:
         match.init_positions()
         match.members.add(match.admin)

@@ -64,35 +64,4 @@ Traceback (most recent call last):
     await connection.zremrangebyscore(
 aioredis.errors.ConnectionForcedCloseError
 
-2021-04-09 08:42:10: -------------Starting Durak round-------------
-2021-04-09 08:42:38: all are done, checking...
-2021-04-09 08:42:38: sent new round, empty done_list
-2021-04-09 08:42:51: all are done, checking...
-2021-04-09 08:42:51: sent new round, empty done_list
-2021-04-09 08:43:16: all are done, checking...
-2021-04-09 08:43:16: sent new round, empty done_list
-2021-04-09 08:43:17: set first without cards to okay
-2021-04-09 08:43:22: all are done, checking...
-2021-04-09 08:43:22: sent new round, empty done_list
-2021-04-09 08:43:30: all are done, checking...
-2021-04-09 08:43:30: sent new round, empty done_list
-2021-04-09 08:43:43: all are done, checking...
-2021-04-09 08:43:43: sent new round, empty done_list
-2021-04-09 08:43:53: all are done, checking...
-2021-04-09 08:43:53: sent new round, empty done_list
-2021-04-09 08:44:13: all are done, checking...
-2021-04-09 08:44:13: sent new round, empty done_list
-2021-04-09 08:44:16: all are done, checking...
-2021-04-09 08:44:16: players_with_cards: [] -> let's see!
-2021-04-09 08:44:16: hands of each player:
-2021-04-09 08:44:16: admin -> []
-2021-04-09 08:44:16: okay -> [] 
-2021-04-09 08:44:16: aha -> [] 
-2021-04-09 08:44:16: durak: None first: okay 
-2021-04-09 08:44:16: attacking: okay defending: aha 
-2021-04-09 08:44:16: -------------Starting Durak round------------- 
-2021-04-15 20:21:31: -------------Starting Durak round------------- 
-
-skat denkt ich spielte hand nach wegklicken von skat
-chatroom nicht gelöscht wenn freundschaft gekündigt -> bleibende chatlogentries mit user.get_latest_messages > 0
-chat minimieren nach größenänderung des browsers
+Wenn der Admin das spiel startet kriegt er den obigen Fehler

@@ -10,9 +10,7 @@ function activateMenu(element_id) {
         if(menu) {
             if(menu.style.display != "none") {
                 menu.style.display = "none";
-                if(widescreen) {
-                    content.style.right = 0;
-                }
+                content.style.right = 0;
             }
             else {
                 menu.style.display = "flex";

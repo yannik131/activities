@@ -75,7 +75,8 @@ function handleShow(data) {
                 var hand = 'HAND'+hands[i]+'HAND';
                 summary = summary.replaceAll(hand, HAND_TRANSLATIONS[hands[i]]);
             }
-            createInfoAlert(summary);
+            var alert = createInfoAlert(summary);
+            alert.style.opacity = 0.8;
             var button = document.querySelector('.info-alert-button');
             button.addEventListener('click', function() {
                 processMultiplayerData(data.new_game_data);
@@ -115,7 +116,7 @@ function updateActive(data) {
         }
     }
     active = data.active;
-    if(!data.active) {
+    if(!active) {
         return;
     }
     var div = document.getElementById('info-div-'+data.active);
@@ -225,12 +226,15 @@ function loadGameField(data) {
     }
     for(var i = 0; i < player_list.length; i++) {
         var info_div = changePokerInfoFor(players[player_list[i]], player_list[i], data[player_list[i]+'_stack']);
-        if(player_list[i] == data.dealer) {
-            info_div.className += " dealer";
-        }
         if(player_list[i] == data.active) {
             info_div.className += " active";
         }
+        else if(player_list[i] == data.dealer) {
+            info_div.className += " dealer";
+        }
+        else {
+            info_div.className = 'info-div';
+        } 
     }
     const blinds = JSON.parse(data.blinds);
     const level = parseInt(data.blind_level);

@@ -29,6 +29,7 @@ class MultiplayerMatch(models.Model):
     channel_group_name = models.UUIDField(default=uuid.uuid4)
     in_progress = models.BooleanField(default=False)
     admin = models.ForeignKey(User, related_name='admin_matches', on_delete=models.CASCADE)
+    options = HStoreField(default=dict, blank=True)
     
     def __str__(self):
         return self.activity.name+__('-Match')
@@ -258,7 +259,7 @@ class MultiplayerMatch(models.Model):
         if not self.in_progress:
             self.game_data['blinds'] = json.dumps([[10, 20], [20, 40], [30, 60], [50, 100], [100, 200], [150, 300], [200, 400], [400, 800], [800, 1600]])
             self.game_data['dealer'] = ''
-            self.game_data['blind_duration'] = 20
+            self.game_data['blind_duration'] = self.options['blind_duration']
             self.game_data['blind_time'] = (timezone.now()+timedelta(minutes=int(self.game_data['blind_duration']))).isoformat()
             self.game_data['blind_level'] = 0
             self.game_data['alive'] = json.dumps(players)

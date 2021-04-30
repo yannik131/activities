@@ -15,7 +15,7 @@ function init_chat(pk) {
 
     chat_input.onkeyup = function(e) {
         if(e.which == 13 && !e.shiftKey) {
-            submitClick();
+            submitClick(this);
         }
     }
 
@@ -55,8 +55,8 @@ function handleChatMessage(data) {
     }
 }
 
-function submitClick() {
-    var chat_input = document.getElementById('chat-input-'+room_id);
+function submitClick(chat_input) {
+    var room_id = chat_input.id.split('-')[2];
     var message = chat_input.innerText;
     while(message.slice(-1).search(whitespaceRegex) != -1) {
         message = message.slice(0, -1);

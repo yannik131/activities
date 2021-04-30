@@ -237,7 +237,7 @@ function negotiate(mediaStream) {
     });
 }
 
-function joinAudio() {
+function joinAudio(room_id) {
     if(acceptingConnections) {
         leaveAudio();
     }
@@ -264,5 +264,6 @@ function leaveAudio() {
     colorize({{ user.id }}, audio_room_id, 'white');
     var button = document.getElementById('call-button-'+audio_room_id);
     button.src = "{% static 'icons/call.png' %}";
-    button.onclick = joinAudio;
+    var room_id = audio_room_id;
+    button.onclick = function() { joinAudio(room_id); };
 }

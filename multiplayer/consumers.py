@@ -402,6 +402,13 @@ class PokerConsumer(GameConsumer):
                 data['active'] = after(data['active'], no_fold(data))
         
         message['data']['active'] = data['active']
+        players = json.loads(data['alive'])
+        total = sum([int(data[player+'_stack']) for player in players])+int(data['pot'])
+        if len(players)*2000 != total:
+            log('Chips don\'t add up after action', text_data['action'], 'from', self.username, 'total:', total)
+            for player in players:
+                log(player, '->', data[player+'_stack'])
+            log('pot -> ', data['pot'])
         
     def clean(self, data):
         del data['deck']
