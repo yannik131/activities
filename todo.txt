@@ -65,3 +65,4 @@ Traceback (most recent call last):
 aioredis.errors.ConnectionForcedCloseError
 
 Wenn der Admin das spiel startet kriegt er den obigen Fehler
+Matches mit member_positions voll aber mit nur einem Mitglied (nach leaven vllt?)

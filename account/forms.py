@@ -7,6 +7,7 @@ from django.contrib.auth.hashers import check_password
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from datetime import datetime
+from .utils import send_account_activation_email
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -95,8 +96,6 @@ class UserEditForm(forms.ModelForm):
         elif year-birth_year > 120:
             raise forms.ValidationError(_('Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind.'))
         return birth_year
-        
-    
 
 
 class LocationForm(forms.Form):
@@ -105,7 +104,7 @@ class LocationForm(forms.Form):
 
     def clean(self):
         cd = super().clean()
-        _ = get_location(cd['address'])
+        self.location = get_location(cd['address'])
         return cd
 
 

@@ -1,23 +1,20 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm, AccountDeleteForm, LoginForm
-from .models import Location, FriendRequest, User, Friendship
+from .models import FriendRequest, User, Friendship
 from django.http import HttpResponseRedirect
-from django.utils import timezone, translation
+from django.utils import timezone
 from .templatetags import account_tags
 from notify.utils import notify
 from wall.models import Post
 from shared import shared
-from .utils import get_location
+from .utils import get_location, send_account_activation_email
 from activities.language_subdomain_middleware import get_prefix
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.core.mail import EmailMultiAlternatives
+from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
-from django.utils.encoding import force_bytes, force_text
-from django.conf import settings
-from django.template.loader import render_to_string
+from django.utils.encoding import force_text
 from django.contrib.auth import login as auth_login
 from django.urls import reverse
 
@@ -149,14 +146,22 @@ def register(request):
     if request.method == 'POST':
         location_form = LocationForm(request.POST)
         user_form = UserRegistrationForm(request.POST)
-        if user_form.is_valid() and location_form.is_valid():
-            new_user = user_form.save(commit=False)
-            new_user.set_password(user_form.cleaned_data['password'])
-            new_user.location = get_location(location_form.cleaned_data['address'])
-            new_user.is_active = False
-            new_user.save()
-            send_account_activation_email(request, new_user)
-            return render(request, 'account/register_done.html', {'new_user': new_user})
+        if location_form.is_valid():
+            user_form.location = location_form.location
+            user_form.request = request
+            if user_form.is_valid():
+                new_user = user_form.save(commit=False)
+                new_user.set_password(user_form.cleaned_data['password'])
+                new_user.location = user_form.location
+                new_user.is_active = False
+                new_user.save()
+                try:
+                    send_account_activation_email(user_form.request, new_user)
+                except:
+                    new_user.delete()
+                    messages.add_message(request, messages.INFO, _('An die E-Mail Adresse konnte keine E-Mail gesendet werden.'))
+                    return render(request, 'account/register.html', {'user_form': user_form, 'location_form': location_form})
+                return render(request, 'account/register_done.html', {'new_user': user_form.new_user})
     else:
         user_form = UserRegistrationForm(initial=dict(birth_year=1990))
         location_form = LocationForm()
@@ -206,18 +211,6 @@ def delete(request):
     else:
         delete_form = AccountDeleteForm()
     return render(request, 'account/delete.html', dict(delete_form=delete_form))
-    
-def send_account_activation_email(request, user):
-    from_email = settings.DEFAULT_FROM_EMAIL
-    recipients = [user.email]
-    uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
-    token = default_token_generator.make_token(user)
-    activation_url = request.build_absolute_uri(f'/account/activate/{uidb64}/{token}/')
-    with translation.override(request.LANGUAGE_CODE):
-        html_content = render_to_string('registration/activation_email.html', dict(user=user, activation_url=activation_url, LANGUAGE_CODE=request.LANGUAGE_CODE))
-    email = EmailMultiAlternatives(_('E-Mail Aktivierung'), _('Aktivierungs-E-Mail'), settings.DEFAULT_FROM_EMAIL, recipients)
-    email.attach_alternative(html_content, 'text/html')
-    email.send()
     
 
 def activate(request, uidb64=None, token=None):

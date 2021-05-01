@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-25 19:33+0000\n"
+"POT-Creation-Date: 2021-05-01 20:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,120 +18,120 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: account/forms.py:17 account/forms.py:156
+#: account/forms.py:18 account/forms.py:155
 msgid "Passwort"
 msgstr ""
 
-#: account/forms.py:19
+#: account/forms.py:20
 msgid "Passwort (erneut)"
 msgstr ""
 
-#: account/forms.py:26 account/forms.py:77 vacancies/forms.py:14
+#: account/forms.py:27 account/forms.py:78 vacancies/forms.py:14
 #: vacancies/templates/vacancies/vacancy_list.html:14
 msgid "Geschlecht"
 msgstr ""
 
-#: account/forms.py:27 account/forms.py:78
+#: account/forms.py:28 account/forms.py:79
 msgid "Geburtsjahr"
 msgstr ""
 
-#: account/forms.py:28
+#: account/forms.py:29
 msgid "E-Mail Adresse"
 msgstr ""
 
-#: account/forms.py:42 account/forms.py:64
+#: account/forms.py:43 account/forms.py:65
 msgid "Ihr Nutzername kann keine E-Mail sein. Das wäre verwirrend, oder?"
 msgstr ""
 
-#: account/forms.py:47
+#: account/forms.py:48
 msgid "Es gibt schon einen Nutzer mit dieser E-Mail-Adresse."
 msgstr ""
 
-#: account/forms.py:53
+#: account/forms.py:54
 msgid "Passwörter stimmen nicht überein!"
 msgstr ""
 
-#: account/forms.py:59
+#: account/forms.py:60
 msgid "Nutzername zu lang (max. 10 Zeichen)"
 msgstr ""
 
-#: account/forms.py:79
+#: account/forms.py:80
 msgid "Profiltext"
 msgstr ""
 
-#: account/forms.py:80
+#: account/forms.py:81
 msgid "Profilbild"
 msgstr ""
 
-#: account/forms.py:84
+#: account/forms.py:85
 msgid "Für Login und Passwort-Zurücksetzen."
 msgstr ""
 
-#: account/forms.py:85
+#: account/forms.py:86
 msgid "Für Bewerbungen."
 msgstr ""
 
-#: account/forms.py:86
+#: account/forms.py:87
 msgid "Altersermittlung für Bewerbungen."
 msgstr ""
 
-#: account/forms.py:94
+#: account/forms.py:95
 msgid ""
 "Sie müssen mindestens 3 Jahre alt sein, um diese Seite überhaupt nutzen zu "
 "können. Jüngere Menschen haben noch kein Gedächtnis."
 msgstr ""
 
-#: account/forms.py:96
+#: account/forms.py:97
 msgid ""
 "Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind."
 msgstr ""
 
-#: account/forms.py:104
+#: account/forms.py:103
 msgid "Ihre Stadt"
 msgstr ""
 
-#: account/forms.py:113 vacancies/forms.py:55 vacancies/forms.py:99
+#: account/forms.py:112 vacancies/forms.py:55 vacancies/forms.py:99
 #: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:34
 msgid "Nachricht"
 msgstr ""
 
-#: account/forms.py:119
+#: account/forms.py:118
 #, python-brace-format
 msgid ""
 "Die Nachricht darf nicht länger als 150 Zeichen sein, ist aber {l} Zeichen "
 "lang."
 msgstr ""
 
-#: account/forms.py:124
+#: account/forms.py:123
 msgid "Nutzername"
 msgstr ""
 
-#: account/forms.py:129
+#: account/forms.py:128
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr ""
 
-#: account/forms.py:133
+#: account/forms.py:132
 msgid "Wirklich löschen?"
 msgstr ""
 
-#: account/forms.py:138
+#: account/forms.py:137
 msgid "Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen."
 msgstr ""
 
-#: account/forms.py:155
+#: account/forms.py:154
 msgid "E-Mail oder Nutzername"
 msgstr ""
 
-#: account/forms.py:162
+#: account/forms.py:161
 msgid "Nutzer nicht gefunden."
 msgstr ""
 
-#: account/forms.py:164
+#: account/forms.py:163
 msgid "Passwort falsch."
 msgstr ""
 
-#: account/forms.py:166
+#: account/forms.py:165
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr ""
 
@@ -852,23 +852,23 @@ msgstr ""
 msgid "Die Posts sind öffentlich auf Ihrer Profilseite sichtbar."
 msgstr ""
 
-#: account/templates/base.html:41 account/templates/javascript/base.js:56
+#: account/templates/base.html:40 account/templates/javascript/base.js:54
 msgid "OK!"
 msgstr ""
 
-#: account/templates/javascript/base.js:178
+#: account/templates/javascript/base.js:176
 msgid ""
 "Sie haben noch keine Chats. Finden Sie Freunde, Gruppen, Aktivitäten etc., "
 "um zu chatten!"
 msgstr ""
 
-#: account/templates/javascript/base.js:214
+#: account/templates/javascript/base.js:212
 msgid ""
 "Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie "
 "nur einen Tab für myactivities.net :)"
 msgstr ""
 
-#: account/templates/registration/activation_email.html:3 account/views.py:218
+#: account/templates/registration/activation_email.html:3 account/utils.py:37
 msgid "E-Mail Aktivierung"
 msgstr ""
 
@@ -1007,44 +1007,48 @@ msgstr ""
 msgid "Senden"
 msgstr ""
 
-#: account/utils.py:16
+#: account/utils.py:23
 msgid "Diese Adresse konnte nicht gefunden werden."
 msgstr ""
 
-#: account/utils.py:18
+#: account/utils.py:25
 msgid ""
 "Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die "
 "Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
 msgstr ""
 
-#: account/views.py:62
+#: account/utils.py:37
+msgid "Aktivierungs-E-Mail"
+msgstr ""
+
+#: account/views.py:59
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
 "senden."
 msgstr ""
 
-#: account/views.py:83
+#: account/views.py:80
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr ""
 
-#: account/views.py:117
+#: account/views.py:114
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr ""
 
-#: account/views.py:138
+#: account/views.py:135
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr ""
 
-#: account/views.py:172
+#: account/views.py:162
+msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden."
+msgstr ""
+
+#: account/views.py:177
 msgid "Änderungen gespeichert."
 msgstr ""
 
-#: account/views.py:218
-msgid "Aktivierungs-E-Mail"
-msgstr ""
-
-#: account/views.py:255
+#: account/views.py:248
 msgid "Passwort erfolgreich geändert."
 msgstr ""
 
@@ -1263,7 +1267,7 @@ msgid "Andere Kategorie wählen: "
 msgstr ""
 
 #: character/templates/character/overview.html:70
-#: multiplayer/templates/multiplayer/game.html:42
+#: multiplayer/templates/multiplayer/game.html:69
 msgid "Score"
 msgstr ""
 
@@ -2107,15 +2111,23 @@ msgid "Spieleranzahl"
 msgstr ""
 
 #: multiplayer/forms.py:19
-msgid "Unterstützt werden 2, 3 oder 4 Spieler"
+msgid "Unterstützt werden 2-4 Spieler"
 msgstr ""
 
 #: multiplayer/forms.py:22
 msgid "Unterstützt werden 2-10 Spieler"
 msgstr ""
 
+#: multiplayer/forms.py:26
+msgid "Blind-Dauer in Minuten"
+msgstr ""
+
+#: multiplayer/forms.py:31
+msgid "Blind-Dauer muss zwischen 5 und 20 Minuten liegen"
+msgstr ""
+
 #: multiplayer/templates/javascript/cards.js:474
-#: multiplayer/templates/javascript/skat.js:563
+#: multiplayer/templates/javascript/skat.js:564
 msgid "Ja"
 msgstr ""
 
@@ -2124,6 +2136,8 @@ msgid "Nein"
 msgstr ""
 
 #: multiplayer/templates/javascript/cards.js:530
+#: multiplayer/templates/multiplayer/game.html:44
+#: multiplayer/templates/multiplayer/game.html:72
 #: multiplayer/templates/multiplayer/match.html:27
 msgid "Abbrechen"
 msgstr ""
@@ -2133,6 +2147,12 @@ msgid "Es wurde noch kein Spiel beendet."
 msgstr ""
 
 #: multiplayer/templates/javascript/cards.js:869
+msgid ""
+"Verlassen Sie das Spiel bitte nur, wenn Sie es auch später nicht mehr "
+"fortführen wollen. Spiel verlassen und dadurch zurücksetzen?"
+msgstr ""
+
+#: multiplayer/templates/javascript/cards.js:880
 msgid "Internet Explorer wird nicht unterstützt!"
 msgstr ""
 
@@ -2163,19 +2183,19 @@ msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:10
 #: multiplayer/templates/javascript/skat.js:13
-#: multiplayer/templates/javascript/skat.js:357
+#: multiplayer/templates/javascript/skat.js:358
 msgid "Kreuz"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:11
 #: multiplayer/templates/javascript/skat.js:14
-#: multiplayer/templates/javascript/skat.js:358
+#: multiplayer/templates/javascript/skat.js:359
 msgid "Pik"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:12
 #: multiplayer/templates/javascript/skat.js:15
-#: multiplayer/templates/javascript/skat.js:359
+#: multiplayer/templates/javascript/skat.js:360
 msgid "Herz"
 msgstr ""
 
@@ -2200,7 +2220,7 @@ msgid "Keine 30"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:21
-#: multiplayer/templates/javascript/skat.js:391
+#: multiplayer/templates/javascript/skat.js:392
 msgid "Schwarz"
 msgstr ""
 
@@ -2216,8 +2236,8 @@ msgstr ""
 #: multiplayer/templates/javascript/doppelkopf.js:178
 #: multiplayer/templates/javascript/doppelkopf.js:344
 #: multiplayer/templates/javascript/durak.js:199
-#: multiplayer/templates/javascript/skat.js:163
-#: multiplayer/templates/javascript/skat.js:200
+#: multiplayer/templates/javascript/skat.js:164
+#: multiplayer/templates/javascript/skat.js:201
 msgid "Spiel Nummer"
 msgstr ""
 
@@ -2286,48 +2306,48 @@ msgstr ""
 msgid "Royal Flush"
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:143
+#: multiplayer/templates/javascript/poker.js:144
 msgid "Gewonnen: "
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:175
+#: multiplayer/templates/javascript/poker.js:176
 msgid "Gewinner: "
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:241
+#: multiplayer/templates/javascript/poker.js:245
 msgid "Änderung um "
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:265
+#: multiplayer/templates/javascript/poker.js:269
 msgid "Sie können nicht zweimal hintereinander raisen."
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:269
+#: multiplayer/templates/javascript/poker.js:274
 msgid "Mindesteinsatz: "
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:273
+#: multiplayer/templates/javascript/poker.js:278
 msgid "Geben Sie eine Zahl ein."
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:276
+#: multiplayer/templates/javascript/poker.js:281
 msgid "Beachten Sie den Mindesteinsatz."
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:279
-msgid "So viel Kohle haben Sie nicht."
+#: multiplayer/templates/javascript/poker.js:284
+msgid "So viel Kohle haben Sie nicht. Es fehlen: "
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:325
+#: multiplayer/templates/javascript/poker.js:330
 msgid "Zeigen"
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:326
+#: multiplayer/templates/javascript/poker.js:331
 msgid "Nicht zeigen"
 msgstr ""
 
 #: multiplayer/templates/javascript/skat.js:16
-#: multiplayer/templates/javascript/skat.js:360
+#: multiplayer/templates/javascript/skat.js:361
 msgid "Karo"
 msgstr ""
 
@@ -2343,68 +2363,68 @@ msgstr ""
 msgid "Nö"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:202
+#: multiplayer/templates/javascript/skat.js:203
 msgid "gewonnen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:204
+#: multiplayer/templates/javascript/skat.js:205
 msgid "verloren"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:206
+#: multiplayer/templates/javascript/skat.js:207
 msgid "überreizt"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:208
+#: multiplayer/templates/javascript/skat.js:209
 msgid "Augen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:290
+#: multiplayer/templates/javascript/skat.js:291
 msgid "Drücken"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:377
+#: multiplayer/templates/javascript/skat.js:378
 msgid "Ouvert"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:380
-#: multiplayer/templates/javascript/skat.js:385
+#: multiplayer/templates/javascript/skat.js:381
+#: multiplayer/templates/javascript/skat.js:386
 msgid "Normal"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:388
+#: multiplayer/templates/javascript/skat.js:389
 msgid "Schneider"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:394
+#: multiplayer/templates/javascript/skat.js:395
 msgid "Offen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:414
+#: multiplayer/templates/javascript/skat.js:415
 msgid "Aufnehmen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:417
+#: multiplayer/templates/javascript/skat.js:418
 msgid "Hand spielen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:426
+#: multiplayer/templates/javascript/skat.js:427
 msgid "Eingepasst"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:568
+#: multiplayer/templates/javascript/skat.js:569
 msgid "Passe"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:580
+#: multiplayer/templates/javascript/skat.js:581
 msgid "Vorhand"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:580
+#: multiplayer/templates/javascript/skat.js:581
 msgid "Mittelhand"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:580
+#: multiplayer/templates/javascript/skat.js:581
 msgid "Hinterhand"
 msgstr ""
 
@@ -2419,22 +2439,15 @@ msgid ""
 "erstellen."
 msgstr ""
 
-#: multiplayer/templates/multiplayer/game.html:34
+#: multiplayer/templates/multiplayer/game.html:36
+#: multiplayer/templates/multiplayer/game.html:52
+#: multiplayer/templates/multiplayer/game.html:65
 msgid "Lobby"
 msgstr ""
 
-#: multiplayer/templates/multiplayer/game.html:39
+#: multiplayer/templates/multiplayer/game.html:40
+#: multiplayer/templates/multiplayer/game.html:56
 msgid "Blinds"
-msgstr ""
-
-#: multiplayer/templates/multiplayer/game.html:45
-msgid ""
-"Verlassen Sie das Spiel bitte nur, wenn Sie es auch später nicht mehr "
-"fortführen wollen. Spiel verlassen und dadurch zurücksetzen?"
-msgstr ""
-
-#: multiplayer/templates/multiplayer/game.html:46
-msgid "Ciao!"
 msgstr ""
 
 #: multiplayer/templates/multiplayer/lobby.html:32
@@ -2472,11 +2485,11 @@ msgid ""
 "sich sicher sind, dass das ein Versehen war."
 msgstr ""
 
-#: multiplayer/views.py:63
+#: multiplayer/views.py:71
 msgid "Spiel ist bereits voll"
 msgstr ""
 
-#: multiplayer/views.py:79
+#: multiplayer/views.py:87
 msgid "Sie waren zu langsam, das Match war bereits voll."
 msgstr ""
 
