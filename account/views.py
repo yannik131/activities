@@ -161,7 +161,7 @@ def register(request):
                     new_user.delete()
                     messages.add_message(request, messages.INFO, _('An die E-Mail Adresse konnte keine E-Mail gesendet werden.'))
                     return render(request, 'account/register.html', {'user_form': user_form, 'location_form': location_form})
-                return render(request, 'account/register_done.html', {'new_user': user_form.new_user})
+                return render(request, 'account/register_done.html', {'new_user': new_user})
     else:
         user_form = UserRegistrationForm(initial=dict(birth_year=1990))
         location_form = LocationForm()
