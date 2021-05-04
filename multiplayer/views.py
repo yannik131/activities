@@ -71,13 +71,7 @@ def match(request, match):
         messages.add_message(request, messages.INFO, _("Spiel ist bereits voll"))
         return HttpResponseRedirect(match.lobby_url(request))
     return render(request, 'multiplayer/match.html', dict(match=match, members=members, is_member=is_member, room=ChatRoom.get_for_target(match)))
-    
-@guard_match
-def start_match(request, match):
-    if not match.is_full():
-        return HttpResponseRedirect(match.get_absolute_url())
-    match.start()
-    return HttpResponseRedirect(match.get_absolute_url())
+
 
 @guard_match
 def enter_match(request, match):
@@ -90,7 +84,6 @@ def enter_match(request, match):
     return HttpResponseRedirect(match.get_absolute_url())
     
     
-
 @guard_match
 def leave_match(request, match):
     if not match.members.filter(pk=request.user.id).exists():

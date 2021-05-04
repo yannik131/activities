@@ -435,17 +435,20 @@ Poker stuff
 """
 
 def determine_dealer(data):
-    players = json.loads(data['alive'])
+    alive = json.loads(data['alive'])
     if not data['dealer']:
-        data['dealer'] = random.choice(players)
+        data['dealer'] = random.choice(alive)
     else:
-        data['dealer'] = after(data['dealer'], players)
-    if len(players) == 2:
+        if data['dealer'] not in alive:
+            data['dealer'] = player_or(after, 'dealer', data)
+        else:
+            data['dealer'] = after(data['dealer'], alive)
+    if len(alive) == 2:
         data['small_blind'] = data['dealer']
-        data['big_blind'] = after(data['dealer'], players)
+        data['big_blind'] = after(data['dealer'], alive)
     else:
-        data['small_blind'] = after(data['dealer'], players)
-        data['big_blind'] = after(data['small_blind'], players)
+        data['small_blind'] = after(data['dealer'], alive)
+        data['big_blind'] = after(data['small_blind'], alive)
         
 def no_fold(data, active=None):
     players = json.loads(data['alive'])

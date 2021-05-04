@@ -267,17 +267,13 @@ function openLink(link) {
 }
 
 function resize() {
-    var content = document.querySelector('.content');
-    if(content) {
-        content.style.height = window.innerHeight-50+"px";
+    var d = document.getElementById('inner-div');
+    if(parseFloat(window.getComputedStyle(d).height) > window.innerHeight) {
+        var footer = document.getElementById('footer');
+        footer.style.display = 'block';
+        footer.style.position = 'relative';
+        footer.style.marginTop = '10px';
     }
-    var body = document.body,
-    html = document.documentElement;
-
-    var height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
-    var footer = document.getElementById('footer');
-    footer.style.top = height-20+"px";
-    footer.style.display = "block";
 }
 
 function showChat(chat, id) {

@@ -66,3 +66,18 @@ aioredis.errors.ConnectionForcedCloseError
 
 Wenn der Admin das spiel startet kriegt er den obigen Fehler
 Matches mit member_positions voll aber mit nur einem Mitglied (nach leaven vllt?)
+
+ls/routing.py:71> wait_for=<Future pending cb=[_chain_future.<locals>._call_check_cancel() at /usr/lib/python3.7/asyncio/futures.py:348, <TaskWakeupMethWrapper object at 0x7f323ede3390>()]>> for connection <WebSocketProtocol client=None path=b'/ws/user/11/'> took too long to shut down and was killed.
+2021-05-03 18:56:56,761 WARNING  Application instance <Task pending coro=<ProtocolTypeRouter.__call__() running at /usr/local/lib/python3.7/dist-packages/channels/routing.py:71> wait_for=<Future pending cb=[_chain_future.<locals>._call_check_cancel() at /usr/lib/python3.7/asyncio/futures.py:348, <TaskWakeupMethWrapper object at 0x7f325fae50d0>()]>> for connection <WebSocketProtocol client=None path=b'/ws/multiplayer/poker/111/rollo1909/'> took too long to shut down and was killed.
+None - - [03/May/2021:18:56:59] "WSDISCONNECT /ws/user/11/" - -
+None - - [03/May/2021:18:57:00] "WSCONNECTING /ws/user/11/" - -
+2021-05-03 18:57:01,797 WARNING  Application instance <Task pending coro=<ProtocolTypeRouter.__call__() running at /usr/local/lib/python3.7/dist-packages/channels/routing.py:71> wait_for=<Future pending cb=[_chain_future.<locals>._call_check_cancel() at /usr/lib/python3.7/asyncio/futures.py:348, <TaskWakeupMethWrapper object at 0x7f323ede8d90>()]>> for connection <WebSocketProtocol client=None path=b'/ws/multiplayer/poker/111/rollo1909/'> took too long to shut down and was killed.
+2021-05-03 18:57:01,803 WARNING  Application instance <Task pending coro=<ProtocolTypeRouter.__call__() running at /usr/local/lib/python3.7/dist-packages/channels/routing.py:71> wait_for=<Future pending cb=[_chain_future.<locals>._call_check_cancel() at /usr/lib/python3.7/asyncio/futures.py:348, <TaskWakeupMethWrapper object at 0x7f323eddb110>()]>> for connection <WebSocketProtocol client=None path=b'/ws/user/11/'> took too long to shut down and was killed.
+2021-05-03 18:57:03,820 WARNING  Application instance <Task pending coro=<ProtocolTypeRouter.__call__() running at /usr/local/lib/python3.7/dist-packages/channels/routing.py:71> wait_for=<Future pending cb=[_chain_future.<locals>._call_check_cancel() at /usr/lib/python3.7/asyncio/futures.py:348, <TaskWakeupMethWrapper object at 0x7f323ed888d0>()]>> for connection <WebSocketProtocol client=None path=b'/ws/user/11/'> took too long to shut down and was killed.
+2021-05-03 18:57:03,826 WARNING  Application instance <Task pending coro=<ProtocolTypeRouter.__call__() running at /usr/local/lib/python3.7/dist-packages/channels/routing.py:71> wait_for=<Future pending cb=[_chain_future.<locals>._call_check_cancel() at /usr/lib/python3.7/asyncio/futures.py:348, <TaskWakeupMethWrapper object at 0x7f323ed88c10>()]>> for connection <WebSocketProtocol client=None path=b'/ws/multiplayer/poker/111/rollo1909/'> took too long to shut down and was killed.
+
+totaler crash in endlosschleife: lock nicht released?
+neuer nutzer im chat wird nicht angezeigt
+4 leute nicht jeder hört jeden nach start des spiels
+schlucken drücken dann schieben noch möglich
+gespräch angefangen fortsetzen wenn raus 

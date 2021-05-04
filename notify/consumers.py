@@ -14,6 +14,9 @@ from wall.models import Post
 from character.models import Global
 from django.template.loader import render_to_string
 from django.utils import translation
+from redis import StrictRedis
+conn = StrictRedis(host="localhost", port=6655)
+import redis_lock
 
 
 class NotificationConsumer(WebsocketConsumer):
@@ -161,6 +164,11 @@ class NotificationConsumer(WebsocketConsumer):
         elif text_data["action"] == "kick_user":
             match = MultiplayerMatch.objects.get(pk=text_data['match_id'])
             match.remove_member(User.objects.get(username=text_data['username']))
+        elif text_data['action'] == 'start':
+            with redis_lock.Lock(conn, str(text_data['match_id'])):
+                match = MultiplayerMatch.objects.get(pk=text_data['match_id'])
+                if match.is_full() and not match.in_progress:
+                    match.start()
             
     def handle_rtc_message(self, text_data):
         if text_data["action"] == "join":

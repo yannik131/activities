@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<div class="base-container" id='base-container'>
+<div class="base-container" id='base-container'></div>
 <script>
     {% include 'javascript/base.js' %}
     {% if user.is_authenticated %}
@@ -30,8 +30,15 @@
     {% endblock %}
 </script>
 <div class="content">
-    {% block content %}
-    {% endblock %}
+    <div id="inner-div" style='position: absolute; top: 0px; right: 0; left: 0; min-height: 100vh;'>
+        <div style="height: 50px"></div>
+        {% block content %}
+        {% endblock %}
+        <div class="footer" id="footer">
+            <a href="{% url 'account:impressum' %}">{% trans 'Info' %}</a>
+            Icons: <a href='https://icons8.com/'>icons8.com</a>
+        </div>
+    </div>
 </div>
 {% if messages %}
     {% for message in messages %}
@@ -85,11 +92,6 @@
         document.getElementsByClassName("content")[0].style.right = 0;
     </script>
 {% endif %}
-</div>
-<div class="footer" id="footer">
-    <br><br>
-    <a href="{% url 'account:impressum' %}">{% trans 'Info' %}</a>
-    Icons: <a href='https://icons8.com/'>icons8.com</a>
 </div>
 </body>
 </html>

@@ -45,7 +45,7 @@ function updateMatchMembers(data) {
 
 function startMatch() {
     if(members == member_limit) {
-        openLink("{% url 'multiplayer:start_match' match.activity.name match.id %}");
+        send({'type': 'multiplayer', 'action': 'start', 'match_id': {{ match.id }}});
     }
 }
 

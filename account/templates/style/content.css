@@ -5,6 +5,7 @@ html {
 
 body {
     height: 100vh;
+    min-height: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -12,18 +13,32 @@ body {
 
 .base-container {
     position: relative;
-    flex-grow: 1;
 }
 
 .content {
     position: absolute;
-    top: 50px;
-    left: 0px;
-    right: 5px;
-    bottom: 0;
+    top: 0;
     margin-left: 10px;
     color: white;
     font-family: "Arial", "Verdana", "Helvectica";
+    flex-grow: 1;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 12px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    border-top: 1px solid gray;
+}
+
+.footer a {
+    margin-right: 10px;
 }
 
 .lang-select {
@@ -568,19 +583,5 @@ select:focus, select:hover {
     color: yellow;
 }
 
-.footer {
-    position: absolute;
-    left: 0;
-    right: 0;
-    font-size: 12px;
-    text-align: center;
-    display: none;
-    height: 20px;
-    color: white;
-    z-index: -1;
-}
 
-.footer a {
-    margin-right: 10px;
-}
 

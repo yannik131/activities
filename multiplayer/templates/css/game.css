@@ -1,17 +1,11 @@
 {% load static %}
 
-.base-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
+
 
 .game {
     position: absolute;
     left: 0px;
-    top: 0px;
+    top: 50px;
     bottom: 70px;
     right: 0px;
     max-width: 850px;

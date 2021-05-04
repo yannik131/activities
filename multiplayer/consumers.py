@@ -32,27 +32,24 @@ class GameConsumer(WebsocketConsumer):
         self.send(text_data=json.dumps(event))
         
     def receive(self, text_data=None):
-        with redis_lock.Lock(conn, self.match_id):
-            text_data = json.loads(text_data)
+        text_data = json.loads(text_data)
+        if text_data['action'] == 'request_data':
             match = MultiplayerMatch.objects.get(pk=self.match_id)
-            data = match.game_data
-            message = {"group": True}
-            if text_data["action"] == "request_data":
-                message["data"] = data
-                message["group"] = False
-            else:
-                self.handle_move(text_data, data, match, message)
-                match.save()
-                if not "data" in message:
-                    return
-            if message["group"]:
-                message["data"]["type"] = "multiplayer"
-                async_to_sync(self.channel_layer.group_send)(
-                    f"match-{self.match_id}",
-                    message["data"]
-                )
-            else:
-                self.multiplayer(message['data'])
+            self.multiplayer(match.game_data)
+            return
+            
+        with redis_lock.Lock(conn, self.match_id):
+            match = MultiplayerMatch.objects.get(pk=self.match_id)
+            message = dict()
+            self.handle_move(text_data, match.game_data, match, message)
+            match.save()
+            if not "data" in message:
+                return
+            message["data"]["type"] = "multiplayer"
+            async_to_sync(self.channel_layer.group_send)(
+                f"match-{self.match_id}",
+                message["data"]
+            )
                 
 class DurakConsumer(GameConsumer):
     def handle_move(self, text_data, data, match, message):
@@ -208,7 +205,6 @@ class SkatConsumer(GameConsumer):
             message["data"] = {
                 "action": "declare"
             }
-            message["group"] = False
         elif text_data["action"] == "bid":
             bid = text_data["bid"]
             data[f"{self.username}_bid"] = bid
@@ -245,10 +241,7 @@ class SkatConsumer(GameConsumer):
 class DoppelkopfConsumer(GameConsumer):
     def handle_move(self, text_data, data, match, message):
         players = json.loads(data["players"])
-        if text_data["action"] == "request_data":
-            message["data"] = data
-            message["group"] = False
-        elif text_data["action"] == "bid":
+        if text_data["action"] == "bid":
             data[self.username+"_bid"] = text_data["bid"]
             data["active"] = after(self.username, players)
             if text_data["re"] == "1":
@@ -307,6 +300,7 @@ class PokerConsumer(GameConsumer):
     def handle_move(self, text_data, data, match, message):
         if self.username not in json.loads(data['alive']):
             return
+        log('handling action', text_data['action'], 'from', self.username)
         if text_data['action'] == 'fold':
             data[self.username+'_bet'] = 'fold'
             message['data'] = {
@@ -339,8 +333,8 @@ class PokerConsumer(GameConsumer):
         elif text_data['action'] == 'call':
             change(data, self.username+'_stack', -int(text_data['value']))
             change(data, self.username+'_bet', int(text_data['value']))
-            
             change(data, 'pot', int(text_data['value']))
+            
             message['data'] = {
                 'action': 'call',
                 'user': self.username,
