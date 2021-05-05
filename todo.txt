@@ -81,3 +81,5 @@ neuer nutzer im chat wird nicht angezeigt
 4 leute nicht jeder hört jeden nach start des spiels
 schlucken drücken dann schieben noch möglich
 gespräch angefangen fortsetzen wenn raus 
+umfragen: jede aktivität eine umfrage nach location sortiert nach teilnehmeranzahl, max. 10, jeder kann element hinzufügen als vorschlag und entfernen wenn sich genug leute finden (5-10?)
+maps: jeder kann punkte vorschlagen und annotieren und löschen wenn sich genug leute finden (5-10?)

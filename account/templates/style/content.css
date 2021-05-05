@@ -18,7 +18,10 @@ body {
 .content {
     position: absolute;
     top: 0;
-    margin-left: 10px;
+    margin: auto;
+    max-width: 1000px;
+    left: 0px;
+    right: 0px;
     color: white;
     font-family: "Arial", "Verdana", "Helvectica";
     flex-grow: 1;
