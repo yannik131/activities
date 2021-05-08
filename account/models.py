@@ -296,7 +296,7 @@ class Location(models.Model):
         return Location.get(**attrs)
             
     def parent_components(self):
-        return dict([(component, getattr(self, component)) for component in Location.components[:self.highest_component_index()]])
+        return dict([(component, getattr(self, component)) for component in Location.components[:self.highest_component_index()] if getattr(self, component)])
 
     def get_components(self, components):
         return [getattr(self, component) + " " for component in components]
