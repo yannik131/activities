@@ -35,6 +35,7 @@ def location_created(instance: Location, created, **kwargs):
         geolocator = Nominatim(user_agent='activities')
         loc = geolocator.geocode(components)
         time.sleep(0.5)
+        print(instance)
         parent, created = Location.objects.get_or_create(
             country=components.get('country'),
             state=components.get('state'),
