@@ -26,7 +26,6 @@ class MultiplayerMatch(models.Model):
     member_limit = models.PositiveSmallIntegerField()
     member_positions = HStoreField(default=dict, blank=True)
     game_data = HStoreField(default=dict, blank=True)
-    channel_group_name = models.UUIDField(default=uuid.uuid4)
     in_progress = models.BooleanField(default=False)
     admin = models.ForeignKey(User, related_name='admin_matches', on_delete=models.CASCADE)
     options = HStoreField(default=dict, blank=True)

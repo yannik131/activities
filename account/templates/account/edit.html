@@ -13,7 +13,12 @@
         <input type="submit" value="{% blocktrans %}Fertig{% endblocktrans %}">
     </form>
     <p>{% blocktrans %}Das sind Ihre aktuellen Addressdaten:{% endblocktrans %}</p>
-    <p><a href="{% url 'account:edit_address' %}">{% blocktrans %}Klicken Sie hier, falls Sie ihre Adresse ändern möchten.{% endblocktrans %}</a></p>
+    <p>
+    {% if change_location_date %}
+        {% blocktrans with v0=change_location_date %}Sie können Ihre Adresse am {{ v0 }} wieder ändern.{% endblocktrans %}
+    {% else %}
+        <a href="{% url 'account:edit_address' %}">{% blocktrans %}Klicken Sie hier, falls Sie ihre Adresse ändern möchten.{% endblocktrans %}</a>
+    {% endif %}
     <ul>
         {% for key, value in location.items %}
             <li>{{ key }}: <b>{% if value %}{{ value }} {% else %} {% trans "Ohne" %} {% endif %}</b></li>

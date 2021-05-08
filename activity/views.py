@@ -1,26 +1,38 @@
 from django.shortcuts import render
 from .models import Activity, Category
 from django.db.models import Count, Q
-from account.models import Location
+from account.models import Location, User
 from wall.models import Post
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from shared.shared import log, paginate
+import json
 
 
 def detail(request, activity_name):
     component_index = int(request.GET.get('component_index', 3))
     activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
     is_member = request.user.activities.filter(pk=activity.id).exists()
-    chosen_component = request.user.location.get_component(Location.components[component_index])
+    component = Location.components[component_index]
+    chosen_component = getattr(request.user.location, component)
+    users = activity.members.filter(**{'location__'+component: chosen_component})
+    markers = []
+    population = []
+    
     if component_index == 3: # city
-        users = activity.members.filter(location__city=chosen_component)
-    elif component_index == 2:
-        users = activity.members.filter(location__county=chosen_component)
-    elif component_index == 1:
-        users = activity.members.filter(location__state=chosen_component)
+        markers.append([float(request.user.location.latitude), float(request.user.location.longitude)])
+        for marker in request.user.location.markers.all():
+            markers.append([marker.description, float(marker.latitude), float(marker.longitude)])
     else:
-        users = activity.members.filter(location__country=chosen_component)
+        parent = request.user.location.get_parent(component_index)
+        population.append([float(parent.latitude), float(parent.longitude)])
+        all_users = User.objects.all().prefetch_related('location')
+        for location in parent.children.all():
+            total = location.get_population(all_users)
+            highest_component = Location.components[location.highest_component_index()]
+            members = activity.members.filter(**{'location__'+highest_component: getattr(location, highest_component)})
+            population.append([getattr(location, highest_component), total.count(), members.count(), float(location.latitude), float(location.longitude)])
+
     users = users[:50]
     posts, page = Post.get_page(request, component_index, chosen_component, activity=activity)
     return render(request, 'activity/detail.html',
@@ -31,14 +43,16 @@ def detail(request, activity_name):
                    'chosen_component': chosen_component,
                    'users': users,
                    'posts': posts,
-                   'page': page})
+                   'page': page,
+                   'population': json.dumps(population) if population else None,
+                   'markers': json.dumps(markers) if markers else None})
 
 
 
 def category_detail(request, category_name):
     category = get_object_or_404(Category, translations__language_code=request.LANGUAGE_CODE, translations__name=category_name)
     component_index = int(request.GET.get('component_index', 3))
-    chosen_component = request.user.location.get_component(Location.components[component_index])
+    chosen_component = getattr(request.user.location, Location.components[component_index])
     posts, page = Post.get_page(request, component_index, chosen_component, category=category)
     return render(request, 'activity/category_detail.html', dict(category=category, posts=posts, chosen_component=chosen_component, component_index=component_index, page=page))
 
@@ -65,8 +79,7 @@ def category_list(request):
 
 def activity_list(request, search_string=None):
     component_index = int(request.GET.get('component_index', 3))
-    component = Location.components[component_index]
-    chosen_component = request.user.location.get_component(component)
+    chosen_component = getattr(request.user.location, Location.components[component_index])
     if component_index == 3:
         activities = Activity.objects.annotate(count=Count('members', filter=Q(members__location__city=chosen_component))).order_by('-count', '-pk')
     elif component_index == 2:

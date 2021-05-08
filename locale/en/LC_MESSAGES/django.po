@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-01 20:46+0000\n"
+"POT-Creation-Date: 2021-05-05 18:34+0000\n"
 "PO-Revision-Date: 2021-05-01 22:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -288,7 +288,7 @@ msgstr ""
 
 #: account/templates/account/about.html:6
 #: account/templates/account/impressum.html:4
-#: account/templates/account/impressum.html:7 account/templates/base.html:91
+#: account/templates/account/impressum.html:7 account/templates/base.html:40
 msgid "Info"
 msgstr "About"
 
@@ -885,7 +885,7 @@ msgid "Ihre Posts"
 msgstr "Your posts"
 
 #: account/templates/account/user_post_list.html:9
-#: activity/templates/activity/detail.html:63
+#: activity/templates/activity/detail.html:74
 #: usergroups/templates/usergroups/group_detail.html:73
 msgid "Post erstellen"
 msgstr "Create post"
@@ -894,7 +894,7 @@ msgstr "Create post"
 msgid "Die Posts sind öffentlich auf Ihrer Profilseite sichtbar."
 msgstr "Posts are publicly visible on your profile page."
 
-#: account/templates/base.html:40 account/templates/javascript/base.js:54
+#: account/templates/base.html:49 account/templates/javascript/base.js:54
 msgid "OK!"
 msgstr "OK!"
 
@@ -1118,24 +1118,24 @@ msgstr "German"
 msgid "Englisch"
 msgstr "English"
 
-#: activity/models.py:27
+#: activity/models.py:25
 msgid "kompetitiv"
 msgstr "competitive"
 
-#: activity/models.py:28
+#: activity/models.py:26
 msgid "kreativ"
 msgstr "creative"
 
-#: activity/models.py:29
+#: activity/models.py:27
 msgid "konsumorientiert"
 msgstr "consumption"
 
-#: activity/models.py:43
+#: activity/models.py:42
 #, python-brace-format
 msgid "Aktivität: {name}"
 msgstr "Activity: {name}"
 
-#: activity/models.py:95
+#: activity/models.py:94
 #, python-brace-format
 msgid "Kategorie: {name}"
 msgstr "Category: {name}"
@@ -1210,20 +1210,20 @@ msgstr "Play online"
 msgid "Austreten"
 msgstr "Leave"
 
-#: activity/templates/activity/detail.html:51
+#: activity/templates/activity/detail.html:62
 msgid "Suche nach Mitgliedern"
 msgstr "Members"
 
-#: activity/templates/activity/detail.html:57
+#: activity/templates/activity/detail.html:68
 msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
 msgstr "If you want to see the members, you need to enter the activity."
 
-#: activity/templates/activity/detail.html:59
+#: activity/templates/activity/detail.html:70
 #: multiplayer/templates/javascript/lobby.js:46
 msgid "Beitreten"
 msgstr "Join"
 
-#: activity/templates/activity/detail.html:62
+#: activity/templates/activity/detail.html:73
 msgid "Beiträge"
 msgstr "Posts"
 
@@ -1243,6 +1243,12 @@ msgid ""
 msgstr ""
 "Seems like I found this picture somewhere on the internet. In case it's "
 "yours and you want be credited, send me a message: "
+
+#: activity/templates/javascript/map.js:4
+#, fuzzy
+#| msgid "Sie sind mit"
+msgid "Sie sind hier."
+msgstr "You are friends with"
 
 #: character/templates/character/edit_weights.html:5
 msgid "Gewichte verteilen"
@@ -2733,9 +2739,14 @@ msgstr ""
 msgid "Spiel ist bereits voll"
 msgstr "Game is full"
 
-#: multiplayer/views.py:87
+#: multiplayer/views.py:81
 msgid "Sie waren zu langsam, das Match war bereits voll."
 msgstr "Too slow. Match is already full."
+
+#: poll/models.py:10
+#, python-format
+msgid "Die besten Orte in %s für \"%s\""
+msgstr ""
 
 #: scheduling/forms.py:18 usergroups/forms.py:22
 msgid "Name"
@@ -3510,9 +3521,6 @@ msgstr " %(v0)s ago"
 
 #~ msgid "Beworben"
 #~ msgstr "Applied"
-
-#~ msgid "Sie sind mit"
-#~ msgstr "You are friends with"
 
 #, fuzzy
 #~| msgid ""

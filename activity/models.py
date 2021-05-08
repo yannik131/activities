@@ -4,10 +4,8 @@ from django.urls import reverse
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import gettext_lazy as _
 from parler.models import TranslatableModel, TranslatedFields
-from character.utils import BIG_FIVE, create_trait_dict
 from django.contrib.postgres.fields.hstore import HStoreField
 import json
-from django.utils import timezone
         
 
 def activity_directory_path(instance, filename):
@@ -31,6 +29,7 @@ class Activity(TranslatableModel):
     type = models.CharField(max_length=20, choices=TYPE_CHOICES, null=True, blank=True)
     online = models.BooleanField(default=False)
     trait_weights = HStoreField(default=dict, blank=True)
+    
     
     class Meta:
         verbose_name_plural = 'activities'

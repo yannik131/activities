@@ -10,6 +10,7 @@
     font-size: 32px;
     font-family: "Arial", "Verdana", "Helvectica";
     margin-bottom: 10px;
+    z-index: 9999;
 }
 
 .topmenu .logo {

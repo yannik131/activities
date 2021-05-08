@@ -1,6 +1,6 @@
 from itertools import cycle
 import json
-from account.models import User, Friendship
+from account.models import User, LocationMarker
 from channels.generic.websocket import WebsocketConsumer
 from chat.models import ChatRoom, ChatLogEntry, ChatCheck
 from asgiref.sync import async_to_sync
@@ -83,6 +83,8 @@ class NotificationConsumer(WebsocketConsumer):
             self.handle_character_message(text_data)
         elif text_data['type'] == 'wall':
             self.handle_wall_message(text_data)
+        elif text_data['type'] == 'map':
+            self.handle_map_message(text_data)
 
     def handle_chat_message(self, text_data):
         if text_data['action'] == 'sent':
@@ -237,6 +239,9 @@ class NotificationConsumer(WebsocketConsumer):
             post.liked_by.remove(self.user)
         elif text_data['action'] == 'remove_dislike':
             post.disliked_by.remove(self.user)
+            
+    def handle_map_message(self, text_data):
+        LocationMarker.objects.create(description=text_data['description'], latitude=text_data['lat'], longitude=text_data['lon'], author=self.user, location=self.user.location)
     
     def chat_message(self, event):
         self.send(text_data=json.dumps(event))

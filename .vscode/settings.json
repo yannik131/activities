@@ -34,8 +34,7 @@
           }
       ],
       "restoreTerminals.keepExistingTerminalsOpen": true,
-      "files.autoSave": "afterDelay",
-      "files.autoSaveDelay": 1000,
+      "files.autoSave": "onFocusChange",
       "editor.trimAutoWhitespace": false,
       "editor.autoClosingOvertype": "always",
       "editor.wordWrap": "on",

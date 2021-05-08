@@ -26,7 +26,7 @@ class VacancyForm(forms.ModelForm):
             if int(min_age) > int(max_age):
                 raise forms.ValidationError(_('Das Mindestalter muss unter dem Höchstalter liegen.'))
         component = cd['location_component']
-        component_value = self.instance.target.admin.location.get_component(component)
+        component_value = getattr(self.instance.target.admin.location, component)
         if component_value is None:
             raise forms.ValidationError(_('Sie wohnen in einer kreisfreien Stadt. Bitte wählen Sie eine andere Komponente aus.'))
         self.instance.location_component_value = component_value

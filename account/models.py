@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db.models.query import QuerySet
 import geopy
 from django.urls import reverse
 from django.utils import timezone
@@ -7,6 +8,8 @@ from django.contrib.contenttypes.models import ContentType
 from itertools import chain
 from django.utils.translation import gettext_lazy as _
 from character.models import Character
+from geopy import Nominatim
+import time
 
 class User(AbstractUser):
     profile_text = models.TextField(null=True, blank=True)
@@ -23,6 +26,8 @@ class User(AbstractUser):
     cancelled_appointments = models.ManyToManyField("scheduling.Appointment", related_name='cancellations')
     channel_name = models.CharField(max_length=100, null=True)
     character = models.OneToOneField(Character, on_delete=models.SET_NULL, null=True, related_name='user')
+    last_location_change = models.DateTimeField(null=True, blank=True)
+    LOCATION_CHANGE_DAYS = 7
     action_strings = {
         'created': _('hat erstellt'),
         'has_new_friend': _('ist jetzt befreundet mit'),
@@ -195,19 +200,74 @@ class FriendRequest(models.Model):
     class Meta:
         ordering = ('status', '-modified')
         unique_together = ('requesting_user', 'requested_user')
-        
+    
 
 class Location(models.Model):
     country = models.CharField(max_length=40)
     state = models.CharField(max_length=40, null=True, blank=True)
     county = models.CharField(max_length=40, null=True, blank=True)
     city = models.CharField(max_length=40, null=True, blank=True)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6)
+    parent = models.ForeignKey('Location', null=True, on_delete=models.SET_NULL, related_name='children')
+    
     components = ['country', 'state', 'county', 'city']
 
     class Meta:
         verbose_name_plural = 'Orte'
         verbose_name = 'Ort'
-        unique_together = [['country', 'state', 'county', 'city']]
+        unique_together = ['country', 'state', 'county', 'city']
+        indexes = [
+            models.Index(fields=['country', 'state', 'county', 'city'])
+        ]
+        
+    @staticmethod
+    def fill_coordinates():
+        geolocator = Nominatim(user_agent='activities')
+        l = [l for l in Location.objects.all()]
+        for loc in l:
+            
+            print(loc)
+            location = geolocator.geocode(str(loc), addressdetails=True)
+            time.sleep(1)
+            if not location:
+                print(f'Not found: {loc}')
+                continue
+            loc.longitude = round(location.longitude, 6)
+            loc.latitude = round(location.latitude, 6)
+            loc.save()
+            
+    @staticmethod
+    def get_from_location(location: geopy.location.Location):
+        address = location.raw['address']
+        location, created = Location.objects.get_or_create(
+            country=address['country'],
+            state=address.get('state', address.get('city', address.get('town'))),
+            county=address.get('county'),
+            city=address.get('city', address.get('town')),
+            latitude=round(location.latitude, 6),
+            longitude=round(location.longitude, 6))
+        return location
+        
+    @staticmethod
+    def get(country=None, state=None, county=None, city=None):
+        return Location.objects.get(country=country, state=state, county=county, city=city)
+        
+    @staticmethod
+    def filter(country=None, state=None, county=None, city=None):
+        return Location.objects.filter(country=country, state=state, county=county, city=city)
+            
+    def highest_component_index(self):
+        for i, element in enumerate(reversed(Location.components)):
+            if getattr(self, element):
+                return 3-i
+            
+    def get_population(self, users: QuerySet):
+        if self.city:
+            return self.population.all()
+        for element in reversed(Location.components[:-1]):
+            if getattr(self, element):
+                return users.filter(**{'location__'+element: getattr(self, element)})
 
     def as_dict(self):
         return {_('Land'): self.country,
@@ -216,38 +276,40 @@ class Location(models.Model):
                 _('Stadt'): self.city}
 
     def __str__(self):
-        return self.city + ", " + self.state
+        if self.city:
+            return self.city + ", " + self.state
+        elif self.county:
+            return self.county + ", " + self.state
+        elif self.state:
+            return self.state + ", " + self.country
+        else:
+            return self.country
 
     def full_address(self):
         return self.country + ", " + self.state + (", " + self.county if self.county else "") + ", " + self.city
         
     def chat_allowed_for(self, user):
         return user.location == self
-
-    @staticmethod
-    def get_from_location(location: geopy.location.Location):
-        address = location.raw['address']
-        location, created = Location.objects.get_or_create(
-            country=address['country'],
-            state=address.get('state', address.get('city', address.get('town'))),
-            county=address.get('county'),
-            city=address.get('city', address.get('town')))
-        return location
-
-    def get_component(self, component):
-        if component == 'country':
-            return self.country
-        elif component == 'state':
-            return self.state
-        elif component == 'county':
-            return self.county
-        else:
-            return self.city
+        
+    def get_parent(self, index):
+        attrs = dict([(component, getattr(self, component)) for component in Location.components[:index+1]])
+        return Location.get(**attrs)
+            
+    def parent_components(self):
+        return dict([(component, getattr(self, component)) for component in Location.components[:self.highest_component_index()]])
 
     def get_components(self, components):
-        return [str(self.get_component(component)) + " " for component in components]
+        return [getattr(self, component) + " " for component in components]
 
     def equal_to(self, location, granularity):
         i = Location.components.index(granularity)
         components = Location.components[:i + 1]
         return self.get_components(components) == location.get_components(components)
+
+class LocationMarker(models.Model):
+    longitude = models.DecimalField(max_digits=9, decimal_places=6)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='markers')
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='markers', null=True)
+    description = models.CharField(max_length=100)
+    

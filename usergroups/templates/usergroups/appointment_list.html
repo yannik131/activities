@@ -31,21 +31,21 @@
             </div>
         {% else %}
             <div class="competitive">
-                <div class="left" onclick=openLink("{% url 'scheduling:confirm_appointment' appointment.id %}") {% if user == group.admin %}style="width: 33%"{% endif %}>
+                <div class="left" onclick=openLink("{% url 'scheduling:confirm_appointment' appointment.id %}")>
                     <img src="{% static 'icons/confirm_appointment.png' %}">
                     {% trans "Zusagen" %}
                 </div>
-                {% if user == appointment.creator or user == group.admin %}
-                <div class="left" onclick=openLink("{% url 'scheduling:delete_appointment' appointment.id %}")>
-                    <img src="{% static 'icons/remove.png' %}">
-                    {% trans "Löschen" %}
-                </div>
-                {% endif %}
-                <div class="right" onclick=openLink("{% url 'scheduling:decline_appointment' appointment.id %}") {% if user == group.admin %}style="width: 33%"{% endif %}>
+                <div class="right" onclick=openLink("{% url 'scheduling:decline_appointment' appointment.id %}")>
                     <img src="{% static 'icons/decline_appointment.png' %}">
                     {% trans "Absagen" %}
                 </div>
             </div>
+        {% endif %}
+        {% if user == group.admin %}
+        <div class="button-like" onclick=openLink("{% url 'scheduling:delete_appointment' appointment.id %}")>
+            <img src="{% static 'icons/remove.png' %}">
+            {% trans "Löschen" %}
+        </div>
         {% endif %}
     </div>
 {% endfor %}

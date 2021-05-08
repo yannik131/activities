@@ -303,6 +303,15 @@ function requestChatWindow(room_id) {
     }
 }
 
+function get_color(percent, reverse) {
+    if(!reverse) {
+        return "rgb("+((1-percent)*255)+","+(percent*255)+",0)";
+    }
+    else {
+        return "rgb("+(percent*255)+","+((1-percent)*255)+",0)";
+    }
+}
+
 window.addEventListener('load', resize);
 window.addEventListener('resize', resize);
 

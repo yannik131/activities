@@ -16,7 +16,7 @@ def group_list(request, id=None):
     if id:
         component_index = int(request.GET.get('component_index', 3))
         category = get_object_or_404(Category, id=id)
-        chosen_component = request.user.location.get_component(Location.components[component_index])
+        chosen_component = getattr(request.user.location, Location.components[component_index])
         if component_index == 3:
             groups = UserGroup.objects.filter(admin__location__city=chosen_component, category=category)
         elif component_index == 2:

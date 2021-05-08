@@ -6,6 +6,10 @@
 
 {% block title %}{{ activity.name }}{% endblock %}
 
+{% block style %}
+{% include 'style/activity.css' %}
+{% endblock %}
+
 {% block content %}
     {% if activity.image %}
         <img src="{% thumbnail activity.image 400x400 %}" class="activity-full-image">
@@ -47,17 +51,41 @@
         <img src="{% static 'icons/chat.png' %}">
         Chat
     </div>
-         <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'activity:leave' activity.name %}")>{% trans "Austreten" %}</button></div></p>
-        <h3>{% trans "Suche nach Mitgliedern" %}</h3>
-        <p>{% include 'activity/location_selection.html' %}</p>
-        {% include 'account/user_loop.html' %}
-        <p style="clear: both"></p>
-    {% else %}
-        <p>
-            {% trans "Um Mitglieder anzeigen zu können, müssen Sie beitreten." %}
-        </p>
-        <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'activity:join' activity.name %}")>{% trans "Beitreten" %}</button></div></p>
+    <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'activity:leave' activity.name %}")>{% trans "Austreten" %}</button></div></p>
+    <h3 style="text-align: center; margin-bottom: 0;">{% trans "Suche nach Mitgliedern" %}...</h3>
+    <div class="center-container">{% include 'activity/location_selection.html' %}</div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   <div id="mapid"></div>
+   <div class="django-message" id="django-message">
+        <p>{% trans 'Ort markiert: ' %} <span id="loc"></span></p>
+        <a class="blue-button" onclick="document.getElementById('django-message').style.display='none';">{% trans "OK!" %}</a>
+</div>
+   <div id="input-window">
+       <h2>{% trans 'Standortmarkierung' %}</h2>
+    {% trans "Wie heißt der Ort, an dem Sie sich befinden?" %}<br>
+    <input type="text" id='input'><br>
+    <button id="send">{% trans 'Senden' %}</button><button id="cancel">{% trans 'Abbrechen' %}</button>
+</div>
+   <script>
+    {% include 'javascript/map.js' %}
+</script>
+    {% if component_index == 3 %}
+        <div class="button-like" style="margin: 10px 10px" onclick="addMarker()">
+            <img src="{% static 'icons/location.png' %}">
+            {% trans 'Aktuelle Position markieren' %}
+        </div>
     {% endif %}
+    <br>
+    {% include 'account/user_loop.html' %}
+    <p style="clear: both"></p>
+{% else %}
+    <p>
+        {% trans "Um Mitglieder anzeigen zu können, müssen Sie beitreten." %}
+    </p>
+    <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'activity:join' activity.name %}")>{% trans "Beitreten" %}</button></div></p>
+{% endif %}
 
     <h3>{% trans "Beiträge" %} {{ chosen_component|inim }}</h3>
     <div class="button-like" onclick=openLink("{% url 'wall:create_post' 'activity' 'activity' activity.id activity.id %}")><img src="{% static 'icons/post.png' %}">{% blocktrans %}Post erstellen{% endblocktrans %}</div>

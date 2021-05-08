@@ -4,6 +4,7 @@ from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendReque
 from .models import FriendRequest, User, Friendship
 from django.http import HttpResponseRedirect
 from django.utils import timezone
+from datetime import timedelta
 from .templatetags import account_tags
 from notify.utils import notify
 from wall.models import Post
@@ -177,21 +178,30 @@ def edit(request):
             messages.add_message(request, messages.INFO, _('Änderungen gespeichert.'))
     else:
         user_form = UserEditForm(instance=request.user)
-    return render(request, 'account/edit.html', {'user_form': user_form, 'location': request.user.location.as_dict()})
+    change_location_date = None
+    if request.user.last_location_change:
+        change_location_date = request.user.last_location_change+timedelta(days=User.LOCATION_CHANGE_DAYS)
+        if change_location_date < timezone.now():
+            change_location_date = None
+    return render(request, 'account/edit.html', {'user_form': user_form, 'location': request.user.location.as_dict(), 'change_location_date': change_location_date})
 
 
 @login_required
 def edit_address(request):
-    sent = False
+    if request.user.last_location_change and (timezone.now() < request.user.last_location_change+timedelta(days=User.LOCATION_CHANGE_DAYS)):
+        messages.add_message(request, messages.INFO, _('Sie können den Ort nur höchstens alle 7 Tage wechseln.'))
+        return HttpResponseRedirect(request.user.get_absolute_url())
     if request.method == 'POST':
         location_form = LocationForm(request.POST)
         if location_form.is_valid():
             request.user.location = get_location(location_form.cleaned_data['address'])
+            request.user.last_location_change = timezone.now()
             request.user.save()
-            sent = True
+            messages.add_message(request, messages.INFO, _('Neue Adresse gespeichert: ')+request.user.location.full_address())
+            return HttpResponseRedirect(request.user.get_absolute_url())
     else:
         location_form = LocationForm()
-    return render(request, 'account/edit_address.html', {'location_form': location_form, 'sent': sent})
+    return render(request, 'account/edit_address.html', {'location_form': location_form})
 
 
 @login_required

@@ -29,7 +29,7 @@ def test(request):
 
 def overview(request, activity_id):
     component_index = int(request.GET.get('component_index', 3))
-    chosen_component = request.user.location.get_component(Location.components[component_index])
+    chosen_component = getattr(request.user.location, Location.components[component_index])
     activity = get_object_or_404(Activity, id=activity_id)
     matches = Match.objects.filter(activity=activity, public=True)
     component = Location.components[component_index]
@@ -49,7 +49,7 @@ def create_match(request, activity_id):
             match = form.save()
             return HttpResponseRedirect(match.get_absolute_url())
     else:
-        form = MatchForm(initial=dict(location=request.user.location.get_component('city'), start_time=timezone.now().strftime(shared.GERMAN_DATE_FMT)))
+        form = MatchForm(initial=dict(location=getattr(request.user.location, 'city'), start_time=timezone.now().strftime(shared.GERMAN_DATE_FMT)))
     return render(request, 'competitions/create_match.html', dict(form=form, activity=activity))
 
 
@@ -61,7 +61,7 @@ def edit_match(request, match_id):
             form.save()
             return HttpResponseRedirect(match.get_absolute_url())
     else:
-        form = MatchForm(instance=match, initial=dict(location=match.location.get_component('city')))
+        form = MatchForm(instance=match, initial=dict(location=getattr(match.location, 'city')))
     return render(request, 'competitions/edit_match.html', dict(form=form, match=match))
 
 
@@ -90,7 +90,7 @@ def create_tournament(request, activity_id):
     else:
         form = TournamentForm(initial=dict(
             title=_('{act}-Turnier').format(act=str(activity)),
-            location=request.user.location.get_component('city'),
+            location=getattr(request.user.location, 'city'),
             start_time=(timezone.now()+datetime.timedelta(days=14)).strftime(shared.GERMAN_DATE_FMT),
             application_deadline=(timezone.now()+datetime.timedelta(days=7)).strftime(shared.GERMAN_DATE_FMT)))
     return render(request, 'competitions/create_tournament.html', dict(form=form, activity=activity))
@@ -106,7 +106,7 @@ def edit_tournament(request, tournament_id):
             form.save()
             return HttpResponseRedirect(tournament.get_absolute_url())
     else:
-        form = TournamentForm(instance=tournament, initial=dict(location=tournament.location.get_component('city')))
+        form = TournamentForm(instance=tournament, initial=dict(location=getattr(tournament.location, 'city')))
     return render(request, 'competitions/edit_tournament.html', dict(form=form, tournament=tournament))
 
 
