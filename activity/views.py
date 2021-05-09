@@ -10,6 +10,7 @@ import json
 
 
 def detail(request, activity_name):
+
     component_index = int(request.GET.get('component_index', 3))
     activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
     is_member = request.user.activities.filter(pk=activity.id).exists()
@@ -51,7 +52,8 @@ def detail(request, activity_name):
                    'page': page,
                    'suggestion': suggestion,
                    'population': json.dumps(population) if population else None,
-                   'markers': json.dumps(markers) if markers else None})
+                   'markers': json.dumps(markers) if markers else None,
+                   'chosen': request.GET.get('component_index')})
 
 
 
