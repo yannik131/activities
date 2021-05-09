@@ -13,11 +13,11 @@ from account.models import User
 
 class GameConsumer(WebsocketConsumer):
     def connect(self):
+        self.username = self.scope['url_route']['kwargs']['username']
         key = self.scope['url_route']['kwargs']['key']
         if User.objects.get(username=self.username).ws_key != key:
             return
         self.match_id = self.scope['url_route']['kwargs']['match_id']
-        self.username = self.scope['url_route']['kwargs']['username']
         if MultiplayerMatch.objects.filter(pk=self.match_id).exists():
             async_to_sync(self.channel_layer.group_add)(
                 f"match-{self.match_id}",
@@ -27,7 +27,7 @@ class GameConsumer(WebsocketConsumer):
             self.accept()
 
     def disconnect(self, code):
-        if not self.username:
+        if not self.match_id:
             return
         async_to_sync(self.channel_layer.group_discard)(
             f"match-{self.match_id}",
