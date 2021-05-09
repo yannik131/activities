@@ -6,14 +6,19 @@
 {% block title %}{{ room.target }}-{% trans "Chat" %}{% endblock %}
 
 {% block content %}
-<div style="position: absolute; top: 50px; left: 0; right: 0; bottom: 30px;">
+<div style="position: absolute; top: 50px; left: 0; right: 0; bottom: 30px;" id="outer">
     <div id="chat-window-{{ room.id }}" style="width: 100%; height: 100%;">
         {% include 'chat/chat_window.html' %}
     </div>
 </div>
-
-
 {% endblock %}
 
 {% block domready %}
+window.addEventListener('load', function() {
+    var d = document.getElementById('inner-div');
+    if(parseFloat(window.getComputedStyle(d).height) > window.innerHeight) {
+        document.querySelector('.footer').style.display = 'none';
+        document.getElementById('outer').style.bottom = "80px";
+    }
+});
 {% endblock %}

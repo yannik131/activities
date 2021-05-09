@@ -269,6 +269,8 @@ function openLink(link) {
 function resize() {
     var d = document.getElementById('inner-div');
     if(parseFloat(window.getComputedStyle(d).height) > window.innerHeight) {
+        const content = document.querySelector('.content');
+        const base = document.querySelector('.base-container');
         var footer = document.getElementById('footer');
         footer.style.display = 'block';
         footer.style.position = 'relative';

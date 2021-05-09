@@ -82,5 +82,5 @@ neuer nutzer im chat wird nicht angezeigt
 schlucken drücken dann schieben noch möglich
 gespräch angefangen fortsetzen wenn raus 
 umfragen: jede aktivität umfragen nach location, max. 10, jeder kann element hinzufügen als vorschlag und entfernen wenn sich genug leute finden (5-10?), feste fragen für jede aktivität (kochen: beste rezepte? bester supermarkt?; snooker: wo? beliebteste Spieler?)
-nutzer kann seine marker bearbeiten
 location selection über websocket
+durak karte kurz anzeigen dann erst in die mitte
