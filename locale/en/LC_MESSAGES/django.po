@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 18:34+0000\n"
-"PO-Revision-Date: 2021-05-01 22:48+0200\n"
+"POT-Creation-Date: 2021-05-09 13:48+0000\n"
+"PO-Revision-Date: 2021-05-09 16:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -141,111 +141,111 @@ msgstr "Password incorrect."
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr "The account has not yet been activated! Check your e-mails."
 
-#: account/models.py:18
+#: account/models.py:22
 msgid "männlich"
 msgstr "male"
 
-#: account/models.py:19
+#: account/models.py:23
 msgid "weiblich"
 msgstr "female"
 
-#: account/models.py:27
+#: account/models.py:33
 msgid "hat erstellt"
 msgstr "created"
 
-#: account/models.py:28
+#: account/models.py:34
 msgid "ist jetzt befreundet mit"
 msgstr "is now friends with"
 
-#: account/models.py:29
+#: account/models.py:35
 msgid "ist nicht mehr befreundet mit"
 msgstr "isn't friends any more with"
 
-#: account/models.py:30
+#: account/models.py:36
 msgid "hat Ihnen eine Freundschaftsanfrage geschickt"
 msgstr "sent you a friend request"
 
-#: account/models.py:31
+#: account/models.py:37
 msgid "ist beigetreten"
 msgstr "entered"
 
-#: account/models.py:32
+#: account/models.py:38
 msgid "hat verlassen"
 msgstr "left"
 
-#: account/models.py:33
+#: account/models.py:39
 msgid "hat zugesagt"
 msgstr "confirmed"
 
-#: account/models.py:34
+#: account/models.py:40
 msgid "hat abgesagt"
 msgstr "declined"
 
-#: account/models.py:35
+#: account/models.py:41
 msgid "hat sich beworben"
 msgstr "applied for"
 
-#: account/models.py:36
+#: account/models.py:42
 msgid "hat etwas gepostet in"
 msgstr "posted something in"
 
-#: account/models.py:37
+#: account/models.py:43
 msgid "hat etwas kommentiert"
 msgstr "commented something"
 
-#: account/models.py:38
+#: account/models.py:44
 msgid "hat eure Freundschaft beendet"
 msgstr "terminated your friendship"
 
-#: account/models.py:39
+#: account/models.py:45
 msgid "hat Sie eingeladen"
 msgstr "invited you"
 
-#: account/models.py:40
+#: account/models.py:46
 msgid "hat Ihre Freundschaftsanfrage angenommen"
 msgstr "accepted your friend request"
 
-#: account/models.py:41
+#: account/models.py:47
 msgid "hat Ihre Freundschaftsanfrage abgelehnt"
 msgstr "declined your friend request"
 
-#: account/models.py:42
+#: account/models.py:48
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr "rejected your friend request"
 
-#: account/models.py:43
+#: account/models.py:49
 msgid "gefällt"
 msgstr "likes"
 
-#: account/models.py:44
+#: account/models.py:50
 msgid "missfällt"
 msgstr "dislikes"
 
-#: account/models.py:167
+#: account/models.py:177
 msgid "Ausstehend"
 msgstr "Pending"
 
-#: account/models.py:168
+#: account/models.py:178
 msgid "Angenommen"
 msgstr "Accepted"
 
-#: account/models.py:169
+#: account/models.py:179
 msgid "Abgelehnt"
 msgstr "Declined"
 
-#: account/models.py:213 vacancies/models.py:29
+#: account/models.py:278 vacancies/models.py:29
 msgid "Land"
 msgstr "Country"
 
-#: account/models.py:214 vacancies/models.py:30
+#: account/models.py:279 vacancies/models.py:30
 msgid "Bundesland"
 msgstr "State"
 
-#: account/models.py:215 vacancies/models.py:31
+#: account/models.py:280 vacancies/models.py:31
 msgid "Landkreis"
 msgstr "County"
 
-#: account/models.py:216 vacancies/models.py:32
+#: account/models.py:281 vacancies/models.py:32
 msgid "Stadt"
 msgstr "City"
 
@@ -348,7 +348,7 @@ msgid "Mir doch egal!"
 msgstr "I don't care!"
 
 #: account/templates/account/delete.html:4
-#: account/templates/account/edit.html:29
+#: account/templates/account/edit.html:49
 msgid "Account löschen"
 msgstr "Delete your account"
 
@@ -357,9 +357,10 @@ msgid "Klicken Sie auf den Button, um Ihren Account zu löschen."
 msgstr "Click the button to delete your account."
 
 #: account/templates/account/delete.html:11
+#: account/templates/account/edit.html:31
 #: account/templates/account/friend_requests_list.html:54
 #: account/templates/account/friend_requests_list.html:81
-#: usergroups/templates/usergroups/appointment_list.html:41
+#: usergroups/templates/usergroups/appointment_list.html:47
 #: usergroups/templates/usergroups/invitation_list.html:16
 #: vacancies/templates/vacancies/application_list.html:22
 #: vacancies/templates/vacancies/edit_vacancy.html:11
@@ -467,15 +468,39 @@ msgstr "Done"
 msgid "Das sind Ihre aktuellen Addressdaten:"
 msgstr "This is your current address information:"
 
-#: account/templates/account/edit.html:16
+#: account/templates/account/edit.html:18
+#, python-format
+msgid "Sie können Ihre Adresse am %(v0)s wieder ändern."
+msgstr "You can change your address again on %(v0)s."
+
+#: account/templates/account/edit.html:20
 msgid "Klicken Sie hier, falls Sie ihre Adresse ändern möchten."
 msgstr "Click here if you want to change your address."
 
-#: account/templates/account/edit.html:19
+#: account/templates/account/edit.html:24
 msgid "Ohne"
 msgstr "None"
 
-#: account/templates/account/edit.html:24
+#: account/templates/account/edit.html:27
+msgid "Ihre Markierungen"
+msgstr "Your markers"
+
+#: account/templates/account/edit.html:31
+#: character/templates/character/edit_weights.html:67
+msgid "Speichern"
+msgstr "Save"
+
+#: account/templates/account/edit.html:36
+msgid "Gespeichert: "
+msgstr "Saved: "
+
+#: account/templates/account/edit.html:37 account/templates/base.html:49
+#: account/templates/javascript/base.js:54
+#: activity/templates/activity/detail.html:71
+msgid "OK!"
+msgstr "OK!"
+
+#: account/templates/account/edit.html:44
 #: account/templates/registration/password_change_form.html:4
 #: account/templates/registration/password_change_form.html:7
 #: account/templates/registration/password_reset_done.html:4
@@ -885,7 +910,7 @@ msgid "Ihre Posts"
 msgstr "Your posts"
 
 #: account/templates/account/user_post_list.html:9
-#: activity/templates/activity/detail.html:74
+#: activity/templates/activity/detail.html:99
 #: usergroups/templates/usergroups/group_detail.html:73
 msgid "Post erstellen"
 msgstr "Create post"
@@ -893,10 +918,6 @@ msgstr "Create post"
 #: account/templates/account/user_post_list.html:10
 msgid "Die Posts sind öffentlich auf Ihrer Profilseite sichtbar."
 msgstr "Posts are publicly visible on your profile page."
-
-#: account/templates/base.html:49 account/templates/javascript/base.js:54
-msgid "OK!"
-msgstr "OK!"
 
 #: account/templates/javascript/base.js:176
 msgid ""
@@ -912,6 +933,10 @@ msgid ""
 msgstr ""
 "Connection closed because a new tab was opened! Please only use one tab for "
 "myactivities.net :)"
+
+#: account/templates/javascript/edit.js:23
+msgid "Wirklich?"
+msgstr "Really?"
 
 #: account/templates/registration/activation_email.html:3 account/utils.py:37
 msgid "E-Mail Aktivierung"
@@ -1054,6 +1079,7 @@ msgid ""
 msgstr "Enter your email address to reset your password."
 
 #: account/templates/registration/password_reset_form.html:12
+#: activity/templates/activity/detail.html:77
 #: multiplayer/templates/javascript/cards.js:525
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
 #: wall/templates/wall/post/create_comment.html:11
@@ -1077,7 +1103,7 @@ msgstr ""
 msgid "Aktivierungs-E-Mail"
 msgstr "Activation email"
 
-#: account/views.py:59
+#: account/views.py:60
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
@@ -1086,19 +1112,19 @@ msgstr ""
 "You've already sent a friend request to this user. As long as he doesn't "
 "delete it you can't send another one."
 
-#: account/views.py:80
+#: account/views.py:81
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr "You can't send yourself a friend request."
 
-#: account/views.py:114
+#: account/views.py:115
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr "You can't delete this request."
 
-#: account/views.py:135
+#: account/views.py:136
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr "This friendship doesn't exist anymore."
 
-#: account/views.py:162
+#: account/views.py:163
 msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden."
 msgstr "No e-mail could be sent to the specified address."
 
@@ -1106,9 +1132,25 @@ msgstr "No e-mail could be sent to the specified address."
 msgid "Änderungen gespeichert."
 msgstr "Changes saved."
 
-#: account/views.py:248
+#: account/views.py:191
+msgid "Sie können den Ort nur höchstens alle 7 Tage wechseln."
+msgstr "You can change your location only once in 7 days."
+
+#: account/views.py:199
+msgid "Neue Adresse gespeichert: "
+msgstr "New address saved: "
+
+#: account/views.py:257
 msgid "Passwort erfolgreich geändert."
 msgstr "Your password was changed successfully."
+
+#: account/views.py:275
+msgid "Markierung wurde erfolgreich gelöscht."
+msgstr "Marker was successfully deleted."
+
+#: account/views.py:277
+msgid "Markierung wurde nicht gefunden!"
+msgstr "Marker not found!"
 
 #: activities/settings/base.py:161
 msgid "Deutsch"
@@ -1161,7 +1203,7 @@ msgid "Mitglieder"
 msgstr "Members"
 
 #: activity/templates/activity/category_detail.html:13
-#: activity/templates/activity/detail.html:14
+#: activity/templates/activity/detail.html:18
 msgid "Quelle"
 msgstr "Source"
 
@@ -1186,44 +1228,83 @@ msgstr "All categories"
 msgid "Hier eine Liste aller verfügbaren Kategorien"
 msgstr "Here's a list of all available categories"
 
-#: activity/templates/activity/detail.html:22
+#: activity/templates/activity/detail.html:28
+msgid "Passt zu Ihnen zu "
+msgstr "Personal fit:"
+
+#: activity/templates/activity/detail.html:34
 msgid "Gehört zu: "
 msgstr "Belongs to: "
 
-#: activity/templates/activity/detail.html:28
+#: activity/templates/activity/detail.html:40
 msgid "Gewichtungen bearbeiten"
 msgstr "Edit weights"
 
-#: activity/templates/activity/detail.html:35
+#: activity/templates/activity/detail.html:47
 msgid "Offline spielen"
 msgstr "Play offline"
 
-#: activity/templates/activity/detail.html:40
+#: activity/templates/activity/detail.html:52
 #: multiplayer/templates/multiplayer/create_match.html:4
 msgid "Online spielen"
 msgstr "Play online"
 
-#: activity/templates/activity/detail.html:50
+#: activity/templates/activity/detail.html:62
 #: competitions/templates/competitions/match_detail.html:35
 #: competitions/templates/competitions/tournament_detail.html:37
 #: usergroups/templates/usergroups/group_detail.html:37
 msgid "Austreten"
 msgstr "Leave"
 
-#: activity/templates/activity/detail.html:62
+#: activity/templates/activity/detail.html:63
 msgid "Suche nach Mitgliedern"
 msgstr "Members"
 
-#: activity/templates/activity/detail.html:68
+#: activity/templates/activity/detail.html:70
+msgid "Die Markierung "
+msgstr "The marker "
+
+#: activity/templates/activity/detail.html:70
+#, python-format
+msgid ""
+" ist nun für alle Mitglieder der Aktivität \"%(act)s\" in %(comp)s sichtbar. "
+"Unter \"<a href='/account/edit/'>Account bearbeiten</a>\"\" können Sie Ihre "
+"Markierungen bearbeiten."
+msgstr ""
+" is now visible for all members of the activity „%(act)s“ in %(comp)s. You "
+"can edit your markers at „<a href=‚/account/edit/‚>edit account</a>“."
+
+#: activity/templates/activity/detail.html:74
+msgid "Standortmarkierung"
+msgstr "Location marker"
+
+#: activity/templates/activity/detail.html:75
+msgid ""
+"Wie heißt der Ort, an dem Sie sich befinden? Markieren Sie bitte nur in "
+msgstr "What’s the name of your location? Please only mark in "
+
+#: activity/templates/activity/detail.html:77
+#: multiplayer/templates/javascript/cards.js:530
+#: multiplayer/templates/multiplayer/game.html:44
+#: multiplayer/templates/multiplayer/game.html:72
+#: multiplayer/templates/multiplayer/match.html:27
+msgid "Abbrechen"
+msgstr "Cancel"
+
+#: activity/templates/activity/detail.html:85
+msgid "Aktuelle Position für alle markieren"
+msgstr "Mark current position for everyone"
+
+#: activity/templates/activity/detail.html:93
 msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
 msgstr "If you want to see the members, you need to enter the activity."
 
-#: activity/templates/activity/detail.html:70
+#: activity/templates/activity/detail.html:95
 #: multiplayer/templates/javascript/lobby.js:46
 msgid "Beitreten"
 msgstr "Join"
 
-#: activity/templates/activity/detail.html:73
+#: activity/templates/activity/detail.html:98
 msgid "Beiträge"
 msgstr "Posts"
 
@@ -1244,11 +1325,31 @@ msgstr ""
 "Seems like I found this picture somewhere on the internet. In case it's "
 "yours and you want be credited, send me a message: "
 
-#: activity/templates/javascript/map.js:4
-#, fuzzy
-#| msgid "Sie sind mit"
+#: activity/templates/javascript/map.js:11
 msgid "Sie sind hier."
-msgstr "You are friends with"
+msgstr "You are here."
+
+#: activity/templates/javascript/map.js:12
+msgid "Total: "
+msgstr "Total: "
+
+#: activity/templates/javascript/map.js:13
+msgid "Mitglieder: "
+msgstr "Members: "
+
+#: activity/templates/javascript/map.js:51
+msgid ""
+"Ihre Position wird nur für die Zentrierung der Karte und zum Hinzufügen "
+"Ihrer eigenen Markierungen genutzt. Ortungsrechte können Sie in den "
+"Einstellungen Ihres Gerätes/Browsers ändern."
+msgstr ""
+"Your location is used only to center the map and to add your personal "
+"location markers. You can change access rights to your location in your "
+"device or browser settings."
+
+#: activity/templates/javascript/map.js:57
+msgid "Moment noch! Ihr Standort wird gerade bestimmt."
+msgstr "One moment! Your location is being determined."
 
 #: character/templates/character/edit_weights.html:5
 msgid "Gewichte verteilen"
@@ -1278,10 +1379,6 @@ msgstr "Conscientiousness"
 #: character/templates/character/overview.html:105
 msgid "Verträglichkeit"
 msgstr "Agreeableness"
-
-#: character/templates/character/edit_weights.html:67
-msgid "Speichern"
-msgstr "Save"
 
 #: character/templates/character/overview.html:12
 msgid "Charakterübersicht"
@@ -2381,13 +2478,6 @@ msgstr "Yes"
 msgid "Nein"
 msgstr "No"
 
-#: multiplayer/templates/javascript/cards.js:530
-#: multiplayer/templates/multiplayer/game.html:44
-#: multiplayer/templates/multiplayer/game.html:72
-#: multiplayer/templates/multiplayer/match.html:27
-msgid "Abbrechen"
-msgstr "Cancel"
-
 #: multiplayer/templates/javascript/cards.js:767
 msgid "Es wurde noch kein Spiel beendet."
 msgstr "No game has been completed."
@@ -2746,7 +2836,7 @@ msgstr "Too slow. Match is already full."
 #: poll/models.py:10
 #, python-format
 msgid "Die besten Orte in %s für \"%s\""
-msgstr ""
+msgstr "Best locations in %s for „%s“"
 
 #: scheduling/forms.py:18 usergroups/forms.py:22
 msgid "Name"
@@ -2831,7 +2921,7 @@ msgid "Zusagen"
 msgstr "Confirm"
 
 #: usergroups/templates/usergroups/appointment_list.html:17
-#: usergroups/templates/usergroups/appointment_list.html:46
+#: usergroups/templates/usergroups/appointment_list.html:40
 msgid "Absagen"
 msgstr "Cancel"
 

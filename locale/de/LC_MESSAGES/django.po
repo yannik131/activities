@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 18:34+0000\n"
+"POT-Creation-Date: 2021-05-09 13:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,111 +135,111 @@ msgstr ""
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr ""
 
-#: account/models.py:18
+#: account/models.py:22
 msgid "männlich"
 msgstr ""
 
-#: account/models.py:19
+#: account/models.py:23
 msgid "weiblich"
 msgstr ""
 
-#: account/models.py:27
+#: account/models.py:33
 msgid "hat erstellt"
 msgstr ""
 
-#: account/models.py:28
+#: account/models.py:34
 msgid "ist jetzt befreundet mit"
 msgstr ""
 
-#: account/models.py:29
+#: account/models.py:35
 msgid "ist nicht mehr befreundet mit"
 msgstr ""
 
-#: account/models.py:30
+#: account/models.py:36
 msgid "hat Ihnen eine Freundschaftsanfrage geschickt"
 msgstr ""
 
-#: account/models.py:31
+#: account/models.py:37
 msgid "ist beigetreten"
 msgstr ""
 
-#: account/models.py:32
+#: account/models.py:38
 msgid "hat verlassen"
 msgstr ""
 
-#: account/models.py:33
+#: account/models.py:39
 msgid "hat zugesagt"
 msgstr ""
 
-#: account/models.py:34
+#: account/models.py:40
 msgid "hat abgesagt"
 msgstr ""
 
-#: account/models.py:35
+#: account/models.py:41
 msgid "hat sich beworben"
 msgstr ""
 
-#: account/models.py:36
+#: account/models.py:42
 msgid "hat etwas gepostet in"
 msgstr ""
 
-#: account/models.py:37
+#: account/models.py:43
 msgid "hat etwas kommentiert"
 msgstr ""
 
-#: account/models.py:38
+#: account/models.py:44
 msgid "hat eure Freundschaft beendet"
 msgstr ""
 
-#: account/models.py:39
+#: account/models.py:45
 msgid "hat Sie eingeladen"
 msgstr ""
 
-#: account/models.py:40
+#: account/models.py:46
 msgid "hat Ihre Freundschaftsanfrage angenommen"
 msgstr ""
 
-#: account/models.py:41
+#: account/models.py:47
 msgid "hat Ihre Freundschaftsanfrage abgelehnt"
 msgstr ""
 
-#: account/models.py:42
+#: account/models.py:48
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr ""
 
-#: account/models.py:43
+#: account/models.py:49
 msgid "gefällt"
 msgstr ""
 
-#: account/models.py:44
+#: account/models.py:50
 msgid "missfällt"
 msgstr ""
 
-#: account/models.py:167
+#: account/models.py:177
 msgid "Ausstehend"
 msgstr ""
 
-#: account/models.py:168
+#: account/models.py:178
 msgid "Angenommen"
 msgstr ""
 
-#: account/models.py:169
+#: account/models.py:179
 msgid "Abgelehnt"
 msgstr ""
 
-#: account/models.py:213 vacancies/models.py:29
+#: account/models.py:278 vacancies/models.py:29
 msgid "Land"
 msgstr ""
 
-#: account/models.py:214 vacancies/models.py:30
+#: account/models.py:279 vacancies/models.py:30
 msgid "Bundesland"
 msgstr ""
 
-#: account/models.py:215 vacancies/models.py:31
+#: account/models.py:280 vacancies/models.py:31
 msgid "Landkreis"
 msgstr ""
 
-#: account/models.py:216 vacancies/models.py:32
+#: account/models.py:281 vacancies/models.py:32
 msgid "Stadt"
 msgstr ""
 
@@ -330,7 +330,7 @@ msgid "Mir doch egal!"
 msgstr ""
 
 #: account/templates/account/delete.html:4
-#: account/templates/account/edit.html:29
+#: account/templates/account/edit.html:49
 msgid "Account löschen"
 msgstr ""
 
@@ -339,9 +339,10 @@ msgid "Klicken Sie auf den Button, um Ihren Account zu löschen."
 msgstr ""
 
 #: account/templates/account/delete.html:11
+#: account/templates/account/edit.html:31
 #: account/templates/account/friend_requests_list.html:54
 #: account/templates/account/friend_requests_list.html:81
-#: usergroups/templates/usergroups/appointment_list.html:41
+#: usergroups/templates/usergroups/appointment_list.html:47
 #: usergroups/templates/usergroups/invitation_list.html:16
 #: vacancies/templates/vacancies/application_list.html:22
 #: vacancies/templates/vacancies/edit_vacancy.html:11
@@ -447,15 +448,39 @@ msgstr ""
 msgid "Das sind Ihre aktuellen Addressdaten:"
 msgstr ""
 
-#: account/templates/account/edit.html:16
+#: account/templates/account/edit.html:18
+#, python-format
+msgid "Sie können Ihre Adresse am %(v0)s wieder ändern."
+msgstr ""
+
+#: account/templates/account/edit.html:20
 msgid "Klicken Sie hier, falls Sie ihre Adresse ändern möchten."
 msgstr ""
 
-#: account/templates/account/edit.html:19
+#: account/templates/account/edit.html:24
 msgid "Ohne"
 msgstr ""
 
-#: account/templates/account/edit.html:24
+#: account/templates/account/edit.html:27
+msgid "Ihre Markierungen"
+msgstr ""
+
+#: account/templates/account/edit.html:31
+#: character/templates/character/edit_weights.html:67
+msgid "Speichern"
+msgstr ""
+
+#: account/templates/account/edit.html:36
+msgid "Gespeichert: "
+msgstr ""
+
+#: account/templates/account/edit.html:37 account/templates/base.html:49
+#: account/templates/javascript/base.js:54
+#: activity/templates/activity/detail.html:71
+msgid "OK!"
+msgstr ""
+
+#: account/templates/account/edit.html:44
 #: account/templates/registration/password_change_form.html:4
 #: account/templates/registration/password_change_form.html:7
 #: account/templates/registration/password_reset_done.html:4
@@ -843,17 +868,13 @@ msgid "Ihre Posts"
 msgstr ""
 
 #: account/templates/account/user_post_list.html:9
-#: activity/templates/activity/detail.html:74
+#: activity/templates/activity/detail.html:99
 #: usergroups/templates/usergroups/group_detail.html:73
 msgid "Post erstellen"
 msgstr ""
 
 #: account/templates/account/user_post_list.html:10
 msgid "Die Posts sind öffentlich auf Ihrer Profilseite sichtbar."
-msgstr ""
-
-#: account/templates/base.html:49 account/templates/javascript/base.js:54
-msgid "OK!"
 msgstr ""
 
 #: account/templates/javascript/base.js:176
@@ -866,6 +887,10 @@ msgstr ""
 msgid ""
 "Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie "
 "nur einen Tab für myactivities.net :)"
+msgstr ""
+
+#: account/templates/javascript/edit.js:23
+msgid "Wirklich?"
 msgstr ""
 
 #: account/templates/registration/activation_email.html:3 account/utils.py:37
@@ -1000,6 +1025,7 @@ msgid ""
 msgstr ""
 
 #: account/templates/registration/password_reset_form.html:12
+#: activity/templates/activity/detail.html:77
 #: multiplayer/templates/javascript/cards.js:525
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
 #: wall/templates/wall/post/create_comment.html:11
@@ -1021,26 +1047,26 @@ msgstr ""
 msgid "Aktivierungs-E-Mail"
 msgstr ""
 
-#: account/views.py:59
+#: account/views.py:60
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
 "senden."
 msgstr ""
 
-#: account/views.py:80
+#: account/views.py:81
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr ""
 
-#: account/views.py:114
+#: account/views.py:115
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr ""
 
-#: account/views.py:135
+#: account/views.py:136
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr ""
 
-#: account/views.py:162
+#: account/views.py:163
 msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden."
 msgstr ""
 
@@ -1048,8 +1074,24 @@ msgstr ""
 msgid "Änderungen gespeichert."
 msgstr ""
 
-#: account/views.py:248
+#: account/views.py:191
+msgid "Sie können den Ort nur höchstens alle 7 Tage wechseln."
+msgstr ""
+
+#: account/views.py:199
+msgid "Neue Adresse gespeichert: "
+msgstr ""
+
+#: account/views.py:257
 msgid "Passwort erfolgreich geändert."
+msgstr ""
+
+#: account/views.py:275
+msgid "Markierung wurde erfolgreich gelöscht."
+msgstr ""
+
+#: account/views.py:277
+msgid "Markierung wurde nicht gefunden!"
 msgstr ""
 
 #: activities/settings/base.py:161
@@ -1105,7 +1147,7 @@ msgid "Mitglieder"
 msgstr ""
 
 #: activity/templates/activity/category_detail.html:13
-#: activity/templates/activity/detail.html:14
+#: activity/templates/activity/detail.html:18
 msgid "Quelle"
 msgstr ""
 
@@ -1130,44 +1172,81 @@ msgstr ""
 msgid "Hier eine Liste aller verfügbaren Kategorien"
 msgstr ""
 
-#: activity/templates/activity/detail.html:22
+#: activity/templates/activity/detail.html:28
+msgid "Passt zu Ihnen zu "
+msgstr ""
+
+#: activity/templates/activity/detail.html:34
 msgid "Gehört zu: "
 msgstr ""
 
-#: activity/templates/activity/detail.html:28
+#: activity/templates/activity/detail.html:40
 msgid "Gewichtungen bearbeiten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:35
+#: activity/templates/activity/detail.html:47
 msgid "Offline spielen"
 msgstr ""
 
-#: activity/templates/activity/detail.html:40
+#: activity/templates/activity/detail.html:52
 #: multiplayer/templates/multiplayer/create_match.html:4
 msgid "Online spielen"
 msgstr ""
 
-#: activity/templates/activity/detail.html:50
+#: activity/templates/activity/detail.html:62
 #: competitions/templates/competitions/match_detail.html:35
 #: competitions/templates/competitions/tournament_detail.html:37
 #: usergroups/templates/usergroups/group_detail.html:37
 msgid "Austreten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:62
+#: activity/templates/activity/detail.html:63
 msgid "Suche nach Mitgliedern"
 msgstr ""
 
-#: activity/templates/activity/detail.html:68
-msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
+#: activity/templates/activity/detail.html:70
+msgid "Die Markierung "
 msgstr ""
 
 #: activity/templates/activity/detail.html:70
+#, python-format
+msgid ""
+" ist nun für alle Mitglieder der Aktivität \"%(act)s\" in %(comp)s sichtbar. "
+"Unter \"<a href='/account/edit/'>Account bearbeiten</a>\"\" können Sie Ihre "
+"Markierungen bearbeiten."
+msgstr ""
+
+#: activity/templates/activity/detail.html:74
+msgid "Standortmarkierung"
+msgstr ""
+
+#: activity/templates/activity/detail.html:75
+msgid ""
+"Wie heißt der Ort, an dem Sie sich befinden? Markieren Sie bitte nur in "
+msgstr ""
+
+#: activity/templates/activity/detail.html:77
+#: multiplayer/templates/javascript/cards.js:530
+#: multiplayer/templates/multiplayer/game.html:44
+#: multiplayer/templates/multiplayer/game.html:72
+#: multiplayer/templates/multiplayer/match.html:27
+msgid "Abbrechen"
+msgstr ""
+
+#: activity/templates/activity/detail.html:85
+msgid "Aktuelle Position für alle markieren"
+msgstr ""
+
+#: activity/templates/activity/detail.html:93
+msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
+msgstr ""
+
+#: activity/templates/activity/detail.html:95
 #: multiplayer/templates/javascript/lobby.js:46
 msgid "Beitreten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:73
+#: activity/templates/activity/detail.html:98
 msgid "Beiträge"
 msgstr ""
 
@@ -1186,8 +1265,27 @@ msgid ""
 "auf das Urheberrecht erheben wollen, schicken Sie mir eine Nachricht: "
 msgstr ""
 
-#: activity/templates/javascript/map.js:4
+#: activity/templates/javascript/map.js:11
 msgid "Sie sind hier."
+msgstr ""
+
+#: activity/templates/javascript/map.js:12
+msgid "Total: "
+msgstr ""
+
+#: activity/templates/javascript/map.js:13
+msgid "Mitglieder: "
+msgstr ""
+
+#: activity/templates/javascript/map.js:51
+msgid ""
+"Ihre Position wird nur für die Zentrierung der Karte und zum Hinzufügen "
+"Ihrer eigenen Markierungen genutzt. Ortungsrechte können Sie in den "
+"Einstellungen Ihres Gerätes/Browsers ändern."
+msgstr ""
+
+#: activity/templates/javascript/map.js:57
+msgid "Moment noch! Ihr Standort wird gerade bestimmt."
 msgstr ""
 
 #: character/templates/character/edit_weights.html:5
@@ -1217,10 +1315,6 @@ msgstr ""
 #: character/templates/character/edit_weights.html:58
 #: character/templates/character/overview.html:105
 msgid "Verträglichkeit"
-msgstr ""
-
-#: character/templates/character/edit_weights.html:67
-msgid "Speichern"
 msgstr ""
 
 #: character/templates/character/overview.html:12
@@ -2139,13 +2233,6 @@ msgstr ""
 msgid "Nein"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:530
-#: multiplayer/templates/multiplayer/game.html:44
-#: multiplayer/templates/multiplayer/game.html:72
-#: multiplayer/templates/multiplayer/match.html:27
-msgid "Abbrechen"
-msgstr ""
-
 #: multiplayer/templates/javascript/cards.js:767
 msgid "Es wurde noch kein Spiel beendet."
 msgstr ""
@@ -2585,7 +2672,7 @@ msgid "Zusagen"
 msgstr ""
 
 #: usergroups/templates/usergroups/appointment_list.html:17
-#: usergroups/templates/usergroups/appointment_list.html:46
+#: usergroups/templates/usergroups/appointment_list.html:40
 msgid "Absagen"
 msgstr ""
 
