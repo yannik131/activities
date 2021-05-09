@@ -7,7 +7,7 @@ var edits = {};
 
 function saveMarker(id) {
     const value = document.getElementById(id).value;
-    if(value.length < 3 || input.value.length > 100) {
+    if(value.length < 3 || value.length > 100) {
         alert("{% trans 'Erlaubte Beschreibungslänge: 3-100 Zeichen. Derzeit: ' %}"+value.length);
         return;
     }
