@@ -23,18 +23,13 @@
 <body>
 <div class="base-container" id='base-container'></div>
 <script>
-    try {
-        {% include 'javascript/base.js' %}
-        {% if user.is_authenticated %}
-            {% include 'javascript/room.js' %}
-            {% include 'javascript/audiochat.js' %}
-        {% endif %}
-        {% block domready %}
-        {% endblock %}
-    }
-    catch(err) {
-        alert(err.message);
-    }
+    {% include 'javascript/base.js' %}
+    {% if user.is_authenticated %}
+        {% include 'javascript/room.js' %}
+        {% include 'javascript/audiochat.js' %}
+    {% endif %}
+    {% block domready %}
+    {% endblock %}
 </script>
 <div class="content">
     <div id="inner-div" style='position: relative; top: 0px; right: 0; left: 0; min-height: 100vh;'>

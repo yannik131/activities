@@ -52,10 +52,31 @@ navigator.geolocation.getCurrentPosition(
     }
 );
 
+function dist(p1, p2) {
+    const R = 6371e3; // metres
+    const phi1 = p1[0] * Math.PI/180; 
+    const phi2 = p2[0] * Math.PI/180;
+    const dphi = (p2[0]-p1[0]) * Math.PI/180;
+    const ds = (p2[1]-p1[1]) * Math.PI/180;
+
+    const a = Math.sin(dphi/2) * Math.sin(dphi/2) + Math.cos(phi1) * Math.cos(phi2) * Math.sin(ds/2) * Math.sin(ds/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+    return R * c; // in metres
+}
+
 function addMarker() {
     if(lat == undefined) {
         alert("{% trans 'Moment noch! Ihr Standort wird gerade bestimmt.' %}");
         return;
+    }
+    var d;
+    for(var i = 1; i < markers.length; i++) {
+        d = dist([lat, lon], [markers[i][1], markers[i][2]]);
+        if(d < 10) {
+            alert("{% trans 'Diese Markierung ist zu nah an der Markierung ' %}\""+markers[i][0]+"\". {% trans 'Markierungen müssen mindestens 10m auseinanderliegen, hier sind es: ' %} "+Math.round(d)+"m");
+            return;
+        }
     }
     map.setView([lat, lon], 13);
     if(input_window.style.display == 'block') {
@@ -73,6 +94,7 @@ function sendMarker() {
     }
     msg_text.innerHTML = input.value;
     msg.style.display = 'block';
+    markers.push([input.value, lat, lon]);
     input_window.style.display = 'none';
     send({'type': 'map', 'lat': lat, 'lon': lon, 'description': input.value, 'activity': {{ activity.id }}});
     input.value = '';
