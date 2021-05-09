@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-09 14:17+0000\n"
-"PO-Revision-Date: 2021-05-09 16:18+0200\n"
+"POT-Creation-Date: 2021-05-09 16:26+0000\n"
+"PO-Revision-Date: 2021-05-09 18:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -1238,7 +1238,7 @@ msgstr "Here's a list of all available categories"
 msgid "Passt zu Ihnen zu "
 msgstr "Personal fit:"
 
-#: activity/templates/activity/detail.html:34
+#: activity/templates/activity/detail.html:33
 msgid "Gehört zu: "
 msgstr "Belongs to: "
 
@@ -1356,6 +1356,10 @@ msgstr ""
 #: activity/templates/javascript/map.js:57
 msgid "Moment noch! Ihr Standort wird gerade bestimmt."
 msgstr "One moment! Your location is being determined."
+
+#: activity/templates/javascript/map.js:71
+msgid "Erlaubte Beschreibungslänge: 3-100 Zeichen. Derzeit: "
+msgstr "Allowed description length: 3-100 characters. Currently length: "
 
 #: character/templates/character/edit_weights.html:5
 msgid "Gewichte verteilen"

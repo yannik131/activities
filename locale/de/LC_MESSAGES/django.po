@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-09 14:17+0000\n"
+"POT-Creation-Date: 2021-05-09 16:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1182,7 +1182,7 @@ msgstr ""
 msgid "Passt zu Ihnen zu "
 msgstr ""
 
-#: activity/templates/activity/detail.html:34
+#: activity/templates/activity/detail.html:33
 msgid "Gehört zu: "
 msgstr ""
 
@@ -1292,6 +1292,10 @@ msgstr ""
 
 #: activity/templates/javascript/map.js:57
 msgid "Moment noch! Ihr Standort wird gerade bestimmt."
+msgstr ""
+
+#: activity/templates/javascript/map.js:71
+msgid "Erlaubte Beschreibungslänge: 3-100 Zeichen. Derzeit: "
 msgstr ""
 
 #: character/templates/character/edit_weights.html:5

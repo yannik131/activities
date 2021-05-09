@@ -67,7 +67,8 @@ function addMarker() {
 }
 
 function sendMarker() {
-    if(input.value.length < 3) {
+    if(input.value.length < 3 || input.value.length > 100) {
+        alert("{% trans 'Erlaubte Beschreibungslänge: 3-100 Zeichen. Derzeit: ' %}"+input.value.length);
         return;
     }
     msg_text.innerHTML = input.value;
