@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-09 16:26+0000\n"
+"POT-Creation-Date: 2021-05-09 21:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -480,7 +480,7 @@ msgstr ""
 msgid "Gespeichert: "
 msgstr ""
 
-#: account/templates/account/edit.html:41 account/templates/base.html:49
+#: account/templates/account/edit.html:41 account/templates/base.html:50
 #: account/templates/javascript/base.js:54
 #: activity/templates/activity/detail.html:71
 msgid "OK!"
@@ -895,7 +895,12 @@ msgid ""
 "nur einen Tab für myactivities.net :)"
 msgstr ""
 
-#: account/templates/javascript/edit.js:23
+#: account/templates/javascript/edit.js:11
+#: activity/templates/javascript/map.js:92
+msgid "Erlaubte Beschreibungslänge: 3-100 Zeichen. Derzeit: "
+msgstr ""
+
+#: account/templates/javascript/edit.js:27
 msgid "Wirklich?"
 msgstr ""
 
@@ -1290,12 +1295,16 @@ msgid ""
 "Einstellungen Ihres Gerätes/Browsers ändern."
 msgstr ""
 
-#: activity/templates/javascript/map.js:57
+#: activity/templates/javascript/map.js:70
 msgid "Moment noch! Ihr Standort wird gerade bestimmt."
 msgstr ""
 
-#: activity/templates/javascript/map.js:71
-msgid "Erlaubte Beschreibungslänge: 3-100 Zeichen. Derzeit: "
+#: activity/templates/javascript/map.js:77
+msgid "Diese Markierung ist zu nah an der Markierung "
+msgstr ""
+
+#: activity/templates/javascript/map.js:77
+msgid "Markierungen müssen mindestens 10m auseinanderliegen, hier sind es: "
 msgstr ""
 
 #: character/templates/character/edit_weights.html:5

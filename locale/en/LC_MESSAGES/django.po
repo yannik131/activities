@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-09 16:26+0000\n"
-"PO-Revision-Date: 2021-05-09 18:26+0200\n"
+"POT-Creation-Date: 2021-05-09 21:07+0000\n"
+"PO-Revision-Date: 2021-05-09 23:08+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -500,7 +500,7 @@ msgstr "None! Join activities to mark locations on the corresponding map."
 msgid "Gespeichert: "
 msgstr "Saved: "
 
-#: account/templates/account/edit.html:41 account/templates/base.html:49
+#: account/templates/account/edit.html:41 account/templates/base.html:50
 #: account/templates/javascript/base.js:54
 #: activity/templates/activity/detail.html:71
 msgid "OK!"
@@ -940,7 +940,12 @@ msgstr ""
 "Connection closed because a new tab was opened! Please only use one tab for "
 "myactivities.net :)"
 
-#: account/templates/javascript/edit.js:23
+#: account/templates/javascript/edit.js:11
+#: activity/templates/javascript/map.js:92
+msgid "Erlaubte Beschreibungslänge: 3-100 Zeichen. Derzeit: "
+msgstr "Allowed description length: 3-100 characters. Currently length: "
+
+#: account/templates/javascript/edit.js:27
 msgid "Wirklich?"
 msgstr "Really?"
 
@@ -1353,13 +1358,17 @@ msgstr ""
 "location markers. You can change access rights to your location in your "
 "device or browser settings."
 
-#: activity/templates/javascript/map.js:57
+#: activity/templates/javascript/map.js:70
 msgid "Moment noch! Ihr Standort wird gerade bestimmt."
 msgstr "One moment! Your location is being determined."
 
-#: activity/templates/javascript/map.js:71
-msgid "Erlaubte Beschreibungslänge: 3-100 Zeichen. Derzeit: "
-msgstr "Allowed description length: 3-100 characters. Currently length: "
+#: activity/templates/javascript/map.js:77
+msgid "Diese Markierung ist zu nah an der Markierung "
+msgstr "This marker is too close to the marker "
+
+#: activity/templates/javascript/map.js:77
+msgid "Markierungen müssen mindestens 10m auseinanderliegen, hier sind es: "
+msgstr "Markers have to be at least 10m apart, but in this case it’s only: "
 
 #: character/templates/character/edit_weights.html:5
 msgid "Gewichte verteilen"
