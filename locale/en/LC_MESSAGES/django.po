@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-09 13:48+0000\n"
-"PO-Revision-Date: 2021-05-09 16:11+0200\n"
+"POT-Creation-Date: 2021-05-09 14:17+0000\n"
+"PO-Revision-Date: 2021-05-09 16:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -348,7 +348,7 @@ msgid "Mir doch egal!"
 msgstr "I don't care!"
 
 #: account/templates/account/delete.html:4
-#: account/templates/account/edit.html:49
+#: account/templates/account/edit.html:53
 msgid "Account löschen"
 msgstr "Delete your account"
 
@@ -490,17 +490,23 @@ msgstr "Your markers"
 msgid "Speichern"
 msgstr "Save"
 
-#: account/templates/account/edit.html:36
+#: account/templates/account/edit.html:35
+msgid ""
+"Keine! Treten Sie Aktivitäten bei, um auf der zugehörigen Karte Orte für "
+"andere zu markieren."
+msgstr "None! Join activities to mark locations on the corresponding map."
+
+#: account/templates/account/edit.html:40
 msgid "Gespeichert: "
 msgstr "Saved: "
 
-#: account/templates/account/edit.html:37 account/templates/base.html:49
+#: account/templates/account/edit.html:41 account/templates/base.html:49
 #: account/templates/javascript/base.js:54
 #: activity/templates/activity/detail.html:71
 msgid "OK!"
 msgstr "OK!"
 
-#: account/templates/account/edit.html:44
+#: account/templates/account/edit.html:48
 #: account/templates/registration/password_change_form.html:4
 #: account/templates/registration/password_change_form.html:7
 #: account/templates/registration/password_reset_done.html:4
@@ -1268,8 +1274,8 @@ msgstr "The marker "
 #, python-format
 msgid ""
 " ist nun für alle Mitglieder der Aktivität \"%(act)s\" in %(comp)s sichtbar. "
-"Unter \"<a href='/account/edit/'>Account bearbeiten</a>\"\" können Sie Ihre "
-"Markierungen bearbeiten."
+"Unter \"<a style=\"color: lightblue\" href='/account/edit/'>Account "
+"bearbeiten</a>\" können Sie Ihre Markierungen bearbeiten."
 msgstr ""
 " is now visible for all members of the activity „%(act)s“ in %(comp)s. You "
 "can edit your markers at „<a href=‚/account/edit/‚>edit account</a>“."

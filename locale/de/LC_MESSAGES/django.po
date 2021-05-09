@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-09 13:48+0000\n"
+"POT-Creation-Date: 2021-05-09 14:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -330,7 +330,7 @@ msgid "Mir doch egal!"
 msgstr ""
 
 #: account/templates/account/delete.html:4
-#: account/templates/account/edit.html:49
+#: account/templates/account/edit.html:53
 msgid "Account löschen"
 msgstr ""
 
@@ -470,17 +470,23 @@ msgstr ""
 msgid "Speichern"
 msgstr ""
 
-#: account/templates/account/edit.html:36
+#: account/templates/account/edit.html:35
+msgid ""
+"Keine! Treten Sie Aktivitäten bei, um auf der zugehörigen Karte Orte für "
+"andere zu markieren."
+msgstr ""
+
+#: account/templates/account/edit.html:40
 msgid "Gespeichert: "
 msgstr ""
 
-#: account/templates/account/edit.html:37 account/templates/base.html:49
+#: account/templates/account/edit.html:41 account/templates/base.html:49
 #: account/templates/javascript/base.js:54
 #: activity/templates/activity/detail.html:71
 msgid "OK!"
 msgstr ""
 
-#: account/templates/account/edit.html:44
+#: account/templates/account/edit.html:48
 #: account/templates/registration/password_change_form.html:4
 #: account/templates/registration/password_change_form.html:7
 #: account/templates/registration/password_reset_done.html:4
@@ -1212,8 +1218,8 @@ msgstr ""
 #, python-format
 msgid ""
 " ist nun für alle Mitglieder der Aktivität \"%(act)s\" in %(comp)s sichtbar. "
-"Unter \"<a href='/account/edit/'>Account bearbeiten</a>\"\" können Sie Ihre "
-"Markierungen bearbeiten."
+"Unter \"<a style=\"color: lightblue\" href='/account/edit/'>Account "
+"bearbeiten</a>\" können Sie Ihre Markierungen bearbeiten."
 msgstr ""
 
 #: activity/templates/activity/detail.html:74

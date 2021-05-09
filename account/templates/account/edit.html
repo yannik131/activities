@@ -30,6 +30,10 @@
             <li>
                 <input id="{{ marker.id }}" type="text" value="{{ marker.description }}"> -> {{ marker.activity }} <button onclick="saveMarker({{ marker.id }})" style="margin-right: 15px">{% trans 'Speichern' %}</button><button onclick="deleteMarker({{ marker.id }})" id='delete-{{ marker.id }}'>{% trans 'Löschen' %}</button>
             </li>
+        {% empty %}
+            <div class="center-container">
+                {% trans 'Keine! Treten Sie Aktivitäten bei, um auf der zugehörigen Karte Orte für andere zu markieren.' %}
+            </div>
         {% endfor %}
     </ul>
     <div class="django-message" id="message" style="display: none; position: fixed;">
