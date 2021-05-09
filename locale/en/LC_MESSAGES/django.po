@@ -1278,7 +1278,7 @@ msgid ""
 "bearbeiten</a>\" können Sie Ihre Markierungen bearbeiten."
 msgstr ""
 " is now visible for all members of the activity „%(act)s“ in %(comp)s. You "
-"can edit your markers at „<a href=‚/account/edit/‚>edit account</a>“."
+"can edit your markers at „<a href='/account/edit/'>edit account</a>“."
 
 #: activity/templates/activity/detail.html:74
 msgid "Standortmarkierung"
