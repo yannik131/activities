@@ -29,10 +29,12 @@
         {% endif %}
     </p>
     <h2>
-        {% trans 'Gehört zu: ' %}
-        {% for category in activity.categories.all %}
-            <a href="{{ category.get_absolute_url }}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
-        {% endfor %}
+        {% if activity.categories.all %}
+            {% trans 'Gehört zu: ' %}
+            {% for category in activity.categories.all %}
+                <a href="{{ category.get_absolute_url }}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        {% endif %}
     </h2>
     {% if user.is_staff %}
     <a class="center-container" style="font-weight: bold; margin-bottom: 10px; font-size: 24px" href="{% url 'character:edit_weights' activity.id %}">{% trans 'Gewichtungen bearbeiten' %}</a>
