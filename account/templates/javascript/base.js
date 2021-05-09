@@ -152,8 +152,8 @@ function connect() {
     user_websocket = new WebSocket(
         getWsPrefix()
         + '/ws/user/'
-        + '{{ user.id }}'
-        + '/'
+        + '{{ user.id }}/'
+        + '{{ user.ws_key }}/'
     );
     user_websocket.onmessage = function(e) {
         const data = JSON.parse(e.data);

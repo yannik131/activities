@@ -35,6 +35,11 @@ def detail(request, activity_name):
 
     users = users[:50]
     posts, page = Post.get_page(request, component_index, chosen_component, activity=activity)
+    suggestion = None
+    if request.user.character and request.user.character.presentable:
+        suggestion = request.user.character.activity_suggestions.filter(activity=activity)
+        if suggestion.exists():
+            suggestion = suggestion.first()
     return render(request, 'activity/detail.html',
                   {'activity': activity,
                    'is_member': is_member,
@@ -44,6 +49,7 @@ def detail(request, activity_name):
                    'users': users,
                    'posts': posts,
                    'page': page,
+                   'suggestion': suggestion,
                    'population': json.dumps(population) if population else None,
                    'markers': json.dumps(markers) if markers else None})
 

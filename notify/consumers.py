@@ -23,6 +23,10 @@ class NotificationConsumer(WebsocketConsumer):
     def connect(self):
         user_id = self.scope['url_route']['kwargs']['user_id']
         self.user = User.objects.get(id=user_id)
+        key = self.scope['url_route']['kwargs']['key']
+        if self.user.ws_key != key:
+            self.user = None
+            return
         if self.user.channel_name:
             async_to_sync(self.channel_layer.send)(
                 self.user.channel_name,
@@ -38,6 +42,8 @@ class NotificationConsumer(WebsocketConsumer):
         self.rtc_room_id = None
 
     def disconnect(self, code):
+        if not self.user:
+            return
         user = User.objects.get(id=self.user.id)
         user.channel_name = None
         user.save()
@@ -241,7 +247,17 @@ class NotificationConsumer(WebsocketConsumer):
             post.disliked_by.remove(self.user)
             
     def handle_map_message(self, text_data):
-        LocationMarker.objects.create(description=text_data['description'], latitude=text_data['lat'], longitude=text_data['lon'], author=self.user, location=self.user.location)
+        try:
+            LocationMarker.objects.get_or_create(
+                description=text_data['description'], 
+                latitude=text_data['lat'], 
+                longitude=text_data['lon'], 
+                author=self.user, 
+                location=self.user.location, 
+                activity=Activity.objects.get(pk=text_data['activity'])
+            )
+        except:
+            pass
     
     def chat_message(self, event):
         self.send(text_data=json.dumps(event))

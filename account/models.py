@@ -1,3 +1,4 @@
+from activity.models import Activity
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.query import QuerySet
@@ -120,6 +121,10 @@ class User(AbstractUser):
         for trait in User.CHARACTER_TRAITS:
             self.character[trait] = 0
         self.save()
+        
+    @property
+    def ws_key(self):
+        return str(hash((self.last_login, self.date_joined)))
         
     @property
     def channel_group_name(self):
@@ -309,6 +314,7 @@ class Location(models.Model):
 class LocationMarker(models.Model):
     longitude = models.DecimalField(max_digits=9, decimal_places=6)
     latitude = models.DecimalField(max_digits=9, decimal_places=6)
+    activity = models.ForeignKey(Activity, on_delete=models.CASCADE, related_name='markers')
     location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='markers')
     author = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='markers', null=True)
     description = models.CharField(max_length=100)

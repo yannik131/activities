@@ -32,5 +32,6 @@ urlpatterns = [
     path('activation_failed/', views.activation_failed, name='activation_failed'),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     path('impressum/', views.impressum, name='impressum'),
-    path('people_list/', views.people_list, name='people_list')
+    path('people_list/', views.people_list, name='people_list'),
+    path('delete_marker/<int:marker_id>/', views.delete_marker, name='delete_marker')
 ]

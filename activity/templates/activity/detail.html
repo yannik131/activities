@@ -21,7 +21,15 @@
     {% endif %}
     <h1 class="center-container">{{ activity.verbose }}</h1>
     <p class="center-container"><i>{{ activity.description }}</i></p>
-    <p class="center-container"><b><i><span id="info"></span></i></b></p>
+    <p class="center-container">
+        <b><i><span id="info"></span></i></b>
+        {% if suggestion %}
+            <br>
+            {% trans 'Passt zu Ihnen zu ' %}{{ suggestion.score }}%
+        {% else %}
+            aslökdjflkasdj flkadsj fklasdj flködsaj fkaöds
+        {% endif %}
+    </p>
     <h2>
         {% trans 'Gehört zu: ' %}
         {% for category in activity.categories.all %}
@@ -59,12 +67,12 @@
    crossorigin=""></script>
    <div id="mapid"></div>
    <div class="django-message" id="django-message">
-        <p>{% trans 'Ort markiert: ' %} <span id="loc"></span></p>
+        <p>{% trans 'Die Markierung ' %} "<span id="loc"></span>"{% blocktrans with act=activity comp=chosen_component %} ist nun für alle Mitglieder der Aktivität "{{ act }}" in {{ comp }} sichtbar. Unter "<a href='/account/edit/'>Account bearbeiten</a>"" können Sie Ihre Markierungen bearbeiten.{% endblocktrans %}</p>
         <a class="blue-button" onclick="document.getElementById('django-message').style.display='none';">{% trans "OK!" %}</a>
 </div>
    <div id="input-window">
        <h2>{% trans 'Standortmarkierung' %}</h2>
-    {% trans "Wie heißt der Ort, an dem Sie sich befinden?" %}<br>
+    {% trans "Wie heißt der Ort, an dem Sie sich befinden? Markieren Sie bitte nur in " %}{{ chosen_component }}.<br>
     <input type="text" id='input'><br>
     <button id="send">{% trans 'Senden' %}</button><button id="cancel">{% trans 'Abbrechen' %}</button>
 </div>
@@ -74,7 +82,7 @@
     {% if component_index == 3 %}
         <div class="button-like" style="margin: 10px 10px" onclick="addMarker()">
             <img src="{% static 'icons/location.png' %}">
-            {% trans 'Aktuelle Position markieren' %}
+            {% trans 'Aktuelle Position für alle markieren' %}
         </div>
     {% endif %}
     <br>

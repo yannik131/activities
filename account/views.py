@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm, AccountDeleteForm, LoginForm
-from .models import FriendRequest, User, Friendship
+from .models import FriendRequest, LocationMarker, User, Friendship
 from django.http import HttpResponseRedirect
 from django.utils import timezone
 from datetime import timedelta
@@ -168,7 +168,6 @@ def register(request):
         location_form = LocationForm()
     return render(request, 'account/register.html', {'user_form': user_form, 'location_form': location_form})
 
-
 @login_required
 def edit(request):
     if request.method == 'POST':
@@ -269,6 +268,14 @@ def people_list(request):
     people, page = shared.paginate(people, request, 12)
     return render(request, 'account/people_list.html', dict(people=people))
     
+def delete_marker(request, marker_id):
+    try:
+        marker = LocationMarker.objects.get(pk=marker_id)
+        marker.delete()
+        messages.add_message(request, messages.INFO, _('Markierung wurde erfolgreich gelöscht.'))
+    except:
+        messages.add_message(request, messages.INFO, _('Markierung wurde nicht gefunden!'))
+    return HttpResponseRedirect(request.user.get_absolute_url())
     
 def impressum(request):
     return render(request, 'account/impressum.html')

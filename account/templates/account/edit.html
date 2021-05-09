@@ -24,6 +24,21 @@
             <li>{{ key }}: <b>{% if value %}{{ value }} {% else %} {% trans "Ohne" %} {% endif %}</b></li>
         {% endfor %}
     </ul>
+    <h3>{% trans 'Ihre Markierungen' %}: </h3>
+    <ul>
+        {% for marker in user.markers.all %}
+            <li>
+                <input id="{{ marker.id }}" type="text" value="{{ marker.description }}"> -> {{ marker.activity }} <button onclick="saveMarker({{ marker.id }})" style="margin-right: 15px">{% trans 'Speichern' %}</button><button onclick="deleteMarker({{ marker.id }})" id='delete-{{ marker.id }}'>{% trans 'Löschen' %}</button>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="django-message" id="message" style="display: none; position: fixed;">
+        <p>{% trans 'Gespeichert: ' %} <span id="msg-text"></span></p>
+        <a class="blue-button" onclick="document.getElementById('message').style.display='none';">{% trans "OK!" %}</a>
+</div>
+    <script>
+        {% include 'javascript/edit.js' %}
+    </script>
     <div class="button-like" onclick=openLink("{% url 'account:password_change' %}")>
         <img src="{% static 'icons/password.png' %}">
         {% trans 'Passwort ändern' %}

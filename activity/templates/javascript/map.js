@@ -35,15 +35,17 @@ var map = L.map('mapid').setView([51.0834196, 10.4234469], 5);
 // replace "toner" here with "terrain" or "watercolor" or 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
 
+{% if component_index != 3 %}
+    location.href = "#mapid";
+{% endif %}
+
+
 navigator.geolocation.getCurrentPosition(
     function(position) {
         lat = position.coords.latitude;
         lon = position.coords.longitude;
         var marker = L.marker([lat, lon]).addTo(map);
         marker.bindPopup(translations.here);
-        {% if component_index == 3 %}
-            //map.setView([lat, lon], 13);
-        {% endif %}
     },
     function(error) {
         alert("{% trans 'Ihre Position wird nur für die Zentrierung der Karte und zum Hinzufügen Ihrer eigenen Markierungen genutzt. Ortungsrechte können Sie in den Einstellungen Ihres Gerätes/Browsers ändern.' %}");
@@ -51,11 +53,17 @@ navigator.geolocation.getCurrentPosition(
 );
 
 function addMarker() {
-    /*if(lat == undefined) {
+    if(lat == undefined) {
         alert("{% trans 'Moment noch! Ihr Standort wird gerade bestimmt.' %}");
         return;
-    }*/
-    input_window.style.display = 'block';
+    }
+    map.setView([lat, lon], 13);
+    if(input_window.style.display == 'block') {
+        input_window.style.display = 'none';
+    }
+    else {
+        input_window.style.display = 'block';
+    }
 }
 
 function sendMarker() {
@@ -65,7 +73,7 @@ function sendMarker() {
     msg_text.innerHTML = input.value;
     msg.style.display = 'block';
     input_window.style.display = 'none';
-    send({'type': 'map', 'lat': lat, 'lon': lon, 'description': input.value});
+    send({'type': 'map', 'lat': lat, 'lon': lon, 'description': input.value, 'activity': {{ activity.id }}});
     input.value = '';
 }
 
@@ -73,7 +81,7 @@ if(markers) {
     //[marker.description, marker.latitude, marker.longitude]
     var marker;
     map.setView([markers[0][0], markers[0][1]], 12);
-    for(var i = 0; i < markers.length; i++) {
+    for(var i = 1; i < markers.length; i++) {
         data = markers[i];
         marker = L.marker([data[1], data[2]]).addTo(map);
         marker.bindPopup(data[0]);

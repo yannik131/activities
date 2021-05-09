@@ -11,6 +11,7 @@ function gameConnect(game, match_id, username) {
         + game + "/"
         + match_id + "/"
         + username + "/"
+        + '{{ user.ws_key }}/'
     );
 
     socket.onmessage = function(e) {
