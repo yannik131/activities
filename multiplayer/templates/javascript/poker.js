@@ -73,7 +73,7 @@ function handleShow(data) {
             var hands = Object.keys(HAND_TRANSLATIONS);
             for(var i = 0; i < hands.length; i++) {
                 var hand = 'HAND'+hands[i]+'HAND';
-                summary = summary.replaceAll(hand, HAND_TRANSLATIONS[hands[i]]);
+                summary = summary.split(hand).join(HAND_TRANSLATIONS[hands[i]]); //legacy replaceAll
             }
             var alert = createInfoAlert(summary);
             alert.style.opacity = 0.8;
