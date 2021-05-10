@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-09 21:07+0000\n"
+"POT-Creation-Date: 2021-05-10 18:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -432,9 +432,9 @@ msgstr ""
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:379
-#: multiplayer/templates/javascript/durak.js:415
-#: multiplayer/templates/javascript/durak.js:433
+#: multiplayer/templates/javascript/durak.js:403
+#: multiplayer/templates/javascript/durak.js:439
+#: multiplayer/templates/javascript/durak.js:457
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:14
 #: usergroups/templates/usergroups/edit_group.html:13
@@ -1232,8 +1232,7 @@ msgid "Standortmarkierung"
 msgstr ""
 
 #: activity/templates/activity/detail.html:75
-msgid ""
-"Wie heißt der Ort, an dem Sie sich befinden? Markieren Sie bitte nur in "
+msgid "Wie heißt der Ort, an dem Sie sich befinden?"
 msgstr ""
 
 #: activity/templates/activity/detail.html:77
@@ -2012,7 +2011,6 @@ msgid "Nutzer"
 msgstr ""
 
 #: competitions/templates/competitions/full_table.html:13
-#: multiplayer/templates/javascript/doppelkopf.js:179
 msgid "Punkte"
 msgstr ""
 
@@ -2243,6 +2241,10 @@ msgstr ""
 msgid "Blind-Dauer muss zwischen 5 und 20 Minuten liegen"
 msgstr ""
 
+#: multiplayer/forms.py:39
+msgid "Ohne Neunen"
+msgstr ""
+
 #: multiplayer/templates/javascript/cards.js:474
 #: multiplayer/templates/javascript/skat.js:564
 msgid "Ja"
@@ -2275,7 +2277,7 @@ msgid "Okay"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:6
-#: multiplayer/templates/javascript/doppelkopf.js:418
+#: multiplayer/templates/javascript/doppelkopf.js:435
 msgid "Gesund"
 msgstr ""
 
@@ -2339,40 +2341,39 @@ msgid "Re"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:25
-#: multiplayer/templates/javascript/doppelkopf.js:261
+#: multiplayer/templates/javascript/doppelkopf.js:268
 msgid "Kontra"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:178
-#: multiplayer/templates/javascript/doppelkopf.js:344
-#: multiplayer/templates/javascript/durak.js:199
+#: multiplayer/templates/javascript/doppelkopf.js:210
+msgid "Normalspiel"
+msgstr ""
+
+#: multiplayer/templates/javascript/doppelkopf.js:361
+#: multiplayer/templates/javascript/durak.js:203
 #: multiplayer/templates/javascript/skat.js:164
 #: multiplayer/templates/javascript/skat.js:201
 msgid "Spiel Nummer"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:211
-msgid "Normalspiel"
-msgstr ""
-
-#: multiplayer/templates/javascript/durak.js:104
-#: multiplayer/templates/javascript/durak.js:250
+#: multiplayer/templates/javascript/durak.js:105
+#: multiplayer/templates/javascript/durak.js:254
 msgid "SCHLUCKT"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:209
+#: multiplayer/templates/javascript/durak.js:213
 msgid "ANGREIFER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:212
+#: multiplayer/templates/javascript/durak.js:216
 msgid "VERTEIDIGER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:395
+#: multiplayer/templates/javascript/durak.js:419
 msgid "Schlucken"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:405
+#: multiplayer/templates/javascript/durak.js:429
 msgid "Schieben"
 msgstr ""
 
@@ -2595,11 +2596,11 @@ msgid ""
 "sich sicher sind, dass das ein Versehen war."
 msgstr ""
 
-#: multiplayer/views.py:71
+#: multiplayer/views.py:75
 msgid "Spiel ist bereits voll"
 msgstr ""
 
-#: multiplayer/views.py:81
+#: multiplayer/views.py:85
 msgid "Sie waren zu langsam, das Match war bereits voll."
 msgstr ""
 

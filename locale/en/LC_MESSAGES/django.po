@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-09 21:07+0000\n"
-"PO-Revision-Date: 2021-05-09 23:08+0200\n"
+"POT-Creation-Date: 2021-05-10 18:34+0000\n"
+"PO-Revision-Date: 2021-05-10 20:34+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -452,9 +452,9 @@ msgstr "You can edit your account with the following form:"
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:379
-#: multiplayer/templates/javascript/durak.js:415
-#: multiplayer/templates/javascript/durak.js:433
+#: multiplayer/templates/javascript/durak.js:403
+#: multiplayer/templates/javascript/durak.js:439
+#: multiplayer/templates/javascript/durak.js:457
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:14
 #: usergroups/templates/usergroups/edit_group.html:13
@@ -1290,9 +1290,8 @@ msgid "Standortmarkierung"
 msgstr "Location marker"
 
 #: activity/templates/activity/detail.html:75
-msgid ""
-"Wie heißt der Ort, an dem Sie sich befinden? Markieren Sie bitte nur in "
-msgstr "What’s the name of your location? Please only mark in "
+msgid "Wie heißt der Ort, an dem Sie sich befinden?"
+msgstr "What’s the name of your location?"
 
 #: activity/templates/activity/detail.html:77
 #: multiplayer/templates/javascript/cards.js:530
@@ -2255,7 +2254,6 @@ msgid "Nutzer"
 msgstr "User"
 
 #: competitions/templates/competitions/full_table.html:13
-#: multiplayer/templates/javascript/doppelkopf.js:179
 msgid "Punkte"
 msgstr "Points"
 
@@ -2488,6 +2486,10 @@ msgstr "Blind duration in minutes"
 msgid "Blind-Dauer muss zwischen 5 und 20 Minuten liegen"
 msgstr "The blind duration has to be between 5 and 20 minutes"
 
+#: multiplayer/forms.py:39
+msgid "Ohne Neunen"
+msgstr "Without nines"
+
 #: multiplayer/templates/javascript/cards.js:474
 #: multiplayer/templates/javascript/skat.js:564
 msgid "Ja"
@@ -2522,7 +2524,7 @@ msgid "Okay"
 msgstr "Okay"
 
 #: multiplayer/templates/javascript/doppelkopf.js:6
-#: multiplayer/templates/javascript/doppelkopf.js:418
+#: multiplayer/templates/javascript/doppelkopf.js:435
 msgid "Gesund"
 msgstr "Healthy"
 
@@ -2586,40 +2588,39 @@ msgid "Re"
 msgstr "Re"
 
 #: multiplayer/templates/javascript/doppelkopf.js:25
-#: multiplayer/templates/javascript/doppelkopf.js:261
+#: multiplayer/templates/javascript/doppelkopf.js:268
 msgid "Kontra"
 msgstr "Contra"
 
-#: multiplayer/templates/javascript/doppelkopf.js:178
-#: multiplayer/templates/javascript/doppelkopf.js:344
-#: multiplayer/templates/javascript/durak.js:199
+#: multiplayer/templates/javascript/doppelkopf.js:210
+msgid "Normalspiel"
+msgstr "Normal game"
+
+#: multiplayer/templates/javascript/doppelkopf.js:361
+#: multiplayer/templates/javascript/durak.js:203
 #: multiplayer/templates/javascript/skat.js:164
 #: multiplayer/templates/javascript/skat.js:201
 msgid "Spiel Nummer"
 msgstr "Game number"
 
-#: multiplayer/templates/javascript/doppelkopf.js:211
-msgid "Normalspiel"
-msgstr "Normal game"
-
-#: multiplayer/templates/javascript/durak.js:104
-#: multiplayer/templates/javascript/durak.js:250
+#: multiplayer/templates/javascript/durak.js:105
+#: multiplayer/templates/javascript/durak.js:254
 msgid "SCHLUCKT"
 msgstr "GOBBLING"
 
-#: multiplayer/templates/javascript/durak.js:209
+#: multiplayer/templates/javascript/durak.js:213
 msgid "ANGREIFER"
 msgstr "ATTACKER"
 
-#: multiplayer/templates/javascript/durak.js:212
+#: multiplayer/templates/javascript/durak.js:216
 msgid "VERTEIDIGER"
 msgstr "DEFENDER"
 
-#: multiplayer/templates/javascript/durak.js:395
+#: multiplayer/templates/javascript/durak.js:419
 msgid "Schlucken"
 msgstr "Gobble"
 
-#: multiplayer/templates/javascript/durak.js:405
+#: multiplayer/templates/javascript/durak.js:429
 msgid "Schieben"
 msgstr "Transfer"
 
@@ -2844,11 +2845,11 @@ msgstr ""
 "You've been kicked from the game. Please rejoin only if you're sure that "
 "this wasn't on purpose."
 
-#: multiplayer/views.py:71
+#: multiplayer/views.py:75
 msgid "Spiel ist bereits voll"
 msgstr "Game is full"
 
-#: multiplayer/views.py:81
+#: multiplayer/views.py:85
 msgid "Sie waren zu langsam, das Match war bereits voll."
 msgstr "Too slow. Match is already full."
 

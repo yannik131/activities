@@ -30,3 +30,10 @@ class PokerMatchForm(CreateMatchForm):
         if int(cd['blind_duration']) < 5 or int(cd['blind_duration']) > 20:
             raise forms.ValidationError(_('Blind-Dauer muss zwischen 5 und 20 Minuten liegen'))
         return cd
+        
+class DokoMatchForm(CreateMatchForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['member_limit'].widget = forms.HiddenInput()
+    
+    without_nines = forms.BooleanField(label=_('Ohne Neunen'), required=False)

@@ -221,25 +221,25 @@ def determine_winner_doko(data, last_winner, charlie):
             change(data, "re_extra", 1)
         else:
             change(data, "contra_extra", 1)
-    re_points, count = sum_tricks(data, re, "re")
-    _, _ = sum_tricks(data, contra, "contra")
+    re_points, count = sum_tricks(data, re, "Re")
+    _, _ = sum_tricks(data, contra, "Kontra")
     
     value = data["contra_value"]
     if value == "s" and count == 12:
-        return "contra", 240
+        return "Kontra", 240
     elif value == "s":
-        return "re", re_points
+        return "Re", re_points
     if 240-re_points >= DOKO_GAME_VALUES[value]:
-        return "contra", 240-re_points
+        return "Kontra", 240-re_points
     value = data["re_value"]
     if value == "s" and count == 12:
-        return "re", 240
+        return "Re", 240
     elif value == "s":
-        return "contra", 240-re_points
+        return "Kontra", 240-re_points
     if re_points >= DOKO_GAME_VALUES[value]:
-        return "re", re_points
+        return "Re", re_points
     else:
-        return "contra", 240-re_points
+        return "Kontra", 240-re_points
         
 def sum_change(dictionary, key, _change, summary):
     change(dictionary, key, _change)
@@ -254,7 +254,7 @@ def give_doko_points(data, players, result, winner_points):
     re_extra = int(data["re_extra"])
     contra_extra = int(data["contra_extra"])
     log("re_extra", re_extra, "contra_extra", contra_extra)
-    if result == "contra":
+    if result == "Kontra":
         if not data["solist"]:
             points += 1 # gegen die alten
     if data["contra_value"]:
@@ -273,18 +273,18 @@ def give_doko_points(data, players, result, winner_points):
     if data["solist"]:
         for player in players:
             if player == data["solist"]:
-                if result == "re":
+                if result == "Re":
                     sum_change(data, player+"_points", 3*points, summary)
                 else:
                     sum_change(data, player+"_points", -3*points, summary)
             else:
-                if result == "re":
+                if result == "Re":
                     sum_change(data, player+"_points", -points, summary)
                 else:
                     sum_change(data, player+"_points", points, summary)
     else:
         for player in players:
-            if result == "re":
+            if result == "Re":
                 if player == data["re_1"] or player == data["re_2"]:
                     sum_change(data, player+"_points", (points+re_extra-contra_extra), summary)
                 else:
@@ -296,7 +296,7 @@ def give_doko_points(data, players, result, winner_points):
                     sum_change(data, player+"_points", (points-re_extra+contra_extra), summary)
     log("sorting summary:", summary)
     summary = sorted(summary, key=lambda t: t[1], reverse=True)
-    return "".join([t[0] for t in summary])
+    return f"{result}: {winner_points}\n"+"".join([t[0] for t in summary])
     
 
 CARD_VALUES = {

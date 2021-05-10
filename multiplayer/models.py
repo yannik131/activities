@@ -220,7 +220,10 @@ class MultiplayerMatch(models.Model):
 
     def start_durak(self):
         log('-------------Starting Durak round-------------')
-        players, deck = self.create_players(6, "6", "7", "8", "9", "10", "J", "Q", "K", "A")
+        if self.member_limit <= 3:
+            players, deck = self.create_players(6, "6", "7", "8", "9", "10", "J", "Q", "K", "A")
+        else:
+            players, deck = self.create_players(6, "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A")
         self.game_data["trump"] = deck[-1][-1]
         self.game_data["stacks"] = json.dumps([])
         self.game_data["done_list"] = json.dumps([])
@@ -230,7 +233,11 @@ class MultiplayerMatch(models.Model):
         
         
     def start_doppelkopf(self):
-        players, _ = self.create_players(12, "9", "9", "10", "10", "A", "A", "J", "J", "K", "K", "Q", "Q")
+        if self.options['without_nines'] == 'True':
+            players, _ = self.create_players(10, "10", "10", "A", "A", "J", "J", "K", "K", "Q", "Q")
+            self.game_data['without_nines'] = '1'
+        else:
+            players, _ = self.create_players(12, "9", "9", "10", "10", "A", "A", "J", "J", "K", "K", "Q", "Q")
         self.game_data["game_type"] = ""
         self.game_data["re_value"] = ""
         self.game_data["contra_value"] = ""

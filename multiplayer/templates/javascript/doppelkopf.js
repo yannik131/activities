@@ -31,6 +31,7 @@ var m_show;
 var player_info = {};
 var re;
 var value_ncards;
+let hand_cards_for_value;
 
 {% include 'javascript/common_sd.js' %}
 
@@ -175,8 +176,6 @@ function handlePlay(data) {
         setTimeout(function() {
             clearStacks();
             var new_data = data.round;
-            var info = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n";
-            createInfoAlert(info+"\n"+team_translations[data.result]+": "+data.points+" {% trans 'Punkte' %}\n"+data.summary);
             active = new_data.active;
             last_trick = null;
             loadGameField(new_data);
@@ -218,6 +217,13 @@ function updateAllInfo() {
     }
 }
 
+function maxCardsForValue(value) {
+    if(without_nines) {
+        return values_cards[value]-m_show-1;
+    }
+    return values_cards[value]-m_show;
+}
+
 function createValueButtons() {
     clearButtons();
     if(this_user != active || game_type == "marriage" && !m_show) {
@@ -236,19 +242,20 @@ function createValueButtons() {
         m_show = 0;
     }
     const allowed = (value_ncards && value_ncards-player1_cards.length <= 1);
-    if(last_bid == "" && (l >= 11-m_show || allowed)) {
+    const n = hand_cards_for_value[last_bid];
+    if(last_bid == "" && (l >= n-m_show || allowed)) {
         value = "w";
     }
-    else if(last_bid == "w" && (l >= 10-m_show || allowed)) {
+    else if(last_bid == "w" && (l >= n-m_show || allowed)) {
         value = "9";
     }
-    else if(last_bid == "9" && (l >= 9-m_show || allowed)) {
+    else if(last_bid == "9" && (l >= n-m_show || allowed)) {
         value = "6";
     }
-    else if(last_bid == "6" && (l >= 8-m_show || allowed)) {
+    else if(last_bid == "6" && (l >= n-m_show || allowed)) {
         value = "3";
     }
-    else if(last_bid == "3" && (l >= 7-m_show || allowed)) {
+    else if(last_bid == "3" && (l >= n-m_show || allowed)) {
         value = "s";
     }
     if(value) {
@@ -311,6 +318,16 @@ function loadGameField(data) {
     m_show = parseInt(data.m_show);
     value_ncards = parseInt(data.value_ncards);
     last_trick = JSON.parse(data.last_trick);
+    if(data.without_nines) {
+        hand_cards_for_value = {
+            '': 9, 'w': 8, '9': 7, '6': 6, '3': 5
+        };
+    }
+    else {
+        hand_cards_for_value = {
+            '': 11, 'w': 10, '9': 9, '6': 8, '3': 7
+        };
+    }
     setRe(data);
     defineSortValues();
     clearButtons();

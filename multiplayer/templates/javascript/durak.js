@@ -19,9 +19,9 @@ function defineSortValues(trump_suit) {
         suit_values[suits[i]] = i+1;
     }
     suit_values[trump_suit] = 1000;
-    var values= ["6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+    var values= ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
     for(var i = 0; i < values.length; i++) {
-        value_values[values[i]] = (i+1)*100;
+        value_values[values[i]] = (i+1)*50;
     }
 }
 
@@ -271,7 +271,7 @@ function handleNewCards(data, callback, pause) {
         }
         updateButtons();
         paused = false;
-    }, 1500);
+    }, 1000);
 }
 
 function handleMove(data) {
@@ -550,7 +550,6 @@ function handleTransfer(data) {
         refreshStacks(JSON.parse(data.stacks));
         updatePlayerInfo(data);
         old_stacks = JSON.parse(data.stacks);
-        var attacking = players[data.attacking];
         determineGameMode(data);
     }
     handleNewCards(data, callback, true);

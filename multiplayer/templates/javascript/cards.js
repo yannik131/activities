@@ -269,7 +269,7 @@ function removeCardFrom(player, n, type) {
             }
         }
         else {
-            const card = vars.cards.pop();
+            const card = vars.cards.splice(0, 1)[0];
             card.remove();
         }   
     }
