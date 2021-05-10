@@ -128,7 +128,7 @@ function moveMembers(id) {
         if(!member) {
             continue;
         }
-        member.style.zIndex = 10000;
+        member.style.zIndex = 2;
         if(last_member_div) {
             current_pos += last_member_div.offsetWidth+padding;
         }
