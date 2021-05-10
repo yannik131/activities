@@ -181,6 +181,7 @@
     overflow-y: scroll;
     word-wrap: break-word; 
     padding-top: 5px;
+    z-index: 999;
 }
 
 .right-chat .chat-list .chat-item {
