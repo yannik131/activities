@@ -272,9 +272,11 @@ function resize() {
         const content = document.querySelector('.content');
         const base = document.querySelector('.base-container');
         var footer = document.getElementById('footer');
-        footer.style.display = 'block';
-        footer.style.position = 'relative';
-        footer.style.marginTop = '10px';
+        if(footer) {
+            footer.style.display = 'block';
+            footer.style.position = 'relative';
+            footer.style.marginTop = '10px';
+        }
     }
 }
 
