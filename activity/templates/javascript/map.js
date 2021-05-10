@@ -2,6 +2,12 @@
 
 let markers, population;
 var marking = false;
+const zoom_levels = {
+    0: 5, 1: 7, 2: 9, 3: 12
+};
+const radii = {
+    0: 50000, 1: 25000, 2: 7000
+};
 {% if markers %}
     markers = JSON.parse('{{ markers|safe }}');
 {% elif population %}
@@ -65,7 +71,7 @@ function markCurrent(callback) {
             lon = position.coords.longitude;
             var marker = L.marker([lat, lon]).addTo(map);
             marker.bindPopup(translations.here);
-            map.setView([lat, lon], 13);
+            map.setView([lat, lon]);
             document.getElementById('where').innerHTML = "{% trans 'Wo bin ich?' %}";
             if(callback) {
                 callback();
@@ -127,12 +133,6 @@ if(markers) {
 else if(population) {
     //[getattr(location, highest_component), total.count(), members.count(), location.latitude, location.longitude]
     var circle, percent;
-    const zoom_levels = {
-        0: 5, 1: 7, 2: 9
-    };
-    const radii = {
-        0: 50000, 1: 25000, 2: 7000
-    };
     map.setView([population[0][0], population[0][1]], zoom_levels[{{ component_index }}]);
     for(var i = 1; i < population.length; i++) {
         data = population[i];
