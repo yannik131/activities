@@ -80,9 +80,15 @@
     {% include 'javascript/map.js' %}
 </script>
     {% if component_index == 3 %}
-        <div class="button-like" style="margin: 10px 10px" onclick="addMarker()">
-            <img src="{% static 'icons/location.png' %}">
-            {% trans 'Aktuelle Position für alle markieren' %}
+        <div class="competitive" style="margin: 10px 10px">
+            <div class="left" onclick="addMarker()">
+                <img src="{% static 'icons/location.png' %}">
+                <span id="mark">{% trans 'Standort markieren' %}</span>
+            </div>
+            <div class="right" onclick="markCurrent()">
+                <img src="{% static 'icons/question.png' %}">
+                <span id="where">{% trans 'Wo bin ich?' %}</span>
+            </div>
         </div>
     {% endif %}
     <br>

@@ -1,6 +1,7 @@
 {% load i18n %}
 
 let markers, population;
+var marking = false;
 {% if markers %}
     markers = JSON.parse('{{ markers|safe }}');
 {% elif population %}
@@ -39,19 +40,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: 
     location.href = "#mapid";
 {% endif %}
 
-
-navigator.geolocation.getCurrentPosition(
-    function(position) {
-        lat = position.coords.latitude;
-        lon = position.coords.longitude;
-        var marker = L.marker([lat, lon]).addTo(map);
-        marker.bindPopup(translations.here);
-    },
-    function(error) {
-        alert("{% trans 'Ihre Position wird nur für die Zentrierung der Karte und zum Hinzufügen Ihrer eigenen Markierungen genutzt. Ortungsrechte können Sie in den Einstellungen Ihres Gerätes/Browsers ändern.' %}");
-    }
-);
-
 function dist(p1, p2) {
     const R = 6371e3; // metres
     const phi1 = p1[0] * Math.PI/180; 
@@ -65,9 +53,32 @@ function dist(p1, p2) {
     return R * c; // in metres
 }
 
+function markCurrent(callback) {
+    if(marking) {
+        return;
+    }
+    marking = true;
+    document.getElementById('where').innerHTML = "{% trans 'Standort bestimmen..' %}";
+    navigator.geolocation.getCurrentPosition(
+        function(position) {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+            var marker = L.marker([lat, lon]).addTo(map);
+            marker.bindPopup(translations.here);
+            map.setView([lat, lon], 13);
+            document.getElementById('where').innerHTML = "{% trans 'Wo bin ich?' %}";
+            callback();
+            marking = false;
+        },
+        function(error) {
+            alert("{% trans 'Ihre Position wird nur für die Zentrierung der Karte und zum Hinzufügen Ihrer eigenen Markierungen genutzt. Ortungsrechte können Sie in den Einstellungen Ihres Gerätes/Browsers ändern.' %}");
+        }
+    );
+}
+
 function addMarker() {
     if(lat == undefined) {
-        alert("{% trans 'Moment noch! Ihr Standort wird gerade bestimmt.' %}");
+        markCurrent(addMarker);
         return;
     }
     var d;
@@ -75,10 +86,11 @@ function addMarker() {
         d = dist([lat, lon], [markers[i][1], markers[i][2]]);
         if(d < 10) {
             alert("{% trans 'Diese Markierung ist zu nah an der Markierung ' %}\""+markers[i][0]+"\". {% trans 'Markierungen müssen mindestens 10m auseinanderliegen, hier sind es: ' %} "+Math.round(d)+"m");
+            lat = undefined;
+            lon = undefined;
             return;
         }
     }
-    map.setView([lat, lon], 13);
     if(input_window.style.display == 'block') {
         input_window.style.display = 'none';
     }
