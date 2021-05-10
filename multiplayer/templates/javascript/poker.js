@@ -65,7 +65,7 @@ function handleShow(data) {
         return;
     }
     if(data.hand) {
-        showCards(data.user, JSON.parse(data.hand));
+        showCards(data.user, JSON.parse(data.hand)); 
     }
     if(data.new_game_data) {
         setTimeout(function() {

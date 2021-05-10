@@ -502,7 +502,6 @@ def start_round(data):
     data['cards'] = json.dumps(cards)
     data['deck'] = json.dumps(deck)
     data['highest_bet_user'] = ''
-    players = json.loads(data['alive'])
     active = player_or(after, 'small_blind', data)
     data['active'] = no_fold(data, active)[0]
     
@@ -528,17 +527,20 @@ def determine_winners_poker(data):
     players = [] #[bet, user, score, name]
     common_cards = json.loads(data['cards'])
     show_list = json.loads(data['show_list'])
+    total = 0
     for player in no_fold(data):
         if player in show_list:
             hand = json.loads(data[player])
             score, name = highest_combo(common_cards, hand)
         else:
             score, name = highest_combo(common_cards, [])
+        total += int(data[player+'_bet'])
         players.append([int(data[player+'_bet']),
                         player,
                         score,
                         name])
     pots = create_pots(players)
+    pots[0][0] += int(data['pot'])-total #folded
     summary = ""
     for i in range(len(pots)):
         pot = pots[i]
