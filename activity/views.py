@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Activity, Category
 from django.db.models import Count, Q
-from account.models import Location, User
+from account.models import Location, LocationMarker, User
 from wall.models import Post
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -22,7 +22,7 @@ def detail(request, activity_name):
     
     if component_index == 3: # city
         markers.append([float(request.user.location.latitude), float(request.user.location.longitude)])
-        for marker in request.user.location.markers.all():
+        for marker in activity.markers.all():
             markers.append([marker.description, float(marker.latitude), float(marker.longitude)])
     else:
         parent = request.user.location.get_parent(component_index)
