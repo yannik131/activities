@@ -72,7 +72,7 @@ class DurakConsumer(GameConsumer):
                 "username": self.username,
                 "action": "play",
                 "stacks": data["stacks"],
-                "n": text_data["n"],
+                "played_cards": text_data["played_cards"],
                 "defending": data["defending"],
                 "attacking": data["attacking"]
             }
@@ -163,9 +163,10 @@ class DurakConsumer(GameConsumer):
             message["data"] = {
                 "action": "transfer",
                 "attacking": data["attacking"],
-                "attacking_n": len(json.loads(data[data["attacking"]])),
                 "defending": data["defending"],
-                "stacks": data["stacks"]
+                "stacks": data["stacks"],
+                "played_cards": text_data["played_cards"],
+                "username": self.username
             }
         message['data']['done_list'] = data['done_list']
             

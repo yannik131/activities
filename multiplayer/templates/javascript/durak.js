@@ -11,6 +11,7 @@ var button_color = "white";
 var trump_suit;
 var is_taking;
 var done_list = [];
+var paused = false;
 
 function defineSortValues(trump_suit) {
     var suits = ["d", "h", "s", "c"];
@@ -116,6 +117,9 @@ function delayedCall(callback, arg) {
 }
 
 function cardClicked(value, suit, card) {
+    if(paused) {
+        return;
+    }
     switch(game_mode) {
         case "none":
             return;
@@ -252,25 +256,45 @@ function determineGameMode(data) {
     }
 }
 
+function handleNewCards(data, callback, pause) {
+    paused = pause;
+    var player = players[data.username];
+    var cards = JSON.parse(data.played_cards);
+    removeCardFrom(player, cards.length);
+    for(var i = 0; i < cards.length; i++) {
+        addCardTo(player, 1, cards[i], true);
+    }
+    setTimeout(function() { 
+        callback(cards, player, data);
+        for(var i = 0; i < cards.length; i++) {
+            removeCardFrom(player, 1, cards[i]);
+        }
+        updateButtons();
+        paused = false;
+    }, 1500);
+}
+
 function handleMove(data) {
     old_stacks = JSON.parse(data.stacks);
     if(data.username == this_user) {
         return;
     }
-    var player = players[data.username];
-    removeCardFrom(player, data.n);
-    if(move_mode == "transfer") {
-        for(var i = 0; i < old_stacks.length; i++) {
-            if(!stacksContain(null, getVs(old_stacks[i][0]).suit)) {
-                addStack(old_stacks[i][0]);
+    function callback(cards, player, data) {
+        var old_stacks = JSON.parse(data.stacks);
+        if(move_mode == "transfer") {
+            for(var i = 0; i < old_stacks.length; i++) {
+                if(!stacksContain(null, getVs(old_stacks[i][0]).suit)) {
+                    addStack(old_stacks[i][0]);
+                }
             }
+            return;
         }
-        return;
+        else {
+            refreshStacks(old_stacks);
+        }
+        determineGameMode(data);
     }
-    else {
-        refreshStacks(old_stacks);
-    }
-    determineGameMode(data);
+    handleNewCards(data, callback);
 }
 
 function clearStackCallbacks() {
@@ -311,14 +335,14 @@ function createStackCallbacks(targets, card) {
 }
 
 function createStackWith(card) {
-    played_cards.push(card);
+    played_cards.push(card.id);
     removePlayerCard(card);
     addStack(card.id);
 }
 
 function beatStackWith(card, stack) {
     beatStack(stack, card.id);
-    played_cards.push(card);
+    played_cards.push(card.id);
     removePlayerCard(card);
     sendMove();
     if(player1_cards.length == 0 || game_mode == "defending" && allDefended()) {
@@ -367,7 +391,7 @@ function sendMove() {
         "action": move_mode,
         "stacks": JSON.stringify(getConvertedStack()),
         "hand": JSON.stringify(getConvertedHand()),
-        "n": played_cards.length
+        "played_cards": JSON.stringify(played_cards)
     }));
     played_cards = [];
     move_mode = "none";
@@ -401,7 +425,7 @@ function updateButtons() {
         if(played_cards.length) {
             transferCheck();
         }
-        else {
+        else if(!is_taking) {
             createButton("{% trans 'Schieben' %}", "transfer", function() {
                 createStackWith(selected_card);
                 deleteButton("transfer");
@@ -521,16 +545,15 @@ function setupNewRound(data) {
 }
 
 function handleTransfer(data) {
-    clearStacks();
-    refreshStacks(JSON.parse(data.stacks));
-    updatePlayerInfo(data);
-    old_stacks = JSON.parse(data.stacks);
-    var attacking = players[data.attacking];
-    removeCardFrom(attacking, player_cards[attacking].length-data.attacking_n);
-    determineGameMode(data);
-    if(game_mode == "attacking") {
-        return;
+    function callback(cards, player, data) {
+        clearStacks();
+        refreshStacks(JSON.parse(data.stacks));
+        updatePlayerInfo(data);
+        old_stacks = JSON.parse(data.stacks);
+        var attacking = players[data.attacking];
+        determineGameMode(data);
     }
+    handleNewCards(data, callback, true);
 }
 
 function sendDone() {
