@@ -90,6 +90,11 @@
                 <span id="where">{% trans 'Wo bin ich?' %}</span>
             </div>
         </div>
+    {% else %}
+        <div style="margin-top: 10px" class="button-like" onclick="markCurrent()">
+            <img src="{% static 'icons/question.png' %}">
+            <span id="where">{% trans 'Wo bin ich?' %}</span>
+    </div>
     {% endif %}
     <br>
     {% include 'account/user_loop.html' %}

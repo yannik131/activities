@@ -67,7 +67,9 @@ function markCurrent(callback) {
             marker.bindPopup(translations.here);
             map.setView([lat, lon], 13);
             document.getElementById('where').innerHTML = "{% trans 'Wo bin ich?' %}";
-            callback();
+            if(callback) {
+                callback();
+            }
             marking = false;
         },
         function(error) {
