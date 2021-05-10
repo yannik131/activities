@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 18:34+0000\n"
-"PO-Revision-Date: 2021-05-10 20:34+0200\n"
+"POT-Creation-Date: 2021-05-10 19:27+0000\n"
+"PO-Revision-Date: 2021-05-10 21:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -916,7 +916,7 @@ msgid "Ihre Posts"
 msgstr "Your posts"
 
 #: account/templates/account/user_post_list.html:9
-#: activity/templates/activity/detail.html:99
+#: activity/templates/activity/detail.html:110
 #: usergroups/templates/usergroups/group_detail.html:73
 msgid "Post erstellen"
 msgstr "Create post"
@@ -941,7 +941,7 @@ msgstr ""
 "myactivities.net :)"
 
 #: account/templates/javascript/edit.js:11
-#: activity/templates/javascript/map.js:92
+#: activity/templates/javascript/map.js:112
 msgid "Erlaubte Beschreibungslänge: 3-100 Zeichen. Derzeit: "
 msgstr "Allowed description length: 3-100 characters. Currently length: "
 
@@ -1301,20 +1301,26 @@ msgstr "What’s the name of your location?"
 msgid "Abbrechen"
 msgstr "Cancel"
 
-#: activity/templates/activity/detail.html:85
-msgid "Aktuelle Position für alle markieren"
-msgstr "Mark current position for everyone"
+#: activity/templates/activity/detail.html:86
+msgid "Standort markieren"
+msgstr "Mark location"
 
-#: activity/templates/activity/detail.html:93
+#: activity/templates/activity/detail.html:90
+#: activity/templates/activity/detail.html:96
+#: activity/templates/javascript/map.js:75
+msgid "Wo bin ich?"
+msgstr "Where am I?"
+
+#: activity/templates/activity/detail.html:104
 msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
 msgstr "If you want to see the members, you need to enter the activity."
 
-#: activity/templates/activity/detail.html:95
+#: activity/templates/activity/detail.html:106
 #: multiplayer/templates/javascript/lobby.js:46
 msgid "Beitreten"
 msgstr "Join"
 
-#: activity/templates/activity/detail.html:98
+#: activity/templates/activity/detail.html:109
 msgid "Beiträge"
 msgstr "Posts"
 
@@ -1335,19 +1341,23 @@ msgstr ""
 "Seems like I found this picture somewhere on the internet. In case it's "
 "yours and you want be credited, send me a message: "
 
-#: activity/templates/javascript/map.js:11
+#: activity/templates/javascript/map.js:18
 msgid "Sie sind hier."
 msgstr "You are here."
 
-#: activity/templates/javascript/map.js:12
+#: activity/templates/javascript/map.js:19
 msgid "Total: "
 msgstr "Total: "
 
-#: activity/templates/javascript/map.js:13
+#: activity/templates/javascript/map.js:20
 msgid "Mitglieder: "
 msgstr "Members: "
 
-#: activity/templates/javascript/map.js:51
+#: activity/templates/javascript/map.js:67
+msgid "Standort bestimmen.."
+msgstr "Getting location.."
+
+#: activity/templates/javascript/map.js:82
 msgid ""
 "Ihre Position wird nur für die Zentrierung der Karte und zum Hinzufügen "
 "Ihrer eigenen Markierungen genutzt. Ortungsrechte können Sie in den "
@@ -1357,15 +1367,11 @@ msgstr ""
 "location markers. You can change access rights to your location in your "
 "device or browser settings."
 
-#: activity/templates/javascript/map.js:70
-msgid "Moment noch! Ihr Standort wird gerade bestimmt."
-msgstr "One moment! Your location is being determined."
-
-#: activity/templates/javascript/map.js:77
+#: activity/templates/javascript/map.js:96
 msgid "Diese Markierung ist zu nah an der Markierung "
 msgstr "This marker is too close to the marker "
 
-#: activity/templates/javascript/map.js:77
+#: activity/templates/javascript/map.js:96
 msgid "Markierungen müssen mindestens 10m auseinanderliegen, hier sind es: "
 msgstr "Markers have to be at least 10m apart, but in this case it’s only: "
 
@@ -3332,6 +3338,12 @@ msgstr "[Delete]"
 #, python-format
 msgid " vor %(v0)s"
 msgstr " %(v0)s ago"
+
+#~ msgid "Aktuelle Position für alle markieren"
+#~ msgstr "Mark current position for everyone"
+
+#~ msgid "Moment noch! Ihr Standort wird gerade bestimmt."
+#~ msgstr "One moment! Your location is being determined."
 
 #~ msgid "Unterstützt werden 2, 3 oder 4 Spieler"
 #~ msgstr "2, 3 or 4 players"

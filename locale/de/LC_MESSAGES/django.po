@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 18:34+0000\n"
+"POT-Creation-Date: 2021-05-10 19:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -874,7 +874,7 @@ msgid "Ihre Posts"
 msgstr ""
 
 #: account/templates/account/user_post_list.html:9
-#: activity/templates/activity/detail.html:99
+#: activity/templates/activity/detail.html:110
 #: usergroups/templates/usergroups/group_detail.html:73
 msgid "Post erstellen"
 msgstr ""
@@ -896,7 +896,7 @@ msgid ""
 msgstr ""
 
 #: account/templates/javascript/edit.js:11
-#: activity/templates/javascript/map.js:92
+#: activity/templates/javascript/map.js:112
 msgid "Erlaubte Beschreibungslänge: 3-100 Zeichen. Derzeit: "
 msgstr ""
 
@@ -1243,20 +1243,26 @@ msgstr ""
 msgid "Abbrechen"
 msgstr ""
 
-#: activity/templates/activity/detail.html:85
-msgid "Aktuelle Position für alle markieren"
+#: activity/templates/activity/detail.html:86
+msgid "Standort markieren"
 msgstr ""
 
-#: activity/templates/activity/detail.html:93
+#: activity/templates/activity/detail.html:90
+#: activity/templates/activity/detail.html:96
+#: activity/templates/javascript/map.js:75
+msgid "Wo bin ich?"
+msgstr ""
+
+#: activity/templates/activity/detail.html:104
 msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
 msgstr ""
 
-#: activity/templates/activity/detail.html:95
+#: activity/templates/activity/detail.html:106
 #: multiplayer/templates/javascript/lobby.js:46
 msgid "Beitreten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:98
+#: activity/templates/activity/detail.html:109
 msgid "Beiträge"
 msgstr ""
 
@@ -1275,34 +1281,34 @@ msgid ""
 "auf das Urheberrecht erheben wollen, schicken Sie mir eine Nachricht: "
 msgstr ""
 
-#: activity/templates/javascript/map.js:11
+#: activity/templates/javascript/map.js:18
 msgid "Sie sind hier."
 msgstr ""
 
-#: activity/templates/javascript/map.js:12
+#: activity/templates/javascript/map.js:19
 msgid "Total: "
 msgstr ""
 
-#: activity/templates/javascript/map.js:13
+#: activity/templates/javascript/map.js:20
 msgid "Mitglieder: "
 msgstr ""
 
-#: activity/templates/javascript/map.js:51
+#: activity/templates/javascript/map.js:67
+msgid "Standort bestimmen.."
+msgstr ""
+
+#: activity/templates/javascript/map.js:82
 msgid ""
 "Ihre Position wird nur für die Zentrierung der Karte und zum Hinzufügen "
 "Ihrer eigenen Markierungen genutzt. Ortungsrechte können Sie in den "
 "Einstellungen Ihres Gerätes/Browsers ändern."
 msgstr ""
 
-#: activity/templates/javascript/map.js:70
-msgid "Moment noch! Ihr Standort wird gerade bestimmt."
-msgstr ""
-
-#: activity/templates/javascript/map.js:77
+#: activity/templates/javascript/map.js:96
 msgid "Diese Markierung ist zu nah an der Markierung "
 msgstr ""
 
-#: activity/templates/javascript/map.js:77
+#: activity/templates/javascript/map.js:96
 msgid "Markierungen müssen mindestens 10m auseinanderliegen, hier sind es: "
 msgstr ""
 
