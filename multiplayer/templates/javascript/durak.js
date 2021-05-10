@@ -271,7 +271,7 @@ function handleNewCards(data, callback, pause) {
         }
         updateButtons();
         paused = false;
-    }, 1000);
+    }, 750);
 }
 
 function handleMove(data) {
