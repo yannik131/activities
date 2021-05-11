@@ -88,4 +88,10 @@ logo
 anonym ohne registrieren?
 
 topmenu
-beige
+padding vertikale liste
+vertikale liste umranden
+link bild weg
+divs anderen hintergrund zum hervorheben
+icons ausmachen
+
+<Activity: Zöliakie>]>

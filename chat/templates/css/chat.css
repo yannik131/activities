@@ -188,6 +188,7 @@
     height: 60px;
     margin-bottom: 5px;
     margin-right: 5px;
+    margin-left: 5px;
     background-color: darkgray;
     border-radius: 15px;
 }
@@ -199,10 +200,10 @@
 
 .chat-item .chat-list-image {
     position: absolute;
-    left: 0;
+    left: 5px;
     top: 0;
     bottom: 0;
-    right: 80%;
+    max-width: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -220,7 +221,8 @@
 }
 
 .chat-item img {
-    max-height: 55px;
+    border-radius: 10px;
+    max-width: 100%;
 }
 
 .chat-item .chat-bell {

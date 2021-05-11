@@ -19,8 +19,8 @@ body {
     top: 0;
     margin: auto;
     max-width: 1000px;
-    left: 0px;
-    right: 0px;
+    left: 5px;
+    right: 5px;
     color: white;
     font-family: "Arial", "Verdana", "Helvectica";
     flex-grow: 1;
@@ -218,6 +218,7 @@ select:focus, select:hover {
 .activity-horizontal-list .item {
     margin: 10px 10px;
     border: 1px solid transparent;
+    background-color: black;
     border-radius: 10%;
     cursor: pointer;
     display: inline-block;
@@ -230,6 +231,7 @@ select:focus, select:hover {
 
 .activity-horizontal-list .item .title {
     text-align: center;
+    margin-top: 5px;
 }
 
 .activity-horizontal-list .photo {
