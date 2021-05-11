@@ -1,6 +1,6 @@
 {% load i18n %}
 
-let markers, population;
+let markers, population, loc_marker;
 var marking = false;
 const zoom_levels = {
     0: 5, 1: 7, 2: 9, 3: 12
@@ -64,13 +64,16 @@ function markCurrent(callback) {
         return;
     }
     marking = true;
+    if(loc_marker) {
+        loc_marker.remove();
+    }
     document.getElementById('where').innerHTML = "{% trans 'Standort bestimmen..' %}";
     navigator.geolocation.getCurrentPosition(
         function(position) {
             lat = position.coords.latitude;
             lon = position.coords.longitude;
-            var marker = L.marker([lat, lon]).addTo(map);
-            marker.bindPopup(translations.here);
+            loc_marker = L.marker([lat, lon]).addTo(map);
+            loc_marker.bindPopup(translations.here);
             map.setView([lat, lon]);
             document.getElementById('where').innerHTML = "{% trans 'Wo bin ich?' %}";
             if(callback) {
@@ -80,7 +83,8 @@ function markCurrent(callback) {
         },
         function(error) {
             alert("{% trans 'Ihre Position wird nur für die Zentrierung der Karte und zum Hinzufügen Ihrer eigenen Markierungen genutzt. Ortungsrechte können Sie in den Einstellungen Ihres Gerätes/Browsers ändern.' %}");
-        }
+        },
+        {enableHighAccuracy: true}
     );
 }
 

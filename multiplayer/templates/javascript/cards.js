@@ -881,7 +881,6 @@ if(window.document.documentMode) {
 }
 
 window.addEventListener('load', function() {
-    document.querySelector('.footer').style.display = 'none';
     field = document.querySelector(".game-field");
     game_resize();
 });

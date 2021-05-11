@@ -32,14 +32,14 @@
     {% endblock %}
 </script>
 <div class="content">
-    <div id="inner-div" style='position: relative; top: 0px; right: 0; left: 0; min-height: 100vh;'>
+    <div id="inner-div" style='position: relative; min-height: calc(100vh - 20px);'>
         <div style="height: 50px"></div>
         {% block content %}
         {% endblock %}
-        <div class="footer" id="footer">
-            <a href="{% url 'account:impressum' %}">{% trans 'Info' %}</a>
-            Icons: <a href='https://icons8.com/'>icons8.com</a>
-        </div>
+    </div>
+    <div class="footer" id="footer">
+        <a href="{% url 'account:impressum' %}">{% trans 'Info' %}</a>
+        Icons: <a href='https://icons8.com/'>icons8.com</a>
     </div>
 </div>
 
