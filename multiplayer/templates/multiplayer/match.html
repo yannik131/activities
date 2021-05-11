@@ -8,58 +8,57 @@
 {% block style%}{% include 'css/match.css' %}{% endblock %}
 
 {% block content %}
-    <div class="match-chat" id="chat-window-{{ room.id }}">
-        {% include 'chat/chat_window.html' %}
+<div class="match-chat">
+    {% include 'chat/chat_window.html' %}
+</div>
+<div class="match-members">
+    <div class="competitive" style="margin: 10px 0; font-size: 16px;">
+        {% if is_member and user != match.admin %}
+            <div class="left" onclick=openLink("{% url 'multiplayer:leave_match' match.activity.name match.id %}")>
+                <img src="{% static 'icons/bye.png' %}">
+                {% trans "Verlassen" %}
+            </div>
+            <div class="right" onclick="location.href='{% call_method match 'lobby_url' request %}'">
+                <img src="{% static 'icons/lobby.png' %}">Lobby
+            </div>
+        {% elif user == match.admin %}
+            <div class="left" style="width: 33%" onclick=openLink("{% url 'multiplayer:leave_match' match.activity.name match.id %}")>
+                <img src="{% static 'icons/bye.png' %}">
+                {% trans "Abbrechen" %}
+            </div>
+            <div class="left" style="width: 33%" onclick="location.href='{% call_method match 'lobby_url' request %}'">
+                <img src="{% static 'icons/lobby.png' %}">Lobby
+            </div>
+            <div class="right" style="width: 34%" onclick="startMatch()">
+                <img src="{% static 'icons/start.png' %}">
+                {% trans "Starten" %}
+            </div>
+        {% endif %}
     </div>
-    <div class="match-members">
-        <div class="competitive" style="margin: 10px 0; font-size: 16px;">
-            {% if is_member and user != match.admin %}
-                <div class="left" onclick=openLink("{% url 'multiplayer:leave_match' match.activity.name match.id %}")>
-                    <img src="{% static 'icons/bye.png' %}">
-                    {% trans "Verlassen" %}
-                </div>
-                <div class="right" onclick="location.href='{% call_method match 'lobby_url' request %}'">
-                    <img src="{% static 'icons/lobby.png' %}">Lobby
-                </div>
-            {% elif user == match.admin %}
-                <div class="left" style="width: 33%" onclick=openLink("{% url 'multiplayer:leave_match' match.activity.name match.id %}")>
-                    <img src="{% static 'icons/bye.png' %}">
-                    {% trans "Abbrechen" %}
-                </div>
-                <div class="left" style="width: 33%" onclick="location.href='{% call_method match 'lobby_url' request %}'">
-                    <img src="{% static 'icons/lobby.png' %}">Lobby
-                </div>
-                <div class="right" style="width: 34%" onclick="startMatch()">
-                    <img src="{% static 'icons/start.png' %}">
-                    {% trans "Starten" %}
-                </div>
-            {% endif %}
-        </div>
-        <div class="member-grid">
-            <table>
-                {% for username, position in members %}
-                    {% if not forloop.counter|divisibleby:2 %}<tr>{% endif %}
-                    <td>
-                        <div class="grid-overview">
-                            <div class="number">{{ forloop.counter }}: </div>
-                            <div class="username" id="grid-member-{{ forloop.counter }}">
-                                {% if forloop.counter > match.member_limit %}
-                                    <img src="{% static 'icons/cross.png' %}">
-                                {% else %}
-                                    {{ username }}
-                                {% endif %}
-                                </div>
-                            <div class="kick-img">
-                                {% if forloop.counter != 1 and user == match.admin %}
-                                <img src="{% static 'icons/remove.png' %}" id="kick-img-{{ forloop.counter }}" {% if username != "" %} style="display: block"; onclick="kickUser('{{ username }}')"{% endif %}>
-                                {% endif %}
+    <div class="member-grid">
+        <table>
+            {% for username, position in members %}
+                {% if not forloop.counter|divisibleby:2 %}<tr>{% endif %}
+                <td>
+                    <div class="grid-overview">
+                        <div class="number">{{ forloop.counter }}: </div>
+                        <div class="username" id="grid-member-{{ forloop.counter }}">
+                            {% if forloop.counter > match.member_limit %}
+                                <img src="{% static 'icons/cross.png' %}">
+                            {% else %}
+                                {{ username }}
+                            {% endif %}
                             </div>
+                        <div class="kick-img">
+                            {% if forloop.counter != 1 and user == match.admin %}
+                            <img src="{% static 'icons/remove.png' %}" id="kick-img-{{ forloop.counter }}" {% if username != "" %} style="display: block"; onclick="kickUser('{{ username }}')"{% endif %}>
+                            {% endif %}
                         </div>
-                    </td>
-                    {% if forloop.counter|divisibleby:2 %}</tr>{% endif %}
-                {% endfor %}
-            </table>
-        </div>
+                    </div>
+                </td>
+                {% if forloop.counter|divisibleby:2 %}</tr>{% endif %}
+            {% endfor %}
+        </table>
     </div>
 </div>
 {% endblock %}

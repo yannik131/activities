@@ -266,9 +266,17 @@ function openLink(link) {
     location.href = link;
 }
 
-function resize() {
-    
-}
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+// We listen to the resize event
+window.addEventListener('resize', () => {
+  // We execute the same script as before
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
 
 function showChat(chat, id) {
     var chats = document.getElementsByClassName('chat-window');
@@ -305,9 +313,6 @@ function get_color(percent, reverse) {
         return "rgb("+(percent*255)+","+((1-percent)*255)+",0)";
     }
 }
-
-window.addEventListener('load', resize);
-window.addEventListener('resize', resize);
 
 {% if user.is_authenticated %}
     connect();

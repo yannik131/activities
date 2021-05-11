@@ -69,7 +69,6 @@ function displayResults() {
         title.style.color = get_color(score/100, i == 0);
         title.innerHTML += prefix+diff+"%";
     }
-    resize();
 }
 
 window.addEventListener('load', displayResults);

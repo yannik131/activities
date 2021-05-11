@@ -176,6 +176,4 @@ function addChatMember(username, user_id, room_id, img_src) {
     img.src = img_src;
 }
 
-window.addEventListener('resize', positionChat);
-
 window.addEventListener('load', positionChat);
