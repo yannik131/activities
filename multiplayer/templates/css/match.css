@@ -3,7 +3,7 @@
     top: 70%;
     left: 0;
     right: 0;
-    bottom: 20px;
+    bottom: 0px;
     overflow-y: scroll;
     scrollbar-width: none;
 }
@@ -13,7 +13,7 @@
     top: 60px;
     left: 0;
     right: 0;
-    bottom: 20px;
+    bottom: 0px;
 }
 
 .member-grid table {

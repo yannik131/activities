@@ -21,6 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<div class="base-container" id='base-container'></div>
 <script>
     {% include 'javascript/base.js' %}
     {% if user.is_authenticated %}
@@ -31,7 +32,7 @@
     {% endblock %}
 </script>
 <div class="content">
-    <div id="inner-div" style='top: 0; min-height: calc(100vh - 20px); min-height: calc(var(--vh, 1vh) * 100 - 20px);'>
+    <div id="inner-div" style='position: relative; min-height: calc(100vh - 20px); min-height: calc(var(--vh, 1vh) * 100 - 20px);'>
         <div style="height: 50px"></div>
         {% block content %}
         {% endblock %}
@@ -94,5 +95,6 @@
         document.getElementsByClassName("content")[0].style.right = 0;
     </script>
 {% endif %}
+</div>
 </body>
 </html>
