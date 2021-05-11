@@ -12,11 +12,7 @@
 <div class="list">
     {% for user, score in people %}
         <div class="item" onclick="location.href='{{ user.get_absolute_url }}'" style="width: 150px; height: 150px">
-            {% if user.image %}
-                <img src="{% thumbnail user.image 200x200 %}" class="image" style="max-height: 50%">
-            {% else %}
-                <img src="{% static 'icons/users-and-groups-user@32px.png' %}" class="image">
-            {% endif %}
+            <img src="{% thumbnail user.get_image 200x200 %}" class="image" style="max-height: 50%">
             <div class="title">
                 {{ user }}{% if score %}: {{ score }}%{% endif %}
             </div>

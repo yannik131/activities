@@ -26,11 +26,7 @@
             <div class="item" style="width: 250px;">
                 <div class="top">
                     {% trans 'Von' %}:
-                    {% if request.requesting_user.image %}
-                    <img src="{% thumbnail request.requesting_user.image 0x80 %}">
-                    {% else %}
-                    <img src="{% static 'icons/users-and-groups-user@32px.png' %}">
-                    {% endif %}
+                    <img src="{% thumbnail request.requesting_user.get_image 0x80 %}">
                     <a href="{% url 'account:detail' request.requesting_user.username %}">{{ request.requesting_user.username }}</a>
                 </div>
                 <div class="middle">
@@ -65,11 +61,7 @@
             {% for request in sent_friend_requests %}
             <div class="item" style="width: 200px;">
                 <div class="top">
-                    {% trans 'An' %}:{% if request.requested_user.image %}
-                    <img src="{% thumbnail request.requested_user.image 0x80 %}">
-                    {% else %}
-                    <img src="{% static 'icons/users-and-groups-user@32px.png' %}">
-                    {% endif %}
+                    <img src="{% thumbnail request.requested_user.get_image 0x80 %}">
                     <a href="{% url 'account:detail' request.requested_user.username %}">{{ request.requested_user.username }}</a>
                 </div>
                 <div class="middle">

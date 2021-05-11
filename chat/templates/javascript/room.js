@@ -32,7 +32,7 @@ function init_chat(pk) {
 function handleChatMessage(data) {
     switch(data.action) {
         case 'join':
-            addChatMember(data.username, data.user_id, data.room_id, data.url);
+            addChatMember(data.username, data.user_id, data.sex, data.room_id, data.url);
             data.time = new Date();
             data.message = data.username + " {% trans 'ist dem Chat beigetreten.' %}";
             addMessageToChat(data);
@@ -150,7 +150,7 @@ function positionChat() {
     }
 }
 
-function addChatMember(username, user_id, room_id, img_src) {
+function addChatMember(username, user_id, sex, room_id, img_src) {
     var member = document.createElement('div');
     member.className = 'chat-member';
     member.onclick = function() {
@@ -171,7 +171,15 @@ function addChatMember(username, user_id, room_id, img_src) {
         moveMembers(room_id);
     });
     if(img_src.length == 0) {
-        img_src = "{% static 'icons/users-and-groups-user@32px.png' %}";
+        if(sex == 'm') {
+            img_src = "{% static 'icons/male_user.png' %}";
+        }
+        else if(sex == 'f') {
+            img_src = "{% static 'icons/female_user.png' %}";
+        }
+        else {
+            img_src = "{% static 'icons/male_female_user.png' %}";
+        }
     }
     img.src = img_src;
 }

@@ -4,11 +4,7 @@
     {% for user in users %}
         <div class="item">
             <a href="{{ user.get_absolute_url }}">
-            {% if user.image %}
-            <img src="{% thumbnail user.image 200x200 %}" class="photo">
-            {% else %}
-            <img src="{% static 'icons/users-and-groups-user@32px.png' %}" width="100">
-            {% endif %}
+            <img src="{% thumbnail user.get_image 200x200 %}" class="photo">
             </a>
             <div class="title">
                 <span {% if user.channel_name %}style="color: yellow; font-weight: bold;"{% endif %}>{{ user }}</span>

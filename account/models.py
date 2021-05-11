@@ -11,6 +11,10 @@ from django.utils.translation import gettext_lazy as _
 from character.models import Character
 from geopy import Nominatim
 import time
+from django.core.files import File
+from django.conf import settings
+import os
+from easy_thumbnails.files import get_thumbnailer
 
 class User(AbstractUser):
     profile_text = models.TextField(null=True, blank=True)
@@ -49,7 +53,18 @@ class User(AbstractUser):
         'likes': _('gefällt'),
         'dislikes': _('missfällt')
     }
-
+    
+    @property
+    def get_image(self):
+        if self.image:
+            return self.image
+        elif self.sex == 'm':
+            return 'static/icons/male_user.png'
+        elif self.sex == 'f':
+            return 'static/icons/female_user.png'
+        else:
+            return 'static/icons/male_female_user.png'
+    
     def friendships(self):
         return list(chain(self.from_friendships.all(), self.to_friendships.all()))
 

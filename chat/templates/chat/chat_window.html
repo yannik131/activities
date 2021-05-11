@@ -15,11 +15,7 @@
         {% for member in room.members.all|slice:":15" %}
         {% if friendship and member != user or not friendship %}
             <div class="chat-member" id="member-{{ forloop.counter0 }}" onclick='openLink("{{ member.get_absolute_url }}")'>
-                {% if member.image %}
-                    <img src="{% thumbnail member.image 0x80 %}" onload="moveMembers({{ room_id }})">
-                {% else %}
-                    <img src="{% static 'icons/users-and-groups-user@32px.png' %}" onload="moveMembers({{ room_id }})">
-                {% endif %}
+                <img src="{% thumbnail member.get_image 0x80 %}" onload="moveMembers({{ room_id }})">
                 <span class="{{ member }}-span" id="{{ room_id }}-member-name-{{ member.id }}" {% if member.channel_name %}style="color: yellow"{% endif %}>{{ member }}</span>
             </div>
         {% endif %}

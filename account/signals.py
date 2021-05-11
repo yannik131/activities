@@ -5,6 +5,7 @@ from notify.utils import notify
 from chat.models import ChatRoom
 from geopy import Nominatim
 import time
+from django.contrib.staticfiles.storage import staticfiles_storage
 
 
 @receiver(post_save, sender=FriendRequest)
@@ -47,3 +48,12 @@ def location_created(instance: Location, created, **kwargs):
         instance.parent = parent
         instance.save()
         
+"""
+@receiver(pre_save, sender=User)
+def user_saved(instance, **kwargs):
+    if not instance.image:
+        if instance.sex == 'm':
+            instance.image = 'static/icons/male_user.png'
+        else:
+            instance.image = 'static/icons/female_user.png'
+"""

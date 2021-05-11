@@ -18,6 +18,7 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
             'type': 'chat_message',
             'action': 'join',
             "username": user.username,
+            'sex': user.sex,
             'room_id': instance.id,
             'user_id': user.id,
             'url': user.image.url if user.image else ""

@@ -8,7 +8,7 @@
             {% if group.image %}
                 <img src="{% thumbnail group.image 200x200 %}" class="image">
             {% else %}
-                <img src="{% static 'icons/users-and-groups-group@32px.png' %}" class="image">
+                <img src="{% static 'icons/group.png' %}" class="image">
             {% endif %}
             <div class="title">
                 {{ group }}{% if group.vacancies.all %}: <span style="color: orange; font-style: bold;">{{ group.vacancies.all|length }}</span>{% endif %}
