@@ -30,6 +30,10 @@ class MultiplayerMatch(models.Model):
     admin = models.ForeignKey(User, related_name='admin_matches', on_delete=models.CASCADE)
     options = HStoreField(default=dict, blank=True)
     
+    @property
+    def get_image(self):
+        return 'static/icons/match.png'
+    
     def __str__(self):
         return self.activity.name+__('-Match')
     

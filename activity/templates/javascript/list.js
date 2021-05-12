@@ -1,5 +1,8 @@
 function position() {
     const list = document.querySelector('.list');
+    if(list.childElementCount == 0) {
+        return;
+    }
     var x = -10;
     var n = 0;
     for(; n < list.children.length; n++) {

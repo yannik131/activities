@@ -65,6 +65,10 @@ class Application(models.Model):
 
     class Meta:
         ordering = ('status',)
+        
+    @property
+    def get_image(self):
+        return 'static/icons/interview.png'
 
     def chat_allowed_for(self, user):
         return user in [self.user, self.vacancy.target.admin] + list(self.vacancy.target.members.all())

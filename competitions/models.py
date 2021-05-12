@@ -31,6 +31,10 @@ class Match(models.Model):
     action_strings = {
         'accepted_application': _('Hat Ihre Bewerbung akzeptiert')
     }
+    
+    @property
+    def get_image(self):
+        return 'static/icons/match.png'
 
     def verbose(self):
         return str(self.activity) + "-" + self.__str__()
@@ -71,6 +75,10 @@ class Tournament(models.Model):
         'started_new_round': _('hat eine neue Runde'),
         'accepted_application': _('Hat Ihre Bewerbung akzeptiert')
     }
+    
+    @property
+    def get_image(self):
+        return 'static/icons/tournament.png'
 
     def get_absolute_url(self):
         return reverse('competitions:tournament_detail', args=[self.id])

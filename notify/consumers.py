@@ -99,6 +99,31 @@ class NotificationConsumer(WebsocketConsumer):
             self.generate_chat_window(text_data)
         elif text_data['action'] == 'list':
             self.generate_chat_list(text_data)
+               
+    def distribute_chat_message(self, text_data):
+        chat_room_id = text_data['id']
+        chat_room = ChatRoom.objects.get(id=chat_room_id) 
+        if 'update_check' in text_data:
+            self.user.last_chat_checks.get(room=chat_room).update()
+            return
+        time = now()
+        timestr = time.isoformat()
+
+        log = ChatLogEntry.objects.create(
+            author=self.user,
+            chat_room=chat_room,
+            text=text_data['message'],
+            created=time)
+        
+        broadcast(chat_room.members.all(), {
+            'type': 'chat_message',
+            'room_id': chat_room_id,
+            'message': text_data['message'],
+            'username': self.user.username,
+            'time': timestr,
+            'origin': log.full_origin(self.user),
+            'action': 'sent'
+        })
             
     def generate_chat_list(self, text_data):
         with translation.override(text_data['language_code']):
@@ -125,32 +150,7 @@ class NotificationConsumer(WebsocketConsumer):
                 'action': 'list',
                 'html': chat_list
             })) 
-            
-    def distribute_chat_message(self, text_data):
-        chat_room_id = text_data['id']
-        chat_room = ChatRoom.objects.get(id=chat_room_id) 
-        if 'update_check' in text_data:
-            self.user.last_chat_checks.get(room=chat_room).update()
-            return
-        time = now()
-        timestr = time.isoformat()
-
-        log = ChatLogEntry.objects.create(
-            author=self.user,
-            chat_room=chat_room,
-            text=text_data['message'],
-            created=time)
         
-        broadcast(chat_room.members.all(), {
-            'type': 'chat_message',
-            'room_id': chat_room_id,
-            'message': text_data['message'],
-            'username': self.user.username,
-            'time': timestr,
-            'origin': log.full_origin(self.user),
-            'action': 'sent'
-        })
-                
     def generate_chat_window(self, text_data):
         room = ChatRoom.objects.get(pk=text_data['id'])
         self.user.last_chat_checks.get(room=room).update()

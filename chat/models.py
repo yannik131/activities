@@ -40,7 +40,7 @@ class ChatRoom(models.Model):
         ct = ContentType.objects.get_for_model(target)
         room, created = ChatRoom.objects.get_or_create(target_ct=ct, target_id=target.id)
         return room
-
+            
     def is_allowed_here(self, user):
         return self.target.chat_allowed_for(user)
 

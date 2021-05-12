@@ -35,6 +35,12 @@ class Activity(TranslatableModel):
         verbose_name_plural = 'activities'
         ordering = ['-pk', 'type']
 
+    @property
+    def get_image(self):
+        if self.image:
+            return self.image
+        return 'static/icons/activity.png'
+        
     def __str__(self):
         return self.name
 
@@ -87,6 +93,12 @@ class Category(TranslatableModel):
     class Meta:
         verbose_name_plural = 'categories'
 
+    @property
+    def get_image(self):
+        if self.image:
+            return self.image
+        return 'static/icons/category.png'
+    
     def __str__(self):
         return self.name
 

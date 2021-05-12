@@ -29,6 +29,12 @@ class UserGroup(models.Model):
 
     class Meta:
         unique_together = ('name', 'category')
+        
+    @property
+    def get_image(self):
+        if self.image:
+            return self.image
+        return 'static/icons/group.png'
 
     def __str__(self):
         return self.name

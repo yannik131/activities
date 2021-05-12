@@ -7,11 +7,7 @@
     {% for room, target in rooms %}
         <div class="chat-item" id="chat-item-{{ room.id }}" onclick="requestChatWindow({{ room.id }})">
             <div class="chat-list-image">
-                {% if target.image %}
-                    <img src="{% thumbnail target.image 200x200 %}">
-                {% else %}
-                    <img src="{% static 'icons/group.png' %}">
-                {% endif %}
+                <img src="{% thumbnail target.get_image 200x200 %}">
             </div>
             <div class="chat-list-title"{% if target.channel_name %}style="color: yellow"{% endif %}>
                 {{ forloop.counter }}. {{ target }}

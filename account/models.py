@@ -241,6 +241,10 @@ class Location(models.Model):
             models.Index(fields=['country', 'state', 'county', 'city'])
         ]
         
+    @property
+    def get_image(self):
+        return 'static/icons/location.png'
+        
     @staticmethod
     def fill_coordinates():
         geolocator = Nominatim(user_agent='activities')
@@ -319,7 +323,7 @@ class Location(models.Model):
         return dict([(component, getattr(self, component)) for component in Location.components[:self.highest_component_index()] if getattr(self, component)])
 
     def get_components(self, components):
-        return [getattr(self, component) + " " for component in components]
+        return [str(getattr(self, component)) + " " for component in components]
 
     def equal_to(self, location, granularity):
         i = Location.components.index(granularity)
