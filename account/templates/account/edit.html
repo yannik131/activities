@@ -28,7 +28,7 @@
     <ul>
         {% for marker in user.markers.all %}
             <li>
-                <input id="{{ marker.id }}" type="text" value="{{ marker.description }}"> -> {{ marker.activity }} <button onclick="saveMarker({{ marker.id }})" style="margin-right: 15px">{% trans 'Speichern' %}</button><button onclick="deleteMarker({{ marker.id }})" id='delete-{{ marker.id }}'>{% trans 'Löschen' %}</button>
+                <input id="{{ marker.id }}" type="text" value="{{ marker.description }}"> -> <a href="{{ marker.activity.get_absolute_url }}">{{ marker.activity }}</a> <button onclick="saveMarker({{ marker.id }})" style="margin-right: 15px">{% trans 'Speichern' %}</button><button onclick="deleteMarker({{ marker.id }})" id='delete-{{ marker.id }}'>{% trans 'Löschen' %}</button>
             </li>
         {% empty %}
             <div class="center-container">

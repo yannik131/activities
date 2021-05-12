@@ -93,5 +93,4 @@ vertikale liste umranden
 link bild weg
 divs anderen hintergrund zum hervorheben
 icons ausmachen
-
-<Activity: Zöliakie>]>
+chat eigens icon für jeden typ falls kein bild

@@ -350,7 +350,7 @@ select:focus, select:hover {
     display: flex;
     background-color: #1a1a1a;
     border-radius: 10px;
-    height: 40px;
+    height: 35px;
     margin-bottom: 15px;
     font-weight: bold;
     font-size: 18px;
@@ -398,7 +398,7 @@ select:focus, select:hover {
     background-color: #1a1a1a;
     cursor: pointer;
     padding: 5px 5px;
-    border-radius: 5px;
+    border-radius: 10px;
     height: 25px;
     font-weight: bold;
     font-size: 18px;

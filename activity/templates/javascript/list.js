@@ -1,23 +1,20 @@
 function position() {
-    const items = document.getElementsByClassName('item');
     const list = document.querySelector('.list');
-    list.style.left = 10+"px";
-
-    var right_edge = -1;
-    for(var i = 0; i < items.length; i++) {
-        var item = items[i];
-        if(item.getBoundingClientRect().right > right_edge) {
-            right_edge = item.getBoundingClientRect().right;
+    var x = -10;
+    var n = 0;
+    for(; n < list.children.length; n++) {
+        var child_x = list.children[n].getBoundingClientRect().x;
+        if(child_x > x) {
+            x = child_x;
         }
         else {
             break;
         }
     }
-
-    const empty_space = list.getBoundingClientRect().right-right_edge;
-    list.style.marginLeft = (empty_space/2)+"px";
+    const wl = list.offsetWidth;
+    const wc = list.children[0].offsetWidth+20;
+    const empty = wl-n*wc-10;
+    list.style.marginLeft = (empty/2)+"px";
 }
-
-window.addEventListener('resize', position);
 
 window.addEventListener('load', position);

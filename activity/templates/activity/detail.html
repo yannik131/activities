@@ -20,17 +20,19 @@
         </div>
     {% endif %}
     <div style="background-color: black; border-radius: 10px;">
-        <h1 class="center-container">{{ activity.verbose }}</h1>
-        <p class="center-container">
-            <i>{{ activity.description }}</i>
-        </p>
+        <h1 class="center-container" style="margin-bottom: 0;">{{ activity.verbose }}</h1>
+        {% if activity.description %}
+            <p class="center-container">
+                <i>{{ activity.description }}</i>
+            </p>
+        {% endif %}
         <p class="center-container">
             <b><i><span id="info"></span></i></b>
             {% if suggestion %}
                 <br>
                 {% trans 'Passt zu Ihnen zu ' %}{{ suggestion.score }}%
             {% endif %}
-    </p>
+        </p>
     </div>
     <h2>
         {% if activity.categories.all %}
