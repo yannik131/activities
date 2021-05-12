@@ -32,7 +32,7 @@ class MultiplayerMatch(models.Model):
     
     @property
     def get_image(self):
-        return 'static/icons/match.png'
+        return self.activity.image
     
     def __str__(self):
         return self.activity.name+__('-Match')
