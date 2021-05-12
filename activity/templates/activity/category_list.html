@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans "Alle Kategorien" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Alle Kategorien" %}</h1>
-    <p>{% trans "Hier eine Liste aller verfügbaren Kategorien" %}:</p>
+    <h1><img src="{% static 'icons/category.png' %}">{% trans "Alle Kategorien" %}</h1>
+    <p class="info-p">{% trans 'Hier finden Sie eine Liste aller verfügbaren Kategorien. In jeder Kategorie lassen sich eigene <a href="/usergroups/group_list">Gruppen erstellen</a>, in denen Sie chatten, telefonieren und Termine verwalten können.' %}</p>
     <div class="list">
         {% for category in categories %}
             <div class="item fixed" onclick="location.href='{{ category.get_absolute_url }}'">

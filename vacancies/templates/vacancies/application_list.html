@@ -5,28 +5,42 @@
 {% block title %}{% trans "Bewerbungen" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Bewerbungen" %}</h1>
+    <h1><img src="{% static 'icons/interview.png' %}">{% trans "Bewerbungen" %}</h1>
+    <p class="info-p">
+        {% trans 'Falls Sie in einer <a href="/activity/category_list">Kategorie</a> eine Gruppe oder in einer <a href="/activity/list">Aktivität</a> ein Match bzw. Turnier mit einer Leerstelle finden, können Sie sich dort bewerben. Die Bewerbungen werden hier dann aufgelistet.' %}
+    </p>
     <div class="match-list">
         {% for application in user.applications.all %}
-        <div class="item" style="width: 250px; height: 200px; cursor: pointer;" onclick=openLink("{{ application.vacancy.target.get_absolute_url }}")>
+        <div class="item" style="width: 250px; height: 200px;">
             <div class="top" style="height: 35%; overflow-y: scroll; scrollbar-width: none; word-wrap: break-word; align-items: center-stretch">
-                <span style="padding: 5px 5px; text-align: center">{{ application.vacancy.target }}: {{ application.vacancy }}</span>
+                <a href="{{ application.vacancy.target.get_absolute_url }}" style="padding: 5px 5px; text-align: center">{{ application.vacancy.target }}: {{ application.vacancy }}</a>
             </div>
             <div class="middle" style="height: 45%; top: 36%;">
                 {{ application.message }}
             </div>
             <div class="bottom" style="bottom: 0; height: 20%">
                 {% if application.status == 'pending' %}
-                <div class="button-like" onclick=openLink("{% url 'vacancies:delete_application' application.id %}")>
-                    <img src="{% static 'icons/remove.png' %}">
-                    {% trans 'Löschen' %}
+                <div class="competitive">
+                    <div class="left" onclick=openLink("{% url 'chat:chat_room' 'vacancies' 'application' application.id %}")>
+                        <img src="{% static 'icons/chat.png' %}">
+                        {% trans 'Chat' %}
+                    </div>
+                    <div class="right" onclick=openLink("{% url 'vacancies:delete_application' application.id %}")>
+                        <img src="{% static 'icons/remove.png' %}">
+                        {% trans 'Löschen' %}
+                    </div>
+                    
                 </div>
+                
                 {% endif %}
             </div>
         </div>
         {% endfor %}
     </div>
-    <h2>{% trans "Einladungen" %}</h2>
+    <h1><img src="{% static 'icons/invitation.png' %}">{% trans "Einladungen" %}</h2>
+    <p class="info-p">
+        {% trans 'Sie können von Gruppen, Turnieren und Matches eingeladen werden.' %}
+    </p>
     {% include 'vacancies/invitation_list.html' %}
     
 {% endblock %}

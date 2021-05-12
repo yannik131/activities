@@ -5,16 +5,12 @@
 <div class="list">
     {% for group in groups %}
         <div class="item" onclick="location.href='{{ group.get_absolute_url }}'">
-            {% if group.image %}
-                <img src="{% thumbnail group.image 200x200 %}" class="image">
-            {% else %}
-                <img src="{% static 'icons/group.png' %}" class="image">
-            {% endif %}
+            <img src="{% thumbnail group.get_image 200x200 %}" class="image" style="max-height: 50%">
             <div class="title">
                 {{ group }}{% if group.vacancies.all %}: <span style="color: orange; font-style: bold;">{{ group.vacancies.all|length }}</span>{% endif %}
             </div>
             <div class="subtext">
-                <a href="{{ group.category.get_absolute_url }}" style="text-decoration: underline;">{{ group.category.verbose }}</a>
+                <!--<a href="{{ group.category.get_absolute_url }}" style="text-decoration: underline;">{{ group.category.verbose }}</a>-->
                 {% trans "Mitglieder" %}: {{ group.members.all|length }}
             </div>
             {% if user == group.admin %}

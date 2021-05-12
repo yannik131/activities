@@ -5,13 +5,16 @@
 {% block title %}{% trans "Alle Aktivitäten" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Alle Aktivitäten" %}</h1>
+    <h1><img src="{% static 'icons/activity.png' %}">{% trans "Alle Aktivitäten" %}</h1>
+    <p class="info-p">
+        {% trans 'Hier finden Sie eine Liste aller Aktivitäten. Sie können Aktivitäten beitreten und so herausfinden, wer in Ihrer Gegend auch Spaß daran hat. Zudem können Sie auf einer Karte Markierungen machen, die für alle Mitglieder der Aktivität sichtbar sind und herausfinden, in welcher Gegend die Aktivität besonders beliebt ist.' %}
+    </p>
     <div class="search-bar">
         {% trans 'Suche: ' %}
         <input type="search" id="search-input" class="search-input" name="activity-search" value="{{ search_string|default_if_none:'' }}">
         <img src="{% static '/icons/search.png' %}" onclick=search() height="25px" style="margin-left: 5px; cursor: pointer">
     </div>
-    <p>
+    <p style="text-align: center">
         {% trans "Mitglieder anzeigen" %}: <br/>
         {% include 'activity/location_selection.html' %}
     </p>

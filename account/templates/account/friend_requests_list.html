@@ -7,14 +7,17 @@
 
 
 {% block content %}
-    <h1 class="center-container">{% blocktrans %}Ihre Freunde{% endblocktrans %}</h1>
+    <h1><img src="{% static 'icons/friendship.png' %}">{% blocktrans %}Ihre Freunde{% endblocktrans %}</h1>
+    <p class="info-p">
+        {% blocktrans %}Freunde finden Sie z. B. über Mitglieder von gemeinsamen <a href="/activity/list">Aktivitäten</a> oder über's <a href="/competitions/user_overview">Zocken</a>. Kennen Sie den Nutzernamen, können Sie auch direkt eine Anfrage senden. Falls Sie den <a href="/character/overview">Persönlichkeitstest</a> gemacht haben, können Sie sogar nach Leuten in Ihrer Nähe suchen und nach Übereinstimmung mit Ihrem Charakter sortieren! {% endblocktrans %}
+    </p>
     <div class="competitive">
         <div class="left" onclick=openLink("{% url 'account:send_custom_friend_request' %}")>
-            <img src="{% static 'icons/friendship.png' %}">
+            <img src="{% static 'icons/invitation.png' %}">
             {% trans 'Anfrage senden' %}
         </div>
         <div class="right" onclick=openLink("{% url 'account:people_list' %}")>
-            <img src="{% static 'icons/friendship.png' %}">{% blocktrans %}In Ihrer Nähe suchen{% endblocktrans %}
+            <img src="{% static 'icons/question.png' %}">{% blocktrans %}In Ihrer Nähe suchen{% endblocktrans %}
         </div>
     </div>
     

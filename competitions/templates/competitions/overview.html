@@ -6,11 +6,11 @@
 
 
 {% block content %}
-    <h1>{% blocktrans with v0=activity.name %}{{ v0 }}: Matches & Turniere{% endblocktrans %}</h1>
+    <h1><img src="{% static 'icons/tournament.png' %}">{% blocktrans with v0=activity.name %}{{ v0 }}: Matches & Turniere{% endblocktrans %}</h1>
     <p>{% include 'activity/location_selection.html' %}</p>
     <h2>{% blocktrans %}Turniere{% endblocktrans %}</h2>
     <div class="button-like" onclick=openLink("{% url 'competitions:create_tournament' activity.id %}")>
-        <img src="{% static 'icons/tournament.png' %}">
+        <img src="{% static 'icons/leaderboard.png' %}">
         {% blocktrans %}Turnier erstellen{% endblocktrans %}
     </div>
     <div class="match-list">

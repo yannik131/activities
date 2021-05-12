@@ -34,9 +34,6 @@ function activateMenu(element_id) {
     if(typeof game_resize == 'function') {
         game_resize();
     }
-    if(typeof position == 'function') {
-        position();
-    }
 }
 
 function createMessage(text) {

@@ -5,8 +5,8 @@
 {% block title %}{% blocktrans %}Account bearbeiten{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>{% blocktrans %}Account bearbeiten{% endblocktrans %}</h1>
-    <p>{% blocktrans %}Bearbeiten Sie Ihren Account mit folgendem Formular:{% endblocktrans %}</p>
+    <h1><img src="{% static 'icons/pen.png' %}">{% blocktrans %}Account bearbeiten{% endblocktrans %}</h1>
+    <p class="info-p">{% blocktrans %}Bearbeiten Sie Ihren Account mit folgendem Formular:{% endblocktrans %}</p>
     <form method="post" enctype="multipart/form-data">
         {{ user_form.as_p }}
         {% csrf_token %}

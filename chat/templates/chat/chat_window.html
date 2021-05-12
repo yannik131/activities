@@ -8,7 +8,7 @@
 <div class="chat-top" id="chat-top-{{ room_id }}">
     {% if not friendship %}
         <div class="chat-title" id='title-{{ room_id }}' onclick="openLink('{{ room.target.get_absolute_url }}')">
-            {% call_method room 'title_for' user %}:
+            {% call_method room 'title_for' user %}, {{ room.members.count }}</span>:
         </div>
     {% endif %}
     <div class="chat-members" id='chat-members-{{ room_id }}'>

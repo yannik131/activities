@@ -85,7 +85,10 @@ input, textarea, select {
     margin-right: 5px;
 }
 
-h1 {
+h1, h2, h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-style: italic;
 }
 
@@ -105,6 +108,29 @@ a:hover {
 .image {
     float: center;
     padding: 10px;
+}
+
+.info-p {
+    text-align: center;
+    background-color: #3b3b3b;
+    border-radius: 10px;
+    color: white;
+    padding: 5px 5px;
+}
+
+h1 img {
+    height: 40px;
+    margin-right: 5px;
+}
+
+h2 img {
+    height: 35px;
+    margin-right: 5px;
+}
+
+h3 img {
+    height: 30px;
+    margin-right: 5px;
 }
 
 table {
@@ -213,6 +239,8 @@ select:focus, select:hover {
 
 .activity-horizontal-list {
     display: block;
+    background-color: #3b3b3b;
+    border-radius: 10px;
 }
 
 .activity-horizontal-list .item {
@@ -257,6 +285,8 @@ select:focus, select:hover {
 
 .list {
     display: block;
+    background-color: #3b3b3b;
+    border-radius: 10px;
 }
 
 .list .item {
@@ -285,7 +315,7 @@ select:focus, select:hover {
 }
 .list .item .image {
     max-width: 100%;
-    max-height: 60%;
+    max-height: 50%;
     border-radius: 20%;
     display: block;
     margin-left: auto;
@@ -392,6 +422,9 @@ select:focus, select:hover {
     border-radius: 10px;
 }
 
+.pagination {
+    text-align: center;
+}
 
 .button-like {
     z-index: 1;

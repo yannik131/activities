@@ -19,7 +19,7 @@
             </a>
         </div>
     {% endif %}
-    <div style="background-color: black; border-radius: 10px;">
+    <div>
         <h1 class="center-container" style="margin-bottom: 0;">{{ activity.verbose }}</h1>
         {% if activity.description %}
             <p class="center-container">
@@ -34,14 +34,15 @@
             {% endif %}
         </p>
     </div>
-    <h2>
-        {% if activity.categories.all %}
+    <div class="info-p">
+    {% if activity.categories.all %}
+        <h2>
             {% trans 'Gehört zu: ' %}
             {% for category in activity.categories.all %}
-                <a href="{{ category.get_absolute_url }}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
+                <a style="margin-left: 5px" href="{{ category.get_absolute_url }}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
             {% endfor %}
-        {% endif %}
-    </h2>
+        </h2>
+    {% endif %}
     {% if user.is_staff %}
     <a class="center-container" style="font-weight: bold; margin-bottom: 10px; font-size: 24px" href="{% url 'character:edit_weights' activity.id %}">{% trans 'Gewichtungen bearbeiten' %}</a>
     {% endif %}
@@ -69,7 +70,10 @@
             {% blocktrans with activity=activity %}{{ activity }}-Chat beitreten{% endblocktrans %}
         {% endif %}
     </div>
-    <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'activity:leave' activity.name %}")>{% trans "Austreten" %}</button></div></p>
+    </div>
+    <p>
+        <div class="center-container"><button class="blue-button" onclick=openLink("{% url 'activity:leave' activity.name %}")>{% trans "Austreten" %}</button></div>
+    </p>
     <h3 style="text-align: center; margin-bottom: 0;">{% trans "Suche nach Mitgliedern" %}...</h3>
     <div class="center-container">{% include 'activity/location_selection.html' %}</div>
     <script src="https://unpkg.com/leaflet@1.7.0/dist/leaflet.js"

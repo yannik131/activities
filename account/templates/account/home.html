@@ -7,25 +7,33 @@
 
 {% block content %}
     {% if user.image %}<img src="{{ user.image.url }}" class="user-photo">{% endif %}
-	<p>{% blocktrans with v0=user.username %}Willkommen, {{ v0 }}.{% endblocktrans %} {% trans 'Ist irgendwas? Schicken Sie' %} <a href="{% url 'account:detail' 'admin' %}">admin</a> {% trans 'eine Freundschaftsanfrage.' %}</p>
+        <h1><img src="{% static 'icons/home.png' %}">Home</h1>
+        <div class="info-p">
+	<p>{% blocktrans with v0=user.username %}Willkommen, {{ v0 }}.{% endblocktrans %}
+        {% if not user.activities.exists %}
+        <br>{% trans 'Da Sie noch keiner Aktivität beigetreten sind, müssen Sie wohl neu hier sein. Oben links finden Sie das Dropdown-Menu. Über "Aktivitäten" und "Kategorien" können Sie sich anschauen, welche Aktivitäten es gibt und Ihnen vielleicht Spaß machen könnten. Die Kartenspiele Durak, Skat, Doppelkopf und Poker können Sie gleich hier online spielen. Wenn Sie herausfinden wollen, welche Aktivitäten zu Ihnen passen, gibt es auch einen Persönlichkeitstest für Sie. Hier sind ein paar Startpunkte:' %}
+        {% endif %}
+    </p>
     {% if missing_fields %}
     <div class="missing-stuff">
     {% trans 'Schließen Sie Ihre Anmeldung ab, indem Sie Alter und Geschlecht nachtragen: ' %} 
-    <div class="button-like" onclick=openLink("{% url 'account:edit' %}")><img src="{% static 'icons/pen.png' %}">{% blocktrans %}Profil vervollständigen{% endblocktrans %}</div>
+    <div class="button-like" style="margin: 5px auto; onclick=openLink("{% url 'account:edit' %}")><img src="{% static 'icons/pen.png' %}">{% blocktrans %}Profil vervollständigen{% endblocktrans %}</div>
     {% trans 'Ansonsten können Sie sich nicht auf Leerstellen bewerben.' %}
     </div>
     {% endif %}
-    <div class="button-like" onclick=openLink("{% url 'account:user_post_list' %}")><img src="{% static 'icons/post.png' %}">{% blocktrans %}Zu Ihren Posts{% endblocktrans %}</div>
-    <div class="button-like" style="margin-top: 10px" onclick=openLink("{% url 'account:people_list' %}")><img src="{% static 'icons/friendship.png' %}">{% blocktrans %}Freunde in Ihrer Nähe finden{% endblocktrans %}</div>
-    <p>{% blocktrans %}Sie sind zurzeit Mitglied folgender Aktivitäten:{% endblocktrans %}</p>
-    <div class="button-like" style="margin-bottom: 15px;" onclick=openLink("{% url 'character:overview' %}")>
+    <!--<div class="button-like" style="margin-top: 10px" onclick=openLink("{% url 'account:people_list' %}")><img src="{% static 'icons/friendship.png' %}">{% blocktrans %}Freunde in Ihrer Nähe finden{% endblocktrans %}</div>-->
+    <div class="button-like" style="margin-bottom: 10px; margin-top: 10px" onclick=openLink("{% url 'character:overview' %}")>
         <img src="{% static 'icons/questionnaire.png' %}">
         {% trans 'Persönlichkeitstest & Empfehlungen' %}
     </div>
-    {% if user.activities.all %}
+    <div class="button-like" style="margin-bottom: 15px" onclick=openLink("{% url 'account:user_post_list' %}")><img src="{% static 'icons/post.png' %}">{% blocktrans %}Zu Ihren Posts{% endblocktrans %}</div>
+    {% trans 'Bei Fragen und Anregungen können Sie einfach eine Freundschaftsanfrage schicken an:' %} <a href="{% url 'account:detail' 'admin' %}">admin</a>
+</div>
+    <h1><img src="{% static 'icons/activity.png' %}">{% trans 'Ihre Aktivitäten:' %}</h1>
+    {% if user.activities.exists %}
         {% include "activity/loop.html" with activities=user.activities %}
     {% else %}
-       <div>{% trans 'Hier ist noch nichts!' %}</div>
+       <div class="info-p">{% blocktrans %}Hier ist noch nichts! <a href="/activity/list">Hier</a> finden Sie eine Liste aller Aktivitäten und <a href="/character/overview">hier</a> geht's zum Persönlichkeitstest, mit dem Sie passende Aktivitäten finden. Treten doch einer bei und chatten Sie mit Gleichgesinnten oder markieren Sie Orte auf der Karte!{% endblocktrans %}</div>
     {% endif %}
     <br>
 {% endblock %}

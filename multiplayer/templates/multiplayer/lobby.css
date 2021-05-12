@@ -3,7 +3,13 @@
 }
 
 .match-list {
-    display: block;
+    float: left;
+    background-color: #3b3b3b;
+    border-radius: 10px;
+}
+
+.match-list .button-like {
+    font-size: 14px;
 }
 
 .match-list .item {

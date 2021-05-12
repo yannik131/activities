@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 19:27+0000\n"
+"POT-Creation-Date: 2021-05-12 17:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,111 +135,111 @@ msgstr ""
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr ""
 
-#: account/models.py:22
+#: account/models.py:26
 msgid "männlich"
 msgstr ""
 
-#: account/models.py:23
+#: account/models.py:27
 msgid "weiblich"
 msgstr ""
 
-#: account/models.py:33
+#: account/models.py:37
 msgid "hat erstellt"
 msgstr ""
 
-#: account/models.py:34
+#: account/models.py:38
 msgid "ist jetzt befreundet mit"
 msgstr ""
 
-#: account/models.py:35
+#: account/models.py:39
 msgid "ist nicht mehr befreundet mit"
 msgstr ""
 
-#: account/models.py:36
+#: account/models.py:40
 msgid "hat Ihnen eine Freundschaftsanfrage geschickt"
 msgstr ""
 
-#: account/models.py:37
+#: account/models.py:41
 msgid "ist beigetreten"
 msgstr ""
 
-#: account/models.py:38
+#: account/models.py:42
 msgid "hat verlassen"
 msgstr ""
 
-#: account/models.py:39
+#: account/models.py:43
 msgid "hat zugesagt"
 msgstr ""
 
-#: account/models.py:40
+#: account/models.py:44
 msgid "hat abgesagt"
 msgstr ""
 
-#: account/models.py:41
+#: account/models.py:45
 msgid "hat sich beworben"
 msgstr ""
 
-#: account/models.py:42
+#: account/models.py:46
 msgid "hat etwas gepostet in"
 msgstr ""
 
-#: account/models.py:43
+#: account/models.py:47
 msgid "hat etwas kommentiert"
 msgstr ""
 
-#: account/models.py:44
+#: account/models.py:48
 msgid "hat eure Freundschaft beendet"
 msgstr ""
 
-#: account/models.py:45
+#: account/models.py:49
 msgid "hat Sie eingeladen"
 msgstr ""
 
-#: account/models.py:46
+#: account/models.py:50
 msgid "hat Ihre Freundschaftsanfrage angenommen"
 msgstr ""
 
-#: account/models.py:47
+#: account/models.py:51
 msgid "hat Ihre Freundschaftsanfrage abgelehnt"
 msgstr ""
 
-#: account/models.py:48
+#: account/models.py:52
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr ""
 
-#: account/models.py:49
+#: account/models.py:53
 msgid "gefällt"
 msgstr ""
 
-#: account/models.py:50
+#: account/models.py:54
 msgid "missfällt"
 msgstr ""
 
-#: account/models.py:177
+#: account/models.py:192
 msgid "Ausstehend"
 msgstr ""
 
-#: account/models.py:178
+#: account/models.py:193
 msgid "Angenommen"
 msgstr ""
 
-#: account/models.py:179
+#: account/models.py:194
 msgid "Abgelehnt"
 msgstr ""
 
-#: account/models.py:278 vacancies/models.py:29
+#: account/models.py:297 vacancies/models.py:29
 msgid "Land"
 msgstr ""
 
-#: account/models.py:279 vacancies/models.py:30
+#: account/models.py:298 vacancies/models.py:30
 msgid "Bundesland"
 msgstr ""
 
-#: account/models.py:280 vacancies/models.py:31
+#: account/models.py:299 vacancies/models.py:31
 msgid "Landkreis"
 msgstr ""
 
-#: account/models.py:281 vacancies/models.py:32
+#: account/models.py:300 vacancies/models.py:32
 msgid "Stadt"
 msgstr ""
 
@@ -281,7 +281,7 @@ msgstr ""
 
 #: account/templates/account/about.html:6
 #: account/templates/account/impressum.html:4
-#: account/templates/account/impressum.html:7 account/templates/base.html:40
+#: account/templates/account/impressum.html:7 account/templates/base.html:41
 msgid "Info"
 msgstr ""
 
@@ -340,11 +340,11 @@ msgstr ""
 
 #: account/templates/account/delete.html:11
 #: account/templates/account/edit.html:31
-#: account/templates/account/friend_requests_list.html:54
-#: account/templates/account/friend_requests_list.html:81
+#: account/templates/account/friend_requests_list.html:53
+#: account/templates/account/friend_requests_list.html:76
 #: usergroups/templates/usergroups/appointment_list.html:47
 #: usergroups/templates/usergroups/invitation_list.html:16
-#: vacancies/templates/vacancies/application_list.html:22
+#: vacancies/templates/vacancies/application_list.html:30
 #: vacancies/templates/vacancies/edit_vacancy.html:11
 #: vacancies/templates/vacancies/invitation_list.html:21
 #: vacancies/templates/vacancies/review_vacancy.html:35
@@ -481,8 +481,8 @@ msgid "Gespeichert: "
 msgstr ""
 
 #: account/templates/account/edit.html:41 account/templates/base.html:50
-#: account/templates/javascript/base.js:54
-#: activity/templates/activity/detail.html:71
+#: account/templates/javascript/base.js:51
+#: activity/templates/activity/detail.html:85
 msgid "OK!"
 msgstr ""
 
@@ -524,90 +524,110 @@ msgstr ""
 msgid "Ihre Freunde"
 msgstr ""
 
-#: account/templates/account/friend_requests_list.html:14
-msgid "Anfrage senden"
+#: account/templates/account/friend_requests_list.html:12
+msgid ""
+"Freunde finden Sie z. B. über Mitglieder von gemeinsamen <a href=\"/activity/"
+"list\">Aktivitäten</a> oder über's <a href=\"/competitions/user_overview"
+"\">Zocken</a>. Kennen Sie den Nutzernamen, können Sie auch direkt eine "
+"Anfrage senden. Falls Sie den <a href=\"/character/overview"
+"\">Persönlichkeitstest</a> gemacht haben, können Sie sogar nach Leuten in "
+"Ihrer Nähe suchen und nach Übereinstimmung mit Ihrem Charakter sortieren! "
 msgstr ""
 
 #: account/templates/account/friend_requests_list.html:17
+msgid "Anfrage senden"
+msgstr ""
+
+#: account/templates/account/friend_requests_list.html:20
 msgid "In Ihrer Nähe suchen"
 msgstr ""
 
-#: account/templates/account/friend_requests_list.html:23
+#: account/templates/account/friend_requests_list.html:26
 msgid "Eingegange Anfragen"
 msgstr ""
 
-#: account/templates/account/friend_requests_list.html:28
+#: account/templates/account/friend_requests_list.html:31
 #: competitions/templates/competitions/full_table.html:8
 msgid "Von"
 msgstr ""
 
-#: account/templates/account/friend_requests_list.html:44
+#: account/templates/account/friend_requests_list.html:43
 #: vacancies/templates/vacancies/invitation_list.html:17
 #: vacancies/templates/vacancies/review_vacancy.html:33
 msgid "Annehmen"
 msgstr ""
 
-#: account/templates/account/friend_requests_list.html:48
+#: account/templates/account/friend_requests_list.html:47
 #: vacancies/templates/vacancies/review_vacancy.html:33
 msgid "Ablehnen"
 msgstr ""
 
-#: account/templates/account/friend_requests_list.html:63
+#: account/templates/account/friend_requests_list.html:62
 msgid "Gesendete Anfragen"
-msgstr ""
-
-#: account/templates/account/friend_requests_list.html:68
-msgid "An"
 msgstr ""
 
 #: account/templates/account/home.html:6
 msgid "Home"
 msgstr ""
 
-#: account/templates/account/home.html:10
+#: account/templates/account/home.html:12
 #, python-format
 msgid "Willkommen, %(v0)s."
 msgstr ""
 
-#: account/templates/account/home.html:10
-msgid "Ist irgendwas? Schicken Sie"
+#: account/templates/account/home.html:14
+msgid ""
+"Da Sie noch keiner Aktivität beigetreten sind, müssen Sie wohl neu hier "
+"sein. Oben links finden Sie das Dropdown-Menu. Über \"Aktivitäten\" und "
+"\"Kategorien\" können Sie sich anschauen, welche Aktivitäten es gibt und "
+"Ihnen vielleicht Spaß machen könnten. Die Kartenspiele Durak, Skat, "
+"Doppelkopf und Poker können Sie gleich hier online spielen. Wenn Sie "
+"herausfinden wollen, welche Aktivitäten zu Ihnen passen, gibt es auch einen "
+"Persönlichkeitstest für Sie. Hier sind ein paar Startpunkte:"
 msgstr ""
 
-#: account/templates/account/home.html:10
-msgid "eine Freundschaftsanfrage."
-msgstr ""
-
-#: account/templates/account/home.html:13
+#: account/templates/account/home.html:19
 msgid ""
 "Schließen Sie Ihre Anmeldung ab, indem Sie Alter und Geschlecht nachtragen: "
 msgstr ""
 
-#: account/templates/account/home.html:14
+#: account/templates/account/home.html:20
 msgid "Profil vervollständigen"
 msgstr ""
 
-#: account/templates/account/home.html:15
+#: account/templates/account/home.html:21
 msgid "Ansonsten können Sie sich nicht auf Leerstellen bewerben."
 msgstr ""
 
-#: account/templates/account/home.html:18
-msgid "Zu Ihren Posts"
-msgstr ""
-
-#: account/templates/account/home.html:19
+#: account/templates/account/home.html:24
 msgid "Freunde in Ihrer Nähe finden"
 msgstr ""
 
-#: account/templates/account/home.html:20
-msgid "Sie sind zurzeit Mitglied folgender Aktivitäten:"
-msgstr ""
-
-#: account/templates/account/home.html:23
+#: account/templates/account/home.html:27
 msgid "Persönlichkeitstest & Empfehlungen"
 msgstr ""
 
-#: account/templates/account/home.html:28
-msgid "Hier ist noch nichts!"
+#: account/templates/account/home.html:29
+msgid "Zu Ihren Posts"
+msgstr ""
+
+#: account/templates/account/home.html:30
+msgid ""
+"Bei Fragen und Anregungen können Sie einfach eine Freundschaftsanfrage "
+"schicken an:"
+msgstr ""
+
+#: account/templates/account/home.html:32
+msgid "Ihre Aktivitäten:"
+msgstr ""
+
+#: account/templates/account/home.html:36
+msgid ""
+" Hier ist noch nichts! <a href=\"/activity/list\">Hier</a> finden Sie eine "
+"Liste aller Aktivitäten und <a href=\"/character/overview\">hier</a> geht's "
+"zum Persönlichkeitstest, mit dem Sie passende Aktivitäten finden. Treten "
+"doch einer bei und chatten Sie mit Gleichgesinnten oder markieren Sie Orte "
+"auf der Karte!"
 msgstr ""
 
 #: account/templates/account/impressum.html:8
@@ -702,7 +722,7 @@ msgstr ""
 msgid "Sortiert nach Charakterübereinstimmung in %%"
 msgstr ""
 
-#: account/templates/account/people_list.html:25
+#: account/templates/account/people_list.html:21
 msgid ""
 "Tote Hose! Hier ist ja echt niemand. Empfehlen Sie die Seite doch Ihren "
 "Freunden und schauen Sie, wie gut eure Charaktere übereinstimmen und welche "
@@ -874,7 +894,7 @@ msgid "Ihre Posts"
 msgstr ""
 
 #: account/templates/account/user_post_list.html:9
-#: activity/templates/activity/detail.html:110
+#: activity/templates/activity/detail.html:124
 #: usergroups/templates/usergroups/group_detail.html:73
 msgid "Post erstellen"
 msgstr ""
@@ -883,20 +903,20 @@ msgstr ""
 msgid "Die Posts sind öffentlich auf Ihrer Profilseite sichtbar."
 msgstr ""
 
-#: account/templates/javascript/base.js:176
+#: account/templates/javascript/base.js:173
 msgid ""
 "Sie haben noch keine Chats. Finden Sie Freunde, Gruppen, Aktivitäten etc., "
 "um zu chatten!"
 msgstr ""
 
-#: account/templates/javascript/base.js:212
+#: account/templates/javascript/base.js:209
 msgid ""
 "Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie "
 "nur einen Tab für myactivities.net :)"
 msgstr ""
 
 #: account/templates/javascript/edit.js:11
-#: activity/templates/javascript/map.js:112
+#: activity/templates/javascript/map.js:116
 msgid "Erlaubte Beschreibungslänge: 3-100 Zeichen. Derzeit: "
 msgstr ""
 
@@ -1036,7 +1056,7 @@ msgid ""
 msgstr ""
 
 #: account/templates/registration/password_reset_form.html:12
-#: activity/templates/activity/detail.html:77
+#: activity/templates/activity/detail.html:91
 #: multiplayer/templates/javascript/cards.js:525
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
 #: wall/templates/wall/post/create_comment.html:11
@@ -1127,12 +1147,12 @@ msgstr ""
 msgid "konsumorientiert"
 msgstr ""
 
-#: activity/models.py:42
+#: activity/models.py:48
 #, python-brace-format
 msgid "Aktivität: {name}"
 msgstr ""
 
-#: activity/models.py:94
+#: activity/models.py:106
 #, python-brace-format
 msgid "Kategorie: {name}"
 msgstr ""
@@ -1143,17 +1163,26 @@ msgid "Alle Aktivitäten"
 msgstr ""
 
 #: activity/templates/activity/activity_list.html:10
+msgid ""
+"Hier finden Sie eine Liste aller Aktivitäten. Sie können Aktivitäten "
+"beitreten und so herausfinden, wer in Ihrer Gegend auch Spaß daran hat. "
+"Zudem können Sie auf einer Karte Markierungen machen, die für alle "
+"Mitglieder der Aktivität sichtbar sind und herausfinden, in welcher Gegend "
+"die Aktivität besonders beliebt ist."
+msgstr ""
+
+#: activity/templates/activity/activity_list.html:13
 msgid "Suche: "
 msgstr ""
 
-#: activity/templates/activity/activity_list.html:15
+#: activity/templates/activity/activity_list.html:18
 msgid "Mitglieder anzeigen"
 msgstr ""
 
-#: activity/templates/activity/activity_list.html:28
+#: activity/templates/activity/activity_list.html:31
 #: competitions/templates/competitions/tournament_detail.html:29
 #: usergroups/templates/usergroups/group_detail.html:33
-#: usergroups/templates/usergroups/loop.html:18
+#: usergroups/templates/usergroups/loop.html:14
 msgid "Mitglieder"
 msgstr ""
 
@@ -1174,52 +1203,60 @@ msgstr ""
 msgid "Posts in"
 msgstr ""
 
-#: activity/templates/activity/category_list.html:4
-#: activity/templates/activity/category_list.html:7
+#: activity/templates/activity/category_list.html:5
+#: activity/templates/activity/category_list.html:8
 msgid "Alle Kategorien"
 msgstr ""
 
-#: activity/templates/activity/category_list.html:8
-msgid "Hier eine Liste aller verfügbaren Kategorien"
-msgstr ""
-
-#: activity/templates/activity/detail.html:28
-msgid "Passt zu Ihnen zu "
+#: activity/templates/activity/category_list.html:9
+msgid ""
+"Hier finden Sie eine Liste aller verfügbaren Kategorien. In jeder Kategorie "
+"lassen sich eigene <a href=\"/usergroups/group_list\">Gruppen erstellen</a>, "
+"in denen Sie chatten, telefonieren und Termine verwalten können."
 msgstr ""
 
 #: activity/templates/activity/detail.html:33
-msgid "Gehört zu: "
+msgid "Passt zu Ihnen zu "
 msgstr ""
 
 #: activity/templates/activity/detail.html:40
-msgid "Gewichtungen bearbeiten"
+msgid "Gehört zu: "
 msgstr ""
 
 #: activity/templates/activity/detail.html:47
+msgid "Gewichtungen bearbeiten"
+msgstr ""
+
+#: activity/templates/activity/detail.html:54
 msgid "Offline spielen"
 msgstr ""
 
-#: activity/templates/activity/detail.html:52
+#: activity/templates/activity/detail.html:59
 #: multiplayer/templates/multiplayer/create_match.html:4
 msgid "Online spielen"
 msgstr ""
 
-#: activity/templates/activity/detail.html:62
+#: activity/templates/activity/detail.html:70
+#, python-format
+msgid "%(activity)s-Chat beitreten"
+msgstr ""
+
+#: activity/templates/activity/detail.html:75
 #: competitions/templates/competitions/match_detail.html:35
 #: competitions/templates/competitions/tournament_detail.html:37
 #: usergroups/templates/usergroups/group_detail.html:37
 msgid "Austreten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:63
+#: activity/templates/activity/detail.html:77
 msgid "Suche nach Mitgliedern"
 msgstr ""
 
-#: activity/templates/activity/detail.html:70
+#: activity/templates/activity/detail.html:84
 msgid "Die Markierung "
 msgstr ""
 
-#: activity/templates/activity/detail.html:70
+#: activity/templates/activity/detail.html:84
 #, python-format
 msgid ""
 " ist nun für alle Mitglieder der Aktivität \"%(act)s\" in %(comp)s sichtbar. "
@@ -1227,15 +1264,15 @@ msgid ""
 "bearbeiten</a>\" können Sie Ihre Markierungen bearbeiten."
 msgstr ""
 
-#: activity/templates/activity/detail.html:74
+#: activity/templates/activity/detail.html:88
 msgid "Standortmarkierung"
 msgstr ""
 
-#: activity/templates/activity/detail.html:75
+#: activity/templates/activity/detail.html:89
 msgid "Wie heißt der Ort, an dem Sie sich befinden?"
 msgstr ""
 
-#: activity/templates/activity/detail.html:77
+#: activity/templates/activity/detail.html:91
 #: multiplayer/templates/javascript/cards.js:530
 #: multiplayer/templates/multiplayer/game.html:44
 #: multiplayer/templates/multiplayer/game.html:72
@@ -1243,26 +1280,26 @@ msgstr ""
 msgid "Abbrechen"
 msgstr ""
 
-#: activity/templates/activity/detail.html:86
+#: activity/templates/activity/detail.html:100
 msgid "Standort markieren"
 msgstr ""
 
-#: activity/templates/activity/detail.html:90
-#: activity/templates/activity/detail.html:96
-#: activity/templates/javascript/map.js:75
+#: activity/templates/activity/detail.html:104
+#: activity/templates/activity/detail.html:110
+#: activity/templates/javascript/map.js:78
 msgid "Wo bin ich?"
 msgstr ""
 
-#: activity/templates/activity/detail.html:104
+#: activity/templates/activity/detail.html:118
 msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
 msgstr ""
 
-#: activity/templates/activity/detail.html:106
+#: activity/templates/activity/detail.html:120
 #: multiplayer/templates/javascript/lobby.js:46
 msgid "Beitreten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:109
+#: activity/templates/activity/detail.html:123
 msgid "Beiträge"
 msgstr ""
 
@@ -1293,22 +1330,22 @@ msgstr ""
 msgid "Mitglieder: "
 msgstr ""
 
-#: activity/templates/javascript/map.js:67
+#: activity/templates/javascript/map.js:70
 msgid "Standort bestimmen.."
 msgstr ""
 
-#: activity/templates/javascript/map.js:82
+#: activity/templates/javascript/map.js:85
 msgid ""
 "Ihre Position wird nur für die Zentrierung der Karte und zum Hinzufügen "
 "Ihrer eigenen Markierungen genutzt. Ortungsrechte können Sie in den "
 "Einstellungen Ihres Gerätes/Browsers ändern."
 msgstr ""
 
-#: activity/templates/javascript/map.js:96
+#: activity/templates/javascript/map.js:100
 msgid "Diese Markierung ist zu nah an der Markierung "
 msgstr ""
 
-#: activity/templates/javascript/map.js:96
+#: activity/templates/javascript/map.js:100
 msgid "Markierungen müssen mindestens 10m auseinanderliegen, hier sind es: "
 msgstr ""
 
@@ -1800,6 +1837,7 @@ msgid "Wählen Sie zuerst einen der drei Fragebogen aus, bevor Sie beginnen."
 msgstr ""
 
 #: chat/templates/chat/room.html:6
+#: vacancies/templates/vacancies/application_list.html:26
 #: vacancies/templates/vacancies/review_vacancy.html:18
 msgid "Chat"
 msgstr ""
@@ -1887,25 +1925,25 @@ msgstr ""
 msgid "Anmeldeschluss muss vor Turnierbeginn sein."
 msgstr ""
 
-#: competitions/models.py:32 competitions/models.py:72
+#: competitions/models.py:32 competitions/models.py:76
 msgid "Hat Ihre Bewerbung akzeptiert"
 msgstr ""
 
-#: competitions/models.py:49
+#: competitions/models.py:53
 #, python-brace-format
-msgid "Match am {start}"
+msgid "{act}-Match am {stamp}"
 msgstr ""
 
-#: competitions/models.py:71
+#: competitions/models.py:75
 msgid "hat eine neue Runde"
 msgstr ""
 
-#: competitions/models.py:79
+#: competitions/models.py:87
 #, python-brace-format
 msgid "{act}-Turnier am {stamp}"
 msgstr ""
 
-#: competitions/models.py:129
+#: competitions/models.py:137
 msgid "Runde "
 msgstr ""
 
@@ -1925,7 +1963,7 @@ msgstr ""
 
 #: competitions/templates/competitions/create_match.html:4
 #: competitions/templates/competitions/overview.html:39
-#: multiplayer/templates/multiplayer/lobby.html:13
+#: multiplayer/templates/multiplayer/lobby.html:16
 msgid "Match erstellen"
 msgstr ""
 
@@ -2107,7 +2145,7 @@ msgid "%(v0)s: Matches & Turniere"
 msgstr ""
 
 #: competitions/templates/competitions/overview.html:11
-#: competitions/templates/competitions/user_overview.html:34
+#: competitions/templates/competitions/user_overview.html:42
 msgid "Turniere"
 msgstr ""
 
@@ -2143,39 +2181,54 @@ msgid "Spielplan"
 msgstr ""
 
 #: competitions/templates/competitions/user_overview.html:8
-#: multiplayer/templates/multiplayer/lobby.html:19
+#: multiplayer/templates/multiplayer/lobby.html:22
 msgid "Online"
 msgstr ""
 
-#: competitions/templates/competitions/user_overview.html:12
+#: competitions/templates/competitions/user_overview.html:10
+msgid ""
+"Hier finden Sie die Lobbys der Spiele, die Sie gleich hier online spielen "
+"können. Durch das Betreten der Lobby treten Sie der entsprechenden Aktivität "
+"bei, falls Sie das noch nicht gemacht haben."
+msgstr ""
+
+#: competitions/templates/competitions/user_overview.html:15
 msgid "Durak-Lobby"
 msgstr ""
 
-#: competitions/templates/competitions/user_overview.html:16
+#: competitions/templates/competitions/user_overview.html:19
 msgid "Skat-Lobby"
 msgstr ""
 
-#: competitions/templates/competitions/user_overview.html:20
+#: competitions/templates/competitions/user_overview.html:25
 msgid "Doko-Lobby"
 msgstr ""
 
-#: competitions/templates/competitions/user_overview.html:25
+#: competitions/templates/competitions/user_overview.html:29
 msgid "Poker-Lobby"
 msgstr ""
 
-#: competitions/templates/competitions/user_overview.html:27
+#: competitions/templates/competitions/user_overview.html:32
 msgid "Offline"
 msgstr ""
 
-#: competitions/templates/competitions/user_overview.html:28
+#: competitions/templates/competitions/user_overview.html:34
+msgid ""
+" Erstellen und nehmen Sie Teil an Turnieren und Matches über den 'Offline "
+"spielen'-Button auf der entsprechenden <a href=\"/activity/list/"
+"\">Aktivitätsseite</a>! Geht natürlich nur bei Aktivitäten, wo man einen "
+"Wettbewerb haben kann."
+msgstr ""
+
+#: competitions/templates/competitions/user_overview.html:36
 msgid "Matches"
 msgstr ""
 
-#: competitions/templates/competitions/user_overview.html:35
-msgid "Verwaltete Turniere:"
+#: competitions/templates/competitions/user_overview.html:43
+msgid "Als Admin:"
 msgstr ""
 
-#: competitions/templates/competitions/user_overview.html:41
+#: competitions/templates/competitions/user_overview.html:49
 msgid "Als Teilnehmer:"
 msgstr ""
 
@@ -2567,20 +2620,30 @@ msgstr ""
 msgid "Blinds"
 msgstr ""
 
-#: multiplayer/templates/multiplayer/lobby.html:32
+#: multiplayer/templates/multiplayer/lobby.html:14
+#, python-format
+msgid ""
+"Hier können Sie %(activity)s online spielen. Als Ersteller eines Matches "
+"können Sie das Spiel starten, wenn die eingestellte Spieleranzahl anwesend "
+"ist. Durch Klick auf den Mülleimer schmeißen Sie Leute raus. Bitte treten "
+"Sie dann nicht wieder ohne guten Grund ein! Den (Audio-)Chat erreichen Sie "
+"im Spiel über den Chat-Button oben rechts."
+msgstr ""
+
+#: multiplayer/templates/multiplayer/lobby.html:35
 msgid "Beigetreten"
 msgstr ""
 
-#: multiplayer/templates/multiplayer/lobby.html:47
+#: multiplayer/templates/multiplayer/lobby.html:50
 msgid "Spielen"
 msgstr ""
 
-#: multiplayer/templates/multiplayer/lobby.html:50
+#: multiplayer/templates/multiplayer/lobby.html:53
 msgid "Zur Übersicht"
 msgstr ""
 
-#: multiplayer/templates/multiplayer/lobby.html:65
-msgid "Andere"
+#: multiplayer/templates/multiplayer/lobby.html:68
+msgid "Öffentliche Liste"
 msgstr ""
 
 #: multiplayer/templates/multiplayer/match.html:19
@@ -2602,11 +2665,11 @@ msgid ""
 "sich sicher sind, dass das ein Versehen war."
 msgstr ""
 
-#: multiplayer/views.py:75
+#: multiplayer/views.py:76
 msgid "Spiel ist bereits voll"
 msgstr ""
 
-#: multiplayer/views.py:85
+#: multiplayer/views.py:86
 msgid "Sie waren zu langsam, das Match war bereits voll."
 msgstr ""
 
@@ -2687,7 +2750,7 @@ msgstr ""
 msgid "hat Sie rausgeschmissen"
 msgstr ""
 
-#: usergroups/models.py:37
+#: usergroups/models.py:43
 #, python-brace-format
 msgid "Gruppe: {name}"
 msgstr ""
@@ -2788,7 +2851,7 @@ msgid ""
 msgstr ""
 
 #: usergroups/templates/usergroups/group_detail.html:48
-#: vacancies/templates/vacancies/application_list.html:29
+#: vacancies/templates/vacancies/application_list.html:40
 msgid "Einladungen"
 msgstr ""
 
@@ -2796,9 +2859,17 @@ msgstr ""
 msgid "Termine"
 msgstr ""
 
-#: usergroups/templates/usergroups/user_group_list.html:4
-#: usergroups/templates/usergroups/user_group_list.html:7
+#: usergroups/templates/usergroups/user_group_list.html:5
+#: usergroups/templates/usergroups/user_group_list.html:8
 msgid "Ihre Gruppen"
+msgstr ""
+
+#: usergroups/templates/usergroups/user_group_list.html:10
+msgid ""
+"Gruppen finden und erstellen können Sie <a href=\"/activity/category_list/"
+"\">innerhalb einer Kategorie</a>. Mit Gruppen können Sie chatten und über "
+"Leerstellen Leute in Ihrer Gegend finden, die sich mit Ihnen austauschen "
+"oder mitmachen wollen. Sie können auch Termine verwalten und telefonieren!"
 msgstr ""
 
 #: usergroups/views.py:85
@@ -2877,12 +2948,12 @@ msgstr ""
 msgid " (m/w)"
 msgstr ""
 
-#: vacancies/models.py:73
+#: vacancies/models.py:77
 #, python-brace-format
 msgid "Bewerbung von {name}"
 msgstr ""
 
-#: vacancies/models.py:76
+#: vacancies/models.py:80
 #, python-brace-format
 msgid "{app} bei {target}"
 msgstr ""
@@ -2895,6 +2966,18 @@ msgstr ""
 #: vacancies/templates/vacancies/vacancy_list.html:22
 #: vacancies/templates/vacancies/vacancy_list.html:32
 msgid "Bewerbungen"
+msgstr ""
+
+#: vacancies/templates/vacancies/application_list.html:10
+msgid ""
+"Falls Sie in einer <a href=\"/activity/category_list\">Kategorie</a> eine "
+"Gruppe oder in einer <a href=\"/activity/list\">Aktivität</a> ein Match bzw. "
+"Turnier mit einer Leerstelle finden, können Sie sich dort bewerben. Die "
+"Bewerbungen werden hier dann aufgelistet."
+msgstr ""
+
+#: vacancies/templates/vacancies/application_list.html:42
+msgid "Sie können von Gruppen, Turnieren und Matches eingeladen werden."
 msgstr ""
 
 #: vacancies/templates/vacancies/apply_for_vacancy.html:4
