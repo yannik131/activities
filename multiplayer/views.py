@@ -20,7 +20,8 @@ def lobby(request, activity_name, extra=None):
         messages.add_message(request, messages.INFO, _('Sie wurden aus dem Spiel gekickt. Bitte treten Sie nur wieder bei, wenn Sie sich sicher sind, dass das ein Versehen war.'))
     online_list = activity.members.filter(channel_name__isnull=False)
     user_matches = request.user.multiplayer_matches.filter(activity__id=activity.id)
-    return render(request, 'multiplayer/lobby.html', dict(activity=activity, online_list=online_list, user_matches=user_matches))
+    room = ChatRoom.get_for_target(activity)
+    return render(request, 'multiplayer/lobby.html', dict(activity=activity, online_list=online_list, user_matches=user_matches, current_chat_room=room))
 
 
 def create_match(request, activity_name):

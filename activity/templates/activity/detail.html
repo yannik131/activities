@@ -63,7 +63,11 @@
     {% endif %}
     <div class="button-like" onclick=openLink("{% url 'chat:chat_room' 'activity' 'activity' activity.id %}")>
         <img src="{% static 'icons/chat.png' %}">
-        {{ activity }}-Chat
+        {% if joined_chat %}
+            {{ activity }}-Chat
+        {% else %}
+            {% blocktrans with activity=activity %}{{ activity }}-Chat beitreten{% endblocktrans %}
+        {% endif %}
     </div>
     <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'activity:leave' activity.name %}")>{% trans "Austreten" %}</button></div></p>
     <h3 style="text-align: center; margin-bottom: 0;">{% trans "Suche nach Mitgliedern" %}...</h3>

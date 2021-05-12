@@ -50,7 +50,7 @@ class Match(models.Model):
         return reverse('competitions:match_detail', args=[self.id])
 
     def __str__(self):
-        return _("Match am {start}").format(start=self.start_time)
+        return _("{act}-Match am {stamp}").format(act=self.activity, stamp=self.start_time.strftime(shared.GERMAN_DATE_FMT))
 
     @property
     def vacancies(self):

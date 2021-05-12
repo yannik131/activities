@@ -153,7 +153,10 @@ class NotificationConsumer(WebsocketConsumer):
         
     def generate_chat_window(self, text_data):
         room = ChatRoom.objects.get(pk=text_data['id'])
-        self.user.last_chat_checks.get(room=room).update()
+        try:
+            self.user.last_chat_checks.get(room=room).update()
+        except ChatCheck.DoesNotExist:
+            return
         chat_window = render_to_string('chat/chat_window.html', dict(room=room, user=self.user, friendship=room.target_ct.model == 'friendship'))
         self.send(json.dumps({
             'type': 'chat_message',

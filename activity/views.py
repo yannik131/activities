@@ -41,6 +41,7 @@ def detail(request, activity_name):
         suggestion = request.user.character.activity_suggestions.filter(activity=activity)
         if suggestion.exists():
             suggestion = suggestion.first()
+    joined_chat = request.user.chat_rooms.filter(target_ct=Activity.content_type(), target_id=activity.id).exists()
     return render(request, 'activity/detail.html',
                   {'activity': activity,
                    'is_member': is_member,
@@ -53,7 +54,8 @@ def detail(request, activity_name):
                    'suggestion': suggestion,
                    'population': json.dumps(population) if population else None,
                    'markers': json.dumps(markers) if markers else None,
-                   'chosen': request.GET.get('component_index')})
+                   'chosen': request.GET.get('component_index'),
+                   'joined_chat': joined_chat})
 
 
 
