@@ -5,7 +5,7 @@
 {% block title %}{% trans "Bewerbungen" %}{% endblock %}
 
 {% block content %}
-    <h1><img src="{% static 'icons/interview.png' %}">{% trans "Bewerbungen" %}</h1>
+    <h1 class="h-img"><img src="{% static 'icons/interview.png' %}">{% trans "Bewerbungen" %}</h1>
     <p class="info-p">
         {% trans 'Falls Sie in einer <a href="/activity/category_list">Kategorie</a> eine Gruppe oder in einer <a href="/activity/list">Aktivität</a> ein Match bzw. Turnier mit einer Leerstelle finden, können Sie sich dort bewerben. Die Bewerbungen werden hier dann aufgelistet.' %}
     </p>
@@ -37,7 +37,7 @@
         </div>
         {% endfor %}
     </div>
-    <h1><img src="{% static 'icons/invitation.png' %}">{% trans "Einladungen" %}</h2>
+    <h1 class="h-img"><img src="{% static 'icons/invitation.png' %}">{% trans "Einladungen" %}</h2>
     <p class="info-p">
         {% trans 'Sie können von Gruppen, Turnieren und Matches eingeladen werden.' %}
     </p>

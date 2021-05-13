@@ -86,11 +86,15 @@ input, textarea, select {
 }
 
 h1, h2, h3 {
+    display: block;
+    font-style: italic;
+    text-align: center;
+}
+
+h1.h-img, h2.h-img, h3.h-img {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-style: italic;
-    text-align: center;
 }
 
 a:link {

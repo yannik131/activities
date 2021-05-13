@@ -5,7 +5,7 @@
 {% block title %}{% trans 'Mist.' %}{% endblock %}
 
 {% block content %}
-<h1><img src="{% static 'icons/attention.png' %}">{% trans "Fehler: 500 - Server Fehler" %}</h1>
+<h1 class="h-img"><img src="{% static 'icons/attention.png' %}">{% trans "Fehler: 500 - Server Fehler" %}</h1>
 <p class="info-p" style="font-weight: bold; color: yellow">
     {% trans "Dieser Fehler bedeutet fast immer, dass es einen Fehler im Quellcode gibt &#128517;. Sorry. Wenn Sie den Fehler reproduzieren können, melden Sie sich einfach bei <a href='/account/detail/admin'>admin</a> und er wird bestimmt bald behoben!" %}<br>
     {% if exception %}

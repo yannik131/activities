@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-<h1><img src="{% static 'icons/lobby.png' %}"><a href="{{ activity.get_absolute_url }}">{{ activity }}</a>-Lobby</h1>
+<h1 class="h-img"><img src="{% static 'icons/lobby.png' %}"><a href="{{ activity.get_absolute_url }}">{{ activity }}</a>-Lobby</h1>
 <p class="info-p">
     {% blocktrans with activity=activity %}Hier können Sie {{ activity }} online spielen. Als Ersteller eines Matches können Sie das Spiel starten, wenn die eingestellte Spieleranzahl anwesend ist. Durch Klick auf den Mülleimer schmeißen Sie Leute raus. Bitte treten Sie dann nicht wieder ohne guten Grund ein! Den Chat erreichen Sie im Spiel über den Chat-Button oben rechts.{% endblocktrans %}
 </p>

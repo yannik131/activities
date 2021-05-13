@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-<h1><img src="{% static 'icons/brain.png' %}">{% trans 'Charakterübersicht' %}</h1>
+<h1 class="h-img"><img src="{% static 'icons/brain.png' %}">{% trans 'Charakterübersicht' %}</h1>
 {% if user.character.question_limit %}
     <div class="center-container">
         <b>{% blocktrans with n=user.character.current_question max=user.character.question_limit %}Sie haben bisher {{ n }} von {{ max }} Fragen beantwortet.{% endblocktrans %}</b>
