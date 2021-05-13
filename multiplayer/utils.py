@@ -162,14 +162,14 @@ def handle_play(game, data, text_data, username, message, match):
         if not json.loads(data[data["active"]]) or ouvert_null_lost:
             players = json.loads(data["players"])
             if game == "skat":
-                result, winner_points, game_value = determine_winner_skat(data)
+                result, points, game_value = determine_winner_skat(data)
                 points_summary = give_skat_points(data, players, result, game_value)
             else:
-                result, winner_points = determine_winner_doko(data, winner, "Jc" == tricks[-1][int(text_data["index"])])
-                points_summary = give_doko_points(data, players, result, winner_points)
+                result, points = determine_winner_doko(data, winner, "Jc" == tricks[-1][int(text_data["index"])])
+                points_summary = give_doko_points(data, players, result, points)
             message["data"]["result"] = result
-            if winner_points:
-                message["data"]["points"] = winner_points
+            if points:
+                message["data"]["points"] = points
             message["data"]["summary"] = points_summary
             data["summary"] = points_summary
             data["started"] = after(data["started"], players)
@@ -296,7 +296,7 @@ def give_doko_points(data, players, result, winner_points):
                     sum_change(data, player+"_points", (points-re_extra+contra_extra), summary)
     log("sorting summary:", summary)
     summary = sorted(summary, key=lambda t: t[1], reverse=True)
-    return f"{result}: {winner_points}\n"+"".join([t[0] for t in summary])
+    return f"{result}: {winner_points}\n"+"".join([t[0] for t in summary])[:-1]
     
 
 CARD_VALUES = {
@@ -314,6 +314,7 @@ def determine_winner_skat(data):
     for trick in tricks+[skat]:
         for card in trick:
             points += CARD_VALUES[card[:-1]]
+    data['points'] = points
     game_value = calc_game_value(data, points, tricks)
     result = "lost"
     if data["game_type"] == "n":
@@ -391,7 +392,6 @@ def determine_factor(data):
 def give_skat_points(data, players, result, game_value):
     solist_change = 0
     other_change = 0
-    summary = []
     if result == "won":
         solist_change += 50 + game_value
         summary = data["solist"]+": +"+str(solist_change)
@@ -412,7 +412,7 @@ def give_skat_points(data, players, result, game_value):
         change(data, player+"_points", other_change)
         summary.append([player+": +"+str(other_change)+" -> "+str(data[player+"_points"])+"\n", data[player+"_points"]])
     summary = sorted(summary, key=lambda t: t[1], reverse=True)
-    return "".join([t[0] for t in summary])
+    return "".join([t[0] for t in summary])[:-1]
     
     
 def give_durak_points(data, players, durak):

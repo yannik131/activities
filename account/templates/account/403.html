@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
-{% block title %}Verweigert{% endblock %}
+{% block title %}{% trans 'Verweigert' %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Fehler: 403 - Zugriff verweigert" %}</h1>
-<p>{% trans "Halt! Kein Zutritt!" %}<br>
-{% if exception %}
-{% trans "Fehlerbeschreibung: " %} {{ exception }}<br>
-{% endif %}
-{% trans "Falls Sie das traurig machen sollte, hier ein paar ausgewählte Witze: " %}</p>
+<h1><img src="{% static 'icons/attention.png' %}">{% trans "Fehler: 403 - Zugriff verweigert" %}</h1>
+<p class="info-p" style="font-weight: bold; color: yellow">
+    {% trans "Halt! Kein Zutritt! Sie versuchen einen Link aufzurufen, auf den Sie gar keinen Zugriff haben." %}<br>
+    {% if exception %}
+    {% trans "Fehlerbeschreibung: " %} {{ exception }}<br>
+    {% endif %}
+</p>
 
 {% include 'account/jokes.html' %}
 {% endblock %}

@@ -132,7 +132,6 @@ function processMultiplayerData(data) {
         case "abort":
             location.href = data.url;
     }
-    lastTrickButton();
 }
 
 function handleValue(data) {
@@ -154,7 +153,7 @@ function handleValue(data) {
     if(data.username == this_user) {
         return;
     }
-    createInfoAlert(info, info_duration);
+    createInfoAlert(info);
 }
 
 function handlePlay(data) {
@@ -225,7 +224,7 @@ function maxCardsForValue(value) {
 }
 
 function createValueButtons() {
-    clearButtons();
+    clearButtons(lastTrickButton);
     if(this_user != active || game_type == "marriage" && !m_show) {
         return;
     }
@@ -330,7 +329,7 @@ function loadGameField(data) {
     }
     setRe(data);
     defineSortValues();
-    clearButtons();
+    clearButtons(lastTrickButton);
     positionPlayers(player_list);
     for(var i = 0; i < player_list.length; i++) {
         var player = player_list[i];
@@ -429,7 +428,7 @@ function isTrump(value, suit) {
 
 function createBidButtons() {
     if(active != this_user) {
-        clearButtons();
+        clearButtons(lastTrickButton);
         return;
     }
     createButton("{% trans 'Gesund' %}", 'healthy', function() {

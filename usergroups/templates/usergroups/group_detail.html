@@ -61,8 +61,11 @@
         </div>
     {% endif %}
     {% if is_member and group.appointments.all.exists %}
-        <h2>{% trans "Termine" %}</h2>
-        {% include 'usergroups/appointment_list.html' %}
+        <div class="info-p">
+            <h2>{% trans "Termine" %}</h2>
+            {% include 'usergroups/appointment_list.html' %}
+        </div>
+        
     {% endif %}
     <br/>
     {% if is_member %}

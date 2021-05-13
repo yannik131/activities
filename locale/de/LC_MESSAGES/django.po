@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-12 17:39+0000\n"
+"POT-Creation-Date: 2021-05-13 13:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -243,40 +243,54 @@ msgstr ""
 msgid "Stadt"
 msgstr ""
 
-#: account/templates/account/403.html:7
-msgid "Fehler: 403 - Zugriff verweigert"
+#: account/templates/account/403.html:5
+msgid "Verweigert"
 msgstr ""
 
 #: account/templates/account/403.html:8
-msgid "Halt! Kein Zutritt!"
+msgid "Fehler: 403 - Zugriff verweigert"
 msgstr ""
 
-#: account/templates/account/403.html:10 account/templates/account/404.html:10
-#: account/templates/account/500.html:10
+#: account/templates/account/403.html:10
+msgid ""
+"Halt! Kein Zutritt! Sie versuchen einen Link aufzurufen, auf den Sie gar "
+"keinen Zugriff haben."
+msgstr ""
+
+#: account/templates/account/403.html:12 account/templates/account/404.html:15
+#: account/templates/account/500.html:12
 msgid "Fehlerbeschreibung: "
 msgstr ""
 
-#: account/templates/account/403.html:12 account/templates/account/404.html:12
-#: account/templates/account/500.html:12
-msgid "Falls Sie das traurig machen sollte, hier ein paar ausgewählte Witze: "
+#: account/templates/account/404.html:5
+msgid "Wo?"
 msgstr ""
 
-#: account/templates/account/404.html:7
+#: account/templates/account/404.html:10
 msgid "Fehler: 404 - Seite nicht gefunden"
 msgstr ""
 
-#: account/templates/account/404.html:8
-msgid "Die geforderte Seite gibt's anscheinend nicht mehr :("
+#: account/templates/account/404.html:13
+msgid ""
+"Die geforderte Seite gibt's anscheinend nicht mehr &#128561;! Sowas. Das "
+"kann passieren, wenn sie in der Zwischenzeit von jemandem gelöscht wurde. "
+"Oder vielleicht versteckt sie sich ja unterm Sofa?"
 msgstr ""
 
-#: account/templates/account/500.html:7
-msgid "Fehler: 500 - Server Fehler"
+#: account/templates/account/500.html:5
+msgid "Mist."
 msgstr ""
 
 #: account/templates/account/500.html:8
+msgid "Fehler: 500 - Server Fehler"
+msgstr ""
+
+#: account/templates/account/500.html:10
 msgid ""
-"Da kann entweder jemand nicht programmieren (*HUST*), oder jemand versucht "
-"hier absichtlich einen Fehler zu verursachen."
+"Dieser Fehler bedeutet fast immer, dass es einen Fehler im Quellcode gibt "
+"&#128517;. Sorry. Wenn Sie den Fehler reproduzieren können, melden Sie sich "
+"einfach bei <a href='/account/detail/admin'>admin</a> und er wird bestimmt "
+"bald behoben!"
 msgstr ""
 
 #: account/templates/account/about.html:6
@@ -413,7 +427,7 @@ msgid "Freundschaftsanfrage schicken"
 msgstr ""
 
 #: account/templates/account/detail.html:43
-#: usergroups/templates/usergroups/group_detail.html:71
+#: usergroups/templates/usergroups/group_detail.html:74
 msgid "Posts"
 msgstr ""
 
@@ -432,9 +446,9 @@ msgstr ""
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:403
-#: multiplayer/templates/javascript/durak.js:439
-#: multiplayer/templates/javascript/durak.js:457
+#: multiplayer/templates/javascript/durak.js:408
+#: multiplayer/templates/javascript/durak.js:444
+#: multiplayer/templates/javascript/durak.js:462
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:14
 #: usergroups/templates/usergroups/edit_group.html:13
@@ -482,7 +496,7 @@ msgstr ""
 
 #: account/templates/account/edit.html:41 account/templates/base.html:50
 #: account/templates/javascript/base.js:51
-#: activity/templates/activity/detail.html:85
+#: activity/templates/activity/detail.html:98
 msgid "OK!"
 msgstr ""
 
@@ -580,10 +594,11 @@ msgid ""
 "Da Sie noch keiner Aktivität beigetreten sind, müssen Sie wohl neu hier "
 "sein. Oben links finden Sie das Dropdown-Menu. Über \"Aktivitäten\" und "
 "\"Kategorien\" können Sie sich anschauen, welche Aktivitäten es gibt und "
-"Ihnen vielleicht Spaß machen könnten. Die Kartenspiele Durak, Skat, "
-"Doppelkopf und Poker können Sie gleich hier online spielen. Wenn Sie "
-"herausfinden wollen, welche Aktivitäten zu Ihnen passen, gibt es auch einen "
-"Persönlichkeitstest für Sie. Hier sind ein paar Startpunkte:"
+"welche Ihnen vielleicht Spaß machen könnten. Die Kartenspiele Durak, Skat, "
+"Doppelkopf und Poker können Sie <a href=\"/competitions/user_overview"
+"\">gleich hier online spielen</a>. Wenn Sie herausfinden wollen, welche "
+"Aktivitäten zu Ihnen passen, gibt es auch einen Persönlichkeitstest für Sie. "
+"Hier sind ein paar Startpunkte:"
 msgstr ""
 
 #: account/templates/account/home.html:19
@@ -623,7 +638,7 @@ msgstr ""
 
 #: account/templates/account/home.html:36
 msgid ""
-" Hier ist noch nichts! <a href=\"/activity/list\">Hier</a> finden Sie eine "
+"Hier ist noch nichts! <a href=\"/activity/list\">Hier</a> finden Sie eine "
 "Liste aller Aktivitäten und <a href=\"/character/overview\">hier</a> geht's "
 "zum Persönlichkeitstest, mit dem Sie passende Aktivitäten finden. Treten "
 "doch einer bei und chatten Sie mit Gleichgesinnten oder markieren Sie Orte "
@@ -639,7 +654,11 @@ msgid ""
 "mir doch eine E-Mail: myactivities.net@web.de"
 msgstr ""
 
-#: account/templates/account/jokes.html:2
+#: account/templates/account/jokes.html:4
+msgid "Witz des Augenblicks zum Aufmuntern"
+msgstr ""
+
+#: account/templates/account/jokes.html:8
 msgid ""
 "Steht son Typ mit seinem Wagen vor der Tanke, schaut sich um, macht den Tank "
 "auf und pinkelt da rein. Da kommt jemand aus der Tankstelle, sieht das ganze "
@@ -647,7 +666,7 @@ msgid ""
 "super! :)\""
 msgstr ""
 
-#: account/templates/account/jokes.html:3
+#: account/templates/account/jokes.html:12
 msgid ""
 "Frau geht arbeiten, Mann bleibt zuhause, wir kennen dat. Bevor die Frau aber "
 "arbeiten geht sagt sie zu ihrem Mann: Denk dran, dass du mit dem Hund raus "
@@ -663,7 +682,12 @@ msgid ""
 "einen Tag vorher beerdigt!"
 msgstr ""
 
-#: account/templates/account/jokes.html:4
+#: account/templates/account/jokes.html:12
+#: account/templates/account/jokes.html:17
+msgid "(Von Markus Krebs geklaut)"
+msgstr ""
+
+#: account/templates/account/jokes.html:16
 msgid ""
 "Typ sitzt inner Kneipe, kommt so ein kleines weißes Pferd vorbeigerannt. "
 "Denkt er sich, was war dat denn, hat sich bestimmt verguckt. Kommt das "
@@ -717,12 +741,22 @@ msgstr ""
 msgid "Liste von Personen in"
 msgstr ""
 
-#: account/templates/account/people_list.html:10
+#: account/templates/account/people_list.html:11
 #, python-format
-msgid "Sortiert nach Charakterübereinstimmung in %%"
+msgid ""
+"Hier werden die ersten 30 Mitglieder in der ausgewählten Gegend angezeigt. "
+"Haben Sie den <a href=\"/character/overview\">Persönlichkeitstest</a> "
+"gemacht, werden die Mitglieder nach Charakterübereinstimmung in %% sortiert. "
+"Schicken Sie doch eine Freundschaftsanfrage an die Leute ganz hinten "
+"&#128540;"
 msgstr ""
 
-#: account/templates/account/people_list.html:21
+#: account/templates/account/people_list.html:14
+#: activity/templates/activity/activity_list.html:18
+msgid "Mitglieder anzeigen"
+msgstr ""
+
+#: account/templates/account/people_list.html:27
 msgid ""
 "Tote Hose! Hier ist ja echt niemand. Empfehlen Sie die Seite doch Ihren "
 "Freunden und schauen Sie, wie gut eure Charaktere übereinstimmen und welche "
@@ -823,31 +857,27 @@ msgstr ""
 msgid "gelöscht"
 msgstr ""
 
-#: account/templates/account/send_friend_request.html:4
+#: account/templates/account/send_friend_request.html:5
 msgid "Freundschaftsanfrage senden"
 msgstr ""
 
-#: account/templates/account/send_friend_request.html:7
-msgid "Senden Sie"
-msgstr ""
-
-#: account/templates/account/send_friend_request.html:7
-msgid "eine Freundschaftsanfrage"
-msgstr ""
-
 #: account/templates/account/send_friend_request.html:9
-msgid "Die Freundschaftsanfrage wurde erfolgreich gesendet."
+msgid "Freundschaftsanfrage an: "
 msgstr ""
 
 #: account/templates/account/send_friend_request.html:11
+msgid "Freundschaftsanfrage an jemanden senden"
+msgstr ""
+
+#: account/templates/account/send_friend_request.html:13
 msgid "Schreiben Sie"
 msgstr ""
 
-#: account/templates/account/send_friend_request.html:11
+#: account/templates/account/send_friend_request.html:13
 msgid "eine kurze Nachricht"
 msgstr ""
 
-#: account/templates/account/send_friend_request.html:15
+#: account/templates/account/send_friend_request.html:17
 msgid "Abschicken"
 msgstr ""
 
@@ -894,8 +924,8 @@ msgid "Ihre Posts"
 msgstr ""
 
 #: account/templates/account/user_post_list.html:9
-#: activity/templates/activity/detail.html:124
-#: usergroups/templates/usergroups/group_detail.html:73
+#: activity/templates/activity/detail.html:138
+#: usergroups/templates/usergroups/group_detail.html:76
 msgid "Post erstellen"
 msgstr ""
 
@@ -1056,8 +1086,8 @@ msgid ""
 msgstr ""
 
 #: account/templates/registration/password_reset_form.html:12
-#: activity/templates/activity/detail.html:91
-#: multiplayer/templates/javascript/cards.js:525
+#: activity/templates/activity/detail.html:104
+#: multiplayer/templates/javascript/cards.js:528
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
 #: wall/templates/wall/post/create_comment.html:11
 #: wall/templates/wall/post/create_post.html:13
@@ -1117,11 +1147,11 @@ msgstr ""
 msgid "Passwort erfolgreich geändert."
 msgstr ""
 
-#: account/views.py:275
+#: account/views.py:279
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr ""
 
-#: account/views.py:277
+#: account/views.py:281
 msgid "Markierung wurde nicht gefunden!"
 msgstr ""
 
@@ -1175,10 +1205,6 @@ msgstr ""
 msgid "Suche: "
 msgstr ""
 
-#: activity/templates/activity/activity_list.html:18
-msgid "Mitglieder anzeigen"
-msgstr ""
-
 #: activity/templates/activity/activity_list.html:31
 #: competitions/templates/competitions/tournament_detail.html:29
 #: usergroups/templates/usergroups/group_detail.html:33
@@ -1215,48 +1241,48 @@ msgid ""
 "in denen Sie chatten, telefonieren und Termine verwalten können."
 msgstr ""
 
-#: activity/templates/activity/detail.html:33
-msgid "Passt zu Ihnen zu "
+#: activity/templates/activity/detail.html:43
+msgid "Passt zu Ihnen zu: "
 msgstr ""
 
-#: activity/templates/activity/detail.html:40
+#: activity/templates/activity/detail.html:50
 msgid "Gehört zu: "
 msgstr ""
 
-#: activity/templates/activity/detail.html:47
+#: activity/templates/activity/detail.html:60
 msgid "Gewichtungen bearbeiten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:54
+#: activity/templates/activity/detail.html:68
 msgid "Offline spielen"
 msgstr ""
 
-#: activity/templates/activity/detail.html:59
+#: activity/templates/activity/detail.html:73
 #: multiplayer/templates/multiplayer/create_match.html:4
 msgid "Online spielen"
 msgstr ""
 
-#: activity/templates/activity/detail.html:70
+#: activity/templates/activity/detail.html:83
 #, python-format
 msgid "%(activity)s-Chat beitreten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:75
+#: activity/templates/activity/detail.html:88
 #: competitions/templates/competitions/match_detail.html:35
 #: competitions/templates/competitions/tournament_detail.html:37
 #: usergroups/templates/usergroups/group_detail.html:37
 msgid "Austreten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:77
+#: activity/templates/activity/detail.html:90
 msgid "Suche nach Mitgliedern"
 msgstr ""
 
-#: activity/templates/activity/detail.html:84
+#: activity/templates/activity/detail.html:97
 msgid "Die Markierung "
 msgstr ""
 
-#: activity/templates/activity/detail.html:84
+#: activity/templates/activity/detail.html:97
 #, python-format
 msgid ""
 " ist nun für alle Mitglieder der Aktivität \"%(act)s\" in %(comp)s sichtbar. "
@@ -1264,42 +1290,42 @@ msgid ""
 "bearbeiten</a>\" können Sie Ihre Markierungen bearbeiten."
 msgstr ""
 
-#: activity/templates/activity/detail.html:88
+#: activity/templates/activity/detail.html:101
 msgid "Standortmarkierung"
 msgstr ""
 
-#: activity/templates/activity/detail.html:89
+#: activity/templates/activity/detail.html:102
 msgid "Wie heißt der Ort, an dem Sie sich befinden?"
 msgstr ""
 
-#: activity/templates/activity/detail.html:91
-#: multiplayer/templates/javascript/cards.js:530
+#: activity/templates/activity/detail.html:104
+#: multiplayer/templates/javascript/cards.js:533
 #: multiplayer/templates/multiplayer/game.html:44
 #: multiplayer/templates/multiplayer/game.html:72
 #: multiplayer/templates/multiplayer/match.html:27
 msgid "Abbrechen"
 msgstr ""
 
-#: activity/templates/activity/detail.html:100
+#: activity/templates/activity/detail.html:113
 msgid "Standort markieren"
 msgstr ""
 
-#: activity/templates/activity/detail.html:104
-#: activity/templates/activity/detail.html:110
+#: activity/templates/activity/detail.html:117
+#: activity/templates/activity/detail.html:123
 #: activity/templates/javascript/map.js:78
 msgid "Wo bin ich?"
 msgstr ""
 
-#: activity/templates/activity/detail.html:118
+#: activity/templates/activity/detail.html:131
 msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
 msgstr ""
 
-#: activity/templates/activity/detail.html:120
+#: activity/templates/activity/detail.html:134
 #: multiplayer/templates/javascript/lobby.js:46
 msgid "Beitreten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:123
+#: activity/templates/activity/detail.html:137
 msgid "Beiträge"
 msgstr ""
 
@@ -1858,8 +1884,8 @@ msgstr ""
 msgid "hat den Chat verlassen."
 msgstr ""
 
-#: chat/templates/javascript/room.js:76
-#: multiplayer/templates/javascript/poker.js:60
+#: chat/templates/javascript/room.js:77
+#: multiplayer/templates/javascript/poker.js:63
 msgid "Sie"
 msgstr ""
 
@@ -2214,7 +2240,7 @@ msgstr ""
 
 #: competitions/templates/competitions/user_overview.html:34
 msgid ""
-" Erstellen und nehmen Sie Teil an Turnieren und Matches über den 'Offline "
+"Erstellen und nehmen Sie Teil an Turnieren und Matches über den 'Offline "
 "spielen'-Button auf der entsprechenden <a href=\"/activity/list/"
 "\">Aktivitätsseite</a>! Geht natürlich nur bei Aktivitäten, wo man einen "
 "Wettbewerb haben kann."
@@ -2304,39 +2330,39 @@ msgstr ""
 msgid "Ohne Neunen"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:474
+#: multiplayer/templates/javascript/cards.js:477
 #: multiplayer/templates/javascript/skat.js:564
 msgid "Ja"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:476
+#: multiplayer/templates/javascript/cards.js:479
 msgid "Nein"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:767
+#: multiplayer/templates/javascript/cards.js:770
 msgid "Es wurde noch kein Spiel beendet."
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:869
+#: multiplayer/templates/javascript/cards.js:876
 msgid ""
 "Verlassen Sie das Spiel bitte nur, wenn Sie es auch später nicht mehr "
 "fortführen wollen. Spiel verlassen und dadurch zurücksetzen?"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:880
+#: multiplayer/templates/javascript/cards.js:887
 msgid "Internet Explorer wird nicht unterstützt!"
 msgstr ""
 
-#: multiplayer/templates/javascript/common_sd.js:45
+#: multiplayer/templates/javascript/common_sd.js:44
 msgid "Stich"
 msgstr ""
 
-#: multiplayer/templates/javascript/common_sd.js:47
+#: multiplayer/templates/javascript/common_sd.js:46
 msgid "Okay"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:6
-#: multiplayer/templates/javascript/doppelkopf.js:435
+#: multiplayer/templates/javascript/doppelkopf.js:434
 msgid "Gesund"
 msgstr ""
 
@@ -2400,39 +2426,39 @@ msgid "Re"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:25
-#: multiplayer/templates/javascript/doppelkopf.js:268
+#: multiplayer/templates/javascript/doppelkopf.js:267
 msgid "Kontra"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:210
+#: multiplayer/templates/javascript/doppelkopf.js:209
 msgid "Normalspiel"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:361
-#: multiplayer/templates/javascript/durak.js:203
+#: multiplayer/templates/javascript/doppelkopf.js:360
+#: multiplayer/templates/javascript/durak.js:207
 #: multiplayer/templates/javascript/skat.js:164
 #: multiplayer/templates/javascript/skat.js:201
 msgid "Spiel Nummer"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:105
-#: multiplayer/templates/javascript/durak.js:254
+#: multiplayer/templates/javascript/durak.js:108
+#: multiplayer/templates/javascript/durak.js:258
 msgid "SCHLUCKT"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:213
+#: multiplayer/templates/javascript/durak.js:217
 msgid "ANGREIFER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:216
+#: multiplayer/templates/javascript/durak.js:220
 msgid "VERTEIDIGER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:419
+#: multiplayer/templates/javascript/durak.js:424
 msgid "Schlucken"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:429
+#: multiplayer/templates/javascript/durak.js:434
 msgid "Schieben"
 msgstr ""
 
@@ -2476,43 +2502,43 @@ msgstr ""
 msgid "Royal Flush"
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:144
+#: multiplayer/templates/javascript/poker.js:147
 msgid "Gewonnen: "
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:176
+#: multiplayer/templates/javascript/poker.js:179
 msgid "Gewinner: "
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:245
+#: multiplayer/templates/javascript/poker.js:249
 msgid "Änderung um "
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:269
+#: multiplayer/templates/javascript/poker.js:273
 msgid "Sie können nicht zweimal hintereinander raisen."
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:274
+#: multiplayer/templates/javascript/poker.js:278
 msgid "Mindesteinsatz: "
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:278
+#: multiplayer/templates/javascript/poker.js:282
 msgid "Geben Sie eine Zahl ein."
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:281
+#: multiplayer/templates/javascript/poker.js:285
 msgid "Beachten Sie den Mindesteinsatz."
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:284
+#: multiplayer/templates/javascript/poker.js:288
 msgid "So viel Kohle haben Sie nicht. Es fehlen: "
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:330
+#: multiplayer/templates/javascript/poker.js:334
 msgid "Zeigen"
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:331
+#: multiplayer/templates/javascript/poker.js:335
 msgid "Nicht zeigen"
 msgstr ""
 
@@ -2626,8 +2652,8 @@ msgid ""
 "Hier können Sie %(activity)s online spielen. Als Ersteller eines Matches "
 "können Sie das Spiel starten, wenn die eingestellte Spieleranzahl anwesend "
 "ist. Durch Klick auf den Mülleimer schmeißen Sie Leute raus. Bitte treten "
-"Sie dann nicht wieder ohne guten Grund ein! Den (Audio-)Chat erreichen Sie "
-"im Spiel über den Chat-Button oben rechts."
+"Sie dann nicht wieder ohne guten Grund ein! Den Chat erreichen Sie im Spiel "
+"über den Chat-Button oben rechts."
 msgstr ""
 
 #: multiplayer/templates/multiplayer/lobby.html:35
@@ -2697,7 +2723,7 @@ msgstr ""
 
 #: scheduling/templates/scheduling/create_appointment.html:5
 #: scheduling/templates/scheduling/create_appointment.html:8
-#: usergroups/templates/usergroups/group_detail.html:69
+#: usergroups/templates/usergroups/group_detail.html:72
 msgid "Termin erstellen"
 msgstr ""
 
@@ -2855,7 +2881,7 @@ msgstr ""
 msgid "Einladungen"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:64
+#: usergroups/templates/usergroups/group_detail.html:65
 msgid "Termine"
 msgstr ""
 

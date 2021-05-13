@@ -45,6 +45,7 @@ function handleChatMessage(data) {
             moveMembers(data.room_id);
             data.time = new Date();
             data.message = data.username + " {% trans 'hat den Chat verlassen.' %}";
+            changeMembersCount(-1);
             addMessageToChat(data);
             break;
         case 'sent':
@@ -174,7 +175,7 @@ function addChatMember(username, user_id, sex, room_id, img_src) {
         if(sex == 'm') {
             img_src = "{% static 'icons/male_user.png' %}";
         }
-        else if(sex == 'f') {
+        else if(sex == 'w') {
             img_src = "{% static 'icons/female_user.png' %}";
         }
         else {
@@ -182,6 +183,12 @@ function addChatMember(username, user_id, sex, room_id, img_src) {
         }
     }
     img.src = img_src;
+    changeMembersCount(1);
+}
+
+function changeMembersCount(n) {
+    var span = document.getElementById('total-members-count');
+    span.innerHTML = parseInt(span.innerText)+n;
 }
 
 window.addEventListener('load', positionChat);

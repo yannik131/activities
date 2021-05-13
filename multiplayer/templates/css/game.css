@@ -78,6 +78,7 @@
 
 .text {
     margin-left: 5px;
+    width: max-content;
 }
 
 .player1-info {
@@ -147,6 +148,7 @@
     font-size: 18px;
     font-weight: bold;
     z-index: 1;
+    opacity: 0.8;
 }
 
 .info-alert-button {

@@ -21,7 +21,6 @@ function indexOfHighestCard() {
             highest_vs = vs;
         }
     }
-    console.log("stack:", getConvertedStack()[0], "highest:", highest_vs);
     return index;
 }
 

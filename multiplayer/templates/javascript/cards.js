@@ -450,12 +450,15 @@ function deleteButton(id) {
     }
 }
 
-function clearButtons() {
+function clearButtons(callback) {
     for(var i = 0; i < buttons.length; i++) {
         buttons[i].remove();
     }
     buttons = [];
     button_row = 0;
+    if(callback) {
+        callback();
+    }
 }
 
 function createYesNoAlert(info, zIndex, callback) {
@@ -620,9 +623,9 @@ function changeInfoFor(username, info, important) {
         "<a href='/account/detail/"+username+"/'>"+
             username+
         "</a>"+
-        "<span class='text'>"+
+        "<div class='text'>"+
             info+
-        "</span>"
+        "</div>"
     );
     if(info_div) {
         info_div.remove();
@@ -785,6 +788,7 @@ overlap of cards.*/
     for(var i = 1; i < 11; i++) {
         var cards = player_cards[i];
         var types = [];
+        var hidden = cards.length && cards[0].style.display == 'none';
         while(cards.length) {
             var card = cards.pop();
             card.remove();
@@ -793,6 +797,9 @@ overlap of cards.*/
         while(types.length) {
             var type = types.pop();
             addCardTo(i, 1, type != "rear"? type : null, is_poker);
+        }
+        if(hidden) {
+            hideCardsOf(i);
         }
     }
     //update deck

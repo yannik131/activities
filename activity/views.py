@@ -10,7 +10,6 @@ import json
 
 
 def detail(request, activity_name):
-
     component_index = int(request.GET.get('component_index', 3))
     activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
     is_member = request.user.activities.filter(pk=activity.id).exists()

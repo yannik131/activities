@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm, AccountDeleteForm, LoginForm
-from .models import FriendRequest, LocationMarker, User, Friendship
+from .models import FriendRequest, LocationMarker, User, Friendship, Location
 from django.http import HttpResponseRedirect
 from django.utils import timezone
 from datetime import timedelta
@@ -258,15 +258,19 @@ def password_change_done(request):
     return HttpResponseRedirect(reverse('account:edit'))
     
 def people_list(request):
+    component_index = int(request.GET.get('component_index', 3))
+    component = Location.components[component_index]
+    chosen_component = getattr(request.user.location, component)
+    location = request.user.location.get_parent(component_index)
     people = list()
-    for user in request.user.location.population.exclude(id=request.user.id)[:30]:
+    for user in location.get_population(User.objects.all()).exclude(id=request.user.id)[:30]:
         if user.character and request.user.character:
             people.append([user, request.user.character.congruence_with(user.character)])
         else:
             people.append([user, None])
     people = sorted(people, key=lambda t: t[1] if t[1] else 0, reverse=True)
-    people, page = shared.paginate(people, request, 12)
-    return render(request, 'account/people_list.html', dict(people=people))
+    people, page = shared.paginate(people, request, 10)
+    return render(request, 'account/people_list.html', dict(people=people, component_index=component_index, chosen_component=chosen_component, location=location))
     
 def delete_marker(request, marker_id):
     try:
@@ -280,6 +284,7 @@ def delete_marker(request, marker_id):
 def impressum(request):
     return render(request, 'account/impressum.html')
 
+
 def handler404(request, exception=None):
     return render(request, "account/404.html", dict())
     
@@ -289,4 +294,4 @@ def handler403(request, exception=None):
 
 
 def handler500(request):
-    return render(request, "account/500.html")
+    return render(request, "account/500.html",)

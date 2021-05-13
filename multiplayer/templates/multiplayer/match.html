@@ -8,7 +8,7 @@
 {% block style%}{% include 'css/match.css' %}{% endblock %}
 
 {% block content %}
-<div class="match-chat">
+<div class="match-chat" id="chat-window-{{ room.id }}">
     {% include 'chat/chat_window.html' %}
 </div>
 <div class="match-members">

@@ -4,21 +4,23 @@ from shared.shared import n_parenthesis
 from django.utils.safestring import mark_safe
 from activities.language_subdomain_middleware import get_prefix
 from account.models import User
+import random
 
 register = template.Library()
 
+@register.filter
+def rand_inc(n):
+    return n+random.randint(0, 2)
 
 @register.simple_tag
 def call_method(obj, function_name, *args):
     function = getattr(obj, function_name)
     return function(*args)
 
-
 @register.simple_tag
 def changed_requests(user):
     request_list = list(chain(user.sent_friend_requests.all(), user.received_friend_requests.all()))
     return [r for r in request_list if r.modified > user.latest_request_check]
-
 
 @register.simple_tag
 def new_request_number_string(user):

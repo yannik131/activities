@@ -43,6 +43,9 @@ function processMultiplayerData(data) {
             location.href = data.url;
             break;
     }
+    if(data.winner) {
+        return;
+    }
     if(data.new_round) {
         cards = JSON.parse(data.cards);
         highest_bet_user = undefined;
@@ -138,7 +141,7 @@ function handleRaise(data) {
 
 function handleFold(data) {
     createInfoAlert(data.user+': fold', 1500);
-    hideCardsOf(data.user);
+    hideCardsOf(players[data.user]);
     if(data.new_game_data) {
         setTimeout(function() {
             createInfoAlert("{% trans 'Gewonnen: ' %}"+data.winner+"\nPot: "+data.pot, 1500);
@@ -174,6 +177,7 @@ function getCardSortValue(type) {
 function loadGameField(data) {
     if(data.winner) {
         createInfoAlert('{% trans 'Gewinner: ' %}'+data.winner);
+        showdown = false;
         clearButtons();
         return;
     }
@@ -205,7 +209,7 @@ function loadGameField(data) {
         var player = all_players[i];
         if(alive.indexOf(player) == -1) {
             addCardTo(players[player], 2);
-            hideCardsOf(player);
+            hideCardsOf(players[player]);
             continue;
         }
         if(!showdown) {
@@ -221,7 +225,7 @@ function loadGameField(data) {
             addCardTo(players[player], 2);
         }
         if(data[player+'_bet'] == 'fold') {
-            hideCardsOf(player);
+            hideCardsOf(players[player]);
         }
     }
     for(var i = 0; i < player_list.length; i++) {
@@ -247,7 +251,7 @@ function loadGameField(data) {
 }
 
 function hideCardsOf(player) {
-    var cards = player_cards[players[player]];
+    var cards = player_cards[player];
     for(var i = 0; i < cards.length; i++) {
         cards[i].style.display = 'none';
     }

@@ -1,15 +1,20 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
-{% block title %}Wo?{% endblock %}
+{% block title %}{% trans 'Wo?' %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Fehler: 404 - Seite nicht gefunden" %}</h1>
-<p>{% trans "Die geforderte Seite gibt's anscheinend nicht mehr :(" %}<br>
-{% if exception %}
-{% trans "Fehlerbeschreibung: " %} {{ exception }}<br>
-{% endif %}
-{% trans "Falls Sie das traurig machen sollte, hier ein paar ausgewählte Witze: " %}</p>
+
+<h1>
+    <img src="{% static 'icons/attention.png' %}">{% trans "Fehler: 404 - Seite nicht gefunden" %}
+</h1>
+<p class="info-p" style="font-weight: bold; color: yellow">
+    {% trans "Die geforderte Seite gibt's anscheinend nicht mehr &#128561;! Sowas. Das kann passieren, wenn sie in der Zwischenzeit von jemandem gelöscht wurde. Oder vielleicht versteckt sie sich ja unterm Sofa?" %}<br>
+    {% if exception %}
+    {% trans "Fehlerbeschreibung: " %} {{ exception }}<br>
+    {% endif %}
+</p>
 
 {% include 'account/jokes.html' %}
 {% endblock %}

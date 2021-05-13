@@ -156,7 +156,7 @@ function loadGameField(data) {
             lastTrickButton();
             break;
     }
-    if(data.summary) {
+    if(data.summary && !document.getElementById('info-alert')) {
         var info = "";
         if(game_type.length && solist.length) {
             info += solist + ": " + game_type_translations[game_type] + "\n";
@@ -206,7 +206,7 @@ function setUpNewRound(data) {
     else
         info += "{% trans 'überreizt' %}"
     if(game_type != "n") {
-        info += ", {% trans 'Augen' %}: " + data.points;
+        info += ", {% trans 'Augen' %}: " + new_data.points;
     }
     createInfoAlert(info+"\n"+data.summary);
     active = new_data.active;

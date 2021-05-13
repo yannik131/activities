@@ -57,14 +57,14 @@
                 </div>
             </div>
         {% else %}
-                <div class="left" id="{{ post.id }}-left" style="width: 33%" onclick=openLink("{% url 'wall:create_comment' post.id request.path %}")>
+                <div class="left" id="{{ post.id }}-left" style="width: 50%" onclick=openLink("{% url 'wall:create_comment' post.id request.path %}")>
                     <img src="{% static 'icons/comment.png' %}">
                     {% blocktrans %}Kommentieren{% endblocktrans %}
                 </div>
-                <div class="left" id="{{ post.id }}-middle" style="width: 33%" onclick=like({{ post.id }})>
+                <div class="left" id="{{ post.id }}-middle" style="width: 25%" onclick=like({{ post.id }})>
                     <img src="{% static 'icons/like.png' %}">
                 </div>
-                <div class="right" id="{{ post.id }}-right"  style="width: 34%" onclick=dislike({{ post.id }})>
+                <div class="right" id="{{ post.id }}-right"  style="width: 25%" onclick=dislike({{ post.id }})>
                     <img src="{% static 'icons/dislike.png' %}">
                 </div>
             </div>

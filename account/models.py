@@ -60,7 +60,7 @@ class User(AbstractUser):
             return self.image
         elif self.sex == 'm':
             return 'static/icons/male_user.png'
-        elif self.sex == 'f':
+        elif self.sex == 'w':
             return 'static/icons/female_user.png'
         else:
             return 'static/icons/male_female_user.png'

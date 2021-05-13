@@ -66,21 +66,24 @@ function processMultiplayerData(data) {
     }
     if(!delayed) {
         updateButtons();
-        if((player1_cards.length == 0 || game_mode == "none") && !(data.action == 'play' && data.username == this_user)) {
-            console.log(new Date(), '2: done after', data.action);
+        checkDone(data);
+    }
+    updateDone();
+}
+
+function checkDone(data) {
+    if((player1_cards.length == 0 || game_mode == "none") && !(data.action == 'play' && data.username == this_user)) {
+        console.log(new Date(), '2: done after', data.action);
+        sendDone();
+        return;
+    }
+    else if((game_mode == "attacking" || game_mode == "helping") && (allDefended() || is_taking)) {
+        if(!attackingIsPossible()) {
+            console.log(new Date(), '3: done after', data.action);
             sendDone();
             return;
         }
-        else if((game_mode == "attacking" || game_mode == "helping") && (allDefended() || is_taking)) {
-            if(!attackingIsPossible()) {
-                console.log(new Date(), '3: done after', data.action);
-                sendDone();
-                return;
-            }
-        }
     }
-    updateDone();
-    
 }
 
 function updateDone() {
@@ -198,6 +201,7 @@ function loadGameField(data) {
     old_stacks = JSON.parse(data.stacks);
     refreshStacks(old_stacks);
     determineGameMode(data);
+    checkDone(data);
     updateDone();
     if(data.summary) {
         summary = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary;
@@ -270,6 +274,7 @@ function handleNewCards(data, callback, pause) {
             removeCardFrom(player, 1, cards[i]);
         }
         updateButtons();
+        checkDone(data);
         paused = false;
     }, 750);
 }
