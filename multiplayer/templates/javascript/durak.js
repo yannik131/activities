@@ -268,6 +268,7 @@ function handleNewCards(data, callback, pause) {
     for(var i = 0; i < cards.length; i++) {
         addCardTo(player, 1, cards[i], true);
     }
+    //TODO: add directly to stack, then make visible. two play actions at the same time -> race condition? create a stack to handle that
     setTimeout(function() { 
         callback(cards, player, data);
         for(var i = 0; i < cards.length; i++) {
