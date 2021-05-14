@@ -4,16 +4,20 @@
 {% load static %}
 
 {% block title %}{% trans "Info" %}{% endblock %}
-
 {% block content %}
-<h1>{% trans "Willkommen!" %}</h1>
+<h1 class="h-img"><img src="{% static 'icons/hello.png' %}">{% trans "Willkommen!" %}</h1>
+<div class="info-p" style="margin: 0 5px">
+    {% blocktrans %}Hi! Haben Sie gerade nix zu tun und fragen sich, was Sie unternehmen könnten? Da kann Ihnen diese Seite vielleicht bei helfen! Nach der <a href="/account/register">kostenlosen Registrierung</a> können Sie hier Folgendes machen: {% endblocktrans %}
+</div>
 <div class="center-container">
-<p>{% trans "Ermitteln Sie Ihre Persönlichkeit durch einfache Fragen!" %}</p>
+<p style="font-weight: bold;">{% trans "Ermitteln Sie Ihre Persönlichkeit in wenigen Minuten durch einfache Fragen!" %}</p>
 {% if prefix == 'de' %}
 <img src="{% static 'questions_de.png' %}" class="about-picture">
+<br>
 <img src="{% static 'charakter_de.png' %}" class="about-picture">
 {% else %}
 <img src="{% static 'questions_en.png' %}" class="about-picture">
+<br>
 <img src="{% static 'charakter_en.png' %}" class="about-picture">
 {% endif %}
 <p>{% trans "Anschließend werden Ihnen Aktivitäten empfohlen, die zu Ihnen passen könnten. Sie können auch nach Leuten in Ihrer Nähe suchen, die einen ähnlichen Charakter haben wie Sie!" %}</p>
@@ -28,12 +32,17 @@
 {% else %}
 <img src="{% static 'game_en.png' %}" class="about-picture">
 {% endif %}
-<p>{% trans "Aktivitäten in Ihrer Nähe werden nach Mitgliederzahl sortiert. So können Sie sehen, was beliebt ist und was nicht." %}</p>
+<p>{% trans "Aktivitäten in Ihrer Nähe werden nach Mitgliederzahl sortiert. So können Sie sehen, was beliebt ist und was nicht. Und in jeder Aktivität kann jedes Mitglied Orte auf der Karte markieren, wie hier bei Spazieren:" %}</p>
 {% if prefix == 'de' %}
-<img src="{% static 'activities_de.png' %}" class="about-picture">
+<img src="{% static 'map_de.png' %}" class="about-picture">
 {% else %}
-<img src="{% static 'activities_en.png' %}" class="about-picture">
+<img src="{% static 'map_en.png' %}" class="about-picture">
 {% endif %}
-<p>{% trans 'Außerdem können Sie Gruppen und Gruppentermine organisieren, Beiträge in den Aktivitäten posten, liken und disliken und vieles mehr!' %}</p>
+<p>{% trans 'Außerdem können Sie Gruppen und Gruppentermine organisieren, Posts erstellen und vieles mehr!' %}</p>
 </div>
+<style>
+    p {
+        font-weight: bold;
+    }
+</style>
 {% endblock %}

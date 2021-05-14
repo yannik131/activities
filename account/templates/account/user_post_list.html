@@ -7,6 +7,6 @@
 {% block content %}
     <h1>{% blocktrans %}Ihre Posts{% endblocktrans %}</h1>
     <div class="button-like" onclick=openLink("{% url 'wall:create_post' 'account' 'user' user.id %}")><img src="{% static 'icons/post.png' %}">{% blocktrans %}Post erstellen{% endblocktrans %}</div>
-    <p>{% blocktrans %}Die Posts sind öffentlich auf Ihrer Profilseite sichtbar.{% endblocktrans %}</p>
+    <p>{% blocktrans %}Die Posts sind öffentlich auf Ihrer Profil- und der Kategorie- sowie Aktivitätsseite sichtbar.{% endblocktrans %}</p>
     {% include 'wall/post/post_loop.html' %}
 {% endblock %}

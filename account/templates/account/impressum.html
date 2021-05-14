@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans 'Info' %}{% endblock %}
 
 {% block content %}
-<h1>{% trans 'Info' %}</h1>
-{% trans 'Mein Name ist Yannik Schroeder und ich habe diese Website zusammengebastelt. Die Idee hier ist, zu sehen, welche Aktivitäten in Ihrer Nähe viele Mitglieder haben und welche zu Ihnen passen. Ein paar davon kann man gleich hier online machen (Kartenspiele). Bei Fragen und Anregungen schicken Sie mir doch eine E-Mail: myactivities.net@web.de' %}
+<h1 class="h-img"><img src="{% static 'icons/info.png' %}">{% trans 'Info' %}</h1>
+<p class="info-p">
+    {% trans 'Mein Name ist Yannik Schroeder und ich habe diese Website zusammengebastelt. Bei irgendwelchen Frage schicken Sie mir ne E-Mail: myactivities.net@web.de' %}
+</p>
+
 {% endblock %}

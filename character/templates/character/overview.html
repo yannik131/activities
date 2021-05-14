@@ -44,8 +44,12 @@
 {% if not user.character.presentable %}
 <h2>{% trans 'Noch kein Testergebnis!' %}</h2>
 {% else %}
-<h2 id="suggestions" style="display: block">{% trans 'Empfohlene Aktivitäten in ' %}<a style="display: inline" href="{{ chosen_category.get_absolute_url }}">{{ chosen_category.verbose }}</a></h2>
-<div>{% trans 'Andere Kategorie wählen: ' %}</div>
+<br>
+<div class="info-p" id="suggestions">
+    <h2 style="display: block">
+        {% trans 'Empfohlene Aktivitäten in ' %}<a style="display: inline" href="{{ chosen_category.get_absolute_url }}">{{ chosen_category.verbose }}</a>
+    </h2>
+    <div >{% trans 'Kategorie wählen: ' %}</div>
 <div class="activity-horizontal-list">
     {% for category in categories %}
     <div class="item {% if category == chosen_category %}selected{% endif %}" onclick="location.href='{% url 'character:overview' category.name %}'">
@@ -57,8 +61,10 @@
     </div>
     {% endfor %}
 </div>
-<h3>{% trans 'Empfehlungen' %}</h3>
-{% include "account/pagination.html" with page=suggestions id='suggestions'%}
+</div>
+
+<h2>{% trans 'Empfehlungen' %}:</h3>
+<br>
 <div class="list">
     {% for suggestion in suggestions %}
         <div class="item" onclick="location.href='{{ suggestion.activity.get_absolute_url }}'">
@@ -75,7 +81,8 @@
             {% endif %}
         </div>
     {% endfor %}
-    </div>
+    {% include "account/pagination.html" with page=suggestions id='suggestions'%}
+</div>
 <h2>{% trans 'Charakter' %}</h2>
 <p class="center-container"><b>{% trans 'Werte verglichen mit den Durchschnittswerten. <br>+50%: Maximal überdurchschnittlich, -50%: Maximal unterdurchschnittlich' %}</b></p>
 <div class="test-container">

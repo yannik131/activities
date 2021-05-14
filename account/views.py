@@ -144,6 +144,8 @@ def destroy_friendship(request, id):
 
 
 def register(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(request.build_absolute_uri('/account'))
     if request.method == 'POST':
         location_form = LocationForm(request.POST)
         user_form = UserRegistrationForm(request.POST)

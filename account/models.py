@@ -1,3 +1,4 @@
+from notify.models import Notification
 from activity.models import Activity
 from django.db import models
 from django.contrib.auth.models import AbstractUser
@@ -149,7 +150,7 @@ class User(AbstractUser):
     def get_notifications(self):
         notifications = []
         for notification in self.notifications.all():
-            if notification.should_be_deleted:
+            if notification.should_be_deleted or len(notifications) >= Notification.MAXIMUM:
                 notification.delete()
             else:
                 notifications.append(notification)

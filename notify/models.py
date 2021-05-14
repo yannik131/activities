@@ -1,15 +1,15 @@
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
-from account.models import User
 from django.utils import timezone
 from datetime import timedelta
 from django.urls import reverse
 
 
 class Notification(models.Model):
-    LIFESPAN = timedelta(days=7)
-    recipient = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notifications')
+    LIFESPAN = timedelta(days=30)
+    MAXIMUM = 10
+    recipient = models.ForeignKey('account.User', on_delete=models.CASCADE, related_name='notifications')
 
     actor_ct = models.ForeignKey(ContentType, related_name='notify_actor', on_delete=models.CASCADE)
     actor_id = models.PositiveIntegerField()

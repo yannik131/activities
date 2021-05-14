@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 14:26+0000\n"
-"PO-Revision-Date: 2021-05-14 16:27+0200\n"
+"POT-Creation-Date: 2021-05-14 18:05+0000\n"
+"PO-Revision-Date: 2021-05-14 20:06+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -141,111 +141,111 @@ msgstr "Password incorrect."
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr "The account has not yet been activated! Check your e-mails."
 
-#: account/models.py:26
+#: account/models.py:27
 msgid "männlich"
 msgstr "male"
 
-#: account/models.py:27
+#: account/models.py:28
 msgid "weiblich"
 msgstr "female"
 
-#: account/models.py:37
+#: account/models.py:38
 msgid "hat erstellt"
 msgstr "created"
 
-#: account/models.py:38
+#: account/models.py:39
 msgid "ist jetzt befreundet mit"
 msgstr "is now friends with"
 
-#: account/models.py:39
+#: account/models.py:40
 msgid "ist nicht mehr befreundet mit"
 msgstr "isn't friends any more with"
 
-#: account/models.py:40
+#: account/models.py:41
 msgid "hat Ihnen eine Freundschaftsanfrage geschickt"
 msgstr "sent you a friend request"
 
-#: account/models.py:41
+#: account/models.py:42
 msgid "ist beigetreten"
 msgstr "entered"
 
-#: account/models.py:42
+#: account/models.py:43
 msgid "hat verlassen"
 msgstr "left"
 
-#: account/models.py:43
+#: account/models.py:44
 msgid "hat zugesagt"
 msgstr "confirmed"
 
-#: account/models.py:44
+#: account/models.py:45
 msgid "hat abgesagt"
 msgstr "declined"
 
-#: account/models.py:45
+#: account/models.py:46
 msgid "hat sich beworben"
 msgstr "applied for"
 
-#: account/models.py:46
+#: account/models.py:47
 msgid "hat etwas gepostet in"
 msgstr "posted something in"
 
-#: account/models.py:47
+#: account/models.py:48
 msgid "hat etwas kommentiert"
 msgstr "commented something"
 
-#: account/models.py:48
+#: account/models.py:49
 msgid "hat eure Freundschaft beendet"
 msgstr "terminated your friendship"
 
-#: account/models.py:49
+#: account/models.py:50
 msgid "hat Sie eingeladen"
 msgstr "invited you"
 
-#: account/models.py:50
+#: account/models.py:51
 msgid "hat Ihre Freundschaftsanfrage angenommen"
 msgstr "accepted your friend request"
 
-#: account/models.py:51
+#: account/models.py:52
 msgid "hat Ihre Freundschaftsanfrage abgelehnt"
 msgstr "declined your friend request"
 
-#: account/models.py:52
+#: account/models.py:53
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr "rejected your friend request"
 
-#: account/models.py:53
+#: account/models.py:54
 msgid "gefällt"
 msgstr "likes"
 
-#: account/models.py:54
+#: account/models.py:55
 msgid "missfällt"
 msgstr "dislikes"
 
-#: account/models.py:192
+#: account/models.py:193
 msgid "Ausstehend"
 msgstr "Pending"
 
-#: account/models.py:193
+#: account/models.py:194
 msgid "Angenommen"
 msgstr "Accepted"
 
-#: account/models.py:194
+#: account/models.py:195
 msgid "Abgelehnt"
 msgstr "Declined"
 
-#: account/models.py:297 vacancies/models.py:29
+#: account/models.py:298 vacancies/models.py:29
 msgid "Land"
 msgstr "Country"
 
-#: account/models.py:298 vacancies/models.py:30
+#: account/models.py:299 vacancies/models.py:30
 msgid "Bundesland"
 msgstr "State"
 
-#: account/models.py:299 vacancies/models.py:31
+#: account/models.py:300 vacancies/models.py:31
 msgid "Landkreis"
 msgstr "County"
 
-#: account/models.py:300 vacancies/models.py:32
+#: account/models.py:301 vacancies/models.py:32
 msgid "Stadt"
 msgstr "City"
 
@@ -309,20 +309,32 @@ msgstr ""
 "fixed soon!"
 
 #: account/templates/account/about.html:6
-#: account/templates/account/impressum.html:4
-#: account/templates/account/impressum.html:7 account/templates/base.html:41
+#: account/templates/account/impressum.html:5
+#: account/templates/account/impressum.html:8 account/templates/base.html:41
 msgid "Info"
 msgstr "About"
 
-#: account/templates/account/about.html:9
+#: account/templates/account/about.html:8
 msgid "Willkommen!"
 msgstr "Welcome!"
 
-#: account/templates/account/about.html:11
-msgid "Ermitteln Sie Ihre Persönlichkeit durch einfache Fragen!"
-msgstr "Determine your personality through easy questions!"
+#: account/templates/account/about.html:10
+msgid ""
+"Hi! Haben Sie gerade nix zu tun und fragen sich, was Sie unternehmen "
+"könnten? Da kann Ihnen diese Seite vielleicht bei helfen! Nach der <a href="
+"\"/account/register\">kostenlosen Registrierung</a> können Sie hier "
+"Folgendes machen: "
+msgstr ""
+"Hi! You're not doing much at the moment and want to have some suggestions? "
+"Maybe this site can help! After <a href=\"/account/register\">registering "
+"for free</a> you could do the following: "
 
-#: account/templates/account/about.html:19
+#: account/templates/account/about.html:13
+msgid ""
+"Ermitteln Sie Ihre Persönlichkeit in wenigen Minuten durch einfache Fragen!"
+msgstr "Determine your personality through easy questions in minutes!"
+
+#: account/templates/account/about.html:23
 msgid ""
 "Anschließend werden Ihnen Aktivitäten empfohlen, die zu Ihnen passen "
 "könnten. Sie können auch nach Leuten in Ihrer Nähe suchen, die einen "
@@ -331,7 +343,7 @@ msgstr ""
 "After the test you'll get activity suggestions tailored to your personality. "
 "You can even look for people in your area with a similar test score!"
 
-#: account/templates/account/about.html:25
+#: account/templates/account/about.html:29
 msgid ""
 "Sie können per Text und Audiokonferenz chatten und nebenbei sogar einige "
 "Kartenspiele spielen."
@@ -339,21 +351,23 @@ msgstr ""
 "You can chat and have audio conferences, and even play a few card games "
 "online!"
 
-#: account/templates/account/about.html:31
+#: account/templates/account/about.html:35
 msgid ""
 "Aktivitäten in Ihrer Nähe werden nach Mitgliederzahl sortiert. So können Sie "
-"sehen, was beliebt ist und was nicht."
+"sehen, was beliebt ist und was nicht. Und in jeder Aktivität kann jedes "
+"Mitglied Orte auf der Karte markieren, wie hier bei Spazieren:"
 msgstr ""
 "Activities are sorted by members in your area. This way you can see what is "
-"popular and what isn't."
+"popular and what isn't. Additionally, each activity has a map where members "
+"can mark locations, like in the activity strolling right here:"
 
-#: account/templates/account/about.html:37
+#: account/templates/account/about.html:41
 msgid ""
-"Außerdem können Sie Gruppen und Gruppentermine organisieren, Beiträge in den "
-"Aktivitäten posten, liken und disliken und vieles mehr!"
+"Außerdem können Sie Gruppen und Gruppentermine organisieren, Posts erstellen "
+"und vieles mehr!"
 msgstr ""
-"Additionally you can organise groups and meetings, like, dislike and share "
-"posts in every activity and much more!"
+"You can also organize groups and meetings, share posts in every activity and "
+"much more!"
 
 #: account/templates/account/banner.html:29
 msgid ""
@@ -691,19 +705,13 @@ msgstr ""
 "personality test to find out which activities might suit you. Join "
 "activities to chat with like-minded people and mark locations on the map!"
 
-#: account/templates/account/impressum.html:8
+#: account/templates/account/impressum.html:10
 msgid ""
 "Mein Name ist Yannik Schroeder und ich habe diese Website zusammengebastelt. "
-"Die Idee hier ist, zu sehen, welche Aktivitäten in Ihrer Nähe viele "
-"Mitglieder haben und welche zu Ihnen passen. Ein paar davon kann man gleich "
-"hier online machen (Kartenspiele). Bei Fragen und Anregungen schicken Sie "
-"mir doch eine E-Mail: myactivities.net@web.de"
+"Bei irgendwelchen Frage schicken Sie mir ne E-Mail: myactivities.net@web.de"
 msgstr ""
-"My name is Yannik Schroeder and I created this little website. The idea is "
-"to see how many people in your area like which activities and which might "
-"suit your personality best. A few you can even do online right away (bunch "
-"of card games). If you want to contact me, you can send me an email at: "
-"myactivities.net@web.de"
+"My name is Yannik Schroeder and I created this little website. If you want "
+"to contact me, you can send me an email at: myactivities.net@web.de"
 
 #: account/templates/account/jokes.html:4
 msgid "Witz des Augenblicks zum Aufmuntern"
@@ -960,7 +968,7 @@ msgstr "Homepage"
 
 #: account/templates/account/sidemenu.html:9
 #: character/templates/character/overview.html:5
-#: character/templates/character/overview.html:78
+#: character/templates/character/overview.html:86
 msgid "Charakter"
 msgstr "Character"
 
@@ -1003,8 +1011,12 @@ msgid "Post erstellen"
 msgstr "Create post"
 
 #: account/templates/account/user_post_list.html:10
-msgid "Die Posts sind öffentlich auf Ihrer Profilseite sichtbar."
-msgstr "Posts are publicly visible on your profile page."
+msgid ""
+"Die Posts sind öffentlich auf Ihrer Profil- und der Kategorie- sowie "
+"Aktivitätsseite sichtbar."
+msgstr ""
+"Posts are publicly visible on your profile page and the respective category "
+"or activity."
 
 #: account/templates/javascript/base.js:173
 msgid ""
@@ -1216,31 +1228,31 @@ msgstr "You can't delete this request."
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr "This friendship doesn't exist anymore."
 
-#: account/views.py:163
+#: account/views.py:165
 msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden."
 msgstr "No e-mail could be sent to the specified address."
 
-#: account/views.py:177
+#: account/views.py:179
 msgid "Änderungen gespeichert."
 msgstr "Changes saved."
 
-#: account/views.py:191
+#: account/views.py:193
 msgid "Sie können den Ort nur höchstens alle 7 Tage wechseln."
 msgstr "You can change your location only once in 7 days."
 
-#: account/views.py:199
+#: account/views.py:201
 msgid "Neue Adresse gespeichert: "
 msgstr "New address saved: "
 
-#: account/views.py:257
+#: account/views.py:259
 msgid "Passwort erfolgreich geändert."
 msgstr "Your password was changed successfully."
 
-#: account/views.py:279
+#: account/views.py:281
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr "Marker was successfully deleted."
 
-#: account/views.py:281
+#: account/views.py:283
 msgid "Markierung wurde nicht gefunden!"
 msgstr "Marker not found!"
 
@@ -1484,27 +1496,27 @@ msgid "Gewichte verteilen"
 msgstr "Distribute weights"
 
 #: character/templates/character/edit_weights.html:34
-#: character/templates/character/overview.html:81
+#: character/templates/character/overview.html:89
 msgid "Neurotizismus"
 msgstr "Neuroticism"
 
 #: character/templates/character/edit_weights.html:40
-#: character/templates/character/overview.html:87
+#: character/templates/character/overview.html:95
 msgid "Extraversion"
 msgstr "Extraversion"
 
 #: character/templates/character/edit_weights.html:46
-#: character/templates/character/overview.html:93
+#: character/templates/character/overview.html:101
 msgid "Offenheit für Erfahrungen"
 msgstr "Openness to experience"
 
 #: character/templates/character/edit_weights.html:52
-#: character/templates/character/overview.html:99
+#: character/templates/character/overview.html:107
 msgid "Gewissenhaftigkeit"
 msgstr "Conscientiousness"
 
 #: character/templates/character/edit_weights.html:58
-#: character/templates/character/overview.html:105
+#: character/templates/character/overview.html:113
 msgid "Verträglichkeit"
 msgstr "Agreeableness"
 
@@ -1555,20 +1567,24 @@ msgstr "Questions"
 msgid "Noch kein Testergebnis!"
 msgstr "No test result yet!"
 
-#: character/templates/character/overview.html:47
+#: character/templates/character/overview.html:50
 msgid "Empfohlene Aktivitäten in "
 msgstr "Suggested activities in "
 
-#: character/templates/character/overview.html:48
-msgid "Andere Kategorie wählen: "
+#: character/templates/character/overview.html:52
+msgid "Kategorie wählen: "
 msgstr "Choose a category: "
 
-#: character/templates/character/overview.html:70
+#: character/templates/character/overview.html:66
+msgid "Empfehlungen"
+msgstr "Suggestions"
+
+#: character/templates/character/overview.html:77
 #: multiplayer/templates/multiplayer/game.html:69
 msgid "Score"
 msgstr "Score"
 
-#: character/templates/character/overview.html:79
+#: character/templates/character/overview.html:87
 #, python-format
 msgid ""
 "Werte verglichen mit den Durchschnittswerten. <br>+50%%: Maximal "
@@ -1577,11 +1593,11 @@ msgstr ""
 "Values compared to the average. <br>+50%%: Maximally above average, -50%%: "
 "Maximally below average"
 
-#: character/templates/character/overview.html:118
+#: character/templates/character/overview.html:126
 msgid "Zurücksetzen"
 msgstr "Reset"
 
-#: character/templates/character/overview.html:123
+#: character/templates/character/overview.html:131
 msgid ""
 "Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich "
 "die errechneten Punktesummen in den Kategorien werden für die Berechnung von "
@@ -2525,12 +2541,6 @@ msgid "Offline"
 msgstr "Offline"
 
 #: competitions/templates/competitions/user_overview.html:34
-#, fuzzy
-#| msgid ""
-#| " Erstellen und nehmen Sie Teil an Turnieren und Matches über den 'Offline "
-#| "spielen'-Button auf der entsprechenden <a href=\"/activity/list/"
-#| "\">Aktivitätsseite</a>! Geht natürlich nur bei Aktivitäten, wo man einen "
-#| "Wettbewerb haben kann."
 msgid ""
 "Erstellen und nehmen Sie Teil an Turnieren und Matches über den 'Offline "
 "spielen'-Button auf der entsprechenden <a href=\"/activity/list/"
