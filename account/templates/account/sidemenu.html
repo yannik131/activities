@@ -5,15 +5,15 @@
 {% load usergroup_tags %}
 
 <div class="sidemenu" id="sidemenu">
-    <a href="{% url 'account:home' %}" {% active_if request 'home' %}><img src="{% static 'icons/home.png' %}">{% blocktrans %}Homepage{% endblocktrans %}</a>
-    <a href="{% url 'character:overview' %}" {% active_if request 'character' %}><img src="{% static 'icons/brain.png' %}">{% blocktrans %}Charakter{% endblocktrans %}</a>
-    <a href="{% url 'activity:list' %}" {% active_if request 'activities' %}><img src="{% static 'icons/activity.png' %}">{% blocktrans %}Aktivitäten{% endblocktrans %}</a>
-    <a href="{% url 'activity:category_list' %}" {% active_if request 'categories' %}><img src="{% static 'icons/category.png' %}">{% blocktrans %}Kategorien{% endblocktrans %}</a>
-    <a href="{% url 'competitions:user_overview' %}" {% active_if request 'competitions' %}><img src="{% static 'icons/tournament.png' %}">{% blocktrans %}Matches & Turniere{% endblocktrans %}</a>
-    <a href="{% url 'usergroups:group_list' %}" {% active_if request 'groups' %}><img src="{% static 'icons/group.png' %}">{% blocktrans %}Gruppen{% endblocktrans %}</a>
-    <a href="{% url 'vacancies:application_list' %}" {% active_if request 'vacancies' %}><img src="{% static 'icons/interview.png' %}">{% trans "Bewerbungen & Einladungen" %} {% invitation_number_string user %}</a>
-    <a href="{% url 'account:friend_requests_list' %}" {% active_if request 'friends' %}><img src="{% static 'icons/friendship.png' %}">{% trans "Freunde" %}{% new_request_number_string user %}</a>
-    <a href="{% url 'account:edit' %}" {% active_if request 'account' %}><img src="{% static 'icons/pen.png' %}">{% blocktrans %}Account bearbeiten{% endblocktrans %}</a>
+    <a href="{% url 'account:home' %}" id="m-home"><img src="{% static 'icons/home.png' %}">{% blocktrans %}Homepage{% endblocktrans %}</a>
+    <a href="{% url 'character:overview' %}" id="m-character"><img src="{% static 'icons/brain.png' %}">{% blocktrans %}Charakter{% endblocktrans %}</a>
+    <a href="{% url 'activity:list' %}" id="m-activities"><img src="{% static 'icons/activity.png' %}">{% blocktrans %}Aktivitäten{% endblocktrans %}</a>
+    <a href="{% url 'activity:category_list' %}" id="m-categories" id="m-categories"><img src="{% static 'icons/category.png' %}">{% blocktrans %}Kategorien{% endblocktrans %}</a>
+    <a href="{% url 'competitions:user_overview' %}" id="m-competitions"><img src="{% static 'icons/tournament.png' %}">{% blocktrans %}Matches & Turniere{% endblocktrans %}</a>
+    <a href="{% url 'usergroups:group_list' %}" id="m-groups"><img src="{% static 'icons/group.png' %}">{% blocktrans %}Gruppen{% endblocktrans %}</a>
+    <a href="{% url 'vacancies:application_list' %}" id="m-vacancies"><img src="{% static 'icons/interview.png' %}">{% trans "Bewerbungen & Einladungen" %} {% invitation_number_string user %}</a>
+    <a href="{% url 'account:friend_requests_list' %}" id="m-friends"><img src="{% static 'icons/friendship.png' %}">{% trans "Freunde" %}{% new_request_number_string user %}</a>
+    <a href="{% url 'account:edit' %}" id="m-edit" %}><img src="{% static 'icons/pen.png' %}">{% blocktrans %}Account bearbeiten{% endblocktrans %}</a>
     <a href="{% url 'account:logout' %}"><img src="{% static 'icons/logout.png' %}">{% blocktrans %}Ausloggen{% endblocktrans %}</a>
     <div id="alert-list">
         {% for notification in notifications %}
@@ -28,3 +28,35 @@
         {% endfor %}
     </div>
 </div>
+<script>
+    SECTIONS = {
+        'activities': ['/activity/list', '/activity/detail'],
+        'categories': ['/activity/category'],
+        'competitions': ['/multiplayer', '/competitions'],
+        'groups': ['/usergroups'],
+        //'chat': ['/chat'],
+        'vacancies': ['/vacancies'],
+        'friends': ['/account/friend', '/account/people_list'],
+        'edit': ['/account/edit', '/account/password_change', '/account/delete'],
+        'character': ['/character']
+    }
+    if(location.pathname == '/account/' || location.pathname == "/") {
+        document.getElementById('m-home').className = 'active';
+    }
+    else {
+        const keys = Object.keys(SECTIONS);
+        var entry, key, list;
+        outer_loop:
+        for(var i = 0; i < keys.length; i++) {
+            key = keys[i];
+            list = SECTIONS[key];
+            for(var j = 0; j < list.length; j++) {
+                entry = list[j];
+                if(location.pathname.slice(0, entry.length) == entry) {
+                    document.getElementById('m-'+key).className = 'active';
+                    break outer_loop;
+                }
+            }
+        }
+    }
+</script>

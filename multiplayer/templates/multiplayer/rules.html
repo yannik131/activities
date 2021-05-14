@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}{% trans 'Spielregeln' %}{% endblock %}
+
+{% block content %}
+<h1 class="h-img"><img src="{% static 'icons/rules.png' %}">{% trans 'Spielregeln' %}</h1>
+<p class="info-p">
+    {% blocktrans %}Durak hat einen relativ leichten Regelsatz und wird hier direkt erklärt. Bei den anderen Spielen sei auf die Wikipedia-Seite verwiesen.{% endblocktrans %}
+</p>
+<div class="info-p" style="text-align: left">
+    <h2>Doppelkopf</h2>
+    <p>
+        {% blocktrans %}
+        <h3><a href="https://de.wikipedia.org/wiki/Doppelkopf">Doppelkopf auf Wikipedia</a></h3>
+        <ul>
+            <li>Blatt: Mit/Ohne Neunen</li>
+            <li>Soli: Ohne Pflichtsolo. Solospieler kommt raus. Erstes angesagtes Solo zählt. Mit Fleischloser.</li>
+            <li>Hochzeit: Erster fremde Stich.</li>
+            <li>Sonderpunkte: Doppelkopf, Fuchs gefangen, Karlchen</li>
+            <li>Ohne: Armut, Schweinchen, zweite Dulle sticht erste, Bockrunden, Karlchen gefangen</li>
+        </ul>
+        {% endblocktrans %}
+    </p>
+</div>
+<br>
+<div class="info-p" style="text-align: left">
+    <h2>Durak</h2>
+    <p>
+        {% blocktrans %}
+        <h3><a href="https://de.wikipedia.org/wiki/Durak_(Kartenspiel)">Durak auf Wikipedia</a></h3>
+            <ul>
+                <li>Karten: 6-Ass (2-3 Spieler), 3-Ass (4 Spieler)</li>
+                <li>Modus: Schieben erlaubt, ohne Nachschmeißen nach Schlucken</li>
+            </ul>
+            Ziel des Spiels: Keine Karten mehr zu haben. Erster ohne Karten erhält +2, letzter mit Karten -1, Rest +1 Punkte. Der Angreifer kann 1-4 Karten desselben Ranges auf den Verteidiger ausspielen. Der Verteidiger spielt mit seinen beiden Nachbarn und kann nach einem Angriff:
+            <ul>
+                <li>Aufnehmen (Schlucken). Nachbarn können anschließend insgesamt max. 6 Karten der Ränge dazulegen, die bereits gespielt worden sind und klicken dann auf "Fertig".</li>
+                <li>Schlagen. Eine Karte kann mit Trumpf bzw. einer Karte derselben Farbe, aber höheren Ranges geschlagen werden. Nachbarn verhalten sich wie beim Schlucken.</li>
+                <li>Schieben. Wurde weder geschlagen noch geschluckt können 1-3 Karten desselben Ranges dazugelegt und zum linken Nachbarn weitergeschoben werden. Dieser wird dann Verteidiger.</li>
+            </ul>
+        Hat ein Spieler weniger als 6 Karten, darf er mit maximal so vielen Karten angegriffen werden, wie er auf der Hand hat.<br>
+        Nach Schlucken/Schlagen füllen, beginnend mit dem ersten Angreifer, alle Spieler ihre Hände auf 6 Karten auf. Schlucken: Linker Nachbar kommt raus. Erfolgreiches Schlagen: Geschlagene Karten aus dem Spiel entfernen, Spieler kommt selbst raus.
+        Kartenränge (absteigend): Ass, König, Dame, Bube, 10, 9, 8, ...<br>
+        Die offene Deckkarte zeigt die Trumpffarbe an. Trumpfkarten sind höheren Ranges als alle Fehlkarten.
+        {% endblocktrans %}
+    </p>
+</div>
+<br>
+<div class="info-p" style="text-align: left">
+    <h2>Poker (Texas Hold'em)</h2>
+    <p>
+        {% blocktrans %}
+        <h3><a href="https://de.wikipedia.org/wiki/Texas_Hold'em">Poker auf Wikipedia</a></h3>
+        {% endblocktrans %}
+    </p>
+</div>
+<br>
+<div class="info-p" style="text-align: left">
+    <h2>Skat</h2>
+    <p>
+        {% blocktrans %}
+        <h3><a href="https://de.wikipedia.org/wiki/Skat">Skat auf Wikipedia</a></h3>
+        <ul>
+            <li>Abrechnung: Seeger-Fabian (+/- 50 falls gewonnen/verloren, Gegenspieler erhalten bei Gewinn +40)</li>
+            <li>Aus dem Schneider: 31 Augen</li>
+            <li>Ohne: Re/Kontra, Spitze, Bockrunden, Ramsch</li>
+        </ul>
+        {% endblocktrans %}
+    </p>
+</div>
+<br>
+
+{% endblock %}

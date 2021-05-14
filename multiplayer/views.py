@@ -107,4 +107,8 @@ def game(request, match):
         return HttpResponseRedirect(match.get_absolute_url())
     data = dict(match=match, current_chat_room=ChatRoom.get_for_target(match))
     return render(request, 'multiplayer/game.html', data)
+    
+
+def rules(request):
+    return render(request, 'multiplayer/rules.html')
         

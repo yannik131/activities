@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-13 13:45+0000\n"
+"POT-Creation-Date: 2021-05-14 13:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -446,9 +446,9 @@ msgstr ""
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:408
-#: multiplayer/templates/javascript/durak.js:444
-#: multiplayer/templates/javascript/durak.js:462
+#: multiplayer/templates/javascript/durak.js:417
+#: multiplayer/templates/javascript/durak.js:453
+#: multiplayer/templates/javascript/durak.js:471
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:14
 #: usergroups/templates/usergroups/edit_group.html:13
@@ -496,7 +496,7 @@ msgstr ""
 
 #: account/templates/account/edit.html:41 account/templates/base.html:50
 #: account/templates/javascript/base.js:51
-#: activity/templates/activity/detail.html:98
+#: activity/templates/activity/detail.html:96
 msgid "OK!"
 msgstr ""
 
@@ -777,6 +777,7 @@ msgstr ""
 
 #: account/templates/account/register.html:12
 #: account/templates/registration/login.html:13
+#: multiplayer/templates/multiplayer/lobby.html:19
 msgid "Online: "
 msgstr ""
 
@@ -924,7 +925,7 @@ msgid "Ihre Posts"
 msgstr ""
 
 #: account/templates/account/user_post_list.html:9
-#: activity/templates/activity/detail.html:138
+#: activity/templates/activity/detail.html:136
 #: usergroups/templates/usergroups/group_detail.html:76
 msgid "Post erstellen"
 msgstr ""
@@ -1086,7 +1087,7 @@ msgid ""
 msgstr ""
 
 #: account/templates/registration/password_reset_form.html:12
-#: activity/templates/activity/detail.html:104
+#: activity/templates/activity/detail.html:102
 #: multiplayer/templates/javascript/cards.js:528
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
 #: wall/templates/wall/post/create_comment.html:11
@@ -1249,40 +1250,40 @@ msgstr ""
 msgid "Gehört zu: "
 msgstr ""
 
-#: activity/templates/activity/detail.html:60
+#: activity/templates/activity/detail.html:58
 msgid "Gewichtungen bearbeiten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:68
+#: activity/templates/activity/detail.html:66
 msgid "Offline spielen"
 msgstr ""
 
-#: activity/templates/activity/detail.html:73
+#: activity/templates/activity/detail.html:71
 #: multiplayer/templates/multiplayer/create_match.html:4
 msgid "Online spielen"
 msgstr ""
 
-#: activity/templates/activity/detail.html:83
+#: activity/templates/activity/detail.html:81
 #, python-format
 msgid "%(activity)s-Chat beitreten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:88
+#: activity/templates/activity/detail.html:86
 #: competitions/templates/competitions/match_detail.html:35
 #: competitions/templates/competitions/tournament_detail.html:37
 #: usergroups/templates/usergroups/group_detail.html:37
 msgid "Austreten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:90
+#: activity/templates/activity/detail.html:88
 msgid "Suche nach Mitgliedern"
 msgstr ""
 
-#: activity/templates/activity/detail.html:97
+#: activity/templates/activity/detail.html:95
 msgid "Die Markierung "
 msgstr ""
 
-#: activity/templates/activity/detail.html:97
+#: activity/templates/activity/detail.html:95
 #, python-format
 msgid ""
 " ist nun für alle Mitglieder der Aktivität \"%(act)s\" in %(comp)s sichtbar. "
@@ -1290,15 +1291,15 @@ msgid ""
 "bearbeiten</a>\" können Sie Ihre Markierungen bearbeiten."
 msgstr ""
 
-#: activity/templates/activity/detail.html:101
+#: activity/templates/activity/detail.html:99
 msgid "Standortmarkierung"
 msgstr ""
 
-#: activity/templates/activity/detail.html:102
+#: activity/templates/activity/detail.html:100
 msgid "Wie heißt der Ort, an dem Sie sich befinden?"
 msgstr ""
 
-#: activity/templates/activity/detail.html:104
+#: activity/templates/activity/detail.html:102
 #: multiplayer/templates/javascript/cards.js:533
 #: multiplayer/templates/multiplayer/game.html:44
 #: multiplayer/templates/multiplayer/game.html:72
@@ -1306,26 +1307,26 @@ msgstr ""
 msgid "Abbrechen"
 msgstr ""
 
-#: activity/templates/activity/detail.html:113
+#: activity/templates/activity/detail.html:111
 msgid "Standort markieren"
 msgstr ""
 
-#: activity/templates/activity/detail.html:117
-#: activity/templates/activity/detail.html:123
+#: activity/templates/activity/detail.html:115
+#: activity/templates/activity/detail.html:121
 #: activity/templates/javascript/map.js:78
 msgid "Wo bin ich?"
 msgstr ""
 
-#: activity/templates/activity/detail.html:131
+#: activity/templates/activity/detail.html:129
 msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
 msgstr ""
 
-#: activity/templates/activity/detail.html:134
+#: activity/templates/activity/detail.html:132
 #: multiplayer/templates/javascript/lobby.js:46
 msgid "Beitreten"
 msgstr ""
 
-#: activity/templates/activity/detail.html:137
+#: activity/templates/activity/detail.html:135
 msgid "Beiträge"
 msgstr ""
 
@@ -2207,7 +2208,6 @@ msgid "Spielplan"
 msgstr ""
 
 #: competitions/templates/competitions/user_overview.html:8
-#: multiplayer/templates/multiplayer/lobby.html:22
 msgid "Online"
 msgstr ""
 
@@ -2454,11 +2454,11 @@ msgstr ""
 msgid "VERTEIDIGER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:424
+#: multiplayer/templates/javascript/durak.js:433
 msgid "Schlucken"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:434
+#: multiplayer/templates/javascript/durak.js:443
 msgid "Schieben"
 msgstr ""
 
@@ -2649,26 +2649,27 @@ msgstr ""
 #: multiplayer/templates/multiplayer/lobby.html:14
 #, python-format
 msgid ""
-"Hier können Sie %(activity)s online spielen. Als Ersteller eines Matches "
-"können Sie das Spiel starten, wenn die eingestellte Spieleranzahl anwesend "
-"ist. Durch Klick auf den Mülleimer schmeißen Sie Leute raus. Bitte treten "
-"Sie dann nicht wieder ohne guten Grund ein! Den Chat erreichen Sie im Spiel "
-"über den Chat-Button oben rechts."
+"Hier können Sie %(activity)s online spielen (<a href=\"/multiplayer/rules"
+"\">Spielregeln finden Sie hier</a>). Als Ersteller eines Matches können Sie "
+"das Spiel starten, wenn die eingestellte Spieleranzahl anwesend ist. Durch "
+"Klick auf den Mülleimer schmeißen Sie Leute raus. Bitte treten Sie dann "
+"nicht wieder ohne guten Grund ein! Den Chat erreichen Sie im Spiel über den "
+"Chat-Button oben rechts."
 msgstr ""
 
-#: multiplayer/templates/multiplayer/lobby.html:35
+#: multiplayer/templates/multiplayer/lobby.html:25
 msgid "Beigetreten"
 msgstr ""
 
-#: multiplayer/templates/multiplayer/lobby.html:50
+#: multiplayer/templates/multiplayer/lobby.html:40
 msgid "Spielen"
 msgstr ""
 
-#: multiplayer/templates/multiplayer/lobby.html:53
+#: multiplayer/templates/multiplayer/lobby.html:43
 msgid "Zur Übersicht"
 msgstr ""
 
-#: multiplayer/templates/multiplayer/lobby.html:68
+#: multiplayer/templates/multiplayer/lobby.html:58
 msgid "Öffentliche Liste"
 msgstr ""
 
@@ -2678,6 +2679,93 @@ msgstr ""
 
 #: multiplayer/templates/multiplayer/match.html:34
 msgid "Starten"
+msgstr ""
+
+#: multiplayer/templates/multiplayer/rules.html:6
+#: multiplayer/templates/multiplayer/rules.html:9
+msgid "Spielregeln"
+msgstr ""
+
+#: multiplayer/templates/multiplayer/rules.html:11
+msgid ""
+"Durak hat einen relativ leichten Regelsatz und wird hier direkt erklärt. Bei "
+"den anderen Spielen sei auf die Wikipedia-Seite verwiesen."
+msgstr ""
+
+#: multiplayer/templates/multiplayer/rules.html:16
+msgid ""
+"\n"
+"        <h3><a href=\"https://de.wikipedia.org/wiki/Doppelkopf\">Doppelkopf "
+"auf Wikipedia</a></h3>\n"
+"        <ul>\n"
+"            <li>Blatt: Mit/Ohne Neunen</li>\n"
+"            <li>Soli: Ohne Pflichtsolo. Solospieler kommt raus. Erstes "
+"angesagtes Solo zählt. Mit Fleischloser.</li>\n"
+"            <li>Hochzeit: Erster fremde Stich.</li>\n"
+"            <li>Sonderpunkte: Doppelkopf, Fuchs gefangen, Karlchen</li>\n"
+"            <li>Ohne: Armut, Schweinchen, zweite Dulle sticht erste, "
+"Bockrunden, Karlchen gefangen</li>\n"
+"        </ul>\n"
+"        "
+msgstr ""
+
+#: multiplayer/templates/multiplayer/rules.html:32
+msgid ""
+"\n"
+"        <h3><a href=\"https://de.wikipedia.org/wiki/"
+"Durak_(Kartenspiel)\">Durak auf Wikipedia</a></h3>\n"
+"            <ul>\n"
+"                <li>Karten: 6-Ass (2-3 Spieler), 3-Ass (4 Spieler)</li>\n"
+"                <li>Modus: Schieben erlaubt, ohne Nachschmeißen nach "
+"Schlucken</li>\n"
+"            </ul>\n"
+"            Ziel des Spiels: Keine Karten mehr zu haben. Erster ohne Karten "
+"erhält +2, letzter mit Karten -1, Rest +1 Punkte. Der Angreifer kann 1-4 "
+"Karten desselben Ranges auf den Verteidiger ausspielen. Der Verteidiger "
+"spielt mit seinen beiden Nachbarn und kann nach einem Angriff:\n"
+"            <ul>\n"
+"                <li>Aufnehmen (Schlucken). Nachbarn können anschließend "
+"insgesamt max. 6 Karten der Ränge dazulegen, die bereits gespielt worden "
+"sind und klicken dann auf \"Fertig\".</li>\n"
+"                <li>Schlagen. Eine Karte kann mit Trumpf bzw. einer Karte "
+"derselben Farbe, aber höheren Ranges geschlagen werden. Nachbarn verhalten "
+"sich wie beim Schlucken.</li>\n"
+"                <li>Schieben. Wurde weder geschlagen noch geschluckt können "
+"1-3 Karten desselben Ranges dazugelegt und zum linken Nachbarn "
+"weitergeschoben werden. Dieser wird dann Verteidiger.</li>\n"
+"            </ul>\n"
+"        Hat ein Spieler weniger als 6 Karten, darf er mit maximal so vielen "
+"Karten angegriffen werden, wie er auf der Hand hat.<br>\n"
+"        Nach Schlucken/Schlagen füllen, beginnend mit dem ersten Angreifer, "
+"alle Spieler ihre Hände auf 6 Karten auf. Schlucken: Linker Nachbar kommt "
+"raus. Erfolgreiches Schlagen: Geschlagene Karten aus dem Spiel entfernen, "
+"Spieler kommt selbst raus.\n"
+"        Kartenränge (absteigend): Ass, König, Dame, Bube, 10, 9, 8, ...<br>\n"
+"        Die offene Deckkarte zeigt die Trumpffarbe an. Trumpfkarten sind "
+"höheren Ranges als alle Fehlkarten.\n"
+"        "
+msgstr ""
+
+#: multiplayer/templates/multiplayer/rules.html:55
+msgid ""
+"\n"
+"        <h3><a href=\"https://de.wikipedia.org/wiki/Texas_Hold'em\">Poker "
+"auf Wikipedia</a></h3>\n"
+"        "
+msgstr ""
+
+#: multiplayer/templates/multiplayer/rules.html:64
+msgid ""
+"\n"
+"        <h3><a href=\"https://de.wikipedia.org/wiki/Skat\">Skat auf "
+"Wikipedia</a></h3>\n"
+"        <ul>\n"
+"            <li>Abrechnung: Seeger-Fabian (+/- 50 falls gewonnen/verloren, "
+"Gegenspieler erhalten bei Gewinn +40)</li>\n"
+"            <li>Aus dem Schneider: 31 Augen</li>\n"
+"            <li>Ohne: Re/Kontra, Spitze, Bockrunden, Ramsch</li>\n"
+"        </ul>\n"
+"        "
 msgstr ""
 
 #: multiplayer/views.py:18

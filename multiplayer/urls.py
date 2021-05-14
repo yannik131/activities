@@ -10,5 +10,6 @@ urlpatterns = [
     path('game/<str:activity_name>/<int:match_id>/', views.game, name='game'),
     path('match/<str:activity_name>/<int:match_id>/', views.match, name='match'),
     path('enter_match/<str:activity_name>/<int:match_id>/', views.enter_match, name='enter_match'),
-    path('leave_match/<str:activity_name>/<int:match_id>/', views.leave_match, name='leave_match')
+    path('leave_match/<str:activity_name>/<int:match_id>/', views.leave_match, name='leave_match'),
+    path('rules/', views.rules, name='rules')
 ]
