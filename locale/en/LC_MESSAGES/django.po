@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 13:50+0000\n"
-"PO-Revision-Date: 2021-05-14 15:51+0200\n"
+"POT-Creation-Date: 2021-05-14 14:26+0000\n"
+"PO-Revision-Date: 2021-05-14 16:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -768,7 +768,7 @@ msgstr "Please send me your jokes. I don’t know any good ones."
 #: account/templates/account/pagination.html:7
 #: account/templates/account/pagination_component.html:7
 msgid "Erste"
-msgstr "Last"
+msgstr "First"
 
 #: account/templates/account/pagination.html:9
 #: account/templates/account/pagination_component.html:9
@@ -794,7 +794,7 @@ msgstr "Next"
 #: account/templates/account/pagination.html:17
 #: account/templates/account/pagination_component.html:17
 msgid "Letzte"
-msgstr "First"
+msgstr "Last"
 
 #: account/templates/account/people_list.html:6
 msgid "Personenliste"
@@ -1413,8 +1413,11 @@ msgid "Wo bin ich?"
 msgstr "Where am I?"
 
 #: activity/templates/activity/detail.html:129
-msgid "Um Mitglieder anzeigen zu können, müssen Sie beitreten."
-msgstr "If you want to see the members, you need to enter the activity."
+msgid ""
+"Um Mitglieder anzeigen und Orte markieren zu können, müssen Sie beitreten."
+msgstr ""
+"If you want to see the members and mark locations, you need to enter the "
+"activity."
 
 #: activity/templates/activity/detail.html:132
 #: multiplayer/templates/javascript/lobby.js:46
