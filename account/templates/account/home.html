@@ -17,7 +17,7 @@
     {% if missing_fields %}
     <div class="missing-stuff">
     {% trans 'Schließen Sie Ihre Anmeldung ab, indem Sie Alter und Geschlecht nachtragen: ' %} 
-    <div class="button-like" style="margin: 5px auto; onclick=openLink("{% url 'account:edit' %}")><img src="{% static 'icons/pen.png' %}">{% blocktrans %}Profil vervollständigen{% endblocktrans %}</div>
+    <div class="button-like" style="margin: 5px auto;" onclick=openLink("{% url 'account:edit' %}")><img src="{% static 'icons/pen.png' %}">{% blocktrans %}Profil vervollständigen{% endblocktrans %}</div>
     {% trans 'Ansonsten können Sie sich nicht auf Leerstellen bewerben.' %}
     </div>
     {% endif %}
