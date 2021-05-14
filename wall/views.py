@@ -4,18 +4,17 @@ from django.http import HttpResponseRedirect
 from .models import Post, Comment
 from account.models import User
 from usergroups.models import UserGroup
+from activity.models import Category
 from django.contrib.contenttypes.models import ContentType
 from shared.shared import slashify
 from account.views import handler403
 
 
-def create_post(request, app_label, model, id, activity_id=None):
+def create_post(request, app_label, model, id):
     ct = get_object_or_404(ContentType, app_label=app_label, model=model)
-    group = None
-    if ct == UserGroup.content_type():
-        group = ct.get_object_for_this_type(pk=id)
+    arg = ct.get_object_for_this_type(pk=id)
     if request.method == 'POST':
-        form = PostForm(group, activity_id, data=request.POST, files=request.FILES)
+        form = PostForm(arg, data=request.POST, files=request.FILES)
         form.instance.target_ct = ct
         form.instance.target_id = id
         form.instance.author = request.user
@@ -26,7 +25,7 @@ def create_post(request, app_label, model, id, activity_id=None):
                 return HttpResponseRedirect(request.build_absolute_uri('/account/user_post_list/'))
             return HttpResponseRedirect(post.target.get_absolute_url())
     else:
-        form = PostForm(group, activity_id)
+        form = PostForm(arg)
         form.instance.target_ct = ct
         form.instance.target_id = id
     return render(request, 'wall/post/create_post.html', dict(form=form, target=form.instance.target))

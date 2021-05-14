@@ -22,6 +22,7 @@
         {% include "activity/loop.html" with activities=category.activities%}
     <div class="profile-rest">
         <h3>{% trans "Posts in" %} {{ chosen_component }}</h3>
+        <div class="button-like" onclick=openLink("{% url 'wall:create_post' 'activity' 'category' category.id %}")><img src="{% static 'icons/post.png' %}">{% blocktrans %}Post erstellen{% endblocktrans %}</div>
         {% include 'activity/location_selection.html' %}
         {% include 'wall/post/post_loop.html' %}
     </div>

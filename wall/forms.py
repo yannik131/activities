@@ -1,22 +1,29 @@
+from time import perf_counter_ns
 from django import forms
 from .models import Post, Comment
 from activity.models import Activity, Category
+from usergroups.models import UserGroup
 from shared.shared import xor_or_none, type_of
 from django.utils.translation import gettext_lazy as _
 
-
 class PostForm(forms.ModelForm):
-    def __init__(self, group, activity_id, *args, **kwargs):
+    def __init__(self, arg, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        if group:
+        if type(arg) == UserGroup:
+            group = arg
             self.instance.category = group.category
             self.instance.group = group
             self.fields['category'].required = False
             self.fields['category'].disabled = True
             self.fields['category'].initial = group.category.id
             self.fields['activity'].choices = [(None, '-'*10)] + [(activity.id, activity) for activity in self.instance.category.activities.all()]
-        elif activity_id:
-            activity = Activity.objects.get(pk=activity_id)
+        elif type(arg) == Category:
+            category = arg
+            self.fields['category'].initial = category.id
+            self.fields['category'].disabled = True
+            self.fields['activity'].choices = [(None, '-'*10)] + [(activity.id, activity) for activity in category.activities.all()]
+        elif type(arg) == Activity:
+            activity = arg
             self.fields['category'].disabled = True
             self.fields['category'].initial = activity.categories.first().id
             self.fields['activity'].disabled = True
