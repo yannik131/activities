@@ -21,6 +21,8 @@ class PostForm(forms.ModelForm):
             self.fields['category'].initial = activity.categories.first().id
             self.fields['activity'].disabled = True
             self.fields['activity'].initial = activity.id
+        else:
+            self.fields['category'].choices = [(None, '-'*10)] + [(category.id, category) for category in Category.objects.filter(visible=True)]
             
 
     MAX_UPLOAD_FILE_SIZE = 30000000
@@ -33,14 +35,14 @@ class PostForm(forms.ModelForm):
         labels = {
             'message': _('Nachricht'),
             'category': _('Kategorie (erforderlich)'),
-            'activity': _('Aktivität'),
+            'activity': _('Aktivität (Namen eintippen geht schneller als klicken!)'),
             'audio': _('Audiodatei'),
             'video': _('Videodatei'),
             'image': _('Bilddatei')
         }
 
         help_texts = {
-            'message': _('<..>: Link, *..*: Kursiv, **..**: Fett, ***..***: Kursiv+Fett, * ..: Liste, 1. ..; 2 ..: Liste mit Zahlen')
+            'message': _('<a target="_blank" href="https://www.heise.de/mac-and-i/downloads/65/1/1/6/7/1/0/3/Markdown-CheatSheet-Deutsch.pdf">[Zum Markdown Merkblatt]</a>')
         }
 
     def clean_media_fields(self, cd):

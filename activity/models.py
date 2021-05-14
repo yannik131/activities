@@ -89,6 +89,7 @@ class Category(TranslatableModel):
     image_source = models.URLField(null=True, blank=True)
     activities = models.ManyToManyField(Activity, related_name='categories', blank=True)
     parent_category = models.ForeignKey('Category', related_name='sub_categories', on_delete=models.SET_NULL, null=True, blank=True)
+    visible = models.BooleanField(default=False)
 
     class Meta:
         verbose_name_plural = 'categories'

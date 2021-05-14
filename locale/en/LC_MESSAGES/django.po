@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 18:05+0000\n"
-"PO-Revision-Date: 2021-05-14 20:06+0200\n"
+"POT-Creation-Date: 2021-05-14 19:09+0000\n"
+"PO-Revision-Date: 2021-05-14 21:10+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -95,7 +95,7 @@ msgid "Ihre Stadt"
 msgstr "Your city"
 
 #: account/forms.py:112 vacancies/forms.py:55 vacancies/forms.py:99
-#: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:34
+#: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:36
 msgid "Nachricht"
 msgstr "Message"
 
@@ -379,7 +379,7 @@ msgstr ""
 "settings somewhere.. you are not being tracked.. by using this site you "
 "accept.."
 
-#: account/templates/account/banner.html:31
+#: account/templates/account/banner.html:32
 msgid "Mir doch egal!"
 msgstr "I don't care!"
 
@@ -1187,7 +1187,7 @@ msgstr "Enter your email address to reset your password."
 #: multiplayer/templates/javascript/cards.js:528
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
 #: wall/templates/wall/post/create_comment.html:11
-#: wall/templates/wall/post/create_post.html:13
+#: wall/templates/wall/post/create_post.html:14
 msgid "Senden"
 msgstr "Send"
 
@@ -1281,7 +1281,7 @@ msgstr "consumption"
 msgid "Aktivität: {name}"
 msgstr "Activity: {name}"
 
-#: activity/models.py:106
+#: activity/models.py:107
 #, python-brace-format
 msgid "Kategorie: {name}"
 msgstr "Category: {name}"
@@ -1669,7 +1669,7 @@ msgstr "Gregariousness"
 msgid "Durchsetzungsfähigkeit"
 msgstr "Assertiveness"
 
-#: character/templates/javascript/categories.js:16 wall/forms.py:36
+#: character/templates/javascript/categories.js:16
 msgid "Aktivität"
 msgstr "Activity"
 
@@ -3569,56 +3569,61 @@ msgstr "The application deadline has already expired."
 msgid "Sie sind bereits Mitglied."
 msgstr "You already are a member."
 
-#: wall/forms.py:35
+#: wall/forms.py:37
 msgid "Kategorie (erforderlich)"
 msgstr "Category (required)"
 
-#: wall/forms.py:37
+#: wall/forms.py:38
+msgid "Aktivität (Namen eintippen geht schneller als klicken!)"
+msgstr "Activity (typing in the name is faster than clicking!)"
+
+#: wall/forms.py:39
 msgid "Audiodatei"
 msgstr "Audio file"
 
-#: wall/forms.py:38
+#: wall/forms.py:40
 msgid "Videodatei"
 msgstr "Video file"
 
-#: wall/forms.py:39
+#: wall/forms.py:41
 msgid "Bilddatei"
 msgstr "Image file"
 
-#: wall/forms.py:43
+#: wall/forms.py:45
 msgid ""
-"<..>: Link, *..*: Kursiv, **..**: Fett, ***..***: Kursiv+Fett, * ..: Liste, "
-"1. ..; 2 ..: Liste mit Zahlen"
+"<a target=\"_blank\" href=\"https://www.heise.de/mac-and-i/"
+"downloads/65/1/1/6/7/1/0/3/Markdown-CheatSheet-Deutsch.pdf\">[Zum Markdown "
+"Merkblatt]</a>"
 msgstr ""
-"<..>: Link, *..*: Italic, **..**: Bold, ***..***: Italic+Bold, * ..: List, "
-"1. ..; 2 ..: Numbered list"
+"<a target=\"_blank\" href=\"https://www.markdownguide.org/cheat-sheet/"
+"\">[Markdown cheat sheet]</a>"
 
-#: wall/forms.py:51
+#: wall/forms.py:53
 msgid "Es kann nicht mehr als eine Datei hochgeladen werden."
 msgstr "You can upload more than one file at once."
 
-#: wall/forms.py:56
+#: wall/forms.py:58
 msgid "Unbekannter Audiodateityp"
 msgstr "Unknown audio file type"
 
-#: wall/forms.py:61
+#: wall/forms.py:63
 msgid "Unbekannter Videodateityp"
 msgstr "Unknown video file type"
 
-#: wall/forms.py:66
+#: wall/forms.py:68
 msgid "Unbekannter Bilddateityp"
 msgstr "Unknown image file type"
 
-#: wall/forms.py:71
+#: wall/forms.py:73
 #, python-brace-format
 msgid "Maximale Dateigröße: {size1} (tatsächliche Größe: {size2}MB)"
 msgstr "Maximum file size: {size1} (actual size: {size2}MB)"
 
-#: wall/forms.py:84
+#: wall/forms.py:86
 msgid "Diese Aktivität ist nicht Teil der ausgewählten Kategorie."
 msgstr "This activity is not in the selected category."
 
-#: wall/forms.py:94
+#: wall/forms.py:96
 msgid "Kommentar"
 msgstr "Comment"
 
@@ -3647,15 +3652,15 @@ msgstr "Comment"
 msgid "Post kommentieren"
 msgstr "Comment post"
 
-#: wall/templates/wall/post/create_post.html:4
+#: wall/templates/wall/post/create_post.html:5
 msgid "Posten"
 msgstr "Create post"
 
-#: wall/templates/wall/post/create_post.html:7
+#: wall/templates/wall/post/create_post.html:8
 msgid "Posten in"
 msgstr "Post in"
 
-#: wall/templates/wall/post/create_post.html:8
+#: wall/templates/wall/post/create_post.html:9
 msgid ""
 "Hinweis: Bitte achten Sie bei öffentlichen Posts auf den Verzicht von "
 "vulgärer Sprache und laden Sie keine urheberrechtlich geschützten oder "
@@ -3673,6 +3678,13 @@ msgstr "[Delete]"
 #, python-format
 msgid " vor %(v0)s"
 msgstr " %(v0)s ago"
+
+#~ msgid ""
+#~ "<..>: Link, *..*: Kursiv, **..**: Fett, ***..***: Kursiv+Fett, * ..: "
+#~ "Liste, 1. ..; 2 ..: Liste mit Zahlen"
+#~ msgstr ""
+#~ "<..>: Link, *..*: Italic, **..**: Bold, ***..***: Italic+Bold, * ..: "
+#~ "List, 1. ..; 2 ..: Numbered list"
 
 #~ msgid "(Zu den Spielregeln..)"
 #~ msgstr "(Rules of the game..)"

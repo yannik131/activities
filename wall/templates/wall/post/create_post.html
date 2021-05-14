@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% blocktrans %}Posten{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Posten in" %} <a href="{{ target.get_absolute_url }}">{{ target }}</a></h1>
-    <p>{% blocktrans %}Hinweis: Bitte achten Sie bei öffentlichen Posts auf den Verzicht von vulgärer Sprache und laden Sie keine urheberrechtlich geschützten oder anstößigen Mediendateien hoch.{% endblocktrans %}</p>
-
-    <form method="post" enctype="multipart/form-data">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <input type="submit" value="{% blocktrans %}Senden{% endblocktrans %}">
-    </form>
+    <h1 class="h-img"><img src="{% static 'icons/post.png' %}">{% trans "Posten in" %} <a href="{{ target.get_absolute_url }}" style="margin-left: 7px">{{ target }}</a></h1>
+    <p class="info-p">{% blocktrans %}Hinweis: Bitte achten Sie bei öffentlichen Posts auf den Verzicht von vulgärer Sprache und laden Sie keine urheberrechtlich geschützten oder anstößigen Mediendateien hoch.{% endblocktrans %}</p>
+    <div class="center-container">
+        <form class="login-form" method="post" enctype="multipart/form-data">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="submit" value="{% blocktrans %}Senden{% endblocktrans %}">
+        </form>
+    </div>
+    
 {% endblock %}

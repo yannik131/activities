@@ -360,7 +360,7 @@ select:focus, select:hover {
     margin: auto auto;
 }
 
-.login-form input {
+.login-form input, .login-form textarea, .login-form select {
     display: block;
     margin: auto auto;
     margin-top: 5px;
