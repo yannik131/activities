@@ -72,6 +72,20 @@ def get_players_with_cards(players, data):
             l.append(player)
     return l
     
+def refresh_stacks(data, text_data, beating):
+    server_stacks = json.loads(data['stacks'])
+    if not beating:
+        played_cards = json.loads(text_data['played_cards'])
+        for card in played_cards:
+            server_stacks.append([card])
+    else:
+        client_stacks = json.loads(text_data['stacks'])
+        for i in range(len(client_stacks)):
+            if len(server_stacks[i]) < len(client_stacks[i]):
+                server_stacks[i] = client_stacks[i]
+                break
+    data['stacks'] = json.dumps(server_stacks)
+    
     
 def next_bidder(data):
     players = json.loads(data["players"])
@@ -427,7 +441,7 @@ def give_durak_points(data, players, durak):
         change(data, player+"_points", points)
         summary.append([f"{player}: {'+' if points >= 0 else ''}{points} -> {data[player+'_points']}\n", data[player+'_points']])
     summary = sorted(summary, key=lambda t: t[1], reverse=True)
-    return "".join([t[0] for t in summary])
+    return "".join([t[0] for t in summary])[:-1]
     
 
 """

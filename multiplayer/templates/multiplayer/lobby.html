@@ -15,21 +15,11 @@
 </p>
 <div class="button-like" onclick=openLink("{% url 'multiplayer:create_match' activity.name %}")><img src="{% static 'icons/match.png' %}">{% blocktrans %}Match erstellen{% endblocktrans %}</div>
 <p></p>
-<div class="online-table">
-    <table style="float: right;">
-        <thead>
-            <tr>
-                <th>{% trans "Online" %}</th>
-            </tr>
-        </thead>
-        <tbody id="online-list">
-            {% for user in online_list %}
-                <tr>
-                    <td><a href="{{ user.get_absolute_url }}">{{ user }}</a></td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="info-p">
+    {% trans 'Online: ' %}
+    {% for user in online_list %}
+        <a href="{{ user.get_absolute_url }}">{{ user }}</a>{% if not forloop.last %}, {% endif %}
+    {% endfor %}
 </div>
 <div class="joined-matches">
     <h2>{% trans 'Beigetreten' %}</h2>

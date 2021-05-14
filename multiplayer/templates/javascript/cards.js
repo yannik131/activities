@@ -403,7 +403,7 @@ function createButton(text, id, callback, color) {
     var button = document.createElement("button");
     button.type = "button";
     if(field.offsetWidth < 600) {
-        button.style.fontSize = "18pt";
+        button.style.fontSize = "14pt";
     }
     else {
         button.style.fontSize = "24pt";

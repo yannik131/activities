@@ -3,10 +3,8 @@
 }
 
 .match-list {
-    display: block;
     background-color: #3b3b3b;
     border-radius: 10px;
-    
 }
 
 .match-list .item {

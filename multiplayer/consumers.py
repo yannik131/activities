@@ -15,6 +15,7 @@ class GameConsumer(WebsocketConsumer):
     def connect(self):
         self.username = self.scope['url_route']['kwargs']['username']
         key = self.scope['url_route']['kwargs']['key']
+        log(self.username, key, User.objects.get(username=self.username).ws_key)
         if User.objects.get(username=self.username).ws_key != key:
             return
         self.match_id = self.scope['url_route']['kwargs']['match_id']
@@ -27,7 +28,7 @@ class GameConsumer(WebsocketConsumer):
             self.accept()
 
     def disconnect(self, code):
-        if not self.match_id:
+        if not hasattr(self, 'match_id'):
             return
         async_to_sync(self.channel_layer.group_discard)(
             f"match-{self.match_id}",
@@ -61,7 +62,7 @@ class DurakConsumer(GameConsumer):
     def handle_move(self, text_data, data, match, message):
         players = json.loads(data["players"])
         if text_data['action'] in ["beating", "attacking"]:
-            data["stacks"] = text_data["stacks"]
+            refresh_stacks(data, text_data, self.username == data['defending'])
             data[self.username] = text_data["hand"]
             if not data["first"] and len(json.loads(text_data["hand"])) == 0:
                 data["first"] = self.username
@@ -76,6 +77,8 @@ class DurakConsumer(GameConsumer):
                 "defending": data["defending"],
                 "attacking": data["attacking"]
             }
+            if text_data['action'] == 'beating':
+                message['data']['beating'] = '1'
         elif text_data['action'] == "done":
             done_list = json.loads(data['done_list'])
             if self.username not in done_list:
@@ -152,7 +155,7 @@ class DurakConsumer(GameConsumer):
                 "action": "take"
             }
         elif text_data["action"] == "transfer":
-            data["stacks"] = text_data["stacks"]
+            refresh_stacks(data, text_data, False)
             data[self.username] = text_data["hand"]
             if not data["first"] and len(json.loads(text_data["hand"])) == 0:
                 data["first"] = self.username

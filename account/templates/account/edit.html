@@ -38,7 +38,7 @@
     </ul>
     <div class="django-message" id="message" style="display: none; position: fixed;">
         <p>{% trans 'Gespeichert: ' %} <span id="msg-text"></span></p>
-        <a class="blue-button" onclick="document.getElementById('message').style.display='none';">{% trans "OK!" %}</a>
+        <div class="center-container"><div class="blue-button" onclick="document.getElementById('message').style.display='none';">{% trans "OK!" %}</div></div>
 </div>
     <script>
         {% include 'javascript/edit.js' %}

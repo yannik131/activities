@@ -261,7 +261,6 @@ function determineGameMode(data) {
 }
 
 function handleNewCards(data, callback, pause) {
-    paused = pause;
     var player = players[data.username];
     var cards = JSON.parse(data.played_cards);
     removeCardFrom(player, cards.length);
@@ -269,35 +268,44 @@ function handleNewCards(data, callback, pause) {
         addCardTo(player, 1, cards[i], true);
     }
     //TODO: add directly to stack, then make visible. two play actions at the same time -> race condition? create a stack to handle that
+    console.log('handleNewCards:', stacks);
     setTimeout(function() { 
-        callback(cards, player, data);
         for(var i = 0; i < cards.length; i++) {
             removeCardFrom(player, 1, cards[i]);
         }
+        callback(cards, player, data);
         updateButtons();
         checkDone(data);
-        paused = false;
-    }, 750);
+    }, 1000);
+}
+
+function refresh_stacks(data) {
+    server_stacks = JSON.parse(data.stacks);
+    var played = JSON.parse(data.played_cards);
+    console.log('server stacks:', server_stacks, 'played_cards:', played, 'beating:', data.beating, 'client stacks:', stacks);
+    if(!data.beating) {
+        for(var i = 0; i < played.length; i++) {
+            addStack(played[i]);
+        }
+    }
+    else {
+        for(var i = 0; i < stacks.length; i++) {
+            if(server_stacks[i].length > stacks[i].length) {
+                beatStack(i+1, server_stacks[i][1]);
+                break;
+            }
+        }
+    }
 }
 
 function handleMove(data) {
+    console.log('handleMove:', stacks);
     old_stacks = JSON.parse(data.stacks);
     if(data.username == this_user) {
         return;
     }
     function callback(cards, player, data) {
-        var old_stacks = JSON.parse(data.stacks);
-        if(move_mode == "transfer") {
-            for(var i = 0; i < old_stacks.length; i++) {
-                if(!stacksContain(null, getVs(old_stacks[i][0]).suit)) {
-                    addStack(old_stacks[i][0]);
-                }
-            }
-            return;
-        }
-        else {
-            refreshStacks(old_stacks);
-        }
+        refresh_stacks(data)
         determineGameMode(data);
     }
     handleNewCards(data, callback);
@@ -552,8 +560,9 @@ function setupNewRound(data) {
 
 function handleTransfer(data) {
     function callback(cards, player, data) {
-        clearStacks();
-        refreshStacks(JSON.parse(data.stacks));
+        if(this_user != data.username) {
+            refresh_stacks(data);
+        }
         updatePlayerInfo(data);
         old_stacks = JSON.parse(data.stacks);
         determineGameMode(data);

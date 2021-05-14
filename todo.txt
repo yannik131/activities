@@ -102,3 +102,4 @@ schlucken, ich muss als angreifer fertig drücken?
 nach dem schlucken doppelt was geschluckt wurde
 verteidiger verteidigt und andere nicht done
 zwei karten schlucken dann noch eine dazulegen dann bug
+active if weg

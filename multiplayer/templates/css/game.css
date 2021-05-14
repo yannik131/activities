@@ -177,6 +177,10 @@
     background-color: black;
     opacity: 0.6;
     border-radius: 5px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .game-button:hover {

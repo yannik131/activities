@@ -93,7 +93,7 @@
    <div id="mapid"></div>
    <div class="django-message" id="django-message">
         <p>{% trans 'Die Markierung ' %} "<span id="loc"></span>"{% blocktrans with act=activity comp=chosen_component %} ist nun für alle Mitglieder der Aktivität "{{ act }}" in {{ comp }} sichtbar. Unter "<a style="color: lightblue" href='/account/edit/'>Account bearbeiten</a>" können Sie Ihre Markierungen bearbeiten.{% endblocktrans %}</p>
-        <a class="blue-button" onclick="document.getElementById('django-message').style.display='none';">{% trans "OK!" %}</a>
+        <div class="center-container"><a class="blue-button" onclick="document.getElementById('django-message').style.display='none';">{% trans "OK!" %}</a></div>
 </div>
    <div id="input-window">
        <h2>{% trans 'Standortmarkierung' %}</h2>

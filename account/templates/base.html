@@ -47,7 +47,7 @@
     {% for message in messages %}
         <div class="django-message" id="django-message">
             <p>{{ message }}</p>
-            <a class="blue-button" onclick="document.getElementById('django-message').style.display='none';">{% trans "OK!" %}</a>
+            <div class="center-container"><div class="blue-button" onclick="document.getElementById('django-message').style.display='none';">{% trans "OK!" %}</div></div>
         </div>
     {% endfor %}
 {% endif %}
