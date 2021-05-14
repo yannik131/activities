@@ -21,6 +21,7 @@ body {
     left: 5px;
     right: 5px;
     color: white;
+    margin: auto;
     font-family: "Arial", "Verdana", "Helvectica";
     flex-grow: 1;
 }
