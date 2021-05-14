@@ -44,7 +44,7 @@
 {% if not user.character.presentable %}
 <h2>{% trans 'Noch kein Testergebnis!' %}</h2>
 {% else %}
-<h2 style="display: block">{% trans 'Empfohlene Aktivitäten in ' %}<a style="display: inline" href="{{ chosen_category.get_absolute_url }}">{{ chosen_category.verbose }}</a></h2>
+<h2 id="suggestions" style="display: block">{% trans 'Empfohlene Aktivitäten in ' %}<a style="display: inline" href="{{ chosen_category.get_absolute_url }}">{{ chosen_category.verbose }}</a></h2>
 <div>{% trans 'Andere Kategorie wählen: ' %}</div>
 <div class="activity-horizontal-list">
     {% for category in categories %}
@@ -57,7 +57,8 @@
     </div>
     {% endfor %}
 </div>
-{% include "account/pagination.html" with page=suggestions %}
+<h3>{% trans 'Empfehlungen' %}</h3>
+{% include "account/pagination.html" with page=suggestions id='suggestions'%}
 <div class="list">
     {% for suggestion in suggestions %}
         <div class="item" onclick="location.href='{{ suggestion.activity.get_absolute_url }}'">
