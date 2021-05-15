@@ -11,7 +11,7 @@
     <div class="login">
     <div style="float: left">{% trans 'Nutzer gesamt: ' %}{% total_count %}</div>
     <div style="float: right">{% trans 'Online: ' %} {% online_count %}</div>
-        <h1>{% blocktrans %}Einloggen{% endblocktrans %}</h1>
+        <h1 class="h-img"><img src="{% static 'icons/login.png' %}">{% blocktrans %}Einloggen{% endblocktrans %}</h1>
         
         <p><strong>{% trans "Willkommen bei myactivities.net! :)" %}</strong></p>
         <div class="button-like" onclick=openLink("{% url 'account:about' %}")><img src="{% static 'icons/question.png' %}">{% trans "Was ist das hier?" %}</div>
