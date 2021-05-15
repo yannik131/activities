@@ -104,3 +104,4 @@ verteidiger verteidigt und andere nicht done
 zwei karten schlucken dann noch eine dazulegen dann bug
 active if weg
 h1 check ohne image
+auto close match after 7 days

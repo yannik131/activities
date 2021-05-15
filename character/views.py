@@ -30,7 +30,7 @@ def overview(request, category_name=None):
             category = Category.objects.get(translations__name="Freizeit", translations__language_code="de")
         suggestions = request.user.character.get_or_create_suggestions().filter(activity__in=category.activities.all())
         suggestions, page = paginate(suggestions, request, 6)
-    return render(request, 'character/overview.html', dict(suggestions=suggestions, start=(int(page)-1)*6, categories=Category.objects.annotate(count=Count('activities')).filter(count__gt=0), chosen_category=category, normalized=json.dumps(Global.get().normalized_traits)))
+    return render(request, 'character/overview.html', dict(suggestions=suggestions, start=(int(page)-1)*6, categories=Category.objects.filter(visible=True), chosen_category=category, normalized=json.dumps(Global.get().normalized_traits)))
     
 
 def quiz(request, limit=None):
