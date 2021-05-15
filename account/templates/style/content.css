@@ -371,6 +371,16 @@ select:focus, select:hover {
     text-align: center;
 }
 
+.login-form li {
+    text-align: left;
+}
+
+form label {
+    margin: 5px 0;
+    display: inline-block;
+    font-weight: bold;
+}
+
 .cookie-alert {
     background-color: #1a1a1a;
     color: white;

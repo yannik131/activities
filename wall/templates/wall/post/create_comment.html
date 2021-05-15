@@ -9,7 +9,7 @@
     <p class="info-p">
         {% trans 'Keine vulgäre Sprache bitte!' %}
     </p>
-    <form method="post" class="login-form">
+    <form class="login-form" method="post">
         {{ form.as_p }}
         {% csrf_token %}
         <input type="submit" value="{% trans "Senden" %}">

@@ -5,7 +5,7 @@
 
 {% block content %}
     <h1>{% trans "Nutzer einladen zu" %}: "{{ sender }}"</h1>
-    <form method="post">
+    <form class="login-form" method="post">
         {{ form.as_p }}
         {% csrf_token %}
         <input type="submit" value="{% trans "Fertig" %}">

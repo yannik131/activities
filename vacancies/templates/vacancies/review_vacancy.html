@@ -7,7 +7,7 @@
     <h1>{% trans "Bewerbungen" %}</h1>
     <p>{% trans "Gehört zu" %} <a href="{{ vacancy.target.get_absolute_url }}">{{ vacancy.target }}</a></p>
     <h2>{% trans "Leerstellenbeschreibung" %}:</h2>
-    <p>{{ vacancy.description|linebreaks }}</p>
+    <div class="info-p">{{ vacancy.description|linebreaks }}</div>
     <h2>{% trans "Bewerbungen" %}</h2>
     <table>
         <tr>

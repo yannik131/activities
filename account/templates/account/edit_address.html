@@ -6,7 +6,7 @@
 {% block content %}
     <h1>{% blocktrans %}Adresse ändern{% endblocktrans %}</h1>
     <p>{% blocktrans %}Geben Sie hier eine neue Stadt ein.{% endblocktrans %}</p>
-    <form method="post">
+    <form class="login-form" method="post">
         {{ location_form.as_p }}
         {% csrf_token %}
         <input type="submit" value="{% blocktrans %}Ändern{% endblocktrans %}">

@@ -72,6 +72,7 @@ def get_players_with_cards(players, data):
             l.append(player)
     return l
     
+    
 def refresh_stacks(data, text_data, beating):
     server_stacks = json.loads(data['stacks'])
     if not beating:

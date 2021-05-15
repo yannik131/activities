@@ -5,7 +5,7 @@
 
 {% block content %}
 <div>{% trans 'Klicken Sie auf den Button, um Ihren Account zu löschen.' %}</div>
-<form method="post" class="login-form">
+<form class="login-form" method="post">
     {{ delete_form.as_p }}
     {% csrf_token %}
     <input type="submit" value="{% blocktrans %}Löschen{% endblocktrans %}">

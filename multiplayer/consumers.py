@@ -15,7 +15,6 @@ class GameConsumer(WebsocketConsumer):
     def connect(self):
         self.username = self.scope['url_route']['kwargs']['username']
         key = self.scope['url_route']['kwargs']['key']
-        log(self.username, key, User.objects.get(username=self.username).ws_key)
         if User.objects.get(username=self.username).ws_key != key:
             return
         self.match_id = self.scope['url_route']['kwargs']['match_id']

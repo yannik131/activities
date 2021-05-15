@@ -6,7 +6,7 @@
 
 {% block content %}
     <h1>{% trans "Turnier bearbeiten" %}: <a href="{{ tournament.get_absolute_url }}">{{ tournament }}</a></h1>
-    <form method="post">
+    <form class="login-form" method="post">
         {{ form.as_p }}
         {% csrf_token %}
         <input type="submit" value="{% blocktrans %}Fertig{% endblocktrans %}">

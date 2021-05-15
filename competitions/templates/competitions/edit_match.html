@@ -9,7 +9,7 @@
     <p>
         {% trans "Nutzen Sie das folgende Formular, um das Match zu bearbeiten" %}.
     </p>
-    <form method="post">
+    <form class="login-form" method="post">
         {{ form.as_p }}
         {% csrf_token %}
         <input type="submit" value="{% blocktrans %}Fertig{% endblocktrans %}">

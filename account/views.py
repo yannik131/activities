@@ -64,7 +64,7 @@ def send_friend_request(request, target_id):
         if form.is_valid():
             message = form.cleaned_data['message']
             FriendRequest.objects.create(requesting_user=request.user, requested_user=requested_user, request_message=message)
-            sent = True
+            return HttpResponseRedirect(requested_user.get_absolute_url())
     else:
         form = FriendRequestForm()
     return render(request, 'account/send_friend_request.html', {'form': form, 'sent': sent, 'target_user': requested_user})
@@ -140,7 +140,8 @@ def destroy_friendship(request, id):
     else:
         recipient = friendship.to_user
     notify(recipient, request.user, 'terminated_friendship')
-    return render(request, 'account/destroy_friendship.html', {'target_user': user})
+    messages.add_message(request, messages.INFO, _('Sie haben die Freundschaft mit {user} beendet.').format(user=user))
+    return HttpResponseRedirect(user.get_absolute_url())
 
 
 def register(request):

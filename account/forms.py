@@ -30,7 +30,7 @@ class UserRegistrationForm(forms.ModelForm):
         }
         
         help_texts = {
-            'username': "",
+            'username': ''
         }
         
     def clean_username(self):
@@ -75,16 +75,14 @@ class UserEditForm(forms.ModelForm):
         fields = ('email', 'username', 'sex', 'birth_year', 'profile_text', 'image')
 
         labels = {
-            'sex': _('Geschlecht'),
-            'birth_year': _('Geburtsjahr'),
+            'sex': _('Geschlecht (für Bewerbungen)'),
+            'birth_year': _('Geburtsjahr (für Bewerbungen)'),
             'profile_text': _('Profiltext'),
-            'image': _('Profilbild')
+            'image': _('Profilbild'),
+            'email': _('E-Mail-Adresse (Für Login und Passwortzurücksetzung)')
         }
         
         help_texts = {
-            'email': _('Für Login und Passwort-Zurücksetzen.'),
-            'sex': _('Für Bewerbungen.'),
-            'birth_year': _('Altersermittlung für Bewerbungen.'),
             'username': ''
         }
         

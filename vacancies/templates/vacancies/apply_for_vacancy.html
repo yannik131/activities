@@ -8,7 +8,7 @@
     <p>{% trans "Leerstelle gehört zu" %}: <a href="{{ vacancy.target.get_absolute_url }}">{{ vacancy.target }}</a></p>
     <p>{% trans "Beschreibung" %}: {{ vacancy.description }}</p>
     <p>{% trans "Erzählen Sie etwas über sich" %}:</p>
-    <form method="post">
+    <form class="login-form" method="post">
         {{ form.as_p }}
         {% csrf_token %}
         <input type="submit" value="{% trans "Senden" %}">

@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load cookielaw_tags %}
 {% load account_tags %}
+{% load static %}
 
 {% block title %}{% blocktrans %}Registrieren{% endblocktrans %}{% endblock %}
 
@@ -10,11 +11,13 @@
     <div class="login">
     <div style="float: left">{% trans 'Nutzer gesamt: ' %}{% total_count %}</div>
     <div style="float: right">{% trans 'Online: ' %} {% online_count %}</div>
-        <h1>{% blocktrans %}Registrieren{% endblocktrans %}</h1>
+        <h1 class="h-img"><img src="{% static 'icons/registration.png' %}">{% blocktrans %}Registrieren{% endblocktrans %}</h1>
         
-        <p><strong>{% trans "Willkommen bei myactivities.net! :)" %}</strong></p>
-            <p>{% trans "Bitte nutzen Sie das folgende Formular zum registrieren:" %}</p>
-            <form method="post" class="login-form">
+        <p class="info-p">
+            <strong>{% trans "Willkommen bei myactivities.net! :)" %}</strong><br><br>
+            {% trans "Bitte nutzen Sie das folgende Formular zum registrieren:" %}
+        </p>
+            <form class="login-form" method="post">
                 {{ user_form.as_p }}
                 {% csrf_token %}
                 {% trans "Wo hängen Sie meistens rum?" %}

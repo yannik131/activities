@@ -6,7 +6,7 @@
 {% block content %}
     <h1>{% blocktrans with v0=round.number %}Ergebnisse Eintragen: Runde {{ v0 }}{% endblocktrans %}</h1>
     <p>{% blocktrans %}Nutzen Sie folgendes Formular, um die Ergebnisse des Matches einzutragen.{% endblocktrans %}</p>
-    <form method="post">
+    <form class="login-form" method="post">
         {{ form.as_p }}
         {% csrf_token %}
         <input type="submit" value="{% blocktrans %}Fertig{% endblocktrans %}">

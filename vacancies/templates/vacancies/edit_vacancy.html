@@ -10,7 +10,7 @@
         <img src="{% static 'icons/remove.png' %}">
         {% trans 'Löschen' %}
     </div>
-    <form method="post">
+    <form class="login-form" method="post">
         {{ form.as_p }}
         {% csrf_token %}
         <input type="submit" value="{% trans "Fertig" %}">

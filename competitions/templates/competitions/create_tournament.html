@@ -6,7 +6,7 @@
 {% block content %}
     <h1>{% blocktrans with v0=activity %}{{ v0 }}: Turnier erstellen{% endblocktrans %}</h1>
     <p>{% blocktrans with v0=activity %}Bitte füllen Sie das folgende Formular aus, um ein Turnier in der Aktivität {{ v0 }} zu erstellen.{% endblocktrans %}</p>
-    <form method="post" class="login-form">
+    <form class="login-form" method="post">
         {{ form.as_p }}
         {% csrf_token %}
         <input type="submit" value="{% blocktrans %}Fertig{% endblocktrans %}">

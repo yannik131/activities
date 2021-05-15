@@ -6,7 +6,7 @@
 {% block content %}
 <h1>{{ activity }}: {% trans 'Online-Match erstellen' %}</h1>
 <p>{% blocktrans with name=activity.name %}Füllen Sie das folgende Formular aus, um ein online {{ name }}-Match zu erstellen.{% endblocktrans %}</p>
-<form method="post">
+<form class="login-form" method="post">
     {{ form.as_p }}
     {% csrf_token %}
     <input type="submit" value="{% trans "Fertig" %}">
