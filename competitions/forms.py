@@ -64,9 +64,31 @@ class TournamentForm(forms.ModelForm):
             raise forms.ValidationError(_('Anmeldeschluss muss vor Turnierbeginn sein.'))
         return cd
 
+class ScoreForm(forms.Form):
+    def __init__(self, activity_name, ids, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.activity_name = activity_name
+        for user_id in ids:
+            self.fields[user_id] = forms.FloatField(label=User.objects.get(id=user_id).username, initial=0)
+            
+    def clean(self):
+        cd = super().clean()
+        total = 0
+        if self.activity_name == 'Schach':
+            for key in self.fields:
+                if cd[key] not in [0, 0.5, 1]:
+                    raise forms.ValidationError(_('Erlaubte Werte: 0, 0.5 oder 1'))
+                total += cd[key]
+            if int(total) != 1:
+                raise forms.ValidationError(_('Die Punkte addieren sich nicht zu 1'))
+        elif self.activity_name == 'Doppelkopf':
+            for key in self.fields:
+                total += cd[key]
+            if int(total) != 0:
+                raise forms.ValidationError(_('Die Punkte addieren sich nicht zu 0'))
 
 def make_matchup_score_form(matchup):
     fields = dict()
     for id in matchup:
-        fields[id] = forms.IntegerField(label=User.objects.get(id=id).username, initial=0)
+        fields[id] = forms.FloatField(label=User.objects.get(id=id).username, initial=0, min_value=0)
     return type('MatchupScoreForm', (forms.BaseForm,), {'base_fields': fields})

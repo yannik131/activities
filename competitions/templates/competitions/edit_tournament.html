@@ -17,7 +17,7 @@
         <p><a href="{% url 'competitions:add_tournament_member' tournament.id user.id %}">{% blocktrans %}Selbst beitreten{% endblocktrans %}</a></p>
     {% endif %}
     <ul>
-        {% for member in tournament.contestants.all %}
+        {% for member in tournament.members.all %}
             <li><a href="{{ member.get_absolute_url }}">{{ member }}</a> <a href="{% url 'competitions:remove_member' 'tournament' tournament.id member.id 'admin' %}">{% blocktrans %}Entfernen{% endblocktrans %}</a></li>
         {% endfor %}
     </ul>

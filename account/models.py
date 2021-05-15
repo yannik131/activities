@@ -12,10 +12,6 @@ from django.utils.translation import gettext_lazy as _
 from character.models import Character
 from geopy import Nominatim
 import time
-from django.core.files import File
-from django.conf import settings
-import os
-from easy_thumbnails.files import get_thumbnailer
 
 class User(AbstractUser):
     profile_text = models.TextField(null=True, blank=True)

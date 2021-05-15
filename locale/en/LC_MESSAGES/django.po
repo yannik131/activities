@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 19:09+0000\n"
-"PO-Revision-Date: 2021-05-14 21:10+0200\n"
+"POT-Creation-Date: 2021-05-15 19:28+0000\n"
+"PO-Revision-Date: 2021-05-15 21:28+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -95,7 +95,7 @@ msgid "Ihre Stadt"
 msgstr "Your city"
 
 #: account/forms.py:112 vacancies/forms.py:55 vacancies/forms.py:99
-#: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:36
+#: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:43
 msgid "Nachricht"
 msgstr "Message"
 
@@ -141,111 +141,111 @@ msgstr "Password incorrect."
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr "The account has not yet been activated! Check your e-mails."
 
-#: account/models.py:27
+#: account/models.py:23
 msgid "männlich"
 msgstr "male"
 
-#: account/models.py:28
+#: account/models.py:24
 msgid "weiblich"
 msgstr "female"
 
-#: account/models.py:38
+#: account/models.py:34
 msgid "hat erstellt"
 msgstr "created"
 
-#: account/models.py:39
+#: account/models.py:35
 msgid "ist jetzt befreundet mit"
 msgstr "is now friends with"
 
-#: account/models.py:40
+#: account/models.py:36
 msgid "ist nicht mehr befreundet mit"
 msgstr "isn't friends any more with"
 
-#: account/models.py:41
+#: account/models.py:37
 msgid "hat Ihnen eine Freundschaftsanfrage geschickt"
 msgstr "sent you a friend request"
 
-#: account/models.py:42
+#: account/models.py:38
 msgid "ist beigetreten"
 msgstr "entered"
 
-#: account/models.py:43
+#: account/models.py:39
 msgid "hat verlassen"
 msgstr "left"
 
-#: account/models.py:44
+#: account/models.py:40
 msgid "hat zugesagt"
 msgstr "confirmed"
 
-#: account/models.py:45
+#: account/models.py:41
 msgid "hat abgesagt"
 msgstr "declined"
 
-#: account/models.py:46
+#: account/models.py:42
 msgid "hat sich beworben"
 msgstr "applied for"
 
-#: account/models.py:47
+#: account/models.py:43
 msgid "hat etwas gepostet in"
 msgstr "posted something in"
 
-#: account/models.py:48
+#: account/models.py:44
 msgid "hat etwas kommentiert"
 msgstr "commented something"
 
-#: account/models.py:49
+#: account/models.py:45
 msgid "hat eure Freundschaft beendet"
 msgstr "terminated your friendship"
 
-#: account/models.py:50
+#: account/models.py:46
 msgid "hat Sie eingeladen"
 msgstr "invited you"
 
-#: account/models.py:51
+#: account/models.py:47
 msgid "hat Ihre Freundschaftsanfrage angenommen"
 msgstr "accepted your friend request"
 
-#: account/models.py:52
+#: account/models.py:48
 msgid "hat Ihre Freundschaftsanfrage abgelehnt"
 msgstr "declined your friend request"
 
-#: account/models.py:53
+#: account/models.py:49
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr "rejected your friend request"
 
-#: account/models.py:54
+#: account/models.py:50
 msgid "gefällt"
 msgstr "likes"
 
-#: account/models.py:55
+#: account/models.py:51
 msgid "missfällt"
 msgstr "dislikes"
 
-#: account/models.py:193
+#: account/models.py:189
 msgid "Ausstehend"
 msgstr "Pending"
 
-#: account/models.py:194
+#: account/models.py:190
 msgid "Angenommen"
 msgstr "Accepted"
 
-#: account/models.py:195
+#: account/models.py:191
 msgid "Abgelehnt"
 msgstr "Declined"
 
-#: account/models.py:298 vacancies/models.py:29
+#: account/models.py:294 vacancies/models.py:29
 msgid "Land"
 msgstr "Country"
 
-#: account/models.py:299 vacancies/models.py:30
+#: account/models.py:295 vacancies/models.py:30
 msgid "Bundesland"
 msgstr "State"
 
-#: account/models.py:300 vacancies/models.py:31
+#: account/models.py:296 vacancies/models.py:31
 msgid "Landkreis"
 msgstr "County"
 
-#: account/models.py:301 vacancies/models.py:32
+#: account/models.py:297 vacancies/models.py:32
 msgid "Stadt"
 msgstr "City"
 
@@ -402,6 +402,7 @@ msgstr "Click the button to delete your account."
 #: vacancies/templates/vacancies/edit_vacancy.html:11
 #: vacancies/templates/vacancies/invitation_list.html:21
 #: vacancies/templates/vacancies/review_vacancy.html:35
+#: wall/templates/wall/post/post_loop.html:45
 msgid "Löschen"
 msgstr "Delete"
 
@@ -1005,6 +1006,7 @@ msgid "Ihre Posts"
 msgstr "Your posts"
 
 #: account/templates/account/user_post_list.html:9
+#: activity/templates/activity/category_detail.html:25
 #: activity/templates/activity/detail.html:136
 #: usergroups/templates/usergroups/group_detail.html:76
 msgid "Post erstellen"
@@ -1018,14 +1020,14 @@ msgstr ""
 "Posts are publicly visible on your profile page and the respective category "
 "or activity."
 
-#: account/templates/javascript/base.js:173
+#: account/templates/javascript/base.js:174
 msgid ""
 "Sie haben noch keine Chats. Finden Sie Freunde, Gruppen, Aktivitäten etc., "
 "um zu chatten!"
 msgstr ""
 "You don't have any chats yet. Find friends, groups, activities etc. to chat!"
 
-#: account/templates/javascript/base.js:209
+#: account/templates/javascript/base.js:210
 msgid ""
 "Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie "
 "nur einen Tab für myactivities.net :)"
@@ -1186,7 +1188,7 @@ msgstr "Enter your email address to reset your password."
 #: activity/templates/activity/detail.html:102
 #: multiplayer/templates/javascript/cards.js:528
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
-#: wall/templates/wall/post/create_comment.html:11
+#: wall/templates/wall/post/create_comment.html:15
 #: wall/templates/wall/post/create_post.html:14
 msgid "Senden"
 msgstr "Send"
@@ -2249,6 +2251,18 @@ msgstr "Format of the tournament and other information"
 msgid "Anmeldeschluss muss vor Turnierbeginn sein."
 msgstr "The application deadline must end before the tournament starts."
 
+#: competitions/forms.py:80
+msgid "Erlaubte Werte: 0, 0.5 oder 1"
+msgstr "Allowed values: 0, 0.5 or 1"
+
+#: competitions/forms.py:83
+msgid "Die Punkte addieren sich nicht zu 1"
+msgstr "Points don't add up to 1"
+
+#: competitions/forms.py:88
+msgid "Die Punkte addieren sich nicht zu 0"
+msgstr "Points don't add up to 0"
+
 #: competitions/models.py:32 competitions/models.py:76
 msgid "Hat Ihre Bewerbung akzeptiert"
 msgstr "Accepted your friend request"
@@ -2490,7 +2504,7 @@ msgid "Anmeldeschluss: %(v0)s"
 msgstr "Deadline %(v0)s"
 
 #: competitions/templates/competitions/tournament_detail.html:33
-#: wall/templates/wall/post/post_loop.html:74
+#: wall/templates/wall/post/post_loop.html:81
 msgid "Keine"
 msgstr "None"
 
@@ -2568,23 +2582,7 @@ msgstr "As member:"
 msgid "Nicht genug Spieler"
 msgstr "Not enough players"
 
-#: competitions/utils.py:67
-msgid "Schach"
-msgstr "Chess"
-
-#: competitions/utils.py:69
-msgid "Doppelkopf"
-msgstr "Doppelkopf"
-
-#: competitions/utils.py:71
-msgid "Azul"
-msgstr "Azul"
-
-#: competitions/utils.py:73
-msgid "Skat"
-msgstr "Skat"
-
-#: competitions/utils.py:76
+#: competitions/utils.py:78
 msgid ""
 "Für dieses Spiel wurde noch kein Rundenalgorithmus geschrieben. Schicken Sie "
 "doch admin eine Freundschaftsanfrage und fragen Sie ihn, ob das noch "
@@ -3569,27 +3567,27 @@ msgstr "The application deadline has already expired."
 msgid "Sie sind bereits Mitglied."
 msgstr "You already are a member."
 
-#: wall/forms.py:37
+#: wall/forms.py:44
 msgid "Kategorie (erforderlich)"
 msgstr "Category (required)"
 
-#: wall/forms.py:38
+#: wall/forms.py:45
 msgid "Aktivität (Namen eintippen geht schneller als klicken!)"
 msgstr "Activity (typing in the name is faster than clicking!)"
 
-#: wall/forms.py:39
+#: wall/forms.py:46
 msgid "Audiodatei"
 msgstr "Audio file"
 
-#: wall/forms.py:40
+#: wall/forms.py:47
 msgid "Videodatei"
 msgstr "Video file"
 
-#: wall/forms.py:41
+#: wall/forms.py:48
 msgid "Bilddatei"
 msgstr "Image file"
 
-#: wall/forms.py:45
+#: wall/forms.py:52
 msgid ""
 "<a target=\"_blank\" href=\"https://www.heise.de/mac-and-i/"
 "downloads/65/1/1/6/7/1/0/3/Markdown-CheatSheet-Deutsch.pdf\">[Zum Markdown "
@@ -3598,32 +3596,32 @@ msgstr ""
 "<a target=\"_blank\" href=\"https://www.markdownguide.org/cheat-sheet/"
 "\">[Markdown cheat sheet]</a>"
 
-#: wall/forms.py:53
+#: wall/forms.py:60
 msgid "Es kann nicht mehr als eine Datei hochgeladen werden."
 msgstr "You can upload more than one file at once."
 
-#: wall/forms.py:58
+#: wall/forms.py:65
 msgid "Unbekannter Audiodateityp"
 msgstr "Unknown audio file type"
 
-#: wall/forms.py:63
+#: wall/forms.py:70
 msgid "Unbekannter Videodateityp"
 msgstr "Unknown video file type"
 
-#: wall/forms.py:68
+#: wall/forms.py:75
 msgid "Unbekannter Bilddateityp"
 msgstr "Unknown image file type"
 
-#: wall/forms.py:73
+#: wall/forms.py:80
 #, python-brace-format
 msgid "Maximale Dateigröße: {size1} (tatsächliche Größe: {size2}MB)"
 msgstr "Maximum file size: {size1} (actual size: {size2}MB)"
 
-#: wall/forms.py:86
+#: wall/forms.py:93
 msgid "Diese Aktivität ist nicht Teil der ausgewählten Kategorie."
 msgstr "This activity is not in the selected category."
 
-#: wall/forms.py:96
+#: wall/forms.py:103
 msgid "Kommentar"
 msgstr "Comment"
 
@@ -3632,25 +3630,30 @@ msgid "Post vom "
 msgstr "Post on the "
 
 #: wall/templates/javascript/post.js:28
-#: wall/templates/wall/post/post_loop.html:46
+#: wall/templates/wall/post/post_loop.html:54
 msgid "Like zurücknehmen"
 msgstr "Delete like"
 
 #: wall/templates/javascript/post.js:31
-#: wall/templates/wall/post/post_loop.html:56
+#: wall/templates/wall/post/post_loop.html:63
 msgid "Dislike zurücknehmen"
 msgstr "Delete dislike"
 
-#: wall/templates/wall/post/create_comment.html:4
-#: wall/templates/wall/post/post_loop.html:42
-#: wall/templates/wall/post/post_loop.html:52
-#: wall/templates/wall/post/post_loop.html:62
+#: wall/templates/wall/post/create_comment.html:5
+#: wall/templates/wall/post/post_loop.html:41
+#: wall/templates/wall/post/post_loop.html:50
+#: wall/templates/wall/post/post_loop.html:59
+#: wall/templates/wall/post/post_loop.html:69
 msgid "Kommentieren"
 msgstr "Comment"
 
-#: wall/templates/wall/post/create_comment.html:7
+#: wall/templates/wall/post/create_comment.html:8
 msgid "Post kommentieren"
 msgstr "Comment post"
+
+#: wall/templates/wall/post/create_comment.html:10
+msgid "Keine vulgäre Sprache bitte!"
+msgstr "No foul language, please!"
 
 #: wall/templates/wall/post/create_post.html:5
 msgid "Posten"
@@ -3669,15 +3672,26 @@ msgstr ""
 "Attention: Posts are public. Watch your language and don't upload "
 "copyrighted, offensive or inappropriate material."
 
-#: wall/templates/wall/post/post_loop.html:14
-#: wall/templates/wall/post/post_loop.html:35
-msgid "[Löschen]"
-msgstr "[Delete]"
-
-#: wall/templates/wall/post/post_loop.html:35
+#: wall/templates/wall/post/post_loop.html:33
 #, python-format
 msgid " vor %(v0)s"
 msgstr " %(v0)s ago"
+
+#: wall/templates/wall/post/post_loop.html:33
+msgid "[Löschen]"
+msgstr "[Delete]"
+
+#~ msgid "Schach"
+#~ msgstr "Chess"
+
+#~ msgid "Doppelkopf"
+#~ msgstr "Doppelkopf"
+
+#~ msgid "Azul"
+#~ msgstr "Azul"
+
+#~ msgid "Skat"
+#~ msgstr "Skat"
 
 #~ msgid ""
 #~ "<..>: Link, *..*: Kursiv, **..**: Fett, ***..***: Kursiv+Fett, * ..: "

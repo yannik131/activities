@@ -45,7 +45,7 @@ def n_parenthesis(n):
 
 
 def add(d, key, value):
-    d[key] = str(int(d[key])+int(value))
+    d[key] = str(float(d[key])+float(value))
 
 
 def slashify(path):

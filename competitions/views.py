@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from activity.models import Activity
 from account.models import Location, User
 from . import utils
-from .forms import MatchForm, TournamentForm, make_matchup_score_form
+from .forms import MatchForm, TournamentForm, ScoreForm
 from django.http import HttpResponseRedirect
 from .models import Match, Tournament, Round
 from shared import shared
@@ -180,7 +180,7 @@ def generate_next_round(request, tournament_id):
             return HttpResponseRedirect(last_round.get_absolute_url())
         n = last_round.number+1
     try:
-        matchups, leftover = utils.get_pairings_for(tournament.activity.name, tournament)
+        matchups, leftover = utils.get_pairings_for(tournament.activity.german_name, tournament)
     except NotImplementedError as error:
         messages.add_message(request, messages.INFO, str(error))
     except RuntimeError:
@@ -213,7 +213,7 @@ def change_score(request, round_id, matchup_index):
         return handler403(request)
     matchup = json.loads(round.matchups)[matchup_index]
     if request.method == 'POST':
-        form = make_matchup_score_form(matchup)(request.POST)
+        form = ScoreForm(round.tournament.activity.german_name, matchup, data=request.POST)
         if form.is_valid():
             cd = form.cleaned_data
             for id in cd:
@@ -221,6 +221,6 @@ def change_score(request, round_id, matchup_index):
             round.save()
             return HttpResponseRedirect(round.get_absolute_url())
     else:
-        form = make_matchup_score_form(matchup)
+        form = ScoreForm(round.tournament.activity.german_name, matchup)
     return render(request, 'competitions/change_score.html', dict(form=form, round=round))
 

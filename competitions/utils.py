@@ -64,13 +64,15 @@ def swiss_pairings_danish_skat(points, team_sizes=None):
 def get_pairings_for(activity_name, tournament):
     if tournament.members.count() <= 1:
         raise RuntimeError(_('Nicht genug Spieler'))
-    if activity_name == _('Schach'):
+    if activity_name in ['Schach', 'Mühle']:
         return swiss_pairings_danish_standard(tournament.points, tournament.tie_breaks)
-    elif activity_name == _('Doppelkopf'):
+    elif activity_name == 'Doppelkopf':
         return swiss_pairings_danish_skat(tournament.points, team_sizes=[4, 5])
-    elif activity_name == _('Azul'):
+    elif activity_name in ['Azul', 'Risiko', 'Catan', 'Carcassonne', 'Durak']:
         return swiss_pairings_danish_skat(tournament.points, team_sizes=[2, 3, 4])
-    elif activity_name == _('Skat'):
+    elif activity_name == 'Poker':
+        return swiss_pairings_danish_skat(tournament.points, team_sizes=list(range(2, 11)))
+    elif activity_name == 'Skat':
         return swiss_pairings_danish_skat(tournament.points, team_sizes=[3, 4])
     else:
         raise NotImplementedError(_('Für dieses Spiel wurde noch kein Rundenalgorithmus geschrieben. Schicken Sie doch admin eine Freundschaftsanfrage und fragen Sie ihn, ob das noch implementiert werden könnte!'))

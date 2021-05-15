@@ -40,7 +40,7 @@ def user_post_list(request):
 def detail(request, username):
     user = get_object_or_404(User, username=username)
     if request.user == user:
-        return HttpResponseRedirect(request.build_absolute_uri('/account/edit/'))
+        return HttpResponseRedirect(request.build_absolute_uri('/account/'))
     requested = FriendRequest.objects.filter(requesting_user=request.user, requested_user=user).exists()
     friendship = request.user.get_friendship_for(user)
     posts = Post.objects.filter(author=user).all()
@@ -191,7 +191,7 @@ def edit(request):
 def edit_address(request):
     if request.user.last_location_change and (timezone.now() < request.user.last_location_change+timedelta(days=User.LOCATION_CHANGE_DAYS)):
         messages.add_message(request, messages.INFO, _('Sie können den Ort nur höchstens alle 7 Tage wechseln.'))
-        return HttpResponseRedirect(request.user.get_absolute_url())
+        return HttpResponseRedirect(reverse('account:edit'))
     if request.method == 'POST':
         location_form = LocationForm(request.POST)
         if location_form.is_valid():
@@ -199,7 +199,7 @@ def edit_address(request):
             request.user.last_location_change = timezone.now()
             request.user.save()
             messages.add_message(request, messages.INFO, _('Neue Adresse gespeichert: ')+request.user.location.full_address())
-            return HttpResponseRedirect(request.user.get_absolute_url())
+            return HttpResponseRedirect(reverse('account:edit'))
     else:
         location_form = LocationForm()
     return render(request, 'account/edit_address.html', {'location_form': location_form})
@@ -281,7 +281,7 @@ def delete_marker(request, marker_id):
         messages.add_message(request, messages.INFO, _('Markierung wurde erfolgreich gelöscht.'))
     except:
         messages.add_message(request, messages.INFO, _('Markierung wurde nicht gefunden!'))
-    return HttpResponseRedirect(request.user.get_absolute_url())
+    return HttpResponseRedirect(reverse('account:edit'))
     
 def impressum(request):
     return render(request, 'account/impressum.html')

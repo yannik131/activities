@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans "Kommentieren" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Post kommentieren" %}</h1>
-    <form method="post">
+    <h1 class="h-img"><img src="{% static 'icons/comment.png' %}">{% trans "Post kommentieren" %}</h1>
+    <p class="info-p">
+        {% trans 'Keine vulgäre Sprache bitte!' %}
+    </p>
+    <form method="post" class="login-form">
         {{ form.as_p }}
         {% csrf_token %}
         <input type="submit" value="{% trans "Senden" %}">

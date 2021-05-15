@@ -54,12 +54,12 @@
 {% if user.is_authenticated %}
 {% with latest_messages=user.get_latest_messages notifications=user.get_notifications count=user.notifications.count %}
     <div class="topmenu" id="topmenu">
-        <div class="logo">
+        <div class="dropdown">
             <a class="icon" href="javascript:void(0);" onclick="activateMenu('sidemenu');">
                 &#9776;<sup><strong><span style="color: orange;" id="notifications-count">{% if count > 0 %}{{ count }}{% endif %}</span></strong></sup>
             </a>
         </div>
-        <div class="search"><a href="{% url 'account:home' %}"> </a></div>
+        <div class="logo"></div>
         <div class="user">
             <div class="envelope">
                 <a href="javascript:void(0);" onclick="activateMenu('right-chat');">
@@ -84,7 +84,7 @@
 {% cookielaw_banner %}
     <div class="topmenu" id="topmenu">
         <div class="logo">
-            <a href="{% url 'account:home' %}">myactivities.net</a>
+            <a href="{% url 'account:home' %}"><img src="{% static 'icons/activity.png' %}">myactivities.net</a>
         </div>
         <div class="lang-select">
             {% language_setter request %}

@@ -87,7 +87,7 @@ function removeNotification(id, notification_url) {
 }
 
 function addNotification(id, text, url) {
-    const alert_list = document.getElementById("alert-list");
+    const sidemenu = document.getElementById("sidemenu");
     var alert = document.createElement('div');
     alert.className = 'alert';
     alert.id = 'notification-'+id;
@@ -96,13 +96,14 @@ function addNotification(id, text, url) {
         '<a class="notification-url" onclick="removeNotification('+id+', \''+url+'\')">'+ 
             text+ 
         '</a>'+
-    '<div class="closebtn-container" onclick="removeNotification('+id+');">'+
-        '<div class="closebtn"">'+
-            '&times;'+
-        '</div>'+
-    '</div>'
+        '<div class="closebtn-container" onclick="removeNotification('+id+');">'+
+            '<div class="closebtn"">'+
+                '&times;'+
+            '</div>'+
+        '</div>'
     );
-    alert_list.insertBefore(alert, alert_list.firstChild);
+    const logout = document.getElementById('m-logout');
+    sidemenu.insertBefore(alert, logout.nextElementSibling);
     changeCount("notifications-count", 1);
 }
 

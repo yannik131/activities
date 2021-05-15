@@ -14,7 +14,7 @@
     <a href="{% url 'vacancies:application_list' %}" id="m-vacancies"><img src="{% static 'icons/interview.png' %}">{% trans "Bewerbungen & Einladungen" %} {% invitation_number_string user %}</a>
     <a href="{% url 'account:friend_requests_list' %}" id="m-friends"><img src="{% static 'icons/friendship.png' %}">{% trans "Freunde" %}{% new_request_number_string user %}</a>
     <a href="{% url 'account:edit' %}" id="m-edit" %}><img src="{% static 'icons/pen.png' %}">{% blocktrans %}Account bearbeiten{% endblocktrans %}</a>
-    <a href="{% url 'account:logout' %}"><img src="{% static 'icons/logout.png' %}">{% blocktrans %}Ausloggen{% endblocktrans %}</a>
+    <a id='m-logout' href="{% url 'account:logout' %}"><img src="{% static 'icons/logout.png' %}">{% blocktrans %}Ausloggen{% endblocktrans %}</a>
     {% for notification in notifications %}
     {% with notification_id=notification.id %}
         <div class="alert" id="notification-{{ notification_id }}">

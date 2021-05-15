@@ -10,12 +10,10 @@
     <div class="post">
     <b><i>
     {{ post.created|date:"SHORT_DATETIME_FORMAT" }}, <a href="{{ post.category.get_absolute_url }}">{{ post.category.verbose }}</a>{% if post.activity %}: <a href="{{ post.activity.get_absolute_url }}">{{ post.activity }}</a>{% endif %}, {% trans "von" %} <a href="{{ post.author.get_absolute_url }}">{{ post.author }}</a>{% if post.group %} (<a href="{{ post.group.get_absolute_url }}">{{ post.group }}</a>){% endif %}
-        {% if post.author == user %}
-            <a href="{% url 'wall:delete_post' post.id request.path %}">{% blocktrans %}[Löschen]{% endblocktrans %}</a>
-        {% endif %}</i></b>
+        </i></b>
         <br>
         <div class="likes">
-            {{ post.liked_by.count }}x <img src="{% static 'icons/like.png' %}" height="25px"> {{ post.disliked_by.count }}x <img src="{% static 'icons/dislike.png' %}" height="25px">
+            <span id="{{ post.id }}-likes">{{ post.liked_by.count }}</span>x <img src="{% static 'icons/like.png' %}" height="25px"> <span id="{{ post.id }}-dislikes">{{ post.disliked_by.count }}</span>x <img src="{% static 'icons/dislike.png' %}" height="25px">
         </div>
         {{ post.message|markdown }}
         {% if post.audio %}
@@ -36,7 +34,17 @@
             {% endfor %}
         </div>
         <div class="competitive" style="margin-bottom: 5px; margin-top: 5px;" id="{{ post.id }}-comp" style="font-size: 16px">
-        {% if user in post.liked_by.all %}
+            
+        {% if user == post.author %}
+            <div class="left" id="{{ post.id }}-left" onclick=openLink("{% url 'wall:create_comment' post.id request.path %}")>
+                <img src="{% static 'icons/comment.png' %}">
+                {% blocktrans %}Kommentieren{% endblocktrans %}
+            </div>
+            <div class="right" id="{{ post.id }}-right" onclick=openLink("{% url 'wall:delete_post' post.id request.path %}")>
+                <img src="{% static 'icons/remove.png' %}">
+                {% trans 'Löschen' %}
+            </div>
+        {% elif user in post.liked_by.all %}
                 <div class="left" id="{{ post.id }}-left" onclick=openLink("{% url 'wall:create_comment' post.id request.path %}")>
                     <img src="{% static 'icons/comment.png' %}">
                     {% blocktrans %}Kommentieren{% endblocktrans %}
@@ -45,7 +53,6 @@
                     <img src="{% static 'icons/remove.png' %}">
                     {% trans 'Like zurücknehmen' %}
                 </div>
-            </div>
         {% elif user in post.disliked_by.all %}
                 <div class="left" id="{{ post.id }}-left" onclick=openLink("{% url 'wall:create_comment' post.id request.path %}")>
                     <img src="{% static 'icons/comment.png' %}">
@@ -67,8 +74,8 @@
                 <div class="right" id="{{ post.id }}-right"  style="width: 25%" onclick=dislike({{ post.id }})>
                     <img src="{% static 'icons/dislike.png' %}">
                 </div>
-            </div>
         {% endif %}
+            </div>
     </div>
     {% empty %}
         <b>{% trans "Keine" %}.</b>

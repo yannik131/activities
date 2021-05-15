@@ -262,6 +262,14 @@ class NotificationConsumer(WebsocketConsumer):
         except:
             pass
     
+    def wall_message(self, post, action):
+        event = {
+            'type': 'wall',
+            'post_id': post.id,
+            'action': action
+        }
+        self.send(text_data=json.dumps(event))
+    
     def chat_message(self, event):
         self.send(text_data=json.dumps(event))
 
