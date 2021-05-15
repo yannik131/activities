@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-15 19:28+0000\n"
+"POT-Creation-Date: 2021-05-15 21:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: account/forms.py:18 account/forms.py:155
+#: account/forms.py:18 account/forms.py:153
 msgid "Passwort"
 msgstr ""
 
@@ -26,12 +26,12 @@ msgstr ""
 msgid "Passwort (erneut)"
 msgstr ""
 
-#: account/forms.py:27 account/forms.py:78 vacancies/forms.py:14
+#: account/forms.py:27 vacancies/forms.py:14
 #: vacancies/templates/vacancies/vacancy_list.html:14
 msgid "Geschlecht"
 msgstr ""
 
-#: account/forms.py:28 account/forms.py:79
+#: account/forms.py:28
 msgid "Geburtsjahr"
 msgstr ""
 
@@ -55,6 +55,14 @@ msgstr ""
 msgid "Nutzername zu lang (max. 10 Zeichen)"
 msgstr ""
 
+#: account/forms.py:78
+msgid "Geschlecht (für Bewerbungen)"
+msgstr ""
+
+#: account/forms.py:79
+msgid "Geburtsjahr (für Bewerbungen)"
+msgstr ""
+
 #: account/forms.py:80
 msgid "Profiltext"
 msgstr ""
@@ -63,75 +71,67 @@ msgstr ""
 msgid "Profilbild"
 msgstr ""
 
-#: account/forms.py:85
-msgid "Für Login und Passwort-Zurücksetzen."
+#: account/forms.py:82
+msgid "E-Mail-Adresse (Für Login und Passwortzurücksetzung)"
 msgstr ""
 
-#: account/forms.py:86
-msgid "Für Bewerbungen."
-msgstr ""
-
-#: account/forms.py:87
-msgid "Altersermittlung für Bewerbungen."
-msgstr ""
-
-#: account/forms.py:95
+#: account/forms.py:93
 msgid ""
 "Sie müssen mindestens 3 Jahre alt sein, um diese Seite überhaupt nutzen zu "
 "können. Jüngere Menschen haben noch kein Gedächtnis."
 msgstr ""
 
-#: account/forms.py:97
+#: account/forms.py:95
 msgid ""
 "Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind."
 msgstr ""
 
-#: account/forms.py:103
+#: account/forms.py:101
 msgid "Ihre Stadt"
 msgstr ""
 
-#: account/forms.py:112 vacancies/forms.py:55 vacancies/forms.py:99
-#: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:43
+#: account/forms.py:110 vacancies/forms.py:55 vacancies/forms.py:99
+#: vacancies/templates/vacancies/review_vacancy.html:16
 msgid "Nachricht"
 msgstr ""
 
-#: account/forms.py:118
+#: account/forms.py:116
 #, python-brace-format
 msgid ""
 "Die Nachricht darf nicht länger als 150 Zeichen sein, ist aber {l} Zeichen "
 "lang."
 msgstr ""
 
-#: account/forms.py:123
+#: account/forms.py:121
 msgid "Nutzername"
 msgstr ""
 
-#: account/forms.py:128
+#: account/forms.py:126
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr ""
 
-#: account/forms.py:132
+#: account/forms.py:130
 msgid "Wirklich löschen?"
 msgstr ""
 
-#: account/forms.py:137
+#: account/forms.py:135
 msgid "Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen."
 msgstr ""
 
-#: account/forms.py:154
+#: account/forms.py:152
 msgid "E-Mail oder Nutzername"
 msgstr ""
 
-#: account/forms.py:161
+#: account/forms.py:159
 msgid "Nutzer nicht gefunden."
 msgstr ""
 
-#: account/forms.py:163
+#: account/forms.py:161
 msgid "Passwort falsch."
 msgstr ""
 
-#: account/forms.py:165
+#: account/forms.py:163
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr ""
 
@@ -659,7 +659,7 @@ msgstr ""
 #: account/templates/account/impressum.html:10
 msgid ""
 "Mein Name ist Yannik Schroeder und ich habe diese Website zusammengebastelt. "
-"Bei irgendwelchen Frage schicken Sie mir ne E-Mail: myactivities.net@web.de"
+"Bei irgendwelchen Fragen schicken Sie mir ne E-Mail: myactivities.net@web.de"
 msgstr ""
 
 #: account/templates/account/jokes.html:4
@@ -771,34 +771,34 @@ msgid ""
 "Aktivitäten ihr vielleicht ausprobieren könnt :)"
 msgstr ""
 
-#: account/templates/account/register.html:6
-#: account/templates/account/register.html:13
-#: account/templates/account/register.html:22
+#: account/templates/account/register.html:7
+#: account/templates/account/register.html:14
+#: account/templates/account/register.html:25
 #: account/templates/registration/login.html:32
 msgid "Registrieren"
 msgstr ""
 
-#: account/templates/account/register.html:11
+#: account/templates/account/register.html:12
 #: account/templates/registration/login.html:12
 msgid "Nutzer gesamt: "
 msgstr ""
 
-#: account/templates/account/register.html:12
+#: account/templates/account/register.html:13
 #: account/templates/registration/login.html:13
 #: multiplayer/templates/multiplayer/lobby.html:19
 msgid "Online: "
 msgstr ""
 
-#: account/templates/account/register.html:15
+#: account/templates/account/register.html:17
 #: account/templates/registration/login.html:16
 msgid "Willkommen bei myactivities.net! :)"
 msgstr ""
 
-#: account/templates/account/register.html:16
+#: account/templates/account/register.html:18
 msgid "Bitte nutzen Sie das folgende Formular zum registrieren:"
 msgstr ""
 
-#: account/templates/account/register.html:20
+#: account/templates/account/register.html:23
 msgid "Wo hängen Sie meistens rum?"
 msgstr ""
 
@@ -867,15 +867,12 @@ msgid "gelöscht"
 msgstr ""
 
 #: account/templates/account/send_friend_request.html:5
+#: account/templates/account/send_friend_request.html:11
 msgid "Freundschaftsanfrage senden"
 msgstr ""
 
 #: account/templates/account/send_friend_request.html:9
 msgid "Freundschaftsanfrage an: "
-msgstr ""
-
-#: account/templates/account/send_friend_request.html:11
-msgid "Freundschaftsanfrage an jemanden senden"
 msgstr ""
 
 #: account/templates/account/send_friend_request.html:13
@@ -1023,7 +1020,7 @@ msgstr ""
 #: account/templates/registration/password_reset_complete.html:4
 #: account/templates/registration/password_reset_confirm.html:4
 #: account/templates/registration/password_reset_confirm.html:7
-#: account/templates/registration/password_reset_form.html:4
+#: account/templates/registration/password_reset_form.html:5
 msgid "Passwort zurücksetzen"
 msgstr ""
 
@@ -1087,17 +1084,17 @@ msgstr ""
 msgid "Falls Sie es vergessen haben sollten, Ihr Nutzername lautet: %(v0)s"
 msgstr ""
 
-#: account/templates/registration/password_reset_form.html:7
+#: account/templates/registration/password_reset_form.html:8
 msgid "Passwort vergessen?"
 msgstr ""
 
-#: account/templates/registration/password_reset_form.html:8
+#: account/templates/registration/password_reset_form.html:9
 msgid ""
 "Geben Sie ihre E-Mail Adresse ein, um ein neues Passwort zugeschickt zu "
 "bekommen."
 msgstr ""
 
-#: account/templates/registration/password_reset_form.html:12
+#: account/templates/registration/password_reset_form.html:13
 #: activity/templates/activity/detail.html:102
 #: multiplayer/templates/javascript/cards.js:528
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
@@ -1139,31 +1136,36 @@ msgstr ""
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr ""
 
-#: account/views.py:165
+#: account/views.py:143
+#, python-brace-format
+msgid "Sie haben die Freundschaft mit {user} beendet."
+msgstr ""
+
+#: account/views.py:166
 msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden."
 msgstr ""
 
-#: account/views.py:179
+#: account/views.py:180
 msgid "Änderungen gespeichert."
 msgstr ""
 
-#: account/views.py:193
+#: account/views.py:194
 msgid "Sie können den Ort nur höchstens alle 7 Tage wechseln."
 msgstr ""
 
-#: account/views.py:201
+#: account/views.py:202
 msgid "Neue Adresse gespeichert: "
 msgstr ""
 
-#: account/views.py:259
+#: account/views.py:260
 msgid "Passwort erfolgreich geändert."
 msgstr ""
 
-#: account/views.py:281
+#: account/views.py:282
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr ""
 
-#: account/views.py:283
+#: account/views.py:284
 msgid "Markierung wurde nicht gefunden!"
 msgstr ""
 
@@ -3191,6 +3193,13 @@ msgstr ""
 msgid "Sie sind bereits Mitglied."
 msgstr ""
 
+#: wall/forms.py:43
+msgid ""
+"Nachricht <a target=\"_blank\" href=\"https://www.heise.de/mac-and-i/"
+"downloads/65/1/1/6/7/1/0/3/Markdown-CheatSheet-Deutsch.pdf\">[Zum Markdown "
+"Merkblatt]</a>"
+msgstr ""
+
 #: wall/forms.py:44
 msgid "Kategorie (erforderlich)"
 msgstr ""
@@ -3211,39 +3220,32 @@ msgstr ""
 msgid "Bilddatei"
 msgstr ""
 
-#: wall/forms.py:52
-msgid ""
-"<a target=\"_blank\" href=\"https://www.heise.de/mac-and-i/"
-"downloads/65/1/1/6/7/1/0/3/Markdown-CheatSheet-Deutsch.pdf\">[Zum Markdown "
-"Merkblatt]</a>"
-msgstr ""
-
-#: wall/forms.py:60
+#: wall/forms.py:56
 msgid "Es kann nicht mehr als eine Datei hochgeladen werden."
 msgstr ""
 
-#: wall/forms.py:65
+#: wall/forms.py:61
 msgid "Unbekannter Audiodateityp"
 msgstr ""
 
-#: wall/forms.py:70
+#: wall/forms.py:66
 msgid "Unbekannter Videodateityp"
 msgstr ""
 
-#: wall/forms.py:75
+#: wall/forms.py:71
 msgid "Unbekannter Bilddateityp"
 msgstr ""
 
-#: wall/forms.py:80
+#: wall/forms.py:76
 #, python-brace-format
 msgid "Maximale Dateigröße: {size1} (tatsächliche Größe: {size2}MB)"
 msgstr ""
 
-#: wall/forms.py:93
+#: wall/forms.py:89
 msgid "Diese Aktivität ist nicht Teil der ausgewählten Kategorie."
 msgstr ""
 
-#: wall/forms.py:103
+#: wall/forms.py:99
 msgid "Kommentar"
 msgstr ""
 
