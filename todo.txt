@@ -94,3 +94,4 @@ vertikale liste umranden
 MultiplayerMatch gestartet: 7 Tage
 MultiplayerMatch noch nicht: 1 Stunde
 Match, Turnier: 1 Tag nach Start
+uwsgi celery superuser

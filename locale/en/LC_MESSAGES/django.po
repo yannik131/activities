@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-16 22:27+0000\n"
-"PO-Revision-Date: 2021-05-17 00:28+0200\n"
+"POT-Creation-Date: 2021-05-16 22:33+0000\n"
+"PO-Revision-Date: 2021-05-17 00:34+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -545,8 +545,11 @@ msgid "Adresse ändern"
 msgstr "Change address"
 
 #: account/templates/account/edit_address.html:9
-msgid "Geben Sie hier eine neue Stadt ein."
-msgstr "Enter a new city."
+msgid ""
+"Geben Sie hier eine neue Stadt ein. Sie können Ihre Adresse nur einmal alle "
+"7 Tage ändern."
+msgstr ""
+"Enter the name of the city. You can change your location only once a week."
 
 #: account/templates/account/edit_address.html:13
 #: account/templates/registration/password_change_form.html:13
@@ -1139,10 +1142,8 @@ msgid "Sie haben die Freundschaft mit {user} beendet."
 msgstr "You terminated your friendship with {user}."
 
 #: account/views.py:165
-#, fuzzy
-#| msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden."
 msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden. "
-msgstr "No e-mail could be sent to the specified address."
+msgstr "No e-mail could be sent to the specified address. "
 
 #: account/views.py:179
 msgid "Änderungen gespeichert."
@@ -3604,6 +3605,9 @@ msgstr "[Delete]"
 #: wall/templates/wall/post/post_loop.html:81
 msgid "Keine"
 msgstr "None"
+
+#~ msgid "Geben Sie hier eine neue Stadt ein."
+#~ msgstr "Enter a new city."
 
 #~ msgid "Ausgeloggt"
 #~ msgstr "Logged out"

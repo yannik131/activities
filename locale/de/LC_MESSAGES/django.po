@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-16 22:27+0000\n"
+"POT-Creation-Date: 2021-05-16 22:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -513,7 +513,9 @@ msgid "Adresse ändern"
 msgstr ""
 
 #: account/templates/account/edit_address.html:9
-msgid "Geben Sie hier eine neue Stadt ein."
+msgid ""
+"Geben Sie hier eine neue Stadt ein. Sie können Ihre Adresse nur einmal alle "
+"7 Tage ändern."
 msgstr ""
 
 #: account/templates/account/edit_address.html:13
