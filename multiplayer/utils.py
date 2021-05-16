@@ -36,7 +36,6 @@ def deal_cards(data, players):
                 data[player] = json.dumps(hand)
                 if player == first:
                     data['first'] = ''
-                    log('unsetting', player, 'as first after dealing cards')
         data["deck"] = json.dumps(deck)
     
 
@@ -209,14 +208,12 @@ DOKO_VALUES = {
 def sum_tricks(data, team, name):
     count = 0
     points = 0
-    log("Counting points for team", name, "with members", team)
     for player in team:
         for trick in json.loads(data[player+"_tricks"]):
             count += 1
             trick_points = 0
             for card in trick:
                 points += CARD_VALUES[card[:-1]]
-                log("Card", card, "adds", CARD_VALUES[card[:-1]], "total:", points)
                 trick_points += CARD_VALUES[card[:-1]]
             if not data["solist"] and trick_points >= 40:
                 change(data, name+"_extra", 1)
@@ -265,10 +262,8 @@ def sum_change(dictionary, key, _change, summary):
     
 def give_doko_points(data, players, result, winner_points):
     points = 1 # somebody won, +1
-    log("start:", points)
     re_extra = int(data["re_extra"])
     contra_extra = int(data["contra_extra"])
-    log("re_extra", re_extra, "contra_extra", contra_extra)
     if result == "Kontra":
         if not data["solist"]:
             points += 1 # gegen die alten
@@ -280,11 +275,9 @@ def give_doko_points(data, players, result, winner_points):
     for mark in [151, 181, 211, 240]:
         if winner_points > mark:
             points += 1
-            log(">", mark, "+1")
         else:
             break
     summary = []
-    log("total:", points, "solist:", bool(data["solist"]))
     if data["solist"]:
         for player in players:
             if player == data["solist"]:
@@ -309,7 +302,6 @@ def give_doko_points(data, players, result, winner_points):
                     sum_change(data, player+"_points", -(points-re_extra+contra_extra), summary)
                 else:
                     sum_change(data, player+"_points", (points-re_extra+contra_extra), summary)
-    log("sorting summary:", summary)
     summary = sorted(summary, key=lambda t: t[1], reverse=True)
     return f"{result}: {winner_points}\n"+"".join([t[0] for t in summary])[:-1]
     
@@ -344,7 +336,6 @@ def determine_winner_skat(data):
             result = "won"
         else:
             result = "overbid"
-        log("game_value:", game_value, "bid:", int(data[data["solist"]+"_bid"]), "->", result)
     
     return result, points, game_value
     

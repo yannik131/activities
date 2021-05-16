@@ -34,22 +34,7 @@
         {% blocktrans %}Erstellen und nehmen Sie Teil an Turnieren und Matches über den 'Offline spielen'-Button auf der entsprechenden <a href="/activity/list/">Aktivitätsseite</a>! Geht natürlich nur bei Aktivitäten, wo man einen Wettbewerb haben kann.{% endblocktrans %}
     </p>
     <h2 class="h-img"><img src="{% static 'icons/match.png' %}">{% blocktrans %}Matches{% endblocktrans %}</h2>
-    <ul>
-        {% for match in user.matches.all %}
-            <li><a href="{{ match.activity.get_absolute_url }}">{{ match.activity }}</a>: <a href="{{ match.get_absolute_url }}">{{ match }}</a></li>
-        {% endfor %}
-    </ul>
+    {% include 'competitions/list.html' with list=user.matches.all %}
     <h2 class="h-img"><img src="{% static 'icons/leaderboard.png' %}">{% blocktrans %}Turniere{% endblocktrans %}</h2>
-    <h3>{% blocktrans %}Als Admin:{% endblocktrans %}</h3>
-    <ul>
-        {% for tournament in user.owned_tournaments.all %}
-            <li><a href="{{ tournament.get_absolute_url }}">{{ tournament }}</a></li>
-        {% endfor %}
-    </ul>
-    <h3>{% blocktrans %}Als Teilnehmer:{% endblocktrans %}</h3>
-    <ul>
-        {% for tournament in user.tournaments.all %}
-            <li><a href="{{ tournament.get_absolute_url }}">{{ tournament }}</a></li>
-        {% endfor %}
-    </ul>
+   {% include 'competitions/list.html' with list=tournaments %}
 {% endblock %}

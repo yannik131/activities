@@ -81,8 +81,9 @@
             {% endif %}
         </div>
     {% endfor %}
-    {% include "account/pagination.html" with page=suggestions id='suggestions'%}
+    
 </div>
+{% include "account/pagination.html" with page=suggestions id='suggestions'%}
 <h2>{% trans 'Charakter' %}</h2>
 <p class="center-container"><b>{% trans 'Werte verglichen mit den Durchschnittswerten. <br>+50%: Maximal überdurchschnittlich, -50%: Maximal unterdurchschnittlich' %}</b></p>
 <div class="test-container">

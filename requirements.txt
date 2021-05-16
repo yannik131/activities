@@ -18,5 +18,7 @@ Markdown
 python-redis-lock[django]
 argon2-cffi
 Pillow
+celery[redis]
+django-celery-beat
 #cookielaw: change path in templatetag at source
 #turnserver, download wget http://turnserver.open-sys.org/downloads/v4.5.2/turnserver-4.5.2.tar.gz, apt-get install libssl-dev libevent-dev libhiredis-dev make -y, make, make install, run turnserver, see https://stackoverflow.com/questions/31161864/how-to-create-stun-turn-server-instance-using-aws-ec2/32113146#32113146

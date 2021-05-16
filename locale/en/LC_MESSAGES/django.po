@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-16 13:16+0000\n"
-"PO-Revision-Date: 2021-05-16 15:18+0200\n"
+"POT-Creation-Date: 2021-05-16 17:48+0000\n"
+"PO-Revision-Date: 2021-05-16 19:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -420,8 +420,8 @@ msgid "Charakterübereinstimmung"
 msgstr "Character congruence"
 
 #: account/templates/account/detail.html:27
-#: competitions/templates/competitions/match_detail.html:14
-#: competitions/templates/competitions/match_detail.html:24
+#: competitions/templates/competitions/match_detail.html:18
+#: competitions/templates/competitions/match_detail.html:28
 #: competitions/templates/competitions/tournament_detail.html:15
 #: competitions/templates/competitions/tournament_detail.html:25
 #: usergroups/templates/usergroups/group_detail.html:17
@@ -479,9 +479,9 @@ msgstr "You can edit your account with the following form:"
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:417
-#: multiplayer/templates/javascript/durak.js:453
-#: multiplayer/templates/javascript/durak.js:471
+#: multiplayer/templates/javascript/durak.js:415
+#: multiplayer/templates/javascript/durak.js:451
+#: multiplayer/templates/javascript/durak.js:469
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:14
 #: usergroups/templates/usergroups/edit_group.html:13
@@ -528,14 +528,14 @@ msgid "Gespeichert: "
 msgstr "Saved: "
 
 #: account/templates/account/edit.html:41 account/templates/base.html:50
-#: account/templates/javascript/base.js:51
+#: account/templates/javascript/base.js:54
 #: activity/templates/activity/detail.html:96
 msgid "OK!"
 msgstr "OK!"
 
 #: account/templates/account/edit.html:48
-#: account/templates/registration/password_change_form.html:4
-#: account/templates/registration/password_change_form.html:7
+#: account/templates/registration/password_change_form.html:5
+#: account/templates/registration/password_change_form.html:8
 msgid "Passwort ändern"
 msgstr "Change password"
 
@@ -549,8 +549,8 @@ msgid "Geben Sie hier eine neue Stadt ein."
 msgstr "Enter a new city."
 
 #: account/templates/account/edit_address.html:13
-#: account/templates/registration/password_change_form.html:12
-#: account/templates/registration/password_reset_confirm.html:13
+#: account/templates/registration/password_change_form.html:13
+#: account/templates/registration/password_reset_confirm.html:14
 #: competitions/templates/competitions/game_plan.html:32
 msgid "Ändern"
 msgstr "Change"
@@ -857,7 +857,7 @@ msgstr "Homepage"
 
 #: account/templates/account/sidemenu.html:9
 #: character/templates/character/overview.html:5
-#: character/templates/character/overview.html:86
+#: character/templates/character/overview.html:87
 msgid "Charakter"
 msgstr "Character"
 
@@ -908,14 +908,14 @@ msgstr ""
 "Posts are publicly visible on your profile page and the respective category "
 "or activity."
 
-#: account/templates/javascript/base.js:174
+#: account/templates/javascript/base.js:177
 msgid ""
 "Sie haben noch keine Chats. Finden Sie Freunde, Gruppen, Aktivitäten etc., "
 "um zu chatten!"
 msgstr ""
 "You don't have any chats yet. Find friends, groups, activities etc. to chat!"
 
-#: account/templates/javascript/base.js:210
+#: account/templates/javascript/base.js:213
 msgid ""
 "Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie "
 "nur einen Tab für myactivities.net :)"
@@ -932,36 +932,23 @@ msgstr "Allowed description length: 3-100 characters. Currently length: "
 msgid "Wirklich?"
 msgstr "Really?"
 
-#: account/templates/registration/activation_email.html:4
-#: account/templates/registration/activation_email.html:6 account/utils.py:38
+#: account/templates/registration/activation_email.html:3
+#: account/templates/registration/activation_email.html:5 account/utils.py:38
 msgid "E-Mail Aktivierung"
 msgstr "E-mail activation"
 
-#: account/templates/registration/activation_email.html:7
-#: account/templates/registration/password_reset_email.html:7
+#: account/templates/registration/activation_email.html:6
+#: account/templates/registration/password_reset_email.html:6
 msgid "Hallo"
 msgstr "Hello"
 
-#: account/templates/registration/activation_email.html:8
+#: account/templates/registration/activation_email.html:7
 msgid ""
 "Ihr Account auf https://www.myactivities.net wurde erfolgreich erstellt. "
 "Klicken Sie auf den folgenden Link, um ihn zu aktivieren."
 msgstr ""
 "Your account at https://www.myactivities.net has been successfully created. "
 "Click the link to activate it."
-
-#: account/templates/registration/logged_out.html:4
-#: account/templates/registration/logged_out.html:7
-msgid "Ausgeloggt"
-msgstr "Logged out"
-
-#: account/templates/registration/logged_out.html:8
-msgid "Sie haben sich erfolgreich ausgeloggt. Sie können sich"
-msgstr "You've successfully logged out. You can now"
-
-#: account/templates/registration/logged_out.html:8
-msgid "auch wieder einloggen."
-msgstr "log in again."
 
 #: account/templates/registration/login.html:7
 #: account/templates/registration/login.html:14
@@ -994,13 +981,12 @@ msgid "Bitte nutzen Sie das folgende Formular zum einloggen:"
 msgstr "Please use the following form to log in:"
 
 #: account/templates/registration/login.html:28
-#: account/templates/registration/password_reset_complete.html:4
-#: account/templates/registration/password_reset_confirm.html:4
-#: account/templates/registration/password_reset_confirm.html:7
+#: account/templates/registration/password_reset_confirm.html:5
+#: account/templates/registration/password_reset_confirm.html:8
 #: account/templates/registration/password_reset_done.html:5
 #: account/templates/registration/password_reset_done.html:8
-#: account/templates/registration/password_reset_email.html:4
-#: account/templates/registration/password_reset_email.html:6
+#: account/templates/registration/password_reset_email.html:3
+#: account/templates/registration/password_reset_email.html:5
 #: account/templates/registration/password_reset_form.html:5
 msgid "Passwort zurücksetzen"
 msgstr "Reset password"
@@ -1012,36 +998,15 @@ msgstr "Reset password"
 msgid "Registrieren"
 msgstr "Register"
 
-#: account/templates/registration/password_change_done.html:4
-#: account/templates/registration/password_change_done.html:7
-msgid "Passwort geändert"
-msgstr "Password changed"
-
-#: account/templates/registration/password_change_done.html:8
-msgid "Ihr Passwort wurde erfolgreich geändert!"
-msgstr "Your password was changed successfully!"
-
-#: account/templates/registration/password_change_form.html:8
+#: account/templates/registration/password_change_form.html:9
 msgid "Benutzen Sie folgendes Formular zum Ändern des Passworts:"
 msgstr "Please use the following form to change your password:"
 
-#: account/templates/registration/password_reset_complete.html:7
-msgid "Passwort zurückgesetzt"
-msgstr "Password reset"
-
-#: account/templates/registration/password_reset_complete.html:8
-msgid "Ihr Passwort wurde zurückgesetzt"
-msgstr "Your password was successfully reset"
-
-#: account/templates/registration/password_reset_complete.html:8
-msgid "Sie können sich jetzt wieder einloggen."
-msgstr "You can now log in again."
-
-#: account/templates/registration/password_reset_confirm.html:9
+#: account/templates/registration/password_reset_confirm.html:10
 msgid "Bitte geben Sie das neue Passwort zweimal ein:"
 msgstr "Please type in your new password twice:"
 
-#: account/templates/registration/password_reset_confirm.html:16
+#: account/templates/registration/password_reset_confirm.html:17
 msgid ""
 "Der Link ist ungültig. Vermutlich wurde er bereits zum Zurücksetzen des "
 "Passworts verwendet. Bitte lassen Sie sich erneut einen zusenden."
@@ -1065,7 +1030,7 @@ msgstr ""
 "In case you don't get an email, please make sure that you entered the "
 "correct email address."
 
-#: account/templates/registration/password_reset_email.html:8
+#: account/templates/registration/password_reset_email.html:7
 msgid ""
 "Jemand hat auf https://www.myactivities.net um eine Passwort-Zurücksetzung "
 "gebeten und diese E-Mail Adresse angegeben.<br>\n"
@@ -1076,7 +1041,7 @@ msgstr ""
 "entered your email address.<br>\n"
 "If you want to reset your password, follow this link: "
 
-#: account/templates/registration/password_reset_email.html:11
+#: account/templates/registration/password_reset_email.html:10
 #, python-format
 msgid "Falls Sie es vergessen haben sollten, Ihr Nutzername lautet: %(v0)s"
 msgstr "In case you forgot, your user name is: %(v0)s"
@@ -1138,7 +1103,7 @@ msgstr ""
 msgid "Aktivierungs-E-Mail"
 msgstr "Activation email"
 
-#: account/views.py:60
+#: account/views.py:61
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
@@ -1147,40 +1112,40 @@ msgstr ""
 "You've already sent a friend request to this user. As long as he doesn't "
 "delete it you can't send another one."
 
-#: account/views.py:81
+#: account/views.py:82
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr "You can't send yourself a friend request."
 
-#: account/views.py:115
+#: account/views.py:116
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr "You can't delete this request."
 
-#: account/views.py:136
+#: account/views.py:137
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr "This friendship doesn't exist anymore."
 
-#: account/views.py:143
+#: account/views.py:144
 #, python-brace-format
 msgid "Sie haben die Freundschaft mit {user} beendet."
 msgstr "You terminated your friendship with {user}."
 
-#: account/views.py:164
+#: account/views.py:165
 msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden."
 msgstr "No e-mail could be sent to the specified address."
 
-#: account/views.py:178
+#: account/views.py:179
 msgid "Änderungen gespeichert."
 msgstr "Changes saved."
 
-#: account/views.py:192
+#: account/views.py:193
 msgid "Sie können den Ort nur höchstens alle 7 Tage wechseln."
 msgstr "You can change your location only once in 7 days."
 
-#: account/views.py:200
+#: account/views.py:201
 msgid "Neue Adresse gespeichert: "
 msgstr "New address saved: "
 
-#: account/views.py:238
+#: account/views.py:239
 msgid ""
 "Der Aktivierungslink ist ungültig. Falls der Account noch inaktiv ist, "
 "können Sie durch erneutes Registrieren einen neuen anfordern!"
@@ -1188,23 +1153,27 @@ msgstr ""
 "The activation link is invalid. If the account is still inactive, you can "
 "request another one by registering again!"
 
-#: account/views.py:256
+#: account/views.py:257
 msgid "Passwort erfolgreich geändert."
 msgstr "Your password was changed successfully."
 
-#: account/views.py:278
+#: account/views.py:261
+msgid "Ihr Passwort wurde zurückgesetzt."
+msgstr "Your password was successfully reset."
+
+#: account/views.py:283
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr "Marker was successfully deleted."
 
-#: account/views.py:280
+#: account/views.py:285
 msgid "Markierung wurde nicht gefunden!"
 msgstr "Marker not found!"
 
-#: activities/settings/base.py:161
+#: activities/settings/base.py:162
 msgid "Deutsch"
 msgstr "German"
 
-#: activities/settings/base.py:162
+#: activities/settings/base.py:163
 msgid "Englisch"
 msgstr "English"
 
@@ -1253,7 +1222,7 @@ msgid "Suche: "
 msgstr "Search: "
 
 #: activity/templates/activity/activity_list.html:31
-#: competitions/templates/competitions/tournament_detail.html:29
+#: competitions/templates/competitions/list.html:14
 #: usergroups/templates/usergroups/group_detail.html:33
 #: usergroups/templates/usergroups/loop.html:14
 msgid "Mitglieder"
@@ -1318,8 +1287,8 @@ msgid "%(activity)s-Chat beitreten"
 msgstr "join %(activity)s-chat"
 
 #: activity/templates/activity/detail.html:86
-#: competitions/templates/competitions/match_detail.html:35
-#: competitions/templates/competitions/tournament_detail.html:37
+#: competitions/templates/competitions/match_detail.html:34
+#: competitions/templates/competitions/tournament_detail.html:33
 #: usergroups/templates/usergroups/group_detail.html:37
 msgid "Austreten"
 msgstr "Leave"
@@ -1440,27 +1409,27 @@ msgid "Gewichte verteilen"
 msgstr "Distribute weights"
 
 #: character/templates/character/edit_weights.html:34
-#: character/templates/character/overview.html:89
+#: character/templates/character/overview.html:90
 msgid "Neurotizismus"
 msgstr "Neuroticism"
 
 #: character/templates/character/edit_weights.html:40
-#: character/templates/character/overview.html:95
+#: character/templates/character/overview.html:96
 msgid "Extraversion"
 msgstr "Extraversion"
 
 #: character/templates/character/edit_weights.html:46
-#: character/templates/character/overview.html:101
+#: character/templates/character/overview.html:102
 msgid "Offenheit für Erfahrungen"
 msgstr "Openness to experience"
 
 #: character/templates/character/edit_weights.html:52
-#: character/templates/character/overview.html:107
+#: character/templates/character/overview.html:108
 msgid "Gewissenhaftigkeit"
 msgstr "Conscientiousness"
 
 #: character/templates/character/edit_weights.html:58
-#: character/templates/character/overview.html:113
+#: character/templates/character/overview.html:114
 msgid "Verträglichkeit"
 msgstr "Agreeableness"
 
@@ -1528,7 +1497,7 @@ msgstr "Suggestions"
 msgid "Score"
 msgstr "Score"
 
-#: character/templates/character/overview.html:87
+#: character/templates/character/overview.html:88
 #, python-format
 msgid ""
 "Werte verglichen mit den Durchschnittswerten. <br>+50%%: Maximal "
@@ -1537,11 +1506,11 @@ msgstr ""
 "Values compared to the average. <br>+50%%: Maximally above average, -50%%: "
 "Maximally below average"
 
-#: character/templates/character/overview.html:126
+#: character/templates/character/overview.html:127
 msgid "Zurücksetzen"
 msgstr "Reset"
 
-#: character/templates/character/overview.html:131
+#: character/templates/character/overview.html:132
 msgid ""
 "Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich "
 "die errechneten Punktesummen in den Kategorien werden für die Berechnung von "
@@ -2322,7 +2291,7 @@ msgstr "Delete tournament"
 
 #: competitions/templates/competitions/full_table.html:4
 #: competitions/templates/competitions/full_table.html:7
-#: competitions/templates/competitions/tournament_detail.html:46
+#: competitions/templates/competitions/tournament_detail.html:42
 msgid "Tabelle"
 msgstr "Standings"
 
@@ -2372,46 +2341,47 @@ msgid "Runde beenden"
 msgstr "End round"
 
 #: competitions/templates/competitions/match_detail.html:5
-#: competitions/templates/competitions/match_detail.html:8
+#: competitions/templates/competitions/match_detail.html:9
 #, python-format
 msgid "Match am %(v0)s"
 msgstr "Match on %(v0)s"
 
-#: competitions/templates/competitions/match_detail.html:9
+#: competitions/templates/competitions/match_detail.html:10
+#, python-format
+msgid "Ort: %(v0)s, %(v1)s"
+msgstr "Location: %(v0)s, %(v1)s"
+
+#: competitions/templates/competitions/match_detail.html:13
 msgid "Admin"
 msgstr "Admin"
 
-#: competitions/templates/competitions/match_detail.html:18
+#: competitions/templates/competitions/match_detail.html:22
 #: competitions/templates/competitions/tournament_detail.html:19
 #: usergroups/templates/usergroups/group_detail.html:21
 #: vacancies/templates/vacancies/vacancy_list.html:26
 msgid "Bearbeiten"
 msgstr "Edit"
 
-#: competitions/templates/competitions/match_detail.html:27
-#, python-format
-msgid "Ort: %(v0)s, %(v1)s"
-msgstr "Location: %(v0)s, %(v1)s"
+#: competitions/templates/competitions/match_detail.html:31
+#: competitions/templates/competitions/tournament_detail.html:28
+msgid "Mitglieder:"
+msgstr "Members:"
 
-#: competitions/templates/competitions/match_detail.html:28
-msgid "Teilnehmer"
-msgstr "Members"
-
-#: competitions/templates/competitions/match_detail.html:37
-#: competitions/templates/competitions/tournament_detail.html:53
+#: competitions/templates/competitions/match_detail.html:36
+#: competitions/templates/competitions/tournament_detail.html:49
 #: usergroups/templates/usergroups/group_detail.html:40
 msgid "Leerstellen"
 msgstr "Vacancies"
 
-#: competitions/templates/competitions/match_detail.html:42
-#: competitions/templates/competitions/tournament_detail.html:58
+#: competitions/templates/competitions/match_detail.html:41
+#: competitions/templates/competitions/tournament_detail.html:54
 #: usergroups/templates/usergroups/group_detail.html:55
 #: vacancies/templates/vacancies/create_vacancies.html:4
 msgid "Leerstellen hinzufügen"
 msgstr "Add vacancy"
 
-#: competitions/templates/competitions/match_detail.html:46
-#: competitions/templates/competitions/tournament_detail.html:62
+#: competitions/templates/competitions/match_detail.html:45
+#: competitions/templates/competitions/tournament_detail.html:58
 #: usergroups/templates/usergroups/group_detail.html:59
 msgid "Jemanden einladen"
 msgstr "Invite somebody"
@@ -2427,7 +2397,7 @@ msgid "%(v0)s: Matches & Turniere"
 msgstr "%(v0)s: Matches & Tournaments"
 
 #: competitions/templates/competitions/overview.html:11
-#: competitions/templates/competitions/user_overview.html:42
+#: competitions/templates/competitions/user_overview.html:38
 msgid "Turniere"
 msgstr "Tournaments"
 
@@ -2445,20 +2415,15 @@ msgstr "Public matches"
 msgid "Anmeldeschluss: %(v0)s"
 msgstr "Deadline %(v0)s"
 
-#: competitions/templates/competitions/tournament_detail.html:33
-#: wall/templates/wall/post/post_loop.html:81
-msgid "Keine"
-msgstr "None"
-
-#: competitions/templates/competitions/tournament_detail.html:39
+#: competitions/templates/competitions/tournament_detail.html:35
 msgid "Verwalter"
 msgstr "Admin"
 
-#: competitions/templates/competitions/tournament_detail.html:41
+#: competitions/templates/competitions/tournament_detail.html:37
 msgid "Nächste Runde erzeugen"
 msgstr "Generate next round"
 
-#: competitions/templates/competitions/tournament_detail.html:50
+#: competitions/templates/competitions/tournament_detail.html:46
 msgid "Spielplan"
 msgstr "Match schedule"
 
@@ -2512,14 +2477,6 @@ msgstr ""
 msgid "Matches"
 msgstr "Matches"
 
-#: competitions/templates/competitions/user_overview.html:43
-msgid "Als Admin:"
-msgstr "As admin:"
-
-#: competitions/templates/competitions/user_overview.html:49
-msgid "Als Teilnehmer:"
-msgstr "As member:"
-
 #: competitions/utils.py:66
 msgid "Nicht genug Spieler"
 msgstr "Not enough players"
@@ -2533,24 +2490,24 @@ msgstr ""
 "There has not yet been written a round algorithm for this game. Send admin a "
 "friend request and ask him if he can write one :)"
 
-#: competitions/views.py:92
+#: competitions/views.py:93
 #, python-brace-format
 msgid "{act}-Turnier"
 msgstr "{act}-tournament"
 
-#: competitions/views.py:166
+#: competitions/views.py:167
 msgid "Es wurde noch keine Runde erstellt."
 msgstr "No rounds have been created."
 
-#: competitions/views.py:179
+#: competitions/views.py:180
 msgid "Es stehen noch Ergebnisse der letzten Runde offen."
 msgstr "There are still matches without results in the last round."
 
-#: competitions/views.py:187
+#: competitions/views.py:188
 msgid "Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden."
 msgstr "No teams can be formed with this number of players."
 
-#: competitions/views.py:200
+#: competitions/views.py:201
 msgid "Es stehen noch Ergebnisse offen."
 msgstr "There are still matches without results."
 
@@ -2685,30 +2642,30 @@ msgid "Normalspiel"
 msgstr "Normal game"
 
 #: multiplayer/templates/javascript/doppelkopf.js:360
-#: multiplayer/templates/javascript/durak.js:207
+#: multiplayer/templates/javascript/durak.js:205
 #: multiplayer/templates/javascript/skat.js:164
 #: multiplayer/templates/javascript/skat.js:201
 msgid "Spiel Nummer"
 msgstr "Game number"
 
-#: multiplayer/templates/javascript/durak.js:108
-#: multiplayer/templates/javascript/durak.js:258
+#: multiplayer/templates/javascript/durak.js:106
+#: multiplayer/templates/javascript/durak.js:256
 msgid "SCHLUCKT"
 msgstr "GOBBLING"
 
-#: multiplayer/templates/javascript/durak.js:217
+#: multiplayer/templates/javascript/durak.js:215
 msgid "ANGREIFER"
 msgstr "ATTACKER"
 
-#: multiplayer/templates/javascript/durak.js:220
+#: multiplayer/templates/javascript/durak.js:218
 msgid "VERTEIDIGER"
 msgstr "DEFENDER"
 
-#: multiplayer/templates/javascript/durak.js:433
+#: multiplayer/templates/javascript/durak.js:431
 msgid "Schlucken"
 msgstr "Gobble"
 
-#: multiplayer/templates/javascript/durak.js:443
+#: multiplayer/templates/javascript/durak.js:441
 msgid "Schieben"
 msgstr "Transfer"
 
@@ -3085,12 +3042,12 @@ msgstr ""
 "        </ul>\n"
 "        "
 
-#: multiplayer/views.py:18
+#: multiplayer/views.py:19
 #, python-brace-format
 msgid "Sie sind der Aktivität {name} beigetreten."
 msgstr "You joined the activity {name}."
 
-#: multiplayer/views.py:20
+#: multiplayer/views.py:21
 msgid ""
 "Sie wurden aus dem Spiel gekickt. Bitte treten Sie nur wieder bei, wenn Sie "
 "sich sicher sind, dass das ein Versehen war."
@@ -3098,18 +3055,18 @@ msgstr ""
 "You've been kicked from the game. Please rejoin only if you're sure that "
 "this wasn't on purpose."
 
-#: multiplayer/views.py:76
+#: multiplayer/views.py:31
+#, python-brace-format
+msgid "Sie können nicht mehr als {n} Matches erstellen."
+msgstr "You can't create more than {n} matches."
+
+#: multiplayer/views.py:80
 msgid "Spiel ist bereits voll"
 msgstr "Game is full"
 
-#: multiplayer/views.py:86
+#: multiplayer/views.py:90
 msgid "Sie waren zu langsam, das Match war bereits voll."
 msgstr "Too slow. Match is already full."
-
-#: poll/models.py:10
-#, python-format
-msgid "Die besten Orte in %s für \"%s\""
-msgstr "Best locations in %s for „%s“"
 
 #: scheduling/forms.py:18 usergroups/forms.py:22
 msgid "Name"
@@ -3622,6 +3579,44 @@ msgstr " %(v0)s ago"
 #: wall/templates/wall/post/post_loop.html:33
 msgid "[Löschen]"
 msgstr "[Delete]"
+
+#: wall/templates/wall/post/post_loop.html:81
+msgid "Keine"
+msgstr "None"
+
+#~ msgid "Ausgeloggt"
+#~ msgstr "Logged out"
+
+#~ msgid "Sie haben sich erfolgreich ausgeloggt. Sie können sich"
+#~ msgstr "You've successfully logged out. You can now"
+
+#~ msgid "auch wieder einloggen."
+#~ msgstr "log in again."
+
+#~ msgid "Passwort geändert"
+#~ msgstr "Password changed"
+
+#~ msgid "Ihr Passwort wurde erfolgreich geändert!"
+#~ msgstr "Your password was changed successfully!"
+
+#~ msgid "Passwort zurückgesetzt"
+#~ msgstr "Password reset"
+
+#~ msgid "Sie können sich jetzt wieder einloggen."
+#~ msgstr "You can now log in again."
+
+#~ msgid "Teilnehmer"
+#~ msgstr "Members"
+
+#~ msgid "Als Admin:"
+#~ msgstr "As admin:"
+
+#~ msgid "Als Teilnehmer:"
+#~ msgstr "As member:"
+
+#, python-format
+#~ msgid "Die besten Orte in %s für \"%s\""
+#~ msgstr "Best locations in %s for „%s“"
 
 #~ msgid "Freundschaft beendet"
 #~ msgstr "Friendship terminated"

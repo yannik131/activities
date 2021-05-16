@@ -1,0 +1,23 @@
+{% load static %}
+{% load thumbnail %}
+{% load i18n %}
+
+<div class="list">
+    {% for item in list %}
+        <div class="item" onclick="location.href='{{ item.get_absolute_url }}'">
+        {% load thumbnail %}
+            <img src="{% thumbnail item.activity.image 200x200 %}" class="image">
+            <div class="title">
+                {{ item }}
+            </div>
+            <div class="subtext">
+                {% trans "Mitglieder" %}: {{ item.members.count }}
+            </div>
+            {% if user == item.admin %}
+            <img src="{% static 'icons/admin.png' %}" class="icon">
+            {% else %}
+                <img src="{% static 'icons/member.png' %}" class="icon">
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

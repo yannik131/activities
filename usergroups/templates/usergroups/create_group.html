@@ -5,8 +5,8 @@
 
 {% block content %}
     <h1>{% trans "Gruppe erstellen" %}</h1>
-    <p>{% trans "Gruppe gehört zu" %}: <a href="{{ category.get_absolute_url }}">{{ category.verbose }}</a></p>
-    <p>{% blocktrans with v0=category.name%}Bitte füllen Sie das folgende Formular aus, um eine Gruppe in der Kategorie {{ v0 }} zu erstellen{% endblocktrans %}.</p>
+    <p class="info-p">{% trans "Gruppe gehört zu" %}: <a href="{{ category.get_absolute_url }}">{{ category.verbose }}</a><br><br>
+    {% blocktrans with v0=category.name%}Bitte füllen Sie das folgende Formular aus, um eine Gruppe in der Kategorie {{ v0 }} zu erstellen{% endblocktrans %}.</p>
     <form class="login-form" method="post" enctype="multipart/form-data">
         {{ form.as_p }}
         {% csrf_token %}

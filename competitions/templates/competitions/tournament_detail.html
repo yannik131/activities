@@ -25,13 +25,9 @@
             {% trans "Zum Chat" %}
         </div>
     {% endif %}
+    <h3>{% blocktrans %}Mitglieder:{% endblocktrans %}</h3>
     <p>
-        {% trans "Mitglieder" %}:
-        {% for member in tournament.members.all %}
-            <a href="{{ member.get_absolute_url }}">{{ member }}</a>{% if forloop.last %}.{% else %},{% endif %}
-            {% empty %}
-            {% trans 'Keine' %}
-        {% endfor %}
+        {% include 'account/user_loop.html' with users=tournament.members.all %}
     </p>
     {% if is_member %}
     <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'competitions:remove_member' 'tournament' tournament.id user.id 'user' %}")>{% trans "Austreten" %}</button></div></p>

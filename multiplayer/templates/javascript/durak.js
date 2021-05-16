@@ -73,13 +73,11 @@ function processMultiplayerData(data) {
 
 function checkDone(data) {
     if((player1_cards.length == 0 || game_mode == "none") && !(data.action == 'play' && data.username == this_user)) {
-        console.log(new Date(), '2: done after', data.action);
         sendDone();
         return;
     }
     else if((game_mode == "attacking" || game_mode == "helping") && (allDefended() || is_taking)) {
         if(!attackingIsPossible()) {
-            console.log(new Date(), '3: done after', data.action);
             sendDone();
             return;
         }

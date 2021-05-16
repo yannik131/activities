@@ -1,3 +1,4 @@
+from django.core.mail import message
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm, AccountDeleteForm, LoginForm
@@ -255,6 +256,10 @@ def login(request):
 def password_change_done(request):
     messages.add_message(request, messages.INFO, _('Passwort erfolgreich geändert.'))
     return HttpResponseRedirect(reverse('account:edit'))
+    
+def password_reset_complete(request):
+    messages.add_message(request, messages.INFO, _('Ihr Passwort wurde zurückgesetzt.'))
+    return HttpResponseRedirect(reverse('account:login'))
     
 def people_list(request):
     component_index = int(request.GET.get('component_index', 3))

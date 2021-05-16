@@ -18,9 +18,13 @@ from datetime import datetime, timedelta
 from redis import StrictRedis
 conn = StrictRedis(host="localhost", port=6655)
 import redis_lock
-
+from datetime import timedelta
 
 class MultiplayerMatch(models.Model):
+    MAX_INSTANCES = 5
+    RUNNING_LIFESPAN = timedelta(days=2)
+    IDLE_LIFESPAN = timedelta(hours=1)
+    created = models.DateTimeField(default=timezone.now)
     activity = models.ForeignKey(Activity, related_name='multiplayer_matches', on_delete=models.CASCADE)
     members = models.ManyToManyField(User, related_name='multiplayer_matches')
     member_limit = models.PositiveSmallIntegerField()
@@ -223,7 +227,6 @@ class MultiplayerMatch(models.Model):
         
 
     def start_durak(self):
-        log('-------------Starting Durak round-------------')
         if self.member_limit <= 3:
             players, deck = self.create_players(6, "6", "7", "8", "9", "10", "J", "Q", "K", "A")
         else:

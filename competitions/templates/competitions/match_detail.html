@@ -5,7 +5,11 @@
 {% block title %}{% blocktrans with v0=match %}Match am {{ v0 }}{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>{% blocktrans with v0=match.start_time %}Match am {{ v0 }}{% endblocktrans %}</h1>
+    <div class="info-p">
+        <h1>{% blocktrans with v0=match.start_time %}Match am {{ v0 }}{% endblocktrans %}</h1>
+        <p>{% blocktrans with v0=match.location v1=match.address %}Ort: {{ v0 }}, {{ v1 }}{% endblocktrans %}</p>
+    </div>
+    
     <h2>{% trans "Admin" %}: <a href="{{ match.admin.get_absolute_url }}">{{ match.admin }}</a></h2>
     {% if user == match.admin %}
         <div class="competitive">
@@ -24,13 +28,8 @@
             {% trans "Zum Chat" %}
         </div>
     {% endif %}
-    <h2>{% blocktrans with v0=match.location v1=match.address %}Ort: {{ v0 }}, {{ v1 }}{% endblocktrans %}</h2>
-    <h3>{% blocktrans %}Teilnehmer{% endblocktrans %}</h3>
-    <ul>
-        {% for member in match.members.all %}
-            <li><a href="{{ member.get_absolute_url }}">{{ member }}</a></li>
-        {% endfor %}
-    </ul>
+    <h3>{% blocktrans %}Mitglieder:{% endblocktrans %}</h3>
+    {% include 'account/user_loop.html' with users=match.members.all %}
     {% if is_member %}
     <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'competitions:remove_member' 'match' match.id user.id 'user' %}")>{% trans "Austreten" %}</button></div></p>
     {% endif %}

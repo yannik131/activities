@@ -441,6 +441,7 @@ form label {
 
 .pagination {
     text-align: center;
+    display: block;
 }
 
 .button-like {

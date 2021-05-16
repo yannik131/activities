@@ -1,11 +1,11 @@
 {% load i18n %}
-{% load static %}
 <html>
     <title>{% trans 'E-Mail Aktivierung' %}</title>
     <body>
-        <h1 style="display: flex; align-items: center; justify-content: center;"><img src="{% static 'icons/dog.png' %}">{% trans 'E-Mail Aktivierung' %}</h1>
-        <p>{% trans 'Hallo' %} {{ user }}!</p>
+        <h1 style="text-align: center">{% trans 'E-Mail Aktivierung' %}</h1>
+        <h2>{% trans 'Hallo' %} {{ user }}!</h2>
         <p>{% trans 'Ihr Account auf https://www.myactivities.net wurde erfolgreich erstellt. Klicken Sie auf den folgenden Link, um ihn zu aktivieren.' %}</p>
         <p><a href='{{ activation_url }}'>{{ activation_url }}</a></p>
+        <p>{% trans 'Der Link ist 3 Tage gültig. Sie können durch erneutes Registrieren jederzeit einen neuen anfordern. %}</p>
     </body>
 </html>

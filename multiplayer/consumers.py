@@ -65,7 +65,6 @@ class DurakConsumer(GameConsumer):
             data[self.username] = text_data["hand"]
             if not data["first"] and len(json.loads(text_data["hand"])) == 0:
                 data["first"] = self.username
-                log('set first without cards to', self.username)
             if not data["taking"]:
                 data["done_list"] = json.dumps([])
             message["data"] = {
@@ -86,11 +85,9 @@ class DurakConsumer(GameConsumer):
                     'action': 'done'
                 }
             else:
-                log('invalid done from', self.username, ': already in list!')
                 return
             
             if len(done_list) == len(players):
-                log('all are done, checking...')
                 if data["taking"]:
                     hand = json.loads(data[data["taking"]])
                     stacks = json.loads(data["stacks"])
@@ -112,14 +109,9 @@ class DurakConsumer(GameConsumer):
                         data["attacking"] = None
                 players_with_cards = get_players_with_cards(players, data)
                 if len(players_with_cards) <= 1:
-                    log("players_with_cards:", players_with_cards, '-> let\'s see!')
-                    log('hands of each player:')
-                    for player in players:
-                        log(player, '->', json.loads(data[player]))
                     durak = None
                     if players_with_cards:
                         durak = players_with_cards[0]
-                    log('durak:', durak, 'first:', data['first'])
                     summary = give_durak_points(data, players, durak)
                     if durak:
                         data["defending"] = durak
@@ -127,7 +119,6 @@ class DurakConsumer(GameConsumer):
                     else:
                         data["attacking"] = data["first"]
                         data["defending"] = after(data["attacking"], players)
-                    log('attacking:', data['attacking'], 'defending:', data['defending'])
                     match.start_durak()
                     if len(players) == 4:
                         data['done_list'] = json.dumps([before(data['attacking'], players)])
@@ -145,7 +136,6 @@ class DurakConsumer(GameConsumer):
                         "data": data,
                         'username': self.username
                     }
-                    log('sent new round, empty done_list')
             data['done_list'] = json.dumps(done_list)
         elif text_data["action"] == "take":
             data["done_list"] = json.dumps([str(self.username)])
@@ -158,7 +148,6 @@ class DurakConsumer(GameConsumer):
             data[self.username] = text_data["hand"]
             if not data["first"] and len(json.loads(text_data["hand"])) == 0:
                 data["first"] = self.username
-                log('set first without cards to', self.username)
             data["done_list"] = json.dumps([])
             data["attacking"] = data["defending"]
             data["defending"] = left_player(data["attacking"], players, data)
@@ -309,7 +298,6 @@ class PokerConsumer(GameConsumer):
     def handle_move(self, text_data, data, match, message):
         if self.username not in json.loads(data['alive']):
             return
-        log('handling action', text_data['action'], 'from', self.username)
         if text_data['action'] == 'fold':
             data[self.username+'_bet'] = 'fold'
             message['data'] = {
@@ -405,13 +393,6 @@ class PokerConsumer(GameConsumer):
                 data['active'] = after(data['active'], no_fold(data))
         
         message['data']['active'] = data['active']
-        players = json.loads(data['alive'])
-        total = sum([int(data[player+'_stack']) for player in players])+int(data['pot'])
-        if len(players)*2000 != total:
-            log('Chips don\'t add up after action', text_data['action'], 'from', self.username, 'total:', total)
-            for player in players:
-                log(player, '->', data[player+'_stack'])
-            log('pot -> ', data['pot'])
         
     def clean(self, data):
         del data['deck']

@@ -21,7 +21,8 @@ def user_overview(request):
     skat = Activity.objects.get(translations__language_code='de', translations__name='Skat')
     doko = Activity.objects.get(translations__language_code='de', translations__name='Doppelkopf')
     poker = Activity.objects.get(translations__language_code='de', translations__name='Poker')
-    return render(request, 'competitions/user_overview.html', dict(durak=durak, skat=skat, doko=doko, poker=poker))
+    tournaments = dict.fromkeys(request.user.tournaments.all() | request.user.owned_tournaments.all()).keys()
+    return render(request, 'competitions/user_overview.html', dict(durak=durak, skat=skat, doko=doko, poker=poker, tournaments=tournaments))
 
 
 def test(request):

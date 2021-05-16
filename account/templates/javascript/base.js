@@ -26,6 +26,9 @@ function activateMenu(element_id) {
         count.innerHTML = "";
     }
     else {
+        if(window.innerWidth >= 1220) {
+            return;
+        }
         if(menu.className == element_id)
             menu.className += " clicked";
         else

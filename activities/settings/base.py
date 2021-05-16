@@ -75,7 +75,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'parler',
     'easy_thumbnails',
-    'cookielaw'
+    'cookielaw',
+    'django_celery_beat'
 ]
 
 MIDDLEWARE = [

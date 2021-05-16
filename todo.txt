@@ -90,18 +90,7 @@ anonym ohne registrieren?
 topmenu
 padding vertikale liste
 vertikale liste umranden
-link bild weg
-divs anderen hintergrund zum hervorheben
-icons ausmachen
-nach fold vor flop werden die karten wieder angezeigt nach dem flop und nach spielende sofort weggeklickt
-all in anzeige falsch
-wenn blindende erreicht keine info mehr summary
-chat nicht chat dann gefolded werden wieder angezeigt
-all in bei mindesteinsatz nicht möglich
-schlucken, ich muss als angreifer fertig drücken?
-nach dem schlucken doppelt was geschluckt wurde
-verteidiger verteidigt und andere nicht done
-zwei karten schlucken dann noch eine dazulegen dann bug
-active if weg
-h1 check ohne image
-auto close match after 7 days
+
+MultiplayerMatch gestartet: 7 Tage
+MultiplayerMatch noch nicht: 1 Stunde
+Match, Turnier: 1 Tag nach Start
