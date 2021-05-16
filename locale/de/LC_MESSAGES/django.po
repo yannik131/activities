@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-16 18:56+0000\n"
+"POT-Creation-Date: 2021-05-16 22:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -872,6 +872,12 @@ msgid ""
 "Klicken Sie auf den folgenden Link, um ihn zu aktivieren."
 msgstr ""
 
+#: account/templates/registration/activation_email.html:9
+msgid ""
+"Der Link ist 3 Tage gültig. Sie können durch erneutes Registrieren jederzeit "
+"einen neuen anfordern."
+msgstr ""
+
 #: account/templates/registration/login.html:7
 #: account/templates/registration/login.html:14
 #: account/templates/registration/login.html:23
@@ -1038,7 +1044,7 @@ msgid "Sie haben die Freundschaft mit {user} beendet."
 msgstr ""
 
 #: account/views.py:165
-msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden."
+msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden. "
 msgstr ""
 
 #: account/views.py:179
