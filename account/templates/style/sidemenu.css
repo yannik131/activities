@@ -23,7 +23,7 @@
     overflow: auto;
     z-index: 100000;
     max-width: 250px;
-    padding: 5px 5px 0 5px;
+    padding: 5px 5px;
 }
 
 .sidemenu .alert {
