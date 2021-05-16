@@ -32,6 +32,11 @@ function updateMatchList(data) {
                 middle.innerHTML += ", ";
             }
         }
+        var created = Date.parse(match_data[3]);
+        var diffMs = (new Date() - created); 
+        var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000);
+
+        middle.innerHTML += "<br><span style='font-size: 10px'>{% trans 'Online: ' %} "+diffMins+" min</span>";
         item.appendChild(middle);
         
         bottom.className = 'bottom';
