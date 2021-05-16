@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from .models import MultiplayerMatch
 from shared.shared import log
 from chat.models import ChatRoom
-import json
+from notify.utils import notify
 
 @receiver(m2m_changed, sender=MultiplayerMatch.members.through)
 def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
@@ -15,6 +15,8 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
     room = ChatRoom.get_for_target(instance)
     if action == "post_add":
         room.members.add(member)
+        if instance.is_full():
+            notify(instance.admin, instance, 'is_full')
     elif action == "post_remove":
         room.members.remove(member)
         

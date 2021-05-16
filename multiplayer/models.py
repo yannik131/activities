@@ -34,6 +34,9 @@ class MultiplayerMatch(models.Model):
     admin = models.ForeignKey(User, related_name='admin_matches', on_delete=models.CASCADE)
     options = HStoreField(default=dict, blank=True)
     over = models.BooleanField(default=False)
+    action_strings = {
+        'is_full': _('ist voll')
+    }
     
     class Meta:
         ordering = ['-created']
@@ -53,6 +56,9 @@ class MultiplayerMatch(models.Model):
     
     def __str__(self):
         return self.activity.name+__('-Match')
+        
+    def verbose(self):
+        return self.__str__()
     
     @staticmethod
     def last():
