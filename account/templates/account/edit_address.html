@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% blocktrans %}Adresse ändern{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>{% blocktrans %}Adresse ändern{% endblocktrans %}</h1>
-    <p>{% blocktrans %}Geben Sie hier eine neue Stadt ein.{% endblocktrans %}</p>
+    <h1 class="h-img"><img src="{% static 'icons/home.png' %}">{% blocktrans %}Adresse ändern{% endblocktrans %}</h1>
+    <p class="info-p">{% blocktrans %}Geben Sie hier eine neue Stadt ein.{% endblocktrans %}</p>
     <form class="login-form" method="post">
         {{ location_form.as_p }}
         {% csrf_token %}
         <input type="submit" value="{% blocktrans %}Ändern{% endblocktrans %}">
     </form>
     {% if sent %}
-        <p>{% blocktrans with v0=user.location.full_address %}Neue Adresse gespeichert: <b>{{ v0 }}</b>{% endblocktrans %}</p>
+        <p class="info-p">{% blocktrans with v0=user.location.full_address %}Neue Adresse gespeichert: <b>{{ v0 }}</b>{% endblocktrans %}</p>
     {% endif %}
 {% endblock %}

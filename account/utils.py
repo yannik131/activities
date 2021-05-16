@@ -9,6 +9,7 @@ from django.utils.encoding import force_bytes
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils import translation
+from time import perf_counter_ns as timer
 
 
 def get_location(address):
@@ -37,3 +38,9 @@ def send_account_activation_email(request, user):
     email = EmailMultiAlternatives(_('E-Mail Aktivierung'), _('Aktivierungs-E-Mail'), settings.DEFAULT_FROM_EMAIL, recipients)
     email.attach_alternative(html_content, 'text/html')
     email.send()
+    
+def test(func, n=100):
+    stamp = timer()
+    for i in range(n):
+        func()
+    print((timer()-stamp)/10**6)

@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-{% load i18n %}
-
-{% block title %}{% trans "Freundschaft beendet" %}{% endblock %}
-
-{% block content %}
-    <h1>{% blocktrans %}Freundschaft beendet{% endblocktrans %}</h1>
-    <p>{% blocktrans with name=target_user.first_name username=target_user.username %}Sie haben die Freundschaft mit {{ name }}, aka {{ username }}, beendet.{% endblocktrans %}</p>
-{% endblock %}

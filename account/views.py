@@ -150,26 +150,24 @@ def register(request):
     if request.method == 'POST':
         location_form = LocationForm(request.POST)
         user_form = UserRegistrationForm(request.POST)
-        if location_form.is_valid():
-            user_form.location = location_form.location
-            user_form.request = request
-            if user_form.is_valid():
+        if user_form.is_valid():
+            if location_form.is_valid():
                 new_user = user_form.save(commit=False)
                 new_user.set_password(user_form.cleaned_data['password'])
-                new_user.location = user_form.location
+                new_user.location = location_form.location
                 new_user.is_active = False
                 new_user.save()
                 try:
-                    send_account_activation_email(user_form.request, new_user)
-                except:
+                    send_account_activation_email(request, new_user)
+                except Exception as e:
                     new_user.delete()
-                    messages.add_message(request, messages.INFO, _('An die E-Mail Adresse konnte keine E-Mail gesendet werden.'))
-                    return render(request, 'account/register.html', {'user_form': user_form, 'location_form': location_form})
-                return render(request, 'account/register_done.html', {'new_user': new_user})
+                    messages.add_message(request, messages.INFO, _('An die E-Mail Adresse konnte keine E-Mail gesendet werden.')+str(e))
+                    return render(request, 'registration/register.html', {'user_form': user_form, 'location_form': location_form})
+                return render(request, 'registration/register_done.html', {'new_user': new_user})
     else:
         user_form = UserRegistrationForm(initial=dict(birth_year=1990))
         location_form = LocationForm()
-    return render(request, 'account/register.html', {'user_form': user_form, 'location_form': location_form})
+    return render(request, 'registration/register.html', {'user_form': user_form, 'location_form': location_form})
 
 @login_required
 def edit(request):
@@ -237,10 +235,8 @@ def activate(request, uidb64=None, token=None):
         auth_login(request, user)
         return HttpResponseRedirect(request.build_absolute_uri('/'))
     else:
-        return HttpResponseRedirect(request.build_absolute_uri('/account/activation_failed/'))
-        
-def activation_failed(request):
-    return render(request, 'registration/activation_failed.html')
+        messages.add_message(request, messages.INFO, _('Der Aktivierungslink ist ungültig. Falls der Account noch inaktiv ist, können Sie durch erneutes Registrieren einen neuen anfordern!'))
+        return HttpResponseRedirect(reverse('account:register'))
 
 
 def login(request):

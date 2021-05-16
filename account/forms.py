@@ -7,7 +7,6 @@ from django.contrib.auth.hashers import check_password
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from datetime import datetime
-from .utils import send_account_activation_email
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -33,19 +32,15 @@ class UserRegistrationForm(forms.ModelForm):
             'username': ''
         }
         
-    def clean_username(self):
-        username = self.cleaned_data['username']
-        try: 
-            validate_email(username)
-            
-        except ValidationError:
-            return username
-        raise forms.ValidationError(_('Ihr Nutzername kann keine E-Mail sein. Das wäre verwirrend, oder?'))
-        
     def clean_email(self):
         cd = self.cleaned_data
-        if User.objects.filter(email=cd['email']).exists():
-            raise forms.ValidationError(_('Es gibt schon einen Nutzer mit dieser E-Mail-Adresse.'))
+        query = User.objects.filter(email=cd['email'])
+        if query.exists():
+            user = query.first()
+            if user.is_active:
+                raise forms.ValidationError(_('Es gibt schon einen Nutzer mit dieser E-Mail-Adresse.'))
+            else:
+                user.delete()
         return cd['email']
     
     def clean_password2(self):
