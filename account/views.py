@@ -162,7 +162,7 @@ def register(request):
                     send_account_activation_email(request, new_user)
                 except Exception as e:
                     new_user.delete()
-                    messages.add_message(request, messages.INFO, _('An die E-Mail Adresse konnte keine E-Mail gesendet werden.')+str(e))
+                    messages.add_message(request, messages.INFO, _('An die E-Mail Adresse konnte keine E-Mail gesendet werden. ')+str(e))
                     return render(request, 'registration/register.html', {'user_form': user_form, 'location_form': location_form})
                 return render(request, 'registration/register_done.html', {'new_user': new_user})
     else:
