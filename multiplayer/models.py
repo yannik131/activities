@@ -14,7 +14,7 @@ from multiplayer.utils import change
 from shared.shared import log
 from django.contrib.contenttypes.models import ContentType
 import random
-from datetime import datetime, timedelta
+from datetime import datetime, time, timedelta
 from redis import StrictRedis
 conn = StrictRedis(host="localhost", port=6655)
 import redis_lock
@@ -33,6 +33,19 @@ class MultiplayerMatch(models.Model):
     in_progress = models.BooleanField(default=False)
     admin = models.ForeignKey(User, related_name='admin_matches', on_delete=models.CASCADE)
     options = HStoreField(default=dict, blank=True)
+    over = models.BooleanField(default=False)
+    
+    class Meta:
+        ordering = ['-created']
+        
+    @property
+    def delete_date(self):
+        if self.over:
+            return self.created+MultiplayerMatch.IDLE_LIFESPAN
+        if self.in_progress:
+            return self.created+MultiplayerMatch.RUNNING_LIFESPAN
+        else:
+            return self.created+MultiplayerMatch.IDLE_LIFESPAN
     
     @property
     def get_image(self):
@@ -286,6 +299,8 @@ class MultiplayerMatch(models.Model):
         self.game_data['alive'] = json.dumps(alive)
         if len(alive) == 1:
             self.game_data['winner'] = alive[0]
+            self.over = True
+            self.created = timezone.now()
             return
         blinds = [[10, 20], [20, 40], [30, 60], [50, 100], [100, 200], [150, 300], [200, 400], [400, 800], [800, 1600]]
         if int(self.game_data['blind_level']) < len(blinds)-1 and timezone.now() > datetime.fromisoformat(self.game_data['blind_time']):

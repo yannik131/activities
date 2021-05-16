@@ -23,5 +23,5 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
 def match_deleted(instance, **kwargs):
     room = ChatRoom.get_for_target(instance)
     room.delete()
-        
+    instance.abort(redirect_to_lobby=True)
         

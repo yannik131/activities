@@ -98,7 +98,6 @@ def leave_match(request, match):
     if not match.members.filter(pk=request.user.id).exists():
         return HttpResponseRedirect(match.lobby_url(request))
     if match.admin == request.user:
-        match.abort(redirect_to_lobby=True)
         match.delete()
         return HttpResponseRedirect(match.lobby_url(request))
     match.remove_member(request.user)

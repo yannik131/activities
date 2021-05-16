@@ -1,14 +1,13 @@
 from activities.celery import app
 from .models import MultiplayerMatch
 from django.utils import timezone
+from django.db.models import Q
 
-@app.on_after_configure.connect
-def setup_periodic_tasks(sender, **kwargs):
-    sender.add_periodic_task(5, clearMultiplayerMatches.s())
-    
 @app.task
 def clearMultiplayerMatches():
-    idle_delete_date = timezone.now()+MultiplayerMatch.IDLE_LIFESPAN
-    MultiplayerMatch.objects.filter(in_progress=False, created__gt=idle_delete_date).delete()
-    running_delete_date = timezone.now()+MultiplayerMatch.RUNNING_LIFESPAN
-    MultiplayerMatch.objects.filter(in_progress=True, created__gt=running_delete_date).delete()
+    idle_delete_date = timezone.now()-MultiplayerMatch.IDLE_LIFESPAN
+    running_delete_date = timezone.now()-MultiplayerMatch.RUNNING_LIFESPAN
+    MultiplayerMatch.objects.filter(
+        Q(in_progress=False, created__lt=idle_delete_date) | 
+        Q(in_progress=True, created__lt=running_delete_date) | 
+        Q(over=True, created__lt=idle_delete_date)).delete()
