@@ -97,7 +97,7 @@ function addMarker() {
     for(var i = 1; i < markers.length; i++) {
         d = dist([lat, lon], [markers[i][1], markers[i][2]]);
         if(d < 10) {
-            alert("{% trans 'Diese Markierung ist zu nah an der Markierung ' %}\""+markers[i][0]+"\". {% trans 'Markierungen müssen mindestens 10m auseinanderliegen, hier sind es: ' %} "+Math.round(d)+"m");
+            alert("{% trans 'Diese Markierung ist zu nah an der Markierung ' %}\""+markers[i][0]+"\". {% trans 'Markierungen müssen mindestens 10m auseinanderliegen, hier sind es: ' %}"+Math.round(d)+"m");
             lat = undefined;
             lon = undefined;
             return;
