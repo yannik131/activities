@@ -83,7 +83,7 @@ def leave(request, activity_name):
 
 def category_list(request):
     #categories = Category.objects.annotate(count=Count('activities')).filter(count__gt=0) #TODO lieber visible?
-    categories = Category.objects.filter(visible=True)
+    categories = Category.objects.prefetch_related('activities').filter(visible=True)
     return render(request, 'activity/category_list.html', dict(categories=categories))
 
 
