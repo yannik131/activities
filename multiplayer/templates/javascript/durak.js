@@ -53,7 +53,9 @@ function processMultiplayerData(data) {
             break;
         case "transfer":
             handleTransfer(data);
-            break;
+            checkDone(data);
+            updateDone();
+            return;
         case "take":
             handleTake();
             break;
