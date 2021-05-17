@@ -6,10 +6,6 @@
 
 {% block title %}{{ activity.name }}{% endblock %}
 
-{% block style %}
-{% include 'style/activity.css' %}
-{% endblock %}
-
 {% block content %}
     {% if activity.image %}
         <img src="{% thumbnail activity.image 400x400 %}" class="activity-full-image">

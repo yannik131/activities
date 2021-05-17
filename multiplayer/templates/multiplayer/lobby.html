@@ -4,9 +4,6 @@
 {% load thumbnail %}
 
 {% block title %}{{ activity }}-Lobby{% endblock %}
-{% block style %}
-{% include "multiplayer/lobby.css" %}
-{% endblock %}
 
 {% block content %}
 <h1 class="h-img" style="margin-bottom: 5px"><img src="{% static 'icons/lobby.png' %}"><a href="{{ activity.get_absolute_url }}">{{ activity }}</a>-Lobby</h1>

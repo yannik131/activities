@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-17 10:05+0000\n"
+"POT-Creation-Date: 2021-05-17 12:14+0000\n"
 "PO-Revision-Date: 2021-05-17 12:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -310,7 +310,7 @@ msgstr ""
 
 #: account/templates/account/about.html:6
 #: account/templates/account/impressum.html:5
-#: account/templates/account/impressum.html:8 account/templates/base.html:41
+#: account/templates/account/impressum.html:8 account/templates/base.html:34
 msgid "Info"
 msgstr "About"
 
@@ -513,7 +513,7 @@ msgid "Ihre Markierungen"
 msgstr "Your markers"
 
 #: account/templates/account/edit.html:31
-#: character/templates/character/edit_weights.html:67
+#: character/templates/character/edit_weights.html:63
 msgid "Speichern"
 msgstr "Save"
 
@@ -527,9 +527,9 @@ msgstr "None! Join activities to mark locations on the corresponding map."
 msgid "Gespeichert: "
 msgstr "Saved: "
 
-#: account/templates/account/edit.html:41 account/templates/base.html:50
+#: account/templates/account/edit.html:41 account/templates/base.html:43
 #: account/templates/javascript/base.js:54
-#: activity/templates/activity/detail.html:96
+#: activity/templates/activity/detail.html:92
 msgid "OK!"
 msgstr "OK!"
 
@@ -860,7 +860,7 @@ msgstr "Homepage"
 
 #: account/templates/account/sidemenu.html:9
 #: character/templates/character/overview.html:5
-#: character/templates/character/overview.html:87
+#: character/templates/character/overview.html:83
 msgid "Charakter"
 msgstr "Character"
 
@@ -898,7 +898,7 @@ msgstr "Your posts"
 
 #: account/templates/account/user_post_list.html:9
 #: activity/templates/activity/category_detail.html:25
-#: activity/templates/activity/detail.html:136
+#: activity/templates/activity/detail.html:132
 #: usergroups/templates/usergroups/group_detail.html:76
 msgid "Post erstellen"
 msgstr "Create post"
@@ -975,7 +975,7 @@ msgstr "Total users: "
 #: account/templates/registration/login.html:13
 #: account/templates/registration/register.html:13
 #: multiplayer/templates/javascript/lobby.js:39
-#: multiplayer/templates/multiplayer/lobby.html:19
+#: multiplayer/templates/multiplayer/lobby.html:16
 msgid "Online: "
 msgstr "Online: "
 
@@ -1069,7 +1069,7 @@ msgid ""
 msgstr "Enter your email address to reset your password."
 
 #: account/templates/registration/password_reset_form.html:13
-#: activity/templates/activity/detail.html:102
+#: activity/templates/activity/detail.html:98
 #: multiplayer/templates/javascript/cards.js:528
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
 #: wall/templates/wall/post/create_comment.html:15
@@ -1241,7 +1241,7 @@ msgid "Mitglieder"
 msgstr "Members"
 
 #: activity/templates/activity/category_detail.html:13
-#: activity/templates/activity/detail.html:18
+#: activity/templates/activity/detail.html:14
 msgid "Quelle"
 msgstr "Source"
 
@@ -1272,48 +1272,48 @@ msgstr ""
 "can <a href=\"/usergroups/group_list\">create groups</a> in which you can "
 "chat, have audio conferences and manage appointments."
 
-#: activity/templates/activity/detail.html:43
+#: activity/templates/activity/detail.html:39
 msgid "Passt zu Ihnen zu: "
 msgstr "Personal fit: "
 
-#: activity/templates/activity/detail.html:50
+#: activity/templates/activity/detail.html:46
 msgid "Gehört zu: "
 msgstr "Belongs to: "
 
-#: activity/templates/activity/detail.html:58
+#: activity/templates/activity/detail.html:54
 msgid "Gewichtungen bearbeiten"
 msgstr "Edit weights"
 
-#: activity/templates/activity/detail.html:66
+#: activity/templates/activity/detail.html:62
 msgid "Offline spielen"
 msgstr "Play offline"
 
-#: activity/templates/activity/detail.html:71
+#: activity/templates/activity/detail.html:67
 #: multiplayer/templates/multiplayer/create_match.html:4
 msgid "Online spielen"
 msgstr "Play online"
 
-#: activity/templates/activity/detail.html:81
+#: activity/templates/activity/detail.html:77
 #, python-format
 msgid "%(activity)s-Chat beitreten"
 msgstr "join %(activity)s-chat"
 
-#: activity/templates/activity/detail.html:86
+#: activity/templates/activity/detail.html:82
 #: competitions/templates/competitions/match_detail.html:34
 #: competitions/templates/competitions/tournament_detail.html:33
 #: usergroups/templates/usergroups/group_detail.html:37
 msgid "Austreten"
 msgstr "Leave"
 
-#: activity/templates/activity/detail.html:88
+#: activity/templates/activity/detail.html:84
 msgid "Suche nach Mitgliedern"
 msgstr "Members"
 
-#: activity/templates/activity/detail.html:95
+#: activity/templates/activity/detail.html:91
 msgid "Die Markierung "
 msgstr "The marker "
 
-#: activity/templates/activity/detail.html:95
+#: activity/templates/activity/detail.html:91
 #, python-format
 msgid ""
 " ist nun für alle Mitglieder der Aktivität \"%(act)s\" in %(comp)s sichtbar. "
@@ -1323,45 +1323,45 @@ msgstr ""
 " is now visible for all members of the activity „%(act)s“ in %(comp)s. You "
 "can edit your markers at „<a href='/account/edit/'>edit account</a>“."
 
-#: activity/templates/activity/detail.html:99
+#: activity/templates/activity/detail.html:95
 msgid "Standortmarkierung"
 msgstr "Location marker"
 
-#: activity/templates/activity/detail.html:100
+#: activity/templates/activity/detail.html:96
 msgid "Wie heißt der Ort, an dem Sie sich befinden?"
 msgstr "What’s the name of your location?"
 
-#: activity/templates/activity/detail.html:102
+#: activity/templates/activity/detail.html:98
 #: multiplayer/templates/javascript/cards.js:533
-#: multiplayer/templates/multiplayer/game.html:44
-#: multiplayer/templates/multiplayer/game.html:72
-#: multiplayer/templates/multiplayer/match.html:27
+#: multiplayer/templates/multiplayer/game.html:43
+#: multiplayer/templates/multiplayer/game.html:71
+#: multiplayer/templates/multiplayer/match.html:25
 msgid "Abbrechen"
 msgstr "Cancel"
 
-#: activity/templates/activity/detail.html:111
+#: activity/templates/activity/detail.html:107
 msgid "Standort markieren"
 msgstr "Mark location"
 
-#: activity/templates/activity/detail.html:115
-#: activity/templates/activity/detail.html:121
+#: activity/templates/activity/detail.html:111
+#: activity/templates/activity/detail.html:117
 #: activity/templates/javascript/map.js:78
 msgid "Wo bin ich?"
 msgstr "Where am I?"
 
-#: activity/templates/activity/detail.html:129
+#: activity/templates/activity/detail.html:125
 msgid ""
 "Um Mitglieder anzeigen und Orte markieren zu können, müssen Sie beitreten."
 msgstr ""
 "If you want to see the members and mark locations, you need to enter the "
 "activity."
 
-#: activity/templates/activity/detail.html:132
+#: activity/templates/activity/detail.html:128
 #: multiplayer/templates/javascript/lobby.js:51
 msgid "Beitreten"
 msgstr "Join"
 
-#: activity/templates/activity/detail.html:135
+#: activity/templates/activity/detail.html:131
 msgid "Beiträge"
 msgstr "Posts"
 
@@ -1420,45 +1420,45 @@ msgstr "Markers have to be at least 10m apart, but in this case it’s only: "
 msgid "Gewichte verteilen"
 msgstr "Distribute weights"
 
-#: character/templates/character/edit_weights.html:34
-#: character/templates/character/overview.html:90
+#: character/templates/character/edit_weights.html:30
+#: character/templates/character/overview.html:86
 msgid "Neurotizismus"
 msgstr "Neuroticism"
 
-#: character/templates/character/edit_weights.html:40
-#: character/templates/character/overview.html:96
+#: character/templates/character/edit_weights.html:36
+#: character/templates/character/overview.html:92
 msgid "Extraversion"
 msgstr "Extraversion"
 
-#: character/templates/character/edit_weights.html:46
-#: character/templates/character/overview.html:102
+#: character/templates/character/edit_weights.html:42
+#: character/templates/character/overview.html:98
 msgid "Offenheit für Erfahrungen"
 msgstr "Openness to experience"
 
-#: character/templates/character/edit_weights.html:52
-#: character/templates/character/overview.html:108
+#: character/templates/character/edit_weights.html:48
+#: character/templates/character/overview.html:104
 msgid "Gewissenhaftigkeit"
 msgstr "Conscientiousness"
 
-#: character/templates/character/edit_weights.html:58
-#: character/templates/character/overview.html:114
+#: character/templates/character/edit_weights.html:54
+#: character/templates/character/overview.html:110
 msgid "Verträglichkeit"
 msgstr "Agreeableness"
 
-#: character/templates/character/overview.html:12
+#: character/templates/character/overview.html:8
 msgid "Charakterübersicht"
 msgstr "Character overview"
 
-#: character/templates/character/overview.html:15
+#: character/templates/character/overview.html:11
 #, python-format
 msgid "Sie haben bisher %(n)s von %(max)s Fragen beantwortet."
 msgstr "So far you've answered %(n)s of %(max)s questions."
 
-#: character/templates/character/overview.html:20
+#: character/templates/character/overview.html:16
 msgid "Zum Fragebogen"
 msgstr "Questionnaire"
 
-#: character/templates/character/overview.html:24
+#: character/templates/character/overview.html:20
 msgid ""
 "Die hier angebotenen Persönlichkeitstests wurden in Anlehnung an den NEO-PI-"
 "R Test erstellt und basieren auf <a href=\"https://ipip.ori.org/newNEOKey.htm"
@@ -1478,38 +1478,38 @@ msgstr ""
 "time to answer, but might yield less consistent results if the test is taken "
 "more than once."
 
-#: character/templates/character/overview.html:28
+#: character/templates/character/overview.html:24
 msgid "Bitte wählen Sie eine der drei Optionen aus."
 msgstr "Please choose one of the following options."
 
+#: character/templates/character/overview.html:29
 #: character/templates/character/overview.html:33
 #: character/templates/character/overview.html:37
-#: character/templates/character/overview.html:41
 msgid "Fragen"
 msgstr "Questions"
 
-#: character/templates/character/overview.html:45
+#: character/templates/character/overview.html:41
 msgid "Noch kein Testergebnis!"
 msgstr "No test result yet!"
 
-#: character/templates/character/overview.html:50
+#: character/templates/character/overview.html:46
 msgid "Empfohlene Aktivitäten in "
 msgstr "Suggested activities in "
 
-#: character/templates/character/overview.html:52
+#: character/templates/character/overview.html:48
 msgid "Kategorie wählen: "
 msgstr "Choose a category: "
 
-#: character/templates/character/overview.html:66
+#: character/templates/character/overview.html:62
 msgid "Empfehlungen"
 msgstr "Suggestions"
 
-#: character/templates/character/overview.html:77
-#: multiplayer/templates/multiplayer/game.html:69
+#: character/templates/character/overview.html:73
+#: multiplayer/templates/multiplayer/game.html:68
 msgid "Score"
 msgstr "Score"
 
-#: character/templates/character/overview.html:88
+#: character/templates/character/overview.html:84
 #, python-format
 msgid ""
 "Werte verglichen mit den Durchschnittswerten. <br>+50%%: Maximal "
@@ -1518,11 +1518,11 @@ msgstr ""
 "Values compared to the average. <br>+50%%: Maximally above average, -50%%: "
 "Maximally below average"
 
-#: character/templates/character/overview.html:127
+#: character/templates/character/overview.html:123
 msgid "Zurücksetzen"
 msgstr "Reset"
 
-#: character/templates/character/overview.html:132
+#: character/templates/character/overview.html:128
 msgid ""
 "Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich "
 "die errechneten Punktesummen in den Kategorien werden für die Berechnung von "
@@ -1533,28 +1533,28 @@ msgstr ""
 "else."
 
 #: character/templates/character/quiz.html:5
-#: character/templates/character/quiz.html:9
+#: character/templates/character/quiz.html:8
 msgid "Fragebogen"
 msgstr "Questionnaire"
 
-#: character/templates/character/quiz.html:12
+#: character/templates/character/quiz.html:11
 msgid "Zur Charakterübersicht"
 msgstr "Character overview"
 
-#: character/templates/character/quiz.html:16
+#: character/templates/character/quiz.html:15
 msgid "Trifft stark zu"
 msgstr "Very accurate"
 
-#: character/templates/character/quiz.html:17
+#: character/templates/character/quiz.html:16
 msgid "Trifft überhaupt nicht zu"
 msgstr "Very inaccurate"
 
-#: character/templates/character/quiz.html:22
+#: character/templates/character/quiz.html:21
 #: usergroups/templates/usergroups/group_created.html:8
 msgid "Zurück"
 msgstr "Back"
 
-#: character/templates/character/quiz.html:25
+#: character/templates/character/quiz.html:24
 msgid "Weiter"
 msgstr "Next"
 
@@ -2224,7 +2224,7 @@ msgstr "Please use the following form to enter the match results."
 
 #: competitions/templates/competitions/create_match.html:4
 #: competitions/templates/competitions/overview.html:39
-#: multiplayer/templates/multiplayer/lobby.html:16
+#: multiplayer/templates/multiplayer/lobby.html:13
 msgid "Match erstellen"
 msgstr "Create match"
 
@@ -2858,18 +2858,18 @@ msgid ""
 "erstellen."
 msgstr "Please fill in the following form to create an online %(name)s-match."
 
-#: multiplayer/templates/multiplayer/game.html:36
-#: multiplayer/templates/multiplayer/game.html:52
-#: multiplayer/templates/multiplayer/game.html:65
+#: multiplayer/templates/multiplayer/game.html:35
+#: multiplayer/templates/multiplayer/game.html:51
+#: multiplayer/templates/multiplayer/game.html:64
 msgid "Lobby"
 msgstr "Lobby"
 
-#: multiplayer/templates/multiplayer/game.html:40
-#: multiplayer/templates/multiplayer/game.html:56
+#: multiplayer/templates/multiplayer/game.html:39
+#: multiplayer/templates/multiplayer/game.html:55
 msgid "Blinds"
 msgstr "Blinds"
 
-#: multiplayer/templates/multiplayer/lobby.html:14
+#: multiplayer/templates/multiplayer/lobby.html:11
 #, python-format
 msgid ""
 "Hier können Sie %(activity)s online spielen (<a href=\"/multiplayer/rules"
@@ -2888,31 +2888,31 @@ msgstr ""
 "chat button in the top right corner.<br><span style=\"color: yellow"
 "\">Running games are deleted after 2 days, all others after 1 hour.</span>"
 
-#: multiplayer/templates/multiplayer/lobby.html:25
+#: multiplayer/templates/multiplayer/lobby.html:22
 msgid "Beigetreten"
 msgstr "Joined"
 
-#: multiplayer/templates/multiplayer/lobby.html:35
+#: multiplayer/templates/multiplayer/lobby.html:32
 msgid "noch"
 msgstr "remaining:"
 
-#: multiplayer/templates/multiplayer/lobby.html:41
+#: multiplayer/templates/multiplayer/lobby.html:38
 msgid "Spielen"
 msgstr "Play"
 
-#: multiplayer/templates/multiplayer/lobby.html:44
+#: multiplayer/templates/multiplayer/lobby.html:41
 msgid "Zur Übersicht"
 msgstr "Overview"
 
-#: multiplayer/templates/multiplayer/lobby.html:59
+#: multiplayer/templates/multiplayer/lobby.html:56
 msgid "Öffentliche Liste"
 msgstr "Public list"
 
-#: multiplayer/templates/multiplayer/match.html:19
+#: multiplayer/templates/multiplayer/match.html:17
 msgid "Verlassen"
 msgstr "Leave"
 
-#: multiplayer/templates/multiplayer/match.html:34
+#: multiplayer/templates/multiplayer/match.html:32
 msgid "Starten"
 msgstr "Start"
 

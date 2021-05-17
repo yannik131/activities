@@ -114,4 +114,3 @@ def game(request, match):
 
 def rules(request):
     return render(request, 'multiplayer/rules.html')
-        

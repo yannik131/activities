@@ -4,10 +4,6 @@
 
 {% block title %}{% trans 'Gewichte verteilen' %}{% endblock %}
 
-{% block style %}
-{% include 'css/quiz.css' %}
-{% endblock %}
-
 {% block content %}
     {% if activity.image %}
         <img src="{% thumbnail activity.image 400x400 %}" class="activity-full-image">
