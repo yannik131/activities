@@ -40,12 +40,16 @@ class PostForm(forms.ModelForm):
         fields = ('message', 'category', 'activity',  'audio', 'video', 'image')
 
         labels = {
-            'message': _('Nachricht <a target="_blank" href="https://www.heise.de/mac-and-i/downloads/65/1/1/6/7/1/0/3/Markdown-CheatSheet-Deutsch.pdf">[Zum Markdown Merkblatt]</a>'),
+            'message': _('Nachricht'),
             'category': _('Kategorie (erforderlich)'),
             'activity': _('Aktivität (Namen eintippen geht schneller als klicken!)'),
             'audio': _('Audiodatei'),
             'video': _('Videodatei'),
             'image': _('Bilddatei')
+        }
+        
+        help_texts = {
+            'message': _('<a target="_blank" href="https://www.heise.de/mac-and-i/downloads/65/1/1/6/7/1/0/3/Markdown-CheatSheet-Deutsch.pdf">[Zum Markdown Merkblatt]</a>')
         }
 
     def clean_media_fields(self, cd):
