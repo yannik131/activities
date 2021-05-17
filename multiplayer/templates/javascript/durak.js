@@ -53,9 +53,7 @@ function processMultiplayerData(data) {
             break;
         case "transfer":
             handleTransfer(data);
-            checkDone(data);
-            updateDone();
-            return;
+            break;
         case "take":
             handleTake();
             break;
@@ -426,7 +424,7 @@ function updateButtons() {
         return;
     }
     clearButtons();
-    if(player1_cards.length == 0 || game_mode == "none") {
+    if(player1_cards.length == 0 || game_mode == "none" || paused) {
         return;
     }
     if(!is_taking && game_mode == "defending" && undefendedCardCount()) {
@@ -559,6 +557,7 @@ function setupNewRound(data) {
 }
 
 function handleTransfer(data) {
+    paused = true;
     function callback(cards, player, data) {
         if(this_user != data.username) {
             refresh_stacks(data);
@@ -566,6 +565,8 @@ function handleTransfer(data) {
         updatePlayerInfo(data);
         old_stacks = JSON.parse(data.stacks);
         determineGameMode(data);
+        paused = false;
+        updateButtons();
     }
     handleNewCards(data, callback, true);
 }
