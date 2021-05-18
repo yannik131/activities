@@ -95,3 +95,4 @@ MultiplayerMatch gestartet: 7 Tage
 MultiplayerMatch noch nicht: 1 Stunde
 Match, Turnier: 1 Tag nach Start
 uwsgi celery superuser
+skat score anzeige falsch

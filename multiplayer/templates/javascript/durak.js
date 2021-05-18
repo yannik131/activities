@@ -261,15 +261,17 @@ function determineGameMode(data) {
 function handleNewCards(data, callback, pause) {
     var player = players[data.username];
     var cards = JSON.parse(data.played_cards);
-    removeCardFrom(player, cards.length);
-    for(var i = 0; i < cards.length; i++) {
-        addCardTo(player, 1, cards[i], true);
-    }
-    //TODO: add directly to stack, then make visible. two play actions at the same time -> race condition? create a stack to handle that
-    console.log('handleNewCards:', stacks);
-    setTimeout(function() { 
+    if(this_user != data.username) {
+        removeCardFrom(player, cards.length);
         for(var i = 0; i < cards.length; i++) {
-            removeCardFrom(player, 1, cards[i]);
+            addCardTo(player, 1, cards[i], true);
+        }
+    }
+    setTimeout(function() { 
+        if(this_user != data.username) {
+            for(var i = 0; i < cards.length; i++) {
+                removeCardFrom(player, 1, cards[i]);
+            }
         }
         callback(cards, player, data);
         updateButtons();
@@ -280,7 +282,6 @@ function handleNewCards(data, callback, pause) {
 function refresh_stacks(data) {
     server_stacks = JSON.parse(data.stacks);
     var played = JSON.parse(data.played_cards);
-    console.log('server stacks:', server_stacks, 'played_cards:', played, 'beating:', data.beating, 'client stacks:', stacks);
     if(!data.beating) {
         for(var i = 0; i < played.length; i++) {
             addStack(played[i]);
@@ -297,7 +298,6 @@ function refresh_stacks(data) {
 }
 
 function handleMove(data) {
-    console.log('handleMove:', stacks);
     old_stacks = JSON.parse(data.stacks);
     if(data.username == this_user) {
         return;
@@ -358,7 +358,6 @@ function beatStackWith(card, stack) {
     removePlayerCard(card);
     sendMove();
     if(player1_cards.length == 0 || game_mode == "defending" && allDefended()) {
-        console.log(new Date(), '1: done');
         sendDone();
     }
 }
@@ -575,7 +574,6 @@ function sendDone() {
     if(done_list.indexOf(this_user) != -1) {
         return;
     }
-    console.log(new Date(), 'sending done with list:', done_list);
     sendAction('done');
     done_list.push(this_user);
     updateDone();

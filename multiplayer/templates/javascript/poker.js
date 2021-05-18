@@ -81,6 +81,7 @@ function handleShow(data) {
             var alert = createInfoAlert(summary);
             alert.style.opacity = 0.8;
             var button = document.querySelector('.info-alert-button');
+            previous_raise = parseInt(data.new_game_data.previous_raise); //otherwise first call will display old value
             button.addEventListener('click', function() {
                 processMultiplayerData(data.new_game_data);
                 updateButtons();

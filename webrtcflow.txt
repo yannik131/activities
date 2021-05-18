@@ -1,6 +1,6 @@
 tls port: 5349
 udp port: 3478
-audio setup:
+audio setup:  
 remoteAudiostream, remoteAudio.srcObject = remoteAudioStream
 
 local peer erzeugen: 
