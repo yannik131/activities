@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-17 12:14+0000\n"
-"PO-Revision-Date: 2021-05-17 12:05+0200\n"
+"PO-Revision-Date: 2021-05-18 18:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -1296,7 +1296,7 @@ msgstr "Play online"
 #: activity/templates/activity/detail.html:77
 #, python-format
 msgid "%(activity)s-Chat beitreten"
-msgstr "join %(activity)s-chat"
+msgstr "Join %(activity)s-chat"
 
 #: activity/templates/activity/detail.html:82
 #: competitions/templates/competitions/match_detail.html:34
