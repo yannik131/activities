@@ -4,6 +4,7 @@ from .models import Match, Tournament, Round
 from notify.utils import notify
 from chat.models import ChatRoom
 from django.utils.translation import gettext_lazy as _
+from vacancies.utils import clear_vacancies_for
 
 
 @receiver(m2m_changed, sender=Match.members.through)
@@ -54,6 +55,7 @@ def match_created(instance, created, **kwargs):
 def match_deleted(instance, **kwargs):
     room = ChatRoom.get_for_target(instance)
     room.delete()
+    clear_vacancies_for(instance)
 
 
 @receiver(post_save, sender=Tournament)
@@ -68,6 +70,7 @@ def tournament_created(instance, created, **kwargs):
 def tournament_deleted(instance, **kwargs):
     room = ChatRoom.get_for_target(instance)
     room.delete()
+    clear_vacancies_for(instance)
 
 
 @receiver(post_save, sender=Round)

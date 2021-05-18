@@ -7,6 +7,7 @@ from chat.models import ChatRoom
 from django.utils.translation import gettext_lazy as _
 from notify.utils import notify
 from wall.models import Post
+from vacancies.utils import clear_vacancies_for
 
 
 @receiver(m2m_changed, sender=UserGroup.members.through)
@@ -48,3 +49,4 @@ def group_deleted(instance, **kwargs):
     room = ChatRoom.get_for_target(instance)
     room.delete()
     Post.objects.filter(target_ct=UserGroup.content_type(), target_id=instance.id).delete()
+    clear_vacancies_for(instance)
