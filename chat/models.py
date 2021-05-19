@@ -40,6 +40,11 @@ class ChatRoom(models.Model):
         ct = ContentType.objects.get_for_model(target)
         room, created = ChatRoom.objects.get_or_create(target_ct=ct, target_id=target.id)
         return room
+        
+    def get_target(self, user=None):
+        if type(self.target) == Friendship:
+            return self.target.get_other_user(user)
+        return self.target
             
     def is_allowed_here(self, user):
         return self.target.chat_allowed_for(user)

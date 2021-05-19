@@ -1,6 +1,7 @@
 {% load i18n %}
 
 var user_websocket;
+const this_user = "{{ user }}";
 
 function activateMenu(element_id) {
     var content = document.querySelector('.content');
@@ -137,7 +138,6 @@ function addMessageToChatMenu(data) {
             var bell = document.getElementById('chat-bell-'+data.room_id);
             bell.style.display = 'flex';
         }
-        
     }
     changeCount("messages-count", 1);
 }
@@ -195,13 +195,17 @@ function connect() {
                     case 'sent':
                     case 'leave':
                     case 'join':
+                        const is_this_user = data.username == this_user;
                         var chat = document.getElementById('chat-window-'+data.room_id);
                         if(chat) {
                             handleChatMessage(data);
                         }
-                        else if(data.action == 'sent' && data.username != "{{ user.username }}") {
+                        else if(data.action == 'sent' && !is_this_user) {
                             addMessageToChatMenu(data);
                             playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/click_x.wav");
+                        }
+                        else if(data.action == 'leave' || data.action == 'join') {
+                            manageChatWindows(data.action, data.room_id, data.target, is_this_user);
                         }
                         break;
                     default:

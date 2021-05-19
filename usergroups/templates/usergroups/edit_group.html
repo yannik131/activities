@@ -5,7 +5,7 @@
 {% block title %}{% trans "Gruppe bearbeiten" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Bearbeiten von" %} "{{ group.name }}"</h1>
+    <h1>{% trans "Bearbeiten von" %} <a href="{{ group.get_absolute_url }}">"{{ group.name }}"</a></h1>
     <p>{% trans "Gruppe gehört zu" %}: <a href="{{ group.category.get_absolute_url }}">{{ group.category.verbose }}</a></p>
     <form class="login-form" method="post" enctype="multipart/form-data">
         {{ form.as_p }}

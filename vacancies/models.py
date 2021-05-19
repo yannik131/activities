@@ -21,7 +21,7 @@ class Vacancy(models.Model):
     sex = models.CharField(max_length=1, choices=User.SEX_CHOICES, null=True, blank=True)
     min_age = models.PositiveSmallIntegerField(null=True, blank=True)
     max_age = models.PositiveSmallIntegerField(null=True, blank=True)
-    description = models.CharField(max_length=50, null=True, blank=True)
+    description = models.CharField(max_length=50)
     target_id = models.PositiveIntegerField()
     target_ct = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     target = GenericForeignKey('target_ct', 'target_id')  # The object that has the vacancies: Match, UserGroup, ...

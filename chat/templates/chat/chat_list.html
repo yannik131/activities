@@ -3,7 +3,7 @@
 {% load static %}
 
 
-<div class="chat-list">
+<div class="chat-list" id="chat-list">
     {% for room, target in rooms %}
         <div class="chat-item" id="chat-item-{{ room.id }}" onclick="requestChatWindow({{ room.id }})">
             <div class="chat-list-image">

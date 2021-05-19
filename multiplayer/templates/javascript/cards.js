@@ -16,7 +16,6 @@ var button_row = 0;
 var summary;
 var info_timeout;
 var beat_right = false;
-const this_user = '{{ user }}';
 var is_poker = false;
 
 const default_rotation = {1: 0, 2: 90, 3: 0, 4: -90};

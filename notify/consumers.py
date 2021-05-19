@@ -129,12 +129,7 @@ class NotificationConsumer(WebsocketConsumer):
         with translation.override(text_data['language_code']):
             rooms = []
             for room in self.user.chat_rooms.all():
-                if room.target is None:
-                    continue
-                elif hasattr(room.target, 'get_other_user'):
-                    rooms.append((room, room.target.get_other_user(self.user)))
-                else:
-                    rooms.append((room, room.target))
+                rooms.append((room, room.get_target(self.user)))
             if not rooms:
                 self.send(json.dumps({
                     'type': 'chat_message',

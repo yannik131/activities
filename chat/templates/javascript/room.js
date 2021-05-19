@@ -90,6 +90,48 @@ function addMessageToChat(data) {
     }
 };
 
+function manageChatWindows(action, room_id, target, is_this_user) {
+    const list = document.getElementById('chat-list');
+    if(list && is_this_user) {
+        const item = document.getElementById(`chat-item-${room_id}`);
+        switch(action) {
+            case 'join':
+                if(!item) {
+                    addItemToChatList(room_id, target, list);
+                }
+                break;
+            case 'leave':
+                if(item) {
+                    removeItemFromChatList(room_id);
+                }
+                break;
+        }
+    }
+}
+
+function addItemToChatList(room_id, target, list) {
+    list.innerHTML += `
+    <div class="chat-item" id="chat-item-${room_id}" onclick="requestChatWindow(${room_id})">\
+        <div class="chat-list-image">\
+            <img src="">\
+        </div>\
+        <div class="chat-list-title">\
+        ${list.children.length+1}. ${target}\
+        </div>\
+        <div class="chat-bell">\
+            <img src="{% static 'icons/bell.png' %}" id="chat-bell-${room_id}" style="display: none">\
+        </div>\
+    </div>'`
+}
+
+function removeItemFromChatList(room_id) {
+    document.getElementById(`chat-item-${room_id}`).remove();
+    const chat_window = document.getElementById(`chat-window-${room_id}`);
+    if(chat_window) {
+        chat_window.remove();
+    }
+}
+
 window.addEventListener('beforeunload', function(e) {
     if(kicked_out || !room_id) {
         return;

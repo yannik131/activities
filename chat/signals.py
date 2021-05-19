@@ -2,15 +2,13 @@ from django.db.models.signals import m2m_changed
 from django.dispatch import receiver
 from .models import ChatRoom
 from .utils import broadcast
+from shared.shared import log
 
 @receiver(m2m_changed, sender=ChatRoom.members.through)
-def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
+def chat_members_changed(instance, pk_set, model, action, **kwargs):
     if not pk_set:
         return
-    if hasattr(instance.target, "members"):
-        members = instance.target.members.all()
-    else:
-        return
+    members = instance.members.all()
     id = next(iter(pk_set))
     user = model.objects.get(id=id)
     if action == "post_add":
@@ -21,12 +19,14 @@ def multiplayer_match_changed(instance, pk_set, model, action, **kwargs):
             'sex': user.sex,
             'room_id': instance.id,
             'user_id': user.id,
-            'url': user.image.url if user.image else ""
+            'url': user.image.url if user.image else "",
+            'target': str(instance.get_target(user))
         })
-    elif action == "post_remove":
+    elif action == "pre_remove":
         broadcast(members, {
             'type': 'chat_message',
             'action': 'leave',
             "username": user.username,
             'room_id': instance.id
         })
+        
