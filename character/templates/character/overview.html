@@ -42,10 +42,7 @@
 {% else %}
 <br>
 <div class="info-p" id="suggestions">
-    <h2 style="display: block">
-        {% trans 'Empfohlene Aktivitäten in ' %}<a style="display: inline" href="{{ chosen_category.get_absolute_url }}">{{ chosen_category.verbose }}</a>
-    </h2>
-    <div >{% trans 'Kategorie wählen: ' %}</div>
+    <h2 class="h-img"><img src="{% static 'icons/category.png' %}">{% trans 'Kategorie wählen: ' %}</h2>
 <div class="activity-horizontal-list">
     {% for category in categories %}
     <div class="item {% if category == chosen_category %}selected{% endif %}" onclick="location.href='{% url 'character:overview' category.name %}'">
@@ -59,7 +56,9 @@
 </div>
 </div>
 
-<h2>{% trans 'Empfehlungen' %}:</h3>
+<h2 style="display: block">
+    {% trans 'Empfohlene Aktivitäten in ' %}<a style="display: inline" href="{{ chosen_category.get_absolute_url }}">{{ chosen_category.verbose }}</a>
+</h2>
 <br>
 <div class="list">
     {% for suggestion in suggestions %}
