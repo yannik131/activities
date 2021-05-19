@@ -2,6 +2,10 @@
 
 var user_websocket;
 const this_user = "{{ user }}";
+let current_room_id;
+{% if current_chat_room %}
+    current_room_id = {{ current_chat_room.id }};
+{% endif %}
 
 function activateMenu(element_id) {
     var content = document.querySelector('.content');
@@ -186,10 +190,11 @@ function connect() {
                             div.id ='right-chat';
                             div.style.display = 'none';
                             container.appendChild(div);
-                            {% if current_chat_room %}
-                                requestChatWindow({{ current_chat_room.id }});
-                            {% endif %}
                             activateMenu('right-chat');
+                            if(current_room_id) {
+                                requestChatWindow(current_room_id);
+                                document.getElementById('chat-list').scrollTop = document.getElementById(`chat-item-${current_room_id}`).offsetTop-20;
+                            }
                         }
                         break;
                     case 'sent':

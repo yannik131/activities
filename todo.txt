@@ -15,13 +15,9 @@ neu drücken button bestätigen
 verhindere caching bei chats um "closed due to suspension" zu vermeiden
 musikgenres, literaturgenres, weitere unterteilungen.. -> N kategorien: berufe, musikgenres, freizeitaktivitäten, ...
 
-4. für jede aktivität ein applet
-5. impressum!
-
 lobby -> game konferenz beibehalten
 
 optimierung: chat cache, aktualisierung bei beitritt/austritt
-match overview keine aktualisierung bei chat beitreten
 
 DOMException: Remote description indicates ICE restart but offer did not request ICE restart (new remote description changes either the ice-ufrag or ice-pwd)
 
@@ -79,20 +75,9 @@ None - - [03/May/2021:18:57:00] "WSCONNECTING /ws/user/11/" - -
 totaler crash in endlosschleife: lock nicht released?
 neuer nutzer im chat wird nicht angezeigt
 4 leute nicht jeder hört jeden nach start des spiels
-schlucken drücken dann schieben noch möglich
 gespräch angefangen fortsetzen wenn raus 
-umfragen: jede aktivität umfragen nach location, max. 10, jeder kann element hinzufügen als vorschlag und entfernen wenn sich genug leute finden (5-10?), feste fragen für jede aktivität (kochen: beste rezepte? bester supermarkt?; snooker: wo? beliebteste Spieler?)
+umfragen
 location selection über websocket
-scheiß footer
-logo
 anonym ohne registrieren?
 
-topmenu
-padding vertikale liste
-vertikale liste umranden
-
-MultiplayerMatch gestartet: 7 Tage
-MultiplayerMatch noch nicht: 1 Stunde
 Match, Turnier: 1 Tag nach Start
-uwsgi celery superuser
-chat liste offen -> neuer chat hinzugefügt/chat gelöscht?
