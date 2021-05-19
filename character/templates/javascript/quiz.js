@@ -42,6 +42,7 @@ function next() {
     current_question++;
     button.onclick = null;
     button.style.backgroundColor = "#8fc8f7";
+    button.style.marginLeft = "5px";
     info.innerHTML = "+"+value+" "+categories[current_trait];
     if(current_question != limit) {
         question_span.innerHTML = questions[current_question]+".";
@@ -63,6 +64,7 @@ function next() {
 function back() {
     slider.value = 3;
     back_button.style.display = "none";
+    button.style.marginLeft = 'auto';
     current_question--;
     counter.innerHTML = (current_question+1)+"/{{ limit }}";
     question_span.innerHTML = questions[current_question]+".";
