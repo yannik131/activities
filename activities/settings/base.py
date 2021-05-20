@@ -195,7 +195,7 @@ LOGOUT_REDIRECT_URL = '/account/login/'
 
 EMAIL_HOST = 'smtp.web.de'
 EMAIL_HOST_USER = 'myactivities.net@web.de'
-EMAIL_HOST_PASSWORD = 'My new password!'
+EMAIL_HOST_PASSWORD = 'I like cool dogs.'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'myactivities.net@web.de'
