@@ -527,7 +527,7 @@ function cardClicked(value, suit, card) {
             if(isTrump(vs.value, vs.suit) && playerHasTrump() && !isTrump(value, suit)) {
                 return;
             }
-            else if(!isTrump(vs.value, vs.suit) && playerHandContains("x", vs.suit, "J") && vs.suit != suit) {
+            else if(!isTrump(vs.value, vs.suit) && (vs.suit != suit || isTrump(value, suit)) && playerHandContains('x', vs.suit, 'J')) {
                 return;
             }
             beatStack(1, card.id, true);
