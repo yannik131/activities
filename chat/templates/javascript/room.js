@@ -207,8 +207,7 @@ function addChatMember(username, user_id, sex, room_id, img_src) {
     span.style.color = "yellow";
     span.innerHTML = username;
     member.appendChild(span);
-    var chat_window = document.getElementById('chat-window-'+room_id);
-    chat_window.querySelector('.chat-members').appendChild(member);
+    document.getElementById(`chat-members-${room_id}`).appendChild(member);
     
     img.addEventListener('load', function() {
         moveMembers(room_id);
