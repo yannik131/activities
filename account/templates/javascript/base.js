@@ -257,7 +257,6 @@ function connect() {
 
     user_websocket.onerror = function(err) {
         console.error('User socket encountered error: ', err, 'Closing socket.');
-        alert("{% trans 'Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie nur einen Tab für myactivities.net :)' %}");
         user_websocket.close();
     }
 }

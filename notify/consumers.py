@@ -24,14 +24,14 @@ class NotificationConsumer(WebsocketConsumer):
         user_id = self.scope['url_route']['kwargs']['user_id']
         self.user = User.objects.get(id=user_id)
         key = self.scope['url_route']['kwargs']['key']
-        if self.user.ws_key != key:
-            self.user = None
-            return
         if self.user.channel_name:
             async_to_sync(self.channel_layer.send)(
                 self.user.channel_name,
                 {'type': 'notification', 'action': 'close'}
             )
+        if self.user.ws_key != key:
+            self.user = None
+            return
         self.user.channel_name = self.channel_name
         self.user.save()
         async_to_sync(self.channel_layer.group_add)(
