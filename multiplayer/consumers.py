@@ -394,6 +394,8 @@ class PokerConsumer(GameConsumer):
                 active = after(data['active'], players)
                 while data[active+'_bet'] == 'fold':
                     active = after(data['active'], players)
+                    log(active, data[active+'_bet'])
+                    
                 data['active'] = active
             else:
                 data['active'] = after(data['active'], no_fold(data))

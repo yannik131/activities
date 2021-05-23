@@ -84,3 +84,5 @@ Match, Turnier: 1 Tag nach Start
 took too long to shut down
 karte aus runde davor noch sichtbar?
 nur online/offline consumer als async für notifications
+weniger als blind -> all in -> blinds werden gesetzt statt dem was man noch hat
+poker flush geht nicht
