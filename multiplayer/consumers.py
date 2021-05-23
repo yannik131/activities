@@ -371,7 +371,7 @@ class PokerConsumer(GameConsumer):
                 message['data']['active'] = ''
             return
         
-        log('handled, determining next round..')
+        log('handled, determining next round..', data['active'])
         next_round_number = get_next_round_number(data, text_data['action'], data['active'])
         if next_round_number:
             log('next round number',next_round_number)
@@ -394,7 +394,7 @@ class PokerConsumer(GameConsumer):
                 active = after(data['active'], players)
                 while data[active+'_bet'] == 'fold':
                     active = after(data['active'], players)
-                    log(active, data[active+'_bet'])
+                    log(active, data[active+'_bet'], players)
                     
                 data['active'] = active
             else:
