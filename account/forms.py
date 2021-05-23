@@ -33,7 +33,6 @@ class UserRegistrationForm(forms.ModelForm):
         
     def clean_email(self):
         cd = self.cleaned_data
-        return cd['email']
         query = User.objects.filter(email=cd['email'])
         if query.exists():
             user = query.first()
@@ -93,7 +92,7 @@ class UserEditForm(forms.ModelForm):
 
 class LocationForm(forms.Form):
     # , help_text=_('Notwendig, um in Ihrer Nähe nach Leuten suchen zu können. Nur für Ihre Freunde sichtbar.')
-    address = forms.CharField(label=_('Ihre Stadt'))
+    address = forms.CharField(label=_('Stadt, Bundesland'))
 
     def clean(self):
         cd = super().clean()

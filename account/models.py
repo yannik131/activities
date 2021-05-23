@@ -285,7 +285,7 @@ class Location(models.Model):
             country=address['country'],
             state=address.get('state', address.get('city', address.get('town'))),
             county=address.get('county'),
-            city=address.get('city', address.get('town'))
+            city=address.get('city', address.get('town', address.get('village')))
         )
         return Location.get_or_create(components, location.longitude, location.latitude)
         
