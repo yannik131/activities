@@ -12,6 +12,7 @@ from django.utils.translation import gettext_lazy as _
 from character.models import Character
 from .utils import geocode
 from django.forms import ValidationError
+from shared.shared import log
 
 class User(AbstractUser):
     profile_text = models.TextField(null=True, blank=True)
@@ -245,9 +246,15 @@ class Location(models.Model):
     @staticmethod
     def determine_from(address):
         try:
-            location = Location.objects.get(city=address)
+            if ',' in address:
+                city, state = address.split(',')
+                city = city.lstrip().title()
+                state = state.lstrip().title()
+                location = Location.objects.get(city=city, state=state)
+            else:
+                location = Location.objects.get(city=address.lstrip().title())
             return location
-        except Location.DoesNotExist:
+        except:
             pass
         location = geocode(address, addressdetails=True)
         if location is None:
@@ -274,7 +281,7 @@ class Location(models.Model):
     def get_or_create(components, longitude, latitude):
         try:
             location = Location.objects.get(**components)
-        except Location.DoesNotExist:
+        except:
             location = Location.objects.create(**components, latitude=round(latitude, 6), longitude=round(longitude, 6))
         return location
             

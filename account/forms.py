@@ -33,7 +33,6 @@ class UserRegistrationForm(forms.ModelForm):
         
     def clean_email(self):
         cd = self.cleaned_data
-        return cd['email']
         query = User.objects.filter(email=cd['email'])
         if query.exists():
             user = query.first()
