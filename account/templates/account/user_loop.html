@@ -2,13 +2,13 @@
 {% load thumbnail %}
 <div class="activity-horizontal-list">
     {% for user in users %}
-        <div class="item">
-            <a href="{{ user.get_absolute_url }}">
-            <img src="{% thumbnail user.get_image 200x200 %}" class="photo">
-            </a>
-            <div class="title">
-                <span {% if user.channel_name %}style="color: yellow; font-weight: bold;"{% endif %}>{{ user }}</span>
+        <a href="{{ user.get_absolute_url }}">
+            <div class="item">
+                <img src="{% thumbnail user.get_image 200x200 %}" class="photo">
+                <div class="title">
+                    <span {% if user.channel_name %}style="color: yellow; font-weight: bold;"{% endif %}>{{ user }}</span>
+                </div>
             </div>
-        </div>
+        </a>
     {% endfor %}
 </div>

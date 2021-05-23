@@ -250,6 +250,10 @@ select:focus, select:hover {
     border-radius: 10px;
 }
 
+.activity-horizontal-list a {
+    color: white;
+}
+
 .activity-horizontal-list .item {
     margin: 10px 10px;
     border: 1px solid transparent;

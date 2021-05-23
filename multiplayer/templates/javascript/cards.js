@@ -17,6 +17,7 @@ var summary;
 var info_timeout;
 var beat_right = false;
 var is_poker = false;
+let is_viewer;
 
 const default_rotation = {1: 0, 2: 90, 3: 0, 4: -90};
 const poker_rotation = {1: 0, 2: 90, 3: 90, 4: 0, 5: 0, 6: 0, 7: -90, 8: -90, 9: -90, 10: 0};
@@ -609,7 +610,16 @@ function clearStacks(keep_last_trick) {
 
 function positionPlayers(player_list) {
     //fills players[username] in the right order
-    players[this_user] = 1;
+    var player;
+    if(player_list.indexOf(this_user) == -1) {
+        is_viewer = true;
+        player = player_list[0];
+    }
+    else {
+        is_viewer = false;
+        player = this_user;
+    }
+    players[player] = 1;
     var current = next(this_user, player_list);
     for(var i = 2; current != this_user; i++) {
         players[current] = i;
