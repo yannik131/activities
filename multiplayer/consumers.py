@@ -61,19 +61,21 @@ class DurakConsumer(GameConsumer):
     def handle_move(self, text_data, data, match, message):
         players = json.loads(data["players"])
         if text_data['action'] in ["beating", "attacking"]:
-            refresh_stacks(data, text_data, self.username == data['defending'])
-            data[self.username] = text_data["hand"]
-            if not data["first"] and len(json.loads(text_data["hand"])) == 0:
-                data["first"] = self.username
-            if not data["taking"]:
-                data["done_list"] = json.dumps([])
+            rejected = refresh_stacks(data, text_data, self.username == data['defending'])
+            if not rejected:
+                data[self.username] = text_data["hand"]
+                if not data["first"] and len(json.loads(text_data["hand"])) == 0:
+                    data["first"] = self.username
+                if not data["taking"]:
+                    data["done_list"] = json.dumps([])
             message["data"] = {
                 "username": self.username,
                 "action": "play",
                 "stacks": data["stacks"],
                 "played_cards": text_data["played_cards"],
                 "defending": data["defending"],
-                "attacking": data["attacking"]
+                "attacking": data["attacking"],
+                'rejected': "1" if rejected else ""
             }
             if text_data['action'] == 'beating':
                 message['data']['beating'] = '1'
@@ -296,6 +298,7 @@ class DoppelkopfConsumer(GameConsumer):
 
 class PokerConsumer(GameConsumer):
     def handle_move(self, text_data, data, match, message):
+        log('handling:', text_data)
         if self.username not in json.loads(data['alive']):
             return
         if text_data['action'] == 'fold':
@@ -368,8 +371,10 @@ class PokerConsumer(GameConsumer):
                 message['data']['active'] = ''
             return
         
+        log('handled, determining next round..')
         next_round_number = get_next_round_number(data, text_data['action'], data['active'])
         if next_round_number:
+            log('next round number',next_round_number)
             if next_round_number == 5:
                 forced_player = determine_forced_player(data)
                 message['data']['forced'] = forced_player
@@ -383,6 +388,7 @@ class PokerConsumer(GameConsumer):
                 message['data']['cards'] = data['cards']
                 message['data']['new_round'] = "1"
         else:
+            log('not next round number', text_data['action'])
             if text_data['action'] == 'fold':
                 players = json.loads(data['alive'])
                 active = after(data['active'], players)
@@ -393,6 +399,7 @@ class PokerConsumer(GameConsumer):
                 data['active'] = after(data['active'], no_fold(data))
         
         message['data']['active'] = data['active']
+        log('releasing lock!')
         
     def clean(self, data):
         del data['deck']

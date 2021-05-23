@@ -323,6 +323,9 @@ function removeCardsFromDeck(n) {
 
 function addStack(type, row, column) {
     const n = stacks.length;
+    if(n == 6) {
+        return;
+    }
     const padding = {x: 10, y: h/4};
     const top_left = {x: 1/3*h+10, y: 2/3*h+10};
     if(!row) {

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 12:00+0000\n"
-"PO-Revision-Date: 2021-05-19 16:56+0200\n"
+"POT-Creation-Date: 2021-05-23 17:17+0000\n"
+"PO-Revision-Date: 2021-05-23 19:20+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -18,24 +18,24 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.2\n"
 
-#: account/forms.py:17 account/forms.py:148
+#: account/forms.py:16 account/forms.py:148
 msgid "Passwort"
 msgstr "Password"
 
-#: account/forms.py:19
+#: account/forms.py:18
 msgid "Passwort (erneut)"
 msgstr "Password (again)"
 
-#: account/forms.py:26 vacancies/forms.py:14
+#: account/forms.py:25 vacancies/forms.py:14
 #: vacancies/templates/vacancies/vacancy_list.html:14
 msgid "Geschlecht"
 msgstr "Gender"
 
-#: account/forms.py:27
+#: account/forms.py:26
 msgid "Geburtsjahr"
 msgstr "Birth year"
 
-#: account/forms.py:28
+#: account/forms.py:27
 msgid "E-Mail Adresse"
 msgstr "E-mail address"
 
@@ -91,8 +91,8 @@ msgid ""
 msgstr "It's statistically really unlikely that you are older than 120."
 
 #: account/forms.py:96
-msgid "Ihre Stadt"
-msgstr "Your city"
+msgid "Stadt, Bundesland"
+msgstr "City, State"
 
 #: account/forms.py:105 vacancies/forms.py:55 vacancies/forms.py:99
 #: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:43
@@ -233,19 +233,31 @@ msgstr "Accepted"
 msgid "Abgelehnt"
 msgstr "Declined"
 
-#: account/models.py:294 vacancies/models.py:29
+#: account/models.py:254
+msgid "Diese Adresse konnte nicht gefunden werden."
+msgstr "This address could not be found."
+
+#: account/models.py:256
+msgid ""
+"Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die "
+"Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
+msgstr ""
+"There is no city connected to this address. Please explicitly give the "
+"city's name (villages/districts may not be recognised)."
+
+#: account/models.py:313 vacancies/models.py:29
 msgid "Land"
 msgstr "Country"
 
-#: account/models.py:295 vacancies/models.py:30
+#: account/models.py:314 vacancies/models.py:30
 msgid "Bundesland"
 msgstr "State"
 
-#: account/models.py:296 vacancies/models.py:31
+#: account/models.py:315 vacancies/models.py:31
 msgid "Landkreis"
 msgstr "County"
 
-#: account/models.py:297 vacancies/models.py:32
+#: account/models.py:316 vacancies/models.py:32
 msgid "Stadt"
 msgstr "City"
 
@@ -479,9 +491,9 @@ msgstr "You can edit your account with the following form:"
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:414
-#: multiplayer/templates/javascript/durak.js:450
-#: multiplayer/templates/javascript/durak.js:468
+#: multiplayer/templates/javascript/durak.js:425
+#: multiplayer/templates/javascript/durak.js:461
+#: multiplayer/templates/javascript/durak.js:479
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:14
 #: usergroups/templates/usergroups/edit_group.html:13
@@ -528,7 +540,7 @@ msgid "Gespeichert: "
 msgstr "Saved: "
 
 #: account/templates/account/edit.html:41 account/templates/base.html:43
-#: account/templates/javascript/base.js:55
+#: account/templates/javascript/base.js:59
 #: activity/templates/activity/detail.html:92
 msgid "OK!"
 msgstr "OK!"
@@ -860,7 +872,7 @@ msgstr "Homepage"
 
 #: account/templates/account/sidemenu.html:9
 #: character/templates/character/overview.html:5
-#: character/templates/character/overview.html:83
+#: character/templates/character/overview.html:82
 msgid "Charakter"
 msgstr "Character"
 
@@ -911,14 +923,14 @@ msgstr ""
 "Posts are publicly visible on your profile page and the respective category "
 "or activity."
 
-#: account/templates/javascript/base.js:177
+#: account/templates/javascript/base.js:181
 msgid ""
 "Sie haben noch keine Chats. Finden Sie Freunde, Gruppen, Aktivitäten etc., "
 "um zu chatten!"
 msgstr ""
 "You don't have any chats yet. Find friends, groups, activities etc. to chat!"
 
-#: account/templates/javascript/base.js:217
+#: account/templates/javascript/base.js:222
 msgid ""
 "Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie "
 "nur einen Tab für myactivities.net :)"
@@ -936,7 +948,7 @@ msgid "Wirklich?"
 msgstr "Really?"
 
 #: account/templates/registration/activation_email.html:3
-#: account/templates/registration/activation_email.html:5 account/utils.py:38
+#: account/templates/registration/activation_email.html:5 account/utils.py:27
 msgid "E-Mail Aktivierung"
 msgstr "E-mail activation"
 
@@ -1006,7 +1018,7 @@ msgstr "Reset password"
 #: account/templates/registration/login.html:32
 #: account/templates/registration/register.html:7
 #: account/templates/registration/register.html:14
-#: account/templates/registration/register.html:25
+#: account/templates/registration/register.html:27
 msgid "Registrieren"
 msgstr "Register"
 
@@ -1070,7 +1082,7 @@ msgstr "Enter your email address to reset your password."
 
 #: account/templates/registration/password_reset_form.html:13
 #: activity/templates/activity/detail.html:98
-#: multiplayer/templates/javascript/cards.js:527
+#: multiplayer/templates/javascript/cards.js:530
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
 #: wall/templates/wall/post/create_comment.html:15
 #: wall/templates/wall/post/create_post.html:14
@@ -1081,37 +1093,36 @@ msgstr "Send"
 msgid "Bitte nutzen Sie das folgende Formular zum registrieren:"
 msgstr "Please use the following form to register:"
 
-#: account/templates/registration/register.html:23
-msgid "Wo hängen Sie meistens rum?"
-msgstr "Where do you usually hang out?"
+#: account/templates/registration/register.html:24
+msgid ""
+"Wo leben Sie derzeit? Das Bestimmen Ihres Ortes kann mehrere Sekunden in "
+"Anspruch nehmen."
+msgstr ""
+"Where do you currently live? Determining your location may take several "
+"seconds."
 
 #: account/templates/registration/register_done.html:5
 #: account/templates/registration/register_done.html:8
 msgid "Registriert"
 msgstr "Registered"
 
-#: account/templates/registration/register_done.html:9
+#: account/templates/registration/register_done.html:10
+#, python-format
 msgid ""
 "Ihnen wurde soeben eine Aktivierungs-E-Mail zugesendet. Klicken Sie auf den "
 "Link in der E-Mail, um Ihren Account zu aktivieren. Sie werden dann "
-"automatisch eingeloggt."
+"automatisch eingeloggt.<br><br>Ermittelte Adresse: %(a)s<br><br>Falls das "
+"nicht stimmen sollte, können Sie dies nach dem Aktivieren unter \"Account "
+"bearbeiten\" ändern. Geben Sie dann zur Sicherheit auch Land und Bundesland "
+"zusätzlich an."
 msgstr ""
 "You've been sent an activation email. Click the link in said email to "
-"activate your account. You'll be logged in automatically."
+"activate your account. You'll be logged in automatically.<br><br>Your "
+"address: %(a)s<br><br>If this is incorrect, you can change your address at "
+"\"Edit account\" once you've logged in. Be sure to specify the state and "
+"country as well for best results."
 
-#: account/utils.py:24
-msgid "Diese Adresse konnte nicht gefunden werden."
-msgstr "This address could not be found."
-
-#: account/utils.py:26
-msgid ""
-"Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die "
-"Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
-msgstr ""
-"There is no city connected to this address. Please explicitly give the "
-"city's name (villages/districts may not be recognised)."
-
-#: account/utils.py:38
+#: account/utils.py:27
 msgid "Aktivierungs-E-Mail"
 msgstr "Activation email"
 
@@ -1332,7 +1343,7 @@ msgid "Wie heißt der Ort, an dem Sie sich befinden?"
 msgstr "What’s the name of your location?"
 
 #: activity/templates/activity/detail.html:98
-#: multiplayer/templates/javascript/cards.js:532
+#: multiplayer/templates/javascript/cards.js:535
 #: multiplayer/templates/multiplayer/game.html:43
 #: multiplayer/templates/multiplayer/game.html:71
 #: multiplayer/templates/multiplayer/match.html:25
@@ -1421,27 +1432,27 @@ msgid "Gewichte verteilen"
 msgstr "Distribute weights"
 
 #: character/templates/character/edit_weights.html:30
-#: character/templates/character/overview.html:86
+#: character/templates/character/overview.html:85
 msgid "Neurotizismus"
 msgstr "Neuroticism"
 
 #: character/templates/character/edit_weights.html:36
-#: character/templates/character/overview.html:92
+#: character/templates/character/overview.html:91
 msgid "Extraversion"
 msgstr "Extraversion"
 
 #: character/templates/character/edit_weights.html:42
-#: character/templates/character/overview.html:98
+#: character/templates/character/overview.html:97
 msgid "Offenheit für Erfahrungen"
 msgstr "Openness to experience"
 
 #: character/templates/character/edit_weights.html:48
-#: character/templates/character/overview.html:104
+#: character/templates/character/overview.html:103
 msgid "Gewissenhaftigkeit"
 msgstr "Conscientiousness"
 
 #: character/templates/character/edit_weights.html:54
-#: character/templates/character/overview.html:110
+#: character/templates/character/overview.html:109
 msgid "Verträglichkeit"
 msgstr "Agreeableness"
 
@@ -1492,24 +1503,20 @@ msgstr "Questions"
 msgid "Noch kein Testergebnis!"
 msgstr "No test result yet!"
 
-#: character/templates/character/overview.html:46
-msgid "Empfohlene Aktivitäten in "
-msgstr "Suggested activities in "
-
-#: character/templates/character/overview.html:48
+#: character/templates/character/overview.html:45
 msgid "Kategorie wählen: "
 msgstr "Choose a category: "
 
-#: character/templates/character/overview.html:62
-msgid "Empfehlungen"
-msgstr "Suggestions"
+#: character/templates/character/overview.html:60
+msgid "Empfohlene Aktivitäten in "
+msgstr "Suggested activities in "
 
-#: character/templates/character/overview.html:73
+#: character/templates/character/overview.html:72
 #: multiplayer/templates/multiplayer/game.html:68
 msgid "Score"
 msgstr "Score"
 
-#: character/templates/character/overview.html:84
+#: character/templates/character/overview.html:83
 #, python-format
 msgid ""
 "Werte verglichen mit den Durchschnittswerten. <br>+50%%: Maximal "
@@ -1518,11 +1525,11 @@ msgstr ""
 "Values compared to the average. <br>+50%%: Maximally above average, -50%%: "
 "Maximally below average"
 
-#: character/templates/character/overview.html:123
+#: character/templates/character/overview.html:122
 msgid "Zurücksetzen"
 msgstr "Reset"
 
-#: character/templates/character/overview.html:128
+#: character/templates/character/overview.html:127
 msgid ""
 "Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich "
 "die errechneten Punktesummen in den Kategorien werden für die Berechnung von "
@@ -2076,7 +2083,7 @@ msgstr ""
 "attention.I am attached to conventional ways.I work hard.I waste my time.I "
 "do things I later regret."
 
-#: character/templates/javascript/quiz.js:81
+#: character/templates/javascript/quiz.js:83
 msgid "Alle Fragen wurden beantwortet!"
 msgstr "All question have been answered!"
 
@@ -2552,20 +2559,20 @@ msgstr "Without nines"
 msgid "ist voll"
 msgstr "is full"
 
-#: multiplayer/templates/javascript/cards.js:476
+#: multiplayer/templates/javascript/cards.js:479
 #: multiplayer/templates/javascript/skat.js:567
 msgid "Ja"
 msgstr "Yes"
 
-#: multiplayer/templates/javascript/cards.js:478
+#: multiplayer/templates/javascript/cards.js:481
 msgid "Nein"
 msgstr "No"
 
-#: multiplayer/templates/javascript/cards.js:769
+#: multiplayer/templates/javascript/cards.js:772
 msgid "Es wurde noch kein Spiel beendet."
 msgstr "No game has been completed."
 
-#: multiplayer/templates/javascript/cards.js:875
+#: multiplayer/templates/javascript/cards.js:878
 msgid ""
 "Verlassen Sie das Spiel bitte nur, wenn Sie es auch später nicht mehr "
 "fortführen wollen. Spiel verlassen und dadurch zurücksetzen?"
@@ -2573,7 +2580,7 @@ msgstr ""
 "Please only leave the game if you don't want to return to this particular "
 "match. Leave and reset the match?"
 
-#: multiplayer/templates/javascript/cards.js:886
+#: multiplayer/templates/javascript/cards.js:889
 msgid "Internet Explorer wird nicht unterstützt!"
 msgstr "Internet Explorer is not supported!"
 
@@ -2678,11 +2685,11 @@ msgstr "ATTACKER"
 msgid "VERTEIDIGER"
 msgstr "DEFENDER"
 
-#: multiplayer/templates/javascript/durak.js:430
+#: multiplayer/templates/javascript/durak.js:441
 msgid "Schlucken"
 msgstr "Gobble"
 
-#: multiplayer/templates/javascript/durak.js:440
+#: multiplayer/templates/javascript/durak.js:451
 msgid "Schieben"
 msgstr "Transfer"
 
@@ -2967,7 +2974,7 @@ msgid ""
 "        <h3><a href=\"https://de.wikipedia.org/wiki/"
 "Durak_(Kartenspiel)\">Durak auf Wikipedia</a></h3>\n"
 "            <ul>\n"
-"                <li>Karten: 6-Ass (2-3 Spieler), 3-Ass (4 Spieler)</li>\n"
+"                <li>Karten: 6-Ass (2-3 Spieler), 4-Ass (4 Spieler)</li>\n"
 "                <li>Modus: Schieben erlaubt, ohne Nachschmeißen nach "
 "Schlucken</li>\n"
 "            </ul>\n"
@@ -3001,7 +3008,7 @@ msgstr ""
 "        <h3><a href=\"https://en.wikipedia.org/wiki/Durak\">Durak on "
 "Wikipedia</a></h3>\n"
 "            <ul>\n"
-"                <li>Cards: 6-Ace (2-3 players), 3-Ace (4 players)</li>\n"
+"                <li>Cards: 6-Ace (2-3 players), 4-Ace (4 players)</li>\n"
 "                <li>Mode: With transfer</li>\n"
 "            </ul>\n"
 "            Goal: To not be the last player with cards. First one without "
@@ -3606,6 +3613,15 @@ msgstr "[Delete]"
 #: wall/templates/wall/post/post_loop.html:81
 msgid "Keine"
 msgstr "None"
+
+#~ msgid "Ihre Stadt"
+#~ msgstr "Your city"
+
+#~ msgid "Wo hängen Sie meistens rum?"
+#~ msgstr "Where do you usually hang out?"
+
+#~ msgid "Empfehlungen"
+#~ msgstr "Suggestions"
 
 #~ msgid "Geben Sie hier eine neue Stadt ein."
 #~ msgstr "Enter a new city."

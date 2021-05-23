@@ -131,16 +131,12 @@
     <h3>{% trans "Beiträge" %} {{ chosen_component|inim }}</h3>
     <div class="button-like" onclick=openLink("{% url 'wall:create_post' 'activity' 'activity' activity.id %}")><img src="{% static 'icons/post.png' %}">{% blocktrans %}Post erstellen{% endblocktrans %}</div>
     {% include 'wall/post/post_loop.html' %}
-{% endblock %}
-
-{% block domready %}
-{% include 'javascript/categories.js' %}
-{% include 'javascript/display_weights.js' %}
-window.addEventListener('load', function() {
+    <script>
+        {% include 'javascript/categories.js' %}
+        {% include 'javascript/display_weights.js' %}
         displayWeights(JSON.parse('{{ activity.weights_json|safe }}'));
-    if(info.innerText.length == 0) {
-        info.parentElement.parentElement.style.display = "none";
-    }
-});
-
+        if(info.innerText.length == 0) {
+            info.parentElement.parentElement.style.display = "none";
+        }
+    </script>
 {% endblock %}

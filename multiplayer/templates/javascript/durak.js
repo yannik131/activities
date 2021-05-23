@@ -299,6 +299,17 @@ function refresh_stacks(data) {
 
 function handleMove(data) {
     old_stacks = JSON.parse(data.stacks);
+    if(data.rejected) {
+        if(data.username == this_user) {
+            clearStacks();
+            refreshStacks(old_stacks);
+            var played = JSON.parse(data.played_cards);
+            for(var i = 0; i < played.length; i++) {
+                addCardTo(1, 1, played[i]);
+            }
+        }
+        return;
+    }
     if(data.username == this_user) {
         return;
     }

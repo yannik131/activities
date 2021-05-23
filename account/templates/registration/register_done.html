@@ -6,5 +6,8 @@
 
 {% block content %}
     <h1 class="h-img"><img src="{% static 'icons/checkmark.png' %}">{% blocktrans %}Registriert{% endblocktrans %}</h1>
-    <p class="info-p">{% blocktrans %}Ihnen wurde soeben eine Aktivierungs-E-Mail zugesendet. Klicken Sie auf den Link in der E-Mail, um Ihren Account zu aktivieren. Sie werden dann automatisch eingeloggt.{% endblocktrans %}</a></p>
+    <p class="info-p">
+        {% blocktrans with a=new_user.location.full_address %}Ihnen wurde soeben eine Aktivierungs-E-Mail zugesendet. Klicken Sie auf den Link in der E-Mail, um Ihren Account zu aktivieren. Sie werden dann automatisch eingeloggt.<br><br>Ermittelte Adresse: {{ a }}<br><br>Falls das nicht stimmen sollte, können Sie dies nach dem Aktivieren unter "Account bearbeiten" ändern. Geben Sie dann zur Sicherheit auch Land und Bundesland zusätzlich an.{% endblocktrans %}</a><br>
+        
+    </p>
 {% endblock %}

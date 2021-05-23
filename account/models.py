@@ -252,7 +252,7 @@ class Location(models.Model):
         location = geocode(address, addressdetails=True)
         if location is None:
             raise ValidationError(_('Diese Adresse konnte nicht gefunden werden.'))
-        elif location.raw['address'].get('city', location.raw['address'].get('town')) is None:
+        elif not any(key in location.raw['address'] for key in ['city', 'town', 'village']):
             raise ValidationError(_('Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt).'))
         else:
             return Location.get_from_geopy_location(location)    

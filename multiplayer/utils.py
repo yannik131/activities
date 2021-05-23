@@ -84,7 +84,10 @@ def refresh_stacks(data, text_data, beating):
             if len(server_stacks[i]) < len(client_stacks[i]):
                 server_stacks[i] = client_stacks[i]
                 break
+    if len(server_stacks) > 6:
+        return True
     data['stacks'] = json.dumps(server_stacks)
+    return False
     
     
 def next_bidder(data):
