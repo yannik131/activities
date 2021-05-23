@@ -87,3 +87,4 @@ nur online/offline consumer als async für notifications
 weniger als blind -> all in -> blinds werden gesetzt statt dem was man noch hat
 poker flush geht nicht
 spiel starten wenn nicht voll
+durak linker nachbar von angreifer kann vor angreifer angreifen beim spammen wenn angreifer angreift

@@ -156,7 +156,7 @@ function cardClicked(value, suit, card) {
             }
             break;
         case "helping":
-            if(!old_stacks.length) {
+            if(!old_stacks.length || !stacksContain(value)) {
                 return;
             }
         case "attacking":

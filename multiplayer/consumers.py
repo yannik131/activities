@@ -393,8 +393,7 @@ class PokerConsumer(GameConsumer):
                 players = json.loads(data['alive'])
                 active = after(data['active'], players)
                 while data[active+'_bet'] == 'fold':
-                    active = after(data['active'], players)
-                    log(active, data[active+'_bet'], players)
+                    active = after(active, players)
                     
                 data['active'] = active
             else:
