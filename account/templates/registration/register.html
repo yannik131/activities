@@ -20,7 +20,9 @@
             <form class="login-form" method="post">
                 {{ user_form.as_p }}
                 {% csrf_token %}
-                {% trans "Wo hängen Sie meistens rum?" %}
+                <p class="info-p">
+                    {% trans "Wo leben Sie derzeit? Das Bestimmen Ihres Ortes kann mehrere Sekunden in Anspruch nehmen." %}
+                </p>
                 {{ location_form.as_p }}
                 <input type="submit" value="{% trans "Registrieren" %}">
             </form>

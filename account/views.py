@@ -10,7 +10,7 @@ from .templatetags import account_tags
 from notify.utils import notify
 from wall.models import Post
 from shared import shared
-from .utils import get_location, send_account_activation_email
+from .utils import send_account_activation_email
 from activities.language_subdomain_middleware import get_prefix
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
@@ -195,7 +195,7 @@ def edit_address(request):
     if request.method == 'POST':
         location_form = LocationForm(request.POST)
         if location_form.is_valid():
-            request.user.location = get_location(location_form.cleaned_data['address'])
+            request.user.location = Location.determine_from(location_form.cleaned_data['address'])
             request.user.last_location_change = timezone.now()
             request.user.save()
             messages.add_message(request, messages.INFO, _('Neue Adresse gespeichert: ')+request.user.location.full_address())

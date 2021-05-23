@@ -2,8 +2,8 @@ from .models import Match, Tournament
 from django import forms
 from shared import shared
 from account.models import User
-from account.utils import get_location
 from django.utils.translation import gettext_lazy as _
+from account.models import Location
 
 
 class MatchForm(forms.ModelForm):
@@ -30,7 +30,7 @@ class MatchForm(forms.ModelForm):
     def clean(self):
         cd = super().clean()
         city = cd['location']
-        location = get_location(city)
+        location = Location.determine_from(city)
         self.instance.location = location
         return cd
 
@@ -59,7 +59,7 @@ class TournamentForm(forms.ModelForm):
 
     def clean(self):
         cd = super().clean()
-        self.instance.location = get_location(cd['location'])
+        self.instance.location = Location.determine_from(cd['location'])
         if cd['application_deadline'] > cd['start_time']:
             raise forms.ValidationError(_('Anmeldeschluss muss vor Turnierbeginn sein.'))
         return cd

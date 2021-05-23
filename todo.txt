@@ -81,3 +81,9 @@ location selection über websocket
 anonym ohne registrieren?
 
 Match, Turnier: 1 Tag nach Start
+einloggen bug wegn stadt?
+took too long to shut down
+durak 4 spieler: ab 4-Ass
+durak zwei leute 6. karte gleichzeitig
+karte aus runde davor noch sichtbar?
+nur online/offline consumer als async für notifications

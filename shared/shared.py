@@ -1,6 +1,4 @@
 import magic
-from geopy.geocoders import Nominatim
-from django.forms import ValidationError
 from django.utils.translation import gettext_lazy as _
 from django.utils.timezone import now
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage

@@ -10,8 +10,8 @@ from django.contrib.contenttypes.models import ContentType
 from itertools import chain
 from django.utils.translation import gettext_lazy as _
 from character.models import Character
-from geopy import Nominatim
-import time
+from .utils import geocode
+from django.forms import ValidationError
 
 class User(AbstractUser):
     profile_text = models.TextField(null=True, blank=True)
@@ -241,16 +241,28 @@ class Location(models.Model):
     @property
     def get_image(self):
         return 'static/icons/location.png'
-        
+      
+    @staticmethod
+    def determine_from(address):
+        try:
+            location = Location.objects.get(city=address)
+            return location
+        except Location.DoesNotExist:
+            pass
+        location = geocode(address, addressdetails=True)
+        if location is None:
+            raise ValidationError(_('Diese Adresse konnte nicht gefunden werden.'))
+        elif location.raw['address'].get('city', location.raw['address'].get('town')) is None:
+            raise ValidationError(_('Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt).'))
+        else:
+            return Location.get_from_geopy_location(location)    
+    
     @staticmethod
     def fill_coordinates():
-        geolocator = Nominatim(user_agent='activities')
         l = [l for l in Location.objects.all()]
         for loc in l:
-            
             print(loc)
-            location = geolocator.geocode(str(loc), addressdetails=True)
-            time.sleep(1)
+            location = geocode(str(loc), addressdetails=True)
             if not location:
                 print(f'Not found: {loc}')
                 continue
@@ -259,16 +271,23 @@ class Location(models.Model):
             loc.save()
             
     @staticmethod
-    def get_from_location(location: geopy.location.Location):
+    def get_or_create(components, longitude, latitude):
+        try:
+            location = Location.objects.get(**components)
+        except Location.DoesNotExist:
+            location = Location.objects.create(**components, latitude=round(latitude, 6), longitude=round(longitude, 6))
+        return location
+            
+    @staticmethod
+    def get_from_geopy_location(location: geopy.location.Location):
         address = location.raw['address']
-        location, created = Location.objects.get_or_create(
+        components = dict(
             country=address['country'],
             state=address.get('state', address.get('city', address.get('town'))),
             county=address.get('county'),
-            city=address.get('city', address.get('town')),
-            latitude=round(location.latitude, 6),
-            longitude=round(location.longitude, 6))
-        return location
+            city=address.get('city', address.get('town'))
+        )
+        return Location.get_or_create(components, location.longitude, location.latitude)
         
     @staticmethod
     def get(country=None, state=None, county=None, city=None):

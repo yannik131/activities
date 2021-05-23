@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from account.models import User
-from .utils import get_location
+from account.models import User, Location
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.hashers import check_password
 from django.core.validators import validate_email
@@ -34,6 +33,7 @@ class UserRegistrationForm(forms.ModelForm):
         
     def clean_email(self):
         cd = self.cleaned_data
+        return cd['email']
         query = User.objects.filter(email=cd['email'])
         if query.exists():
             user = query.first()
@@ -97,7 +97,7 @@ class LocationForm(forms.Form):
 
     def clean(self):
         cd = super().clean()
-        self.location = get_location(cd['address'])
+        self.location = Location.determine_from(cd['address'])
         return cd
 
 

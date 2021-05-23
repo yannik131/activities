@@ -3,9 +3,10 @@ from django.db.models.signals import m2m_changed, post_save, pre_save, pre_delet
 from .models import User, Friendship, FriendRequest, Location
 from notify.utils import notify
 from chat.models import ChatRoom
-from geopy import Nominatim
+from .utils import geocode
 import time
 from django.contrib.staticfiles.storage import staticfiles_storage
+from shared.shared import log
 
 
 @receiver(post_save, sender=FriendRequest)
@@ -31,29 +32,20 @@ def friendship_destroyed(instance: Friendship, **kwargs):
 def location_created(instance: Location, created, **kwargs):
     if instance.parent:
         return
-    components = instance.parent_components()
-    if components:
-        geolocator = Nominatim(user_agent='activities')
-        loc = geolocator.geocode(components)
-        time.sleep(0.5)
-        print(instance)
-        parent, created = Location.objects.get_or_create(
-            country=components.get('country'),
-            state=components.get('state'),
-            county=components.get('county'),
-            city=components.get('city'),
-            latitude=round(loc.latitude, 6),
-            longitude=round(loc.longitude, 6)
-    )
+    parent_components = instance.parent_components()
+    if parent_components:
+        components = dict(
+            country=parent_components.get('country'),
+            state=parent_components.get('state'),
+            county=parent_components.get('county'),
+            city=parent_components.get('city')
+        )
+        try:
+            parent = Location.objects.get(**components)
+        except Location.DoesNotExist:
+            loc = geocode(parent_components)
+            log('geocoded components:', components, 'result:', loc)
+            parent = Location.objects.create(**components, longitude=loc.longitude, latitude=loc.latitude)
         instance.parent = parent
         instance.save()
         
-"""
-@receiver(pre_save, sender=User)
-def user_saved(instance, **kwargs):
-    if not instance.image:
-        if instance.sex == 'm':
-            instance.image = 'static/icons/male_user.png'
-        else:
-            instance.image = 'static/icons/female_user.png'
-"""
