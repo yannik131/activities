@@ -21,7 +21,7 @@
                 {{ user_form.as_p }}
                 {% csrf_token %}
                 <p class="info-p">
-                    {% trans "Wo leben Sie derzeit? Das Bestimmen Ihres Ortes kann mehrere Sekunden in Anspruch nehmen." %}
+                    {% trans "Wo leben Sie derzeit? Zur eindeutigen Bestimmung bitte auch das Bundesland angeben. Das Bestimmen Ihres Ortes kann mehrere Sekunden in Anspruch nehmen." %}
                 </p>
                 {{ location_form.as_p }}
                 <input type="submit" value="{% trans "Registrieren" %}">

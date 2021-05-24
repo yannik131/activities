@@ -53,6 +53,10 @@ class User(AbstractUser):
     }
     
     @property
+    def age(self):
+        return timezone.now().year - self.birth_year
+    
+    @property
     def get_image(self):
         if self.image:
             return self.image
