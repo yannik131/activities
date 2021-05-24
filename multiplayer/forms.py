@@ -8,7 +8,7 @@ class CreateMatchForm(forms.ModelForm):
         model = MultiplayerMatch
         fields = ['member_limit']
         labels = {
-            'member_limit': _('Spieleranzahl')
+            'member_limit': _('Maximale Spieleranzahl')
         }
 
     def clean(self):

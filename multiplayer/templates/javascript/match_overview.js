@@ -3,7 +3,7 @@
 {% load account_tags %}
 
 var members = {{ match.members.count }};
-var member_limit = {{ match.member_limit }};
+var start_member_limit = {{ match.start_member_limit }};
 
 function updateMatchMembers(data) {
     switch(data.info) {
@@ -44,7 +44,7 @@ function updateMatchMembers(data) {
 }
 
 function startMatch() {
-    if(members == member_limit) {
+    if(members >= start_member_limit) {
         send({'type': 'multiplayer', 'action': 'start', 'match_id': {{ match.id }}});
     }
 }

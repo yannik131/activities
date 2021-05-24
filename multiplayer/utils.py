@@ -5,11 +5,8 @@ from django.utils.translation import gettext as _
 from .poker_score import highest_combo
 
 
-def change(dictionary, key, change, guard_zero=False):
+def change(dictionary, key, change):
     dictionary[key] = int(dictionary[key])+change
-    if guard_zero:
-        if dictionary[key] < 0:
-            dictionary[key] = 0
 
 def create_deck(*ranks):
     colors = ["c", "h", "s", "d"]
@@ -458,6 +455,21 @@ def determine_dealer(data):
     else:
         data['small_blind'] = after(data['dealer'], alive)
         data['big_blind'] = after(data['small_blind'], alive)
+        
+def _set_blind(blind, name, data):
+    bet = min(blind, int(data[data[name]+'_stack']))
+    change(data, data[name]+'_stack', -bet)
+    data[data[name]+'_bet'] = bet
+    return bet
+        
+def set_blinds(data, blinds):
+    small_blind, big_blind = blinds[int(data['blind_level'])]
+    a = _set_blind(small_blind, 'small_blind', data)
+    b = _set_blind(big_blind, 'big_blind', data)
+    data['pot'] = a+b
+    data['highest_bet_user'] = ""
+    data['highest_bet_value'] = big_blind
+    data['previous_raise'] = big_blind
         
 def no_fold(data, active=None):
     players = json.loads(data['alive'])

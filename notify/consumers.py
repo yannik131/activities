@@ -173,7 +173,7 @@ class NotificationConsumer(WebsocketConsumer):
         elif text_data['action'] == 'start':
             with redis_lock.Lock(conn, str(text_data['match_id'])):
                 match = MultiplayerMatch.objects.get(pk=text_data['match_id'])
-                if match.is_full() and not match.in_progress:
+                if match.can_start() and not match.in_progress:
                     match.start()
             
     def handle_rtc_message(self, text_data):

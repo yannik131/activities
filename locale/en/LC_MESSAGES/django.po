@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-23 17:17+0000\n"
-"PO-Revision-Date: 2021-05-23 19:20+0200\n"
+"POT-Creation-Date: 2021-05-24 13:03+0000\n"
+"PO-Revision-Date: 2021-05-24 15:08+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.2\n"
 
-#: account/forms.py:16 account/forms.py:148
+#: account/forms.py:16 account/forms.py:147
 msgid "Passwort"
 msgstr "Password"
 
@@ -39,45 +39,45 @@ msgstr "Birth year"
 msgid "E-Mail Adresse"
 msgstr "E-mail address"
 
-#: account/forms.py:41
+#: account/forms.py:40
 msgid "Es gibt schon einen Nutzer mit dieser E-Mail-Adresse."
 msgstr "An account with this email already exists."
 
-#: account/forms.py:49
+#: account/forms.py:48
 msgid "Passwörter stimmen nicht überein!"
 msgstr "Passwords don't match!"
 
-#: account/forms.py:55
+#: account/forms.py:54
 msgid "Nutzername zu lang (max. 10 Zeichen)"
 msgstr "Username too long (10 chars max)."
 
-#: account/forms.py:60
+#: account/forms.py:59
 msgid "Ihr Nutzername kann keine E-Mail sein. Das wäre verwirrend, oder?"
 msgstr ""
 "Your username can't be an email address. That would be confusing, wouldn't "
 "it?"
 
-#: account/forms.py:73
+#: account/forms.py:72
 msgid "Geschlecht (für Bewerbungen)"
 msgstr "Gender (for applications)"
 
-#: account/forms.py:74
+#: account/forms.py:73
 msgid "Geburtsjahr (für Bewerbungen)"
 msgstr "Age (for applications)"
 
-#: account/forms.py:75
+#: account/forms.py:74
 msgid "Profiltext"
 msgstr "Profile text"
 
-#: account/forms.py:76
+#: account/forms.py:75
 msgid "Profilbild"
 msgstr "Profile picture"
 
-#: account/forms.py:77
+#: account/forms.py:76
 msgid "E-Mail-Adresse (Für Login und Passwortzurücksetzung)"
 msgstr "E-mail (required for login and password reset)"
 
-#: account/forms.py:88
+#: account/forms.py:87
 msgid ""
 "Sie müssen mindestens 3 Jahre alt sein, um diese Seite überhaupt nutzen zu "
 "können. Jüngere Menschen haben noch kein Gedächtnis."
@@ -85,21 +85,21 @@ msgstr ""
 "You need to be at least 3 years of age to use this site. Younger people "
 "don't have a memory yet."
 
-#: account/forms.py:90
+#: account/forms.py:89
 msgid ""
 "Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind."
 msgstr "It's statistically really unlikely that you are older than 120."
 
-#: account/forms.py:96
+#: account/forms.py:95
 msgid "Stadt, Bundesland"
 msgstr "City, State"
 
-#: account/forms.py:105 vacancies/forms.py:55 vacancies/forms.py:99
+#: account/forms.py:104 vacancies/forms.py:55 vacancies/forms.py:99
 #: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:43
 msgid "Nachricht"
 msgstr "Message"
 
-#: account/forms.py:111
+#: account/forms.py:110
 #, python-brace-format
 msgid ""
 "Die Nachricht darf nicht länger als 150 Zeichen sein, ist aber {l} Zeichen "
@@ -108,136 +108,136 @@ msgstr ""
 "The message can't be longer than 150 characters. It's {l} characters long. "
 "Fix this."
 
-#: account/forms.py:116
+#: account/forms.py:115
 msgid "Nutzername"
 msgstr "User name"
 
-#: account/forms.py:121
+#: account/forms.py:120
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr "There is no user with the user name {name}"
 
-#: account/forms.py:125
+#: account/forms.py:124
 msgid "Wirklich löschen?"
 msgstr "Really delete?"
 
-#: account/forms.py:130
+#: account/forms.py:129
 msgid "Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen."
 msgstr "Please confirm that you want to delete your account."
 
-#: account/forms.py:147
+#: account/forms.py:146
 msgid "E-Mail oder Nutzername"
 msgstr "E-mail or username"
 
-#: account/forms.py:154
+#: account/forms.py:153
 msgid "Nutzer nicht gefunden."
 msgstr "User not found."
 
-#: account/forms.py:156
+#: account/forms.py:155
 msgid "Passwort falsch."
 msgstr "Password incorrect."
 
-#: account/forms.py:158
+#: account/forms.py:157
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr "The account has not yet been activated! Check your e-mails."
 
-#: account/models.py:23
+#: account/models.py:24
 msgid "männlich"
 msgstr "male"
 
-#: account/models.py:24
+#: account/models.py:25
 msgid "weiblich"
 msgstr "female"
 
-#: account/models.py:34
+#: account/models.py:35
 msgid "hat erstellt"
 msgstr "created"
 
-#: account/models.py:35
+#: account/models.py:36
 msgid "ist jetzt befreundet mit"
 msgstr "is now friends with"
 
-#: account/models.py:36
+#: account/models.py:37
 msgid "ist nicht mehr befreundet mit"
 msgstr "isn't friends any more with"
 
-#: account/models.py:37
+#: account/models.py:38
 msgid "hat Ihnen eine Freundschaftsanfrage geschickt"
 msgstr "sent you a friend request"
 
-#: account/models.py:38
+#: account/models.py:39
 msgid "ist beigetreten"
 msgstr "entered"
 
-#: account/models.py:39
+#: account/models.py:40
 msgid "hat verlassen"
 msgstr "left"
 
-#: account/models.py:40
+#: account/models.py:41
 msgid "hat zugesagt"
 msgstr "confirmed"
 
-#: account/models.py:41
+#: account/models.py:42
 msgid "hat abgesagt"
 msgstr "declined"
 
-#: account/models.py:42
+#: account/models.py:43
 msgid "hat sich beworben"
 msgstr "applied for"
 
-#: account/models.py:43
+#: account/models.py:44
 msgid "hat etwas gepostet in"
 msgstr "posted something in"
 
-#: account/models.py:44
+#: account/models.py:45
 msgid "hat etwas kommentiert"
 msgstr "commented something"
 
-#: account/models.py:45
+#: account/models.py:46
 msgid "hat eure Freundschaft beendet"
 msgstr "terminated your friendship"
 
-#: account/models.py:46
+#: account/models.py:47
 msgid "hat Sie eingeladen"
 msgstr "invited you"
 
-#: account/models.py:47
+#: account/models.py:48
 msgid "hat Ihre Freundschaftsanfrage angenommen"
 msgstr "accepted your friend request"
 
-#: account/models.py:48
+#: account/models.py:49
 msgid "hat Ihre Freundschaftsanfrage abgelehnt"
 msgstr "declined your friend request"
 
-#: account/models.py:49
+#: account/models.py:50
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr "rejected your friend request"
 
-#: account/models.py:50
+#: account/models.py:51
 msgid "gefällt"
 msgstr "likes"
 
-#: account/models.py:51
+#: account/models.py:52
 msgid "missfällt"
 msgstr "dislikes"
 
-#: account/models.py:189
+#: account/models.py:190
 msgid "Ausstehend"
 msgstr "Pending"
 
-#: account/models.py:190
+#: account/models.py:191
 msgid "Angenommen"
 msgstr "Accepted"
 
-#: account/models.py:191
+#: account/models.py:192
 msgid "Abgelehnt"
 msgstr "Declined"
 
-#: account/models.py:254
+#: account/models.py:261
 msgid "Diese Adresse konnte nicht gefunden werden."
 msgstr "This address could not be found."
 
-#: account/models.py:256
+#: account/models.py:263
 msgid ""
 "Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die "
 "Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
@@ -245,19 +245,19 @@ msgstr ""
 "There is no city connected to this address. Please explicitly give the "
 "city's name (villages/districts may not be recognised)."
 
-#: account/models.py:313 vacancies/models.py:29
+#: account/models.py:320 vacancies/models.py:29
 msgid "Land"
 msgstr "Country"
 
-#: account/models.py:314 vacancies/models.py:30
+#: account/models.py:321 vacancies/models.py:30
 msgid "Bundesland"
 msgstr "State"
 
-#: account/models.py:315 vacancies/models.py:31
+#: account/models.py:322 vacancies/models.py:31
 msgid "Landkreis"
 msgstr "County"
 
-#: account/models.py:316 vacancies/models.py:32
+#: account/models.py:323 vacancies/models.py:32
 msgid "Stadt"
 msgstr "City"
 
@@ -321,8 +321,6 @@ msgstr ""
 "fixed soon!"
 
 #: account/templates/account/about.html:6
-#: account/templates/account/impressum.html:5
-#: account/templates/account/impressum.html:8 account/templates/base.html:34
 msgid "Info"
 msgstr "About"
 
@@ -709,13 +707,563 @@ msgstr ""
 "personality test to find out which activities might suit you. Join "
 "activities to chat with like-minded people and mark locations on the map!"
 
+#: account/templates/account/impressum.html:5
+#: account/templates/account/impressum.html:8 account/templates/base.html:34
+msgid "Impressum"
+msgstr "About"
+
 #: account/templates/account/impressum.html:10
 msgid ""
-"Mein Name ist Yannik Schroeder und ich habe diese Website zusammengebastelt. "
-"Bei irgendwelchen Fragen schicken Sie mir ne E-Mail: myactivities.net@web.de"
+"Willkommen auf meiner Website! Hier finden Sie Angaben zur Kontaktaufnahme "
+"und die Datenschutzerklärung. <br>Zusammengefasst: Ich nutze Ihre Daten (E-"
+"Mail, Alter etc.) nur für die auf dieser Seite zur Verfügung gestellten "
+"Funktionen. E-Mails werden nur für den Passwort- und Registrierung-Krams "
+"verwendet. Eigentlich wollte ich gar keine E-Mails abfragen, aber meine "
+"Tester haben andauernd ihre Passwörter vergessen und deswegen zig Accounts "
+"erstellen müssen. Standortdaten, Chatverläufe etc. werden nicht an Dritte "
+"weitergegeben, auch wenn die verwendeten Tools (z. B. OpenStreetMap) das "
+"vielleicht schon von sich aus erledigen. Mehr dazu weiter unten."
 msgstr ""
-"My name is Yannik Schroeder and I created this little website. If you want "
-"to contact me, you can send me an email at: myactivities.net@web.de"
+"Welcome to my website! Here you can find my contact information and the "
+"privacy policy.<br>In short: Your personal data (e-mail, age etc.) is not "
+"sent to third parties. E-mail addresses are used only for registering and "
+"password resetting. I didn't want to ask for e-mail addresses to begin with, "
+"but my beta testers kept forgetting their passwords. What can you do. "
+"OpenStreetMap might use your location data, though, but that's about it. For "
+"more information see below."
+
+#: account/templates/account/impressum.html:12
+msgid "Seitenbetreiber:"
+msgstr "Website operator:"
+
+#: account/templates/account/impressum.html:21
+msgid ""
+"\n"
+"    <h1>Datenschutzerklärung</h1>\n"
+"    <h2>1. Datenschutz auf einen Blick</h2>\n"
+"    <h3>Allgemeine Hinweise</h3> <p>Die folgenden Hinweise geben einen "
+"einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, "
+"wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit "
+"denen Sie persönlich identifiziert werden können. Ausführliche Informationen "
+"zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten "
+"Datenschutzerklärung.</p>\n"
+"    <h3>Datenerfassung auf dieser Website</h3> <h4>Wer ist verantwortlich "
+"für die Datenerfassung auf dieser Website?</h4> <p>Die Datenverarbeitung auf "
+"dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten "
+"können Sie dem Abschnitt \"Hinweis zur Verantwortlichen Stelle\" in dieser "
+"Datenschutzerklärung entnehmen.</p> <h4>Wie erfassen wir Ihre Daten?</h4> "
+"<p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese "
+"mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein "
+"Kontaktformular eingeben.</p> <p>Andere Daten werden automatisch oder nach "
+"Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. "
+"Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem "
+"oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt "
+"automatisch, sobald Sie diese Website betreten.</p> <h4>Wofür nutzen wir "
+"Ihre Daten?</h4> <p>Ein Teil der Daten wird erhoben, um eine fehlerfreie "
+"Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse "
+"Ihres Nutzerverhaltens verwendet werden.</p> <h4>Welche Rechte haben Sie "
+"bezüglich Ihrer Daten?</h4> <p>Sie haben jederzeit das Recht, unentgeltlich "
+"Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten "
+"personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die "
+"Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine "
+"Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese "
+"Einwilligung jederzeit für die Zukunft widerrufen. Außerdem haben Sie das "
+"Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer "
+"personenbezogenen Daten zu verlangen. Des Weiteren steht Ihnen ein "
+"Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.</p> <p>Hierzu sowie "
+"zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an uns "
+"wenden.</p>\n"
+"    <h2>2. Hosting und Content Delivery Networks (CDN)</h2>\n"
+"    <h3>Strato</h3> <p>Wir hosten unsere Website bei Strato. Anbieter ist "
+"die Strato AG, Pascalstraße 10, 10587 Berlin (nachfolgend: \"Strato\"). Wenn "
+"Sie unsere Website besuchen, erfasst Strato verschiedene Logfiles inklusive "
+"Ihrer IP-Adressen.</p> <p>Weitere Informationen entnehmen Sie der "
+"Datenschutzerklärung von Strato: <a href=\"https://www.strato.de/datenschutz/"
+"\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.strato.de/"
+"datenschutz/</a>.</p> <p>Die Verwendung von Strato erfolgt auf Grundlage von "
+"Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer "
+"möglichst zuverlässigen Darstellung unserer Website. Sofern eine "
+"entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung "
+"ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO; die "
+"Einwilligung ist jederzeit widerrufbar.</p>\n"
+"    <h4>Abschluss eines Vertrages über Auftragsverarbeitung</h4> <p>Wir "
+"haben einen Vertrag über Auftragsverarbeitung mit Strato geschlossen. "
+"Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen "
+"Vertrag, der gewährleistet, dass Strato die personenbezogenen Daten unserer "
+"Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO "
+"verarbeitet.</p>\n"
+"    <h2>3. Allgemeine Hinweise und Pflichtinformationen</h2>\n"
+"    <h3>Datenschutz</h3> <p>Die Betreiber dieser Seiten nehmen den Schutz "
+"Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen "
+"Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften "
+"sowie dieser Datenschutzerklärung.</p> <p>Wenn Sie diese Website benutzen, "
+"werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten "
+"sind Daten, mit denen Sie persönlich identifiziert werden können. Die "
+"vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und "
+"wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das "
+"geschieht.</p> <p>Wir weisen darauf hin, dass die Datenübertragung im "
+"Internet (z. B. bei der Kommunikation per E-Mail) Sicherheitslücken "
+"aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch "
+"Dritte ist nicht möglich.</p>\n"
+"    <h3>Hinweis zur verantwortlichen Stelle</h3> <p>Die verantwortliche "
+"Stelle für die Datenverarbeitung auf dieser Website ist:</p> <p>Yannik "
+"Schroeder<br />\n"
+"    Stresemannstraße 70<br />\n"
+"    26125 Oldenburg</p>\n"
+"    \n"
+"    <p>Telefon: +49 (0) 152 5524 5049<br />\n"
+"    E-Mail: yannik131@web.de</p>\n"
+"     <p>Verantwortliche Stelle ist die natürliche oder juristische Person, "
+"die allein oder gemeinsam mit anderen über die Zwecke und Mittel der "
+"Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. "
+"Ä.) entscheidet.</p>\n"
+"    \n"
+"    <h3>Speicherdauer</h3> <p>Soweit innerhalb dieser Datenschutzerklärung "
+"keine speziellere Speicherdauer genannt wurde, verbleiben Ihre "
+"personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung "
+"entfällt. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine "
+"Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, "
+"sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung "
+"Ihrer personenbezogenen Daten haben (z. B. steuer- oder handelsrechtliche "
+"Aufbewahrungsfristen); im letztgenannten Fall erfolgt die Löschung nach "
+"Fortfall dieser Gründe.</p>\n"
+"    <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3> <p>Viele "
+"Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung "
+"möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. "
+"Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt "
+"vom Widerruf unberührt.</p>\n"
+"    <h3>Widerspruchsrecht gegen die Datenerhebung in besonderen Fällen sowie "
+"gegen Direktwerbung (Art. 21 DSGVO)</h3> <p>WENN DIE DATENVERARBEITUNG AUF "
+"GRUNDLAGE VON ART. 6 ABS. 1 LIT. E ODER F DSGVO ERFOLGT, HABEN SIE JEDERZEIT "
+"DAS RECHT, AUS GRÜNDEN, DIE SICH AUS IHRER BESONDEREN SITUATION ERGEBEN, "
+"GEGEN DIE VERARBEITUNG IHRER PERSONENBEZOGENEN DATEN WIDERSPRUCH EINZULEGEN; "
+"DIES GILT AUCH FÜR EIN AUF DIESE BESTIMMUNGEN GESTÜTZTES PROFILING. DIE "
+"JEWEILIGE RECHTSGRUNDLAGE, AUF DENEN EINE VERARBEITUNG BERUHT, ENTNEHMEN SIE "
+"DIESER DATENSCHUTZERKLÄRUNG. WENN SIE WIDERSPRUCH EINLEGEN, WERDEN WIR IHRE "
+"BETROFFENEN PERSONENBEZOGENEN DATEN NICHT MEHR VERARBEITEN, ES SEI DENN, WIR "
+"KÖNNEN ZWINGENDE SCHUTZWÜRDIGE GRÜNDE FÜR DIE VERARBEITUNG NACHWEISEN, DIE "
+"IHRE INTERESSEN, RECHTE UND FREIHEITEN ÜBERWIEGEN ODER DIE VERARBEITUNG "
+"DIENT DER GELTENDMACHUNG, AUSÜBUNG ODER VERTEIDIGUNG VON RECHTSANSPRÜCHEN "
+"(WIDERSPRUCH NACH ART. 21 ABS. 1 DSGVO).</p> <p>WERDEN IHRE "
+"PERSONENBEZOGENEN DATEN VERARBEITET, UM DIREKTWERBUNG ZU BETREIBEN, SO HABEN "
+"SIE DAS RECHT, JEDERZEIT WIDERSPRUCH GEGEN DIE VERARBEITUNG SIE BETREFFENDER "
+"PERSONENBEZOGENER DATEN ZUM ZWECKE DERARTIGER WERBUNG EINZULEGEN; DIES GILT "
+"AUCH FÜR DAS PROFILING, SOWEIT ES MIT SOLCHER DIREKTWERBUNG IN VERBINDUNG "
+"STEHT. WENN SIE WIDERSPRECHEN, WERDEN IHRE PERSONENBEZOGENEN DATEN "
+"ANSCHLIESSEND NICHT MEHR ZUM ZWECKE DER DIREKTWERBUNG VERWENDET (WIDERSPRUCH "
+"NACH ART. 21 ABS. 2 DSGVO).</p>\n"
+"    <h3>Beschwerderecht bei der zuständigen Aufsichtsbehörde</h3> <p>Im "
+"Falle von Verstößen gegen die DSGVO steht den Betroffenen ein "
+"Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem "
+"Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des "
+"Orts des mutmaßlichen Verstoßes zu. Das Beschwerderecht besteht unbeschadet "
+"anderweitiger verwaltungsrechtlicher oder gerichtlicher Rechtsbehelfe.</p>\n"
+"    <h3>Recht auf Datenübertragbarkeit</h3> <p>Sie haben das Recht, Daten, "
+"die wir auf Grundlage Ihrer Einwilligung oder in Erfüllung eines Vertrags "
+"automatisiert verarbeiten, an sich oder an einen Dritten in einem gängigen, "
+"maschinenlesbaren Format aushändigen zu lassen. Sofern Sie die direkte "
+"Übertragung der Daten an einen anderen Verantwortlichen verlangen, erfolgt "
+"dies nur, soweit es technisch machbar ist.</p>\n"
+"    <h3>SSL- bzw. TLS-Verschlüsselung</h3> <p>Diese Seite nutzt aus "
+"Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie "
+"zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber "
+"senden, eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung "
+"erkennen Sie daran, dass die Adresszeile des Browsers von \"http://\" auf "
+"\"https://\" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.</p> "
+"<p>Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, "
+"die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.</p>\n"
+"    <h3>Auskunft, Löschung und Berichtigung</h3> <p>Sie haben im Rahmen der "
+"geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche "
+"Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und "
+"Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf "
+"Berichtigung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum "
+"Thema personenbezogene Daten können Sie sich jederzeit an uns wenden.</p>\n"
+"    <h3>Recht auf Einschränkung der Verarbeitung</h3> <p>Sie haben das "
+"Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu "
+"verlangen. Hierzu können Sie sich jederzeit an uns wenden. Das Recht auf "
+"Einschränkung der Verarbeitung besteht in folgenden Fällen:</p> <ul> "
+"<li>Wenn Sie die Richtigkeit Ihrer bei uns gespeicherten personenbezogenen "
+"Daten bestreiten, benötigen wir in der Regel Zeit, um dies zu überprüfen. "
+"Für die Dauer der Prüfung haben Sie das Recht, die Einschränkung der "
+"Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li> <li>Wenn die "
+"Verarbeitung Ihrer personenbezogenen Daten unrechtmäßig geschah/geschieht, "
+"können Sie statt der Löschung die Einschränkung der Datenverarbeitung "
+"verlangen.</li> <li>Wenn wir Ihre personenbezogenen Daten nicht mehr "
+"benötigen, Sie sie jedoch zur Ausübung, Verteidigung oder Geltendmachung von "
+"Rechtsansprüchen benötigen, haben Sie das Recht, statt der Löschung die "
+"Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</"
+"li> <li>Wenn Sie einen Widerspruch nach Art. 21 Abs. 1 DSGVO eingelegt "
+"haben, muss eine Abwägung zwischen Ihren und unseren Interessen vorgenommen "
+"werden. Solange noch nicht feststeht, wessen Interessen überwiegen, haben "
+"Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen "
+"Daten zu verlangen.</li> </ul> <p>Wenn Sie die Verarbeitung Ihrer "
+"personenbezogenen Daten eingeschränkt haben, dürfen diese Daten - von ihrer "
+"Speicherung abgesehen - nur mit Ihrer Einwilligung oder zur Geltendmachung, "
+"Ausübung oder Verteidigung von Rechtsansprüchen oder zum Schutz der Rechte "
+"einer anderen natürlichen oder juristischen Person oder aus Gründen eines "
+"wichtigen öffentlichen Interesses der Europäischen Union oder eines "
+"Mitgliedstaats verarbeitet werden.</p>\n"
+"    <h3>Widerspruch gegen Werbe-E-Mails</h3> <p>Der Nutzung von im Rahmen "
+"der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von "
+"nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird "
+"hiermit widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich "
+"rechtliche Schritte im Falle der unverlangten Zusendung von "
+"Werbeinformationen, etwa durch Spam-E-Mails, vor.</p>\n"
+"    <h2>4. Datenerfassung auf dieser Website</h2>\n"
+"    <h3>Cookies</h3> <p>Unsere Internetseiten verwenden so genannte \"Cookies"
+"\". Cookies sind kleine Textdateien und richten auf Ihrem Endgerät keinen "
+"Schaden an. Sie werden entweder vorübergehend für die Dauer einer Sitzung "
+"(Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät "
+"gespeichert. Session-Cookies werden nach Ende Ihres Besuchs automatisch "
+"gelöscht. Permanente Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie "
+"diese selbst löschen oder eine automatische Löschung durch Ihren Webbrowser "
+"erfolgt.</p> <p>Teilweise können auch Cookies von Drittunternehmen auf Ihrem "
+"Endgerät gespeichert werden, wenn Sie unsere Seite betreten (Third-Party-"
+"Cookies). Diese ermöglichen uns oder Ihnen die Nutzung bestimmter "
+"Dienstleistungen des Drittunternehmens (z. B. Cookies zur Abwicklung von "
+"Zahlungsdienstleistungen).</p> <p>Cookies haben verschiedene Funktionen. "
+"Zahlreiche Cookies sind technisch notwendig, da bestimmte Websitefunktionen "
+"ohne diese nicht funktionieren würden (z. B. die Warenkorbfunktion oder die "
+"Anzeige von Videos). Andere Cookies dienen dazu, das Nutzerverhalten "
+"auszuwerten oder Werbung anzuzeigen.</p> <p>Cookies, die zur Durchführung "
+"des elektronischen Kommunikationsvorgangs (notwendige Cookies) oder zur "
+"Bereitstellung bestimmter, von Ihnen erwünschter Funktionen (funktionale "
+"Cookies, z. B. für die Warenkorbfunktion) oder zur Optimierung der Website "
+"(z. B. Cookies zur Messung des Webpublikums) erforderlich sind, werden auf "
+"Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert, sofern keine andere "
+"Rechtsgrundlage angegeben wird. Der Websitebetreiber hat ein berechtigtes "
+"Interesse an der Speicherung von Cookies zur technisch fehlerfreien und "
+"optimierten Bereitstellung seiner Dienste. Sofern eine Einwilligung zur "
+"Speicherung von Cookies abgefragt wurde, erfolgt die Speicherung der "
+"betreffenden Cookies ausschließlich auf Grundlage dieser Einwilligung (Art. "
+"6 Abs. 1 lit. a DSGVO); die Einwilligung ist jederzeit widerrufbar.</p> "
+"<p>Sie können Ihren Browser so einstellen, dass Sie über das Setzen von "
+"Cookies informiert werden und Cookies nur im Einzelfall erlauben, die "
+"Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das "
+"automatische Löschen der Cookies beim Schließen des Browsers aktivieren. Bei "
+"der Deaktivierung von Cookies kann die Funktionalität dieser Website "
+"eingeschränkt sein.</p> <p>Soweit Cookies von Drittunternehmen oder zu "
+"Analysezwecken eingesetzt werden, werden wir Sie hierüber im Rahmen dieser "
+"Datenschutzerklärung gesondert informieren und ggf. eine Einwilligung "
+"abfragen.</p>\n"
+"    <h3>Kontaktformular</h3> <p>Wenn Sie uns per Kontaktformular Anfragen "
+"zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der "
+"von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und "
+"für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir "
+"nicht ohne Ihre Einwilligung weiter.</p> <p>Die Verarbeitung dieser Daten "
+"erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage "
+"mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung "
+"vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht "
+"die Verarbeitung auf unserem berechtigten Interesse an der effektiven "
+"Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) "
+"oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sofern diese "
+"abgefragt wurde.</p> <p>Die von Ihnen im Kontaktformular eingegebenen Daten "
+"verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung "
+"zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt "
+"(z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende "
+"gesetzliche Bestimmungen - insbesondere Aufbewahrungsfristen - bleiben "
+"unberührt.</p>\n"
+"    <h3>Anfrage per E-Mail, Telefon oder Telefax</h3> <p>Wenn Sie uns per E-"
+"Mail, Telefon oder Telefax kontaktieren, wird Ihre Anfrage inklusive aller "
+"daraus hervorgehenden personenbezogenen Daten (Name, Anfrage) zum Zwecke der "
+"Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet. Diese Daten "
+"geben wir nicht ohne Ihre Einwilligung weiter.</p> <p>Die Verarbeitung "
+"dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern "
+"Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur "
+"Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen "
+"Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der "
+"effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f "
+"DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sofern diese "
+"abgefragt wurde.</p> <p>Die von Ihnen an uns per Kontaktanfragen übersandten "
+"Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre "
+"Einwilligung zur Speicherung widerrufen oder der Zweck für die "
+"Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihres "
+"Anliegens). Zwingende gesetzliche Bestimmungen - insbesondere gesetzliche "
+"Aufbewahrungsfristen - bleiben unberührt.</p>\n"
+"    <h3>Kommentarfunktion auf dieser Website</h3> <p>Für die "
+"Kommentarfunktion auf dieser Seite werden neben Ihrem Kommentar auch Angaben "
+"zum Zeitpunkt der Erstellung des Kommentars, Ihre E-Mail-Adresse und, wenn "
+"Sie nicht anonym posten, der von Ihnen gewählte Nutzername gespeichert.</p>\n"
+"    <h4>Speicherdauer der Kommentare</h4> <p>Die Kommentare und die damit "
+"verbundenen Daten werden gespeichert und verbleiben auf dieser Website, bis "
+"der kommentierte Inhalt vollständig gelöscht wurde oder die Kommentare aus "
+"rechtlichen Gründen gelöscht werden müssen (z. B. beleidigende Kommentare).</"
+"p>\n"
+"    <h4>Rechtsgrundlage</h4> <p>Die Speicherung der Kommentare erfolgt auf "
+"Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie können eine "
+"von Ihnen erteilte Einwilligung jederzeit widerrufen. Dazu reicht eine "
+"formlose Mitteilung per E-Mail an uns. Die Rechtmäßigkeit der bereits "
+"erfolgten Datenverarbeitungsvorgänge bleibt vom Widerruf unberührt.</p>\n"
+"    <h2>5. Plugins und Tools</h2>\n"
+"    <h3>OpenStreetMap</h3> <p>Wir nutzen den Kartendienst von OpenStreetMap "
+"(OSM). Anbieterin ist die Open-Street-Map Foundation (OSMF), 132 Maney Hill "
+"Road, Sutton Coldfield, West Midlands, B72 1JU, United Kingdom.</p> <p>Wenn "
+"Sie eine Website besuchen, auf der OpenStreetMap eingebunden ist, werden u. "
+"a. Ihre IP-Adresse und weitere Informationen über Ihr Verhalten auf dieser "
+"Website an die OSMF weitergeleitet. OpenStreetMap speichert hierzu unter "
+"Umständen Cookies in Ihrem Browser oder setzt vergleichbare "
+"Wiedererkennungstechnologien ein.</p> <p>Ferner kann Ihr Standort erfasst "
+"werden, wenn Sie dies in Ihren Geräteeinstellungen - z. B. auf Ihrem Handy - "
+"zugelassen haben. Der Anbieter dieser Seite hat keinen Einfluss auf diese "
+"Datenübertragung. Details entnehmen Sie der Datenschutzerklärung von "
+"OpenStreetMap unter folgendem Link: <a href=\"https://wiki.osmfoundation.org/"
+"wiki/Privacy_Policy\" target=\"_blank\" rel=\"noopener noreferrer\">https://"
+"wiki.osmfoundation.org/wiki/Privacy_Policy</a>.</p> <p>Die Nutzung von "
+"OpenStreetMap erfolgt im Interesse einer ansprechenden Darstellung unserer "
+"Online-Angebote und einer leichten Auffindbarkeit der von uns auf der "
+"Website angegebenen Orte. Dies stellt ein berechtigtes Interesse im Sinne "
+"von Art. 6 Abs. 1 lit. f DSGVO dar. Sofern eine entsprechende Einwilligung "
+"abgefragt wurde (z. B. eine Einwilligung zur Speicherung von Cookies), "
+"erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. "
+"a DSGVO; die Einwilligung ist jederzeit widerrufbar.</p>\n"
+"    <p>Quelle: <a href=\"https://www.e-recht24.de\">e-recht24.de</a></p>"
+msgstr ""
+"\n"
+"    <h1> Privacy Policy </h1>\n"
+"    <h2> 1. Data protection at a glance </h2>\n"
+"    <h3> General information </h3> <p> The following information provides a "
+"simple overview of what happens to your personal data when you visit this "
+"website. Personal data are all data with which you can be personally "
+"identified. Detailed information on the subject of data protection can be "
+"found in our data protection declaration below this text. </p>\n"
+"    <h3> Data collection on this website </h3> <h4> Who is responsible for "
+"data collection on this website? </h4> <p> The data processing on this "
+"website is carried out by the website operator. You can find their contact "
+"details in the section \"Note on the responsible body\" in this data "
+"protection declaration. </p> <h4> How do we collect your data? </h4> <p> On "
+"the one hand, your data is collected when you provide it to us . This can "
+"be, for. E.g. data that you enter in a contact form. </p> <p> Other data are "
+"recorded automatically or with your consent when you visit the website by "
+"our IT systems. This is mainly technical data (e.g. internet browser, "
+"operating system or time of the page was viewed). This data is collected "
+"automatically as soon as you enter this website. </p> <h4> What do we use "
+"your data for? </h4> <p> Some of the data is collected to ensure that the "
+"website is error-free. Other data can be used to analyze your user behavior. "
+"</p> <h4> What rights do you have with regard to your data? </h4> <p> You "
+"always have the right to free information about the origin, recipient and "
+"purpose of your stored personal data to obtain. You also have the right to "
+"request the correction or deletion of this data. If you have given your "
+"consent to data processing, you can revoke this consent at any time for the "
+"future. You also have the right to request that the processing of your "
+"personal data be restricted under certain circumstances. You also have the "
+"right to lodge a complaint with the responsible supervisory authority. </p> "
+"<p> You can contact us at any time for this or for other questions on the "
+"subject of data protection. </p>\n"
+"    <h2> 2. Hosting and Content Delivery Networks (CDN) </h2>\n"
+"    <h3> Strato </h3> <p> We host our website at Strato. The provider is "
+"Strato AG, Pascalstrasse 10, 10587 Berlin (hereinafter: \"Strato\"). When "
+"you visit our website, Strato records various log files including your IP "
+"addresses. </p> <p> Further information can be found in Strato's privacy "
+"policy: <a href = \"https://www.strato.de/datenschutz/\" target = \"_ blank"
+"\" rel = \"noopener noreferrer\"> https://www.strato.de/datenschutz/ </a>. </"
+"p> <p> Strato is used on the basis of Art. 6 Para. 1 lit.f GDPR. We have a "
+"legitimate interest in presenting our website as reliably as possible. If a "
+"corresponding consent has been requested, processing takes place exclusively "
+"on the basis of Art. 6 Para. 1 lit. a GDPR; the consent can be revoked at "
+"any time. </p>\n"
+"    <h4> Conclusion of an order processing contract </h4> <p> We have "
+"concluded an order processing contract with Strato. This is a contract "
+"stipulated by data protection law, which ensures that Strato processes the "
+"personal data of our website visitors only in accordance with our "
+"instructions and in compliance with the GDPR. </p>\n"
+"    <h2> 3. General information and mandatory information </h2>\n"
+"    <h3> Data protection </h3> <p> The operators of this website take the "
+"protection of your personal data very seriously. We treat your personal data "
+"confidentially and in accordance with the statutory data protection "
+"regulations and this data protection declaration. </p> <p> When you use this "
+"website, various personal data are collected. Personal data are data with "
+"which you can be personally identified. This data protection declaration "
+"explains which data we collect and what we use it for. It also explains how "
+"and for what purpose this happens. </p> <p> We point out that data "
+"transmission over the Internet (e.g. when communicating by e-mail) can have "
+"security gaps. A complete protection of the data against access by third "
+"parties is not possible. </p>\n"
+"    <h3> Note on the responsible body </h3> <p> The responsible body for "
+"data processing on this website is: </p> <p> Yannik Schroeder <br />\n"
+"    Stresemannstrasse 70 <br />\n"
+"    26125 Oldenburg </p>\n"
+"    \n"
+"    <p> Phone: +49 (0) 152 5524 5049 <br />\n"
+"    Email: yannik131@web.de </p>\n"
+"     <p> The responsible body is the natural or legal person who, alone or "
+"jointly with others, decides on the purposes and means of processing "
+"personal data (e.g. names, email addresses, etc.). </ p >\n"
+"    \n"
+"    <h3> Storage period </h3> <p> Unless a specific storage period is "
+"specified in this data protection declaration, your personal data will "
+"remain with us until the purpose for the data processing no longer applies. "
+"If you make a legitimate request for deletion or revoke your consent to data "
+"processing, your data will be deleted unless we have any other legally "
+"permissible reasons for storing your personal data (e.g. tax or commercial "
+"retention periods); in the latter case, the deletion takes place after these "
+"reasons no longer exist. </p>\n"
+"    <h3> Revocation of your consent to data processing </h3> <p> Many data "
+"processing operations are only possible with your express consent. You can "
+"revoke your consent at any time. The legality of the data processing carried "
+"out before the revocation remains unaffected by the revocation. </p>\n"
+"    <h3> Right to object to data collection in special cases and against "
+"direct advertising (Art. 21 GDPR) </h3> <p> IF THE DATA PROCESSING ON THE "
+"BASIS OF ART. 6 ABS. 1 LIT. E OR F GDPR, YOU HAVE THE RIGHT AT ANY TIME TO "
+"OBJECT TO THE PROCESSING OF YOUR PERSONAL DATA FOR REASONS ARISING FROM YOUR "
+"SPECIAL SITUATION; THIS ALSO APPLIES TO PROFILING BASED ON THESE PROVISIONS. "
+"THE RELEVANT LEGAL BASIS ON WHICH PROCESSING IS REQUIRED, CAN BE REFERRED TO "
+"IN THIS PRIVACY POLICY. IF YOU OBJECT, WE WILL NO LONGER PROCESS YOUR "
+"AFFECTED PERSONAL DATA UNLESS WE CAN PROVIDE COMPULSORY REASONS FOR "
+"PROCESSING THAT OWN YOUR INTEREST, EXECUTE OR OVERVIEW THE RIGHTS OBJECTION "
+"ACCORDING TO ART. 21 (1) GDPR). </p> <p> IF YOUR PERSONAL DATA ARE PROCESSED "
+"IN ORDER TO OPERATE DIRECT ADVERTISING, YOU HAVE THE RIGHT TO OBJECT AT ANY "
+"TIME AGAINST THE PROCESSING OF THE PERSONAL DATA CONCERNING YOU; THIS ALSO "
+"APPLIES TO PROFILING TO THE EXTENT IN CONNECTION WITH SUCH DIRECT "
+"ADVERTISING. IF YOU OBJECT, YOUR PERSONAL DATA WILL NO LONGER BE USED FOR "
+"THE PURPOSE OF DIRECT ADVERTISING (OBJECTION ACCORDING TO ART. 21 (2) GDPR). "
+"</p>\n"
+"    <h3> Right to lodge a complaint with the responsible supervisory "
+"authority </h3> <p> In the event of violations of the GDPR, the data subject "
+"has the right to lodge a complaint with a supervisory authority, in "
+"particular in the member state of their habitual residence, their place of "
+"work or the place of the alleged violation. The right of appeal exists "
+"without prejudice to other administrative or judicial remedies. </p>\n"
+"    <h3> Right to data portability </h3> <p> You have the right to have data "
+"that we process automatically on the basis of your consent or in fulfillment "
+"of a contract handed over to you or to a third party in a common, machine-"
+"readable format. If you request the direct transfer of the data to another "
+"person responsible, this will only be done if it is technically feasible\n"
+"    <h3> SSL or TLS encryption </h3> <p> For security reasons and to protect "
+"the transmission of confidential content, such as orders or inquiries that "
+"you send to us as the website operator, this site uses an SSL or TLS "
+"encryption. You can recognize an encrypted connection by the fact that the "
+"address line of the browser changes from \"http: //\" to \"https: //\" and "
+"by the lock symbol in your browser line. </p> <p> If the SSL resp. If TLS "
+"encryption is activated, the data you transmit to us cannot be read by third "
+"parties. </p>\n"
+"    <h3> Information, deletion and correction </h3> <p> Within the framework "
+"of the applicable statutory provisions, you have the right to free "
+"information about your stored personal data, their origin and recipient and "
+"the purpose of the data processing and, if necessary, a right to Correction "
+"or deletion of this data. You can contact us at any time if you have any "
+"further questions on the subject of personal data. </p>\n"
+"    <h3> Right to restriction of processing </h3> <p> You have the right to "
+"request that the processing of your personal data be restricted. You can "
+"contact us at any time for this purpose. The right to restriction of "
+"processing exists in the following cases: </p> <ul> <li> If you dispute the "
+"accuracy of your personal data stored by us, we usually need time to check "
+"this. For the duration of the test, you have the right to request that the "
+"processing of your personal data be restricted. </li> <li> If the processing "
+"of your personal data was / is unlawful, you can request that the data "
+"processing be restricted instead of deletion. < / li> <li> If weYou no "
+"longer need your personal data, but you need them to exercise, defend or "
+"assert legal claims, you have the right to request that the processing of "
+"your personal data be restricted instead of deletion. </li> <li> If you "
+"object Art. 21 para. 1 GDPR, a balance must be made between your and our "
+"interests. As long as it is not yet clear whose interests prevail, you have "
+"the right to request that the processing of your personal data be "
+"restricted. </li> </ul> <p> If you have restricted the processing of your "
+"personal data, this data may - from apart from their storage - will only be "
+"processed with your consent or to assert, exercise or defend legal claims or "
+"to protect the rights of another natural or legal person or for reasons of "
+"an important public interest of the European Union or a member state. </p>\n"
+"    <h3> Objection to advertising e-mails </h3> <p> We hereby object to the "
+"use of contact data published in the context of the imprint obligation for "
+"sending unsolicited advertising and information materials. The operators of "
+"the pages expressly reserve the right to take legal action in the event of "
+"unsolicited sending of advertising information, such as spam emails. </p>\n"
+"    <h2> 4. Data collection on this website </h2>\n"
+"    <h3> Cookies </h3> <p> Our website uses so-called \"cookies\". Cookies "
+"are small text files and do not cause any damage to your device. They are "
+"stored either temporarily for the duration of a session (session cookies) or "
+"permanently (permanent cookies) on your device. Session cookies are "
+"automatically deleted after your visit. Permanent cookies remain stored on "
+"your device until you delete them yourself or your web browser automatically "
+"deletes them. </p> <p> In some cases, cookies from third-party companies can "
+"also be stored on your device when you enter our site (third-party Cookies). "
+"These enable us or you to use certain third-party services (e.g. cookies for "
+"processing payment services). </p> <p> Cookies have various functions. "
+"Numerous cookies are technically necessary because certain website functions "
+"would not work without them (e.g. the shopping cart function or the display "
+"of videos). Other cookies are used to evaluate user behavior or to display "
+"advertising. </p> <p> Cookies that are used to carry out the electronic "
+"communication process (necessary cookies) or to provide certain functions "
+"you want (functional cookies, e.g. for the Shopping cart function) or to "
+"optimize the website (e.g. cookies to measure the web audience) are stored "
+"on the basis of Art. 6 Para. 1 lit. f GDPR, unless a different legal basis "
+"is specified. The website operator has a legitimate interest in the storage "
+"of cookies for the technically error-free and optimized provision of its "
+"services. If consent to the storage of cookies has been requested, the "
+"relevant cookies are stored exclusively on the basis of this consent (Art. 6 "
+"Para. 1 lit. a GDPR); the consent can be revoked at any time. </p> <p> You "
+"can set your browser so that you are informed about the setting of cookies "
+"and only allow cookies in individual cases, exclude the acceptance of "
+"cookies for certain cases or in general, and automatic deletion activate "
+"cookies when closing the browser. If cookies are deactivated, the "
+"functionality of this website may be limited. </p> <p> If cookies are used "
+"by third-party companies or for analysis purposes, we will inform you of "
+"this separately in this data protection declaration and, if necessary, ask "
+"for your consent. </ P >\n"
+"    <h3> Contact form </h3> <p> If you send us inquiries using the contact "
+"form, your details from the inquiry form, including the contact details you "
+"provided there, will be stored by us for the purpose of processing the "
+"request and in case of follow-up questions. We do not pass on this data "
+"without your consent. </p> <p> The processing of this data takes place on "
+"the basis of Art. 6 Para. 1 lit. b GDPR, provided that your request is "
+"related to the performance of a contract or to carry out pre-contractual "
+"measures is required. In all other cases, the processing is based on our "
+"legitimate interest in the effective processing of the inquiries addressed "
+"to us (Art. 6 Para. 1 lit. f GDPR) or on your consent (Art. 6 Para. 1 lit. a "
+"GDPR) if this has been requested. </p> <p> The data you enter in the contact "
+"form will remain with us until you contact us to delete itrequest, revoke "
+"your consent to storage or the purpose for data storage no longer applies (e."
+"g. after your request has been processed). Mandatory legal provisions - in "
+"particular retention periods - remain unaffected. </p>\n"
+"    <h3> Inquiry by email, phone or fax </h3> <p> If you contact us by "
+"email, phone or fax, your request, including all personal data (name, "
+"request) resulting from it, will be processed for the purpose of processing "
+"Your request is saved and processed by us. We do not pass on this data "
+"without your consent. </p> <p> The processing of this data takes place on "
+"the basis of Art. 6 Para. 1 lit. b GDPR, provided that your request is "
+"related to the performance of a contract or to carry out pre-contractual "
+"measures is required. In all other cases, the processing is based on our "
+"legitimate interest in the effective processing of the inquiries sent to us "
+"(Art. 6 Para. 1 lit. f GDPR) or on your consent (Art. 6 Para. 1 lit. a GDPR) "
+"if this The data you send to us via contact requests will remain with us "
+"until you ask us to delete it, revoke your consent to storage or the purpose "
+"for data storage no longer applies (e.g. after processing has been completed "
+"Of your concern). Mandatory statutory provisions - in particular statutory "
+"retention periods - remain unaffected. </p>\n"
+"    <h3> Comment function on this website </h3> <p> For the comment function "
+"on this page, in addition to your comment, information about the time the "
+"comment was created, your e-mail address and, if you do not post "
+"anonymously, that of you selected username saved. </p>\n"
+"    <h4> Storage duration of the comments </h4> <p> The comments and the "
+"associated data are saved and remain on this website until the commented "
+"content has been completely deleted or the comments have to be deleted for "
+"legal reasons (e.g. offensive Comments). </p>\n"
+"    <h4> Legal basis </h4> <p> The storage of the comments is based on your "
+"consent (Art. 6 Para. 1 lit. a GDPR). You can revoke your consent at any "
+"time. An informal e-mail to us is sufficient. The legality of the data "
+"processing operations that have already taken place remains unaffected by "
+"the revocation. </p>\n"
+"    <h2> 5. Plugins and Tools </h2>\n"
+"    <h3> OpenStreetMap </h3> <p> We use the map service of OpenStreetMap "
+"(OSM). The provider is the Open Street Map Foundation (OSMF), 132 Maney Hill "
+"Road, Sutton Coldfield, West Midlands, B72 1JU, United Kingdom. </p> <p> If "
+"you visit a website that includes OpenStreetMap among others Your IP address "
+"and further information about your behavior on this website are forwarded to "
+"the OSMF. OpenStreetMap may save cookies in your browser or use comparable "
+"recognition technologies. </p> <p> Furthermore, your location can be "
+"recorded if you do this in your device settings - e.g. B. on your mobile "
+"phone. The provider of this site has no influence on this data transfer. "
+"Details can be found in the data protection declaration of OpenStreetMap "
+"under the following link: <a href=\"https://wiki.osmfoundation.org/wiki/"
+"Privacy_Policy\" target=\"_blank\" rel=\"noopener noreferrer\"> https: //"
+"wiki.osmfoundation. org / wiki / Privacy_Policy </a>. </p> <p> The use of "
+"OpenStreetMap is in the interest of an appealing presentation of our online "
+"offers and an easy findability of the places indicated by us on the website. "
+"This represents a legitimate interest within the meaning of Art. 6 Para. 1 "
+"lit.f GDPR. If a corresponding consent has been requested (e.g. consent to "
+"the storage of cookies), the processing takes place exclusively on the basis "
+"of Art. 6 Para . 1 lit. a GDPR; the consent can be revoked at any time. </"
+"p>\n"
+"    <p> Source: <a href=\"https://www.e-recht24.de\"> e-recht24.de </a> </p>"
 
 #: account/templates/account/jokes.html:4
 msgid "Witz des Augenblicks zum Aufmuntern"
@@ -1082,7 +1630,7 @@ msgstr "Enter your email address to reset your password."
 
 #: account/templates/registration/password_reset_form.html:13
 #: activity/templates/activity/detail.html:98
-#: multiplayer/templates/javascript/cards.js:530
+#: multiplayer/templates/javascript/cards.js:531
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
 #: wall/templates/wall/post/create_comment.html:15
 #: wall/templates/wall/post/create_post.html:14
@@ -1343,7 +1891,7 @@ msgid "Wie heißt der Ort, an dem Sie sich befinden?"
 msgstr "What’s the name of your location?"
 
 #: activity/templates/activity/detail.html:98
-#: multiplayer/templates/javascript/cards.js:535
+#: multiplayer/templates/javascript/cards.js:536
 #: multiplayer/templates/multiplayer/game.html:43
 #: multiplayer/templates/multiplayer/game.html:71
 #: multiplayer/templates/multiplayer/match.html:25
@@ -2531,9 +3079,17 @@ msgstr "No teams can be formed with this number of players."
 msgid "Es stehen noch Ergebnisse offen."
 msgstr "There are still matches without results."
 
+#: multiplayer/decorators.py:11
+msgid "Das Spiel existiert nicht mehr."
+msgstr "This game doesn't exist anymore."
+
+#: multiplayer/decorators.py:15
+msgid "Sie sind kein Mitglied dieses Spiels."
+msgstr "You are a not a member of this game."
+
 #: multiplayer/forms.py:11
-msgid "Spieleranzahl"
-msgstr "Member limit"
+msgid "Maximale Spieleranzahl"
+msgstr "Player limit"
 
 #: multiplayer/forms.py:19
 msgid "Unterstützt werden 2-4 Spieler"
@@ -2559,20 +3115,20 @@ msgstr "Without nines"
 msgid "ist voll"
 msgstr "is full"
 
-#: multiplayer/templates/javascript/cards.js:479
+#: multiplayer/templates/javascript/cards.js:480
 #: multiplayer/templates/javascript/skat.js:567
 msgid "Ja"
 msgstr "Yes"
 
-#: multiplayer/templates/javascript/cards.js:481
+#: multiplayer/templates/javascript/cards.js:482
 msgid "Nein"
 msgstr "No"
 
-#: multiplayer/templates/javascript/cards.js:772
+#: multiplayer/templates/javascript/cards.js:782
 msgid "Es wurde noch kein Spiel beendet."
 msgstr "No game has been completed."
 
-#: multiplayer/templates/javascript/cards.js:878
+#: multiplayer/templates/javascript/cards.js:888
 msgid ""
 "Verlassen Sie das Spiel bitte nur, wenn Sie es auch später nicht mehr "
 "fortführen wollen. Spiel verlassen und dadurch zurücksetzen?"
@@ -2580,7 +3136,7 @@ msgstr ""
 "Please only leave the game if you don't want to return to this particular "
 "match. Leave and reset the match?"
 
-#: multiplayer/templates/javascript/cards.js:889
+#: multiplayer/templates/javascript/cards.js:899
 msgid "Internet Explorer wird nicht unterstützt!"
 msgstr "Internet Explorer is not supported!"
 
@@ -3614,6 +4170,21 @@ msgstr "[Delete]"
 msgid "Keine"
 msgstr "None"
 
+#~ msgid ""
+#~ "Willkommen auf meiner Website! Hier finden Sie Angaben zur "
+#~ "Kontaktaufnahme und die Datenschutzerklärung."
+#~ msgstr ""
+#~ "Welcome to my website! Here you can find my contact information and the "
+#~ "privacy policy."
+
+#~ msgid ""
+#~ "Mein Name ist Yannik Schroeder und ich habe diese Website "
+#~ "zusammengebastelt. Bei irgendwelchen Fragen schicken Sie mir ne E-Mail: "
+#~ "myactivities.net@web.de"
+#~ msgstr ""
+#~ "My name is Yannik Schroeder and I created this little website. If you "
+#~ "want to contact me, you can send me an email at: myactivities.net@web.de"
+
 #~ msgid "Ihre Stadt"
 #~ msgstr "Your city"
 
@@ -3883,9 +4454,6 @@ msgstr "None"
 #~ "Press the join button in the bottom right corner to join the audio chat "
 #~ "of a game!"
 
-#~ msgid "Impressum"
-#~ msgstr "About"
-
 #~ msgid "Chats"
 #~ msgstr "Chats"
 
@@ -4130,9 +4698,6 @@ msgstr "None"
 
 #~ msgid "Kommentieren..."
 #~ msgstr "Comment..."
-
-#~ msgid "Sie sind Mitglied dieser Aktivität"
-#~ msgstr "You are a member of this activity"
 
 #~ msgid ""
 #~ "Sie sind noch kein Mitglied. Falls Sie sehen wollen, wer in Ihrer "

@@ -7,7 +7,7 @@ import uuid
 from django.utils import timezone
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
-from .utils import player_or, after, create_deck, determine_dealer
+from .utils import after, create_deck, determine_dealer, set_blinds
 from django.utils.translation import gettext_lazy as _, gettext as __
 import json
 from multiplayer.utils import change
@@ -43,8 +43,6 @@ class MultiplayerMatch(models.Model):
         
     @property
     def delete_date(self):
-        if self.over:
-            return self.created+MultiplayerMatch.IDLE_LIFESPAN
         if self.in_progress:
             return self.created+MultiplayerMatch.RUNNING_LIFESPAN
         else:
@@ -53,6 +51,14 @@ class MultiplayerMatch(models.Model):
     @property
     def get_image(self):
         return self.activity.image
+        
+    @property
+    def start_member_limit(self):
+        name = self.activity.german_name
+        if name in ['Poker', 'Durak']:
+            return 2
+        else:
+            return self.member_limit
     
     def __str__(self):
         return self.activity.name+__('-Match')
@@ -67,7 +73,7 @@ class MultiplayerMatch(models.Model):
     @staticmethod
     def match_list_for(activity_id):
         matches = MultiplayerMatch.objects.filter(activity__id=activity_id)
-        return [(match.id, [v for k, v in match.member_positions.items() if v], match.member_limit, match.created.isoformat()) for match in matches if not match.is_full()]
+        return [(match.id, [v for k, v in match.member_positions.items() if v], match.member_limit, match.created.isoformat()) for match in matches if not (match.is_full() or match.in_progress)]
         
     @staticmethod
     def content_type():
@@ -128,6 +134,9 @@ class MultiplayerMatch(models.Model):
     def is_full(self):
         return self.members.count() == self.member_limit
         
+    def can_start(self):
+        return self.members.count() >= self.start_member_limit
+        
     def get_position_of(self, member):
         for k, v in self.member_positions.items():
             if v == member.username:
@@ -138,6 +147,15 @@ class MultiplayerMatch(models.Model):
         for i in range(2, self.member_limit+1):
             self.member_positions[str(i)] = ""
         self.member_positions['1'] = self.admin.username
+        self.save()
+        
+    def trim_positions(self):
+        positions = dict()
+        for i, username in enumerate(self.member_positions.values(), start=1):
+            if username:
+                positions[str(i)] = username
+        self.member_positions = positions
+        self.member_limit = len(positions)
         self.save()
         
     def broadcast_data(self, data, direct=False):
@@ -178,6 +196,7 @@ class MultiplayerMatch(models.Model):
     def start(self):
         self.in_progress = False
         self.game_data = {"type": "multiplayer", "action": "load_data", "game_number": "-1"}
+        self.trim_positions()
         if self.activity.german_name == "Durak":
             self.start_durak()
             players = json.loads(self.game_data['players'])
@@ -313,14 +332,6 @@ class MultiplayerMatch(models.Model):
             change(self.game_data, 'blind_level', 1)
             self.game_data['blind_time'] = (timezone.now()+timedelta(minutes=int(self.game_data['blind_duration']))).isoformat()
         determine_dealer(self.game_data)
-        small_blind, big_blind = blinds[int(self.game_data['blind_level'])]
-        change(self.game_data, self.game_data['small_blind']+'_stack', -small_blind, guard_zero=True)
-        self.game_data[self.game_data['small_blind']+'_bet'] = small_blind
-        change(self.game_data, self.game_data['big_blind']+'_stack', -big_blind, guard_zero=True)
-        self.game_data[self.game_data['big_blind']+'_bet'] = big_blind
-        self.game_data['pot'] = small_blind+big_blind
-        self.game_data['highest_bet_user'] = ""
-        self.game_data['highest_bet_value'] = big_blind
-        self.game_data['previous_raise'] = big_blind
+        set_blinds(self.game_data, blinds)
         change(self.game_data, 'game_number', 1)
         self.game_data['active'] = after(self.game_data['big_blind'], alive)
