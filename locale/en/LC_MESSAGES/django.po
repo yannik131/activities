@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-24 13:03+0000\n"
-"PO-Revision-Date: 2021-05-24 15:08+0200\n"
+"PO-Revision-Date: 2021-05-24 15:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -710,7 +710,7 @@ msgstr ""
 #: account/templates/account/impressum.html:5
 #: account/templates/account/impressum.html:8 account/templates/base.html:34
 msgid "Impressum"
-msgstr "About"
+msgstr "Site notice"
 
 #: account/templates/account/impressum.html:10
 msgid ""
