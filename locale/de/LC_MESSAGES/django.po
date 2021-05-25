@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-24 14:34+0000\n"
+"POT-Creation-Date: 2021-05-25 09:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,121 +135,121 @@ msgstr ""
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr ""
 
-#: account/models.py:24
+#: account/models.py:25
 msgid "männlich"
 msgstr ""
 
-#: account/models.py:25
+#: account/models.py:26
 msgid "weiblich"
 msgstr ""
 
-#: account/models.py:35
+#: account/models.py:36
 msgid "hat erstellt"
 msgstr ""
 
-#: account/models.py:36
+#: account/models.py:37
 msgid "ist jetzt befreundet mit"
 msgstr ""
 
-#: account/models.py:37
+#: account/models.py:38
 msgid "ist nicht mehr befreundet mit"
 msgstr ""
 
-#: account/models.py:38
+#: account/models.py:39
 msgid "hat Ihnen eine Freundschaftsanfrage geschickt"
 msgstr ""
 
-#: account/models.py:39
+#: account/models.py:40
 msgid "ist beigetreten"
 msgstr ""
 
-#: account/models.py:40
+#: account/models.py:41
 msgid "hat verlassen"
 msgstr ""
 
-#: account/models.py:41
+#: account/models.py:42
 msgid "hat zugesagt"
 msgstr ""
 
-#: account/models.py:42
+#: account/models.py:43
 msgid "hat abgesagt"
 msgstr ""
 
-#: account/models.py:43
+#: account/models.py:44
 msgid "hat sich beworben"
 msgstr ""
 
-#: account/models.py:44
+#: account/models.py:45
 msgid "hat etwas gepostet in"
 msgstr ""
 
-#: account/models.py:45
+#: account/models.py:46
 msgid "hat etwas kommentiert"
 msgstr ""
 
-#: account/models.py:46
+#: account/models.py:47
 msgid "hat eure Freundschaft beendet"
 msgstr ""
 
-#: account/models.py:47
+#: account/models.py:48
 msgid "hat Sie eingeladen"
 msgstr ""
 
-#: account/models.py:48
+#: account/models.py:49
 msgid "hat Ihre Freundschaftsanfrage angenommen"
 msgstr ""
 
-#: account/models.py:49
+#: account/models.py:50
 msgid "hat Ihre Freundschaftsanfrage abgelehnt"
 msgstr ""
 
-#: account/models.py:50
+#: account/models.py:51
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr ""
 
-#: account/models.py:51
+#: account/models.py:52
 msgid "gefällt"
 msgstr ""
 
-#: account/models.py:52
+#: account/models.py:53
 msgid "missfällt"
 msgstr ""
 
-#: account/models.py:190
+#: account/models.py:197
 msgid "Ausstehend"
 msgstr ""
 
-#: account/models.py:191
+#: account/models.py:198
 msgid "Angenommen"
 msgstr ""
 
-#: account/models.py:192
+#: account/models.py:199
 msgid "Abgelehnt"
 msgstr ""
 
-#: account/models.py:261
+#: account/models.py:268
 msgid "Diese Adresse konnte nicht gefunden werden."
 msgstr ""
 
-#: account/models.py:263
+#: account/models.py:270
 msgid ""
 "Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die "
 "Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
 msgstr ""
 
-#: account/models.py:320 vacancies/models.py:29
+#: account/models.py:327 vacancies/models.py:29
 msgid "Land"
 msgstr ""
 
-#: account/models.py:321 vacancies/models.py:30
+#: account/models.py:328 vacancies/models.py:30
 msgid "Bundesland"
 msgstr ""
 
-#: account/models.py:322 vacancies/models.py:31
+#: account/models.py:329 vacancies/models.py:31
 msgid "Landkreis"
 msgstr ""
 
-#: account/models.py:323 vacancies/models.py:32
+#: account/models.py:330 vacancies/models.py:32
 msgid "Stadt"
 msgstr ""
 
@@ -352,9 +352,8 @@ msgstr ""
 
 #: account/templates/account/banner.html:29
 msgid ""
-"Diese Seite nutzt Cookies. Blabla.. können Sie im Browser irgendwo "
-"deaktivieren.. Statistiken werden nicht erstellt.. durch Weiternutzen der "
-"Seite stimmen sie zu.."
+"Diese Seite nutzt Cookies für: Sessions, CSRF-Schutz und diesen Banner. "
+"Alles klar?"
 msgstr ""
 
 #: account/templates/account/banner.html:32
@@ -374,7 +373,7 @@ msgstr ""
 #: account/templates/account/edit.html:31
 #: account/templates/account/friend_requests_list.html:53
 #: account/templates/account/friend_requests_list.html:76
-#: usergroups/templates/usergroups/appointment_list.html:47
+#: usergroups/templates/usergroups/appointment_list.html:48
 #: usergroups/templates/usergroups/invitation_list.html:16
 #: vacancies/templates/vacancies/application_list.html:30
 #: vacancies/templates/vacancies/edit_vacancy.html:11

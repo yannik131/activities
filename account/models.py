@@ -1,3 +1,4 @@
+from datetime import time
 from notify.models import Notification
 from activity.models import Activity
 from django.db import models
@@ -51,10 +52,12 @@ class User(AbstractUser):
         'likes': _('gefällt'),
         'dislikes': _('missfällt')
     }
-    
+            
     @property
     def age(self):
-        return timezone.now().year - self.birth_year
+        if self.birth_year:
+            return timezone.now().year - self.birth_year
+        return None
     
     @property
     def get_image(self):

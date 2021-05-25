@@ -3,7 +3,7 @@
 <style>
 .cookie-banner {
     position: fixed;
-    bottom: 0px;
+    bottom: 20px;
     left: 15px;
     right: 15px;
     background: black;
@@ -26,7 +26,7 @@
 <div class="cookie-banner" id="CookielawBanner">
     <div class="container">
         <p>
-            {% trans 'Diese Seite nutzt Cookies. Blabla.. können Sie im Browser irgendwo deaktivieren.. Statistiken werden nicht erstellt.. durch Weiternutzen der Seite stimmen sie zu..' %}<br>
+            {% trans 'Diese Seite nutzt Cookies für: Sessions, CSRF-Schutz und diesen Banner. Alles klar?' %}<br>
         </p>
             <div class="center-container">
                 <a class="blue-button" onclick="javascript:Cookielaw.createCookielawCookie();">{% trans "Mir doch egal!" %}</a>

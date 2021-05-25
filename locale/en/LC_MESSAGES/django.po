@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-24 14:34+0000\n"
-"PO-Revision-Date: 2021-05-24 16:35+0200\n"
+"POT-Creation-Date: 2021-05-25 09:51+0000\n"
+"PO-Revision-Date: 2021-05-25 11:52+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -141,103 +141,103 @@ msgstr "Password incorrect."
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr "The account has not yet been activated! Check your e-mails."
 
-#: account/models.py:24
+#: account/models.py:25
 msgid "männlich"
 msgstr "male"
 
-#: account/models.py:25
+#: account/models.py:26
 msgid "weiblich"
 msgstr "female"
 
-#: account/models.py:35
+#: account/models.py:36
 msgid "hat erstellt"
 msgstr "created"
 
-#: account/models.py:36
+#: account/models.py:37
 msgid "ist jetzt befreundet mit"
 msgstr "is now friends with"
 
-#: account/models.py:37
+#: account/models.py:38
 msgid "ist nicht mehr befreundet mit"
 msgstr "isn't friends any more with"
 
-#: account/models.py:38
+#: account/models.py:39
 msgid "hat Ihnen eine Freundschaftsanfrage geschickt"
 msgstr "sent you a friend request"
 
-#: account/models.py:39
+#: account/models.py:40
 msgid "ist beigetreten"
 msgstr "entered"
 
-#: account/models.py:40
+#: account/models.py:41
 msgid "hat verlassen"
 msgstr "left"
 
-#: account/models.py:41
+#: account/models.py:42
 msgid "hat zugesagt"
 msgstr "confirmed"
 
-#: account/models.py:42
+#: account/models.py:43
 msgid "hat abgesagt"
 msgstr "declined"
 
-#: account/models.py:43
+#: account/models.py:44
 msgid "hat sich beworben"
 msgstr "applied for"
 
-#: account/models.py:44
+#: account/models.py:45
 msgid "hat etwas gepostet in"
 msgstr "posted something in"
 
-#: account/models.py:45
+#: account/models.py:46
 msgid "hat etwas kommentiert"
 msgstr "commented something"
 
-#: account/models.py:46
+#: account/models.py:47
 msgid "hat eure Freundschaft beendet"
 msgstr "terminated your friendship"
 
-#: account/models.py:47
+#: account/models.py:48
 msgid "hat Sie eingeladen"
 msgstr "invited you"
 
-#: account/models.py:48
+#: account/models.py:49
 msgid "hat Ihre Freundschaftsanfrage angenommen"
 msgstr "accepted your friend request"
 
-#: account/models.py:49
+#: account/models.py:50
 msgid "hat Ihre Freundschaftsanfrage abgelehnt"
 msgstr "declined your friend request"
 
-#: account/models.py:50
+#: account/models.py:51
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr "rejected your friend request"
 
-#: account/models.py:51
+#: account/models.py:52
 msgid "gefällt"
 msgstr "likes"
 
-#: account/models.py:52
+#: account/models.py:53
 msgid "missfällt"
 msgstr "dislikes"
 
-#: account/models.py:190
+#: account/models.py:197
 msgid "Ausstehend"
 msgstr "Pending"
 
-#: account/models.py:191
+#: account/models.py:198
 msgid "Angenommen"
 msgstr "Accepted"
 
-#: account/models.py:192
+#: account/models.py:199
 msgid "Abgelehnt"
 msgstr "Declined"
 
-#: account/models.py:261
+#: account/models.py:268
 msgid "Diese Adresse konnte nicht gefunden werden."
 msgstr "This address could not be found."
 
-#: account/models.py:263
+#: account/models.py:270
 msgid ""
 "Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die "
 "Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
@@ -245,19 +245,19 @@ msgstr ""
 "There is no city connected to this address. Please explicitly give the "
 "city's name (villages/districts may not be recognised)."
 
-#: account/models.py:320 vacancies/models.py:29
+#: account/models.py:327 vacancies/models.py:29
 msgid "Land"
 msgstr "Country"
 
-#: account/models.py:321 vacancies/models.py:30
+#: account/models.py:328 vacancies/models.py:30
 msgid "Bundesland"
 msgstr "State"
 
-#: account/models.py:322 vacancies/models.py:31
+#: account/models.py:329 vacancies/models.py:31
 msgid "Landkreis"
 msgstr "County"
 
-#: account/models.py:323 vacancies/models.py:32
+#: account/models.py:330 vacancies/models.py:32
 msgid "Stadt"
 msgstr "City"
 
@@ -381,13 +381,11 @@ msgstr ""
 
 #: account/templates/account/banner.html:29
 msgid ""
-"Diese Seite nutzt Cookies. Blabla.. können Sie im Browser irgendwo "
-"deaktivieren.. Statistiken werden nicht erstellt.. durch Weiternutzen der "
-"Seite stimmen sie zu.."
+"Diese Seite nutzt Cookies für: Sessions, CSRF-Schutz und diesen Banner. "
+"Alles klar?"
 msgstr ""
-"This site uses cookies. Blabla.. you can deactive them in the browser "
-"settings somewhere.. you are not being tracked.. by using this site you "
-"accept.."
+"This site uses cookies for: sessions, CSRF-protection and this banner. All "
+"right?"
 
 #: account/templates/account/banner.html:32
 msgid "Mir doch egal!"
@@ -406,7 +404,7 @@ msgstr "Click the button to delete your account."
 #: account/templates/account/edit.html:31
 #: account/templates/account/friend_requests_list.html:53
 #: account/templates/account/friend_requests_list.html:76
-#: usergroups/templates/usergroups/appointment_list.html:47
+#: usergroups/templates/usergroups/appointment_list.html:48
 #: usergroups/templates/usergroups/invitation_list.html:16
 #: vacancies/templates/vacancies/application_list.html:30
 #: vacancies/templates/vacancies/edit_vacancy.html:11
@@ -4181,6 +4179,15 @@ msgstr "[Delete]"
 #: wall/templates/wall/post/post_loop.html:81
 msgid "Keine"
 msgstr "None"
+
+#~ msgid ""
+#~ "Diese Seite nutzt Cookies. Blabla.. können Sie im Browser irgendwo "
+#~ "deaktivieren.. Statistiken werden nicht erstellt.. durch Weiternutzen der "
+#~ "Seite stimmen sie zu.."
+#~ msgstr ""
+#~ "This site uses cookies. Blabla.. you can deactive them in the browser "
+#~ "settings somewhere.. you are not being tracked.. by using this site you "
+#~ "accept.."
 
 #~ msgid "Seitenbetreiber:"
 #~ msgstr "Website operator:"
