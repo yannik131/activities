@@ -86,3 +86,4 @@ karte aus runde davor noch sichtbar?
 nur online/offline consumer als async für notifications
 poker flush geht nicht
 spiel zugucken
+spiel ist bereits voll bug

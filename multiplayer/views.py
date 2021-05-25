@@ -74,8 +74,9 @@ def match(request, match):
     while len(members) < 4:
         members.append(("", len(members)))
     
-    if is_member and match.in_progress:
-        return HttpResponseRedirect(request.build_absolute_uri(f"/multiplayer/game/{match.activity.name}/{match.id}/"))
+    if is_member:
+        if match.in_progress:
+            return HttpResponseRedirect(request.build_absolute_uri(f"/multiplayer/game/{match.activity.name}/{match.id}/"))
     elif match.is_full():
         messages.add_message(request, messages.INFO, _("Spiel ist bereits voll"))
         return HttpResponseRedirect(match.lobby_url(request))
