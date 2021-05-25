@@ -13,8 +13,9 @@ function init_chat(pk) {
     room_imgs_loaded[pk] = 0;
     room_id = pk;
 
-    chat_input.onkeyup = function(e) {
-        if(e.which == 13 && !e.shiftKey) {
+    chat_input.onkeydown = function(e) {
+        if(e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
             submitClick(this);
         }
     }
