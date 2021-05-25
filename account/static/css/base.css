@@ -364,6 +364,25 @@ select:focus, select:hover {
     margin: auto auto;
 }
 
+.follow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1a;
+    box-shadow: 0 0 5px lightgray;
+    border-radius: 10px;
+    width: 150px;
+    margin: 10px auto;
+}
+
+.follow img {
+    height: 50px;
+}
+
+.follow:hover {
+    background-color: gray;
+}
+
 .login-form input, .login-form textarea, .login-form select {
     display: block;
     margin: auto auto;
@@ -451,6 +470,7 @@ form label {
 .button-like {
     z-index: 1;
     background-color: #1a1a1a;
+    box-shadow: 0 0 5px lightgray;
     cursor: pointer;
     padding: 5px 5px;
     border-radius: 10px;
@@ -462,7 +482,6 @@ form label {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 5px lightgray;
 }
 
 .button-like img {

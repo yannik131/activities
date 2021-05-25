@@ -26,32 +26,6 @@ def changed_requests(user):
 def new_request_number_string(user):
     number = len(changed_requests(user))
     return n_parenthesis(number)
-
-SECTIONS = {
-    'home': '/account/',
-    'activities': ['/activity/list', '/activity/detail'],
-    'categories': ['/activity/category'],
-    'competitions': ['/multiplayer', '/competitions'],
-    'groups': ['/usergroups'],
-    'chat': ['/chat'],
-    'vacancies': ['/vacancies'],
-    'friends': ['/account/friend', '/account/people_list'],
-    'account': ['/account/edit', '/account/password_change', '/account/delete'],
-    'character': ['/character']
-}
-
-@register.simple_tag
-def active_if(request, section):
-    okay = mark_safe('class="active"')
-    path = request.path
-    if section == 'home':
-        if path == SECTIONS['home']:
-            return okay
-        return ""
-    for p in SECTIONS[section]:
-        if path.startswith(p):
-            return okay
-    return ""
     
     
 @register.simple_tag
@@ -59,7 +33,7 @@ def language_setter(request):
     language = get_prefix(request)
     if language == "de":
         return mark_safe(f"<a href='https://en.myactivities.net{request.path}'>EN</a>")
-    return mark_safe(f"<a href='https://myactivities.net{request.path}'>DE</a>")
+    return mark_safe(f"<a href='https://de.myactivities.net{request.path}'>DE</a>")
     
 
 @register.simple_tag
