@@ -28,6 +28,10 @@ function update() {
 }
 
 function next() {
+    if(user_websocket.readyState != 1) {
+        alert("{% trans 'Der Server ist gerade nicht ansprechbar. Vielleicht läuft ein Update?' %}");
+        return;
+    }
     var current_trait = traits[current_question];
     var key = current_trait[current_trait.length-1];
     current_trait = current_trait.substring(0, current_trait.length-1);

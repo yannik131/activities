@@ -6,11 +6,9 @@ from activity.models import Activity, Category
 from .utils import BIG_FIVE
 import json
 from django.http import HttpResponseForbidden, HttpResponseRedirect
-from character.utils import create_trait_dict
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from shared.shared import paginate, log
-from django.db.models.aggregates import Count
 
 
 # Create your views here.
