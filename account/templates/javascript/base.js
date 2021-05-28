@@ -174,7 +174,7 @@ function connect() {
                         chat.appendChild(div);
                         showChat(div, data.id);
                         init_chat(data.id);
-                        positionChat();
+                        positionChat(data.id);
                         break;
                     case 'list':
                         if(!data.html) {
@@ -210,6 +210,7 @@ function connect() {
                             playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/click_x.wav");
                         }
                         else if(data.action == 'leave' || data.action == 'join') {
+                            console.log('manageChatWindows..');
                             manageChatWindows(data.action, data.room_id, data.target, is_this_user);
                         }
                         break;

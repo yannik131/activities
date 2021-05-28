@@ -6,8 +6,8 @@
 {% block title %}{{ match.activity }}-Match{% endblock%}
 
 {% block content %}
-<div class="match-chat" id="chat-window-{{ room.id }}">
-    {% include 'chat/chat_window.html' %}
+<div class="match-chat" id="chat-window-{{ current_chat_room.id }}">
+    {% include 'chat/chat_window.html' with room=current_chat_room %}
 </div>
 <div class="match-members">
     <div class="competitive" style="margin: 10px 0; font-size: 16px;">

@@ -1,6 +1,5 @@
 import json
-from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
-from chat.models import ChatRoom, ChatLogEntry, ChatCheck
+from channels.generic.websocket import WebsocketConsumer
 from multiplayer.models import MultiplayerMatch
 from multiplayer.utils import *
 from redis import StrictRedis
@@ -75,82 +74,33 @@ class DurakConsumer(GameConsumer):
                 "played_cards": text_data["played_cards"],
                 "defending": data["defending"],
                 "attacking": data["attacking"],
-                'rejected': "1" if rejected else ""
+                'rejected': "1" if rejected else "",
+                'done_list': data['done_list']
             }
             if text_data['action'] == 'beating':
                 message['data']['beating'] = '1'
+                if not rejected:
+                    handle_durak_next_phase(data, match, message, self.username)
         elif text_data['action'] == "done":
-            done_list = json.loads(data['done_list'])
-            if self.username not in done_list:
-                done_list.append(self.username)
-                message['data'] = {
-                    'action': 'done'
-                }
-            else:
-                return
-            
-            if len(done_list) == len(players):
-                if data["taking"]:
-                    hand = json.loads(data[data["taking"]])
-                    stacks = json.loads(data["stacks"])
-                    for stack in stacks:
-                        for card in stack:
-                            hand.append(card)
-                    data[data["taking"]] = json.dumps(hand)
-                    data["attacking"] = left_player(data["taking"], players, data)
-                    data["taking"] = ""
-                    deal_cards(data, players)
-                else:
-                    deal_cards(data, players)
-                    if data["defending"]:
-                        if json.loads(data[data["defending"]]):
-                            data["attacking"] = data["defending"]
-                        else:
-                            data["attacking"] = left_player(data["defending"], players, data)
-                    else:
-                        data["attacking"] = None
-                players_with_cards = get_players_with_cards(players, data)
-                if len(players_with_cards) <= 1:
-                    durak = None
-                    if players_with_cards:
-                        durak = players_with_cards[0]
-                    summary = give_durak_points(data, players, durak)
-                    if durak:
-                        data["defending"] = durak
-                        data["attacking"] = before(durak, players)
-                    else:
-                        data["attacking"] = data["first"]
-                        data["defending"] = after(data["attacking"], players)
-                    match.start_durak()
-                    if len(players) == 4:
-                        data['done_list'] = json.dumps([before(data['attacking'], players)])
-                        message['data']['done_list'] = data['done_list']
-                    message["data"] = match.game_data
-                    message["data"]["summary"] = summary
-                    message["data"]["game_number"] = data["game_number"]
-                    return
-                else:
-                    data["defending"] = left_player(data["attacking"], players, data)
-                    data["started"] = data["attacking"]
-                    done_list = []
-                    message["data"] = {
-                        "action": "new_round",
-                        "data": data,
-                        'username': self.username
-                    }
-            data['done_list'] = json.dumps(done_list)
+            data['done_list'] = json.dumps(list(dict.fromkeys(json.loads(data['done_list'])+[self.username]).keys()))
+            log('done from', self.username, 'done_list:', data['done_list'])
+            message['data'] = {
+                'action': 'done',
+                'done_list': data['done_list']
+            }
+            handle_durak_next_phase(data, match, message, self.username)
         elif text_data["action"] == "take":
-            data["done_list"] = json.dumps([str(self.username)])
+            data["done_list"] = json.dumps([])
             data["taking"] = self.username
             message["data"] = {
                 "action": "take"
             }
+            handle_durak_next_phase(data, match, message, self.username)
         elif text_data["action"] == "transfer":
             refresh_stacks(data, text_data, False)
             data[self.username] = text_data["hand"]
             if not data["first"] and len(json.loads(text_data["hand"])) == 0:
                 data["first"] = self.username
-            data["done_list"] = json.dumps([])
             data["attacking"] = data["defending"]
             data["defending"] = left_player(data["attacking"], players, data)
             message["data"] = {
@@ -161,7 +111,6 @@ class DurakConsumer(GameConsumer):
                 "played_cards": text_data["played_cards"],
                 "username": self.username
             }
-        message['data']['done_list'] = data['done_list']
             
 class SkatConsumer(GameConsumer):
     def handle_move(self, text_data, data, match, message):

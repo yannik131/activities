@@ -86,4 +86,10 @@ karte aus runde davor noch sichtbar?
 nur online/offline consumer als async für notifications
 poker flush geht nicht
 spiel zugucken
-spiel ist bereits voll bug
+beitreten icon nicht anzeigen chat wenn chat nebenbei offen
+ist konferenz beigetreten zeitzone
+call bei nächster runde raise vorm flop falsch angezeigt
+durak 5 spieler
+nicht zeigen side pot anzeigen was man hatte
+verteidigt nicht done bei 4 spielern als letzter?
+durak verteidiger mitsenden und checken

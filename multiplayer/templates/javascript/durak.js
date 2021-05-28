@@ -10,8 +10,46 @@ var defending;
 var button_color = "white";
 var trump_suit;
 var is_taking;
-var done_list = [];
 var paused = false;
+var done_list;
+
+function processMultiplayerData(data) {
+    var delayed = false;
+    switch(data.action) {
+        case "load_data":
+            loadGameField(data);
+            return;
+        case "play":
+            delayed = true;
+            handleMove(data);
+            break;
+        case "transfer":
+            handleTransfer(data);
+            break;
+        case "take":
+            handleTake();
+            break;
+        case "abort":
+            location.href = data.url;
+            return;
+        case 'done':
+            updateDone(data.done_list);
+            break;
+    }
+    if(!delayed) {
+        updateButtons();
+    }
+    if(data.new_round) {
+        delayedCall(function() {
+            setupNewRound(data.new_round);
+        });
+    }
+    else if(data.game_data) {
+        delayedCall(function() {
+            loadGameField(data.game_data);
+        });
+    }
+}
 
 function defineSortValues(trump_suit) {
     var suits = ["d", "h", "s", "c"];
@@ -29,75 +67,17 @@ function getCardSortValue(type) {
     return getCardSortValueDefault(type);
 }
 
-function processMultiplayerData(data) {
-    var delayed = false;
-    if(data.done_list) {
-        done_list = JSON.parse(data.done_list);
-    }
-    switch(data.action) {
-        case "load_data":
-            delayed = Boolean(player_list);
-            if(delayed) {
-                delayedCall(loadGameField, data);
-            }
-            else {
-                loadGameField(data);
-            }
-            return;
-        case "play":
-            handleMove(data);
-            break;
-        case "new_round":
-            delayedCall(setupNewRound, data.data);
-            delayed = true;
-            break;
-        case "transfer":
-            handleTransfer(data);
-            break;
-        case "take":
-            handleTake();
-            break;
-        case "abort":
-            location.href = data.url;
-            return;
-        case 'done':
-            updateDone();
-            return;
-    }
-    if(!delayed) {
-        updateButtons();
-        checkDone(data);
-    }
-    updateDone();
-}
-
-function checkDone(data) {
-    if((player1_cards.length == 0 || game_mode == "none") && !(data.action == 'play' && data.username == this_user)) {
-        sendDone();
-        return;
-    }
-    else if((game_mode == "attacking" || game_mode == "helping") && (allDefended() || is_taking)) {
-        if(!attackingIsPossible()) {
-            sendDone();
-            return;
-        }
-    }
-}
-
-function updateDone() {
+function updateDone(list) {
+    done_list = JSON.parse(list);
     for(var i = 0; i < player_list.length; i++) {
         var username = player_list[i];
-        makeYellow(username);
-    }
-}
-
-function makeYellow(username) {
-    var player_info = document.getElementById("info-div-"+username);
-    if(done_list.indexOf(username) != -1) {
-        player_info.className += " dealer";
-    }
-    else {
-        player_info.className = 'info-div';
+        var player_info = document.getElementById("info-div-"+username);
+        if(done_list.indexOf(username) != -1) {
+            player_info.className += " dealer";
+        }
+        else {
+            player_info.className = 'info-div';
+        }
     }
 }
 
@@ -107,9 +87,9 @@ function handleTake() {
 }
 
 function delayedCall(callback, arg) {
-    var timeout = 0;
-    if(game_mode != "defending" && (!attackingIsPossible() || is_taking)) {
-        timeout = 1000;
+    var timeout = 1000;
+    if(!is_taking) {
+        timeout = 1500;
     }
     setTimeout(function() {
         callback(arg);
@@ -199,8 +179,7 @@ function loadGameField(data) {
     old_stacks = JSON.parse(data.stacks);
     refreshStacks(old_stacks);
     determineGameMode(data);
-    checkDone(data);
-    updateDone();
+    updateDone(data.done_list);
     if(data.summary) {
         summary = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary;
         showScore();
@@ -254,7 +233,6 @@ function determineGameMode(data) {
     if(data.taking) {
         is_taking = true;
         changeInfoFor(data.taking, " ({% trans 'SCHLUCKT' %})");
-        makeYellow(data.taking);
     }
 }
 
@@ -275,7 +253,6 @@ function handleNewCards(data, callback, pause) {
         }
         callback(cards, player, data);
         updateButtons();
-        checkDone(data);
     }, 1000);
 }
 
@@ -310,14 +287,19 @@ function handleMove(data) {
         }
         return;
     }
-    if(data.username == this_user) {
-        return;
-    }
+    updateDone(data.done_list);
+    clearButtons();
     function callback(cards, player, data) {
         refresh_stacks(data)
         determineGameMode(data);
+        updateButtons();
     }
-    handleNewCards(data, callback);
+    if(data.username != this_user) {
+        handleNewCards(data, callback);
+    }
+    else {
+        updateButtons();
+    }
 }
 
 function clearStackCallbacks() {
@@ -368,9 +350,6 @@ function beatStackWith(card, stack) {
     played_cards.push(card.id);
     removePlayerCard(card);
     sendMove();
-    if(player1_cards.length == 0 || game_mode == "defending" && allDefended()) {
-        sendDone();
-    }
 }
 
 function stacksContain(value, suit) {
@@ -413,7 +392,8 @@ function sendMove() {
         "action": move_mode,
         "stacks": JSON.stringify(getConvertedStack()),
         "hand": JSON.stringify(getConvertedHand()),
-        "played_cards": JSON.stringify(played_cards)
+        "played_cards": JSON.stringify(played_cards),
+        'defending': defending
     }));
     played_cards = [];
     move_mode = "none";
@@ -540,6 +520,7 @@ function setupNewRound(data) {
     removeCardsFromDeck(deck.length-new_deck.length);
     determineGameMode(data);
     updatePlayerInfo(data);
+    updateDone(data.done_list);
     for(var i = 0; i < player_list.length; i++) {
         var username = player_list[i];
         var player = players[username];
@@ -579,15 +560,6 @@ function handleTransfer(data) {
         updateButtons();
     }
     handleNewCards(data, callback, true);
-}
-
-function sendDone() {
-    if(done_list.indexOf(this_user) != -1) {
-        return;
-    }
-    sendAction('done');
-    done_list.push(this_user);
-    updateDone();
 }
 
 window.addEventListener('load', function() {

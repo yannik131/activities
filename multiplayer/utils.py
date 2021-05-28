@@ -36,6 +36,104 @@ def deal_cards(data, players):
         data["deck"] = json.dumps(deck)
     
 
+def possible_attack_count(data):
+    stacks = json.loads(data['stacks'])
+    n_played = len(stacks)
+    return min(
+        6-n_played, 
+        len(json.loads(data[data['defending']]))-(n_played-sum(len(stack) == 2 for stack in stacks))
+    )
+
+
+def refresh_stacks(data, text_data, beating):
+    if text_data['defending'] != data['defending'] or (not beating and possible_attack_count(data) == 0):
+        return True
+    server_stacks = json.loads(data['stacks'])
+    if not beating:
+        played_cards = json.loads(text_data['played_cards'])
+        for card in played_cards:
+            server_stacks.append([card])
+    else:
+        client_stacks = json.loads(text_data['stacks'])
+        for i in range(len(client_stacks)):
+            if len(server_stacks[i]) < len(client_stacks[i]):
+                server_stacks[i] = client_stacks[i]
+                break
+    data['stacks'] = json.dumps(server_stacks)
+    return False
+
+
+def check_durak_done(data):
+    log('checking:', data, 'count=', possible_attack_count(data))
+    if possible_attack_count(data) > 0:
+        n = len(get_players_with_cards(json.loads(data['players']), data))
+        if n > 1:
+            return len(json.loads(data['done_list'])) == min(2, n-1)
+    if data['taking']:
+        return True
+    return all(len(stack) == 2 for stack in json.loads(data['stacks']))
+
+
+def handle_durak_next_phase(data, match, message, username):
+    if not check_durak_done(data):
+        return
+    players = json.loads(data['players'])
+    if data["taking"]:
+        hand = json.loads(data[data["taking"]])
+        stacks = json.loads(data["stacks"])
+        for stack in stacks:
+            for card in stack:
+                hand.append(card)
+        data[data["taking"]] = json.dumps(hand)
+        data["attacking"] = left_player(data["taking"], players, data)
+        data["taking"] = ""
+        deal_cards(data, players)
+    else:
+        deal_cards(data, players)
+        if data["defending"]:
+            if json.loads(data[data["defending"]]):
+                data["attacking"] = data["defending"]
+            else:
+                data["attacking"] = left_player(data["defending"], players, data)
+        else:
+            data["attacking"] = None
+    players_with_cards = get_players_with_cards(players, data)
+    if len(players_with_cards) <= 1:
+        durak = None
+        if players_with_cards:
+            durak = players_with_cards[0]
+        summary = give_durak_points(data, players, durak)
+        if durak:
+            data["defending"] = durak
+            data["attacking"] = before(durak, players)
+        else:
+            data["attacking"] = data["first"]
+            data["defending"] = after(data["attacking"], players)
+        match.start_durak()
+        match.game_data['summary'] = summary
+        message['data']["game_data"] = match.game_data
+    else:
+        data["defending"] = left_player(data["attacking"], players, data)
+        data["started"] = data["attacking"]
+        data['done_list'] = json.dumps([])
+        message['data']['new_round'] = data
+            
+
+def give_durak_points(data, players, durak):
+    summary = []
+    for player in players:
+        if player == durak:
+            points = -1
+        elif data["first"] == player:
+            points = 2
+        else:
+            points = 1
+        change(data, player+"_points", points)
+        summary.append([f"{player}: {'+' if points >= 0 else ''}{points} -> {data[player+'_points']}\n", data[player+'_points']])
+    summary = sorted(summary, key=lambda t: t[1], reverse=True)
+    return "".join([t[0] for t in summary])[:-1]
+
+
 def cycle_slice(start_index, arr):
     return arr[start_index:]+arr[:start_index]
     
@@ -67,24 +165,6 @@ def get_players_with_cards(players, data):
         if data[player] != "[]":
             l.append(player)
     return l
-    
-    
-def refresh_stacks(data, text_data, beating):
-    server_stacks = json.loads(data['stacks'])
-    if not beating:
-        played_cards = json.loads(text_data['played_cards'])
-        for card in played_cards:
-            server_stacks.append([card])
-    else:
-        client_stacks = json.loads(text_data['stacks'])
-        for i in range(len(client_stacks)):
-            if len(server_stacks[i]) < len(client_stacks[i]):
-                server_stacks[i] = client_stacks[i]
-                break
-    if len(server_stacks) > 6:
-        return True
-    data['stacks'] = json.dumps(server_stacks)
-    return False
     
     
 def next_bidder(data):
@@ -310,7 +390,7 @@ CARD_VALUES = {
     "7": 0, "8": 0, "9": 0, "J": 2, "Q": 3,
     "K": 4, "10": 10, "A": 11
 }
-GAME_VALUES = {
+SKAT_GAME_VALUES = {
     "d": 9, "h": 10, "s": 11, "c": 12, "n": 23, "g": 24
 }
 
@@ -357,7 +437,7 @@ def calc_game_value(data, points, tricks):
             factor += 2
         elif points >= 91 or points < 31:
             factor += 1
-        return factor*GAME_VALUES[data["game_type"]]
+        return factor*SKAT_GAME_VALUES[data["game_type"]]
 
 
 def determine_factor(data):
@@ -420,20 +500,6 @@ def give_skat_points(data, players, result, game_value):
     summary = sorted(summary, key=lambda t: t[1], reverse=True)
     return "".join([t[0] for t in summary])[:-1]
     
-    
-def give_durak_points(data, players, durak):
-    summary = []
-    for player in players:
-        if player == durak:
-            points = -1
-        elif data["first"] == player:
-            points = 2
-        else:
-            points = 1
-        change(data, player+"_points", points)
-        summary.append([f"{player}: {'+' if points >= 0 else ''}{points} -> {data[player+'_points']}\n", data[player+'_points']])
-    summary = sorted(summary, key=lambda t: t[1], reverse=True)
-    return "".join([t[0] for t in summary])[:-1]
     
 
 """

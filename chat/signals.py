@@ -27,6 +27,7 @@ def chat_members_changed(instance, pk_set, model, action, **kwargs):
             'type': 'chat_message',
             'action': 'leave',
             "username": user.username,
+            'user_id': user.id,
             'room_id': instance.id
         })
         

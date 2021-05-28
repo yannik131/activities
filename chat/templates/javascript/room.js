@@ -3,15 +3,16 @@
 {% load account_tags %}
 {% load static %}
 
-var room_id;
 var whitespaceRegex = /\s/
 var kicked_out = false;
 var room_imgs_loaded = {};
 
 function init_chat(pk) {
+    if(room_imgs_loaded[pk] != undefined) {
+        return;
+    }
     var chat_input = document.getElementById('chat-input-'+pk);
     room_imgs_loaded[pk] = 0;
-    room_id = pk;
 
     chat_input.onkeydown = function(e) {
         if(e.key === 'Enter' && !e.shiftKey) {
@@ -27,7 +28,7 @@ function init_chat(pk) {
     window.addEventListener('resize', function() {
         window.scrollTo(0, 0);
     });
-    requestShow();
+    requestShow(pk);
 }
 
 function handleChatMessage(data) {
@@ -39,14 +40,14 @@ function handleChatMessage(data) {
             addMessageToChat(data);
             break;
         case 'leave':
-            var member_span = document.querySelector('.'+data.username+"-span");
+            var member_span = document.getElementById(`${data.room_id}-member-name-${data.user_id}`);
             var parent = member_span.parentElement;
             parent.remove();
             room_imgs_loaded[data.room_id] -= 2;
             moveMembers(data.room_id);
             data.time = new Date();
             data.message = data.username + " {% trans 'hat den Chat verlassen.' %}";
-            changeMembersCount(-1);
+            changeMembersCount(-1, data.room_id);
             addMessageToChat(data);
             break;
         case 'sent':
@@ -133,26 +134,23 @@ function removeItemFromChatList(room_id) {
     }
 }
 
-window.addEventListener('beforeunload', function(e) {
-    if(kicked_out || !room_id) {
+/*window.addEventListener('beforeunload', function(e) {
+    if(kicked_out || !document.getElementsByClassName('chat-top')) {
         return;
     }
     user_websocket.send(JSON.stringify({'type': 'chat', 'update_check': '', 'id': room_id}));
-});
+});*/
 
-function moveMembers(id) {
-    if(!room_id) {
-        init_chat(id);
-    }
-    room_imgs_loaded[id]++;
+function moveMembers(room_id) {
+    init_chat(room_id);
+    room_imgs_loaded[room_id]++;
     var members_div = document.getElementById('chat-members-'+room_id);
     var all_members = members_div.getElementsByClassName('chat-member');
-    if(room_imgs_loaded[id] < all_members.length) {
+    if(room_imgs_loaded[room_id] < all_members.length) {
         return;
     }
     var padding = 10;
     var title_div = document.getElementById('title-'+room_id);
-    
     if(title_div) {
         members_div.style.left = title_div.offsetWidth+padding+"px";
     }
@@ -182,7 +180,7 @@ function moveMembers(id) {
     }
 }
 
-function positionChat() {
+function positionChat(room_id) {
     var chat_window = document.getElementById('chat-window-'+room_id);
     if(!chat_window) {
         return;
@@ -225,12 +223,14 @@ function addChatMember(username, user_id, sex, room_id, img_src) {
         }
     }
     img.src = img_src;
-    changeMembersCount(1);
+    changeMembersCount(1, room_id);
 }
 
-function changeMembersCount(n) {
-    var span = document.getElementById('total-members-count');
+function changeMembersCount(n, room_id) {
+    var span = document.getElementById(`total-members-count-${room_id}`);
     span.innerHTML = parseInt(span.innerText)+n;
 }
 
-window.addEventListener('load', positionChat);
+if(current_room_id) {
+    window.addEventListener('load', function() { positionChat(current_room_id); });
+}

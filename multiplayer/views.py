@@ -80,7 +80,7 @@ def match(request, match):
     elif match.is_full():
         messages.add_message(request, messages.INFO, _("Spiel ist bereits voll"))
         return HttpResponseRedirect(match.lobby_url(request))
-    return render(request, 'multiplayer/match.html', dict(match=match, members=members, is_member=is_member, room=ChatRoom.get_for_target(match)))
+    return render(request, 'multiplayer/match.html', dict(match=match, members=members, is_member=is_member, current_chat_room=ChatRoom.get_for_target(match)))
 
 
 @guard_match
