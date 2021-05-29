@@ -12,6 +12,7 @@ var trump_suit;
 var is_taking;
 var paused = false;
 var done_list;
+var all_help = "{{ all_help }}" == 'True';
 
 function processMultiplayerData(data) {
     var delayed = false;
@@ -217,7 +218,6 @@ function determineGameMode(data) {
         while(player_cards[players[right]].length == 0 && right != data.defending) {
             right = before(right, player_list);
         }
-        console.log('right:', right, 'left:', left);
         if(left == right) {
             if(this_user == right || this_user == left) {
                 game_mode = 'attacking';
@@ -230,14 +230,18 @@ function determineGameMode(data) {
             game_mode = 'attacking';
         }
         else {
-            game_mode = 'none';
+            if(all_help) {
+                game_mode = 'helping';
+            }
+            else {
+                game_mode = 'none';
+            }
         }
     }
     if(data.taking) {
         is_taking = true;
         changeInfoFor(data.taking, " ({% trans 'SCHLUCKT' %})");
     }
-    console.log('game_mode:', game_mode);
 }
 
 function handleNewCards(data, callback, pause) {

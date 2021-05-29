@@ -86,7 +86,7 @@
     {% if name == 'Skat' %}
         {% include 'javascript/skat.js' %}
     {% elif name == 'Durak' %}
-        {% include 'javascript/durak.js' %}
+        {% include 'javascript/durak.js' with all_help=match.options.all_help %}
     {% elif name == 'Doppelkopf' %}
         {% include 'javascript/doppelkopf.js' %}
     {% elif name == 'Poker' %}

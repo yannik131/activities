@@ -270,7 +270,7 @@ class MultiplayerMatch(models.Model):
         elif self.member_limit == 4:
             players, deck = self.create_players(6, "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A")
         else:
-            players, deck = self.create_players(6, "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A")
+            players, deck = self.create_players(6, "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A")
         self.game_data["trump"] = deck[-1][-1]
         self.game_data["stacks"] = json.dumps([])
         self.game_data["done_list"] = json.dumps([])
