@@ -1448,6 +1448,14 @@ margin-bottom: 20px;
     width: 40px;
 }
 
+.player5-info {
+    position: absolute;
+    bottom: 0px;
+    top: 40px;
+    right: 0;
+    width: 40px;
+}
+
 .game-field {
     position: absolute;
     top: 40px;
