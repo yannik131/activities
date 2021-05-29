@@ -79,11 +79,10 @@ class DurakConsumer(GameConsumer):
             }
             if text_data['action'] == 'beating':
                 message['data']['beating'] = '1'
-                if not rejected:
-                    handle_durak_next_phase(data, match, message, self.username)
+            if not rejected:
+                handle_durak_next_phase(data, match, message, self.username)
         elif text_data['action'] == "done":
             data['done_list'] = json.dumps(list(dict.fromkeys(json.loads(data['done_list'])+[self.username]).keys()))
-            log('done from', self.username, 'done_list:', data['done_list'])
             message['data'] = {
                 'action': 'done',
                 'done_list': data['done_list']
