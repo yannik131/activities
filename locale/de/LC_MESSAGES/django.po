@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-25 09:51+0000\n"
+"POT-Creation-Date: 2021-05-29 15:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -454,9 +454,9 @@ msgstr ""
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:425
-#: multiplayer/templates/javascript/durak.js:461
-#: multiplayer/templates/javascript/durak.js:479
+#: multiplayer/templates/javascript/durak.js:413
+#: multiplayer/templates/javascript/durak.js:449
+#: multiplayer/templates/javascript/durak.js:467
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:14
 #: usergroups/templates/usergroups/edit_group.html:13
@@ -502,7 +502,7 @@ msgstr ""
 msgid "Gespeichert: "
 msgstr ""
 
-#: account/templates/account/edit.html:41 account/templates/base.html:43
+#: account/templates/account/edit.html:41 account/templates/base.html:44
 #: account/templates/javascript/base.js:59
 #: activity/templates/activity/detail.html:92
 msgid "OK!"
@@ -654,7 +654,7 @@ msgid ""
 msgstr ""
 
 #: account/templates/account/impressum.html:5
-#: account/templates/account/impressum.html:8 account/templates/base.html:34
+#: account/templates/account/impressum.html:8 account/templates/base.html:35
 msgid "Impressum"
 msgstr ""
 
@@ -671,17 +671,18 @@ msgid ""
 "vielleicht schon von sich aus erledigen. Mehr dazu weiter unten."
 msgstr ""
 
-#: account/templates/account/impressum.html:12
+#: account/templates/account/impressum.html:14
 msgid ""
-"<h2>Seitenbetreiber:</h2>\n"
-"    Yannik Schroeder<br>\n"
-"    Stresemannstraße 70<br>\n"
-"    26125 Oldenburg<br>\n"
-"    E-Mail: myactivities.net@web.de<br>\n"
-"    Mobil: 0152 55245049"
+"\n"
+"        <h2 style=\"margin-top: 0px\">Seitenbetreiber:</h2>\n"
+"        Yannik Schroeder<br>\n"
+"        Stresemannstraße 70<br>\n"
+"        26125 Oldenburg<br>\n"
+"        E-Mail: myactivities.net@web.de<br>\n"
+"        Mobil: 0152 55245049\n"
 msgstr ""
 
-#: account/templates/account/impressum.html:21
+#: account/templates/account/impressum.html:25
 msgid ""
 "\n"
 "    <h1>Datenschutzerklärung</h1>\n"
@@ -1155,7 +1156,7 @@ msgid ""
 "um zu chatten!"
 msgstr ""
 
-#: account/templates/javascript/base.js:222
+#: account/templates/javascript/base.js:223
 msgid ""
 "Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie "
 "nur einen Tab für myactivities.net :)"
@@ -1292,7 +1293,7 @@ msgstr ""
 
 #: account/templates/registration/password_reset_form.html:13
 #: activity/templates/activity/detail.html:98
-#: multiplayer/templates/javascript/cards.js:531
+#: multiplayer/templates/javascript/cards.js:557
 #: vacancies/templates/vacancies/apply_for_vacancy.html:14
 #: wall/templates/wall/post/create_comment.html:15
 #: wall/templates/wall/post/create_post.html:14
@@ -1535,9 +1536,9 @@ msgid "Wie heißt der Ort, an dem Sie sich befinden?"
 msgstr ""
 
 #: activity/templates/activity/detail.html:98
-#: multiplayer/templates/javascript/cards.js:536
-#: multiplayer/templates/multiplayer/game.html:43
-#: multiplayer/templates/multiplayer/game.html:71
+#: multiplayer/templates/javascript/cards.js:562
+#: multiplayer/templates/multiplayer/game.html:48
+#: multiplayer/templates/multiplayer/game.html:76
 #: multiplayer/templates/multiplayer/match.html:25
 msgid "Abbrechen"
 msgstr ""
@@ -1689,7 +1690,7 @@ msgid "Empfohlene Aktivitäten in "
 msgstr ""
 
 #: character/templates/character/overview.html:72
-#: multiplayer/templates/multiplayer/game.html:68
+#: multiplayer/templates/multiplayer/game.html:73
 msgid "Score"
 msgstr ""
 
@@ -2092,11 +2093,15 @@ msgid ""
 "Ich tue Dinge, die ich später bereue."
 msgstr ""
 
-#: character/templates/javascript/quiz.js:83
+#: character/templates/javascript/quiz.js:32
+msgid "Der Server ist gerade nicht ansprechbar. Vielleicht läuft ein Update?"
+msgstr ""
+
+#: character/templates/javascript/quiz.js:87
 msgid "Alle Fragen wurden beantwortet!"
 msgstr ""
 
-#: character/views.py:39
+#: character/views.py:37
 msgid "Wählen Sie zuerst einen der drei Fragebogen aus, bevor Sie beginnen."
 msgstr ""
 
@@ -2114,15 +2119,15 @@ msgstr ""
 msgid "tritt der Konferenz bei."
 msgstr ""
 
-#: chat/templates/javascript/room.js:37
+#: chat/templates/javascript/room.js:39
 msgid "ist dem Chat beigetreten."
 msgstr ""
 
-#: chat/templates/javascript/room.js:47
+#: chat/templates/javascript/room.js:49
 msgid "hat den Chat verlassen."
 msgstr ""
 
-#: chat/templates/javascript/room.js:77
+#: chat/templates/javascript/room.js:79
 #: multiplayer/templates/javascript/poker.js:63
 msgid "Sie"
 msgstr ""
@@ -2540,7 +2545,7 @@ msgid "Maximale Spieleranzahl"
 msgstr ""
 
 #: multiplayer/forms.py:19
-msgid "Unterstützt werden 2-4 Spieler"
+msgid "Unterstützt werden 2-5 Spieler"
 msgstr ""
 
 #: multiplayer/forms.py:22
@@ -2559,30 +2564,34 @@ msgstr ""
 msgid "Ohne Neunen"
 msgstr ""
 
+#: multiplayer/forms.py:42
+msgid "Jeder kann dazuschmeißen"
+msgstr ""
+
 #: multiplayer/models.py:38
 msgid "ist voll"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:480
+#: multiplayer/templates/javascript/cards.js:506
 #: multiplayer/templates/javascript/skat.js:567
 msgid "Ja"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:482
+#: multiplayer/templates/javascript/cards.js:508
 msgid "Nein"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:782
+#: multiplayer/templates/javascript/cards.js:820
 msgid "Es wurde noch kein Spiel beendet."
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:888
+#: multiplayer/templates/javascript/cards.js:926
 msgid ""
 "Verlassen Sie das Spiel bitte nur, wenn Sie es auch später nicht mehr "
 "fortführen wollen. Spiel verlassen und dadurch zurücksetzen?"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:899
+#: multiplayer/templates/javascript/cards.js:937
 msgid "Internet Explorer wird nicht unterstützt!"
 msgstr ""
 
@@ -2668,30 +2677,30 @@ msgid "Normalspiel"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:360
-#: multiplayer/templates/javascript/durak.js:205
+#: multiplayer/templates/javascript/durak.js:186
 #: multiplayer/templates/javascript/skat.js:165
 #: multiplayer/templates/javascript/skat.js:203
 msgid "Spiel Nummer"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:106
-#: multiplayer/templates/javascript/durak.js:256
+#: multiplayer/templates/javascript/durak.js:87
+#: multiplayer/templates/javascript/durak.js:243
 msgid "SCHLUCKT"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:215
+#: multiplayer/templates/javascript/durak.js:196
 msgid "ANGREIFER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:218
+#: multiplayer/templates/javascript/durak.js:199
 msgid "VERTEIDIGER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:441
+#: multiplayer/templates/javascript/durak.js:429
 msgid "Schlucken"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:451
+#: multiplayer/templates/javascript/durak.js:439
 msgid "Schieben"
 msgstr ""
 
@@ -2868,14 +2877,14 @@ msgid ""
 "erstellen."
 msgstr ""
 
-#: multiplayer/templates/multiplayer/game.html:35
-#: multiplayer/templates/multiplayer/game.html:51
-#: multiplayer/templates/multiplayer/game.html:64
+#: multiplayer/templates/multiplayer/game.html:40
+#: multiplayer/templates/multiplayer/game.html:56
+#: multiplayer/templates/multiplayer/game.html:69
 msgid "Lobby"
 msgstr ""
 
-#: multiplayer/templates/multiplayer/game.html:39
-#: multiplayer/templates/multiplayer/game.html:55
+#: multiplayer/templates/multiplayer/game.html:44
+#: multiplayer/templates/multiplayer/game.html:60
 msgid "Blinds"
 msgstr ""
 
@@ -2953,7 +2962,8 @@ msgid ""
 "        <h3><a href=\"https://de.wikipedia.org/wiki/"
 "Durak_(Kartenspiel)\">Durak auf Wikipedia</a></h3>\n"
 "            <ul>\n"
-"                <li>Karten: 6-Ass (2-3 Spieler), 4-Ass (4 Spieler)</li>\n"
+"                <li>Karten: 6-Ass (2-3 Spieler), 4-Ass (4 Spieler), 3-Ass (5 "
+"Spieler)</li>\n"
 "                <li>Modus: Schieben erlaubt, ohne Nachschmeißen nach "
 "Schlucken</li>\n"
 "            </ul>\n"
@@ -3022,11 +3032,11 @@ msgstr ""
 msgid "Sie können nicht mehr als {n} Matches erstellen."
 msgstr ""
 
-#: multiplayer/views.py:80
+#: multiplayer/views.py:87
 msgid "Spiel ist bereits voll"
 msgstr ""
 
-#: multiplayer/views.py:90
+#: multiplayer/views.py:97
 msgid "Sie waren zu langsam, das Match war bereits voll."
 msgstr ""
 
