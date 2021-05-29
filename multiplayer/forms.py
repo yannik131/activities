@@ -15,8 +15,8 @@ class CreateMatchForm(forms.ModelForm):
         cd = super().clean()
         member_limit = cd['member_limit']
         if self.activity.german_name == 'Durak':
-            if member_limit < 2 or member_limit > 4:
-                raise forms.ValidationError(_("Unterstützt werden 2-4 Spieler"))
+            if member_limit < 2 or member_limit > 5:
+                raise forms.ValidationError(_("Unterstützt werden 2-5 Spieler"))
         elif self.activity.german_name == 'Poker':
             if member_limit < 2 or member_limit > 10:
                 raise forms.ValidationError(_("Unterstützt werden 2-10 Spieler"))

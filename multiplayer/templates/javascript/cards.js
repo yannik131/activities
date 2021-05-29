@@ -17,9 +17,10 @@ var summary;
 var info_timeout;
 var beat_right = false;
 var is_poker = false;
+var durak_with_5 = false;
 let is_viewer;
 
-const default_rotation = {1: 0, 2: 90, 3: 0, 4: -90};
+const default_rotation = {1: 0, 2: 90, 3: 0, 4: -90, 5: -90};
 const poker_rotation = {1: 0, 2: 90, 3: 90, 4: 0, 5: 0, 6: 0, 7: -90, 8: -90, 9: -90, 10: 0};
 
 function getGridPosition(value, suit) {
@@ -112,6 +113,23 @@ function getOffsetForPlayer(player, n) {
                 break;
         }
     }
+    else if(durak_with_5) {
+        switch(player) {
+            case 1: 
+                offset = w-field.offsetWidth/n+h/n; 
+                break;
+            case 2: 
+                offset = (2*h/3+w*n-field.offsetHeight+h+w)/n;
+                break;
+            case 3: 
+                offset = (1.1*w+w*n-field.offsetWidth)/n+h/n; 
+                break;
+            case 4: 
+            case 5:
+                offset = (w+w*n-field.offsetHeight/2)/n;
+                break;
+        }
+    }
     else {
         switch(player) {
             case 1: 
@@ -186,9 +204,17 @@ function positionCard(player, card, i, n) {
                 card.style.top = -2/3*h+"px";
                 break;
             case 4:
-                card.style.top = w+h/2+w*i-offset*i+"px";
+                if(durak_with_5) {
+                    card.style.top = w+w*i-offset*i+"px";
+                }
+                else {
+                    card.style.top = w+h/2+w*i-offset*i+"px";
+                }
                 card.style.right = -2/3*h-(123-h)+"px";
                 break;
+            case 5:
+                card.style.top = w+field.offsetHeight/2+w*i-offset*i+"px";
+                card.style.right = -2/3*h-(123-h)+"px";
         }
     }
 }
@@ -658,8 +684,20 @@ function changeInfoFor(username, info, important) {
         case -90:
             info_div.style.transform = 'rotate(-270deg)';
             info_div.style.transformOrigin = 'bottom left';
-            player_info.style.height = field.offsetHeight+"px";
-            info_div.style.top = (field.offsetHeight-80-parseInt(window.getComputedStyle(info_div).width))/2+"px";
+            if(durak_with_5) {
+                player_info.style.height = field.offsetHeight/2+"px";
+                if(player == 4) {
+                    info_div.style.top = 0;
+                }
+                else {
+                    info_div.style.top = field.offsetHeight/2+"px";
+                }
+            }
+            else {
+                player_info.style.height = field.offsetHeight+"px";
+                info_div.style.top = (field.offsetHeight-80-parseInt(window.getComputedStyle(info_div).width))/2+"px";
+            }
+            
             break;
         default:
             info_div.style.left = (field.offsetWidth-parseInt(window.getComputedStyle(info_div).width))/2+"px";

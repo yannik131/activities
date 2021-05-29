@@ -169,6 +169,7 @@ function loadGameField(data) {
     clear();
     var deck = JSON.parse(data.deck);
     player_list = JSON.parse(data.players);
+    durak_with_5 = player_list.length == 5;
     is_taking = Boolean(data.taking);
     positionPlayers(player_list);
     updatePlayerInfo(data);
@@ -204,36 +205,39 @@ function updatePlayerInfo(data) {
 }
 
 function determineGameMode(data) {
-    if(this_user == data.attacking) {
-        game_mode = "attacking";
-    }
-    else if(this_user == data.defending) {
-        game_mode = "defending";
-    }
-    else if(this_user == data.taking) {
-        game_mode = "none";
-    }
-    else if(player_list.length == 4 && player_cards[players[data.attacking]].length == 0 && this_user == before(data.attacking, player_list) && player1_cards.length > 0) {
-        game_mode = "helping";
+    if(this_user == data.defending) {
+        game_mode = 'defending';
     }
     else {
-        var helping = next(data.defending, player_list);
-        if(player_list.length == 4) {
-            if(player_cards[players[helping]].length == 0) {
-                helping = next(helping, player_list)
+        var right = before(data.defending, player_list);
+        var left = next(data.defending, player_list);
+        while(player_cards[players[left]].length == 0 && left != data.defending) {
+            left = next(left, player_list);
+        }
+        while(player_cards[players[right]].length == 0 && right != data.defending) {
+            right = before(right, player_list);
+        }
+        console.log('right:', right, 'left:', left);
+        if(left == right) {
+            if(this_user == right || this_user == left) {
+                game_mode = 'attacking';
             }
         }
-        if(this_user == helping) {
-            game_mode = "helping";
+        else if(this_user == left) {
+            game_mode = 'helping';
+        }
+        else if(this_user == right) {
+            game_mode = 'attacking';
         }
         else {
-            game_mode = "none";
+            game_mode = 'none';
         }
     }
     if(data.taking) {
         is_taking = true;
         changeInfoFor(data.taking, " ({% trans 'SCHLUCKT' %})");
     }
+    console.log('game_mode:', game_mode);
 }
 
 function handleNewCards(data, callback, pause) {
