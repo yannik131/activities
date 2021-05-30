@@ -28,7 +28,7 @@
                 </div>
                 
                 <div class="middle">
-                    {% for k, v in match.member_positions.items %}{% if v == match.admin.username %}<b style="color: red">{{ v }}</b>{% else %}{{ v }}{% endif %}{% if v and not forloop.last %}, {% endif %}{% endfor %}<br>
+                    {% for member in match.get_member_names %}{% if forloop.counter == 1%}<b style="color: red">{{ member }}</b>{% else %}{{ member }}{% endif %}{% if not forloop.last %}, {% endif %}{% endfor %}<br>
                     <span style="font-size: 10px">({% trans 'noch' %} {{ match.delete_date|timeuntil }})</span>
                 </div>
                 <div class="bottom">

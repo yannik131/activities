@@ -149,6 +149,9 @@ class MultiplayerMatch(models.Model):
         self.member_positions['1'] = self.admin.username
         self.save()
         
+    def get_member_names(self):
+        return [v for k, v in self.member_positions.items() if v]
+    
     def trim_positions(self):
         positions = dict()
         for i, username in enumerate(self.member_positions.values(), start=1):

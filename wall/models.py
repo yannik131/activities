@@ -52,7 +52,7 @@ class Post(models.Model):
         
     def verbose(self):
         if len(self.message) > 0:
-            return self.message[:10]
+            return self.message[:10]+".."
         return self.__str__()
         
     def get_absolute_url(self):
