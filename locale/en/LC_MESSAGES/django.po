@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-30 11:00+0000\n"
-"PO-Revision-Date: 2021-05-30 13:01+0200\n"
+"POT-Creation-Date: 2021-05-30 19:57+0000\n"
+"PO-Revision-Date: 2021-05-30 21:59+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -149,95 +149,99 @@ msgstr "male"
 msgid "weiblich"
 msgstr "female"
 
-#: account/models.py:36
+#: account/models.py:37
 msgid "hat erstellt"
 msgstr "created"
 
-#: account/models.py:37
+#: account/models.py:38
 msgid "ist jetzt befreundet mit"
 msgstr "is now friends with"
 
-#: account/models.py:38
+#: account/models.py:39
 msgid "ist nicht mehr befreundet mit"
 msgstr "isn't friends any more with"
 
-#: account/models.py:39
+#: account/models.py:40
 msgid "hat Ihnen eine Freundschaftsanfrage geschickt"
 msgstr "sent you a friend request"
 
-#: account/models.py:40
+#: account/models.py:41
 msgid "ist beigetreten"
 msgstr "entered"
 
-#: account/models.py:41
+#: account/models.py:42
 msgid "hat verlassen"
 msgstr "left"
 
-#: account/models.py:42
+#: account/models.py:43
 msgid "hat zugesagt"
 msgstr "confirmed"
 
-#: account/models.py:43
+#: account/models.py:44
 msgid "hat abgesagt"
 msgstr "declined"
 
-#: account/models.py:44
+#: account/models.py:45
 msgid "hat sich beworben"
 msgstr "applied for"
 
-#: account/models.py:45
+#: account/models.py:46
 msgid "hat etwas gepostet in"
 msgstr "posted something in"
 
-#: account/models.py:46
+#: account/models.py:47
+msgid "hat etwas gepostet"
+msgstr "posted something"
+
+#: account/models.py:48
 msgid "hat etwas kommentiert"
 msgstr "commented something"
 
-#: account/models.py:47
+#: account/models.py:49
 msgid "hat eure Freundschaft beendet"
 msgstr "terminated your friendship"
 
-#: account/models.py:48
+#: account/models.py:50
 msgid "hat Sie eingeladen"
 msgstr "invited you"
 
-#: account/models.py:49
+#: account/models.py:51
 msgid "hat Ihre Freundschaftsanfrage angenommen"
 msgstr "accepted your friend request"
 
-#: account/models.py:50
+#: account/models.py:52
 msgid "hat Ihre Freundschaftsanfrage abgelehnt"
 msgstr "declined your friend request"
 
-#: account/models.py:51
+#: account/models.py:53
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr "rejected your friend request"
 
-#: account/models.py:52
+#: account/models.py:54
 msgid "gefällt"
 msgstr "likes"
 
-#: account/models.py:53
+#: account/models.py:55
 msgid "missfällt"
 msgstr "dislikes"
 
-#: account/models.py:197
+#: account/models.py:199
 msgid "Ausstehend"
 msgstr "Pending"
 
-#: account/models.py:198
+#: account/models.py:200
 msgid "Angenommen"
 msgstr "Accepted"
 
-#: account/models.py:199
+#: account/models.py:201
 msgid "Abgelehnt"
 msgstr "Declined"
 
-#: account/models.py:268
+#: account/models.py:270
 msgid "Diese Adresse konnte nicht gefunden werden."
 msgstr "This address could not be found."
 
-#: account/models.py:270
+#: account/models.py:272
 msgid ""
 "Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die "
 "Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
@@ -245,19 +249,19 @@ msgstr ""
 "There is no city connected to this address. Please explicitly give the "
 "city's name (villages/districts may not be recognised)."
 
-#: account/models.py:327 vacancies/models.py:29
+#: account/models.py:329 vacancies/models.py:29
 msgid "Land"
 msgstr "Country"
 
-#: account/models.py:328 vacancies/models.py:30
+#: account/models.py:330 vacancies/models.py:30
 msgid "Bundesland"
 msgstr "State"
 
-#: account/models.py:329 vacancies/models.py:31
+#: account/models.py:331 vacancies/models.py:31
 msgid "Landkreis"
 msgstr "County"
 
-#: account/models.py:330 vacancies/models.py:32
+#: account/models.py:332 vacancies/models.py:32
 msgid "Stadt"
 msgstr "City"
 
@@ -536,7 +540,7 @@ msgid "Gespeichert: "
 msgstr "Saved: "
 
 #: account/templates/account/edit.html:41 account/templates/base.html:44
-#: account/templates/javascript/base.js:59
+#: account/templates/javascript/base.js:61
 #: activity/templates/activity/detail.html:92
 msgid "OK!"
 msgstr "OK!"
@@ -1483,14 +1487,14 @@ msgstr ""
 "Posts are publicly visible on your profile page and the respective category "
 "or activity."
 
-#: account/templates/javascript/base.js:181
+#: account/templates/javascript/base.js:183
 msgid ""
 "Sie haben noch keine Chats. Finden Sie Freunde, Gruppen, Aktivitäten etc., "
 "um zu chatten!"
 msgstr ""
 "You don't have any chats yet. Find friends, groups, activities etc. to chat!"
 
-#: account/templates/javascript/base.js:223
+#: account/templates/javascript/base.js:228
 msgid ""
 "Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie "
 "nur einen Tab für myactivities.net :)"
@@ -1635,9 +1639,7 @@ msgid "Passwort vergessen?"
 msgstr "Forgot your password?"
 
 #: account/templates/registration/password_reset_form.html:9
-msgid ""
-"Geben Sie ihre E-Mail Adresse ein, um ein neues Passwort zugeschickt zu "
-"bekommen."
+msgid "Geben Sie Ihre E-Mail Adresse ein, um Ihr Passwort zurücksetzen."
 msgstr "Enter your email address to reset your password."
 
 #: account/templates/registration/password_reset_form.html:13
@@ -2661,23 +2663,24 @@ msgstr "Please choose on of the three questionnaires before you start."
 msgid "Chat"
 msgstr "Chat"
 
-#: chat/templates/javascript/audiochat.js:198
+#: chat/templates/javascript/audiochat.js:197
+#: chat/templates/javascript/audiochat.js:267
 msgid "verlässt die Konferenz."
 msgstr "is leaving the conference."
 
-#: chat/templates/javascript/audiochat.js:228
+#: chat/templates/javascript/audiochat.js:254
 msgid "tritt der Konferenz bei."
 msgstr "is joining the conference."
 
-#: chat/templates/javascript/room.js:42
+#: chat/templates/javascript/room.js:52
 msgid "ist dem Chat beigetreten."
 msgstr "entered the chat."
 
-#: chat/templates/javascript/room.js:52
+#: chat/templates/javascript/room.js:62
 msgid "hat den Chat verlassen."
 msgstr "left the chat."
 
-#: chat/templates/javascript/room.js:82
+#: chat/templates/javascript/room.js:92
 #: multiplayer/templates/javascript/poker.js:63
 msgid "Sie"
 msgstr "You"
@@ -4174,10 +4177,14 @@ msgstr "Post in"
 msgid ""
 "Hinweis: Bitte achten Sie bei öffentlichen Posts auf den Verzicht von "
 "vulgärer Sprache und laden Sie keine urheberrechtlich geschützten oder "
-"anstößigen Mediendateien hoch."
+"anstößigen Mediendateien hoch.<br><span style=\"color: yellow\">Posts können "
+"nicht editiert werden, um Likes und Kommentare nicht nachträglich zu "
+"invalidieren.</span>"
 msgstr ""
 "Attention: Posts are public. Watch your language and don't upload "
-"copyrighted, offensive or inappropriate material."
+"copyrighted, offensive or inappropriate material.<br><span style=\"color: "
+"yellow\">Posts cannot be edited to prevent invalidation of comments or likes."
+"</span>"
 
 #: wall/templates/wall/post/post_loop.html:33
 #, python-format

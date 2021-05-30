@@ -44,6 +44,7 @@ class User(AbstractUser):
         'declined': _('hat abgesagt'),
         'applied_for': _('hat sich beworben'),
         'posted_in': _('hat etwas gepostet in'),
+        'posted': _('hat etwas gepostet'),
         'commented_in': _('hat etwas kommentiert'),
         'terminated_friendship': _('hat eure Freundschaft beendet'),
         'invited': _('hat Sie eingeladen'),

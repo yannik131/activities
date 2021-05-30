@@ -11,7 +11,7 @@ from account.models import User
 @receiver(post_save, sender=Post)
 def post_created(instance: Post, created, **kwargs):
     if created:
-        notify(instance.author.friends(), instance.author, 'posted_in', instance.target)
+        notify(instance.author.friends(), instance.author, 'posted', instance)
 
 
 @receiver(pre_delete, sender=Post)

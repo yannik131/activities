@@ -111,7 +111,8 @@ class NotificationConsumer(WebsocketConsumer):
                 author=self.user,
                 chat_room=chat_room,
                 text=text_data['message'],
-                created=time)
+                created=time
+            )
         
         broadcast(chat_room.members.all(), {
             'type': 'chat_message',

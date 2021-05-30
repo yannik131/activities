@@ -23,6 +23,13 @@ def test():
     
 def test7():
     stamp = timer()
+    te = dict(a=1, b=2, c=3, d=4, e=5)
+    for i in range(1000):
+        l = 'f' not in te
+    print((timer()-stamp)/10**6)
+    
+def test7():
+    stamp = timer()
     for i in range(1000):
         u = User.objects.get(pk=1)
         u.channel_name = 'None'
