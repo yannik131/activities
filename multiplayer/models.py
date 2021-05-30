@@ -184,6 +184,7 @@ class MultiplayerMatch(models.Model):
                 'url': url
             })
             self.in_progress = False
+            self.created = timezone.now()
             self.save()
         else:
             self.broadcast_data({
