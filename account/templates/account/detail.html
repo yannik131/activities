@@ -33,10 +33,11 @@
             <p>{% trans "Adresse" %}: {{ viewed_user.location.full_address }}</p>
             <p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'account:destroy_friendship' viewed_user.id %}")>{% trans "Freundschaft beenden" %}</button></div></p>
             {% else %}
-                <p class="info-p">{% blocktrans with user=viewed_user.username%}Sie sind nicht mit {{ user }} befreundet{% endblocktrans %}.
+                <p class="info-p">{% blocktrans with user=viewed_user.username %}Sie sind nicht mit {{ user }} befreundet.{% endblocktrans %}
                 {% if requested %}
                     <br><br>{% trans "Sie haben allerdings bereits eine Freundschaftsanfrage gesendet. Diese wurde entweder abgelehnt oder die Antwort steht noch aus" %}.</p>
                 {% else %}
+                    {% blocktrans with user=viewed_user.username %}Schicken Sie eine Freundschaftsanfrage, um zu sehen, welche Aktivitäten {{ user }} mag!{% endblocktrans %}
                 </p><p><div class="center-container"><button class="blue-button" onclick=openLink("{% url 'account:send_friend_request' viewed_user.id %}")>{% trans "Freundschaftsanfrage schicken" %}</button></div></p>
                 {% endif %}
             {% endif %}

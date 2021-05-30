@@ -65,6 +65,7 @@ def send_friend_request(request, target_id):
         if form.is_valid():
             message = form.cleaned_data['message']
             FriendRequest.objects.create(requesting_user=request.user, requested_user=requested_user, request_message=message)
+            messages.add_message(request, messages.INFO, _('Freundschaftsanfrage wurde verschickt.'))
             return HttpResponseRedirect(requested_user.get_absolute_url())
     else:
         form = FriendRequestForm()
