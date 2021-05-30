@@ -80,11 +80,6 @@ class ChatLogEntry(models.Model):
     def __str__(self):
         return self.text
 
-    def full_origin(self, user):
-        if self.chat_room.target_ct == Friendship.content_type():
-            return self.chat_room.title_for_friendship(user)
-        return str(self.chat_room.target) + ", " + self.author.username
-
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         messages = self.chat_room.log_entries.all()

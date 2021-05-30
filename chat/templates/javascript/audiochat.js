@@ -224,7 +224,6 @@ function negotiate(mediaStream) {
     }
     acceptingConnections = true;
     send({'type': 'rtc', 'action': 'join', 'room_id': audio_room_id});
-    //send({'type': 'chat', 'action': 'sent', 'message': "{{ user }} {% trans 'tritt der Konferenz bei.' %}", 'id': audio_room_id});
     colorize({{ user.id }}, audio_room_id, 'darkgreen');
     var joinButton = document.getElementById('call-button-'+audio_room_id);
     if(joinButton) {
@@ -238,7 +237,7 @@ function negotiate(mediaStream) {
     });
 }
 
-function joinAudio(room_id) {
+function joinAudio(room_id, clicked) {
     if(acceptingConnections) {
         leaveAudio();
     }
@@ -251,6 +250,9 @@ function joinAudio(room_id) {
     else {
         negotiate();
     }
+    if(clicked) {
+        send({'type': 'chat', 'action': 'sent', 'once': 1, 'message': "{{ user }} {% trans 'tritt der Konferenz bei.' %}", 'id': audio_room_id});
+    }
 }
 
 function leaveAudio() {
@@ -262,6 +264,7 @@ function leaveAudio() {
         deletePeerConnection(users[users.length-1]);
     }
     send({'type': 'rtc', 'action': 'leave', 'room_id': audio_room_id});
+    send({'type': 'chat', 'action': 'sent', 'once': 1, 'message': this_user+" {% trans 'verlässt die Konferenz.' %}", 'id': audio_room_id});
     colorize({{ user.id }}, audio_room_id, 'white');
     var button = document.getElementById('call-button-'+audio_room_id);
     button.src = "{% static 'icons/call.png' %}";

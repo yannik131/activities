@@ -33,7 +33,7 @@ class NotificationConsumer(WebsocketConsumer):
             self.user = None
             return
         self.user.channel_name = self.channel_name
-        self.user.save()
+        self.user.save(update_fields=['channel_name'])
         async_to_sync(self.channel_layer.group_add)(
             self.user.channel_group_name,
             self.channel_name
@@ -100,18 +100,18 @@ class NotificationConsumer(WebsocketConsumer):
                
     def distribute_chat_message(self, text_data):
         chat_room_id = text_data['id']
-        chat_room = ChatRoom.objects.get(id=chat_room_id) 
+        chat_room = ChatRoom.objects.only('members').get(id=chat_room_id) 
         if 'update_check' in text_data:
             self.user.last_chat_checks.get(room=chat_room).update()
             return
         time = now()
         timestr = time.isoformat()
-
-        log = ChatLogEntry.objects.create(
-            author=self.user,
-            chat_room=chat_room,
-            text=text_data['message'],
-            created=time)
+        if not 'once' in text_data:
+            ChatLogEntry.objects.create(
+                author=self.user,
+                chat_room=chat_room,
+                text=text_data['message'],
+                created=time)
         
         broadcast(chat_room.members.all(), {
             'type': 'chat_message',
@@ -119,7 +119,6 @@ class NotificationConsumer(WebsocketConsumer):
             'message': text_data['message'],
             'username': self.user.username,
             'time': timestr,
-            'origin': log.full_origin(self.user),
             'action': 'sent'
         })
             

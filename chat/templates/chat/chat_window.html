@@ -21,7 +21,7 @@
         {% endif %}
         {% endfor %}
     </div>
-    <img src="{% static 'icons/call.png' %}" class="chat-call" onclick="joinAudio({{ room.id }})" id='call-button-{{ room_id }}'>
+    <img src="{% static 'icons/call.png' %}" class="chat-call" onclick="joinAudio({{ room.id }}, true)" id='call-button-{{ room_id }}'>
 </div>
 <div class="chat-middle" id="middle-{{ room_id }}">
     {% for log_entry in room.log_entries.all %}

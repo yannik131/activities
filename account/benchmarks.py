@@ -21,13 +21,21 @@ def test():
                 user = None
     print((timer()-stamp)/10**6)
     
-def test5():
+def test7():
     stamp = timer()
     for i in range(1000):
         u = User.objects.get(pk=1)
         u.channel_name = 'None'
         u.save()
     print((timer()-stamp)/10**6)
+    
+    stamp = timer()
+    for i in range(1000):
+        u = User.objects.get(pk=1)
+        u.channel_name = 'None'
+        u.save(update_fields=['channel_name'])
+    print((timer()-stamp)/10**6)
+    
     stamp = timer()
     for i in range(1000):
         User.objects.only('channel_name').filter(pk=1).update(channel_name='None')
