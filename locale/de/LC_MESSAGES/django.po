@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-30 20:07+0000\n"
+"POT-Creation-Date: 2021-05-30 20:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1339,69 +1339,73 @@ msgstr ""
 msgid "Aktivierungs-E-Mail"
 msgstr ""
 
-#: account/views.py:61
+#: account/views.py:62
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
 "senden."
 msgstr ""
 
-#: account/views.py:68
+#: account/views.py:65 account/views.py:90 account/views.py:106
+msgid "Ihr seid bereits Freunde."
+msgstr ""
+
+#: account/views.py:72
 msgid "Freundschaftsanfrage wurde verschickt."
 msgstr ""
 
-#: account/views.py:83
+#: account/views.py:87
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr ""
 
-#: account/views.py:117
+#: account/views.py:127
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr ""
 
-#: account/views.py:138
+#: account/views.py:148
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr ""
 
-#: account/views.py:145
+#: account/views.py:155
 #, python-brace-format
 msgid "Sie haben die Freundschaft mit {user} beendet."
 msgstr ""
 
-#: account/views.py:166
+#: account/views.py:176
 msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden. "
 msgstr ""
 
-#: account/views.py:180
+#: account/views.py:190
 msgid "Änderungen gespeichert."
 msgstr ""
 
-#: account/views.py:194
+#: account/views.py:204
 msgid "Sie können den Ort nur höchstens alle 7 Tage wechseln."
 msgstr ""
 
-#: account/views.py:202
+#: account/views.py:212
 msgid "Neue Adresse gespeichert: "
 msgstr ""
 
-#: account/views.py:240
+#: account/views.py:250
 msgid ""
 "Der Aktivierungslink ist ungültig. Falls der Account noch inaktiv ist, "
 "können Sie durch erneutes Registrieren einen neuen anfordern!"
 msgstr ""
 
-#: account/views.py:258
+#: account/views.py:268
 msgid "Passwort erfolgreich geändert."
 msgstr ""
 
-#: account/views.py:262
+#: account/views.py:272
 msgid "Ihr Passwort wurde zurückgesetzt."
 msgstr ""
 
-#: account/views.py:284
+#: account/views.py:294
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr ""
 
-#: account/views.py:286
+#: account/views.py:296
 msgid "Markierung wurde nicht gefunden!"
 msgstr ""
 

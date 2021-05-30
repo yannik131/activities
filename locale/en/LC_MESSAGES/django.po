@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-30 20:07+0000\n"
-"PO-Revision-Date: 2021-05-30 22:35+0200\n"
+"POT-Creation-Date: 2021-05-30 20:57+0000\n"
+"PO-Revision-Date: 2021-05-30 22:57+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -465,7 +465,7 @@ msgid ""
 "entweder abgelehnt oder die Antwort steht noch aus"
 msgstr ""
 "You've already sent a friend request. It was either declined or is still "
-"pending."
+"pending"
 
 #: account/templates/account/detail.html:40
 #, python-format
@@ -1695,7 +1695,7 @@ msgstr ""
 msgid "Aktivierungs-E-Mail"
 msgstr "Activation email"
 
-#: account/views.py:61
+#: account/views.py:62
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
@@ -1704,44 +1704,48 @@ msgstr ""
 "You've already sent a friend request to this user. As long as he doesn't "
 "delete it you can't send another one."
 
-#: account/views.py:68
+#: account/views.py:65 account/views.py:90 account/views.py:106
+msgid "Ihr seid bereits Freunde."
+msgstr "You are already friends."
+
+#: account/views.py:72
 msgid "Freundschaftsanfrage wurde verschickt."
 msgstr "Friend request sent."
 
-#: account/views.py:83
+#: account/views.py:87
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr "You can't send yourself a friend request."
 
-#: account/views.py:117
+#: account/views.py:127
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr "You can't delete this request."
 
-#: account/views.py:138
+#: account/views.py:148
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr "This friendship doesn't exist anymore."
 
-#: account/views.py:145
+#: account/views.py:155
 #, python-brace-format
 msgid "Sie haben die Freundschaft mit {user} beendet."
 msgstr "You terminated your friendship with {user}."
 
-#: account/views.py:166
+#: account/views.py:176
 msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden. "
 msgstr "No e-mail could be sent to the specified address. "
 
-#: account/views.py:180
+#: account/views.py:190
 msgid "Änderungen gespeichert."
 msgstr "Changes saved."
 
-#: account/views.py:194
+#: account/views.py:204
 msgid "Sie können den Ort nur höchstens alle 7 Tage wechseln."
 msgstr "You can change your location only once in 7 days."
 
-#: account/views.py:202
+#: account/views.py:212
 msgid "Neue Adresse gespeichert: "
 msgstr "New address saved: "
 
-#: account/views.py:240
+#: account/views.py:250
 msgid ""
 "Der Aktivierungslink ist ungültig. Falls der Account noch inaktiv ist, "
 "können Sie durch erneutes Registrieren einen neuen anfordern!"
@@ -1749,19 +1753,19 @@ msgstr ""
 "The activation link is invalid. If the account is still inactive, you can "
 "request another one by registering again!"
 
-#: account/views.py:258
+#: account/views.py:268
 msgid "Passwort erfolgreich geändert."
 msgstr "Your password was changed successfully."
 
-#: account/views.py:262
+#: account/views.py:272
 msgid "Ihr Passwort wurde zurückgesetzt."
 msgstr "Your password was successfully reset."
 
-#: account/views.py:284
+#: account/views.py:294
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr "Marker was successfully deleted."
 
-#: account/views.py:286
+#: account/views.py:296
 msgid "Markierung wurde nicht gefunden!"
 msgstr "Marker not found!"
 

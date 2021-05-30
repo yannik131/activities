@@ -19,6 +19,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_text
 from django.contrib.auth import login as auth_login
 from django.urls import reverse
+from django.db.models import Q
 
 
 @login_required
@@ -60,6 +61,9 @@ def send_friend_request(request, target_id):
     if FriendRequest.objects.filter(requesting_user=request.user, requested_user=requested_user).exists():
         messages.add_message(request, messages.INFO, _('Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage senden.'))
         return HttpResponseRedirect(requested_user.get_absolute_url())
+    elif Friendship.objects.filter(Q(to_user=request.user, from_user=requested_user) | Q(to_user=requested_user, from_user=request.user)).exists():
+        messages.add_message(request, messages.INFO, _('Ihr seid bereits Freunde.'))
+        return HttpResponseRedirect(requested_user.get_absolute_url())
     if request.method == 'POST':
         form = FriendRequestForm(request.POST)
         if form.is_valid():
@@ -82,6 +86,9 @@ def send_custom_friend_request(request):
             if user == request.user:
                 messages.add_message(request, messages.INFO, _('Sie können sich nicht selbst eine Freundschaftsanfrage schicken.'))
                 return HttpResponseRedirect(request.build_absolute_uri('/account/friend_requests_list/'))
+            elif Friendship.objects.filter(Q(to_user=request.user, from_user=user) | Q(to_user=user, from_user=request.user)).exists():
+                messages.add_message(request, messages.INFO, _('Ihr seid bereits Freunde.'))
+                return HttpResponseRedirect(request.build_absolute_uri('/account/friend_requests_list/'))
             fr, created = FriendRequest.objects.get_or_create(requesting_user=request.user, requested_user=user, request_message=message)
             if not created:
                 fr.request_message = message
@@ -95,7 +102,10 @@ def send_custom_friend_request(request):
 @login_required
 def accept_request(request, id):
     friend_request = get_object_or_404(FriendRequest, requested_user=request.user, id=id)
-    _, created = Friendship.objects.get_or_create(from_user=friend_request.requesting_user, to_user=friend_request.requested_user)
+    if Friendship.objects.filter(Q(to_user=request.user, from_user=friend_request.requesting_user) | Q(to_user=friend_request.requesting_user, from_user=request.user)).exists():
+        messages.add_message(request, messages.INFO, _('Ihr seid bereits Freunde.'))
+    else:
+        friendship, created = Friendship.objects.get_or_create(from_user=friend_request.requesting_user, to_user=friend_request.requested_user)
     friend_request.delete()
     return HttpResponseRedirect(request.build_absolute_uri('/account/friend_requests_list/'))
 
