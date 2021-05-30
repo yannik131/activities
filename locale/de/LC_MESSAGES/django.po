@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-29 15:13+0000\n"
+"POT-Creation-Date: 2021-05-30 11:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -454,9 +454,9 @@ msgstr ""
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:413
-#: multiplayer/templates/javascript/durak.js:449
-#: multiplayer/templates/javascript/durak.js:467
+#: multiplayer/templates/javascript/durak.js:414
+#: multiplayer/templates/javascript/durak.js:450
+#: multiplayer/templates/javascript/durak.js:468
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:14
 #: usergroups/templates/usergroups/edit_group.html:13
@@ -2119,15 +2119,15 @@ msgstr ""
 msgid "tritt der Konferenz bei."
 msgstr ""
 
-#: chat/templates/javascript/room.js:39
+#: chat/templates/javascript/room.js:42
 msgid "ist dem Chat beigetreten."
 msgstr ""
 
-#: chat/templates/javascript/room.js:49
+#: chat/templates/javascript/room.js:52
 msgid "hat den Chat verlassen."
 msgstr ""
 
-#: chat/templates/javascript/room.js:79
+#: chat/templates/javascript/room.js:82
 #: multiplayer/templates/javascript/poker.js:63
 msgid "Sie"
 msgstr ""
@@ -2677,30 +2677,30 @@ msgid "Normalspiel"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:360
-#: multiplayer/templates/javascript/durak.js:186
+#: multiplayer/templates/javascript/durak.js:187
 #: multiplayer/templates/javascript/skat.js:165
 #: multiplayer/templates/javascript/skat.js:203
 msgid "Spiel Nummer"
 msgstr ""
 
 #: multiplayer/templates/javascript/durak.js:87
-#: multiplayer/templates/javascript/durak.js:243
+#: multiplayer/templates/javascript/durak.js:244
 msgid "SCHLUCKT"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:196
+#: multiplayer/templates/javascript/durak.js:197
 msgid "ANGREIFER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:199
+#: multiplayer/templates/javascript/durak.js:200
 msgid "VERTEIDIGER"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:429
+#: multiplayer/templates/javascript/durak.js:430
 msgid "Schlucken"
 msgstr ""
 
-#: multiplayer/templates/javascript/durak.js:439
+#: multiplayer/templates/javascript/durak.js:440
 msgid "Schieben"
 msgstr ""
 
@@ -2893,10 +2893,10 @@ msgstr ""
 msgid ""
 "Hier können Sie %(activity)s online spielen (<a href=\"/multiplayer/rules"
 "\">Spielregeln finden Sie hier</a>). Als Ersteller eines Matches können Sie "
-"das Spiel starten, wenn die eingestellte Spieleranzahl anwesend ist. Durch "
-"Klick auf den Mülleimer schmeißen Sie Leute raus. Den Chat erreichen Sie im "
-"Spiel über den Chat-Button oben rechts.<br><span style=\"color: yellow"
-"\">Noch nicht begonnene Spiele werden nach 1 Stunde, laufende nach 2 Tagen "
+"das Spiel starten, sobald die Mindestspieleranzahl anwesend ist. Durch Klick "
+"auf den Mülleimer schmeißen Sie Leute raus. Den Chat erreichen Sie im Spiel "
+"über den Chat-Button oben rechts.<br><span style=\"color: yellow\">Noch "
+"nicht begonnene Spiele werden nach 1 Stunde, laufende nach 2 Tagen "
 "automatisch gelöscht.</span>"
 msgstr ""
 

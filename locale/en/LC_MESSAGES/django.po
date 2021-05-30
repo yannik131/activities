@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-29 15:13+0000\n"
-"PO-Revision-Date: 2021-05-29 17:13+0200\n"
+"POT-Creation-Date: 2021-05-30 11:00+0000\n"
+"PO-Revision-Date: 2021-05-30 13:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -487,9 +487,9 @@ msgstr "You can edit your account with the following form:"
 #: competitions/templates/competitions/create_tournament.html:12
 #: competitions/templates/competitions/edit_match.html:15
 #: competitions/templates/competitions/edit_tournament.html:12
-#: multiplayer/templates/javascript/durak.js:413
-#: multiplayer/templates/javascript/durak.js:449
-#: multiplayer/templates/javascript/durak.js:467
+#: multiplayer/templates/javascript/durak.js:414
+#: multiplayer/templates/javascript/durak.js:450
+#: multiplayer/templates/javascript/durak.js:468
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:14
 #: usergroups/templates/usergroups/edit_group.html:13
@@ -2669,15 +2669,15 @@ msgstr "is leaving the conference."
 msgid "tritt der Konferenz bei."
 msgstr "is joining the conference."
 
-#: chat/templates/javascript/room.js:39
+#: chat/templates/javascript/room.js:42
 msgid "ist dem Chat beigetreten."
 msgstr "entered the chat."
 
-#: chat/templates/javascript/room.js:49
+#: chat/templates/javascript/room.js:52
 msgid "hat den Chat verlassen."
 msgstr "left the chat."
 
-#: chat/templates/javascript/room.js:79
+#: chat/templates/javascript/room.js:82
 #: multiplayer/templates/javascript/poker.js:63
 msgid "Sie"
 msgstr "You"
@@ -3242,30 +3242,30 @@ msgid "Normalspiel"
 msgstr "Normal game"
 
 #: multiplayer/templates/javascript/doppelkopf.js:360
-#: multiplayer/templates/javascript/durak.js:186
+#: multiplayer/templates/javascript/durak.js:187
 #: multiplayer/templates/javascript/skat.js:165
 #: multiplayer/templates/javascript/skat.js:203
 msgid "Spiel Nummer"
 msgstr "Game number"
 
 #: multiplayer/templates/javascript/durak.js:87
-#: multiplayer/templates/javascript/durak.js:243
+#: multiplayer/templates/javascript/durak.js:244
 msgid "SCHLUCKT"
 msgstr "GOBBLING"
 
-#: multiplayer/templates/javascript/durak.js:196
+#: multiplayer/templates/javascript/durak.js:197
 msgid "ANGREIFER"
 msgstr "ATTACKER"
 
-#: multiplayer/templates/javascript/durak.js:199
+#: multiplayer/templates/javascript/durak.js:200
 msgid "VERTEIDIGER"
 msgstr "DEFENDER"
 
-#: multiplayer/templates/javascript/durak.js:429
+#: multiplayer/templates/javascript/durak.js:430
 msgid "Schlucken"
 msgstr "Gobble"
 
-#: multiplayer/templates/javascript/durak.js:439
+#: multiplayer/templates/javascript/durak.js:440
 msgid "Schieben"
 msgstr "Transfer"
 
@@ -3458,19 +3458,19 @@ msgstr "Blinds"
 msgid ""
 "Hier können Sie %(activity)s online spielen (<a href=\"/multiplayer/rules"
 "\">Spielregeln finden Sie hier</a>). Als Ersteller eines Matches können Sie "
-"das Spiel starten, wenn die eingestellte Spieleranzahl anwesend ist. Durch "
-"Klick auf den Mülleimer schmeißen Sie Leute raus. Den Chat erreichen Sie im "
-"Spiel über den Chat-Button oben rechts.<br><span style=\"color: yellow"
-"\">Noch nicht begonnene Spiele werden nach 1 Stunde, laufende nach 2 Tagen "
+"das Spiel starten, sobald die Mindestspieleranzahl anwesend ist. Durch Klick "
+"auf den Mülleimer schmeißen Sie Leute raus. Den Chat erreichen Sie im Spiel "
+"über den Chat-Button oben rechts.<br><span style=\"color: yellow\">Noch "
+"nicht begonnene Spiele werden nach 1 Stunde, laufende nach 2 Tagen "
 "automatisch gelöscht.</span>"
 msgstr ""
 "Here you can play %(activity)s online (<a href=\"/multiplayer/rules\">you "
 "can find the rules here</a>). If you've created a match, you can start it "
-"once the specified member limit is reached. By clicking on the garbage can "
-"you can kick users. Don't rejoin a game that you've been kicked from unless "
-"you have a good reason. During the game, the chat can be accessed by the "
-"chat button in the top right corner.<br><span style=\"color: yellow"
-"\">Running games are deleted after 2 days, all others after 1 hour.</span>"
+"once the minimum member limit is reached. By clicking on the garbage can you "
+"can kick users. Don't rejoin a game that you've been kicked from unless you "
+"have a good reason. During the game, the chat can be accessed by the chat "
+"button in the top right corner.<br><span style=\"color: yellow\">Running "
+"games are deleted after 2 days, all others after 1 hour.</span>"
 
 #: multiplayer/templates/multiplayer/lobby.html:22
 msgid "Beigetreten"

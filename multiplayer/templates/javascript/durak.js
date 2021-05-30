@@ -136,6 +136,7 @@ function cardClicked(value, suit, card) {
                 return;
             }
             break;
+        case 'cheating':
         case "helping":
             if(!old_stacks.length || !stacksContain(value)) {
                 return;
@@ -231,7 +232,7 @@ function determineGameMode(data) {
         }
         else {
             if(all_help) {
-                game_mode = 'helping';
+                game_mode = 'cheating';
             }
             else {
                 game_mode = 'none';
@@ -373,7 +374,7 @@ function stacksContain(value, suit) {
 }
 
 function attackingIsPossible() {
-    if(game_mode != "attacking" && game_mode != "helping") {
+    if(game_mode != "attacking" && game_mode != "helping" && game_mode != 'cheating') {
         return false;
     }
     var count = player_cards[players[defending]].length;
@@ -526,9 +527,6 @@ function setupNewRound(data) {
     old_stacks = [];
     var new_deck = JSON.parse(data.deck);
     removeCardsFromDeck(deck.length-new_deck.length);
-    determineGameMode(data);
-    updatePlayerInfo(data);
-    updateDone(data.done_list);
     for(var i = 0; i < player_list.length; i++) {
         var username = player_list[i];
         var player = players[username];
@@ -553,6 +551,9 @@ function setupNewRound(data) {
             }
         }
     }
+    determineGameMode(data);
+    updatePlayerInfo(data);
+    updateDone(data.done_list);
 }
 
 function handleTransfer(data) {

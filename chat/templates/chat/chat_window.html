@@ -43,8 +43,8 @@
 </div>
 <div class="chat-bottom" id='chat-bottom-{{ room_id }}'>
     <div contenteditable="true" class="chat-input" id='chat-input-{{ room_id }}'></div>
-    <div class="chat-send-img">
-        <img src="{% static '/icons/send.png' %}" onclick=submitClick()>
+    <div class="chat-send-img" id='chat-img-{{ room_id }}'>
+        <img src="{% static '/icons/send.png' %}">
     </div>
 </div>
 {% endwith %}

@@ -20,6 +20,9 @@ function init_chat(pk) {
             submitClick(this);
         }
     }
+    
+    var send_img = document.getElementById('chat-img-'+pk);
+    send_img.onclick = function() { submitClick(chat_input); }
 
     chat_input.addEventListener('focusout', function() {
         window.scrollTo(0, 0);
