@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-30 20:07+0000\n"
-"PO-Revision-Date: 2021-05-30 22:07+0200\n"
+"PO-Revision-Date: 2021-05-30 22:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -622,7 +622,7 @@ msgstr "Received requests"
 #: account/templates/account/friend_requests_list.html:31
 #: competitions/templates/competitions/full_table.html:8
 msgid "Von"
-msgstr "Tournament"
+msgstr "From"
 
 #: account/templates/account/friend_requests_list.html:43
 #: vacancies/templates/vacancies/invitation_list.html:17
