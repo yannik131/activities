@@ -84,7 +84,7 @@ function colorize(user_id, room_id, color) {
         var old_color = old_colors[user_span.id];
         var new_color;
         if(!old_color) {
-            old_color = user_span.style.color || "white";
+            old_color = "white" || user_span.style.color;
             old_colors[user_span.id] = old_color;
         }
         if(color == "white") {
@@ -267,6 +267,7 @@ function leaveAudio() {
     button.src = "{% static 'icons/call.png' %}";
     var room_id = audio_room_id;
     button.onclick = function() { joinAudio(room_id); };
+    audio_room_id = undefined;
 }
 
 {% if user.audio_room_id %}
