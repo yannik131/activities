@@ -6,6 +6,7 @@
 var whitespaceRegex = /\s/
 var kicked_out = false;
 var room_imgs_loaded = {};
+var audio_room_id;
 
 function init_chat(pk) {
     if(room_imgs_loaded[pk] != undefined) {
@@ -19,6 +20,13 @@ function init_chat(pk) {
             e.preventDefault();
             submitClick(this);
         }
+    }
+    var joinButton = document.getElementById('call-button-'+audio_room_id);
+    if(joinButton) {
+        joinButton.src = "{% static 'icons/hangup.png' %}";
+        joinButton.onclick = leaveAudio;
+        var user_span = document.getElementById(audio_room_id+'-member-name-{{ user.id }}');
+        user_span.style.color = 'darkgreen';
     }
     
     var send_img = document.getElementById('chat-img-'+pk);

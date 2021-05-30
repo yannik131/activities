@@ -5,6 +5,8 @@ const this_user = "{{ user }}";
 let current_room_id;
 {% if current_chat_room %}
     current_room_id = {{ current_chat_room.id }};
+{% elif user.audio_room_id %}
+    current_room_id = {{ user.audio_room_id }};
 {% endif %}
 
 function activateMenu(element_id) {
@@ -192,8 +194,11 @@ function connect() {
                             container.appendChild(div);
                             activateMenu('right-chat');
                             if(current_room_id) {
-                                requestChatWindow(current_room_id);
-                                document.getElementById('chat-list').scrollTop = document.getElementById(`chat-item-${current_room_id}`).offsetTop-20;
+                                var item = document.getElementById(`chat-item-${current_room_id}`);
+                                if(item) {
+                                    requestChatWindow(current_room_id);
+                                    document.getElementById('chat-list').scrollTop = item.offsetTop-20;
+                                }
                             }
                         }
                         break;

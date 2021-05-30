@@ -30,4 +30,7 @@ def chat_members_changed(instance, pk_set, model, action, **kwargs):
             'user_id': user.id,
             'room_id': instance.id
         })
+        if user.audio_room_id == instance.id:
+            user.audio_room_id = None
+            user.save()
         

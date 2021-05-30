@@ -44,11 +44,9 @@ class NotificationConsumer(WebsocketConsumer):
     def disconnect(self, code):
         if not self.user:
             return
-        user = User.objects.get(id=self.user.id)
-        user.channel_name = None
-        user.save()
+        User.objects.only('channel_name').filter(id=self.user.id).update(channel_name=None)
         if self.rtc_room_id:
-            self.rtc_send({'action': 'disconnect', 'user_id': user.id, 'username': self.user.username}, {'room_id': self.rtc_room_id})
+            self.rtc_send({'action': 'disconnect', 'user_id': self.user.id, 'username': self.user.username}, {'room_id': self.rtc_room_id})
         async_to_sync(self.channel_layer.group_discard)(
             self.user.channel_group_name,
             self.channel_name
@@ -179,6 +177,9 @@ class NotificationConsumer(WebsocketConsumer):
     def handle_rtc_message(self, text_data):
         if text_data["action"] == "join":
             self.rtc_room_id = text_data['room_id']
+            user = User.objects.get(pk=self.user.id)
+            user.audio_room_id = text_data['room_id']
+            user.save()
             self.rtc_send({
                 'action': 'join'
             }, text_data)
@@ -201,6 +202,9 @@ class NotificationConsumer(WebsocketConsumer):
                 'channel': text_data['channel']
             })
         elif text_data['action'] == 'leave':
+            user = User.objects.get(pk=self.user.id)
+            user.audio_room_id = None
+            user.save()
             self.rtc_send({
                 'action': 'leave',
                 'username': self.user.username

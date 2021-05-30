@@ -31,6 +31,7 @@ class User(AbstractUser):
     channel_name = models.CharField(max_length=100, null=True)
     character = models.OneToOneField(Character, on_delete=models.SET_NULL, null=True, related_name='user')
     last_location_change = models.DateTimeField(null=True, blank=True)
+    audio_room_id = models.PositiveIntegerField(null=True)
     LOCATION_CHANGE_DAYS = 7
     action_strings = {
         'created': _('hat erstellt'),

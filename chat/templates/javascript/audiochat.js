@@ -22,7 +22,6 @@ var tracks = {};
 let localTrack;
 var acceptingConnections = false;
 var old_colors = {};
-var audio_room_id;
 
 function requestShow(room_id) {
     if(user_websocket.readyState != user_websocket.OPEN) {
@@ -45,7 +44,7 @@ function handleRTCMessage(data) {
             if(data.room_id != audio_room_id) {
                 return;
             }
-            send({'type': 'rtc', 'action': 'show', 'room_id': room_id, 'live': acceptingConnections});
+            send({'type': 'rtc', 'action': 'show', 'room_id': data.room_id, 'live': acceptingConnections});
             break;
         case 'show':
             colorize(data.user_id, data.room_id, data.live? 'darkgreen': 'white');
@@ -195,9 +194,9 @@ function handleCandidate(data) {
 
 function handleLeave(data) {
     deletePeerConnection(data.user_id);
-    data.message = data.username+" {% trans 'verlässt die Konferenz.' %}";
+    /*data.message = data.username+" {% trans 'verlässt die Konferenz.' %}";
     data.time = new Date();
-    addMessageToChat(data);
+    addMessageToChat(data);*/
 }
 
 function deletePeerConnection(user) {
@@ -225,11 +224,13 @@ function negotiate(mediaStream) {
     }
     acceptingConnections = true;
     send({'type': 'rtc', 'action': 'join', 'room_id': audio_room_id});
-    send({'type': 'chat', 'action': 'sent', 'message': "{{ user }} {% trans 'tritt der Konferenz bei.' %}", 'id': audio_room_id});
+    //send({'type': 'chat', 'action': 'sent', 'message': "{{ user }} {% trans 'tritt der Konferenz bei.' %}", 'id': audio_room_id});
     colorize({{ user.id }}, audio_room_id, 'darkgreen');
     var joinButton = document.getElementById('call-button-'+audio_room_id);
-    joinButton.src = "{% static 'icons/hangup.png' %}";
-    joinButton.onclick = leaveAudio;
+    if(joinButton) {
+        joinButton.src = "{% static 'icons/hangup.png' %}";
+        joinButton.onclick = leaveAudio;
+    }
     window.addEventListener('beforeunload', function(e) {
         if(localTrack) {
             localTrack.stop();
@@ -267,3 +268,11 @@ function leaveAudio() {
     var room_id = audio_room_id;
     button.onclick = function() { joinAudio(room_id); };
 }
+
+{% if user.audio_room_id %}
+    window.addEventListener('load', function() {
+        user_websocket.addEventListener('open', function() {
+            joinAudio({{ user.audio_room_id }});
+        });
+    });
+{% endif %}
