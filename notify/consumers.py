@@ -17,10 +17,12 @@ from django.utils import translation
 from redis import StrictRedis
 conn = StrictRedis(host="localhost", port=6655)
 import redis_lock
+from time import perf_counter_ns as timer
 
 
 class NotificationConsumer(WebsocketConsumer):
     def connect(self):
+        stamp = timer()
         user_id = self.scope['url_route']['kwargs']['user_id']
         self.user = User.objects.get(id=user_id)
         key = self.scope['url_route']['kwargs']['key']
@@ -40,6 +42,7 @@ class NotificationConsumer(WebsocketConsumer):
         )
         self.accept()
         self.rtc_room_id = None
+        log((timer()-stamp)/10**9)
 
     def disconnect(self, code):
         if not self.user:
