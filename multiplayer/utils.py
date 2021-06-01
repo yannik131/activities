@@ -46,7 +46,7 @@ def possible_attack_count(data):
 
 
 def refresh_stacks(data, text_data, beating):
-    if text_data['defending'] != data['defending'] or (not beating and possible_attack_count(data) == 0):
+    if text_data['defending'] != data['defending'] or (not beating and text_data['action'] != 'transfer' and possible_attack_count(data) == 0):
         return True
     server_stacks = json.loads(data['stacks'])
     if not beating:
@@ -64,7 +64,6 @@ def refresh_stacks(data, text_data, beating):
 
 
 def check_durak_done(data):
-    log('checking:', data, 'count=', possible_attack_count(data))
     if possible_attack_count(data) > 0:
         n = len(get_players_with_cards(json.loads(data['players']), data))
         if n > 1:
@@ -313,8 +312,8 @@ def determine_winner_doko(data, last_winner, charlie):
             change(data, "re_extra", 1)
         else:
             change(data, "contra_extra", 1)
-    re_points, count = sum_tricks(data, re, "Re")
-    _, _ = sum_tricks(data, contra, "Kontra")
+    re_points, count = sum_tricks(data, re, "re")
+    _, _ = sum_tricks(data, contra, "contra")
     
     value = data["contra_value"]
     if value == "s" and count == 12:
@@ -353,7 +352,7 @@ def give_doko_points(data, players, result, winner_points):
         points += DOKO_VALUES[data["re_value"]]
     
     for mark in [151, 181, 211, 240]:
-        if winner_points > mark:
+        if winner_points >= mark:
             points += 1
         else:
             break
@@ -637,7 +636,8 @@ def determine_winners_poker(data):
             summary += f'Side Pot {i}:\n'
         total_reward = pot[0]
         each = int(pot[0]/len(pot[1]))
-        summary += f'HAND{pot[1][0][1]}HAND\n'
+        if len(pot[1]) > 1:
+            summary += f'HAND{pot[1][0][1]}HAND\n'
         for player in pot[1]:
             change(data, player[0]+'_stack', each)
             summary += f'{player[0]} +{each}\n'

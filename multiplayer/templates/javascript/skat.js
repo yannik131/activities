@@ -541,6 +541,7 @@ function cardClicked(value, suit, card) {
     }
     removePlayerCard(card, game_type != "n");
     sendMove();
+    active = undefined;
 }
 
 function createBidButtons(active, highest_bid, more) {

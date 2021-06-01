@@ -90,7 +90,5 @@ beitreten icon nicht anzeigen chat wenn chat nebenbei offen
 ist konferenz beigetreten zeitzone
 call bei nächster runde raise vorm flop falsch angezeigt
 durak 5 spieler
-nicht zeigen side pot anzeigen was man hatte
-durak verteidiger mitsenden und checken
 schummeln: karte mit 2 callbacks, auswählen was gemacht werden soll
-jemand verlässt match 4/5 aber angezeigt a, b, , name1name2
+karten offset falsch doko

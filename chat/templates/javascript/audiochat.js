@@ -251,7 +251,7 @@ function joinAudio(room_id, clicked) {
         negotiate();
     }
     if(clicked) {
-        send({'type': 'chat', 'action': 'sent', 'once': 1, 'message': "{{ user }} {% trans 'tritt der Konferenz bei.' %}", 'id': audio_room_id});
+        send({'type': 'chat', 'action': 'sent', 'message': "{{ user }} {% trans 'tritt der Konferenz bei.' %}", 'id': audio_room_id});
     }
 }
 

@@ -270,7 +270,7 @@ class MultiplayerMatch(models.Model):
 
     def start_durak(self):
         if self.member_limit <= 3:
-            players, deck = self.create_players(6, "6", "7", "8", "9", "10", "J", "Q", "K", "A")
+            players, deck = self.create_players(6, "10", "J", "Q", "K", "A")
         elif self.member_limit == 4:
             players, deck = self.create_players(6, "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A")
         else:

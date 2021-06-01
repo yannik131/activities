@@ -387,7 +387,7 @@ function cardClicked(value, suit, card) {
         }
         beatStack(1, card.id, true);
     }
-    
+    active = undefined;
     removePlayerCard(card);
     sendMove();
 }

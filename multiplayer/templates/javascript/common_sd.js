@@ -41,15 +41,22 @@ function lastTrickButton() {
         deleteButton("last_trick");
         return;
     }
+    var trick = document.getElementById("last_trick0");
     var label = "{% trans 'Stich' %}";
-    if(document.getElementById("last_trick0")) {
+    if(trick) {
         label = "{% trans 'Okay' %}";
     }
-    createButton(label, "last_trick", function() {
+    var button = document.getElementById('last_trick');
+    function callback() {
         toggleLastTrick();
-        deleteButton("last_trick");
         lastTrickButton();
-    });
+    }
+    if(!button) {
+        createButton(label, "last_trick", callback);
+    }
+    else {
+        button.innerHTML = label;
+    }
 }
 
 function toggleLastTrick() {
