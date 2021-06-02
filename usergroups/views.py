@@ -32,12 +32,12 @@ def group_list(request, id=None):
 
 def group_detail(request, id):
     group = get_object_or_404(UserGroup, id=id)
-    is_in_group = request.user in group.members.all()
-    if not group.public and not is_in_group:
+    is_member = request.user in group.members.all()
+    if not group.public and not is_member:
         return handler403(request)
     posts = Post.objects.filter(target_ct=UserGroup.content_type(), target_id=group.id)
     posts, page = paginate(posts, request)
-    return render(request, 'usergroups/group_detail.html', dict(group=group, is_member=is_in_group, posts=posts, page=page))
+    return render(request, 'usergroups/group_detail.html', dict(group=group, is_member=is_member, is_admin=request.user==group.admin, posts=posts, page=page, members=group.members.order_by('username')))
 
 
 def edit_group(request, id):
