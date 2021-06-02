@@ -11,6 +11,7 @@ from time import perf_counter_ns as timer
 import time
 geolocator = Nominatim(user_agent='activities')
 
+
 def geocode(*args, **kwargs):
     location = geolocator.geocode(*args, **kwargs)
     time.sleep(1)
@@ -33,3 +34,4 @@ def test(func, n=100):
     for i in range(n):
         func()
     print((timer()-stamp)/10**6)
+    

@@ -9,7 +9,7 @@ from account.models import Location
 class MatchForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['start_time'].widget.attrs['class'] = 'datetime'
+        self.fields['start_time'].widget.attrs = shared.DATETIME_ATTRS
     location = forms.CharField(label=_('Austragungsort (Stadt)'))
 
     class Meta:
@@ -38,8 +38,8 @@ class MatchForm(forms.ModelForm):
 class TournamentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['start_time'].widget.attrs['class'] = 'datetime'
-        self.fields['application_deadline'].widget.attrs['class'] = 'datetime'
+        self.fields['start_time'].widget.attrs = shared.DATETIME_ATTRS
+        self.fields['application_deadline'].widget.attrs = shared.DATETIME_ATTRS
         
     location = forms.CharField(label=_('Austragungsort (Stadt)'))
 
