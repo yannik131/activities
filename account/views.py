@@ -272,20 +272,24 @@ def password_reset_complete(request):
     messages.add_message(request, messages.INFO, _('Ihr Passwort wurde zurückgesetzt.'))
     return HttpResponseRedirect(reverse('account:login'))
     
-def people_list(request):
+def people_list(request, search_string=None):
     component_index = int(request.GET.get('component_index', 3))
     component = Location.components[component_index]
     chosen_component = getattr(request.user.location, component)
     location = request.user.location.get_parent(component_index)
     people = list()
-    for user in location.get_population(User.objects.all()).exclude(id=request.user.id)[:30]:
+    if search_string:
+        users = User.objects.filter(username__icontains=search_string)
+    else:
+        users = location.get_population(User.objects.all()).exclude(id=request.user.id)
+    for user in users[:30]:
         if user.character and request.user.character:
             people.append([user, request.user.character.congruence_with(user.character)])
         else:
             people.append([user, None])
     people = sorted(people, key=lambda t: t[1] if t[1] else 0, reverse=True)
     people, page = shared.paginate(people, request, 10)
-    return render(request, 'account/people_list.html', dict(people=people, component_index=component_index, chosen_component=chosen_component, location=location))
+    return render(request, 'account/people_list.html', dict(people=people, component_index=component_index, chosen_component=chosen_component, location=location, search_string=search_string))
     
 def delete_marker(request, marker_id):
     try:

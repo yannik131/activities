@@ -1,7 +1,7 @@
 let input;
 
 function search() {
-    openLink("{% url 'activity:list' %}"+input.value);
+    openLink("{{ url }}"+input.value);
 }
 
 window.addEventListener('load', function() {

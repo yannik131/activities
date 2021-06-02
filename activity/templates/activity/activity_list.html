@@ -40,6 +40,7 @@
     <p></p>
     <script>
         {% include 'javascript/list.js' %}
+        {% url 'activity:list' as url %}
         {% include 'javascript/search.js' %}
     </script>
 {% endblock %}

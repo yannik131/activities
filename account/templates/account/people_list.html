@@ -10,10 +10,21 @@
 <p class="info-p">
     {% trans 'Hier werden die ersten 30 Mitglieder in der ausgewählten Gegend angezeigt. Haben Sie den <a href="/character/overview">Persönlichkeitstest</a> gemacht, werden die Mitglieder nach Charakterübereinstimmung in % sortiert. Schicken Sie doch eine Freundschaftsanfrage an die Leute ganz hinten &#128540;' %}
 </p>
-<p style="text-align: center">
-    {% trans "Mitglieder anzeigen" %}: <br/>
-    {% include 'activity/location_selection.html' %}
-</p>
+{% if not search_string %}
+    <p style="text-align: center">
+        {% trans "Mitglieder anzeigen" %}: <br/>
+        {% include 'activity/location_selection.html' %}
+    </p>
+{% endif %}
+<div class="search-bar">
+    {% trans 'Suche nach Nutzername: ' %}
+    <input type="search" id="search-input" class="search-input" name="activity-search" value="{{ search_string|default_if_none:'' }}">
+    <img src="{% static '/icons/search.png' %}" onclick=search() height="25px" style="margin-left: 5px; cursor: pointer">
+    <script>
+        {% url 'account:people_list' as url %}
+        {% include 'javascript/search.js' %}
+    </script>
+</div>
 {% include "account/pagination_component.html" with page=people %}
 <div class="list">
     {% for user, score in people %}

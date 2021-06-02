@@ -11,7 +11,7 @@
         <div class="info-p">
 	<p>{% blocktrans with v0=user.username %}Willkommen, {{ v0 }}.{% endblocktrans %}
         {% if not user.activities.exists %}
-        <br>{% trans 'Da Sie noch keiner Aktivität beigetreten sind, müssen Sie wohl neu hier sein. Oben links finden Sie das Dropdown-Menu. Über "Aktivitäten" und "Kategorien" können Sie sich anschauen, welche Aktivitäten es gibt und welche Ihnen vielleicht Spaß machen könnten. Die Kartenspiele Durak, Skat, Doppelkopf und Poker können Sie <a href="/competitions/user_overview">gleich hier online spielen</a>. Wenn Sie herausfinden wollen, welche Aktivitäten zu Ihnen passen, gibt es auch einen Persönlichkeitstest für Sie. Hier sind ein paar Startpunkte:' %}
+        <p>{% trans 'Da Sie noch keiner Aktivität beigetreten sind, müssen Sie wohl neu hier sein.<br><ul style="text-align: left;"><li>Oben links finden Sie das Dropdown-Menu. Über "Aktivitäten" und "Kategorien" können Sie sich anschauen, welche Aktivitäten es gibt und welche Ihnen vielleicht Spaß machen könnten.</li><li>Die Kartenspiele Durak, Skat, Doppelkopf und Poker können Sie <a href="/competitions/user_overview">gleich hier online spielen</a>.</li><li>Wenn Sie herausfinden wollen, welche Aktivitäten zu Ihnen passen, gibt es auch einen <a href="/character/overview">Persönlichkeitstest für Sie</a>.</li></ul>' %}</p>
         {% endif %}
     </p>
     {% if missing_fields %}

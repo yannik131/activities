@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-30 20:57+0000\n"
-"PO-Revision-Date: 2021-05-30 22:57+0200\n"
+"POT-Creation-Date: 2021-06-02 10:37+0000\n"
+"PO-Revision-Date: 2021-06-02 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -406,8 +406,8 @@ msgstr "Click the button to delete your account."
 
 #: account/templates/account/delete.html:11
 #: account/templates/account/edit.html:31
-#: account/templates/account/friend_requests_list.html:53
-#: account/templates/account/friend_requests_list.html:76
+#: account/templates/account/friend_requests_list.html:54
+#: account/templates/account/friend_requests_list.html:77
 #: usergroups/templates/usergroups/appointment_list.html:48
 #: usergroups/templates/usergroups/invitation_list.html:16
 #: vacancies/templates/vacancies/application_list.html:30
@@ -591,51 +591,53 @@ msgstr "Friends"
 msgid "Ihre Freunde"
 msgstr "Your friends"
 
-#: account/templates/account/friend_requests_list.html:12
+#: account/templates/account/friend_requests_list.html:13
+#, python-format
 msgid ""
 "Freunde finden Sie z. B. über Mitglieder von gemeinsamen <a href=\"/activity/"
 "list\">Aktivitäten</a> oder über's <a href=\"/competitions/user_overview"
 "\">Zocken</a>. Kennen Sie den Nutzernamen, können Sie auch direkt eine "
 "Anfrage senden. Falls Sie den <a href=\"/character/overview"
-"\">Persönlichkeitstest</a> gemacht haben, können Sie sogar nach Leuten in "
-"Ihrer Nähe suchen und nach Übereinstimmung mit Ihrem Charakter sortieren! "
+"\">Persönlichkeitstest</a> gemacht haben, können Sie sogar nach Leuten <a "
+"href=\"%(list)s\">in Ihrer Nähe suchen</a> und nach Übereinstimmung mit "
+"Ihrem Charakter sortieren!"
 msgstr ""
 "You can find friends by checking the member list of your <a href=\"/activity/"
 "list\">activities</a> or via <a href=\"/competitions/user_overview\">gaming</"
 "a>. If you know the username of someone you can also directly send a friend "
 "request. And if you’ve completed the <a href=\"/character/overview"
-"\">personality test</a>, you can even search for people in your area and "
-"sort them by character congruence! "
+"\">personality test</a>, you can even search for people <a href=\"%(list)s"
+"\">in your area</a> and sort them by character congruence!"
 
-#: account/templates/account/friend_requests_list.html:17
+#: account/templates/account/friend_requests_list.html:18
 msgid "Anfrage senden"
 msgstr "Send request"
 
-#: account/templates/account/friend_requests_list.html:20
+#: account/templates/account/friend_requests_list.html:21
 msgid "In Ihrer Nähe suchen"
 msgstr "Search in your area"
 
-#: account/templates/account/friend_requests_list.html:26
+#: account/templates/account/friend_requests_list.html:27
 msgid "Eingegange Anfragen"
 msgstr "Received requests"
 
-#: account/templates/account/friend_requests_list.html:31
+#: account/templates/account/friend_requests_list.html:32
 #: competitions/templates/competitions/full_table.html:8
 msgid "Von"
 msgstr "From"
 
-#: account/templates/account/friend_requests_list.html:43
+#: account/templates/account/friend_requests_list.html:44
 #: vacancies/templates/vacancies/invitation_list.html:17
 #: vacancies/templates/vacancies/review_vacancy.html:33
 msgid "Annehmen"
 msgstr "Accept"
 
-#: account/templates/account/friend_requests_list.html:47
+#: account/templates/account/friend_requests_list.html:48
 #: vacancies/templates/vacancies/review_vacancy.html:33
 msgid "Ablehnen"
 msgstr "Decline"
 
-#: account/templates/account/friend_requests_list.html:62
+#: account/templates/account/friend_requests_list.html:63
 msgid "Gesendete Anfragen"
 msgstr "Sent requests"
 
@@ -650,22 +652,24 @@ msgstr "Welcome, %(v0)s."
 
 #: account/templates/account/home.html:14
 msgid ""
-"Da Sie noch keiner Aktivität beigetreten sind, müssen Sie wohl neu hier "
-"sein. Oben links finden Sie das Dropdown-Menu. Über \"Aktivitäten\" und "
-"\"Kategorien\" können Sie sich anschauen, welche Aktivitäten es gibt und "
-"welche Ihnen vielleicht Spaß machen könnten. Die Kartenspiele Durak, Skat, "
-"Doppelkopf und Poker können Sie <a href=\"/competitions/user_overview"
-"\">gleich hier online spielen</a>. Wenn Sie herausfinden wollen, welche "
-"Aktivitäten zu Ihnen passen, gibt es auch einen Persönlichkeitstest für Sie. "
-"Hier sind ein paar Startpunkte:"
+"Da Sie noch keiner Aktivität beigetreten sind, müssen Sie wohl neu hier sein."
+"<br><ul style=\"text-align: left;\"><li>Oben links finden Sie das Dropdown-"
+"Menu. Über \"Aktivitäten\" und \"Kategorien\" können Sie sich anschauen, "
+"welche Aktivitäten es gibt und welche Ihnen vielleicht Spaß machen könnten.</"
+"li><li>Die Kartenspiele Durak, Skat, Doppelkopf und Poker können Sie <a href="
+"\"/competitions/user_overview\">gleich hier online spielen</a>.</li><li>Wenn "
+"Sie herausfinden wollen, welche Aktivitäten zu Ihnen passen, gibt es auch "
+"einen <a href=\"/character/overview\">Persönlichkeitstest für Sie</a>.</li></"
+"ul>"
 msgstr ""
-"Since you haven't yet joined an activity, I'm assuming you're new here. In "
-"the top left corner you can find the drop-down menu. Click on \"Activities\" "
-"or \"Categories\" to see which activities there are and which you might have "
-"fun doing. The card games Durak, Skat, Doppelkopf and Texas Hold'em can be "
-"played online directly on this website. If you want to find out which "
-"activities might suit you, you can also complete the personality test. Here "
-"are a few starting points:"
+"Since you haven't yet joined an activity, I'm assuming you're new here."
+"<br><ul style=\"text-align: left;\"><li>In the top left corner you can find "
+"the drop-down menu. Click on \"Activities\" or \"Categories\" to see which "
+"activities there are and which you might have fun doing.</li><li>The card "
+"games Durak, Skat, Doppelkopf and Texas Hold'em can be played online <a href="
+"\"/competitions/user_overview\">directly on this website</a>.</li><li>If you "
+"want to find out which activities might suit you, you can also complete <a "
+"href=\"/character/overview\">the personality test</a>.</li></ul>"
 
 #: account/templates/account/home.html:19
 msgid ""
@@ -1401,12 +1405,16 @@ msgstr ""
 "are sorted by character congruence in %%. Why don't you send a friend "
 "request to someone at the end of the list &#128540;"
 
-#: account/templates/account/people_list.html:14
+#: account/templates/account/people_list.html:15
 #: activity/templates/activity/activity_list.html:18
 msgid "Mitglieder anzeigen"
 msgstr "Show members"
 
-#: account/templates/account/people_list.html:27
+#: account/templates/account/people_list.html:20
+msgid "Suche nach Nutzername: "
+msgstr "Search by username: "
+
+#: account/templates/account/people_list.html:38
 msgid ""
 "Tote Hose! Hier ist ja echt niemand. Empfehlen Sie die Seite doch Ihren "
 "Freunden und schauen Sie, wie gut eure Charaktere übereinstimmen und welche "
@@ -1761,11 +1769,11 @@ msgstr "Your password was changed successfully."
 msgid "Ihr Passwort wurde zurückgesetzt."
 msgstr "Your password was successfully reset."
 
-#: account/views.py:294
+#: account/views.py:298
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr "Marker was successfully deleted."
 
-#: account/views.py:296
+#: account/views.py:300
 msgid "Markierung wurde nicht gefunden!"
 msgstr "Marker not found!"
 
@@ -3154,7 +3162,7 @@ msgid "ist voll"
 msgstr "is full"
 
 #: multiplayer/templates/javascript/cards.js:506
-#: multiplayer/templates/javascript/skat.js:567
+#: multiplayer/templates/javascript/skat.js:568
 msgid "Ja"
 msgstr "Yes"
 
@@ -3178,11 +3186,11 @@ msgstr ""
 msgid "Internet Explorer wird nicht unterstützt!"
 msgstr "Internet Explorer is not supported!"
 
-#: multiplayer/templates/javascript/common_sd.js:44
+#: multiplayer/templates/javascript/common_sd.js:45
 msgid "Stich"
 msgstr "Trick"
 
-#: multiplayer/templates/javascript/common_sd.js:46
+#: multiplayer/templates/javascript/common_sd.js:47
 msgid "Okay"
 msgstr "Okay"
 
@@ -3433,19 +3441,19 @@ msgstr "Hand"
 msgid "Eingepasst"
 msgstr "No bid, new game"
 
-#: multiplayer/templates/javascript/skat.js:572
+#: multiplayer/templates/javascript/skat.js:573
 msgid "Passe"
 msgstr "Nah fam"
 
-#: multiplayer/templates/javascript/skat.js:584
+#: multiplayer/templates/javascript/skat.js:585
 msgid "Vorhand"
 msgstr "Forehand"
 
-#: multiplayer/templates/javascript/skat.js:584
+#: multiplayer/templates/javascript/skat.js:585
 msgid "Mittelhand"
 msgstr "Middlehand"
 
-#: multiplayer/templates/javascript/skat.js:584
+#: multiplayer/templates/javascript/skat.js:585
 msgid "Hinterhand"
 msgstr "Rearhand"
 
