@@ -8,6 +8,9 @@
 /media/post/*
 /media/groups/*
 /media/users/*
+/media/audio/*
+/media/video/*
+/media/images/*
 /log.log
 /scripts/csv/*
 **/*_q85.jpg
