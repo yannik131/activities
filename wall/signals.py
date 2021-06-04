@@ -2,7 +2,7 @@ from django.db.models.signals import post_save, m2m_changed, pre_delete
 from django.dispatch import receiver
 from .models import Post, Comment
 from notify.utils import notify
-from shared.shared import xor_get
+from shared.shared import first
 import os
 from django.utils.translation import gettext_lazy as _
 from account.models import User
@@ -16,7 +16,7 @@ def post_created(instance: Post, created, **kwargs):
 
 @receiver(pre_delete, sender=Post)
 def post_deleted(instance: Post, **kwargs):
-    file = xor_get([instance.audio, instance.video, instance.image])
+    file = first([instance.audio, instance.video, instance.image])
     if file and os.path.isfile(file.path):
         os.remove(file.path)
 

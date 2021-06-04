@@ -20,8 +20,8 @@ def paginate(object_list, request, limit=3):
     return objects, page
 
 
-def xor_or_none(*args):
-    result = sum([1 if arg else 0 for arg in args])
+def one_or_none(*args):
+    result = sum(bool(arg) for arg in args)
     return result == 1 or result == 0
 
 
@@ -29,7 +29,7 @@ def type_of(file):
     return magic.from_buffer(file.read(), mime=True)
 
 
-def xor_get(iterable):
+def first(iterable):
     for el in iterable:
         if el:
             return el
@@ -60,15 +60,6 @@ def log(*args):
         for arg in args:
             file.write(str(arg) + " ")
         file.write("\n")
-        
-
-def redirect_before_or_404(request):
-    if "HTTP_REFERER" in request.META:
-        return request.META['HTTP_REFERER']
-    return HttpResponseNotFound()
-    
-def long_ago():
-    return now()-timedelta(weeks=1000)
 
 
 GERMAN_DATE_FMT = '%d.%m.%Y %H:%M'

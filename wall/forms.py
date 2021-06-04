@@ -3,7 +3,7 @@ from django import forms
 from .models import Post, Comment
 from activity.models import Activity, Category
 from usergroups.models import UserGroup
-from shared.shared import xor_or_none, type_of
+from shared.shared import one_or_none, type_of
 from django.utils.translation import gettext_lazy as _
 
 class PostForm(forms.ModelForm):
@@ -56,7 +56,7 @@ class PostForm(forms.ModelForm):
         audio = cd.get('audio')
         video = cd.get('video')
         image = cd.get('image')
-        if not xor_or_none(audio, video, image):
+        if not one_or_none(audio, video, image):
             raise forms.ValidationError(_('Es kann nicht mehr als eine Datei hochgeladen werden.'))
         if audio:
             size = audio.size
