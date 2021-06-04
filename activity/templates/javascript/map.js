@@ -120,7 +120,7 @@ function sendMarker() {
     msg.style.display = 'block';
     markers.push([input.value, lat, lon]);
     input_window.style.display = 'none';
-    send({'type': 'map', 'lat': lat, 'lon': lon, 'description': input.value, 'activity': {{ activity.id }}});
+    send({'type': 'map', 'action': 'create_marker', 'lat': lat, 'lon': lon, 'description': input.value, 'activity': {{ activity.id }}});
     input.value = '';
 }
 

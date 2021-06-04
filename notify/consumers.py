@@ -1,6 +1,6 @@
 from itertools import cycle
 import json
-from account.models import User, LocationMarker
+from account.models import Location, User, LocationMarker
 from channels.generic.websocket import WebsocketConsumer
 from chat.models import ChatRoom, ChatLogEntry, ChatCheck
 from asgiref.sync import async_to_sync
@@ -249,17 +249,22 @@ class NotificationConsumer(WebsocketConsumer):
             post.disliked_by.remove(self.user)
             
     def handle_map_message(self, text_data):
-        try:
-            LocationMarker.objects.get_or_create(
-                description=text_data['description'], 
-                latitude=text_data['lat'], 
-                longitude=text_data['lon'], 
-                author=self.user, 
-                location=self.user.location, 
-                activity=Activity.objects.get(pk=text_data['activity'])
-            )
-        except:
-            pass
+        if text_data['action'] == 'save_marker':
+            marker = LocationMarker.objects.filter(pk=text_data['id'])
+            marker.update(description=text_data['description'])
+        elif text_data['action'] == 'create_marker':
+            try:
+                marker = LocationMarker.objects.get_or_create(
+                    description=text_data['description'], 
+                    latitude=text_data['lat'], 
+                    longitude=text_data['lon'], 
+                    author=self.user, 
+                    location=self.user.location, 
+                    activity=Activity.objects.get(pk=text_data['activity'])
+                )
+            except:
+                pass
+            
     
     def wall_message(self, post, action):
         event = {
