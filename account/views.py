@@ -56,7 +56,6 @@ def detail(request, username):
 
 @login_required
 def send_friend_request(request, target_id):
-    sent = False
     requested_user = get_object_or_404(User, id=target_id)
     if FriendRequest.objects.filter(requesting_user=request.user, requested_user=requested_user).exists():
         messages.add_message(request, messages.INFO, _('Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage senden.'))
@@ -73,7 +72,7 @@ def send_friend_request(request, target_id):
             return HttpResponseRedirect(requested_user.get_absolute_url())
     else:
         form = FriendRequestForm()
-    return render(request, 'account/send_friend_request.html', {'form': form, 'sent': sent, 'target_user': requested_user})
+    return render(request, 'account/send_friend_request.html', {'form': form, 'target_user': requested_user})
 
 
 @login_required
@@ -177,7 +176,7 @@ def register(request):
                     return render(request, 'registration/register.html', {'user_form': user_form, 'location_form': location_form})
                 return render(request, 'registration/register_done.html', {'new_user': new_user})
     else:
-        user_form = UserRegistrationForm(initial=dict(birth_year=1990))
+        user_form = UserRegistrationForm()
         location_form = LocationForm()
     return render(request, 'registration/register.html', {'user_form': user_form, 'location_form': location_form})
 

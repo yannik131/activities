@@ -20,4 +20,4 @@ def chat_room(request, app_label, model, id):
     else:
         return handler403(request)
     request.user.last_chat_checks.get(room=chat_room).update()
-    return render(request, 'chat/room.html', dict(room=chat_room, friendship=model == 'friendship'))
+    return render(request, 'chat/room.html', dict(room=chat_room, current_chat_room=chat_room, friendship=model == 'friendship'))

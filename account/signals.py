@@ -44,7 +44,6 @@ def location_created(instance: Location, created, **kwargs):
             parent = Location.objects.get(**components)
         except Location.DoesNotExist:
             loc = geocode(parent_components)
-            log('geocoded components:', components, 'result:', loc)
             parent = Location.objects.create(**components, longitude=loc.longitude, latitude=loc.latitude)
         instance.parent = parent
         instance.save()

@@ -411,7 +411,7 @@ function sendMove() {
 
 function transferCheck() {
     if(playerHandContains(getVs(stacks[0][0].id).value)) {
-        createButton("{% trans 'Fertig' %}", "done", sendMove, button_color);
+        createButton("{% trans 'Fertig' %}", "done", sendMove, 'yellow');
     }
     else {
         sendMove();
@@ -447,7 +447,7 @@ function updateButtons() {
     }
     if(game_mode == "attacking" && played_cards.length && !old_stacks.length && playerHandContains(getVs(stacks[0][0].id).value)) {
         if(attackingIsPossible()) {
-            createButton("{% trans 'Fertig' %}", "done", sendMove, button_color);
+            createButton("{% trans 'Fertig' %}", "done", sendMove, 'yellow');
         }
         else {
             sendMove();
@@ -468,7 +468,7 @@ function createDoneButton() {
     createButton("{% trans 'Fertig' %}", "done", function() {
         sendAction("done");
         deleteButton('done');
-    }, button_color);
+    }, 'yellow');
 }
 
 function undefendedCardCount() {

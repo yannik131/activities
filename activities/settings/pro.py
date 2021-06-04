@@ -2,10 +2,6 @@ from .base import *
 
 DEBUG = False
 
-ADMINS = (
-    ('Yannik S.', 'yannik131@web.de'),
-)
-
 ALLOWED_HOSTS = ['myactivities.net', 'www.myactivities.net', 'de.myactivities.net', 'en.myactivities.net', 'www.de.myactivities.net', 'www.en.myactivities.net']
 
 DATABASES = {

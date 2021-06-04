@@ -204,3 +204,31 @@ AUTH_USER_MODEL = 'account.User'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+TEST_RUNNER = 'account.tests.TestRunner'
+
+ADMINS = (
+    ('Yannik S.', 'yannik131@web.de'),
+)
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+       'file': {
+           'level': 'WARNING',
+           'class': 'logging.FileHandler',
+           'filename': 'log.log'
+       },
+       'console': {
+           'class': 'logging.StreamHandler',
+           'level': 'WARNING'
+       },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+        },
+    },
+}
