@@ -215,11 +215,18 @@ ADMINS = (
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'normal': {
+            'format': '#'*70+'\n{asctime} - {levelname}\nFile: {pathname}:{lineno}\nThread ID: {thread}\nThread name: {threadName}\nProcess ID: {process}\nProcess name: {processName}\n\nMessage: {message}',
+            'style': '{'
+        }
+    },
     'handlers': {
        'file': {
            'level': 'WARNING',
            'class': 'logging.FileHandler',
-           'filename': 'log.log'
+           'filename': 'log.log',
+           'formatter': 'normal'
        },
        'console': {
            'class': 'logging.StreamHandler',
@@ -229,6 +236,7 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['file', 'console'],
+            'propagate': False
         },
     },
 }
