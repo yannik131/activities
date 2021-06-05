@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['myactivities.net', 'www.myactivities.net', 'de.myactivities.net', 'en.myactivities.net', 'www.de.myactivities.net', 'www.en.myactivities.net']
+ALLOWED_HOSTS = ['myactivities.net', 'www.myactivities.net', 'de.myactivities.net', 'en.myactivities.net']
 
 DATABASES = {
     'default': {

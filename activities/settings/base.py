@@ -217,7 +217,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'normal': {
-            'format': '#'*70+'\n{asctime} - {levelname}\nFile: {pathname}:{lineno}\nThread ID: {thread}\nThread name: {threadName}\nProcess ID: {process}\nProcess name: {processName}\n\nMessage: {message}',
+            'format': '#'*70+'\n{asctime} - {levelname}\nFile: {pathname}:{lineno}\nThread name: {threadName}\nProcess name: {processName}\n\nMessage: {message}',
             'style': '{'
         }
     },
