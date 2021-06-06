@@ -26,9 +26,10 @@ var old_colors = {};
 function requestShow(room_id) {
     if(user_websocket.readyState != user_websocket.OPEN) {
         user_websocket.addEventListener('open', function() { requestShow(room_id); });
-        return;
     }
-    send({'type': 'rtc', 'action': 'request_show', 'room_id': room_id});
+    else {
+        send({'type': 'rtc', 'action': 'request_show', 'room_id': room_id});
+    }
 }
 
 function handleRTCMessage(data) {

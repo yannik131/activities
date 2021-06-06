@@ -22,7 +22,7 @@
             </audio>
         {% elif post.video %}
             <video width="320" height="240" controls>
-                <source src="{{ post.video.url }}" type="{{ post.media_mime_type }}">
+                <source src="{{ post.video.url }}">
             </video>
         {% elif post.image %}
             <img src="{{ post.image.url }}" style="width:320px;">
