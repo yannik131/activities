@@ -16,17 +16,19 @@
             <span id="{{ post.id }}-likes">{{ post.liked_by.count }}</span>x <img src="{% static 'icons/like.png' %}" height="25px"> <span id="{{ post.id }}-dislikes">{{ post.disliked_by.count }}</span>x <img src="{% static 'icons/dislike.png' %}" height="25px">
         </div>
         {{ post.message|markdown }}
-        {% if post.audio %}
-            <audio controls>
-                <source src="{{ post.audio.url }}" type="{{ post.media_mime_type }}">
-            </audio>
-        {% elif post.video %}
-            <video width="320" height="240" controls>
-                <source src="{{ post.video.url }}">
-            </video>
-        {% elif post.image %}
-            <img src="{{ post.image.url }}" style="width:320px;">
-        {% endif %}
+        <div class="center-container">
+            {% if post.audio %}
+                <audio controls>
+                    <source src="{{ post.audio.url }}" type="{{ post.media_mime_type }}">
+                </audio>
+            {% elif post.video %}
+                <video width="320" height="240" controls>
+                    <source src="{{ post.video.url }}">
+                </video>
+            {% elif post.image %}
+                <img src="{{ post.image.url }}" style="width:320px;">
+            {% endif %}
+        </div>
         <div style="max-height: 200px; overflow-y: scroll;">
             {% for comment in post.comments.all %}
                 <br/>

@@ -36,7 +36,6 @@ def post_liked(instance, action, pk_set, **kwargs):
         user = User.objects.get(id=id)
         notify(instance.author, user, 'likes', instance)
         
-        
 
 @receiver(m2m_changed, sender=Post.disliked_by.through)
 def post_disliked(instance, action, pk_set, **kwargs):
