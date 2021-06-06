@@ -4,7 +4,6 @@
 /static/*
 /.idea/*
 /logs/*
-/dump.rdb
 /media/post/*
 /media/groups/*
 /media/users/*
@@ -13,4 +12,4 @@
 /media/images/*
 /log.log
 /scripts/csv/*
-**/*_q85.jpg
+**/*_q85.*
