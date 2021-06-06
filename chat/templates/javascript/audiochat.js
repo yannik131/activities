@@ -264,12 +264,14 @@ function leaveAudio() {
         deletePeerConnection(users[users.length-1]);
     }
     send({'type': 'rtc', 'action': 'leave', 'room_id': audio_room_id});
-    send({'type': 'chat', 'action': 'sent', 'once': 1, 'message': this_user+" {% trans 'verlässt die Konferenz.' %}", 'id': audio_room_id});
+    send({'type': 'chat', 'action': 'sent', 'message': this_user+" {% trans 'verlässt die Konferenz.' %}", 'id': audio_room_id});
     colorize({{ user.id }}, audio_room_id, 'white');
     var button = document.getElementById('call-button-'+audio_room_id);
-    button.src = "{% static 'icons/call.png' %}";
-    var room_id = audio_room_id;
-    button.onclick = function() { joinAudio(room_id); };
+    if(button) {
+        button.src = "{% static 'icons/call.png' %}";
+        var room_id = audio_room_id;
+        button.onclick = function() { joinAudio(room_id); };
+    }
     audio_room_id = undefined;
 }
 
