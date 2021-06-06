@@ -20,6 +20,7 @@ from django.utils.encoding import force_text
 from django.contrib.auth import login as auth_login
 from django.urls import reverse
 from django.db.models import Q
+from django.core.mail import EmailMultiAlternatives
 import logging
 logger = logging.getLogger('django')
 
@@ -247,6 +248,11 @@ def activate(request, uidb64=None, token=None):
         user.is_active = True
         user.save()
         auth_login(request, user)
+        try:
+            email = EmailMultiAlternatives(f'Registration {User.objects.count()}: {user}', f'Inactive: {User.objects.filter(is_active=False).count()}', 'myactivities.net@web.de', ['yannik131@web.de'])
+            email.send()
+        except:
+            logging.log(logging.ERROR, 'Could not send email', exc_info=True)
         return HttpResponseRedirect(request.build_absolute_uri('/'))
     else:
         messages.add_message(request, messages.INFO, _('Der Aktivierungslink ist ungültig. Falls der Account noch inaktiv ist, können Sie durch erneutes Registrieren einen neuen anfordern!'))
