@@ -20,6 +20,8 @@ from django.utils.encoding import force_text
 from django.contrib.auth import login as auth_login
 from django.urls import reverse
 from django.db.models import Q
+import logging
+logger = logging.getLogger('django')
 
 
 @login_required
@@ -171,8 +173,9 @@ def register(request):
                 try:
                     send_account_activation_email(request, new_user)
                 except Exception as e:
+                    logger.log(logging.WARNING, 'Could not send activation e-mail', exc_info=True)
                     new_user.delete()
-                    messages.add_message(request, messages.INFO, _('An die E-Mail Adresse konnte keine E-Mail gesendet werden. ')+str(e))
+                    messages.add_message(request, messages.INFO, _('An die E-Mail Adresse konnte keine E-Mail gesendet werden.'))
                     return render(request, 'registration/register.html', {'user_form': user_form, 'location_form': location_form})
                 return render(request, 'registration/register_done.html', {'new_user': new_user})
     else:

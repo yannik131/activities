@@ -29,6 +29,7 @@ def send_account_activation_email(request, user):
     email.attach_alternative(html_content, 'text/html')
     email.send()
     
+    
 def test(func, n=100):
     stamp = timer()
     for i in range(n):
