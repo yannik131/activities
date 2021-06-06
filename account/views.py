@@ -249,7 +249,7 @@ def activate(request, uidb64=None, token=None):
         user.save()
         auth_login(request, user)
         try:
-            email = EmailMultiAlternatives(f'Registration {User.objects.count()}: {user}', f'Inactive: {User.objects.filter(is_active=False).count()}', 'myactivities.net@web.de', ['yannik131@web.de'])
+            email = EmailMultiAlternatives(f'Registration {User.objects.count()}: {user}', f'Location: {user.location}, Inactive: {User.objects.filter(is_active=False).count()}', 'myactivities.net@web.de', ['yannik131@web.de'])
             email.send()
         except:
             logging.log(logging.ERROR, 'Could not send email', exc_info=True)
