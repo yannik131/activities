@@ -9,6 +9,7 @@ from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from shared.shared import paginate, log
+from django.urls import reverse
 
 
 # Create your views here.
@@ -38,6 +39,9 @@ def quiz(request, limit=None):
             return HttpResponseRedirect(request.build_absolute_uri('/character/overview/'))
         request.user.character.question_limit = limit
         request.user.character.save()
+    elif request.user.character.presentable:
+        messages.add_message(request, messages.INFO, _('Sie haben den Test bereits beendet. Wollen Sie ihn erneut machen, können Sie weiter unten Ihr Ergebnis zurücksetzen.'))
+        return HttpResponseRedirect(reverse('character:overview'))
     return render(request, 'character/quiz.html')
     
     

@@ -221,19 +221,19 @@ class NotificationConsumer(WebsocketConsumer):
             
     def handle_character_message(self, text_data):
         if text_data['action'] == 'back':
-            user = User.objects.get(id=self.user.id)
-            user.character.current_question -= 1
-            change(user.character.traits, text_data['trait'], -text_data['value'])
-            user.character.save()
+            self.user.character.current_question -= 1
+            change(self.user.character.traits, text_data['trait'], -text_data['value'])
+            self.user.character.save()
         elif text_data['action'] == 'next':
-            user = User.objects.get(id=self.user.id)
-            user.character.current_question += 1
-            change(user.character.traits, text_data['trait'], text_data['value'])
-            user.character.save()
+            self.user.character.current_question += 1
+            change(self.user.character.traits, text_data['trait'], text_data['value'])
+            self.user.character.save()
         elif text_data['action'] == 'weights':
             activity = Activity.objects.get(id=text_data['id'])
             activity.trait_weights = json.loads(text_data['weights'])
             activity.save()
+        elif text_data['action'] == 'current_question':
+            self.send(text_data=json.dumps({'type': 'character', 'action': 'current_question', 'current_question': self.user.character.current_question}))
         elif text_data['action'] == 'done':
             Global.normalize_traits()
             

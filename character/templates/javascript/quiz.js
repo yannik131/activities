@@ -2,10 +2,9 @@
 
 {% with limit=user.character.question_limit %}
 let limit;
-var current_question = null;
+var current_question;
 {% if limit %}
 limit = {{ limit }};
-current_question = {{ user.character.current_question }};
 {% endif %}
 {% if limit == 240 %}
     {% include 'javascript/question240.js' %}
@@ -25,6 +24,7 @@ function update() {
     counter.innerHTML = (current_question+1)+"/{{ limit }}";
     time.innerHTML = Math.ceil((limit-(current_question))*7/60)+" min";
     slider.value = 3;
+    question_span.innerHTML = questions[current_question]+".";
 }
 
 function next() {
@@ -49,19 +49,20 @@ function next() {
     button.style.marginLeft = "5px";
     info.innerHTML = "+"+value+" "+categories[current_trait];
     if(current_question != limit) {
-        question_span.innerHTML = questions[current_question]+".";
         update();
     }
     
     setTimeout(function() {
-        button.onclick = next;
-        button.style.backgroundColor = "#0087f7";
-        info.innerHTML = "";
         if(current_question == limit) {
             send({'type': 'character', 'action': 'done'});
+            info.innerHTML = "{% trans 'Alle Fragen wurden beantwortet!' %}";
             openLink("{% url 'character:overview' %}");
         }
-
+        else {
+            button.onclick = next;
+            button.style.backgroundColor = "#0087f7";
+            info.innerHTML = "";
+        }
     }, 2000);
 }
 
@@ -83,13 +84,15 @@ window.addEventListener('load', function() {
     info = document.getElementById('info-box');
     counter = document.getElementById('counter');
     time = document.getElementById('time');
-    if(current_question == limit) {
-        question_span.innerHTML = "{% trans 'Alle Fragen wurden beantwortet!' %}";
-        button.onclick = null;
-    }
-    else {
-        question_span.innerHTML = questions[current_question]+".";
-    }
+    question_span.innerHTML = "{% trans 'Hole Daten..' %}";
+    user_websocket.addEventListener('open', function() {
+        send({'type': 'character', 'action': 'current_question'});
+    });
+});
+
+function handleCurrentQuestion(n) {
+    current_question = n;
+    button.onclick = next;
     update();
-})
+}
 {% endwith %}

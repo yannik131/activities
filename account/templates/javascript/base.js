@@ -248,6 +248,9 @@ function connect() {
                 if(typeof handleRTCMessage != 'undefined')
                     handleRTCMessage(data);
                 break;
+            case 'character':
+                handleCurrentQuestion(data.current_question);
+                break;
         }
     }
 

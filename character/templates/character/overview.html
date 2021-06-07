@@ -10,11 +10,13 @@
     <div class="center-container">
         <b>{% blocktrans with n=user.character.current_question max=user.character.question_limit %}Sie haben bisher {{ n }} von {{ max }} Fragen beantwortet.{% endblocktrans %}</b>
     </div>
-    <p></p>
-    <div class="button-like" onclick=openLink("{% url 'character:quiz' %}")>
-        <img src="{% static 'icons/question.png' %}">
-        {% trans 'Zum Fragebogen' %}
-    </div>
+    <br>
+    {% if not user.character.presentable %}
+        <div class="button-like" onclick=openLink("{% url 'character:quiz' %}")>
+            <img src="{% static 'icons/question.png' %}">
+            {% trans 'Zum Fragebogen' %}
+        </div>
+    {% endif %}
 {% else %}
     <div class="info-p">
         <b>{% trans 'Die hier angebotenen Persönlichkeitstests wurden in Anlehnung an den NEO-PI-R Test erstellt und basieren auf <a href="https://ipip.ori.org/newNEOKey.htm" target="_blank">frei verfügbaren Fragen</a>, die auf den <a href="https://de.wikipedia.org/wiki/Big_Five_(Psychologie)" target="_blank">Big Five</a> der Persönlichkeitspsychologie fußen.<br><br>Der offizielle NEO-PI-R Persönlichkeitstest umfasst 240 Fragen. Weniger Fragen sind zwar schneller zu beantworten, liefern aber ein unter Wiederholung instabileres Testergebnis.' %}</b>

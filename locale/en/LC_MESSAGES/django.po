@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-02 10:37+0000\n"
-"PO-Revision-Date: 2021-06-02 12:40+0200\n"
+"POT-Creation-Date: 2021-06-07 22:34+0000\n"
+"PO-Revision-Date: 2021-06-08 00:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -414,7 +414,7 @@ msgstr "Click the button to delete your account."
 #: vacancies/templates/vacancies/edit_vacancy.html:11
 #: vacancies/templates/vacancies/invitation_list.html:21
 #: vacancies/templates/vacancies/review_vacancy.html:35
-#: wall/templates/wall/post/post_loop.html:45
+#: wall/templates/wall/post/post_loop.html:47
 msgid "Löschen"
 msgstr "Delete"
 
@@ -479,7 +479,7 @@ msgid "Freundschaftsanfrage schicken"
 msgstr "Send friend request"
 
 #: account/templates/account/detail.html:44
-#: usergroups/templates/usergroups/group_detail.html:74
+#: usergroups/templates/usergroups/group_detail.html:79
 msgid "Posts"
 msgstr "Posts"
 
@@ -671,43 +671,30 @@ msgstr ""
 "want to find out which activities might suit you, you can also complete <a "
 "href=\"/character/overview\">the personality test</a>.</li></ul>"
 
-#: account/templates/account/home.html:19
-msgid ""
-"Schließen Sie Ihre Anmeldung ab, indem Sie Alter und Geschlecht nachtragen: "
-msgstr "Finish your registration by specifying your age and gender: "
-
-#: account/templates/account/home.html:20
-msgid "Profil vervollständigen"
-msgstr "Complete registration"
-
-#: account/templates/account/home.html:21
-msgid "Ansonsten können Sie sich nicht auf Leerstellen bewerben."
-msgstr "Otherwise you can't apply to vacancies."
-
-#: account/templates/account/home.html:24
+#: account/templates/account/home.html:17
 msgid "Freunde in Ihrer Nähe finden"
 msgstr "Find friends in your area"
 
-#: account/templates/account/home.html:27
+#: account/templates/account/home.html:20
 msgid "Persönlichkeitstest & Empfehlungen"
 msgstr "Personality test & suggestions"
 
-#: account/templates/account/home.html:29
+#: account/templates/account/home.html:22
 msgid "Zu Ihren Posts"
 msgstr "Your posts"
 
-#: account/templates/account/home.html:30
+#: account/templates/account/home.html:23
 msgid ""
 "Bei Fragen und Anregungen können Sie einfach eine Freundschaftsanfrage "
 "schicken an:"
 msgstr ""
 "If you have questions or suggestions, you can send a friend request to:"
 
-#: account/templates/account/home.html:32
+#: account/templates/account/home.html:25
 msgid "Ihre Aktivitäten:"
 msgstr "Your activities:"
 
-#: account/templates/account/home.html:36
+#: account/templates/account/home.html:29
 msgid ""
 "Hier ist noch nichts! <a href=\"/activity/list\">Hier</a> finden Sie eine "
 "Liste aller Aktivitäten und <a href=\"/character/overview\">hier</a> geht's "
@@ -1451,7 +1438,7 @@ msgstr "Homepage"
 
 #: account/templates/account/sidemenu.html:9
 #: character/templates/character/overview.html:5
-#: character/templates/character/overview.html:82
+#: character/templates/character/overview.html:84
 msgid "Charakter"
 msgstr "Character"
 
@@ -1490,7 +1477,7 @@ msgstr "Your posts"
 #: account/templates/account/user_post_list.html:9
 #: activity/templates/activity/category_detail.html:25
 #: activity/templates/activity/detail.html:132
-#: usergroups/templates/usergroups/group_detail.html:76
+#: usergroups/templates/usergroups/group_detail.html:81
 msgid "Post erstellen"
 msgstr "Create post"
 
@@ -1527,7 +1514,7 @@ msgid "Wirklich?"
 msgstr "Really?"
 
 #: account/templates/registration/activation_email.html:3
-#: account/templates/registration/activation_email.html:5 account/utils.py:27
+#: account/templates/registration/activation_email.html:5 account/utils.py:31
 msgid "E-Mail Aktivierung"
 msgstr "E-mail activation"
 
@@ -1699,11 +1686,11 @@ msgstr ""
 "\"Edit account\" once you've logged in. Be sure to specify the state and "
 "country as well for best results."
 
-#: account/utils.py:27
+#: account/utils.py:31
 msgid "Aktivierungs-E-Mail"
 msgstr "Activation email"
 
-#: account/views.py:62
+#: account/views.py:64
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
@@ -1712,48 +1699,48 @@ msgstr ""
 "You've already sent a friend request to this user. As long as he doesn't "
 "delete it you can't send another one."
 
-#: account/views.py:65 account/views.py:90 account/views.py:106
+#: account/views.py:67 account/views.py:92 account/views.py:108
 msgid "Ihr seid bereits Freunde."
 msgstr "You are already friends."
 
-#: account/views.py:72
+#: account/views.py:74
 msgid "Freundschaftsanfrage wurde verschickt."
 msgstr "Friend request sent."
 
-#: account/views.py:87
+#: account/views.py:89
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr "You can't send yourself a friend request."
 
-#: account/views.py:127
+#: account/views.py:129
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr "You can't delete this request."
 
-#: account/views.py:148
+#: account/views.py:150
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr "This friendship doesn't exist anymore."
 
-#: account/views.py:155
+#: account/views.py:157
 #, python-brace-format
 msgid "Sie haben die Freundschaft mit {user} beendet."
 msgstr "You terminated your friendship with {user}."
 
-#: account/views.py:176
-msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden. "
-msgstr "No e-mail could be sent to the specified address. "
+#: account/views.py:179
+msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden."
+msgstr "No e-mail could be sent to the specified address."
 
-#: account/views.py:190
+#: account/views.py:193
 msgid "Änderungen gespeichert."
 msgstr "Changes saved."
 
-#: account/views.py:204
+#: account/views.py:207
 msgid "Sie können den Ort nur höchstens alle 7 Tage wechseln."
 msgstr "You can change your location only once in 7 days."
 
-#: account/views.py:212
+#: account/views.py:215
 msgid "Neue Adresse gespeichert: "
 msgstr "New address saved: "
 
-#: account/views.py:250
+#: account/views.py:255
 msgid ""
 "Der Aktivierungslink ist ungültig. Falls der Account noch inaktiv ist, "
 "können Sie durch erneutes Registrieren einen neuen anfordern!"
@@ -1761,19 +1748,19 @@ msgstr ""
 "The activation link is invalid. If the account is still inactive, you can "
 "request another one by registering again!"
 
-#: account/views.py:268
+#: account/views.py:273
 msgid "Passwort erfolgreich geändert."
 msgstr "Your password was changed successfully."
 
-#: account/views.py:272
+#: account/views.py:277
 msgid "Ihr Passwort wurde zurückgesetzt."
 msgstr "Your password was successfully reset."
 
-#: account/views.py:298
+#: account/views.py:303
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr "Marker was successfully deleted."
 
-#: account/views.py:300
+#: account/views.py:305
 msgid "Markierung wurde nicht gefunden!"
 msgstr "Marker not found!"
 
@@ -1831,7 +1818,7 @@ msgstr "Search: "
 
 #: activity/templates/activity/activity_list.html:31
 #: competitions/templates/competitions/list.html:14
-#: usergroups/templates/usergroups/group_detail.html:33
+#: usergroups/templates/usergroups/group_detail.html:32
 #: usergroups/templates/usergroups/loop.html:14
 msgid "Mitglieder"
 msgstr "Members"
@@ -1897,7 +1884,7 @@ msgstr "Join %(activity)s-chat"
 #: activity/templates/activity/detail.html:82
 #: competitions/templates/competitions/match_detail.html:34
 #: competitions/templates/competitions/tournament_detail.html:33
-#: usergroups/templates/usergroups/group_detail.html:37
+#: usergroups/templates/usergroups/group_detail.html:88
 msgid "Austreten"
 msgstr "Leave"
 
@@ -2017,27 +2004,27 @@ msgid "Gewichte verteilen"
 msgstr "Distribute weights"
 
 #: character/templates/character/edit_weights.html:30
-#: character/templates/character/overview.html:85
+#: character/templates/character/overview.html:87
 msgid "Neurotizismus"
 msgstr "Neuroticism"
 
 #: character/templates/character/edit_weights.html:36
-#: character/templates/character/overview.html:91
+#: character/templates/character/overview.html:93
 msgid "Extraversion"
 msgstr "Extraversion"
 
 #: character/templates/character/edit_weights.html:42
-#: character/templates/character/overview.html:97
+#: character/templates/character/overview.html:99
 msgid "Offenheit für Erfahrungen"
 msgstr "Openness to experience"
 
 #: character/templates/character/edit_weights.html:48
-#: character/templates/character/overview.html:103
+#: character/templates/character/overview.html:105
 msgid "Gewissenhaftigkeit"
 msgstr "Conscientiousness"
 
 #: character/templates/character/edit_weights.html:54
-#: character/templates/character/overview.html:109
+#: character/templates/character/overview.html:111
 msgid "Verträglichkeit"
 msgstr "Agreeableness"
 
@@ -2050,11 +2037,11 @@ msgstr "Character overview"
 msgid "Sie haben bisher %(n)s von %(max)s Fragen beantwortet."
 msgstr "So far you've answered %(n)s of %(max)s questions."
 
-#: character/templates/character/overview.html:16
+#: character/templates/character/overview.html:17
 msgid "Zum Fragebogen"
 msgstr "Questionnaire"
 
-#: character/templates/character/overview.html:20
+#: character/templates/character/overview.html:22
 msgid ""
 "Die hier angebotenen Persönlichkeitstests wurden in Anlehnung an den NEO-PI-"
 "R Test erstellt und basieren auf <a href=\"https://ipip.ori.org/newNEOKey.htm"
@@ -2074,34 +2061,34 @@ msgstr ""
 "time to answer, but might yield less consistent results if the test is taken "
 "more than once."
 
-#: character/templates/character/overview.html:24
+#: character/templates/character/overview.html:26
 msgid "Bitte wählen Sie eine der drei Optionen aus."
 msgstr "Please choose one of the following options."
 
-#: character/templates/character/overview.html:29
-#: character/templates/character/overview.html:33
-#: character/templates/character/overview.html:37
+#: character/templates/character/overview.html:31
+#: character/templates/character/overview.html:35
+#: character/templates/character/overview.html:39
 msgid "Fragen"
 msgstr "Questions"
 
-#: character/templates/character/overview.html:41
+#: character/templates/character/overview.html:43
 msgid "Noch kein Testergebnis!"
 msgstr "No test result yet!"
 
-#: character/templates/character/overview.html:45
+#: character/templates/character/overview.html:47
 msgid "Kategorie wählen: "
 msgstr "Choose a category: "
 
-#: character/templates/character/overview.html:60
+#: character/templates/character/overview.html:62
 msgid "Empfohlene Aktivitäten in "
 msgstr "Suggested activities in "
 
-#: character/templates/character/overview.html:72
+#: character/templates/character/overview.html:74
 #: multiplayer/templates/multiplayer/game.html:73
 msgid "Score"
 msgstr "Score"
 
-#: character/templates/character/overview.html:83
+#: character/templates/character/overview.html:85
 #, python-format
 msgid ""
 "Werte verglichen mit den Durchschnittswerten. <br>+50%%: Maximal "
@@ -2110,11 +2097,11 @@ msgstr ""
 "Values compared to the average. <br>+50%%: Maximally above average, -50%%: "
 "Maximally below average"
 
-#: character/templates/character/overview.html:122
+#: character/templates/character/overview.html:124
 msgid "Zurücksetzen"
 msgstr "Reset"
 
-#: character/templates/character/overview.html:127
+#: character/templates/character/overview.html:129
 msgid ""
 "Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich "
 "die errechneten Punktesummen in den Kategorien werden für die Berechnung von "
@@ -2672,13 +2659,25 @@ msgstr ""
 msgid "Der Server ist gerade nicht ansprechbar. Vielleicht läuft ein Update?"
 msgstr "The server is not responding. Probably updating."
 
-#: character/templates/javascript/quiz.js:87
+#: character/templates/javascript/quiz.js:58
 msgid "Alle Fragen wurden beantwortet!"
 msgstr "All question have been answered!"
 
-#: character/views.py:37
+#: character/templates/javascript/quiz.js:87
+msgid "Hole Daten.."
+msgstr "Fetching data.."
+
+#: character/views.py:38
 msgid "Wählen Sie zuerst einen der drei Fragebogen aus, bevor Sie beginnen."
 msgstr "Please choose on of the three questionnaires before you start."
+
+#: character/views.py:43
+msgid ""
+"Sie haben den Test bereits beendet. Wollen Sie ihn erneut machen, können Sie "
+"weiter unten Ihr Ergebnis zurücksetzen."
+msgstr ""
+"You've already completed the test. If you want to do it again, you can reset "
+"your results below."
 
 #: chat/templates/chat/room.html:6
 #: vacancies/templates/vacancies/application_list.html:26
@@ -2686,12 +2685,12 @@ msgstr "Please choose on of the three questionnaires before you start."
 msgid "Chat"
 msgstr "Chat"
 
-#: chat/templates/javascript/audiochat.js:197
-#: chat/templates/javascript/audiochat.js:267
+#: chat/templates/javascript/audiochat.js:198
+#: chat/templates/javascript/audiochat.js:268
 msgid "verlässt die Konferenz."
 msgstr "is leaving the conference."
 
-#: chat/templates/javascript/audiochat.js:254
+#: chat/templates/javascript/audiochat.js:255
 msgid "tritt der Konferenz bei."
 msgstr "is joining the conference."
 
@@ -2979,20 +2978,20 @@ msgstr "Members:"
 
 #: competitions/templates/competitions/match_detail.html:36
 #: competitions/templates/competitions/tournament_detail.html:49
-#: usergroups/templates/usergroups/group_detail.html:40
+#: usergroups/templates/usergroups/group_detail.html:47
 msgid "Leerstellen"
 msgstr "Vacancies"
 
 #: competitions/templates/competitions/match_detail.html:41
 #: competitions/templates/competitions/tournament_detail.html:54
-#: usergroups/templates/usergroups/group_detail.html:55
+#: usergroups/templates/usergroups/group_detail.html:51
 #: vacancies/templates/vacancies/create_vacancies.html:4
 msgid "Leerstellen hinzufügen"
 msgstr "Add vacancy"
 
 #: competitions/templates/competitions/match_detail.html:45
 #: competitions/templates/competitions/tournament_detail.html:58
-#: usergroups/templates/usergroups/group_detail.html:59
+#: usergroups/templates/usergroups/group_detail.html:69
 msgid "Jemanden einladen"
 msgstr "Invite somebody"
 
@@ -3702,15 +3701,15 @@ msgstr "Game is full"
 msgid "Sie waren zu langsam, das Match war bereits voll."
 msgstr "Too slow. Match is already full."
 
-#: scheduling/forms.py:18 usergroups/forms.py:22
+#: scheduling/forms.py:17 usergroups/forms.py:22
 msgid "Name"
 msgstr "Name"
 
-#: scheduling/forms.py:19
+#: scheduling/forms.py:18
 msgid "Datum & Uhrzeit"
 msgstr "Date & time"
 
-#: scheduling/forms.py:20 vacancies/templates/vacancies/vacancy_list.html:13
+#: scheduling/forms.py:19 vacancies/templates/vacancies/vacancy_list.html:13
 msgid "Ort"
 msgstr "Location"
 
@@ -3721,7 +3720,7 @@ msgstr "Appointment on {start}"
 
 #: scheduling/templates/scheduling/create_appointment.html:5
 #: scheduling/templates/scheduling/create_appointment.html:8
-#: usergroups/templates/usergroups/group_detail.html:72
+#: usergroups/templates/usergroups/group_detail.html:39
 msgid "Termin erstellen"
 msgstr "Create appointment"
 
@@ -3866,23 +3865,23 @@ msgstr "was successfully deleted"
 msgid "Gruppe gehört zur"
 msgstr "Group belongs to"
 
-#: usergroups/templates/usergroups/group_detail.html:35
+#: usergroups/templates/usergroups/group_detail.html:34
 msgid "Administrator"
 msgstr "Admin"
 
-#: usergroups/templates/usergroups/group_detail.html:45
+#: usergroups/templates/usergroups/group_detail.html:38
+msgid "Termine"
+msgstr "Appointments"
+
+#: usergroups/templates/usergroups/group_detail.html:59
 msgid ""
 "Zurzeit gibt es keine Leerstellen. Der Administrator kann welche erstellen"
 msgstr "There are no vacancies at the moment. The admin can create some"
 
-#: usergroups/templates/usergroups/group_detail.html:48
+#: usergroups/templates/usergroups/group_detail.html:65
 #: vacancies/templates/vacancies/application_list.html:40
 msgid "Einladungen"
 msgstr "Invitations"
-
-#: usergroups/templates/usergroups/group_detail.html:65
-msgid "Termine"
-msgstr "Appointments"
 
 #: usergroups/templates/usergroups/user_group_list.html:5
 #: usergroups/templates/usergroups/user_group_list.html:8
@@ -4078,25 +4077,25 @@ msgstr "Age"
 msgid "Abwarten"
 msgstr "Wait"
 
-#: vacancies/views.py:87
+#: vacancies/views.py:88
 msgid ""
 "Bitte ergänzen Sie Ihr Profil (Geburtsjahr und Geschlecht), um sich bewerben "
 "zu können."
 msgstr "Please complete your profile (birth year and gender) before you apply."
 
-#: vacancies/views.py:91
+#: vacancies/views.py:92
 msgid "Sie erfüllen die Voraussetzungen der Leerstelle nicht."
 msgstr "You don't fulfil the vacancy's criteria (location, age and/or gender)."
 
-#: vacancies/views.py:94
+#: vacancies/views.py:95
 msgid "Sie haben sich bereits beworben."
 msgstr "You already applied to this vacancy."
 
-#: vacancies/views.py:97
+#: vacancies/views.py:98
 msgid "Die Anmeldefrist ist bereits abgelaufen."
 msgstr "The application deadline has already expired."
 
-#: vacancies/views.py:100
+#: vacancies/views.py:101
 msgid "Sie sind bereits Mitglied."
 msgstr "You already are a member."
 
@@ -4163,20 +4162,20 @@ msgid "Post vom "
 msgstr "Post on the "
 
 #: wall/templates/javascript/post.js:28
-#: wall/templates/wall/post/post_loop.html:54
+#: wall/templates/wall/post/post_loop.html:56
 msgid "Like zurücknehmen"
 msgstr "Delete like"
 
 #: wall/templates/javascript/post.js:31
-#: wall/templates/wall/post/post_loop.html:63
+#: wall/templates/wall/post/post_loop.html:65
 msgid "Dislike zurücknehmen"
 msgstr "Delete dislike"
 
 #: wall/templates/wall/post/create_comment.html:5
-#: wall/templates/wall/post/post_loop.html:41
-#: wall/templates/wall/post/post_loop.html:50
-#: wall/templates/wall/post/post_loop.html:59
-#: wall/templates/wall/post/post_loop.html:69
+#: wall/templates/wall/post/post_loop.html:43
+#: wall/templates/wall/post/post_loop.html:52
+#: wall/templates/wall/post/post_loop.html:61
+#: wall/templates/wall/post/post_loop.html:71
 msgid "Kommentieren"
 msgstr "Comment"
 
@@ -4209,18 +4208,29 @@ msgstr ""
 "yellow\">Posts cannot be edited to prevent invalidation of comments or likes."
 "</span>"
 
-#: wall/templates/wall/post/post_loop.html:33
+#: wall/templates/wall/post/post_loop.html:35
 #, python-format
 msgid " vor %(v0)s"
 msgstr " %(v0)s ago"
 
-#: wall/templates/wall/post/post_loop.html:33
+#: wall/templates/wall/post/post_loop.html:35
 msgid "[Löschen]"
 msgstr "[Delete]"
 
-#: wall/templates/wall/post/post_loop.html:81
+#: wall/templates/wall/post/post_loop.html:83
 msgid "Keine"
 msgstr "None"
+
+#~ msgid ""
+#~ "Schließen Sie Ihre Anmeldung ab, indem Sie Alter und Geschlecht "
+#~ "nachtragen: "
+#~ msgstr "Finish your registration by specifying your age and gender: "
+
+#~ msgid "Profil vervollständigen"
+#~ msgstr "Complete registration"
+
+#~ msgid "Ansonsten können Sie sich nicht auf Leerstellen bewerben."
+#~ msgstr "Otherwise you can't apply to vacancies."
 
 #~ msgid ""
 #~ "Diese Seite nutzt Cookies. Blabla.. können Sie im Browser irgendwo "
