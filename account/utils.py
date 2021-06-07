@@ -1,3 +1,4 @@
+from shared.shared import log
 from geopy import Nominatim
 from django.utils.translation import gettext_lazy as _
 from django.utils.http import urlsafe_base64_encode
@@ -10,6 +11,8 @@ from django.utils import translation
 from time import perf_counter_ns as timer
 import time
 geolocator = Nominatim(user_agent='activities')
+import logging
+logger = logging.getLogger('django')
 
 
 def geocode(*args, **kwargs):
@@ -28,6 +31,13 @@ def send_account_activation_email(request, user):
     email = EmailMultiAlternatives(_('E-Mail Aktivierung'), _('Aktivierungs-E-Mail'), settings.DEFAULT_FROM_EMAIL, recipients)
     email.attach_alternative(html_content, 'text/html')
     email.send()
+    
+def send_mail(subject, msg=""):
+    try:
+        email = EmailMultiAlternatives(subject, msg, 'myactivities.net@web.de', ['yannik131@web.de'])
+        email.send()
+    except:
+        logging.log(logging.ERROR, 'Could not send email', exc_info=True)
     
     
 def test(func, n=100):

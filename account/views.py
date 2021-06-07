@@ -10,7 +10,7 @@ from .templatetags import account_tags
 from notify.utils import notify
 from wall.models import Post
 from shared import shared
-from .utils import send_account_activation_email
+from .utils import send_account_activation_email, send_mail
 from activities.language_subdomain_middleware import get_prefix
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
@@ -231,6 +231,7 @@ def delete(request):
     if request.method == 'POST':
         delete_form = AccountDeleteForm(request.POST)
         if delete_form.is_valid():
+            send_mail(f'Delete: {request.user}. Total: {User.objects.count()}')
             request.user.delete()
             return HttpResponseRedirect(request.build_absolute_uri('/'))
     else:
@@ -248,11 +249,7 @@ def activate(request, uidb64=None, token=None):
         user.is_active = True
         user.save()
         auth_login(request, user)
-        try:
-            email = EmailMultiAlternatives(f'Registration {User.objects.count()}: {user}', f'Location: {user.location}, Inactive: {User.objects.filter(is_active=False).count()}', 'myactivities.net@web.de', ['yannik131@web.de'])
-            email.send()
-        except:
-            logging.log(logging.ERROR, 'Could not send email', exc_info=True)
+        send_mail(f'Registration {User.objects.count()}: {user}', f'Location: {user.location}, Inactive: {User.objects.filter(is_active=False).count()}')
         return HttpResponseRedirect(request.build_absolute_uri('/'))
     else:
         messages.add_message(request, messages.INFO, _('Der Aktivierungslink ist ungültig. Falls der Account noch inaktiv ist, können Sie durch erneutes Registrieren einen neuen anfordern!'))
