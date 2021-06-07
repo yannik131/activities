@@ -11,5 +11,5 @@
 /media/video/*
 /media/images/*
 /log.log
-/scripts/csv/*
 **/*_q85.*
+/dump.rdb
