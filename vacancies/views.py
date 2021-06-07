@@ -10,6 +10,7 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from account.views import handler403
 from django.contrib import messages
+from django.urls import reverse
 
 
 def create_vacancies(request, app_label, model, id):
@@ -85,7 +86,7 @@ def apply_for_vacancy(request, id):
     vacancy = get_object_or_404(Vacancy, id=id)
     if not request.user.birth_year:
         messages.add_message(request, messages.INFO, _('Bitte ergänzen Sie Ihr Profil (Geburtsjahr und Geschlecht), um sich bewerben zu können.'))
-        return HttpResponseRedirect(request.user.get_absolute_url())
+        return HttpResponseRedirect(reverse('account:edit'))
         
     elif not request.user.satisfies_requirements_of(vacancy):
         messages.add_message(request, messages.INFO, _('Sie erfüllen die Voraussetzungen der Leerstelle nicht.'))
