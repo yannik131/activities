@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-07 22:34+0000\n"
+"POT-Creation-Date: 2021-06-08 14:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1106,7 +1106,7 @@ msgstr ""
 
 #: account/templates/account/sidemenu.html:9
 #: character/templates/character/overview.html:5
-#: character/templates/character/overview.html:84
+#: character/templates/character/overview.html:83
 msgid "Charakter"
 msgstr ""
 
@@ -1226,7 +1226,7 @@ msgid "Was ist das hier?"
 msgstr ""
 
 #: account/templates/registration/login.html:18
-msgid "Bitte nutzen Sie das folgende Formular zum einloggen:"
+msgid "Bitte nutzen Sie das folgende Formular zum Einloggen:"
 msgstr ""
 
 #: account/templates/registration/login.html:28
@@ -1304,7 +1304,7 @@ msgid "Senden"
 msgstr ""
 
 #: account/templates/registration/register.html:18
-msgid "Bitte nutzen Sie das folgende Formular zum registrieren:"
+msgid "Bitte nutzen Sie das folgende Formular zum Registrieren:"
 msgstr ""
 
 #: account/templates/registration/register.html:24
@@ -1629,27 +1629,27 @@ msgid "Gewichte verteilen"
 msgstr ""
 
 #: character/templates/character/edit_weights.html:30
-#: character/templates/character/overview.html:87
+#: character/templates/character/overview.html:86
 msgid "Neurotizismus"
 msgstr ""
 
 #: character/templates/character/edit_weights.html:36
-#: character/templates/character/overview.html:93
+#: character/templates/character/overview.html:92
 msgid "Extraversion"
 msgstr ""
 
 #: character/templates/character/edit_weights.html:42
-#: character/templates/character/overview.html:99
+#: character/templates/character/overview.html:98
 msgid "Offenheit für Erfahrungen"
 msgstr ""
 
 #: character/templates/character/edit_weights.html:48
-#: character/templates/character/overview.html:105
+#: character/templates/character/overview.html:104
 msgid "Gewissenhaftigkeit"
 msgstr ""
 
 #: character/templates/character/edit_weights.html:54
-#: character/templates/character/overview.html:111
+#: character/templates/character/overview.html:110
 msgid "Verträglichkeit"
 msgstr ""
 
@@ -1692,31 +1692,31 @@ msgstr ""
 msgid "Noch kein Testergebnis!"
 msgstr ""
 
-#: character/templates/character/overview.html:47
+#: character/templates/character/overview.html:45
 msgid "Kategorie wählen: "
 msgstr ""
 
-#: character/templates/character/overview.html:62
+#: character/templates/character/overview.html:61
 msgid "Empfohlene Aktivitäten in "
 msgstr ""
 
-#: character/templates/character/overview.html:74
+#: character/templates/character/overview.html:73
 #: multiplayer/templates/multiplayer/game.html:73
 msgid "Score"
 msgstr ""
 
-#: character/templates/character/overview.html:85
+#: character/templates/character/overview.html:84
 #, python-format
 msgid ""
 "Werte verglichen mit den Durchschnittswerten. <br>+50%%: Maximal "
 "überdurchschnittlich, -50%%: Maximal unterdurchschnittlich"
 msgstr ""
 
-#: character/templates/character/overview.html:124
+#: character/templates/character/overview.html:123
 msgid "Zurücksetzen"
 msgstr ""
 
-#: character/templates/character/overview.html:129
+#: character/templates/character/overview.html:128
 msgid ""
 "Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich "
 "die errechneten Punktesummen in den Kategorien werden für die Berechnung von "
@@ -2056,7 +2056,7 @@ msgid ""
 "gerne waghalsig.Ich komme leicht über Rückschläge hinweg.Ich tue mehr als "
 "von mir verlangt wird.Ich schummle, um voranzukommen.Ich glaube, dass es "
 "eine wahre Religion gibt.Ich liebe das Leben.Ich interessiere mich nicht "
-"wirklich für andere.Ich fühle die Emotionen anderer.Ich bin bereits, alles "
+"wirklich für andere.Ich fühle die Emotionen anderer.Ich bin bereit, alles "
 "einmal auszuprobieren.Ich investiere wenig Zeit und Mühe in meine Arbeit.Ich "
 "bin schnell gestresst.Ich fürchte das Schlimmste.Ich denke, dass ich ein "
 "durchschnittlicher Mensch bin.Ich kann schwache Leute nicht ab.Ich mache "

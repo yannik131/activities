@@ -10,8 +10,8 @@
     <div class="center-container">
         <b>{% blocktrans with n=user.character.current_question max=user.character.question_limit %}Sie haben bisher {{ n }} von {{ max }} Fragen beantwortet.{% endblocktrans %}</b>
     </div>
-    <br>
     {% if not user.character.presentable %}
+        <br>
         <div class="button-like" onclick=openLink("{% url 'character:quiz' %}")>
             <img src="{% static 'icons/question.png' %}">
             {% trans 'Zum Fragebogen' %}
@@ -42,9 +42,8 @@
 {% if not user.character.presentable %}
 <h2>{% trans 'Noch kein Testergebnis!' %}</h2>
 {% else %}
-<br>
+<h2 class="h-img"><img src="{% static 'icons/category.png' %}">{% trans 'Kategorie wählen: ' %}</h2>
 <div class="info-p" id="suggestions">
-    <h2 class="h-img"><img src="{% static 'icons/category.png' %}">{% trans 'Kategorie wählen: ' %}</h2>
 <div class="activity-horizontal-list">
     {% for category in categories %}
     <div class="item {% if category == chosen_category %}selected{% endif %}" onclick="location.href='{% url 'character:overview' category.name %}'">
