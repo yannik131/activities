@@ -59,6 +59,14 @@ class MultiplayerMatch(models.Model):
             return 2
         else:
             return self.member_limit
+            
+    @staticmethod
+    def running_lifetime_days():
+        return MultiplayerMatch.RUNNING_LIFESPAN.days
+        
+    @staticmethod
+    def idle_lifetime_minutes():
+        return int(MultiplayerMatch.IDLE_LIFESPAN.seconds/60)
     
     def __str__(self):
         return self.activity.name+__('-Match')

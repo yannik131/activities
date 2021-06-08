@@ -22,7 +22,7 @@ def lobby(request, activity_name, extra=None):
     online_list = activity.members.filter(channel_name__isnull=False)
     user_matches = request.user.multiplayer_matches.filter(activity__id=activity.id)
     room = ChatRoom.get_for_target(activity)
-    return render(request, 'multiplayer/lobby.html', dict(activity=activity, online_list=online_list, user_matches=user_matches, current_chat_room=room))
+    return render(request, 'multiplayer/lobby.html', dict(activity=activity, online_list=online_list, user_matches=user_matches, current_chat_room=room, t1=MultiplayerMatch.idle_lifetime_minutes(), t2=MultiplayerMatch.running_lifetime_days()))
 
 
 def create_match(request, activity_name):

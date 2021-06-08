@@ -8,7 +8,7 @@
 {% block content %}
 <h1 class="h-img" style="margin-bottom: 5px"><img src="{% static 'icons/lobby.png' %}"><a href="{{ activity.get_absolute_url }}">{{ activity }}</a>-Lobby</h1>
 <p class="info-p">
-    {% blocktrans with activity=activity %}Hier können Sie {{ activity }} online spielen (<a href="/multiplayer/rules">Spielregeln finden Sie hier</a>). Als Ersteller eines Matches können Sie das Spiel starten, sobald die Mindestspieleranzahl anwesend ist. Durch Klick auf den Mülleimer schmeißen Sie Leute raus. Den Chat erreichen Sie im Spiel über den Chat-Button oben rechts.<br><span style="color: yellow">Noch nicht begonnene Spiele werden nach 1 Stunde, laufende nach 2 Tagen automatisch gelöscht.</span>{% endblocktrans %}
+    {% blocktrans with activity=activity t1=t1 t2=t2%}Hier können Sie {{ activity }} online spielen (<a href="/multiplayer/rules">Spielregeln finden Sie hier</a>). Als Ersteller eines Matches können Sie das Spiel starten, sobald die Mindestspieleranzahl anwesend ist. Durch Klick auf den Mülleimer schmeißen Sie Leute raus. Den Chat erreichen Sie im Spiel über den Chat-Button oben rechts.<br><span style="color: yellow">Noch nicht begonnene Spiele werden nach {{ t1 }} Minuten, laufende nach {{ t2 }} Tagen automatisch gelöscht.</span>{% endblocktrans %}
 </p>
 <div class="button-like" onclick=openLink("{% url 'multiplayer:create_match' activity.name %}")><img src="{% static 'icons/match.png' %}">{% blocktrans %}Match erstellen{% endblocktrans %}</div>
 <p></p>
