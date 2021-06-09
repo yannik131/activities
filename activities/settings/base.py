@@ -221,6 +221,11 @@ LOGGING = {
             'style': '{'
         }
     },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
     'handlers': {
        'file': {
            'level': 'WARNING',
@@ -237,6 +242,7 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['file', 'console'],
+            'filters': ['require_debug_false'],
             'propagate': False
         },
     },
