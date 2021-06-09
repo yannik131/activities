@@ -212,6 +212,8 @@ ADMINS = (
     ('Yannik S.', 'yannik131@web.de'),
 )
 
+DEBUG = False
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -240,8 +242,13 @@ LOGGING = {
        },
     },
     'loggers': {
-        'django': {
+        '': {
             'handlers': ['file', 'console']
         },
+        'django.server': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': True
+        }
     },
 }
