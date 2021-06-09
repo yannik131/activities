@@ -231,7 +231,7 @@ def delete(request):
     if request.method == 'POST':
         delete_form = AccountDeleteForm(request.POST)
         if delete_form.is_valid():
-            send_mail(f'Delete: {request.user}. Total: {User.objects.count()}')
+            send_mail(f'Delete: {request.user}. Total: {User.objects.count()-1}')
             request.user.delete()
             return HttpResponseRedirect(request.build_absolute_uri('/'))
     else:

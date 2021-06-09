@@ -94,3 +94,4 @@ schummeln: karte mit 2 callbacks, auswählen was gemacht werden soll
 karten offset falsch doko
 
 join audio wenn schon in konferenz geht nicht
+chatliste sortieren

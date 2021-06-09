@@ -225,7 +225,7 @@ LOGGING = {
        'file': {
            'level': 'WARNING',
            'class': 'logging.FileHandler',
-           'filename': 'log.log',
+           'filename': 'logs/django.log',
            'formatter': 'normal'
        },
        'console': {
