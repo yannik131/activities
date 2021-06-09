@@ -212,8 +212,6 @@ ADMINS = (
     ('Yannik S.', 'yannik131@web.de'),
 )
 
-DEBUG = False
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
