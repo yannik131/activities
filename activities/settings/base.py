@@ -224,19 +224,20 @@ LOGGING = {
     'handlers': {
        'file': {
            'level': 'WARNING',
+           'filters': ['require_debug_false'],
            'class': 'logging.FileHandler',
            'filename': 'logs/django.log',
            'formatter': 'normal'
        },
        'console': {
            'class': 'logging.StreamHandler',
-           'level': 'WARNING'
+           'level': 'WARNING',
+           'filters': ['require_debug_false'],
        },
     },
     'loggers': {
         'django': {
             'handlers': ['file', 'console'],
-            'filters': ['require_debug_false'],
             'propagate': False
         },
     },
