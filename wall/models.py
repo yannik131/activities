@@ -6,6 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from shared.shared import paginate
 from django.utils.translation import gettext_lazy as _
+from django.utils.timezone import now
 
 
 class Post(models.Model):
@@ -15,7 +16,7 @@ class Post(models.Model):
     target_id = models.PositiveIntegerField(db_index=True)
     target = GenericForeignKey('target_ct', 'target_id')
     message = models.TextField()
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(default=now)
     audio = models.FileField(upload_to='audio/%Y/%m/%d/', null=True, blank=True)
     video = models.FileField(upload_to='video/%Y/%m/%d/', null=True, blank=True)
     image = models.FileField(upload_to='images/%Y/%m/%d/', null=True, blank=True)

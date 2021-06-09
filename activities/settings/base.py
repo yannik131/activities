@@ -239,5 +239,5 @@ LOGGING = {
         'django.security': {
             'propagate': True
         }
-    },
+    }
 }
