@@ -88,8 +88,8 @@ class PostForm(forms.ModelForm):
         category = cd.get('category')
         activity = cd.get('activity')
         if category and activity and not self.fields['category'].disabled:
-            activity = Activity.objects.get(translations__language_code=self.LANGUAGE_CODE, translations__name=activity)
-            category = Category.objects.get(translations__language_code=self.LANGUAGE_CODE, translations__name=category)
+            activity = Activity.objects.get(translations__language_code=self.language_code, translations__name=activity)
+            category = Category.objects.get(translations__language_code=self.language_code, translations__name=category)
 
             if activity not in category.activities.all():
                 raise forms.ValidationError(_('Diese Aktivität ist nicht Teil der ausgewählten Kategorie.'))
