@@ -37,7 +37,6 @@ def about(request):
 
 @login_required
 def user_post_list(request):
-    logger.log(logging.ERROR, "hihi")
     raise Exception('hihi')
     posts, page = Post.get_page(request)
     return render(request, 'account/user_post_list.html', dict(posts=posts, page=page))
