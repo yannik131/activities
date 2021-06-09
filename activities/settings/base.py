@@ -221,22 +221,12 @@ LOGGING = {
             'style': '{'
         }
     },
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
     'handlers': {
        'file': {
-           #'filters': ['require_debug_false'],
            'class': 'logging.FileHandler',
            'filename': 'logs/django.log',
            'formatter': 'normal'
-       },
-       'console': {
-           'class': 'logging.StreamHandler',
-           'level': 'WARNING'
-       },
+       }
     },
     'loggers': {
         '': {
