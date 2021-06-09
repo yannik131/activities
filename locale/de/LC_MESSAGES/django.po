@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-08 15:54+0000\n"
+"POT-Creation-Date: 2021-06-09 16:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -514,7 +514,7 @@ msgid "Gespeichert: "
 msgstr ""
 
 #: account/templates/account/edit.html:41 account/templates/base.html:44
-#: account/templates/javascript/base.js:61
+#: account/templates/javascript/base.js:62
 #: activity/templates/activity/detail.html:92
 msgid "OK!"
 msgstr ""
@@ -1155,16 +1155,23 @@ msgid ""
 "Aktivitätsseite sichtbar."
 msgstr ""
 
-#: account/templates/javascript/base.js:183
+#: account/templates/javascript/base.js:185
 msgid ""
 "Sie haben noch keine Chats. Finden Sie Freunde, Gruppen, Aktivitäten etc., "
 "um zu chatten!"
 msgstr ""
 
-#: account/templates/javascript/base.js:228
+#: account/templates/javascript/base.js:230
 msgid ""
 "Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie "
 "nur einen Tab für myactivities.net :)"
+msgstr ""
+
+#: account/templates/javascript/base.js:262
+msgid ""
+"Es konnte keine Verbindung zum Server aufgebaut werden! Laden Sie die Seite "
+"bitte neu. Falls das nicht hilft, beschweren Sie sich gerne bei myactivities."
+"net@web.de! Jedes Feedback hilft."
 msgstr ""
 
 #: account/templates/javascript/edit.js:11

@@ -1,6 +1,7 @@
 {% load i18n %}
 
 var user_websocket;
+var reconnect_count = 0;
 const this_user = "{{ user }}";
 let current_room_id;
 {% if current_chat_room %}
@@ -156,6 +157,7 @@ function getWsPrefix() {
 }
 
 function connect() {
+    reconnect_count++;
     user_websocket = new WebSocket(
         getWsPrefix()
         + '/ws/user/'
@@ -239,9 +241,6 @@ function connect() {
                     if(typeof updateMatchMembers != "undefined") {
                         updateMatchMembers(data);
                     }
-                    else {
-                        //TODO: Add notification
-                    }
                 }
                 break;
             case "rtc":
@@ -259,9 +258,15 @@ function connect() {
             return;
         }
         console.log('User socket closed unexpectedly. Attempting reconnect in 1 second. Code: ', e);
-        setTimeout(function() {
-            connect();
-        }, 1000);
+        if(reconnect_count > 15) {
+            alert("{% trans 'Es konnte keine Verbindung zum Server aufgebaut werden! Laden Sie die Seite bitte neu. Falls das nicht hilft, beschweren Sie sich gerne bei myactivities.net@web.de! Jedes Feedback hilft.' %}");
+        }
+        else {
+            setTimeout(function() {
+                connect();
+            }, 1000);
+        }
+        
     }
 
     user_websocket.onerror = function(err) {

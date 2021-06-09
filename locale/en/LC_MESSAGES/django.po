@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-08 15:54+0000\n"
-"PO-Revision-Date: 2021-06-08 17:55+0200\n"
+"POT-Creation-Date: 2021-06-09 16:35+0000\n"
+"PO-Revision-Date: 2021-06-09 18:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -547,7 +547,7 @@ msgid "Gespeichert: "
 msgstr "Saved: "
 
 #: account/templates/account/edit.html:41 account/templates/base.html:44
-#: account/templates/javascript/base.js:61
+#: account/templates/javascript/base.js:62
 #: activity/templates/activity/detail.html:92
 msgid "OK!"
 msgstr "OK!"
@@ -1489,20 +1489,30 @@ msgstr ""
 "Posts are publicly visible on your profile page and the respective category "
 "or activity."
 
-#: account/templates/javascript/base.js:183
+#: account/templates/javascript/base.js:185
 msgid ""
 "Sie haben noch keine Chats. Finden Sie Freunde, Gruppen, Aktivitäten etc., "
 "um zu chatten!"
 msgstr ""
 "You don't have any chats yet. Find friends, groups, activities etc. to chat!"
 
-#: account/templates/javascript/base.js:228
+#: account/templates/javascript/base.js:230
 msgid ""
 "Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie "
 "nur einen Tab für myactivities.net :)"
 msgstr ""
 "Connection closed because a new tab was opened! Please only use one tab for "
 "myactivities.net :)"
+
+#: account/templates/javascript/base.js:262
+msgid ""
+"Es konnte keine Verbindung zum Server aufgebaut werden! Laden Sie die Seite "
+"bitte neu. Falls das nicht hilft, beschweren Sie sich gerne bei myactivities."
+"net@web.de! Jedes Feedback hilft."
+msgstr ""
+"A connection to the server could not be established! Please reload the page. "
+"If that doesn't help, consider yelling at me at myactivities.net@web.de! "
+"Every feedback helps."
 
 #: account/templates/javascript/edit.js:11
 #: activity/templates/javascript/map.js:116
