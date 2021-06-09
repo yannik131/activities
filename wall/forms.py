@@ -31,6 +31,7 @@ class PostForm(forms.ModelForm):
             self.fields['activity'].initial = activity.id
         else:
             self.fields['category'].choices = [(None, '-'*10)] + [(category.id, category) for category in Category.objects.translated(self.language_code).filter(visible=True).order_by('translations__name')]
+            self.fields['activity'].choices = [(None, '-'*10)] + [(activity.id, activity) for activity in Activity.objects.translated(self.language_code).order_by('translations__name')]
             
 
     MAX_UPLOAD_FILE_SIZE = 30000000
