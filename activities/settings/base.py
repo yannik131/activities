@@ -236,6 +236,7 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['file', 'console'],
+            'filters': ['require_debug_false'],
             'propagate': False
         },
     },
