@@ -3,12 +3,13 @@ from django import forms
 from .models import Post, Comment
 from activity.models import Activity, Category
 from usergroups.models import UserGroup
-from shared.shared import one_or_none, type_of
+from shared.shared import log, one_or_none, type_of
 from django.utils.translation import gettext_lazy as _
 
 class PostForm(forms.ModelForm):
-    def __init__(self, arg, *args, **kwargs):
+    def __init__(self, arg, language_code, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.language_code = language_code
         if type(arg) == UserGroup:
             group = arg
             self.instance.category = group.category
@@ -16,12 +17,12 @@ class PostForm(forms.ModelForm):
             self.fields['category'].required = False
             self.fields['category'].disabled = True
             self.fields['category'].initial = group.category.id
-            self.fields['activity'].choices = [(None, '-'*10)] + [(activity.id, activity) for activity in self.instance.category.activities.all()]
+            self.fields['activity'].choices = [(None, '-'*10)] + [(activity.id, activity) for activity in self.instance.category.activities.translated(self.language_code).order_by('translations__name')]
         elif type(arg) == Category:
             category = arg
             self.fields['category'].initial = category.id
             self.fields['category'].disabled = True
-            self.fields['activity'].choices = [(None, '-'*10)] + [(activity.id, activity) for activity in category.activities.all()]
+            self.fields['activity'].choices = [(None, '-'*10)] + [(activity.id, activity) for activity in category.activities.translated(self.language_code).order_by('translations__name')]
         elif type(arg) == Activity:
             activity = arg
             self.fields['category'].disabled = True
@@ -29,7 +30,7 @@ class PostForm(forms.ModelForm):
             self.fields['activity'].disabled = True
             self.fields['activity'].initial = activity.id
         else:
-            self.fields['category'].choices = [(None, '-'*10)] + [(category.id, category) for category in Category.objects.filter(visible=True)]
+            self.fields['category'].choices = [(None, '-'*10)] + [(category.id, category) for category in Category.objects.translated(self.language_code).filter(visible=True).order_by('translations__name')]
             
 
     MAX_UPLOAD_FILE_SIZE = 30000000

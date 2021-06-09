@@ -14,18 +14,17 @@ def create_post(request, app_label, model, id):
     ct = get_object_or_404(ContentType, app_label=app_label, model=model)
     arg = ct.get_object_for_this_type(pk=id)
     if request.method == 'POST':
-        form = PostForm(arg, data=request.POST, files=request.FILES)
+        form = PostForm(arg, request.LANGUAGE_CODE, data=request.POST, files=request.FILES)
         form.instance.target_ct = ct
         form.instance.target_id = id
         form.instance.author = request.user
-        form.LANGUAGE_CODE = request.LANGUAGE_CODE
         if form.is_valid():
             post = form.save()
             if ct == User.content_type():
                 return HttpResponseRedirect(request.build_absolute_uri('/account/user_post_list/'))
             return HttpResponseRedirect(post.target.get_absolute_url())
     else:
-        form = PostForm(arg)
+        form = PostForm(arg, request.LANGUAGE_CODE)
         form.instance.target_ct = ct
         form.instance.target_id = id
     return render(request, 'wall/post/create_post.html', dict(form=form, target=form.instance.target))
