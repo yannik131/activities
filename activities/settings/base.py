@@ -230,7 +230,6 @@ LOGGING = {
     },
     'handlers': {
        'file': {
-           'level': 'WARNING',
            #'filters': ['require_debug_false'],
            'class': 'logging.FileHandler',
            'filename': 'logs/django.log',
@@ -242,17 +241,14 @@ LOGGING = {
        },
     },
     'loggers': {
-        'django': {
-            'handlers': ['file', 'console']
+        '': {
+            'handlers': ['file'],
+            'level': 'WARNING'
         },
         'django.server': {
-            'handlers': ['file'],
-            'level': 'ERROR',
             'propagate': True
         },
         'django.security': {
-            'handlers': ['file'],
-            'level': 'ERROR',
             'propagate': True
         }
     },
