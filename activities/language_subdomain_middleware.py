@@ -9,7 +9,7 @@ def get_prefix(request):
     domain = request.META.get('HTTP_HOST')
     if domain:
         language = domain.split('.')[0]
-        if language not in ['en', 'de']:
+        if language != 'en':
             language = 'de'
     else:
         language = 'de'
