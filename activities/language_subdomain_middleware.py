@@ -6,9 +6,12 @@ except ImportError:
 from django.utils import translation
 
 def get_prefix(request):
-    domain = request.META['HTTP_HOST']
-    language = domain.split('.')[0]
-    if language not in ['en', 'de']:
+    domain = request.META.get('HTTP_HOST')
+    if domain:
+        language = domain.split('.')[0]
+        if language not in ['en', 'de']:
+            language = 'de'
+    else:
         language = 'de'
     return language
 
