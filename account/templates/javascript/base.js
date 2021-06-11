@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load static %}
 
 var user_websocket;
 var reconnect_count = 0;
@@ -207,17 +208,19 @@ function connect() {
                     case 'sent':
                     case 'leave':
                     case 'join':
-                        const is_this_user = data.username == this_user;
+                    case 'delete':
+                        const is_this_user = data.username == this_user || data.action == 'delete';
                         var chat = document.getElementById('chat-window-'+data.room_id);
-                        if(chat) {
+                        if(chat && data.action != 'delete') {
                             handleChatMessage(data);
                         }
                         else if(data.action == 'sent' && !is_this_user) {
                             addMessageToChatMenu(data);
-                            playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/click_x.wav");
+                            playSound("{% static 'sounds/click.wav' %}");
                         }
-                        else if(data.action == 'leave' || data.action == 'join') {
-                            console.log('manageChatWindows..');
+                        if(data.action == 'leave' ||
+                           data.action == 'join' || 
+                           data.action == 'delete') {
                             manageChatWindows(data.action, data.room_id, data.target, is_this_user);
                         }
                         break;
@@ -231,7 +234,7 @@ function connect() {
                     return;
                 }
                 addNotification(data.id, data.text, data.url);
-                playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/boing_x.wav")
+                playSound("{% static 'sounds/boing.wav' %}");
                 break;
             case "multiplayer":
                 if(data.action == "match_list") {

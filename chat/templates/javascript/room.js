@@ -116,6 +116,7 @@ function manageChatWindows(action, room_id, target, is_this_user) {
                 }
                 break;
             case 'leave':
+            case 'delete':
                 if(item) {
                     removeItemFromChatList(room_id);
                 }

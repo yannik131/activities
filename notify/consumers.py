@@ -17,6 +17,7 @@ from django.utils import translation
 from redis import StrictRedis
 conn = StrictRedis(host="localhost", port=6655)
 import redis_lock
+import datetime
 
 
 class NotificationConsumer(WebsocketConsumer):
@@ -102,7 +103,7 @@ class NotificationConsumer(WebsocketConsumer):
         chat_room_id = text_data['id']
         chat_room = ChatRoom.objects.only('members').get(id=chat_room_id) 
         if 'update_check' in text_data:
-            self.user.last_chat_checks.get(room=chat_room).update()
+            self.user.last_chat_checks.filter(room=chat_room).update(date=now())
             return
         time = now()
         timestr = time.isoformat()
@@ -126,18 +127,22 @@ class NotificationConsumer(WebsocketConsumer):
     def generate_chat_list(self, text_data):
         with translation.override(text_data['language_code']):
             rooms = []
-            for room in self.user.chat_rooms.all():
-                rooms.append((room, room.get_target(self.user)))
+            rooms_with_news_count = 0
+            chat_checks = self.user.last_chat_checks.prefetch_related('room', 'room__log_entries')
+            newest_date = chat_checks.first().date
+            for check in chat_checks:
+                entry = check.room.log_entries.last()
+                if entry and entry.created > newest_date:
+                    rooms_with_news_count += 1
+                rooms.append((check.room, check.room.get_target(self.user), datetime.datetime.timestamp(entry.created) if entry else 0))
             if not rooms:
                 self.send(json.dumps({
                     'type': 'chat_message',
                     'action': 'list',
                 })) 
                 return
-            rooms_with_news = self.user.rooms_with_news()
-            rooms = sorted(rooms, key=lambda t: t[0].target_ct.model)
-            rooms = sorted(rooms, key=lambda t: 1 if t[0].id in rooms_with_news else 0, reverse=True)
-            chat_list = render_to_string('chat/chat_list.html', dict(rooms=rooms, rooms_with_news=self.user.rooms_with_news(), rooms_with_news_count=len(rooms_with_news), friendship=rooms[0][0].target_ct.model == "friendship" if len(rooms) else None))
+            rooms = sorted(rooms, key=lambda room: room[2], reverse=True)
+            chat_list = render_to_string('chat/chat_list.html', dict(rooms=rooms, rooms_with_news_count=rooms_with_news_count))
             self.send(json.dumps({
                 'type': 'chat_message',
                 'action': 'list',
@@ -146,10 +151,7 @@ class NotificationConsumer(WebsocketConsumer):
         
     def generate_chat_window(self, text_data):
         room = ChatRoom.objects.get(pk=text_data['id'])
-        try:
-            self.user.last_chat_checks.get(room=room).update()
-        except ChatCheck.DoesNotExist:
-            return
+        self.user.last_chat_checks.filter(room=room).update(date=now())
         chat_window = render_to_string('chat/chat_window.html', dict(room=room, user=self.user, friendship=room.target_ct.model == 'friendship'))
         self.send(json.dumps({
             'type': 'chat_message',

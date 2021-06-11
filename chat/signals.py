@@ -1,4 +1,4 @@
-from django.db.models.signals import m2m_changed
+from django.db.models.signals import m2m_changed, pre_delete
 from django.dispatch import receiver
 from .models import ChatRoom
 from .utils import broadcast
@@ -33,4 +33,12 @@ def chat_members_changed(instance, pk_set, model, action, **kwargs):
         if user.audio_room_id == instance.id:
             user.audio_room_id = None
             user.save()
+            
+@receiver(pre_delete, sender=ChatRoom)
+def room_deleted(instance, **kwargs):
+    broadcast(instance.members.all(), {
+            'type': 'chat_message',
+            'action': 'delete',
+            'room_id': instance.id
+        })
         

@@ -4,7 +4,7 @@
 
 
 <div class="chat-list" id="chat-list">
-    {% for room, target in rooms %}
+    {% for room, target, _ in rooms %}
         <div class="chat-item" id="chat-item-{{ room.id }}" onclick="requestChatWindow({{ room.id }})">
             <div class="chat-list-image">
                 <img src="{% thumbnail target.get_image 200x200 %}">

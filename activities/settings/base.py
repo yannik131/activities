@@ -226,11 +226,15 @@ LOGGING = {
            'class': 'logging.FileHandler',
            'filename': 'logs/django.log',
            'formatter': 'normal'
+       },
+       'console': {
+           'class': 'logging.StreamHandler',
+           'level': 'ERROR'
        }
     },
     'loggers': {
         '': {
-            'handlers': ['file'],
+            'handlers': ['file', 'console'],
             'level': 'WARNING'
         },
         'django.server': {

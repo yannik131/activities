@@ -8,14 +8,17 @@ from django.contrib.contenttypes.models import ContentType
 from competitions.models import Tournament
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from account.views import handler403
+from account.views import handler403, handler404
 from django.contrib import messages
 from django.urls import reverse
 
 
 def create_vacancies(request, app_label, model, id):
     ct = get_object_or_404(ContentType, app_label=app_label, model=model)
-    target = ct.get_object_for_this_type(pk=id)
+    try:
+        target = ct.get_object_for_this_type(pk=id)
+    except:
+        return handler404(request)
     if request.method == 'POST':
         form = VacancyForm(request.POST)
         form.instance.target = target
@@ -29,7 +32,10 @@ def create_vacancies(request, app_label, model, id):
 
 def create_invitation(request, app_label, model, id):
     ct = get_object_or_404(ContentType, app_label=app_label, model=model)
-    sender = ct.get_object_for_this_type(pk=id)
+    try:
+        sender = ct.get_object_for_this_type(pk=id)
+    except:
+        return handler404(request)
     if request.method == 'POST':
         form = InvitationForm(request.POST)
         form.instance.sender = sender

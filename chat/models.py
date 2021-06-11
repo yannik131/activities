@@ -17,6 +17,9 @@ class ChatCheck(models.Model):
     def update(self):
         self.date = now()
         self.save()
+        
+    class Meta:
+        ordering = ['-date']
 
 
 class ChatRoom(models.Model):
