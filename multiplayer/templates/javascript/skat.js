@@ -161,12 +161,10 @@ function loadGameField(data) {
         if(game_type.length && solist.length) {
             info += solist + ": " + game_type_translations[game_type] + "\n";
         }
-        console.log('1');
         summary = info+"{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary;
         showScore();
     }
     else if(game_type.length && solist.length) {
-        console.log('2');
         summary = solist + ": " + game_type_translations[game_type], info_duration;
         showScore();
     }
