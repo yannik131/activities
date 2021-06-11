@@ -88,10 +88,5 @@ poker flush geht nicht
 spiel zugucken
 beitreten icon nicht anzeigen chat wenn chat nebenbei offen
 ist konferenz beigetreten zeitzone
-call bei nächster runde raise vorm flop falsch angezeigt
-durak 5 spieler
 schummeln: karte mit 2 callbacks, auswählen was gemacht werden soll
 karten offset falsch doko
-
-join audio wenn schon in konferenz geht nicht
-chatliste sortieren

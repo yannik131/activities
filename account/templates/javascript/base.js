@@ -128,6 +128,7 @@ function playSound(url) {
 }
 
 function format_time_str(time) {
+    console.log(time, new Date(time).toLocaleString('de'));
     var language = window.location.hostname.split('.')[0]
     if(language != 'de' && language != 'en') {
         language = 'de';

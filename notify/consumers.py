@@ -102,17 +102,15 @@ class NotificationConsumer(WebsocketConsumer):
     def distribute_chat_message(self, text_data):
         chat_room_id = text_data['id']
         chat_room = ChatRoom.objects.only('members').get(id=chat_room_id) 
+        timestamp = now()
         if 'update_check' in text_data:
-            self.user.last_chat_checks.filter(room=chat_room).update(date=now())
+            self.user.last_chat_checks.filter(room=chat_room).update(date=timestamp)
             return
-        time = now()
-        timestr = time.isoformat()
         if not 'once' in text_data:
             ChatLogEntry.objects.create(
                 author=self.user,
                 chat_room=chat_room,
-                text=text_data['message'],
-                created=time
+                text=text_data['message']
             )
         
         broadcast(chat_room.members.all(), {
@@ -120,7 +118,7 @@ class NotificationConsumer(WebsocketConsumer):
             'room_id': chat_room_id,
             'message': text_data['message'],
             'username': self.user.username,
-            'time': timestr,
+            'time': timestamp.isoformat(),
             'action': 'sent'
         })
             

@@ -271,7 +271,7 @@ function leaveAudio() {
     if(button) {
         button.src = "{% static 'icons/call.png' %}";
         var room_id = audio_room_id;
-        button.onclick = function() { joinAudio(room_id); };
+        button.onclick = function() { joinAudio(room_id, true); };
     }
     audio_room_id = undefined;
 }

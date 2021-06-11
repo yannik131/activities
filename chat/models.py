@@ -75,7 +75,7 @@ class ChatLogEntry(models.Model):
     text = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='chat_messages')
     chat_room = models.ForeignKey(ChatRoom, on_delete=models.CASCADE, related_name='log_entries')
-    created = models.DateTimeField()
+    created = models.DateTimeField(default=now)
 
     class Meta:
         ordering = ('created',)
