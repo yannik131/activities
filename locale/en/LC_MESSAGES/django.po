@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-09 16:35+0000\n"
-"PO-Revision-Date: 2021-06-09 18:36+0200\n"
+"POT-Creation-Date: 2021-06-12 21:50+0200\n"
+"PO-Revision-Date: 2021-06-12 21:51+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -95,7 +95,7 @@ msgid "Stadt, Bundesland"
 msgstr "City, State"
 
 #: account/forms.py:104 vacancies/forms.py:55 vacancies/forms.py:99
-#: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:43
+#: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:45
 msgid "Nachricht"
 msgstr "Message"
 
@@ -431,7 +431,7 @@ msgstr "Profile of"
 msgid "Charakterübereinstimmung"
 msgstr "Character congruence"
 
-#: account/templates/account/detail.html:27
+#: account/templates/account/detail.html:26
 #: competitions/templates/competitions/match_detail.html:18
 #: competitions/templates/competitions/match_detail.html:28
 #: competitions/templates/competitions/tournament_detail.html:15
@@ -442,24 +442,28 @@ msgstr "Character congruence"
 msgid "Zum Chat"
 msgstr "To the chat"
 
-#: account/templates/account/detail.html:30
-msgid "ist Mitglied folgender Aktivitäten"
-msgstr "is a member of the following activities"
+#: account/templates/account/detail.html:29
+msgid ""
+"ist Mitglied folgender Aktivitäten (gemeinsame <span style='color: "
+"yellow'>gelb</span>)"
+msgstr ""
+"is a member of the following activities (common ones are <span style='color: "
+"yellow'>yellow</span>)"
 
-#: account/templates/account/detail.html:33
+#: account/templates/account/detail.html:32
 msgid "Adresse"
 msgstr "Address"
 
-#: account/templates/account/detail.html:34
+#: account/templates/account/detail.html:35
 msgid "Freundschaft beenden"
 msgstr "End friendship"
 
-#: account/templates/account/detail.html:36
+#: account/templates/account/detail.html:37
 #, python-format
 msgid "Sie sind nicht mit %(user)s befreundet."
 msgstr "You aren't friends with %(user)s."
 
-#: account/templates/account/detail.html:38
+#: account/templates/account/detail.html:39
 msgid ""
 "Sie haben allerdings bereits eine Freundschaftsanfrage gesendet. Diese wurde "
 "entweder abgelehnt oder die Antwort steht noch aus"
@@ -467,18 +471,18 @@ msgstr ""
 "You've already sent a friend request. It was either declined or is still "
 "pending"
 
-#: account/templates/account/detail.html:40
+#: account/templates/account/detail.html:41
 #, python-format
 msgid ""
 "Schicken Sie eine Freundschaftsanfrage, um zu sehen, welche Aktivitäten "
 "%(user)s mag!"
 msgstr "Send a friend request to see which activities %(user)s likes!"
 
-#: account/templates/account/detail.html:41
+#: account/templates/account/detail.html:42
 msgid "Freundschaftsanfrage schicken"
 msgstr "Send friend request"
 
-#: account/templates/account/detail.html:44
+#: account/templates/account/detail.html:45
 #: usergroups/templates/usergroups/group_detail.html:79
 msgid "Posts"
 msgstr "Posts"
@@ -547,7 +551,7 @@ msgid "Gespeichert: "
 msgstr "Saved: "
 
 #: account/templates/account/edit.html:41 account/templates/base.html:44
-#: account/templates/javascript/base.js:62
+#: account/templates/javascript/base.js:63
 #: activity/templates/activity/detail.html:92
 msgid "OK!"
 msgstr "OK!"
@@ -671,30 +675,26 @@ msgstr ""
 "want to find out which activities might suit you, you can also complete <a "
 "href=\"/character/overview\">the personality test</a>.</li></ul>"
 
-#: account/templates/account/home.html:17
-msgid "Freunde in Ihrer Nähe finden"
-msgstr "Find friends in your area"
-
-#: account/templates/account/home.html:20
+#: account/templates/account/home.html:19
 msgid "Persönlichkeitstest & Empfehlungen"
 msgstr "Personality test & suggestions"
 
-#: account/templates/account/home.html:22
+#: account/templates/account/home.html:21
 msgid "Zu Ihren Posts"
 msgstr "Your posts"
 
-#: account/templates/account/home.html:23
+#: account/templates/account/home.html:22
 msgid ""
 "Bei Fragen und Anregungen können Sie einfach eine Freundschaftsanfrage "
 "schicken an:"
 msgstr ""
 "If you have questions or suggestions, you can send a friend request to:"
 
-#: account/templates/account/home.html:25
+#: account/templates/account/home.html:24
 msgid "Ihre Aktivitäten:"
 msgstr "Your activities:"
 
-#: account/templates/account/home.html:29
+#: account/templates/account/home.html:28
 msgid ""
 "Hier ist noch nichts! <a href=\"/activity/list\">Hier</a> finden Sie eine "
 "Liste aller Aktivitäten und <a href=\"/character/overview\">hier</a> geht's "
@@ -1340,33 +1340,27 @@ msgid ""
 msgstr "Please send me your jokes. I don’t know any good ones."
 
 #: account/templates/account/pagination.html:7
-#: account/templates/account/pagination_component.html:7
 msgid "Erste"
 msgstr "First"
 
 #: account/templates/account/pagination.html:9
-#: account/templates/account/pagination_component.html:9
 msgid "Vorige"
 msgstr "Previous"
 
 #: account/templates/account/pagination.html:12
-#: account/templates/account/pagination_component.html:12
 msgid "Seite"
 msgstr "Page"
 
 #: account/templates/account/pagination.html:12
-#: account/templates/account/pagination_component.html:12
 #: wall/templates/wall/post/post_loop.html:12
 msgid "von"
 msgstr "of"
 
 #: account/templates/account/pagination.html:15
-#: account/templates/account/pagination_component.html:15
 msgid "Nächste"
 msgstr "Next"
 
 #: account/templates/account/pagination.html:17
-#: account/templates/account/pagination_component.html:17
 msgid "Letzte"
 msgstr "Last"
 
@@ -1381,27 +1375,44 @@ msgstr "List of people in"
 #: account/templates/account/people_list.html:11
 #, python-format
 msgid ""
-"Hier werden die ersten 30 Mitglieder in der ausgewählten Gegend angezeigt. "
 "Haben Sie den <a href=\"/character/overview\">Persönlichkeitstest</a> "
 "gemacht, werden die Mitglieder nach Charakterübereinstimmung in %% sortiert. "
-"Schicken Sie doch eine Freundschaftsanfrage an die Leute ganz hinten "
-"&#128540;"
+"Sie können Sie auch nach der Anzahl mit Ihnen gemeinsamer Aktivitäten "
+"sortieren. Schicken Sie doch eine Freundschaftsanfrage an die Leute ganz "
+"hinten &#128540;"
 msgstr ""
-"The first 30 members in the selected location are listed here. If you've "
-"completed the <a href=\"/character/overview\">personality test</a>, members "
-"are sorted by character congruence in %%. Why don't you send a friend "
-"request to someone at the end of the list &#128540;"
+"If you've completed the <a href=\"/character/overview\">personality test</"
+"a>, members are sorted by character congruence in %%. You can also sort by "
+"number of common activities. Why don't you send a friend request to someone "
+"at the end of the list &#128540;"
 
-#: account/templates/account/people_list.html:15
+#: account/templates/account/people_list.html:13
+msgid "Sortierung auswählen: "
+msgstr "Sorting method: "
+
+#: account/templates/account/people_list.html:17
+#: account/templates/account/sidemenu.html:9
+#: character/templates/character/overview.html:5
+#: character/templates/character/overview.html:85
+msgid "Charakter"
+msgstr "Character"
+
+#: account/templates/account/people_list.html:21
+#: account/templates/account/sidemenu.html:10
+msgid "Aktivitäten"
+msgstr "Activities"
+
+#: account/templates/account/people_list.html:26
 #: activity/templates/activity/activity_list.html:18
 msgid "Mitglieder anzeigen"
 msgstr "Show members"
 
-#: account/templates/account/people_list.html:20
+#: account/templates/account/people_list.html:31
 msgid "Suche nach Nutzername: "
 msgstr "Search by username: "
 
-#: account/templates/account/people_list.html:38
+#: account/templates/account/people_list.html:49
+#: account/templates/account/people_list.html:62
 msgid ""
 "Tote Hose! Hier ist ja echt niemand. Empfehlen Sie die Seite doch Ihren "
 "Freunden und schauen Sie, wie gut eure Charaktere übereinstimmen und welche "
@@ -1435,16 +1446,6 @@ msgstr "Send"
 #: account/templates/account/sidemenu.html:8
 msgid "Homepage"
 msgstr "Homepage"
-
-#: account/templates/account/sidemenu.html:9
-#: character/templates/character/overview.html:5
-#: character/templates/character/overview.html:83
-msgid "Charakter"
-msgstr "Character"
-
-#: account/templates/account/sidemenu.html:10
-msgid "Aktivitäten"
-msgstr "Activities"
 
 #: account/templates/account/sidemenu.html:11
 msgid "Kategorien"
@@ -1489,14 +1490,14 @@ msgstr ""
 "Posts are publicly visible on your profile page and the respective category "
 "or activity."
 
-#: account/templates/javascript/base.js:185
+#: account/templates/javascript/base.js:186
 msgid ""
 "Sie haben noch keine Chats. Finden Sie Freunde, Gruppen, Aktivitäten etc., "
 "um zu chatten!"
 msgstr ""
 "You don't have any chats yet. Find friends, groups, activities etc. to chat!"
 
-#: account/templates/javascript/base.js:230
+#: account/templates/javascript/base.js:233
 msgid ""
 "Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie "
 "nur einen Tab für myactivities.net :)"
@@ -1504,7 +1505,7 @@ msgstr ""
 "Connection closed because a new tab was opened! Please only use one tab for "
 "myactivities.net :)"
 
-#: account/templates/javascript/base.js:262
+#: account/templates/javascript/base.js:265
 msgid ""
 "Es konnte keine Verbindung zum Server aufgebaut werden! Laden Sie die Seite "
 "bitte neu. Falls das nicht hilft, beschweren Sie sich gerne bei myactivities."
@@ -1766,11 +1767,11 @@ msgstr "Your password was changed successfully."
 msgid "Ihr Passwort wurde zurückgesetzt."
 msgstr "Your password was successfully reset."
 
-#: account/views.py:303
+#: account/views.py:310
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr "Marker was successfully deleted."
 
-#: account/views.py:305
+#: account/views.py:312
 msgid "Markierung wurde nicht gefunden!"
 msgstr "Marker not found!"
 
@@ -2014,27 +2015,27 @@ msgid "Gewichte verteilen"
 msgstr "Distribute weights"
 
 #: character/templates/character/edit_weights.html:30
-#: character/templates/character/overview.html:86
+#: character/templates/character/overview.html:88
 msgid "Neurotizismus"
 msgstr "Neuroticism"
 
 #: character/templates/character/edit_weights.html:36
-#: character/templates/character/overview.html:92
+#: character/templates/character/overview.html:94
 msgid "Extraversion"
 msgstr "Extraversion"
 
 #: character/templates/character/edit_weights.html:42
-#: character/templates/character/overview.html:98
+#: character/templates/character/overview.html:100
 msgid "Offenheit für Erfahrungen"
 msgstr "Openness to experience"
 
 #: character/templates/character/edit_weights.html:48
-#: character/templates/character/overview.html:104
+#: character/templates/character/overview.html:106
 msgid "Gewissenhaftigkeit"
 msgstr "Conscientiousness"
 
 #: character/templates/character/edit_weights.html:54
-#: character/templates/character/overview.html:110
+#: character/templates/character/overview.html:112
 msgid "Verträglichkeit"
 msgstr "Agreeableness"
 
@@ -2051,7 +2052,11 @@ msgstr "So far you've answered %(n)s of %(max)s questions."
 msgid "Zum Fragebogen"
 msgstr "Questionnaire"
 
-#: character/templates/character/overview.html:22
+#: character/templates/character/overview.html:20
+msgid "Freunde in Ihrer Nähe finden"
+msgstr "Find friends in your area"
+
+#: character/templates/character/overview.html:24
 msgid ""
 "Die hier angebotenen Persönlichkeitstests wurden in Anlehnung an den NEO-PI-"
 "R Test erstellt und basieren auf <a href=\"https://ipip.ori.org/newNEOKey.htm"
@@ -2071,34 +2076,34 @@ msgstr ""
 "time to answer, but might yield less consistent results if the test is taken "
 "more than once."
 
-#: character/templates/character/overview.html:26
+#: character/templates/character/overview.html:28
 msgid "Bitte wählen Sie eine der drei Optionen aus."
 msgstr "Please choose one of the following options."
 
-#: character/templates/character/overview.html:31
-#: character/templates/character/overview.html:35
-#: character/templates/character/overview.html:39
+#: character/templates/character/overview.html:33
+#: character/templates/character/overview.html:37
+#: character/templates/character/overview.html:41
 msgid "Fragen"
 msgstr "Questions"
 
-#: character/templates/character/overview.html:43
+#: character/templates/character/overview.html:45
 msgid "Noch kein Testergebnis!"
 msgstr "No test result yet!"
 
-#: character/templates/character/overview.html:45
+#: character/templates/character/overview.html:47
 msgid "Kategorie wählen: "
 msgstr "Choose a category: "
 
-#: character/templates/character/overview.html:61
+#: character/templates/character/overview.html:63
 msgid "Empfohlene Aktivitäten in "
 msgstr "Suggested activities in "
 
-#: character/templates/character/overview.html:73
+#: character/templates/character/overview.html:75
 #: multiplayer/templates/multiplayer/game.html:73
 msgid "Score"
 msgstr "Score"
 
-#: character/templates/character/overview.html:84
+#: character/templates/character/overview.html:86
 #, python-format
 msgid ""
 "Werte verglichen mit den Durchschnittswerten. <br>+50%%: Maximal "
@@ -2107,11 +2112,11 @@ msgstr ""
 "Values compared to the average. <br>+50%%: Maximally above average, -50%%: "
 "Maximally below average"
 
-#: character/templates/character/overview.html:123
+#: character/templates/character/overview.html:125
 msgid "Zurücksetzen"
 msgstr "Reset"
 
-#: character/templates/character/overview.html:128
+#: character/templates/character/overview.html:130
 msgid ""
 "Antworten auf individuelle Fragen werden <u>nicht gespeichert</u>. Lediglich "
 "die errechneten Punktesummen in den Kategorien werden für die Berechnung von "
@@ -2717,7 +2722,7 @@ msgstr "left the chat."
 msgid "Sie"
 msgstr "You"
 
-#: chat/views.py:16
+#: chat/views.py:13
 msgid "Diesen Chat-Room gibt es nicht mehr."
 msgstr "This chat room doesn't exist any more."
 
@@ -3171,7 +3176,7 @@ msgid "ist voll"
 msgstr "is full"
 
 #: multiplayer/templates/javascript/cards.js:506
-#: multiplayer/templates/javascript/skat.js:568
+#: multiplayer/templates/javascript/skat.js:566
 msgid "Ja"
 msgstr "Yes"
 
@@ -3222,19 +3227,19 @@ msgstr "Jacks"
 
 #: multiplayer/templates/javascript/doppelkopf.js:10
 #: multiplayer/templates/javascript/skat.js:13
-#: multiplayer/templates/javascript/skat.js:361
+#: multiplayer/templates/javascript/skat.js:359
 msgid "Kreuz"
 msgstr "Clubs"
 
 #: multiplayer/templates/javascript/doppelkopf.js:11
 #: multiplayer/templates/javascript/skat.js:14
-#: multiplayer/templates/javascript/skat.js:362
+#: multiplayer/templates/javascript/skat.js:360
 msgid "Pik"
 msgstr "Spades"
 
 #: multiplayer/templates/javascript/doppelkopf.js:12
 #: multiplayer/templates/javascript/skat.js:15
-#: multiplayer/templates/javascript/skat.js:363
+#: multiplayer/templates/javascript/skat.js:361
 msgid "Herz"
 msgstr "Hearts"
 
@@ -3259,7 +3264,7 @@ msgid "Keine 30"
 msgstr "No 30"
 
 #: multiplayer/templates/javascript/doppelkopf.js:21
-#: multiplayer/templates/javascript/skat.js:395
+#: multiplayer/templates/javascript/skat.js:393
 msgid "Schwarz"
 msgstr "Black"
 
@@ -3278,8 +3283,8 @@ msgstr "Normal game"
 
 #: multiplayer/templates/javascript/doppelkopf.js:360
 #: multiplayer/templates/javascript/durak.js:187
-#: multiplayer/templates/javascript/skat.js:165
-#: multiplayer/templates/javascript/skat.js:203
+#: multiplayer/templates/javascript/skat.js:164
+#: multiplayer/templates/javascript/skat.js:201
 msgid "Spiel Nummer"
 msgstr "Game number"
 
@@ -3385,7 +3390,7 @@ msgid "Nicht zeigen"
 msgstr "Don't show"
 
 #: multiplayer/templates/javascript/skat.js:16
-#: multiplayer/templates/javascript/skat.js:364
+#: multiplayer/templates/javascript/skat.js:362
 msgid "Karo"
 msgstr "Diamonds"
 
@@ -3401,68 +3406,68 @@ msgstr "Null"
 msgid "Nö"
 msgstr "Nah fam"
 
-#: multiplayer/templates/javascript/skat.js:205
+#: multiplayer/templates/javascript/skat.js:203
 msgid "gewonnen"
 msgstr "won"
 
-#: multiplayer/templates/javascript/skat.js:207
+#: multiplayer/templates/javascript/skat.js:205
 msgid "verloren"
 msgstr "lost"
 
-#: multiplayer/templates/javascript/skat.js:209
+#: multiplayer/templates/javascript/skat.js:207
 msgid "überreizt"
 msgstr "overbid"
 
-#: multiplayer/templates/javascript/skat.js:211
+#: multiplayer/templates/javascript/skat.js:209
 msgid "Augen"
 msgstr "Points"
 
-#: multiplayer/templates/javascript/skat.js:294
+#: multiplayer/templates/javascript/skat.js:292
 msgid "Drücken"
 msgstr "Put"
 
-#: multiplayer/templates/javascript/skat.js:381
+#: multiplayer/templates/javascript/skat.js:379
 msgid "Ouvert"
 msgstr "Ouvert"
 
-#: multiplayer/templates/javascript/skat.js:384
-#: multiplayer/templates/javascript/skat.js:389
+#: multiplayer/templates/javascript/skat.js:382
+#: multiplayer/templates/javascript/skat.js:387
 msgid "Normal"
 msgstr "Normal"
 
-#: multiplayer/templates/javascript/skat.js:392
+#: multiplayer/templates/javascript/skat.js:390
 msgid "Schneider"
 msgstr "Schneider"
 
-#: multiplayer/templates/javascript/skat.js:398
+#: multiplayer/templates/javascript/skat.js:396
 msgid "Offen"
 msgstr "Ouvert"
 
-#: multiplayer/templates/javascript/skat.js:418
+#: multiplayer/templates/javascript/skat.js:416
 msgid "Aufnehmen"
 msgstr "Take Skat"
 
-#: multiplayer/templates/javascript/skat.js:421
+#: multiplayer/templates/javascript/skat.js:419
 msgid "Hand spielen"
 msgstr "Hand"
 
-#: multiplayer/templates/javascript/skat.js:430
+#: multiplayer/templates/javascript/skat.js:428
 msgid "Eingepasst"
 msgstr "No bid, new game"
 
-#: multiplayer/templates/javascript/skat.js:573
+#: multiplayer/templates/javascript/skat.js:571
 msgid "Passe"
 msgstr "Nah fam"
 
-#: multiplayer/templates/javascript/skat.js:585
+#: multiplayer/templates/javascript/skat.js:583
 msgid "Vorhand"
 msgstr "Forehand"
 
-#: multiplayer/templates/javascript/skat.js:585
+#: multiplayer/templates/javascript/skat.js:583
 msgid "Mittelhand"
 msgstr "Middlehand"
 
-#: multiplayer/templates/javascript/skat.js:585
+#: multiplayer/templates/javascript/skat.js:583
 msgid "Hinterhand"
 msgstr "Rearhand"
 
@@ -4087,49 +4092,49 @@ msgstr "Age"
 msgid "Abwarten"
 msgstr "Wait"
 
-#: vacancies/views.py:88
+#: vacancies/views.py:94
 msgid ""
 "Bitte ergänzen Sie Ihr Profil (Geburtsjahr und Geschlecht), um sich bewerben "
 "zu können."
 msgstr "Please complete your profile (birth year and gender) before you apply."
 
-#: vacancies/views.py:92
+#: vacancies/views.py:98
 msgid "Sie erfüllen die Voraussetzungen der Leerstelle nicht."
 msgstr "You don't fulfil the vacancy's criteria (location, age and/or gender)."
 
-#: vacancies/views.py:95
+#: vacancies/views.py:101
 msgid "Sie haben sich bereits beworben."
 msgstr "You already applied to this vacancy."
 
-#: vacancies/views.py:98
+#: vacancies/views.py:104
 msgid "Die Anmeldefrist ist bereits abgelaufen."
 msgstr "The application deadline has already expired."
 
-#: vacancies/views.py:101
+#: vacancies/views.py:107
 msgid "Sie sind bereits Mitglied."
 msgstr "You already are a member."
 
-#: wall/forms.py:44
+#: wall/forms.py:46
 msgid "Kategorie (erforderlich)"
 msgstr "Category (required)"
 
-#: wall/forms.py:45
+#: wall/forms.py:47
 msgid "Aktivität (Namen eintippen geht schneller als klicken!)"
 msgstr "Activity (typing in the name is faster than clicking!)"
 
-#: wall/forms.py:46
+#: wall/forms.py:48
 msgid "Audiodatei"
 msgstr "Audio file"
 
-#: wall/forms.py:47
+#: wall/forms.py:49
 msgid "Videodatei"
 msgstr "Video file"
 
-#: wall/forms.py:48
+#: wall/forms.py:50
 msgid "Bilddatei"
 msgstr "Image file"
 
-#: wall/forms.py:52
+#: wall/forms.py:54
 msgid ""
 "<a target=\"_blank\" href=\"https://www.heise.de/mac-and-i/"
 "downloads/65/1/1/6/7/1/0/3/Markdown-CheatSheet-Deutsch.pdf\">[Zum Markdown "
@@ -4138,36 +4143,36 @@ msgstr ""
 "<a target=\"_blank\" href=\"https://www.markdownguide.org/cheat-sheet/"
 "\">[Markdown cheat sheet]</a>"
 
-#: wall/forms.py:60
+#: wall/forms.py:62
 msgid "Es kann nicht mehr als eine Datei hochgeladen werden."
 msgstr "You can upload more than one file at once."
 
-#: wall/forms.py:65
+#: wall/forms.py:67
 msgid "Unbekannter Audiodateityp"
 msgstr "Unknown audio file type"
 
-#: wall/forms.py:70
+#: wall/forms.py:72
 msgid "Unbekannter Videodateityp"
 msgstr "Unknown video file type"
 
-#: wall/forms.py:75
+#: wall/forms.py:77
 msgid "Unbekannter Bilddateityp"
 msgstr "Unknown image file type"
 
-#: wall/forms.py:80
+#: wall/forms.py:82
 #, python-brace-format
 msgid "Maximale Dateigröße: {size1} (tatsächliche Größe: {size2}MB)"
 msgstr "Maximum file size: {size1} (actual size: {size2}MB)"
 
-#: wall/forms.py:93
+#: wall/forms.py:95
 msgid "Diese Aktivität ist nicht Teil der ausgewählten Kategorie."
 msgstr "This activity is not in the selected category."
 
-#: wall/forms.py:103
+#: wall/forms.py:105
 msgid "Kommentar"
 msgstr "Comment"
 
-#: wall/models.py:51
+#: wall/models.py:52
 msgid "Post vom "
 msgstr "Post on the "
 
@@ -4230,6 +4235,9 @@ msgstr "[Delete]"
 #: wall/templates/wall/post/post_loop.html:83
 msgid "Keine"
 msgstr "None"
+
+#~ msgid "ist Mitglied folgender Aktivitäten"
+#~ msgstr "is a member of the following activities"
 
 #~ msgid ""
 #~ "Schließen Sie Ihre Anmeldung ab, indem Sie Alter und Geschlecht "
