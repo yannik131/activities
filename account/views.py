@@ -288,7 +288,7 @@ def people_list(request):
         users = User.objects.filter(username__icontains=search_string)
     else:
         users = location.get_population(User.objects.all()).exclude(id=request.user.id)
-    method = request.GET.get('method')
+    method = request.GET.get('method', 'congruence')
     if method == 'congruence':
         for user in users[:30]:
             if user.character and request.user.character:
