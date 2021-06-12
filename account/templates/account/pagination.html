@@ -4,17 +4,17 @@
     <span class="step-links">
         {% if page.has_previous %}
             {% if page.number > 2 %}
-                <a href="?page=1s#{{ id }}">{% trans 'Erste' %}</a>
+                <a href="javascript:openLink('', 'page', 1, '#{{ id }}')">{% trans 'Erste' %}</a>
             {% endif %}
-            <a href="?page={{ page.previous_page_number }}#{{ id }}">{% blocktrans %}Vorige{% endblocktrans %}</a>
+            <a href="javascript:openLink('', 'page', {{ page.previous_page_number }}, '#{{ id }}')">{% blocktrans %}Vorige{% endblocktrans %}</a>
         {% endif %}
         <span class="current">
             {% trans "Seite" %} {{ page.number }} {% trans "von" %} {{ page.paginator.num_pages }}
         </span>
         {% if page.has_next %}
-            <a href="?page={{ page.next_page_number }}#{{ id }}">{% blocktrans %}Nächste{% endblocktrans %}</a>
+            <a href="javascript:openLink('', 'page', {{ page.next_page_number }}, '#{{ id }}')">{% blocktrans %}Nächste{% endblocktrans %}</a>
             {% if page.number < page.paginator.num_pages|add:-1 %}
-                <a href="?page={{ page.paginator.num_pages }}#{{ id }}">{% trans 'Letzte' %}</a>
+                <a href="javascript:openLink('', 'page', {{ page.paginator.num_pages }}, '#{{ id }}')">{% trans 'Letzte' %}</a>
             {% endif %}
         {% endif %}
     </span>

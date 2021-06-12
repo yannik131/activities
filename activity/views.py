@@ -87,8 +87,9 @@ def category_list(request):
     return render(request, 'activity/category_list.html', dict(categories=categories))
 
 
-def activity_list(request, search_string=None):
+def activity_list(request):
     component_index = int(request.GET.get('component_index', 3))
+    search_string = request.GET.get('search_string')
     chosen_component = getattr(request.user.location, Location.components[component_index])
     if component_index == 3:
         activities = Activity.objects.annotate(count=Count('members', filter=Q(members__location__city=chosen_component))).order_by('-count', '-pk')

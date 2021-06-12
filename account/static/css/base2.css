@@ -435,11 +435,12 @@ form label {
     width: 50%;
     height: 100%;
     cursor: pointer;
+    
+    border-radius: 10px;
 }
 
 .competitive .left:hover {
     background-color: #404040;
-    border-radius: 10px;
 }
 
 .competitive img {
@@ -455,11 +456,11 @@ form label {
     width: 50%;
     height: 100%;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .competitive .right:hover {
     background-color: #404040;
-    border-radius: 10px;
 }
 
 .pagination {

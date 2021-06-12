@@ -1,7 +1,7 @@
 let input;
 
 function search() {
-    openLink("{{ url }}"+input.value);
+    openLink('', 'search_string', input.value);
 }
 
 window.addEventListener('load', function() {

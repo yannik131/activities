@@ -290,6 +290,19 @@ function parse(json_string) {
 }
 
 function openLink(link) {
+    if(arguments.length > 2) {
+        var search = new URLSearchParams(location.search);
+        for(var i = 1; i+1 < arguments.length; i += 2) {
+            search.set(arguments[i], arguments[i+1]);
+        }
+        link += "?"+search.toString();
+    }
+    if(arguments.length % 2 == 0) {
+        const last_argument = arguments[arguments.length-1];
+        if(typeof last_argument == 'string' && last_argument.length > 1 && last_argument[0] == '#') {
+            link += last_argument;
+        }  
+    }
     location.href = link;
 }
 

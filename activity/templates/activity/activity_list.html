@@ -18,7 +18,7 @@
         {% trans "Mitglieder anzeigen" %}: <br/>
         {% include 'activity/location_selection.html' %}
     </p>
-    {% include "account/pagination_component.html" with page=activities %}
+    {% include "account/pagination.html" with page=activities %}
     <div class="list">
     {% for activity in activities %}
         <div class="item" onclick="location.href='{{ activity.get_absolute_url }}'">
@@ -36,11 +36,10 @@
         </div>
     {% endfor %}
     </div>
-    {% include "account/pagination_component.html" with page=activities %}
+    {% include "account/pagination.html" with page=activities %}
     <p></p>
     <script>
         {% include 'javascript/list.js' %}
-        {% url 'activity:list' as url %}
         {% include 'javascript/search.js' %}
     </script>
 {% endblock %}

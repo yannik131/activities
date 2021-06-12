@@ -8,8 +8,19 @@
 {% block content %}
 <h2>{% trans 'Liste von Personen in' %}:<br>{{ location }}</h2>
 <p class="info-p">
-    {% trans 'Hier werden die ersten 30 Mitglieder in der ausgewählten Gegend angezeigt. Haben Sie den <a href="/character/overview">Persönlichkeitstest</a> gemacht, werden die Mitglieder nach Charakterübereinstimmung in % sortiert. Schicken Sie doch eine Freundschaftsanfrage an die Leute ganz hinten &#128540;' %}
+    {% trans 'Haben Sie den <a href="/character/overview">Persönlichkeitstest</a> gemacht, werden die Mitglieder nach Charakterübereinstimmung in % sortiert. Sie können Sie auch nach der Anzahl mit Ihnen gemeinsamer Aktivitäten sortieren. Schicken Sie doch eine Freundschaftsanfrage an die Leute ganz hinten &#128540;' %}
 </p>
+<h2>{% trans 'Sortierung auswählen: ' %}</h2>
+<div class="competitive">
+    <div class="left" {% if method == 'congruence' or not method %} style="background-color: #404040" {% endif %} onclick="openLink('', 'method', 'congruence')">
+        <img src="{% static 'icons/brain.png' %}">
+        {% trans "Charakter" %}
+    </div>
+    <div class="right" {% if method == 'commonalities' %} style="background-color: #404040" {% endif %}  onclick="openLink('', 'method', 'commonalities')">
+        <img src="{% static 'icons/activity.png' %}">
+        {% trans "Aktivitäten" %}
+    </div>
+</div>
 {% if not search_string %}
     <p style="text-align: center">
         {% trans "Mitglieder anzeigen" %}: <br/>
@@ -21,23 +32,37 @@
     <input type="search" id="search-input" class="search-input" name="activity-search" value="{{ search_string|default_if_none:'' }}">
     <img src="{% static '/icons/search.png' %}" onclick=search() height="25px" style="margin-left: 5px; cursor: pointer">
     <script>
-        {% url 'account:people_list' as url %}
         {% include 'javascript/search.js' %}
     </script>
 </div>
-{% include "account/pagination_component.html" with page=people %}
-<div class="list">
-    {% for user, score in people %}
-        <div class="item" onclick="location.href='{{ user.get_absolute_url }}'" style="width: 150px; height: 150px">
-            <img src="{% thumbnail user.get_image 200x200 %}" class="image" style="max-height: 50%">
-            <div class="title">
-                {{ user }}{% if score %}: {{ score }}%{% endif %}
+{% include "account/pagination.html" with page=people %}
+{% if method == 'congruence' %}
+    <div class="list">
+        {% for user, score in people %}
+            <div class="item" onclick="location.href='{{ user.get_absolute_url }}'" style="width: 150px; height: 150px">
+                <img src="{% thumbnail user.get_image 200x200 %}" class="image" style="max-height: 50%">
+                <div class="title">
+                    {{ user }}{% if score %}: {{ score }}%{% endif %}
+                </div>
             </div>
-        </div>
-        {% empty %}
-            <div style="margin-top: 10px; font-weight: bold">{% trans 'Tote Hose! Hier ist ja echt niemand. Empfehlen Sie die Seite doch Ihren Freunden und schauen Sie, wie gut eure Charaktere übereinstimmen und welche Aktivitäten ihr vielleicht ausprobieren könnt :)' %}</div>
-    {% endfor %}
-</div>
+            {% empty %}
+                <div style="margin-top: 10px; font-weight: bold">{% trans 'Tote Hose! Hier ist ja echt niemand. Empfehlen Sie die Seite doch Ihren Freunden und schauen Sie, wie gut eure Charaktere übereinstimmen und welche Aktivitäten ihr vielleicht ausprobieren könnt :)' %}</div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="list">
+        {% for user, activities in people %}
+            <div class="item" onclick="location.href='{{ user.get_absolute_url }}'" style="width: 150px; height: 150px">
+                <img src="{% thumbnail user.get_image 200x200 %}" class="image" style="max-height: 50%">
+                <div class="title">
+                    {{ user }}{% if activities %}: {% for activity in activities %}{{ activity }}{% if not forloop.last %}, {% endif %}{% endfor %}{% endif %}
+                </div>
+            </div>
+            {% empty %}
+                <div style="margin-top: 10px; font-weight: bold">{% trans 'Tote Hose! Hier ist ja echt niemand. Empfehlen Sie die Seite doch Ihren Freunden und schauen Sie, wie gut eure Charaktere übereinstimmen und welche Aktivitäten ihr vielleicht ausprobieren könnt :)' %}</div>
+        {% endfor %}
+    </div>
+{% endif %}
 <script>
     {% include 'javascript/list.js' %}
 </script>

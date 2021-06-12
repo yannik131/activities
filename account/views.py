@@ -277,8 +277,9 @@ def password_reset_complete(request):
     messages.add_message(request, messages.INFO, _('Ihr Passwort wurde zurückgesetzt.'))
     return HttpResponseRedirect(reverse('account:login'))
     
-def people_list(request, search_string=None):
+def people_list(request):
     component_index = int(request.GET.get('component_index', 3))
+    search_string = request.GET.get('search_string')
     component = Location.components[component_index]
     chosen_component = getattr(request.user.location, component)
     location = request.user.location.get_parent(component_index)
@@ -287,14 +288,20 @@ def people_list(request, search_string=None):
         users = User.objects.filter(username__icontains=search_string)
     else:
         users = location.get_population(User.objects.all()).exclude(id=request.user.id)
-    for user in users[:30]:
-        if user.character and request.user.character:
-            people.append([user, request.user.character.congruence_with(user.character)])
-        else:
-            people.append([user, None])
-    people = sorted(people, key=lambda t: t[1] if t[1] else 0, reverse=True)
+    method = request.GET.get('method')
+    if method == 'congruence':
+        for user in users[:30]:
+            if user.character and request.user.character:
+                people.append([user, request.user.character.congruence_with(user.character)])
+            else:
+                people.append([user, None])
+        people = sorted(people, key=lambda t: t[1] if t[1] else 0, reverse=True)
+    else:
+        for user in users[:30]:
+            people.append([user, request.user.activities.all() & user.activities.all()])
+        people = sorted(people, key=lambda t: t[1].count() if t[1] else 0, reverse=True)
     people, page = shared.paginate(people, request, 10)
-    return render(request, 'account/people_list.html', dict(people=people, component_index=component_index, chosen_component=chosen_component, location=location, search_string=search_string))
+    return render(request, 'account/people_list.html', dict(people=people, component_index=component_index, chosen_component=chosen_component, location=location, search_string=search_string, method=method))
     
 def delete_marker(request, marker_id):
     try:
