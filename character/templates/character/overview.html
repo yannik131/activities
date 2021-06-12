@@ -16,6 +16,8 @@
             <img src="{% static 'icons/question.png' %}">
             {% trans 'Zum Fragebogen' %}
         </div>
+    {% else %}
+        <div class="button-like" style="margin-top: 10px" onclick=openLink("{% url 'account:people_list' %}")><img src="{% static 'icons/friendship.png' %}">{% blocktrans %}Freunde in Ihrer Nähe finden{% endblocktrans %}</div>
     {% endif %}
 {% else %}
     <div class="info-p">

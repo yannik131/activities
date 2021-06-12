@@ -14,7 +14,6 @@
         <p>{% trans 'Da Sie noch keiner Aktivität beigetreten sind, müssen Sie wohl neu hier sein.<br><ul style="text-align: left;"><li>Oben links finden Sie das Dropdown-Menu. Über "Aktivitäten" und "Kategorien" können Sie sich anschauen, welche Aktivitäten es gibt und welche Ihnen vielleicht Spaß machen könnten.</li><li>Die Kartenspiele Durak, Skat, Doppelkopf und Poker können Sie <a href="/competitions/user_overview">gleich hier online spielen</a>.</li><li>Wenn Sie herausfinden wollen, welche Aktivitäten zu Ihnen passen, gibt es auch einen <a href="/character/overview">Persönlichkeitstest für Sie</a>.</li></ul>' %}</p>
         {% endif %}
     </p>
-    <!--<div class="button-like" style="margin-top: 10px" onclick=openLink("{% url 'account:people_list' %}")><img src="{% static 'icons/friendship.png' %}">{% blocktrans %}Freunde in Ihrer Nähe finden{% endblocktrans %}</div>-->
     <div class="button-like" style="margin-bottom: 10px; margin-top: 10px" onclick=openLink("{% url 'character:overview' %}")>
         <img src="{% static 'icons/questionnaire.png' %}">
         {% trans 'Persönlichkeitstest & Empfehlungen' %}
