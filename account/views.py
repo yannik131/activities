@@ -290,7 +290,7 @@ def people_list(request):
         users = location.get_population(User.objects.all()).exclude(id=request.user.id)
     method = request.GET.get('method', 'congruence')
     if method == 'congruence':
-        for user in users[:30]:
+        for user in users[:100]:
             if user.character and request.user.character:
                 people.append([user, request.user.character.congruence_with(user.character)])
             else:
