@@ -6,7 +6,7 @@ const zoom_levels = {
     0: 5, 1: 7, 2: 9, 3: 12
 };
 const radii = {
-    0: 50000, 1: 25000, 2: 7000
+    0: 50000, 1: 14000, 2: 3000
 };
 {% if markers %}
     markers = JSON.parse('{{ markers|safe }}');

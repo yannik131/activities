@@ -7,7 +7,7 @@
         {% if forloop.counter0 is component_index %}
             <b>{{ value|inim }}</b>
         {% else %}
-            <a href="javascript:openLink('', 'component_index', {{ forloop.counter0 }})">{{ value|inim }}</a>
+            <a href="javascript:openLink('', 'component_index', {{ forloop.counter0 }}, '#{{ id }}')">{{ value|inim }}</a>
         {% endif %}
         {% if not forloop.last %}| {% endif %}
     {% endif %}

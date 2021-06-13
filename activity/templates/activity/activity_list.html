@@ -18,8 +18,8 @@
         {% trans "Mitglieder anzeigen" %}: <br/>
         {% include 'activity/location_selection.html' %}
     </p>
-    {% include "account/pagination.html" with page=activities %}
-    <div class="list">
+    {% include "account/pagination.html" with page=activities id='activity-list' %}
+    <div class="list" id='activity-list'>
     {% for activity in activities %}
         <div class="item" onclick="location.href='{{ activity.get_absolute_url }}'">
         {% load thumbnail %}
