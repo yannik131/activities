@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-12 21:50+0200\n"
+"POT-Creation-Date: 2021-06-13 22:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -317,10 +317,12 @@ msgstr ""
 
 #: account/templates/account/about.html:10
 msgid ""
-"Hi! Haben Sie gerade nix zu tun und fragen sich, was Sie unternehmen "
-"könnten? Da kann Ihnen diese Seite vielleicht bei helfen! Nach der <a href="
-"\"/account/register\">kostenlosen Registrierung</a> können Sie hier "
-"Folgendes machen: "
+"Hallo!<ul><li>Sie wollen neue Musik hören, wissen aber nicht, welches Genre?"
+"</li><li>Sie würden gerne was am Wochenende unternehmen, wissen aber noch "
+"nicht, was?</li><li>Sie würden gerne ein Instrument lernen, sind sich aber "
+"nicht sicher, welches?</li></ul>Da kann Ihnen diese Seite vielleicht bei "
+"helfen! Nach der <a href=\"/account/register\">kostenlosen Registrierung</a> "
+"können Sie hier Folgendes machen: "
 msgstr ""
 
 #: account/templates/account/about.html:13
@@ -1077,7 +1079,7 @@ msgid "Mitglieder anzeigen"
 msgstr ""
 
 #: account/templates/account/people_list.html:31
-msgid "Suche nach Nutzername: "
+msgid "Nutzername: "
 msgstr ""
 
 #: account/templates/account/people_list.html:49
