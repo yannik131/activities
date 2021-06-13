@@ -14,6 +14,7 @@ from character.models import Character
 from .utils import geocode
 from django.forms import ValidationError
 from shared.shared import log
+import json
 
 class User(AbstractUser):
     profile_text = models.TextField(null=True, blank=True)
@@ -82,14 +83,13 @@ class User(AbstractUser):
         return [f.get_other_user(self) for f in self.friendships()]
 
     def get_latest_messages(self):
-        chat_checks = self.last_chat_checks.all()
-        log_entries = list()
+        chat_checks = self.last_chat_checks.prefetch_related('room', 'room__log_entries').all()
+        rooms = {}
         for check in chat_checks:
             messages = check.new_messages()
             if messages:
-                log_entries.append(messages.last())
-        log_entries = sorted(log_entries, key=lambda entry: entry.created)
-        return log_entries
+                rooms[check.room.id] = '1'
+        return json.dumps(rooms)
         
     def rooms_with_news(self):
         chat_checks = self.last_chat_checks.all()

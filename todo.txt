@@ -90,3 +90,28 @@ beitreten icon nicht anzeigen chat wenn chat nebenbei offen
 ist konferenz beigetreten zeitzone
 schummeln: karte mit 2 callbacks, auswählen was gemacht werden soll
 karten offset falsch doko
+
+Neue Nachricht: 
+c: chat window
+i: item
+v: vorhanden
+u: unsichtbar
+f: fehlt
+
+c i    msg-reaktion
+----------------------
+v v -> nach oben
+v u -> x
+v f -> x
+u v -> nach oben, bell, zahl
+u u -> nach oben, bell, zahl
+u f -> x
+f v -> nach oben, bell, zahl
+f u -> nach oben, bell, zahl
+f f -> zahl
+
+item mit bell höchstens + 1 zahl
+new_msg_dict: {room_id: Ja/Nein}
+klick auf bell: {room_id: Nein}
+neue nachricht, zahl: {room_id: Ja}
+onbeforeunload: aktives chat window->update check

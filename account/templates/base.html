@@ -47,6 +47,7 @@
 {% endif %}
 {% if user.is_authenticated %}
 {% with latest_messages=user.get_latest_messages notifications=user.get_notifications count=user.notifications.count %}
+    <script>new_messages = JSON.parse('{{ latest_messages|safe }}');</script>
     <div class="topmenu" id="topmenu">
         <div class="dropdown">
             <a class="icon" href="javascript:void(0);" onclick="activateMenu('sidemenu');">
@@ -57,7 +58,7 @@
         <div class="user">
             <div class="envelope">
                 <a href="javascript:void(0);" onclick="activateMenu('right-chat');">
-                    <img src="{% static 'icons/chat.png' %}"><sup><strong><span style="color: orange;" id="messages-count">{% if latest_messages|length > 0 %}{{ latest_messages|length }}{% endif %}</span></strong></sup>
+                    <img src="{% static 'icons/chat.png' %}"><sup><strong><span style="color: orange;" id="messages-count"></span></strong></sup>
                 </a>
             </div>
             <div class="profile">

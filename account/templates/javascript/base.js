@@ -4,6 +4,7 @@
 var user_websocket;
 var reconnect_count = 0;
 const this_user = "{{ user }}";
+var unload_room_id;
 let current_room_id;
 {% if current_chat_room %}
     current_room_id = {{ current_chat_room.id }};
@@ -31,8 +32,6 @@ function activateMenu(element_id) {
         else {
             send({'type': 'chat', 'action': 'list', 'language_code': '{{ request.LANGUAGE_CODE }}'});
         }
-        count = document.getElementById('messages-count');
-        count.innerHTML = "";
     }
     else {
         if(window.innerWidth >= 1220) {
@@ -55,13 +54,16 @@ function createMessage(text) {
     var p = document.createElement('p');
     p.innerHTML = text;
     message.appendChild(p);
+    var center_div = document.createElement('div');
+    center_div.className = 'center-container';
     var button = document.createElement('a');
     button.className = 'blue-button';
     button.onclick = function() {
         document.querySelector('.django-message').remove();
     }
     button.innerHTML = '{% trans 'OK!' %}';
-    message.appendChild(button);
+    center_div.appendChild(button);
+    message.appendChild(center_div);
     container.appendChild(message);
 
 }
@@ -121,7 +123,7 @@ function addNotification(id, text, url) {
 
 function playSound(url) {
     const audio = new Audio(url);
-    audio.volume = 0.5;
+    audio.volume = 1;
     audio.play().catch(function(reason) {
         console.log('Sound could not be played:', reason);
     });
@@ -135,26 +137,28 @@ function format_time_str(time) {
     return new Date(time).toLocaleString(language);
 }
 
-function addMessageToChatMenu(data) {
-    var item = document.getElementById('chat-item-'+data.room_id);
-    if(item) {
-        var chat = document.getElementById('chat-window-'+data.room_id);
-        if(!chat || window.getComputedStyle(chat).display == 'none') {
-            var parent = item.parentElement;
-            item.remove();
-            parent.insertBefore(item, parent.firstChild);
-            var bell = document.getElementById('chat-bell-'+data.room_id);
-            bell.style.display = 'flex';
-        }
-    }
-    changeCount("messages-count", 1);
-}
-
 function getWsPrefix() {
     if(location.protocol == "https:") {
         return "wss://" + window.location.host;
     }
     return "ws://" + window.location.host;
+}
+
+function manageChatItems(room_id, up, bell, number) {
+    if(number) {
+        new_messages[room_id] = '1';
+        updateMessageCount();
+    }
+    if(up) {
+        var item = document.getElementById('chat-item-'+room_id);
+        var parent = item.parentElement;
+        item.remove();
+        parent.insertBefore(item, parent.firstChild);
+        if(bell) {
+            var bell = document.getElementById('chat-bell-'+room_id);
+            bell.style.display = 'flex';
+        }
+    }
 }
 
 function connect() {
@@ -203,26 +207,37 @@ function connect() {
                                     document.getElementById('chat-list').scrollTop = item.offsetTop-20;
                                 }
                             }
+                            updateMessageCount();
                         }
                         break;
                     case 'sent':
+                        var chat_window = document.getElementById('chat-window-'+data.room_id);
+                        var chat_item = document.getElementById('chat-item-'+data.room_id);
+                        if(chat_window) {
+                            addMessageToChat(data);
+                        }
+                        if(chat_window && chat_window.style.display) {
+                            manageChatItems(data.room_id, true, false, false);
+                        }
+                        else if(chat_window && !chat_window.style.display) {
+                            manageChatItems(data.room_id, true, true, true);
+                        }
+                        else {
+                            if(chat_item) {
+                                manageChatItems(data.room_id, true, true, true);
+                            }
+                            else {
+                                manageChatItems(data.room_id, false, false, true);
+                            }
+                        }
+                        if(data.username != this_user) {
+                            playSound("{% static 'sounds/click.wav' %}");
+                        }
+                        break;
                     case 'leave':
                     case 'join':
                     case 'delete':
-                        const is_this_user = data.username == this_user || data.action == 'delete';
-                        var chat = document.getElementById('chat-window-'+data.room_id);
-                        if(chat && data.action != 'delete') {
-                            handleChatMessage(data);
-                        }
-                        else if(data.action == 'sent' && !is_this_user) {
-                            addMessageToChatMenu(data);
-                            playSound("{% static 'sounds/click.wav' %}");
-                        }
-                        if(data.action == 'leave' ||
-                           data.action == 'join' || 
-                           data.action == 'delete') {
-                            manageChatWindows(data.action, data.room_id, data.target, is_this_user);
-                        }
+                        manageChatWindows(data.action, data.room_id, data.target, data.username == this_user);
                         break;
                     default:
                         console.error('Unknown chat action', data.action);
@@ -342,12 +357,15 @@ function showChat(chat, id) {
 
 function requestChatWindow(room_id) {
     var chat = document.getElementById('chat-window-'+room_id);
+    unload_room_id = room_id;
     if(chat) {
         showChat(chat, room_id);
     }
     else {
         send({'type': 'chat', 'action': 'room', 'id': room_id});
     }
+    delete new_messages[room_id];
+    updateMessageCount();
 }
 
 function get_color(percent, reverse) {
@@ -359,9 +377,27 @@ function get_color(percent, reverse) {
     }
 }
 
+function updateMessageCount() {
+    const keys = Object.keys(new_messages);
+    document.getElementById('messages-count').innerHTML = keys.length;
+    if(document.getElementById('chat-list')) {
+        for(var i = 0; i < keys.length; i++) {
+            var bell = document.getElementById('chat-bell-'+keys[i]);
+            if(bell) {
+                bell.style.display = 'flex';
+            }
+        }
+    }
+}
+
+window.addEventListener('load', updateMessageCount);
+
 {% if user.is_authenticated %}
     connect();
     window.addEventListener('beforeunload', function() {
+        if(unload_room_id && !new_messages[unload_room_id]) {
+            user_websocket.send(JSON.stringify({'type': 'chat', 'action': 'sent', 'id': unload_room_id, 'update_check': '1'}))
+        }
         if(user_websocket.readyState != 2 && user_websocket.readyState != 3) {
             user_websocket.close();
         }

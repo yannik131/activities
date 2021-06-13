@@ -100,9 +100,6 @@ function addMessageToChat(data) {
     var middle = document.getElementById('middle-'+data.room_id);
     middle.appendChild(msg);
     middle.scrollTop = msg.offsetTop;
-    if(!isMe) {
-        playSound("https://www.wavsource.com/snds_2020-10-01_3728627494378403/sfx/click_x.wav");
-    }
 };
 
 function manageChatWindows(action, room_id, target, is_this_user) {

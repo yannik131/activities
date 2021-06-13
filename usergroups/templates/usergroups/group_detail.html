@@ -10,22 +10,24 @@
     {% endif %}
     <h1 class="center-container">{{ group.verbose }}</h1>
     <p class="center-container">{{ group.description }}</p>
-    {% if is_admin %}
-        <div class="competitive">
-            <div class="left" onclick=openLink("{% url 'chat:chat_room' 'usergroups' 'usergroup' group.id %}")>
-                <img src="{% static 'icons/chat.png' %}">
-                {% trans "Zum Chat" %}
-            </div>
+    {% if is_admin or is_member %}
+    <div class="competitive">
+        <div class="left" onclick=openLink("{% url 'chat:chat_room' 'usergroups' 'usergroup' group.id %}")>
+            <img src="{% static 'icons/chat.png' %}">
+            {% trans "Zum Chat" %}
+        </div>
+        {% if is_admin %}
             <div class="right" onclick=openLink("{% url 'usergroups:edit_group' group.id %}")>
                 <img src="{% static 'icons/pen.png' %}">
                 {% trans "Bearbeiten" %}
             </div>
-        </div>
-    {% elif is_member %}
-        <div class="button-like" onclick=openLink("{% url 'chat:chat_room' 'usergroups' 'usergroup' group.id %}")>
-            <img src="{% static 'icons/chat.png' %}">
-            {% trans "Zum Chat" %}
-        </div>
+        {% else %}
+            <div class="right" onclick=openLink("{% url 'usergroups:leave_group' group.id %}")>
+                <img src="{% static 'icons/bye.png' %}">
+                {% trans "Verlassen" %}
+            </div>
+        {% endif %}
+    </div>
     {% endif %}
     <p>{% trans "Gruppe gehört zur" %} <a href="{{ group.category.get_absolute_url }}">{{ group.category.verbose }}</a></p>
     <div class="info-p">
@@ -34,15 +36,17 @@
         <p style="clear: both">{% trans "Administrator" %}: <a href="{{ group.admin.get_absolute_url }}">{{ group.admin }}</a></p>
     </div>
     <br>
-    <div class="info-p">
-        <h2>{% trans "Termine" %}</h2>
-        <div class="button-like" onclick=openLink("{% url 'scheduling:create_appointment' group.id %}")><img src="{% static 'icons/date.png' %}">{% trans "Termin erstellen" %}</div>
+    {% if is_member %}
+        <div class="info-p">
+            <h2>{% trans "Termine" %}</h2>
+                <div class="button-like" onclick=openLink("{% url 'scheduling:create_appointment' group.id %}")><img src="{% static 'icons/date.png' %}">{% trans "Termin erstellen" %}</div>
+                <br>
+            {% if group.appointments.all.exists %}
+                {% include 'usergroups/appointment_list.html' %}
+            {% endif %}
+        </div>
         <br>
-        {% if is_member and group.appointments.all.exists %}
-        {% include 'usergroups/appointment_list.html' %}
-        {% endif %}
-    </div>
-    <br>
+    {% endif %}
     <div class="info-p">
         <h2>{% trans "Leerstellen" %}</h2>
         {% if is_admin %}
@@ -61,19 +65,21 @@
         <br>
     </div>
     <br>
-    <div class="info-p">
-        <h2>{% trans "Einladungen" %}</h2>
-        {% if is_admin %}
-            <div class="button-like" onclick=openLink("{% url 'vacancies:create_invitation' 'usergroups' 'usergroup' group.id %}")>
-                <img src="{% static 'icons/invitation.png' %}">
-                {% trans "Jemanden einladen" %}
-            </div>
-        {% endif %}
-        {% if is_member and group.invitations.all.exists %}
-            {% include 'usergroups/invitation_list.html' with invitations=group.invitations %}
-        {% endif %}
-        <br>
-    </div>
+    {% if is_member %}
+        <div class="info-p">
+            <h2>{% trans "Einladungen" %}</h2>
+            {% if is_admin %}
+                <div class="button-like" onclick=openLink("{% url 'vacancies:create_invitation' 'usergroups' 'usergroup' group.id %}")>
+                    <img src="{% static 'icons/invitation.png' %}">
+                    {% trans "Jemanden einladen" %}
+                </div>
+            {% endif %}
+            {% if group.invitations.all.exists %}
+                {% include 'usergroups/invitation_list.html' with invitations=group.invitations %}
+            {% endif %}
+            <br>
+        </div>
+    {% endif %}
     <br>
     <div class="info-p">
         <h2>{% trans "Posts" %}</h2>

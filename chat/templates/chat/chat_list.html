@@ -13,7 +13,7 @@
                 {{ forloop.counter }}. {{ target }}
             </div>
             <div class="chat-bell">
-                <img src="{% static 'icons/bell.png' %}" id="chat-bell-{{ room.id }}" {% if forloop.counter0 >= rooms_with_news_count %}style="display: none"{% endif %}>
+                <img src="{% static 'icons/bell.png' %}" style="display: none" id="chat-bell-{{ room.id }}">
             </div>
         </div>
     {% endfor %}

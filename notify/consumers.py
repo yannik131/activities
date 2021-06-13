@@ -127,18 +127,18 @@ class NotificationConsumer(WebsocketConsumer):
             rooms = []
             rooms_with_news_count = 0
             chat_checks = self.user.last_chat_checks.prefetch_related('room', 'room__log_entries')
+            if not chat_checks:
+                self.send(json.dumps({
+                    'type': 'chat_message',
+                    'action': 'list',
+                })) 
+                return
             newest_date = chat_checks.first().date
             for check in chat_checks:
                 entry = check.room.log_entries.last()
                 if entry and entry.created > newest_date:
                     rooms_with_news_count += 1
                 rooms.append((check.room, check.room.get_target(self.user), datetime.datetime.timestamp(entry.created) if entry else 0))
-            if not rooms:
-                self.send(json.dumps({
-                    'type': 'chat_message',
-                    'action': 'list',
-                })) 
-                return
             rooms = sorted(rooms, key=lambda room: room[2], reverse=True)
             chat_list = render_to_string('chat/chat_list.html', dict(rooms=rooms, rooms_with_news_count=rooms_with_news_count))
             self.send(json.dumps({
