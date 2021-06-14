@@ -12,11 +12,11 @@
 </p>
 <h2>{% trans 'Sortierung auswählen: ' %}</h2>
 <div class="competitive">
-    <div class="left" {% if method == 'congruence' or not method %} style="background-color: #404040" {% endif %} onclick="openLink('', 'method', 'congruence')">
+    <div class="left" {% if method == 'congruence' or not method %} style="background-color: #404040" {% endif %} onclick="openLink('', 'method', 'congruence', 'page', 1)">
         <img src="{% static 'icons/brain.png' %}">
         {% trans "Charakter" %}
     </div>
-    <div class="right" {% if method == 'commonalities' %} style="background-color: #404040" {% endif %}  onclick="openLink('', 'method', 'commonalities')">
+    <div class="right" {% if method == 'commonalities' %} style="background-color: #404040" {% endif %}  onclick="openLink('', 'method', 'commonalities', 'page', 1)">
         <img src="{% static 'icons/activity.png' %}">
         {% trans "Aktivitäten" %}
     </div>

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-14 12:50+0200\n"
-"PO-Revision-Date: 2021-06-13 22:03+0200\n"
+"POT-Creation-Date: 2021-06-14 12:57+0200\n"
+"PO-Revision-Date: 2021-06-14 12:58+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -2674,8 +2674,12 @@ msgstr ""
 "do things I later regret."
 
 #: character/templates/javascript/quiz.js:32
-msgid "Der Server ist gerade nicht ansprechbar. Vielleicht läuft ein Update?"
-msgstr "The server is not responding. Probably updating."
+msgid ""
+"Der Server ist gerade nicht ansprechbar. Es läuft bestimmt gerade ein "
+"Update, das dauert nur wenige Sekunden, dann können Sie weitermachen!"
+msgstr ""
+"The server is not responding. It's probably being updated, try again in a "
+"few seconds!"
 
 #: character/templates/javascript/quiz.js:58
 msgid "Alle Fragen wurden beantwortet!"
@@ -4239,6 +4243,10 @@ msgstr "[Delete]"
 #: wall/templates/wall/post/post_loop.html:83
 msgid "Keine"
 msgstr "None"
+
+#~ msgid ""
+#~ "Der Server ist gerade nicht ansprechbar. Vielleicht läuft ein Update?"
+#~ msgstr "The server is not responding. Probably updating."
 
 #~ msgid "Suche nach Nutzername: "
 #~ msgstr "Search by username: "

@@ -29,7 +29,7 @@ function update() {
 
 function next() {
     if(user_websocket.readyState != 1) {
-        alert("{% trans 'Der Server ist gerade nicht ansprechbar. Vielleicht läuft ein Update?' %}");
+        alert("{% trans 'Der Server ist gerade nicht ansprechbar. Es läuft bestimmt gerade ein Update, das dauert nur wenige Sekunden, dann können Sie weitermachen!' %}");
         return;
     }
     var current_trait = traits[current_question];

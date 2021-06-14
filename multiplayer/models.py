@@ -22,7 +22,7 @@ from datetime import timedelta
 
 class MultiplayerMatch(models.Model):
     MAX_INSTANCES = 5
-    RUNNING_LIFESPAN = timedelta(days=3)
+    RUNNING_LIFESPAN = timedelta(days=7)
     IDLE_LIFESPAN = timedelta(hours=1)
     created = models.DateTimeField(default=timezone.now)
     activity = models.ForeignKey(Activity, related_name='multiplayer_matches', on_delete=models.CASCADE)

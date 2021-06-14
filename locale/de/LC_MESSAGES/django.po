@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-14 12:50+0200\n"
+"POT-Creation-Date: 2021-06-14 12:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2116,7 +2116,9 @@ msgid ""
 msgstr ""
 
 #: character/templates/javascript/quiz.js:32
-msgid "Der Server ist gerade nicht ansprechbar. Vielleicht läuft ein Update?"
+msgid ""
+"Der Server ist gerade nicht ansprechbar. Es läuft bestimmt gerade ein "
+"Update, das dauert nur wenige Sekunden, dann können Sie weitermachen!"
 msgstr ""
 
 #: character/templates/javascript/quiz.js:58
