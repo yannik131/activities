@@ -21,11 +21,23 @@ function activateMenu(element_id) {
             if(menu.style.display != "none") {
                 menu.style.display = "none";
                 content.style.right = 0;
+                unload_room_id = undefined;
             }
             else {
                 menu.style.display = "flex";
                 if(widescreen) {
                     content.style.right = "355px";
+                }
+                var items = document.getElementsByClassName('chat-item');
+                for(var i = 0; i < items.length; i++) {
+                    if(items[i].style.backgroundColor == 'darkcyan') {
+                        const split = items[i].id.split('-');
+                        unload_room_id = parseInt(split[split.length-1]);
+                        document.getElementById('chat-bell-'+unload_room_id).style.display = 'none';
+                        delete new_messages[unload_room_id];
+                        updateMessageCount();
+                        break;
+                    };
                 }
             }
         }
@@ -144,20 +156,29 @@ function getWsPrefix() {
     return "ws://" + window.location.host;
 }
 
-function manageChatItems(room_id, up, bell, number) {
-    if(number) {
-        new_messages[room_id] = '1';
-        updateMessageCount();
+function manageChatItems(room_id) {
+    var room = document.getElementById('chat-window-'+room_id);
+    //this is a stand-alone chat
+    if(room && room.parentElement.id != 'live-chat') {
+        return;
     }
-    if(up) {
+    var right_chat = document.getElementById('right-chat');
+    if(right_chat && right_chat.style.display != 'none') {
         var item = document.getElementById('chat-item-'+room_id);
-        var parent = item.parentElement;
-        item.remove();
-        parent.insertBefore(item, parent.firstChild);
-        if(bell) {
-            var bell = document.getElementById('chat-bell-'+room_id);
-            bell.style.display = 'flex';
+        if(item) {
+            var parent = item.parentElement;
+            item.remove();
+            parent.insertBefore(item, parent.firstChild);
         }
+    }
+    if(unload_room_id == room_id) {
+        return;
+    }
+    new_messages[room_id] = '1';
+    updateMessageCount();
+    var bell = document.getElementById('chat-bell-'+room_id);
+    if(bell) {
+        bell.style.display = 'flex';
     }
 }
 
@@ -212,24 +233,10 @@ function connect() {
                         break;
                     case 'sent':
                         var chat_window = document.getElementById('chat-window-'+data.room_id);
-                        var chat_item = document.getElementById('chat-item-'+data.room_id);
                         if(chat_window) {
                             addMessageToChat(data);
                         }
-                        if(chat_window && chat_window.style.display) {
-                            manageChatItems(data.room_id, true, false, false);
-                        }
-                        else if(chat_window && !chat_window.style.display) {
-                            manageChatItems(data.room_id, true, true, true);
-                        }
-                        else {
-                            if(chat_item) {
-                                manageChatItems(data.room_id, true, true, true);
-                            }
-                            else {
-                                manageChatItems(data.room_id, false, false, true);
-                            }
-                        }
+                        manageChatItems(data.room_id);
                         if(data.username != this_user) {
                             playSound("{% static 'sounds/click.wav' %}");
                         }
@@ -392,14 +399,19 @@ function updateMessageCount() {
 
 window.addEventListener('load', updateMessageCount);
 
+function sendUpdateCheck(room_id) {
+    user_websocket.send(JSON.stringify({'type': 'chat', 'action': 'sent', 'id': room_id, 'update_check': '1'}));
+}
+
 {% if user.is_authenticated %}
     connect();
     window.addEventListener('beforeunload', function() {
         if(unload_room_id && !new_messages[unload_room_id]) {
-            user_websocket.send(JSON.stringify({'type': 'chat', 'action': 'sent', 'id': unload_room_id, 'update_check': '1'}))
+            sendUpdateCheck(unload_room_id);
         }
-        if(user_websocket.readyState != 2 && user_websocket.readyState != 3) {
-            user_websocket.close();
+        if(current_room_id) {
+            sendUpdateCheck(current_room_id);
         }
+        user_websocket.close();
     });
 {% endif %}

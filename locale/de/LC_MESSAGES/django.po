@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 22:01+0200\n"
+"POT-Creation-Date: 2021-06-14 12:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,87 +135,87 @@ msgstr ""
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr ""
 
-#: account/models.py:25
+#: account/models.py:26
 msgid "männlich"
 msgstr ""
 
-#: account/models.py:26
+#: account/models.py:27
 msgid "weiblich"
 msgstr ""
 
-#: account/models.py:37
+#: account/models.py:38
 msgid "hat erstellt"
 msgstr ""
 
-#: account/models.py:38
+#: account/models.py:39
 msgid "ist jetzt befreundet mit"
 msgstr ""
 
-#: account/models.py:39
+#: account/models.py:40
 msgid "ist nicht mehr befreundet mit"
 msgstr ""
 
-#: account/models.py:40
+#: account/models.py:41
 msgid "hat Ihnen eine Freundschaftsanfrage geschickt"
 msgstr ""
 
-#: account/models.py:41
+#: account/models.py:42
 msgid "ist beigetreten"
 msgstr ""
 
-#: account/models.py:42
+#: account/models.py:43
 msgid "hat verlassen"
 msgstr ""
 
-#: account/models.py:43
+#: account/models.py:44
 msgid "hat zugesagt"
 msgstr ""
 
-#: account/models.py:44
+#: account/models.py:45
 msgid "hat abgesagt"
 msgstr ""
 
-#: account/models.py:45
+#: account/models.py:46
 msgid "hat sich beworben"
 msgstr ""
 
-#: account/models.py:46
+#: account/models.py:47
 msgid "hat etwas gepostet in"
 msgstr ""
 
-#: account/models.py:47
+#: account/models.py:48
 msgid "hat etwas gepostet"
 msgstr ""
 
-#: account/models.py:48
+#: account/models.py:49
 msgid "hat etwas kommentiert"
 msgstr ""
 
-#: account/models.py:49
+#: account/models.py:50
 msgid "hat eure Freundschaft beendet"
 msgstr ""
 
-#: account/models.py:50
+#: account/models.py:51
 msgid "hat Sie eingeladen"
 msgstr ""
 
-#: account/models.py:51
+#: account/models.py:52
 msgid "hat Ihre Freundschaftsanfrage angenommen"
 msgstr ""
 
-#: account/models.py:52
+#: account/models.py:53
 msgid "hat Ihre Freundschaftsanfrage abgelehnt"
 msgstr ""
 
-#: account/models.py:53
+#: account/models.py:54
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr ""
 
-#: account/models.py:54
+#: account/models.py:55
 msgid "gefällt"
 msgstr ""
 
-#: account/models.py:55
+#: account/models.py:56
 msgid "missfällt"
 msgstr ""
 
@@ -408,7 +408,6 @@ msgstr ""
 #: competitions/templates/competitions/tournament_detail.html:15
 #: competitions/templates/competitions/tournament_detail.html:25
 #: usergroups/templates/usergroups/group_detail.html:17
-#: usergroups/templates/usergroups/group_detail.html:27
 #: vacancies/templates/vacancies/review_vacancy.html:29
 msgid "Zum Chat"
 msgstr ""
@@ -450,7 +449,7 @@ msgid "Freundschaftsanfrage schicken"
 msgstr ""
 
 #: account/templates/account/detail.html:45
-#: usergroups/templates/usergroups/group_detail.html:79
+#: usergroups/templates/usergroups/group_detail.html:85
 msgid "Posts"
 msgstr ""
 
@@ -518,7 +517,7 @@ msgid "Gespeichert: "
 msgstr ""
 
 #: account/templates/account/edit.html:41 account/templates/base.html:44
-#: account/templates/javascript/base.js:63
+#: account/templates/javascript/base.js:76
 #: activity/templates/activity/detail.html:92
 msgid "OK!"
 msgstr ""
@@ -1146,7 +1145,7 @@ msgstr ""
 #: account/templates/account/user_post_list.html:9
 #: activity/templates/activity/category_detail.html:25
 #: activity/templates/activity/detail.html:132
-#: usergroups/templates/usergroups/group_detail.html:81
+#: usergroups/templates/usergroups/group_detail.html:87
 msgid "Post erstellen"
 msgstr ""
 
@@ -1156,19 +1155,19 @@ msgid ""
 "Aktivitätsseite sichtbar."
 msgstr ""
 
-#: account/templates/javascript/base.js:186
+#: account/templates/javascript/base.js:211
 msgid ""
 "Sie haben noch keine Chats. Finden Sie Freunde, Gruppen, Aktivitäten etc., "
 "um zu chatten!"
 msgstr ""
 
-#: account/templates/javascript/base.js:233
+#: account/templates/javascript/base.js:255
 msgid ""
 "Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie "
 "nur einen Tab für myactivities.net :)"
 msgstr ""
 
-#: account/templates/javascript/base.js:265
+#: account/templates/javascript/base.js:287
 msgid ""
 "Es konnte keine Verbindung zum Server aufgebaut werden! Laden Sie die Seite "
 "bitte neu. Falls das nicht hilft, beschweren Sie sich gerne bei myactivities."
@@ -1463,7 +1462,7 @@ msgstr ""
 
 #: activity/templates/activity/activity_list.html:31
 #: competitions/templates/competitions/list.html:14
-#: usergroups/templates/usergroups/group_detail.html:32
+#: usergroups/templates/usergroups/group_detail.html:34
 #: usergroups/templates/usergroups/loop.html:14
 msgid "Mitglieder"
 msgstr ""
@@ -1526,7 +1525,7 @@ msgstr ""
 #: activity/templates/activity/detail.html:82
 #: competitions/templates/competitions/match_detail.html:34
 #: competitions/templates/competitions/tournament_detail.html:33
-#: usergroups/templates/usergroups/group_detail.html:88
+#: usergroups/templates/usergroups/group_detail.html:94
 msgid "Austreten"
 msgstr ""
 
@@ -2421,7 +2420,7 @@ msgstr ""
 
 #: competitions/templates/competitions/match_detail.html:22
 #: competitions/templates/competitions/tournament_detail.html:19
-#: usergroups/templates/usergroups/group_detail.html:21
+#: usergroups/templates/usergroups/group_detail.html:22
 #: vacancies/templates/vacancies/vacancy_list.html:26
 msgid "Bearbeiten"
 msgstr ""
@@ -2433,20 +2432,20 @@ msgstr ""
 
 #: competitions/templates/competitions/match_detail.html:36
 #: competitions/templates/competitions/tournament_detail.html:49
-#: usergroups/templates/usergroups/group_detail.html:47
+#: usergroups/templates/usergroups/group_detail.html:51
 msgid "Leerstellen"
 msgstr ""
 
 #: competitions/templates/competitions/match_detail.html:41
 #: competitions/templates/competitions/tournament_detail.html:54
-#: usergroups/templates/usergroups/group_detail.html:51
+#: usergroups/templates/usergroups/group_detail.html:55
 #: vacancies/templates/vacancies/create_vacancies.html:4
 msgid "Leerstellen hinzufügen"
 msgstr ""
 
 #: competitions/templates/competitions/match_detail.html:45
 #: competitions/templates/competitions/tournament_detail.html:58
-#: usergroups/templates/usergroups/group_detail.html:69
+#: usergroups/templates/usergroups/group_detail.html:74
 msgid "Jemanden einladen"
 msgstr ""
 
@@ -2955,6 +2954,7 @@ msgid "Öffentliche Liste"
 msgstr ""
 
 #: multiplayer/templates/multiplayer/match.html:17
+#: usergroups/templates/usergroups/group_detail.html:27
 msgid "Verlassen"
 msgstr ""
 
@@ -3093,7 +3093,7 @@ msgstr ""
 
 #: scheduling/templates/scheduling/create_appointment.html:5
 #: scheduling/templates/scheduling/create_appointment.html:8
-#: usergroups/templates/usergroups/group_detail.html:39
+#: usergroups/templates/usergroups/group_detail.html:42
 msgid "Termin erstellen"
 msgstr ""
 
@@ -3233,24 +3233,24 @@ msgstr ""
 msgid "erfolgreich gelöscht"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:30
+#: usergroups/templates/usergroups/group_detail.html:32
 msgid "Gruppe gehört zur"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:34
+#: usergroups/templates/usergroups/group_detail.html:36
 msgid "Administrator"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:38
+#: usergroups/templates/usergroups/group_detail.html:41
 msgid "Termine"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:59
+#: usergroups/templates/usergroups/group_detail.html:63
 msgid ""
 "Zurzeit gibt es keine Leerstellen. Der Administrator kann welche erstellen"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:65
+#: usergroups/templates/usergroups/group_detail.html:70
 #: vacancies/templates/vacancies/application_list.html:40
 msgid "Einladungen"
 msgstr ""
