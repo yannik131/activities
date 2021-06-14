@@ -397,13 +397,12 @@ function updateMessageCount() {
     }
 }
 
-window.addEventListener('load', updateMessageCount);
-
 function sendUpdateCheck(room_id) {
     user_websocket.send(JSON.stringify({'type': 'chat', 'action': 'sent', 'id': room_id, 'update_check': '1'}));
 }
 
 {% if user.is_authenticated %}
+    window.addEventListener('load', updateMessageCount);
     connect();
     window.addEventListener('beforeunload', function() {
         if(unload_room_id && !new_messages[unload_room_id]) {
