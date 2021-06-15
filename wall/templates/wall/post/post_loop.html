@@ -26,7 +26,7 @@
                     <source src="{{ post.video.url }}">
                 </video>
             {% elif post.image %}
-                <img src="{{ post.image.url }}" style="width:320px;">
+                <img src="{{ post.image.url }}" style="max-width:320px; max-height: 400px">
             {% endif %}
         </div>
         <div style="max-height: 200px; overflow-y: scroll;">
@@ -80,6 +80,6 @@
             </div>
     </div>
     {% empty %}
-        <b>{% trans "Keine" %}.</b>
+        <div style="text-align: center"><b>{% trans "Keine" %}.</b></div>
 {% endfor %}
 {% include "account/pagination.html" with page=posts %}

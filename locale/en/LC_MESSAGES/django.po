@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-15 18:57+0200\n"
-"PO-Revision-Date: 2021-06-15 19:00+0200\n"
+"POT-Creation-Date: 2021-06-16 00:24+0200\n"
+"PO-Revision-Date: 2021-06-16 00:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -4176,7 +4176,7 @@ msgstr "This activity is not in the selected category."
 msgid "Kommentar"
 msgstr "Comment"
 
-#: wall/models.py:52
+#: wall/models.py:57
 msgid "Post vom "
 msgstr "Post on the "
 
@@ -4239,6 +4239,14 @@ msgstr "[Delete]"
 #: wall/templates/wall/post/post_loop.html:83
 msgid "Keine"
 msgstr "None"
+
+#: wall/views.py:28
+msgid ""
+"Dieser Post enthält eine Mediendatei. Der Post wird daher sichtbar gemacht, "
+"sobald der Admin ihn freigegeben hat."
+msgstr ""
+"This post contains a media file. It's going to be visible once the admin "
+"takes a look at it."
 
 #~ msgid "Geburtsjahr"
 #~ msgstr "Birth year"

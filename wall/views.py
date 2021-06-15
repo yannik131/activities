@@ -8,6 +8,8 @@ from activity.models import Category
 from django.contrib.contenttypes.models import ContentType
 from shared.shared import slashify
 from account.views import handler403
+from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 
 
 def create_post(request, app_label, model, id):
@@ -20,6 +22,10 @@ def create_post(request, app_label, model, id):
         form.instance.author = request.user
         if form.is_valid():
             post = form.save()
+            if not post.media_mime_type:
+                post.approved = True
+            else:
+                messages.add_message(request, messages.INFO, _('Dieser Post enthält eine Mediendatei. Der Post wird daher sichtbar gemacht, sobald der Admin ihn freigegeben hat.'))
             if ct == User.content_type():
                 return HttpResponseRedirect(request.build_absolute_uri('/account/user_post_list/'))
             return HttpResponseRedirect(post.target.get_absolute_url())

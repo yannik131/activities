@@ -48,7 +48,7 @@ def detail(request, username):
         return HttpResponseRedirect(request.build_absolute_uri('/account/'))
     requested = FriendRequest.objects.filter(requesting_user=request.user, requested_user=user).exists()
     friendship = request.user.get_friendship_for(user)
-    posts = Post.objects.filter(author=user).all()
+    posts = Post.get_approved_posts_for(user)
     posts, page = shared.paginate(posts, request)
     if request.user.character and user.character:
         score = request.user.character.congruence_with(user.character)

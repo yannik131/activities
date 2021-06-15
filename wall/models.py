@@ -23,21 +23,26 @@ class Post(models.Model):
     media_mime_type = models.CharField(max_length=50, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='posts')
     activity = models.ForeignKey(Activity, on_delete=models.CASCADE, related_name='posts', null=True, blank=True)
-    liked_by = models.ManyToManyField(User, related_name='liked_posts')
-    disliked_by = models.ManyToManyField(User, related_name='disliked_posts')
+    liked_by = models.ManyToManyField(User, related_name='liked_posts', blank=True)
+    disliked_by = models.ManyToManyField(User, related_name='disliked_posts', blank=True)
+    approved = models.BooleanField(default=False)
 
     class Meta:
         ordering = ('-created',)
+        
+    @staticmethod
+    def get_approved_posts_for(object):
+        return object.posts.filter(approved=True)
 
     @staticmethod
     def get_page(request, component_index=None, chosen_component=None, activity=None, category=None):
         if component_index is None:
-            object_list = Post.objects.filter(author=request.user)
+            object_list = Post.get_approved_posts_for(request.user)
         else:
             if activity is not None:
-                post_list = activity.posts
+                post_list = Post.get_approved_posts_for(activity)
             else:
-                post_list = category.posts
+                post_list = Post.get_approved_posts_for(category)
             if component_index == 3:
                 object_list = post_list.filter(author__location__city=chosen_component)
             elif component_index == 2:
