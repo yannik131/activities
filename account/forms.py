@@ -8,29 +8,8 @@ from django.core.exceptions import ValidationError
 from datetime import datetime
 
 
-class UserRegistrationForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['email'].required = True
-        
-    password = forms.CharField(label=_('Passwort'),
-                               widget=forms.PasswordInput)
-    password2 = forms.CharField(label=_('Passwort (erneut)'),
-                                widget=forms.PasswordInput)
-
-    class Meta:
-        model = get_user_model()
-        fields = ('email', 'username')
-        labels = {
-            'sex': _('Geschlecht'),
-            'birth_year': _('Geburtsjahr'),
-            'email': _('E-Mail Adresse')
-        }
-        
-        help_texts = {
-            'username': ''
-        }
-        
+class UserForm(forms.ModelForm):
+    
     def clean_email(self):
         cd = self.cleaned_data
         query = User.objects.filter(email=cd['email'])
@@ -57,38 +36,58 @@ class UserRegistrationForm(forms.ModelForm):
         except ValidationError:
             return username
         raise forms.ValidationError(_('Ihr Nutzername kann keine E-Mail sein. Das wäre verwirrend, oder?'))
+        
+    def clean_birth_year(self):
+        birth_year = self.cleaned_data['birth_year']
+        if birth_year:
+            birth_year = int(birth_year)
+            year = datetime.today().year
+            if birth_year > (year-3):
+                raise forms.ValidationError(_('Sie müssen mindestens 3 Jahre alt sein, um diese Seite überhaupt nutzen zu können. Jüngere Menschen haben noch kein Gedächtnis.'))
+            elif year-birth_year > 120:
+                raise forms.ValidationError(_('Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind.'))
+            return birth_year
+        else:
+            return None
 
-
-class UserEditForm(forms.ModelForm):
+class UserRegistrationForm(UserForm):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)    
         self.fields['email'].required = True
-    
+        
+    password = forms.CharField(label=_('Passwort'),
+                               widget=forms.PasswordInput)
+    password2 = forms.CharField(label=_('Passwort (erneut)'),
+                                widget=forms.PasswordInput)
+
     class Meta:
         model = get_user_model()
-        fields = ('email', 'username', 'sex', 'birth_year', 'profile_text', 'image')
-
+        fields = ('email', 'username', 'sex', 'birth_year')
         labels = {
-            'sex': _('Geschlecht (für Bewerbungen)'),
-            'birth_year': _('Geburtsjahr (für Bewerbungen)'),
-            'profile_text': _('Profiltext'),
-            'image': _('Profilbild'),
-            'email': _('E-Mail-Adresse (Für Login und Passwortzurücksetzung)')
+            'sex': _('Geschlecht (freiwillig)'),
+            'birth_year': _('Geburtsjahr (freiwillig)'),
+            'email': _('E-Mail Adresse')
         }
         
         help_texts = {
             'username': ''
         }
         
-    def clean_birth_year(self):
-        birth_year = int(self.cleaned_data['birth_year'])
-        year = datetime.today().year
-        if birth_year > (year-3):
-            raise forms.ValidationError(_('Sie müssen mindestens 3 Jahre alt sein, um diese Seite überhaupt nutzen zu können. Jüngere Menschen haben noch kein Gedächtnis.'))
-        elif year-birth_year > 120:
-            raise forms.ValidationError(_('Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind.'))
-        return birth_year
-
+class UserEditForm(UserForm):
+        
+    class Meta:
+        model = get_user_model()
+        fields = ('username', 'sex', 'birth_year', 'profile_text', 'image')
+        labels = {
+            'sex': _('Geschlecht (freiwillig)'),
+            'birth_year': _('Geburtsjahr (freiwillig)'),
+            'profile_text': _('Profiltext'),
+            'image': _('Profilbild'),
+        }
+        
+        help_texts = {
+            'username': ''
+        }
 
 class LocationForm(forms.Form):
     # , help_text=_('Notwendig, um in Ihrer Nähe nach Leuten suchen zu können. Nur für Ihre Freunde sichtbar.')
@@ -120,6 +119,7 @@ class CustomFriendRequestForm(FriendRequestForm):
             raise forms.ValidationError(_('Es gibt keinen Nutzer mit dem Nutzernamen {name}').format(name=cd["username"]))
         return cd
         
+
 class AccountDeleteForm(forms.Form):
     okay = forms.BooleanField(label=_('Wirklich löschen?'))
     

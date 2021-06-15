@@ -21,12 +21,12 @@ class User(AbstractUser):
     image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True, null=True)
     location = models.ForeignKey("Location", on_delete=models.CASCADE, blank=True, related_name='population')
     latest_request_check = models.DateTimeField(default=timezone.now)
-    birth_year = models.PositiveSmallIntegerField(null=True)
+    birth_year = models.PositiveSmallIntegerField(null=True, blank=True)
     SEX_CHOICES = (
         ('m', _('männlich')),
         ('w', _('weiblich'))
     )
-    sex = models.CharField(max_length=1, choices=SEX_CHOICES, null=True)
+    sex = models.CharField(max_length=1, choices=SEX_CHOICES, null=True, blank=True)
     confirmed_appointments = models.ManyToManyField("scheduling.Appointment", related_name='participants')
     cancelled_appointments = models.ManyToManyField("scheduling.Appointment", related_name='cancellations')
     channel_name = models.CharField(max_length=100, null=True)

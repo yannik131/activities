@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-14 12:57+0200\n"
-"PO-Revision-Date: 2021-06-15 12:09+0200\n"
+"POT-Creation-Date: 2021-06-15 18:57+0200\n"
+"PO-Revision-Date: 2021-06-15 19:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -18,66 +18,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.2\n"
 
-#: account/forms.py:16 account/forms.py:147
-msgid "Passwort"
-msgstr "Password"
-
-#: account/forms.py:18
-msgid "Passwort (erneut)"
-msgstr "Password (again)"
-
-#: account/forms.py:25 vacancies/forms.py:14
-#: vacancies/templates/vacancies/vacancy_list.html:14
-msgid "Geschlecht"
-msgstr "Gender"
-
-#: account/forms.py:26
-msgid "Geburtsjahr"
-msgstr "Birth year"
-
-#: account/forms.py:27
-msgid "E-Mail Adresse"
-msgstr "E-mail address"
-
-#: account/forms.py:40
+#: account/forms.py:19
 msgid "Es gibt schon einen Nutzer mit dieser E-Mail-Adresse."
 msgstr "An account with this email already exists."
 
-#: account/forms.py:48
+#: account/forms.py:27
 msgid "Passwörter stimmen nicht überein!"
 msgstr "Passwords don't match!"
 
-#: account/forms.py:54
+#: account/forms.py:33
 msgid "Nutzername zu lang (max. 10 Zeichen)"
 msgstr "Username too long (10 chars max)."
 
-#: account/forms.py:59
+#: account/forms.py:38
 msgid "Ihr Nutzername kann keine E-Mail sein. Das wäre verwirrend, oder?"
 msgstr ""
 "Your username can't be an email address. That would be confusing, wouldn't "
 "it?"
 
-#: account/forms.py:72
-msgid "Geschlecht (für Bewerbungen)"
-msgstr "Gender (for applications)"
-
-#: account/forms.py:73
-msgid "Geburtsjahr (für Bewerbungen)"
-msgstr "Age (for applications)"
-
-#: account/forms.py:74
-msgid "Profiltext"
-msgstr "Profile text"
-
-#: account/forms.py:75
-msgid "Profilbild"
-msgstr "Profile picture"
-
-#: account/forms.py:76
-msgid "E-Mail-Adresse (Für Login und Passwortzurücksetzung)"
-msgstr "E-mail (required for login and password reset)"
-
-#: account/forms.py:87
+#: account/forms.py:46
 msgid ""
 "Sie müssen mindestens 3 Jahre alt sein, um diese Seite überhaupt nutzen zu "
 "können. Jüngere Menschen haben noch kein Gedächtnis."
@@ -85,21 +44,49 @@ msgstr ""
 "You need to be at least 3 years of age to use this site. Younger people "
 "don't have a memory yet."
 
-#: account/forms.py:89
+#: account/forms.py:48
 msgid ""
 "Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind."
 msgstr "It's statistically really unlikely that you are older than 120."
 
-#: account/forms.py:95
+#: account/forms.py:58 account/forms.py:147
+msgid "Passwort"
+msgstr "Password"
+
+#: account/forms.py:60
+msgid "Passwort (erneut)"
+msgstr "Password (again)"
+
+#: account/forms.py:67 account/forms.py:82
+msgid "Geschlecht (freiwillig)"
+msgstr "Gender (voluntary)"
+
+#: account/forms.py:68 account/forms.py:83
+msgid "Geburtsjahr (freiwillig)"
+msgstr "Birth year (voluntary)"
+
+#: account/forms.py:69
+msgid "E-Mail Adresse"
+msgstr "E-mail address"
+
+#: account/forms.py:84
+msgid "Profiltext"
+msgstr "Profile text"
+
+#: account/forms.py:85
+msgid "Profilbild"
+msgstr "Profile picture"
+
+#: account/forms.py:94
 msgid "Stadt, Bundesland"
 msgstr "City, State"
 
-#: account/forms.py:104 vacancies/forms.py:55 vacancies/forms.py:99
+#: account/forms.py:103 vacancies/forms.py:55 vacancies/forms.py:99
 #: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:45
 msgid "Nachricht"
 msgstr "Message"
 
-#: account/forms.py:110
+#: account/forms.py:109
 #, python-brace-format
 msgid ""
 "Die Nachricht darf nicht länger als 150 Zeichen sein, ist aber {l} Zeichen "
@@ -108,11 +95,11 @@ msgstr ""
 "The message can't be longer than 150 characters. It's {l} characters long. "
 "Fix this."
 
-#: account/forms.py:115
+#: account/forms.py:114
 msgid "Nutzername"
 msgstr "User name"
 
-#: account/forms.py:120
+#: account/forms.py:119
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr "There is no user with the user name {name}"
@@ -1668,8 +1655,14 @@ msgid "Senden"
 msgstr "Send"
 
 #: account/templates/registration/register.html:18
-msgid "Bitte nutzen Sie das folgende Formular zum Registrieren:"
-msgstr "Please use the following form to register:"
+msgid ""
+"Finden Sie Hobbys und neue Freunde! Am besten geht das, wenn Sie auch "
+"Geschlecht und Alter angeben. Ihre E-Mail-Adresse wird ausschließlich für "
+"den Aktivierungslink und die Passwort-Zurücksetzung verwendet!"
+msgstr ""
+"Find new hobbies and friends! Works best if you indicate age and gender. "
+"Your e-mail address is used only for the activation of your account and in "
+"case you need to reset your password."
 
 #: account/templates/registration/register.html:24
 msgid ""
@@ -3928,6 +3921,10 @@ msgid ""
 "oder löschen Sie die Gruppe."
 msgstr "You are the admin. Set a new admin before leaving or delete the group."
 
+#: vacancies/forms.py:14 vacancies/templates/vacancies/vacancy_list.html:14
+msgid "Geschlecht"
+msgstr "Gender"
+
 #: vacancies/forms.py:15
 msgid "Mindestalter"
 msgstr "Minimum age"
@@ -4242,6 +4239,15 @@ msgstr "[Delete]"
 #: wall/templates/wall/post/post_loop.html:83
 msgid "Keine"
 msgstr "None"
+
+#~ msgid "Geburtsjahr"
+#~ msgstr "Birth year"
+
+#~ msgid "E-Mail-Adresse (Für Login und Passwortzurücksetzung)"
+#~ msgstr "E-mail (required for login and password reset)"
+
+#~ msgid "Bitte nutzen Sie das folgende Formular zum Registrieren:"
+#~ msgstr "Please use the following form to register:"
 
 #~ msgid ""
 #~ "Der Server ist gerade nicht ansprechbar. Vielleicht läuft ein Update?"
