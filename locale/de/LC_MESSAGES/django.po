@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-16 17:32+0200\n"
+"POT-Creation-Date: 2021-06-16 20:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -389,7 +389,11 @@ msgstr ""
 msgid "Charakterübereinstimmung"
 msgstr ""
 
-#: account/templates/account/detail.html:26
+#: account/templates/account/detail.html:18
+msgid "Jahre alt"
+msgstr ""
+
+#: account/templates/account/detail.html:30
 #: competitions/templates/competitions/match_detail.html:18
 #: competitions/templates/competitions/match_detail.html:28
 #: competitions/templates/competitions/tournament_detail.html:15
@@ -398,43 +402,43 @@ msgstr ""
 msgid "Zum Chat"
 msgstr ""
 
-#: account/templates/account/detail.html:29
+#: account/templates/account/detail.html:33
 msgid ""
 "ist Mitglied folgender Aktivitäten (gemeinsame <span style='color: "
 "yellow'>gelb</span>)"
 msgstr ""
 
-#: account/templates/account/detail.html:32
+#: account/templates/account/detail.html:36
 msgid "Adresse"
 msgstr ""
 
-#: account/templates/account/detail.html:35
+#: account/templates/account/detail.html:39
 msgid "Freundschaft beenden"
 msgstr ""
 
-#: account/templates/account/detail.html:37
+#: account/templates/account/detail.html:41
 #, python-format
 msgid "Sie sind nicht mit %(user)s befreundet."
 msgstr ""
 
-#: account/templates/account/detail.html:39
+#: account/templates/account/detail.html:43
 msgid ""
 "Sie haben allerdings bereits eine Freundschaftsanfrage gesendet. Diese wurde "
 "entweder abgelehnt oder die Antwort steht noch aus"
 msgstr ""
 
-#: account/templates/account/detail.html:41
+#: account/templates/account/detail.html:45
 #, python-format
 msgid ""
 "Schicken Sie eine Freundschaftsanfrage, um zu sehen, welche Aktivitäten "
 "%(user)s mag!"
 msgstr ""
 
-#: account/templates/account/detail.html:42
+#: account/templates/account/detail.html:46
 msgid "Freundschaftsanfrage schicken"
 msgstr ""
 
-#: account/templates/account/detail.html:45
+#: account/templates/account/detail.html:49
 #: usergroups/templates/usergroups/group_detail.html:85
 msgid "Posts"
 msgstr ""

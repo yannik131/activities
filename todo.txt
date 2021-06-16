@@ -109,3 +109,5 @@ u f -> x
 f v -> nach oben, bell, zahl
 f u -> nach oben, bell, zahl
 f f -> zahl
+
+in aktivität nach charakter sortieren

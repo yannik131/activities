@@ -6,18 +6,22 @@
 {% block title %}{% blocktrans with username=viewed_user.username %}Profil von {{ username }}{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Profil von" %} {{ viewed_user.username }}</h1>
+    <h1>{% trans "Profil von" %} {{ viewed_user }}</h1>
     {% if viewed_user.image %}<img src="{{ viewed_user.image.url }}" class="user-photo">{% endif %}
     {% if score %}
         <div class="center-container" style="margin-top: 10px; font-weight: bold;">
             {% trans 'Charakterübereinstimmung' %}: {{ score }}%
         </div>
     {% endif %}
-    {% if viewed_user.profile_text %}
+    {% if viewed_user.profile_text or age or sex %}
         <p class="info-p">
-            <i>
-                {{ viewed_user.profile_text }}
-            </i>
+            {% if age %}{{ age }} {% trans 'Jahre alt' %}{% if sex %}, {{ sex }}{% endif %}{% endif %}
+            {% if viewed_user.profile_text %}
+                <br>
+                <i>
+                    {{ viewed_user.profile_text }}
+                </i>
+            {% endif %}
         </p>
     {% endif %}
     {% if friendship %}

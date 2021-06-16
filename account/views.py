@@ -53,7 +53,7 @@ def detail(request, username):
         score = request.user.character.congruence_with(user.character)
     else:
         score = None
-    return render(request, 'account/detail.html', {'viewed_user': user, 'friendship': friendship, 'requested': requested, 'posts': posts, 'score': score})
+    return render(request, 'account/detail.html', {'viewed_user': user, 'friendship': friendship, 'requested': requested, 'posts': posts, 'score': score, 'age': user.age, 'sex': user.get_sex_display()})
 
 
 @login_required

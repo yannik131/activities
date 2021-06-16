@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-16 17:32+0200\n"
-"PO-Revision-Date: 2021-06-16 17:35+0200\n"
+"POT-Creation-Date: 2021-06-16 20:53+0200\n"
+"PO-Revision-Date: 2021-06-16 20:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -422,7 +422,11 @@ msgstr "Profile of"
 msgid "Charakterübereinstimmung"
 msgstr "Character congruence"
 
-#: account/templates/account/detail.html:26
+#: account/templates/account/detail.html:18
+msgid "Jahre alt"
+msgstr "years old"
+
+#: account/templates/account/detail.html:30
 #: competitions/templates/competitions/match_detail.html:18
 #: competitions/templates/competitions/match_detail.html:28
 #: competitions/templates/competitions/tournament_detail.html:15
@@ -431,7 +435,7 @@ msgstr "Character congruence"
 msgid "Zum Chat"
 msgstr "To the chat"
 
-#: account/templates/account/detail.html:29
+#: account/templates/account/detail.html:33
 msgid ""
 "ist Mitglied folgender Aktivitäten (gemeinsame <span style='color: "
 "yellow'>gelb</span>)"
@@ -439,20 +443,20 @@ msgstr ""
 "is a member of the following activities (common ones are <span style='color: "
 "yellow'>yellow</span>)"
 
-#: account/templates/account/detail.html:32
+#: account/templates/account/detail.html:36
 msgid "Adresse"
 msgstr "Address"
 
-#: account/templates/account/detail.html:35
+#: account/templates/account/detail.html:39
 msgid "Freundschaft beenden"
 msgstr "End friendship"
 
-#: account/templates/account/detail.html:37
+#: account/templates/account/detail.html:41
 #, python-format
 msgid "Sie sind nicht mit %(user)s befreundet."
 msgstr "You aren't friends with %(user)s."
 
-#: account/templates/account/detail.html:39
+#: account/templates/account/detail.html:43
 msgid ""
 "Sie haben allerdings bereits eine Freundschaftsanfrage gesendet. Diese wurde "
 "entweder abgelehnt oder die Antwort steht noch aus"
@@ -460,18 +464,18 @@ msgstr ""
 "You've already sent a friend request. It was either declined or is still "
 "pending"
 
-#: account/templates/account/detail.html:41
+#: account/templates/account/detail.html:45
 #, python-format
 msgid ""
 "Schicken Sie eine Freundschaftsanfrage, um zu sehen, welche Aktivitäten "
 "%(user)s mag!"
 msgstr "Send a friend request to see which activities %(user)s likes!"
 
-#: account/templates/account/detail.html:42
+#: account/templates/account/detail.html:46
 msgid "Freundschaftsanfrage schicken"
 msgstr "Send friend request"
 
-#: account/templates/account/detail.html:45
+#: account/templates/account/detail.html:49
 #: usergroups/templates/usergroups/group_detail.html:85
 msgid "Posts"
 msgstr "Posts"
@@ -4322,9 +4326,6 @@ msgstr ""
 #~ msgstr ""
 #~ "My name is Yannik Schroeder and I created this little website. If you "
 #~ "want to contact me, you can send me an email at: myactivities.net@web.de"
-
-#~ msgid "Ihre Stadt"
-#~ msgstr "Your city"
 
 #~ msgid "Wo hängen Sie meistens rum?"
 #~ msgstr "Where do you usually hang out?"
