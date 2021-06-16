@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans "Bewerben" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Auf Leerstelle bewerben" %}</h1>
-    <p>{% trans "Leerstelle gehört zu" %}: <a href="{{ vacancy.target.get_absolute_url }}">{{ vacancy.target }}</a></p>
-    <p>{% trans "Beschreibung" %}: {{ vacancy.description }}</p>
+    <h1 class="h-img"><img src="{% static 'icons/interview.png' %}">{% trans "Auf Leerstelle bewerben" %}</h1>
+    <p class="info-p">{% trans "Leerstelle gehört zu" %}: <a href="{{ vacancy.target.get_absolute_url }}">{{ vacancy.target }}</a>. {% trans 'Hier können Sie sich auf diese Leerstelle bewerben. Beschreibung der Leerstelle: ' %}<br><br>
+        <span style="font-style: italic;">{{ vacancy.description }}</span></p>
     <p>{% trans "Erzählen Sie etwas über sich" %}:</p>
     <form class="login-form" method="post">
         {{ form.as_p }}

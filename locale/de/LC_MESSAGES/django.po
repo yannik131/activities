@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-16 14:27+0200\n"
+"POT-Creation-Date: 2021-06-16 17:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,7 +78,7 @@ msgid "Stadt, Bundesland"
 msgstr ""
 
 #: account/forms.py:103 vacancies/forms.py:55 vacancies/forms.py:99
-#: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:47
+#: wall/forms.py:47
 msgid "Nachricht"
 msgstr ""
 
@@ -371,7 +371,7 @@ msgstr ""
 #: vacancies/templates/vacancies/application_list.html:30
 #: vacancies/templates/vacancies/edit_vacancy.html:11
 #: vacancies/templates/vacancies/invitation_list.html:21
-#: vacancies/templates/vacancies/review_vacancy.html:35
+#: vacancies/templates/vacancies/review_vacancy.html:44
 #: wall/templates/wall/post/post_loop.html:47
 msgid "Löschen"
 msgstr ""
@@ -395,7 +395,6 @@ msgstr ""
 #: competitions/templates/competitions/tournament_detail.html:15
 #: competitions/templates/competitions/tournament_detail.html:25
 #: usergroups/templates/usergroups/group_detail.html:17
-#: vacancies/templates/vacancies/review_vacancy.html:29
 msgid "Zum Chat"
 msgstr ""
 
@@ -578,7 +577,7 @@ msgstr ""
 
 #: account/templates/account/friend_requests_list.html:44
 #: vacancies/templates/vacancies/invitation_list.html:17
-#: vacancies/templates/vacancies/review_vacancy.html:33
+#: vacancies/templates/vacancies/review_vacancy.html:29
 msgid "Annehmen"
 msgstr ""
 
@@ -1291,7 +1290,7 @@ msgstr ""
 #: account/templates/registration/password_reset_form.html:13
 #: activity/templates/activity/detail.html:98
 #: multiplayer/templates/javascript/cards.js:557
-#: vacancies/templates/vacancies/apply_for_vacancy.html:14
+#: vacancies/templates/vacancies/apply_for_vacancy.html:15
 #: wall/templates/wall/post/create_comment.html:15
 #: wall/templates/wall/post/create_post.html:14
 msgid "Senden"
@@ -1330,73 +1329,73 @@ msgstr ""
 msgid "Aktivierungs-E-Mail"
 msgstr ""
 
-#: account/views.py:64
+#: account/views.py:63
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
 "senden."
 msgstr ""
 
-#: account/views.py:67 account/views.py:92 account/views.py:108
+#: account/views.py:66 account/views.py:91 account/views.py:107
 msgid "Ihr seid bereits Freunde."
 msgstr ""
 
-#: account/views.py:74
+#: account/views.py:73
 msgid "Freundschaftsanfrage wurde verschickt."
 msgstr ""
 
-#: account/views.py:89
+#: account/views.py:88
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr ""
 
-#: account/views.py:129
+#: account/views.py:128
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr ""
 
-#: account/views.py:150
+#: account/views.py:149
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr ""
 
-#: account/views.py:157
+#: account/views.py:156
 #, python-brace-format
 msgid "Sie haben die Freundschaft mit {user} beendet."
 msgstr ""
 
-#: account/views.py:179
+#: account/views.py:178
 msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden."
 msgstr ""
 
-#: account/views.py:193
+#: account/views.py:192
 msgid "Änderungen gespeichert."
 msgstr ""
 
-#: account/views.py:207
+#: account/views.py:206
 msgid "Sie können den Ort nur höchstens alle 7 Tage wechseln."
 msgstr ""
 
-#: account/views.py:215
+#: account/views.py:214
 msgid "Neue Adresse gespeichert: "
 msgstr ""
 
-#: account/views.py:255
+#: account/views.py:254
 msgid ""
 "Der Aktivierungslink ist ungültig. Falls der Account noch inaktiv ist, "
 "können Sie durch erneutes Registrieren einen neuen anfordern!"
 msgstr ""
 
-#: account/views.py:273
+#: account/views.py:272
 msgid "Passwort erfolgreich geändert."
 msgstr ""
 
-#: account/views.py:277
+#: account/views.py:276
 msgid "Ihr Passwort wurde zurückgesetzt."
 msgstr ""
 
-#: account/views.py:310
+#: account/views.py:309
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr ""
 
-#: account/views.py:312
+#: account/views.py:311
 msgid "Markierung wurde nicht gefunden!"
 msgstr ""
 
@@ -2131,7 +2130,9 @@ msgstr ""
 
 #: chat/templates/chat/room.html:6
 #: vacancies/templates/vacancies/application_list.html:26
-#: vacancies/templates/vacancies/review_vacancy.html:18
+#: vacancies/templates/vacancies/review_vacancy.html:37
+#: vacancies/templates/vacancies/review_vacancy.html:48
+#: vacancies/templates/vacancies/review_vacancy.html:55
 msgid "Chat"
 msgstr ""
 
@@ -2356,7 +2357,6 @@ msgstr ""
 
 #: competitions/templates/competitions/full_table.html:12
 #: competitions/templates/competitions/game_plan.html:15
-#: vacancies/templates/vacancies/review_vacancy.html:14
 msgid "Nutzer"
 msgstr ""
 
@@ -3098,7 +3098,6 @@ msgid "Administrator (Nutzername)"
 msgstr ""
 
 #: usergroups/forms.py:23 vacancies/forms.py:13
-#: vacancies/templates/vacancies/apply_for_vacancy.html:9
 msgid "Beschreibung"
 msgstr ""
 
@@ -3352,9 +3351,9 @@ msgstr ""
 
 #: vacancies/templates/vacancies/application_list.html:5
 #: vacancies/templates/vacancies/application_list.html:8
-#: vacancies/templates/vacancies/review_vacancy.html:4
-#: vacancies/templates/vacancies/review_vacancy.html:7
-#: vacancies/templates/vacancies/review_vacancy.html:11
+#: vacancies/templates/vacancies/review_vacancy.html:5
+#: vacancies/templates/vacancies/review_vacancy.html:8
+#: vacancies/templates/vacancies/review_vacancy.html:12
 #: vacancies/templates/vacancies/vacancy_list.html:22
 #: vacancies/templates/vacancies/vacancy_list.html:32
 msgid "Bewerbungen"
@@ -3372,20 +3371,26 @@ msgstr ""
 msgid "Sie können von Gruppen, Turnieren und Matches eingeladen werden."
 msgstr ""
 
-#: vacancies/templates/vacancies/apply_for_vacancy.html:4
+#: vacancies/templates/vacancies/apply_for_vacancy.html:5
 #: vacancies/templates/vacancies/vacancy_list.html:39
 msgid "Bewerben"
 msgstr ""
 
-#: vacancies/templates/vacancies/apply_for_vacancy.html:7
+#: vacancies/templates/vacancies/apply_for_vacancy.html:8
 msgid "Auf Leerstelle bewerben"
 msgstr ""
 
-#: vacancies/templates/vacancies/apply_for_vacancy.html:8
+#: vacancies/templates/vacancies/apply_for_vacancy.html:9
 msgid "Leerstelle gehört zu"
 msgstr ""
 
-#: vacancies/templates/vacancies/apply_for_vacancy.html:10
+#: vacancies/templates/vacancies/apply_for_vacancy.html:9
+msgid ""
+"Hier können Sie sich auf diese Leerstelle bewerben. Beschreibung der "
+"Leerstelle: "
+msgstr ""
+
+#: vacancies/templates/vacancies/apply_for_vacancy.html:11
 msgid "Erzählen Sie etwas über sich"
 msgstr ""
 
@@ -3407,24 +3412,22 @@ msgstr ""
 msgid "Leerstelle bearbeiten"
 msgstr ""
 
-#: vacancies/templates/vacancies/review_vacancy.html:8
+#: vacancies/templates/vacancies/review_vacancy.html:9
 msgid "Gehört zu"
 msgstr ""
 
 #: vacancies/templates/vacancies/review_vacancy.html:9
+msgid ""
+"Hier finden Sie eine Liste aller Bewerbungen auf diese Leerstelle. Unterhalb "
+"des Nutzernamens stehen, in Gelb, die Stadt des Nutzers und, falls "
+"verfügbar, Alter und Geschlecht.<br><br><span style=\"font-style: italic"
+"\">Hinweis für den Admin: Wurde eine Bewerbung abgelehnt, kann sich der "
+"Nutzer erst dann erneut bewerben, wenn die Bewerbung vom Admin gelöscht "
+"wurde.</span>"
+msgstr ""
+
+#: vacancies/templates/vacancies/review_vacancy.html:10
 msgid "Leerstellenbeschreibung"
-msgstr ""
-
-#: vacancies/templates/vacancies/review_vacancy.html:15
-msgid "Wohnort"
-msgstr ""
-
-#: vacancies/templates/vacancies/review_vacancy.html:17
-msgid "Alter (Geschlecht"
-msgstr ""
-
-#: vacancies/templates/vacancies/review_vacancy.html:20
-msgid "Aktion"
 msgstr ""
 
 #: vacancies/templates/vacancies/vacancy_list.html:15

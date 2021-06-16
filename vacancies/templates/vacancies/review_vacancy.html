@@ -1,42 +1,63 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans "Bewerbungen" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Bewerbungen" %}</h1>
-    <p>{% trans "Gehört zu" %} <a href="{{ vacancy.target.get_absolute_url }}">{{ vacancy.target }}</a></p>
+    <h1 class="h-img"><img src="{% static 'icons/interview.png' %}">{% trans "Bewerbungen" %}</h1>
+    <p class="info-p">{% trans "Gehört zu" %}: <a href="{{ vacancy.target.get_absolute_url }}">{{ vacancy.target }}</a>. {% blocktrans %}Hier finden Sie eine Liste aller Bewerbungen auf diese Leerstelle. Unterhalb des Nutzernamens stehen, in Gelb, die Stadt des Nutzers und, falls verfügbar, Alter und Geschlecht.<br><br><span style="font-style: italic">Hinweis für den Admin: Wurde eine Bewerbung abgelehnt, kann sich der Nutzer erst dann erneut bewerben, wenn die Bewerbung vom Admin gelöscht wurde.</span>{% endblocktrans %}</p>
     <h2>{% trans "Leerstellenbeschreibung" %}:</h2>
     <div class="info-p">{{ vacancy.description|linebreaks }}</div>
-    <h2>{% trans "Bewerbungen" %}</h2>
-    <table>
-        <tr>
-            <th>{% trans "Nutzer" %}</th>
-            <th>{% trans "Wohnort" %}</th>
-            <th>{% trans "Nachricht" %}</th>
-            <th>{% trans "Alter (Geschlecht" %})</th>
-            <th>{% trans "Chat" %}</th>
-            {% if user == vacancy.target.admin %}
-                <th>{% trans "Aktion" %}</th>
-            {% endif %}
-        </tr>
+    <h2>{% trans 'Bewerbungen' %}:</h2>
+    <div class="match-list">
         {% for application in vacancy.applications.all %}
-            <tr>
-                <td><a href="{{ application.user.get_absolute_url }}">{{ application.user }}</a></td>
-                <td>{{ application.user.location }}</td>
-                <td>{{ application.message }}</td>
-                <td>{{ application.user.get_age }} ({{ application.user.sex }})</td>
-                <td><a href="{% url 'chat:chat_room' 'vacancies' 'application' application.id %}">{% trans "Zum Chat" %}</a></td>
+        <div class="item" style="width: 350px; height: 200px;">
+            <div class="top" style="height: 15%; overflow-y: scroll; scrollbar-width: none; word-wrap: break-word; align-items: center-stretch">
+                <span style="padding: 5px 5px; text-align: center"><a href="{{ application.user.get_absolute_url }}">{{ application.user }}</a></span>
+            </div>
+            <div class="middle" style="height: 55%; top: 15%;">
+                <span style="color: yellow">{{ application.user.location.city }}{% if application.user.age %}: {{ application.user.age }}{% if application.user.sex %}, {% endif %}{% endif %}{{ application.user.sex|default_if_none:"" }}</span><br>
+                {{ application.message }}
+            </div>
+            <div class="bottom" style="height: 30%">
                 {% if user == vacancy.target.admin %}
-                    <td>
-                        {% if application.status == 'pending' %}
-                            <a href="{% url 'vacancies:accept_application' application.id %}">{% trans "Annehmen" %}</a> | <a href="{% url 'vacancies:decline_application' application.id %}">{% trans "Ablehnen" %}</a>
-                        {% else %}
-                            <a href="{% url 'vacancies:delete_application' application.id %}">{% trans "Löschen" %}</a>
-                        {% endif %}
-                    </td>
+                    {% if application.status == 'pending' %}
+                        <div class="competitive" style="font-size: 16px;">
+                            <div class="left" style="width: 33%" onclick=openLink("{% url 'vacancies:accept_application' application.id %}")>
+                                <img src="{% static 'icons/checkmark.png' %}">
+                                {% trans 'Annehmen' %}
+                            </div>
+                            <div class="left" style="width: 33%" onclick=openLink("{% url 'vacancies:decline_application' application.id %}")>
+                                <img src="{% static 'icons/cross.png' %}">
+                                {% trans 'Ablehnen' %}
+                            </div>
+                            <div class="right" style="width: 34%" onclick=openLink("{% url 'chat:chat_room' 'vacancies' 'application' application.id %}")>
+                                <img src="{% static 'icons/chat.png' %}">
+                                {% trans 'Chat' %}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="competitive">
+                            <div class="left" onclick=openLink("{% url 'vacancies:delete_application' application.id %}")>
+                                <img src="{% static 'icons/remove.png' %}">
+                                {% trans 'Löschen' %}
+                            </div>
+                            <div class="right"onclick=openLink("{% url 'chat:chat_room' 'vacancies' 'application' application.id %}")>
+                                <img src="{% static 'icons/chat.png' %}">
+                                {% trans 'Chat' %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="button-like" onclick=openLink("{% url 'chat:chat_room' 'vacancies' 'application' application.id %}")>
+                        <img src="{% static 'icons/chat.png' %}">
+                        {% trans 'Chat' %}
+                    </div>
                 {% endif %}
-            </tr>
+            </div>
+        </div>
         {% endfor %}
-    </table>
+    </div>
+    
 {% endblock %}

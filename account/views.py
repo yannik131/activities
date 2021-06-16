@@ -20,7 +20,6 @@ from django.utils.encoding import force_text
 from django.contrib.auth import login as auth_login
 from django.urls import reverse
 from django.db.models import Q
-from django.core.mail import EmailMultiAlternatives
 import logging
 logger = logging.getLogger('django')
 
