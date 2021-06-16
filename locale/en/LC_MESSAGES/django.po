@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-16 00:24+0200\n"
-"PO-Revision-Date: 2021-06-16 00:25+0200\n"
+"POT-Creation-Date: 2021-06-16 14:27+0200\n"
+"PO-Revision-Date: 2021-06-16 14:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -82,7 +82,7 @@ msgid "Stadt, Bundesland"
 msgstr "City, State"
 
 #: account/forms.py:103 vacancies/forms.py:55 vacancies/forms.py:99
-#: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:45
+#: vacancies/templates/vacancies/review_vacancy.html:16 wall/forms.py:47
 msgid "Nachricht"
 msgstr "Message"
 
@@ -4118,27 +4118,27 @@ msgstr "The application deadline has already expired."
 msgid "Sie sind bereits Mitglied."
 msgstr "You already are a member."
 
-#: wall/forms.py:46
+#: wall/forms.py:48
 msgid "Kategorie (erforderlich)"
 msgstr "Category (required)"
 
-#: wall/forms.py:47
+#: wall/forms.py:49
 msgid "Aktivität (Namen eintippen geht schneller als klicken!)"
 msgstr "Activity (typing in the name is faster than clicking!)"
 
-#: wall/forms.py:48
+#: wall/forms.py:50
 msgid "Audiodatei"
 msgstr "Audio file"
 
-#: wall/forms.py:49
+#: wall/forms.py:51
 msgid "Videodatei"
 msgstr "Video file"
 
-#: wall/forms.py:50
+#: wall/forms.py:52
 msgid "Bilddatei"
 msgstr "Image file"
 
-#: wall/forms.py:54
+#: wall/forms.py:56
 msgid ""
 "<a target=\"_blank\" href=\"https://www.heise.de/mac-and-i/"
 "downloads/65/1/1/6/7/1/0/3/Markdown-CheatSheet-Deutsch.pdf\">[Zum Markdown "
@@ -4147,36 +4147,40 @@ msgstr ""
 "<a target=\"_blank\" href=\"https://www.markdownguide.org/cheat-sheet/"
 "\">[Markdown cheat sheet]</a>"
 
-#: wall/forms.py:62
+#: wall/forms.py:64
 msgid "Es kann nicht mehr als eine Datei hochgeladen werden."
 msgstr "You can upload more than one file at once."
 
-#: wall/forms.py:67
+#: wall/forms.py:69
 msgid "Unbekannter Audiodateityp"
 msgstr "Unknown audio file type"
 
-#: wall/forms.py:72
+#: wall/forms.py:74
 msgid "Unbekannter Videodateityp"
 msgstr "Unknown video file type"
 
-#: wall/forms.py:77
+#: wall/forms.py:79
 msgid "Unbekannter Bilddateityp"
 msgstr "Unknown image file type"
 
-#: wall/forms.py:82
+#: wall/forms.py:84
 #, python-brace-format
 msgid "Maximale Dateigröße: {size1} (tatsächliche Größe: {size2}MB)"
 msgstr "Maximum file size: {size1} (actual size: {size2}MB)"
 
-#: wall/forms.py:95
+#: wall/forms.py:97
 msgid "Diese Aktivität ist nicht Teil der ausgewählten Kategorie."
 msgstr "This activity is not in the selected category."
 
-#: wall/forms.py:105
+#: wall/forms.py:102
+msgid "Es muss entweder eine Kategorie oder eine Aktivität angegeben werden."
+msgstr "You have to select either a category, an activity or both."
+
+#: wall/forms.py:112
 msgid "Kommentar"
 msgstr "Comment"
 
-#: wall/models.py:57
+#: wall/models.py:61
 msgid "Post vom "
 msgstr "Post on the "
 
@@ -4240,7 +4244,7 @@ msgstr "[Delete]"
 msgid "Keine"
 msgstr "None"
 
-#: wall/views.py:28
+#: wall/views.py:29
 msgid ""
 "Dieser Post enthält eine Mediendatei. Der Post wird daher sichtbar gemacht, "
 "sobald der Admin ihn freigegeben hat."

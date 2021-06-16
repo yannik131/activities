@@ -22,8 +22,9 @@ def create_post(request, app_label, model, id):
         form.instance.author = request.user
         if form.is_valid():
             post = form.save()
-            if not post.media_mime_type:
+            if not post.contains_media:
                 post.approved = True
+                post.save(update_fields=['approved'])
             else:
                 messages.add_message(request, messages.INFO, _('Dieser Post enthält eine Mediendatei. Der Post wird daher sichtbar gemacht, sobald der Admin ihn freigegeben hat.'))
             if ct == User.content_type():

@@ -30,6 +30,10 @@ class Post(models.Model):
     class Meta:
         ordering = ('-created',)
         
+    @property
+    def contains_media(self):
+        return any(tag in self.message for tag in ['<img', '<audio', '<video', '<a']) or self.media_mime_type
+        
     @staticmethod
     def get_approved_posts_for(object):
         return object.posts.filter(approved=True)

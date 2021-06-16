@@ -297,7 +297,7 @@ def people_list(request):
                 people.append([user, None])
         people = sorted(people, key=lambda t: t[1] if t[1] else 0, reverse=True)
     else:
-        for user in users[:30]:
+        for user in users:
             people.append([user, request.user.activities.all() & user.activities.all()])
         people = sorted(people, key=lambda t: t[1].count() if t[1] else 0, reverse=True)
     people, page = shared.paginate(people, request, 10)
