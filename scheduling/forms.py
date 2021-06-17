@@ -8,6 +8,7 @@ class AppointmentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['start_time'].widget.attrs = DATETIME_ATTRS
+        self.fields['start_time'].input_formats = ['%m/%d/%y %H:%M', '%d.%m.%Y %H:%M']
         
 
     class Meta:

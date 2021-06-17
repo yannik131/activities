@@ -39,8 +39,10 @@
     {% if is_member %}
         <div class="info-p">
             <h2>{% trans "Termine" %}</h2>
-                <div class="button-like" onclick=openLink("{% url 'scheduling:create_appointment' group.id %}")><img src="{% static 'icons/date.png' %}">{% trans "Termin erstellen" %}</div>
-                <br>
+                {% if user != group.admin %}
+                    <div class="button-like" onclick=openLink("{% url 'scheduling:create_appointment' group.id %}")><img src="{% static 'icons/date.png' %}">{% trans "Termin erstellen" %}</div>
+                    <br>
+                {% endif %}
             {% if group.appointments.all.exists %}
                 {% include 'usergroups/appointment_list.html' %}
             {% endif %}
