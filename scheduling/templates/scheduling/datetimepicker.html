@@ -4,9 +4,14 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.datetimepicker.min.css' %}">
 <script src="{% static 'javascript/jquery.datetimepicker.full.min.js' %}"></script>
 <script>
-    jQuery.datetimepicker.setLocale('{{ request.LANGUAGE_CODE }}');
+    const formats = {
+        'de': 'd.m.Y H:i',
+        'en': 'Y/m/d H:i'
+    };
+    const code = '{{ request.LANGUAGE_CODE }}';
+    jQuery.datetimepicker.setLocale(code);
     $('.datetime').datetimepicker({
-        format: 'd.m.Y H:i',
+        format: formats[code],
         dayOfWeekStart: 1,
         closeOnWithoutClick: false,
         step: 30

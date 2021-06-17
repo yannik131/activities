@@ -111,9 +111,11 @@ f f -> zahl
 in aktivität nach charakter sortieren
 1. register: yannik
 2. activate
+
 3. personality test
 4. 60 questions
 5. take test, show first few questions
+
 6. look at leisure (default) suggestions 
 7. look at character traits briefly
 8. instrument suggestions
