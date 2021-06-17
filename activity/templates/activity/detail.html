@@ -129,7 +129,7 @@
 {% endif %}
 
     <h3>{% trans "Beiträge" %} {{ chosen_component|inim }}</h3>
-    <div class="button-like" onclick=openLink("{% url 'wall:create_post' 'activity' 'activity' activity.id %}")><img src="{% static 'icons/post.png' %}">{% blocktrans %}Post erstellen{% endblocktrans %}</div>
+    <div class="button-like" onclick=openLink("{% url 'wall:create_post' 'activity' 'activity' activity.id %}")><img src="{% static 'icons/post.png' %}">{% blocktrans %}Post erstellen{% endblocktrans %}</div><br>
     {% include 'wall/post/post_loop.html' %}
     <script>
         {% include 'javascript/categories.js' %}

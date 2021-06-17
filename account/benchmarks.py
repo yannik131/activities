@@ -66,5 +66,22 @@ def test9():
         rooms = sorted(rooms, key=lambda room: room[2], reverse=True)
         #chat_list = render_to_string('chat/chat_list.html', dict(rooms=rooms, rooms_with_news_count=rooms_with_news_count))
     print((timer()-stamp)/10**6)
+    
+    
+def test10():
+    pks = list(User.objects.values_list('id', flat=True))
+    stamp = timer()
+    for i in range(100):
+        for u in pks:
+            try:
+                user = User.objects.get(pk=u)
+            except User.DoesNotExist:
+                user = None
+    print((timer()-stamp)/10**6)
+    stamp = timer()
+    for i in range(100):
+        for u in pks:
+            user = User.objects.get(pk=u)
+    print((timer()-stamp)/10**6)
 
 

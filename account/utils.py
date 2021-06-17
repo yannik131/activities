@@ -49,7 +49,7 @@ def test(func, n=100):
 
 def set_result(user):
     c = user.character
-    c.traits = {'ach': '10', 'act': '7', 'adv': '4', 'alt': '5', 'ang': '7', 'anx': '5', 'art': '7', 'ass': '7', 'cau': '9', 'che': '5', 'con': '6', 'coo': '8', 'dep': '8', 'dis': '8', 'dut': '9', 'eff': '5', 'emo': '7', 'exc': '5', 'fri': '6', 'gre': '7', 'ima': '9', 'imm': '6', 'int': '10', 'lib': '9', 'mod': '6', 'mor': '9', 'ord': '9', 'sym': '5', 'tru': '7', 'vul': '9'}
+    c.traits = {'ach': '10', 'act': '9', 'adv': '4', 'alt': '5', 'ang': '7', 'anx': '5', 'art': '7', 'ass': '7', 'cau': '9', 'che': '5', 'con': '6', 'coo': '8', 'dep': '8', 'dis': '8', 'dut': '9', 'eff': '5', 'emo': '9', 'exc': '5', 'fri': '6', 'gre': '8', 'ima': '9', 'imm': '8', 'int': '10', 'lib': '9', 'mod': '6', 'mor': '9', 'ord': '9', 'sym': '5', 'tru': '7', 'vul': '9'}
     c.current_question = 60
     c.question_limit = 60
     c.calculate_suggestions()

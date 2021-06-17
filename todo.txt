@@ -114,8 +114,8 @@ in aktivität nach charakter sortieren
 3. personality test
 4. 60 questions
 5. take test, show first few questions
-6. look at character traits briefly
-7. look at leisure (default) suggestions
+6. look at leisure (default) suggestions 
+7. look at character traits briefly
 8. instrument suggestions
 9. find friends
 10. cool_dude profile

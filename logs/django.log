@@ -2346,3 +2346,59 @@ Thread name: django-main-thread
 Process name: MainProcess
 
 Message: WebSocket CONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58570]
+######################################################################
+2021-06-17 14:36:56,203 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/autoreload.py:240
+Thread name: MainThread
+Process name: MainProcess
+
+Message: /home/yannik/projects/activities/account/utils.py changed, reloading.
+######################################################################
+2021-06-17 14:36:57,078 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/autoreload.py:617
+Thread name: MainThread
+Process name: MainProcess
+
+Message: Watching for file changes with StatReloader
+######################################################################
+2021-06-17 14:36:57,365 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:168
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket HANDSHAKING /ws/user/15/2830715239960721676/ [127.0.0.1:59094]
+######################################################################
+2021-06-17 14:36:57,434 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:164
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket CONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:59094]
+######################################################################
+2021-06-17 14:38:33,304 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/autoreload.py:240
+Thread name: MainThread
+Process name: MainProcess
+
+Message: /home/yannik/projects/activities/account/utils.py changed, reloading.
+######################################################################
+2021-06-17 14:38:34,152 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/autoreload.py:617
+Thread name: MainThread
+Process name: MainProcess
+
+Message: Watching for file changes with StatReloader
+######################################################################
+2021-06-17 14:38:34,486 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:168
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket HANDSHAKING /ws/user/15/2830715239960721676/ [127.0.0.1:59214]
+######################################################################
+2021-06-17 14:38:34,542 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:164
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket CONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:59214]
