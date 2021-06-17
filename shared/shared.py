@@ -66,5 +66,6 @@ GERMAN_DATE_FMT = '%d.%m.%Y %H:%M'
 
 DATETIME_ATTRS = {
     'class': 'datetime',
-    'autocomplete': 'off'
+    'autocomplete': 'off',
+    'type': 'datetime-local'
 }
