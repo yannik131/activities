@@ -10,6 +10,7 @@
 /media/video/*
 /media/images/*
 /log.log
+/logs/*
 **/*_q85.*
 /dump.rdb
 /backup/*

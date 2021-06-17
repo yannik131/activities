@@ -23,7 +23,10 @@ import datetime
 class NotificationConsumer(WebsocketConsumer):
     def connect(self):
         user_id = self.scope['url_route']['kwargs']['user_id']
-        self.user = User.objects.get(id=user_id)
+        try:
+            self.user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            return
         key = self.scope['url_route']['kwargs']['key']
         if self.user.channel_name:
             async_to_sync(self.channel_layer.send)(

@@ -26,7 +26,7 @@ class PostForm(forms.ModelForm):
         elif type(arg) == Activity:
             activity = arg
             self.fields['category'].disabled = True
-            self.fields['category'].initial = activity.categories.first().id
+            self.fields['category'].initial = activity.categories.first()
             self.fields['activity'].disabled = True
             self.fields['activity'].initial = activity.id
         else:
