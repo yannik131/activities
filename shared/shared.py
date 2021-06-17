@@ -68,3 +68,8 @@ DATETIME_ATTRS = {
     'class': 'datetime',
     'autocomplete': 'off'
 }
+
+def localize_datetime_fields(*fields):
+    for field in fields:
+        field.widget.attrs = DATETIME_ATTRS
+        field.input_formats = ['%m/%d/%y %H:%M', '%d.%m.%Y %H:%M']
