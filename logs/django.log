@@ -1,0 +1,1865 @@
+######################################################################
+2021-06-16 22:18:38,057 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/autoreload.py:617
+Thread name: MainThread
+Process name: MainProcess
+
+Message: Watching for file changes with StatReloader
+######################################################################
+2021-06-16 22:18:41,587 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /account/login/?next=/ 200 [0.06, 127.0.0.1:46294][0m
+######################################################################
+2021-06-16 22:18:41,619 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/css/base4.css 200 [0.00, 127.0.0.1:46294][0m
+######################################################################
+2021-06-16 22:18:41,623 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/instagram.png 200 [0.00, 127.0.0.1:46294][0m
+######################################################################
+2021-06-16 22:18:41,653 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/dog.png 304 [0.00, 127.0.0.1:46294][0m
+######################################################################
+2021-06-16 22:18:41,656 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/login.png 304 [0.01, 127.0.0.1:46298][0m
+######################################################################
+2021-06-16 22:18:41,658 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/question.png 304 [0.01, 127.0.0.1:46300][0m
+######################################################################
+2021-06-16 22:18:41,662 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/password_reset.png 304 [0.01, 127.0.0.1:46302][0m
+######################################################################
+2021-06-16 22:18:41,665 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/registration.png 304 [0.01, 127.0.0.1:46304][0m
+######################################################################
+2021-06-16 22:19:17,930 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:153
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [32mHTTP POST /account/login/ 302 [0.03, 127.0.0.1:46294][0m
+######################################################################
+2021-06-16 22:19:18,656 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET / 200 [0.71, 127.0.0.1:46294][0m
+######################################################################
+2021-06-16 22:19:18,723 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/css/base4.css 304 [0.00, 127.0.0.1:46294][0m
+######################################################################
+2021-06-16 22:19:18,778 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/myactivities.net.png.150x150_q85.png 200 [0.05, 127.0.0.1:46300][0m
+######################################################################
+2021-06-16 22:19:18,778 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Boxing.jpg.150x150_q85.jpg 200 [0.05, 127.0.0.1:46302][0m
+######################################################################
+2021-06-16 22:19:18,779 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Rock.jpg.150x150_q85.jpg 200 [0.05, 127.0.0.1:46304][0m
+######################################################################
+2021-06-16 22:19:18,781 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Tea_time.jpg.150x150_q85.jpg 200 [0.06, 127.0.0.1:46294][0m
+######################################################################
+2021-06-16 22:19:18,782 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Architecture.jpg.150x150_q85.jpg 200 [0.06, 127.0.0.1:46314][0m
+######################################################################
+2021-06-16 22:19:18,788 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:168
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket HANDSHAKING /ws/user/1/-2803670986681927303/ [127.0.0.1:46318]
+######################################################################
+2021-06-16 22:19:18,795 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/home.png 304 [0.01, 127.0.0.1:46300][0m
+######################################################################
+2021-06-16 22:19:18,805 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/questionnaire.png 304 [0.02, 127.0.0.1:46302][0m
+######################################################################
+2021-06-16 22:19:18,812 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/post.png 304 [0.02, 127.0.0.1:46294][0m
+######################################################################
+2021-06-16 22:19:18,816 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/activity.png 304 [0.02, 127.0.0.1:46304][0m
+######################################################################
+2021-06-16 22:19:18,844 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/log.py:224
+Thread name: ThreadPoolExecutor-1_0
+Process name: MainProcess
+
+Message: Not Found: /media/users/2021/02/12/result.png
+######################################################################
+2021-06-16 22:19:18,845 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:155
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [33mHTTP GET /media/users/2021/02/12/result.png 404 [0.12, 127.0.0.1:46298][0m
+######################################################################
+2021-06-16 22:19:18,855 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:164
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket CONNECT /ws/user/1/-2803670986681927303/ [127.0.0.1:46318]
+######################################################################
+2021-06-16 22:19:18,906 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Cooking.jpg.150x150_q85.jpg 200 [0.11, 127.0.0.1:46300][0m
+######################################################################
+2021-06-16 22:19:18,908 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Risk.png.150x150_q85.png 200 [0.10, 127.0.0.1:46302][0m
+######################################################################
+2021-06-16 22:19:18,909 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Carcassonne.jpeg.150x150_q85.jpg 200 [0.10, 127.0.0.1:46294][0m
+######################################################################
+2021-06-16 22:19:18,911 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Poker.jpg.150x150_q85.jpg 200 [0.09, 127.0.0.1:46304][0m
+######################################################################
+2021-06-16 22:19:18,930 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Snooker.png.150x150_q85.png 200 [0.08, 127.0.0.1:46314][0m
+######################################################################
+2021-06-16 22:19:18,931 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Pool.jpg.150x150_q85.jpg 200 [0.07, 127.0.0.1:46298][0m
+######################################################################
+2021-06-16 22:19:18,971 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Soccer.jpg.150x150_q85.jpg 200 [0.06, 127.0.0.1:46300][0m
+######################################################################
+2021-06-16 22:19:18,985 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Skat.JPG.150x150_q85.jpg 200 [0.07, 127.0.0.1:46302][0m
+######################################################################
+2021-06-16 22:19:18,986 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Durak.jpg.150x150_q85.jpg 200 [0.07, 127.0.0.1:46294][0m
+######################################################################
+2021-06-16 22:19:18,988 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Swimming.jpg.150x150_q85.jpg 200 [0.07, 127.0.0.1:46304][0m
+######################################################################
+2021-06-16 22:19:19,001 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Running.png.150x150_q85.jpg 200 [0.07, 127.0.0.1:46314][0m
+######################################################################
+2021-06-16 22:19:19,002 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Netflix.png.150x150_q85.jpg 200 [0.07, 127.0.0.1:46298][0m
+######################################################################
+2021-06-16 22:19:19,012 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/chat.png 200 [0.01, 127.0.0.1:46298][0m
+######################################################################
+2021-06-16 22:19:19,018 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/brain.png 200 [0.01, 127.0.0.1:46298][0m
+######################################################################
+2021-06-16 22:19:19,034 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/category.png 200 [0.02, 127.0.0.1:46298][0m
+######################################################################
+2021-06-16 22:19:19,045 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/tournament.png 200 [0.01, 127.0.0.1:46298][0m
+######################################################################
+2021-06-16 22:19:19,051 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/group.png 200 [0.01, 127.0.0.1:46298][0m
+######################################################################
+2021-06-16 22:19:19,056 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/interview.png 200 [0.01, 127.0.0.1:46298][0m
+######################################################################
+2021-06-16 22:19:19,068 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/friendship.png 200 [0.01, 127.0.0.1:46298][0m
+######################################################################
+2021-06-16 22:19:19,075 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/pen.png 304 [0.01, 127.0.0.1:46298][0m
+######################################################################
+2021-06-16 22:19:19,089 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/logout.png 304 [0.01, 127.0.0.1:46298][0m
+######################################################################
+2021-06-16 22:19:19,101 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Strolling.JPG.150x150_q85.jpg 200 [0.13, 127.0.0.1:46300][0m
+######################################################################
+2021-06-16 22:19:19,121 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Guitar.jpg.150x150_q85.jpg 200 [0.13, 127.0.0.1:46302][0m
+######################################################################
+2021-06-16 22:19:19,122 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Doppelkopf.jpg.150x150_q85.jpg 200 [0.13, 127.0.0.1:46294][0m
+######################################################################
+2021-06-16 22:19:19,124 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Chess.jpg.150x150_q85.jpg 200 [0.13, 127.0.0.1:46304][0m
+######################################################################
+2021-06-16 22:19:19,136 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Azul.jpg.150x150_q85.jpg 200 [0.13, 127.0.0.1:46314][0m
+######################################################################
+2021-06-16 22:19:21,425 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:166
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket DISCONNECT /ws/user/1/-2803670986681927303/ [127.0.0.1:46318]
+######################################################################
+2021-06-16 22:19:21,521 - ERROR
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/log.py:224
+Thread name: ThreadPoolExecutor-1_0
+Process name: MainProcess
+
+Message: Internal Server Error: /account/user_post_list/
+Traceback (most recent call last):
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/core/paginator.py", line 46, in validate_number
+    number = int(number)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yannik/projects/activities/shared/shared.py", line 13, in paginate
+    objects = paginator.page(page)
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/core/paginator.py", line 73, in page
+    number = self.validate_number(number)
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/core/paginator.py", line 48, in validate_number
+    raise PageNotAnInteger(_('That page number is not an integer'))
+django.core.paginator.PageNotAnInteger: Diese Seitennummer ist keine Ganzzahl
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UndefinedColumn: column wall_post.approved does not exist
+LINE 1: ...wall_post" WHERE ("wall_post"."author_id" = 1 AND "wall_post...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/yannik/.local/lib/python3.8/site-packages/asgiref/sync.py", line 339, in thread_handler
+    raise exc_info[1]
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 38, in inner
+    response = await get_response(request)
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 233, in _get_response_async
+    response = await wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/yannik/.local/lib/python3.8/site-packages/asgiref/sync.py", line 304, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.8/asyncio/tasks.py", line 455, in wait_for
+    return await fut
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/yannik/.local/lib/python3.8/site-packages/asgiref/sync.py", line 343, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/yannik/projects/activities/account/views.py", line 39, in user_post_list
+    posts, page = Post.get_page(request)
+  File "/home/yannik/projects/activities/wall/models.py", line 58, in get_page
+    return paginate(object_list, request)
+  File "/home/yannik/projects/activities/shared/shared.py", line 15, in paginate
+    objects = paginator.page(1)
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/core/paginator.py", line 73, in page
+    number = self.validate_number(number)
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/core/paginator.py", line 51, in validate_number
+    if number > self.num_pages:
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/core/paginator.py", line 100, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/core/paginator.py", line 94, in count
+    return c()
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/db/models/query.py", line 411, in count
+    return self.query.get_count(using=self.db)
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 515, in get_count
+    number = obj.get_aggregation(using, ['__count'])['__count']
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 500, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1156, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/yannik/.local/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.ProgrammingError: column wall_post.approved does not exist
+LINE 1: ...wall_post" WHERE ("wall_post"."author_id" = 1 AND "wall_post...
+                                                             ^
+
+######################################################################
+2021-06-16 22:19:21,525 - ERROR
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:160
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [35;1mHTTP GET /account/user_post_list/ 500 [0.07, 127.0.0.1:46294][0m
+######################################################################
+2021-06-16 22:19:21,629 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/log.py:224
+Thread name: ThreadPoolExecutor-1_0
+Process name: MainProcess
+
+Message: Not Found: /favicon.ico
+######################################################################
+2021-06-16 22:19:23,638 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:168
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket HANDSHAKING /ws/user/1/-2803670986681927303/ [127.0.0.1:46372]
+######################################################################
+2021-06-16 22:19:23,713 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:164
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket CONNECT /ws/user/1/-2803670986681927303/ [127.0.0.1:46372]
+######################################################################
+2021-06-16 22:23:14,588 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/autoreload.py:617
+Thread name: MainThread
+Process name: MainProcess
+
+Message: Watching for file changes with StatReloader
+######################################################################
+2021-06-16 22:23:15,543 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:153
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [32mHTTP GET / 302 [0.05, 127.0.0.1:46500][0m
+######################################################################
+2021-06-16 22:23:15,577 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /account/login/?next=/ 200 [0.02, 127.0.0.1:46500][0m
+######################################################################
+2021-06-16 22:23:15,609 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/css/base4.css 304 [0.00, 127.0.0.1:46500][0m
+######################################################################
+2021-06-16 22:23:15,643 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/login.png 304 [0.01, 127.0.0.1:46500][0m
+######################################################################
+2021-06-16 22:23:15,644 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/question.png 304 [0.01, 127.0.0.1:46506][0m
+######################################################################
+2021-06-16 22:23:15,648 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/password_reset.png 304 [0.01, 127.0.0.1:46508][0m
+######################################################################
+2021-06-16 22:23:15,651 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/registration.png 304 [0.01, 127.0.0.1:46510][0m
+######################################################################
+2021-06-16 22:23:15,657 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/instagram.png 304 [0.02, 127.0.0.1:46512][0m
+######################################################################
+2021-06-16 22:23:15,663 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/dog.png 304 [0.02, 127.0.0.1:46514][0m
+######################################################################
+2021-06-16 22:23:18,885 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:153
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [32mHTTP POST /account/login/ 302 [0.02, 127.0.0.1:46500][0m
+######################################################################
+2021-06-16 22:23:18,994 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET / 200 [0.10, 127.0.0.1:46500][0m
+######################################################################
+2021-06-16 22:23:19,049 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:168
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket HANDSHAKING /ws/user/1/-7557496395339167028/ [127.0.0.1:46522]
+######################################################################
+2021-06-16 22:23:19,092 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:164
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket CONNECT /ws/user/1/-7557496395339167028/ [127.0.0.1:46522]
+######################################################################
+2021-06-16 22:23:19,129 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/myactivities.net.png.150x150_q85.png 200 [0.08, 127.0.0.1:46506][0m
+######################################################################
+2021-06-16 22:23:19,130 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Boxing.jpg.150x150_q85.jpg 200 [0.08, 127.0.0.1:46508][0m
+######################################################################
+2021-06-16 22:23:19,132 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Rock.jpg.150x150_q85.jpg 200 [0.08, 127.0.0.1:46510][0m
+######################################################################
+2021-06-16 22:23:19,132 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Architecture.jpg.150x150_q85.jpg 200 [0.08, 127.0.0.1:46512][0m
+######################################################################
+2021-06-16 22:23:19,135 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Tea_time.jpg.150x150_q85.jpg 200 [0.09, 127.0.0.1:46514][0m
+######################################################################
+2021-06-16 22:23:19,154 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/log.py:224
+Thread name: ThreadPoolExecutor-1_0
+Process name: MainProcess
+
+Message: Not Found: /media/users/2021/02/12/result.png
+######################################################################
+2021-06-16 22:23:19,157 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:155
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [33mHTTP GET /media/users/2021/02/12/result.png 404 [0.11, 127.0.0.1:46500][0m
+######################################################################
+2021-06-16 22:23:19,199 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Cooking.jpg.150x150_q85.jpg 200 [0.06, 127.0.0.1:46506][0m
+######################################################################
+2021-06-16 22:23:19,209 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Risk.png.150x150_q85.png 200 [0.07, 127.0.0.1:46508][0m
+######################################################################
+2021-06-16 22:23:19,211 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Carcassonne.jpeg.150x150_q85.jpg 200 [0.07, 127.0.0.1:46510][0m
+######################################################################
+2021-06-16 22:23:19,213 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Snooker.png.150x150_q85.png 200 [0.07, 127.0.0.1:46512][0m
+######################################################################
+2021-06-16 22:23:19,214 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Pool.jpg.150x150_q85.jpg 200 [0.07, 127.0.0.1:46514][0m
+######################################################################
+2021-06-16 22:23:19,227 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Skat.JPG.150x150_q85.jpg 200 [0.07, 127.0.0.1:46500][0m
+######################################################################
+2021-06-16 22:23:19,243 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Durak.jpg.150x150_q85.jpg 200 [0.04, 127.0.0.1:46506][0m
+######################################################################
+2021-06-16 22:23:20,769 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:166
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket DISCONNECT /ws/user/1/-7557496395339167028/ [127.0.0.1:46522]
+######################################################################
+2021-06-16 22:23:20,893 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /account/user_post_list/ 200 [0.09, 127.0.0.1:46500][0m
+######################################################################
+2021-06-16 22:23:20,942 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:168
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket HANDSHAKING /ws/user/1/-7557496395339167028/ [127.0.0.1:46550]
+######################################################################
+2021-06-16 22:23:20,944 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/like.png 200 [0.01, 127.0.0.1:46500][0m
+######################################################################
+2021-06-16 22:23:20,949 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/dislike.png 200 [0.01, 127.0.0.1:46512][0m
+######################################################################
+2021-06-16 22:23:20,955 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/comment.png 200 [0.02, 127.0.0.1:46508][0m
+######################################################################
+2021-06-16 22:23:20,961 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/remove.png 200 [0.02, 127.0.0.1:46514][0m
+######################################################################
+2021-06-16 22:23:20,987 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:164
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket CONNECT /ws/user/1/-7557496395339167028/ [127.0.0.1:46550]
+######################################################################
+2021-06-16 22:23:21,037 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/log.py:224
+Thread name: ThreadPoolExecutor-1_0
+Process name: MainProcess
+
+Message: Not Found: /media/video/2021/06/14/trim.B6576F71-BA99-4CA6-88DC-99AAF2346249.MOV
+######################################################################
+2021-06-16 22:23:21,038 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:155
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [33mHTTP GET /media/video/2021/06/14/trim.B6576F71-BA99-4CA6-88DC-99AAF2346249.MOV 404 [0.04, 127.0.0.1:46500][0m
+######################################################################
+2021-06-16 22:23:21,041 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/log.py:224
+Thread name: ThreadPoolExecutor-1_0
+Process name: MainProcess
+
+Message: Not Found: /media/video/2021/06/09/trim.F5E93F31-0939-4886-A653-954BF4C87913.MOV
+######################################################################
+2021-06-16 22:23:21,042 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:155
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [33mHTTP GET /media/video/2021/06/09/trim.F5E93F31-0939-4886-A653-954BF4C87913.MOV 404 [0.03, 127.0.0.1:46508][0m
+######################################################################
+2021-06-16 22:23:21,052 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/log.py:224
+Thread name: ThreadPoolExecutor-1_0
+Process name: MainProcess
+
+Message: Not Found: /media/video/2021/06/06/trim.D70A61D5-2B4B-46B9-B45B-4BB95B2A39B5.MOV
+######################################################################
+2021-06-16 22:23:21,053 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:155
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [33mHTTP GET /media/video/2021/06/06/trim.D70A61D5-2B4B-46B9-B45B-4BB95B2A39B5.MOV 404 [0.04, 127.0.0.1:46512][0m
+######################################################################
+2021-06-16 22:27:55,870 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/bell.png 200 [0.01, 127.0.0.1:46676][0m
+######################################################################
+2021-06-16 22:27:55,915 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Skat.JPG.200x200_q85.jpg 200 [0.05, 127.0.0.1:46678][0m
+######################################################################
+2021-06-16 22:27:55,916 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Doppelkopf.jpg.200x200_q85.jpg 200 [0.05, 127.0.0.1:46680][0m
+######################################################################
+2021-06-16 22:27:55,917 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Azul.jpg.200x200_q85.jpg 200 [0.05, 127.0.0.1:46682][0m
+######################################################################
+2021-06-16 22:27:55,917 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Boxing.jpg.200x200_q85.jpg 200 [0.05, 127.0.0.1:46684][0m
+######################################################################
+2021-06-16 22:27:55,918 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Durak.jpg.200x200_q85.jpg 200 [0.05, 127.0.0.1:46686][0m
+######################################################################
+2021-06-16 22:27:55,919 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Netflix.png.200x200_q85.jpg 200 [0.05, 127.0.0.1:46676][0m
+######################################################################
+2021-06-16 22:27:55,950 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Rock.jpg.200x200_q85.jpg 200 [0.03, 127.0.0.1:46680][0m
+######################################################################
+2021-06-16 22:27:55,951 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Running.png.200x200_q85.jpg 200 [0.03, 127.0.0.1:46682][0m
+######################################################################
+2021-06-16 22:27:55,952 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Tea_time.jpg.200x200_q85.jpg 200 [0.03, 127.0.0.1:46678][0m
+######################################################################
+2021-06-16 22:27:55,994 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/static/icons/male_user.png.200x200_q85.png 200 [0.03, 127.0.0.1:46682][0m
+######################################################################
+2021-06-16 22:27:55,997 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/static/icons/female_user.png.200x200_q85.png 200 [0.03, 127.0.0.1:46680][0m
+######################################################################
+2021-06-16 22:27:55,998 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/static/icons/male_female_user.png.200x200_q85.png 200 [0.03, 127.0.0.1:46678][0m
+######################################################################
+2021-06-16 22:27:55,999 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/static/icons/group.png.200x200_q85.png 200 [0.03, 127.0.0.1:46686][0m
+######################################################################
+2021-06-16 22:28:00,102 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/call.png 200 [0.01, 127.0.0.1:46680][0m
+######################################################################
+2021-06-16 22:28:00,107 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/send.png 200 [0.02, 127.0.0.1:46678][0m
+######################################################################
+2021-06-16 22:28:00,126 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/static/icons/male_user.png.0x80_q85.png 200 [0.04, 127.0.0.1:46682][0m
+######################################################################
+2021-06-16 22:28:05,785 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:166
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket DISCONNECT /ws/user/1/-7557496395339167028/ [127.0.0.1:46550]
+######################################################################
+2021-06-17 11:38:40,371 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/autoreload.py:617
+Thread name: MainThread
+Process name: MainProcess
+
+Message: Watching for file changes with StatReloader
+######################################################################
+2021-06-17 13:13:41,905 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/autoreload.py:240
+Thread name: MainThread
+Process name: MainProcess
+
+Message: /home/yannik/projects/activities/account/utils.py changed, reloading.
+######################################################################
+2021-06-17 13:13:42,705 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/autoreload.py:617
+Thread name: MainThread
+Process name: MainProcess
+
+Message: Watching for file changes with StatReloader
+######################################################################
+2021-06-17 13:17:01,584 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/autoreload.py:240
+Thread name: MainThread
+Process name: MainProcess
+
+Message: /home/yannik/projects/activities/account/utils.py changed, reloading.
+######################################################################
+2021-06-17 13:17:02,122 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/autoreload.py:617
+Thread name: MainThread
+Process name: MainProcess
+
+Message: Watching for file changes with StatReloader
+######################################################################
+2021-06-17 13:18:52,396 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/autoreload.py:240
+Thread name: MainThread
+Process name: MainProcess
+
+Message: /home/yannik/projects/activities/account/utils.py changed, reloading.
+######################################################################
+2021-06-17 13:18:53,216 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/autoreload.py:617
+Thread name: MainThread
+Process name: MainProcess
+
+Message: Watching for file changes with StatReloader
+######################################################################
+2021-06-17 13:42:52,832 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/autoreload.py:240
+Thread name: MainThread
+Process name: MainProcess
+
+Message: /home/yannik/projects/activities/account/utils.py changed, reloading.
+######################################################################
+2021-06-17 13:42:53,658 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/autoreload.py:617
+Thread name: MainThread
+Process name: MainProcess
+
+Message: Watching for file changes with StatReloader
+######################################################################
+2021-06-17 13:42:54,209 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET / 200 [0.15, 127.0.0.1:58066][0m
+######################################################################
+2021-06-17 13:42:54,280 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/css/base4.css 200 [0.01, 127.0.0.1:58066][0m
+######################################################################
+2021-06-17 13:42:54,355 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/myactivities.net.png.150x150_q85.png 200 [0.08, 127.0.0.1:58070][0m
+######################################################################
+2021-06-17 13:42:54,355 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Boxing.jpg.150x150_q85.jpg 200 [0.08, 127.0.0.1:58072][0m
+######################################################################
+2021-06-17 13:42:54,356 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Rock.jpg.150x150_q85.jpg 200 [0.08, 127.0.0.1:58074][0m
+######################################################################
+2021-06-17 13:42:54,357 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Architecture.jpg.150x150_q85.jpg 200 [0.08, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:42:54,358 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Tea_time.jpg.150x150_q85.jpg 200 [0.08, 127.0.0.1:58078][0m
+######################################################################
+2021-06-17 13:42:54,361 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:168
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket HANDSHAKING /ws/user/1/-7557496395339167028/ [127.0.0.1:58082]
+######################################################################
+2021-06-17 13:42:54,378 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/log.py:224
+Thread name: ThreadPoolExecutor-1_0
+Process name: MainProcess
+
+Message: Not Found: /media/users/2021/02/12/result.png
+######################################################################
+2021-06-17 13:42:54,379 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:155
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [33mHTTP GET /media/users/2021/02/12/result.png 404 [0.10, 127.0.0.1:58066][0m
+######################################################################
+2021-06-17 13:42:54,394 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:164
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket CONNECT /ws/user/1/-7557496395339167028/ [127.0.0.1:58082]
+######################################################################
+2021-06-17 13:42:54,428 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Cooking.jpg.150x150_q85.jpg 200 [0.07, 127.0.0.1:58070][0m
+######################################################################
+2021-06-17 13:42:54,431 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Risk.png.150x150_q85.png 200 [0.07, 127.0.0.1:58072][0m
+######################################################################
+2021-06-17 13:42:54,432 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Carcassonne.jpeg.150x150_q85.jpg 200 [0.07, 127.0.0.1:58078][0m
+######################################################################
+2021-06-17 13:42:54,445 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Poker.jpg.150x150_q85.jpg 200 [0.06, 127.0.0.1:58066][0m
+######################################################################
+2021-06-17 13:42:54,452 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Snooker.png.150x150_q85.png 200 [0.05, 127.0.0.1:58074][0m
+######################################################################
+2021-06-17 13:42:54,479 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Pool.jpg.150x150_q85.jpg 200 [0.05, 127.0.0.1:58070][0m
+######################################################################
+2021-06-17 13:42:54,482 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Soccer.jpg.150x150_q85.jpg 200 [0.05, 127.0.0.1:58072][0m
+######################################################################
+2021-06-17 13:42:54,491 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Skat.JPG.150x150_q85.jpg 200 [0.06, 127.0.0.1:58078][0m
+######################################################################
+2021-06-17 13:42:54,498 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Durak.jpg.150x150_q85.jpg 200 [0.05, 127.0.0.1:58066][0m
+######################################################################
+2021-06-17 13:42:54,507 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Swimming.jpg.150x150_q85.jpg 200 [0.05, 127.0.0.1:58074][0m
+######################################################################
+2021-06-17 13:42:54,532 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Running.png.150x150_q85.jpg 200 [0.05, 127.0.0.1:58070][0m
+######################################################################
+2021-06-17 13:42:54,535 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Netflix.png.150x150_q85.jpg 200 [0.05, 127.0.0.1:58072][0m
+######################################################################
+2021-06-17 13:42:54,542 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Strolling.JPG.150x150_q85.jpg 200 [0.05, 127.0.0.1:58078][0m
+######################################################################
+2021-06-17 13:42:54,550 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Guitar.jpg.150x150_q85.jpg 200 [0.05, 127.0.0.1:58066][0m
+######################################################################
+2021-06-17 13:42:54,559 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Doppelkopf.jpg.150x150_q85.jpg 200 [0.05, 127.0.0.1:58074][0m
+######################################################################
+2021-06-17 13:42:54,577 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Chess.jpg.150x150_q85.jpg 200 [0.04, 127.0.0.1:58070][0m
+######################################################################
+2021-06-17 13:42:54,579 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Azul.jpg.150x150_q85.jpg 200 [0.04, 127.0.0.1:58072][0m
+######################################################################
+2021-06-17 13:42:56,604 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:166
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket DISCONNECT /ws/user/1/-7557496395339167028/ [127.0.0.1:58082]
+######################################################################
+2021-06-17 13:42:56,650 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:153
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [32mHTTP GET /account/logout/ 302 [0.02, 127.0.0.1:58074][0m
+######################################################################
+2021-06-17 13:42:56,699 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /account/login/ 200 [0.04, 127.0.0.1:58074][0m
+######################################################################
+2021-06-17 13:42:56,776 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/instagram.png 200 [0.02, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:43:02,612 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP POST /account/login/ 200 [0.04, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:43:07,673 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP POST /account/login/ 200 [0.07, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:43:11,991 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:153
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [32mHTTP POST /account/login/ 302 [0.12, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:43:12,060 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET / 200 [0.06, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:43:12,103 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:168
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket HANDSHAKING /ws/user/15/2830715239960721676/ [127.0.0.1:58148]
+######################################################################
+2021-06-17 13:43:12,127 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:164
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket CONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58148]
+######################################################################
+2021-06-17 13:43:12,141 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/log.py:224
+Thread name: ThreadPoolExecutor-1_0
+Process name: MainProcess
+
+Message: Not Found: /media/users/2021/03/01/IMG_1609.JPG
+######################################################################
+2021-06-17 13:43:12,141 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:155
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [33mHTTP GET /media/users/2021/03/01/IMG_1609.JPG 404 [0.04, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:43:13,838 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:166
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket DISCONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58148]
+######################################################################
+2021-06-17 13:43:13,953 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /account/edit/ 200 [0.09, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:43:13,992 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:168
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket HANDSHAKING /ws/user/15/2830715239960721676/ [127.0.0.1:58166]
+######################################################################
+2021-06-17 13:43:13,995 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/password.png 200 [0.00, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:43:13,999 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/attention.png 200 [0.01, 127.0.0.1:58168][0m
+######################################################################
+2021-06-17 13:43:14,022 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:164
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket CONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58166]
+######################################################################
+2021-06-17 13:43:15,849 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:166
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket DISCONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58166]
+######################################################################
+2021-06-17 13:43:16,796 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /character/overview/ 200 [0.92, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:43:16,844 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:168
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket HANDSHAKING /ws/user/15/2830715239960721676/ [127.0.0.1:58188]
+######################################################################
+2021-06-17 13:43:16,845 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/search.png 200 [0.01, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:43:16,878 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:164
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket CONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58188]
+######################################################################
+2021-06-17 13:43:16,910 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/categories/Music_genres.jpg.200x200_q85.jpg 200 [0.07, 127.0.0.1:58168][0m
+######################################################################
+2021-06-17 13:43:16,910 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/categories/Sport.jpg.200x200_q85.jpg 200 [0.07, 127.0.0.1:58180][0m
+######################################################################
+2021-06-17 13:43:16,911 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/categories/Professions.webp.200x200_q85.jpg 200 [0.07, 127.0.0.1:58182][0m
+######################################################################
+2021-06-17 13:43:16,914 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/categories/Instruments.jpg.200x200_q85.jpg 200 [0.07, 127.0.0.1:58184][0m
+######################################################################
+2021-06-17 13:43:16,915 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/categories/Card_games.jpg.200x200_q85.jpg 200 [0.07, 127.0.0.1:58186][0m
+######################################################################
+2021-06-17 13:43:16,934 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/categories/Chilling.jpg.200x200_q85.jpg 200 [0.05, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:43:16,963 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/categories/Leisure.jpg.200x200_q85.jpg 200 [0.05, 127.0.0.1:58168][0m
+######################################################################
+2021-06-17 13:43:16,964 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/categories/Board_games.jpg.200x200_q85.jpg 200 [0.05, 127.0.0.1:58180][0m
+######################################################################
+2021-06-17 13:43:16,964 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Fast_food.jpg.200x200_q85.jpg 200 [0.05, 127.0.0.1:58182][0m
+######################################################################
+2021-06-17 13:43:16,965 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Pottery.jpg.200x200_q85.jpg 200 [0.05, 127.0.0.1:58184][0m
+######################################################################
+2021-06-17 13:43:16,967 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Religion.jpg.200x200_q85.jpg 200 [0.05, 127.0.0.1:58186][0m
+######################################################################
+2021-06-17 13:43:16,988 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Astrology.jpg.200x200_q85.jpg 200 [0.05, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:43:17,001 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Yoga.jpg.200x200_q85.jpg 200 [0.03, 127.0.0.1:58168][0m
+######################################################################
+2021-06-17 13:43:17,002 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Gardening.JPG.200x200_q85.jpg 200 [0.03, 127.0.0.1:58180][0m
+######################################################################
+2021-06-17 13:44:13,722 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:166
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket DISCONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58188]
+######################################################################
+2021-06-17 13:44:14,043 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /character/overview/ 200 [0.31, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:44:14,096 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:168
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket HANDSHAKING /ws/user/15/2830715239960721676/ [127.0.0.1:58224]
+######################################################################
+2021-06-17 13:44:14,100 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/search.png 304 [0.01, 127.0.0.1:58182][0m
+######################################################################
+2021-06-17 13:44:14,133 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:164
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket CONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58224]
+######################################################################
+2021-06-17 13:44:14,169 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Handicraft.JPG.200x200_q85.jpg 200 [0.08, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:44:14,173 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Painting.JPG.200x200_q85.jpg 200 [0.08, 127.0.0.1:58168][0m
+######################################################################
+2021-06-17 13:44:14,174 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Dog_owning.jpg.200x200_q85.jpg 200 [0.08, 127.0.0.1:58180][0m
+######################################################################
+2021-06-17 13:44:14,174 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Reading.jpg.200x200_q85.jpg 200 [0.08, 127.0.0.1:58184][0m
+######################################################################
+2021-06-17 13:44:14,176 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /media/categories/Music_genres.jpg.200x200_q85.jpg 304 [0.08, 127.0.0.1:58186][0m
+######################################################################
+2021-06-17 13:44:14,194 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Netflix.png.200x200_q85.jpg 200 [0.06, 127.0.0.1:58182][0m
+######################################################################
+2021-06-17 13:44:14,227 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /media/categories/Sport.jpg.200x200_q85.jpg 304 [0.06, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:44:14,237 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /media/categories/Professions.webp.200x200_q85.jpg 304 [0.06, 127.0.0.1:58168][0m
+######################################################################
+2021-06-17 13:44:14,238 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /media/categories/Instruments.jpg.200x200_q85.jpg 304 [0.06, 127.0.0.1:58180][0m
+######################################################################
+2021-06-17 13:44:14,239 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /media/categories/Card_games.jpg.200x200_q85.jpg 304 [0.06, 127.0.0.1:58184][0m
+######################################################################
+2021-06-17 13:44:14,241 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /media/categories/Chilling.jpg.200x200_q85.jpg 304 [0.06, 127.0.0.1:58186][0m
+######################################################################
+2021-06-17 13:44:14,247 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/attention.png 304 [0.00, 127.0.0.1:58180][0m
+######################################################################
+2021-06-17 13:44:14,250 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/logout.png 304 [0.01, 127.0.0.1:58184][0m
+######################################################################
+2021-06-17 13:44:14,265 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /static/icons/category.png 200 [0.02, 127.0.0.1:58186][0m
+######################################################################
+2021-06-17 13:44:14,268 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/brain.png 304 [0.02, 127.0.0.1:58180][0m
+######################################################################
+2021-06-17 13:44:14,271 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/chat.png 304 [0.02, 127.0.0.1:58184][0m
+######################################################################
+2021-06-17 13:44:14,273 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /media/categories/Leisure.jpg.200x200_q85.jpg 304 [0.08, 127.0.0.1:58182][0m
+######################################################################
+2021-06-17 13:44:14,276 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/home.png 304 [0.01, 127.0.0.1:58186][0m
+######################################################################
+2021-06-17 13:44:14,280 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/activity.png 304 [0.01, 127.0.0.1:58180][0m
+######################################################################
+2021-06-17 13:44:14,286 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/tournament.png 304 [0.01, 127.0.0.1:58184][0m
+######################################################################
+2021-06-17 13:44:14,297 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/group.png 304 [0.02, 127.0.0.1:58182][0m
+######################################################################
+2021-06-17 13:44:14,300 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/interview.png 304 [0.02, 127.0.0.1:58186][0m
+######################################################################
+2021-06-17 13:44:14,303 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/friendship.png 304 [0.02, 127.0.0.1:58180][0m
+######################################################################
+2021-06-17 13:44:14,306 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /static/icons/pen.png 304 [0.02, 127.0.0.1:58184][0m
+######################################################################
+2021-06-17 13:44:14,321 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /media/categories/Board_games.jpg.200x200_q85.jpg 304 [0.09, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:44:14,331 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:151
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [36mHTTP GET /media/activities/Pottery.jpg.200x200_q85.jpg 304 [0.09, 127.0.0.1:58168][0m
+######################################################################
+2021-06-17 13:44:47,075 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:166
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket DISCONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58224]
+######################################################################
+2021-06-17 13:44:47,174 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /account/people_list/ 200 [0.07, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:44:47,207 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:168
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket HANDSHAKING /ws/user/15/2830715239960721676/ [127.0.0.1:58254]
+######################################################################
+2021-06-17 13:44:47,224 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:164
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket CONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58254]
+######################################################################
+2021-06-17 13:44:47,357 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/static/icons/male_user.png.200x200_q85.png 200 [0.02, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:44:47,358 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/static/icons/male_female_user.png.200x200_q85.png 200 [0.02, 127.0.0.1:58168][0m
+######################################################################
+2021-06-17 13:44:50,581 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:166
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket DISCONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58254]
+######################################################################
+2021-06-17 13:44:50,678 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /account/people_list/?component_index=1 200 [0.09, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:44:50,715 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:168
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket HANDSHAKING /ws/user/15/2830715239960721676/ [127.0.0.1:58270]
+######################################################################
+2021-06-17 13:44:50,740 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:164
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket CONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58270]
+######################################################################
+2021-06-17 13:44:50,752 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/static/icons/female_user.png.200x200_q85.png 200 [0.04, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:45:03,114 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:166
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket DISCONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58270]
+######################################################################
+2021-06-17 13:45:03,272 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /account/detail/test/ 200 [0.13, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:45:03,331 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:168
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket HANDSHAKING /ws/user/15/2830715239960721676/ [127.0.0.1:58288]
+######################################################################
+2021-06-17 13:45:03,371 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:164
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket CONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58288]
+######################################################################
+2021-06-17 13:45:03,395 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Bouldering.png.150x150_q85.jpg 200 [0.07, 127.0.0.1:58168][0m
+######################################################################
+2021-06-17 13:45:03,398 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Poker.jpg.150x150_q85.jpg 200 [0.07, 127.0.0.1:58180][0m
+######################################################################
+2021-06-17 13:45:03,401 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/django/utils/log.py:224
+Thread name: ThreadPoolExecutor-1_0
+Process name: MainProcess
+
+Message: Not Found: /media/users/2021/02/08/94368FCF-301A-4748-A0A9-785A7F54EFE9.jpeg
+######################################################################
+2021-06-17 13:45:03,402 - WARNING
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:155
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [33mHTTP GET /media/users/2021/02/08/94368FCF-301A-4748-A0A9-785A7F54EFE9.jpeg 404 [0.08, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:45:03,412 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/myactivities.net.png.150x150_q85.png 200 [0.08, 127.0.0.1:58184][0m
+######################################################################
+2021-06-17 13:45:03,412 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Risk.png.150x150_q85.png 200 [0.08, 127.0.0.1:58182][0m
+######################################################################
+2021-06-17 13:45:03,413 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Carcassonne.jpeg.150x150_q85.jpg 200 [0.08, 127.0.0.1:58186][0m
+######################################################################
+2021-06-17 13:45:03,447 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Skat.JPG.150x150_q85.jpg 200 [0.05, 127.0.0.1:58168][0m
+######################################################################
+2021-06-17 13:45:03,448 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Durak.jpg.150x150_q85.jpg 200 [0.05, 127.0.0.1:58180][0m
+######################################################################
+2021-06-17 13:45:03,452 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Running.png.150x150_q85.jpg 200 [0.05, 127.0.0.1:58076][0m
+######################################################################
+2021-06-17 13:45:03,463 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Netflix.png.150x150_q85.jpg 200 [0.05, 127.0.0.1:58184][0m
+######################################################################
+2021-06-17 13:45:03,464 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Strolling.JPG.150x150_q85.jpg 200 [0.05, 127.0.0.1:58182][0m
+######################################################################
+2021-06-17 13:45:03,465 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Doppelkopf.jpg.150x150_q85.jpg 200 [0.05, 127.0.0.1:58186][0m
+######################################################################
+2021-06-17 13:45:03,476 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:147
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: [mHTTP GET /media/activities/Azul.jpg.150x150_q85.jpg 200 [0.03, 127.0.0.1:58168][0m
+######################################################################
+2021-06-17 13:45:09,013 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:166
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket DISCONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58288]
+######################################################################
+2021-06-17 13:45:09,068 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:168
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket HANDSHAKING /ws/user/15/2830715239960721676/ [127.0.0.1:58318]
+######################################################################
+2021-06-17 13:45:09,095 - INFO
+File: /home/yannik/.local/lib/python3.8/site-packages/channels/management/commands/runserver.py:164
+Thread name: django-main-thread
+Process name: MainProcess
+
+Message: WebSocket CONNECT /ws/user/15/2830715239960721676/ [127.0.0.1:58318]

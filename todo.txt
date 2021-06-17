@@ -75,7 +75,6 @@ None - - [03/May/2021:18:57:00] "WSCONNECTING /ws/user/11/" - -
 totaler crash in endlosschleife: lock nicht released?
 neuer nutzer im chat wird nicht angezeigt
 4 leute nicht jeder hört jeden nach start des spiels
-gespräch angefangen fortsetzen wenn raus 
 umfragen
 location selection über websocket
 anonym ohne registrieren?
@@ -87,7 +86,6 @@ nur online/offline consumer als async für notifications
 poker flush geht nicht
 spiel zugucken
 beitreten icon nicht anzeigen chat wenn chat nebenbei offen
-ist konferenz beigetreten zeitzone
 schummeln: karte mit 2 callbacks, auswählen was gemacht werden soll
 karten offset falsch doko
 
@@ -111,3 +109,36 @@ f u -> nach oben, bell, zahl
 f f -> zahl
 
 in aktivität nach charakter sortieren
+1. register: yannik
+2. activate
+3. personality test
+4. 60 questions
+5. take test, show first few questions
+6. look at character traits briefly
+7. look at leisure (default) suggestions
+8. instrument suggestions
+9. find friends
+10. cool_dude profile
+11. scroll to activities
+12. guitar, durak
+13. cool_dude friend request
+14. cool_dude profile
+15. join guitar
+16. map -> best place to buy guitars in oldenburg
+17. posts -> guitar player in oldenburg
+18. category: instruments
+19. groups
+20. band in oldenburg
+21. apply to vacancy
+22. post (sunshine video), cool_dude accepts
+23. message from cool_dude
+24. wanna play durak?
+25. matches & tournaments -> durak lobby
+26. join match: cool_dude, admin, yannik. hope admin doesn't cheat!
+27. match starts
+28. join conference
+29. play
+30. application accepted
+31. new appointment
+32. brb
+33. get-to-know-you appointment, when & where

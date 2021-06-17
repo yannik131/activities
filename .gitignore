@@ -3,7 +3,6 @@
 **/.DS_Store
 /static/*
 /.idea/*
-/logs/*
 /media/post/*
 /media/groups/*
 /media/users/*
@@ -13,3 +12,4 @@
 /log.log
 **/*_q85.*
 /dump.rdb
+/backup/*
