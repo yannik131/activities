@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-16 20:53+0200\n"
+"POT-Creation-Date: 2021-06-17 16:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -439,7 +439,7 @@ msgid "Freundschaftsanfrage schicken"
 msgstr ""
 
 #: account/templates/account/detail.html:49
-#: usergroups/templates/usergroups/group_detail.html:85
+#: usergroups/templates/usergroups/group_detail.html:87
 msgid "Posts"
 msgstr ""
 
@@ -1135,7 +1135,7 @@ msgstr ""
 #: account/templates/account/user_post_list.html:9
 #: activity/templates/activity/category_detail.html:25
 #: activity/templates/activity/detail.html:132
-#: usergroups/templates/usergroups/group_detail.html:87
+#: usergroups/templates/usergroups/group_detail.html:89
 msgid "Post erstellen"
 msgstr ""
 
@@ -1518,7 +1518,7 @@ msgstr ""
 #: activity/templates/activity/detail.html:82
 #: competitions/templates/competitions/match_detail.html:34
 #: competitions/templates/competitions/tournament_detail.html:33
-#: usergroups/templates/usergroups/group_detail.html:94
+#: usergroups/templates/usergroups/group_detail.html:96
 msgid "Austreten"
 msgstr ""
 
@@ -2166,7 +2166,7 @@ msgstr ""
 msgid "Diesen Chat-Room gibt es nicht mehr."
 msgstr ""
 
-#: competitions/forms.py:13 competitions/forms.py:44
+#: competitions/forms.py:13 competitions/forms.py:43
 msgid "Austragungsort (Stadt)"
 msgstr ""
 
@@ -2186,53 +2186,53 @@ msgstr ""
 msgid "Bitte beschreiben Sie kurz die Spielregeln und das Format des Matches"
 msgstr ""
 
-#: competitions/forms.py:24 competitions/forms.py:57
+#: competitions/forms.py:24 competitions/forms.py:56
 msgid "Mannschaftsspiel"
 msgstr ""
 
-#: competitions/forms.py:50
+#: competitions/forms.py:49
 msgid "Titel des Turniers"
 msgstr ""
 
-#: competitions/forms.py:51
+#: competitions/forms.py:50
 msgid ""
 "Adresse (falls das Turnier an einem einzigen Ort stattfindet, sonst leer "
 "lassen)"
 msgstr ""
 
-#: competitions/forms.py:52
+#: competitions/forms.py:51
 msgid "Turnierbeginn"
 msgstr ""
 
-#: competitions/forms.py:53
+#: competitions/forms.py:52
 msgid "Anmeldeschluss"
 msgstr ""
 
-#: competitions/forms.py:54
+#: competitions/forms.py:53
 msgid "Maximale Teilnehmeranzahl (leer lassen für kein Limit)"
 msgstr ""
 
-#: competitions/forms.py:55
+#: competitions/forms.py:54
 msgid "Rundenanzahl (leer lassen für automatische Ermittlung)"
 msgstr ""
 
-#: competitions/forms.py:56
+#: competitions/forms.py:55
 msgid "Turnierformat und weitere Informationen"
 msgstr ""
 
-#: competitions/forms.py:64
+#: competitions/forms.py:63
 msgid "Anmeldeschluss muss vor Turnierbeginn sein."
 msgstr ""
 
-#: competitions/forms.py:80
+#: competitions/forms.py:79
 msgid "Erlaubte Werte: 0, 0.5 oder 1"
 msgstr ""
 
-#: competitions/forms.py:83
+#: competitions/forms.py:82
 msgid "Die Punkte addieren sich nicht zu 1"
 msgstr ""
 
-#: competitions/forms.py:88
+#: competitions/forms.py:87
 msgid "Die Punkte addieren sich nicht zu 0"
 msgstr ""
 
@@ -2428,20 +2428,20 @@ msgstr ""
 
 #: competitions/templates/competitions/match_detail.html:36
 #: competitions/templates/competitions/tournament_detail.html:49
-#: usergroups/templates/usergroups/group_detail.html:51
+#: usergroups/templates/usergroups/group_detail.html:53
 msgid "Leerstellen"
 msgstr ""
 
 #: competitions/templates/competitions/match_detail.html:41
 #: competitions/templates/competitions/tournament_detail.html:54
-#: usergroups/templates/usergroups/group_detail.html:55
+#: usergroups/templates/usergroups/group_detail.html:57
 #: vacancies/templates/vacancies/create_vacancies.html:4
 msgid "Leerstellen hinzufügen"
 msgstr ""
 
 #: competitions/templates/competitions/match_detail.html:45
 #: competitions/templates/competitions/tournament_detail.html:58
-#: usergroups/templates/usergroups/group_detail.html:74
+#: usergroups/templates/usergroups/group_detail.html:76
 msgid "Jemanden einladen"
 msgstr ""
 
@@ -3089,7 +3089,7 @@ msgstr ""
 
 #: scheduling/templates/scheduling/create_appointment.html:5
 #: scheduling/templates/scheduling/create_appointment.html:8
-#: usergroups/templates/usergroups/group_detail.html:42
+#: usergroups/templates/usergroups/group_detail.html:43
 msgid "Termin erstellen"
 msgstr ""
 
@@ -3240,12 +3240,12 @@ msgstr ""
 msgid "Termine"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:63
+#: usergroups/templates/usergroups/group_detail.html:65
 msgid ""
 "Zurzeit gibt es keine Leerstellen. Der Administrator kann welche erstellen"
 msgstr ""
 
-#: usergroups/templates/usergroups/group_detail.html:70
+#: usergroups/templates/usergroups/group_detail.html:72
 #: vacancies/templates/vacancies/application_list.html:40
 msgid "Einladungen"
 msgstr ""

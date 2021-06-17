@@ -244,6 +244,7 @@ function connect() {
                     case 'leave':
                     case 'join':
                     case 'delete':
+                        handleChatMessage(data);
                         manageChatWindows(data.action, data.room_id, data.target, data.username == this_user);
                         break;
                     default:

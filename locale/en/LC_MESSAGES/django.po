@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-16 20:53+0200\n"
-"PO-Revision-Date: 2021-06-16 20:54+0200\n"
+"POT-Creation-Date: 2021-06-17 16:49+0200\n"
+"PO-Revision-Date: 2021-06-17 16:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 
 #: account/forms.py:19
 msgid "Es gibt schon einen Nutzer mit dieser E-Mail-Adresse."
@@ -476,7 +476,7 @@ msgid "Freundschaftsanfrage schicken"
 msgstr "Send friend request"
 
 #: account/templates/account/detail.html:49
-#: usergroups/templates/usergroups/group_detail.html:85
+#: usergroups/templates/usergroups/group_detail.html:87
 msgid "Posts"
 msgstr "Posts"
 
@@ -1347,7 +1347,7 @@ msgstr "Page"
 #: account/templates/account/pagination.html:12
 #: wall/templates/wall/post/post_loop.html:12
 msgid "von"
-msgstr "of"
+msgstr "by"
 
 #: account/templates/account/pagination.html:15
 msgid "Nächste"
@@ -1471,7 +1471,7 @@ msgstr "Your posts"
 #: account/templates/account/user_post_list.html:9
 #: activity/templates/activity/category_detail.html:25
 #: activity/templates/activity/detail.html:132
-#: usergroups/templates/usergroups/group_detail.html:87
+#: usergroups/templates/usergroups/group_detail.html:89
 msgid "Post erstellen"
 msgstr "Create post"
 
@@ -1894,7 +1894,7 @@ msgstr "Join %(activity)s-chat"
 #: activity/templates/activity/detail.html:82
 #: competitions/templates/competitions/match_detail.html:34
 #: competitions/templates/competitions/tournament_detail.html:33
-#: usergroups/templates/usergroups/group_detail.html:94
+#: usergroups/templates/usergroups/group_detail.html:96
 msgid "Austreten"
 msgstr "Leave"
 
@@ -2731,7 +2731,7 @@ msgstr "You"
 msgid "Diesen Chat-Room gibt es nicht mehr."
 msgstr "This chat room doesn't exist any more."
 
-#: competitions/forms.py:13 competitions/forms.py:44
+#: competitions/forms.py:13 competitions/forms.py:43
 msgid "Austragungsort (Stadt)"
 msgstr "Location (city)"
 
@@ -2751,15 +2751,15 @@ msgstr "Where exactly does the match take place?"
 msgid "Bitte beschreiben Sie kurz die Spielregeln und das Format des Matches"
 msgstr "Please describe the rules and the format of the match briefly"
 
-#: competitions/forms.py:24 competitions/forms.py:57
+#: competitions/forms.py:24 competitions/forms.py:56
 msgid "Mannschaftsspiel"
 msgstr "Team game"
 
-#: competitions/forms.py:50
+#: competitions/forms.py:49
 msgid "Titel des Turniers"
 msgstr "Tournament title"
 
-#: competitions/forms.py:51
+#: competitions/forms.py:50
 msgid ""
 "Adresse (falls das Turnier an einem einzigen Ort stattfindet, sonst leer "
 "lassen)"
@@ -2767,39 +2767,39 @@ msgstr ""
 "Address (in case the tournament takes place in one single location, "
 "otherwise leave blank)"
 
-#: competitions/forms.py:52
+#: competitions/forms.py:51
 msgid "Turnierbeginn"
 msgstr "Tournament start"
 
-#: competitions/forms.py:53
+#: competitions/forms.py:52
 msgid "Anmeldeschluss"
 msgstr "Deadline"
 
-#: competitions/forms.py:54
+#: competitions/forms.py:53
 msgid "Maximale Teilnehmeranzahl (leer lassen für kein Limit)"
 msgstr "Member limit (leave blank for no limit)"
 
-#: competitions/forms.py:55
+#: competitions/forms.py:54
 msgid "Rundenanzahl (leer lassen für automatische Ermittlung)"
 msgstr "Number of rounds (leave blank for automatic calculation)"
 
-#: competitions/forms.py:56
+#: competitions/forms.py:55
 msgid "Turnierformat und weitere Informationen"
 msgstr "Format of the tournament and other information"
 
-#: competitions/forms.py:64
+#: competitions/forms.py:63
 msgid "Anmeldeschluss muss vor Turnierbeginn sein."
 msgstr "The application deadline must end before the tournament starts."
 
-#: competitions/forms.py:80
+#: competitions/forms.py:79
 msgid "Erlaubte Werte: 0, 0.5 oder 1"
 msgstr "Allowed values: 0, 0.5 or 1"
 
-#: competitions/forms.py:83
+#: competitions/forms.py:82
 msgid "Die Punkte addieren sich nicht zu 1"
 msgstr "Points don't add up to 1"
 
-#: competitions/forms.py:88
+#: competitions/forms.py:87
 msgid "Die Punkte addieren sich nicht zu 0"
 msgstr "Points don't add up to 0"
 
@@ -2997,20 +2997,20 @@ msgstr "Members:"
 
 #: competitions/templates/competitions/match_detail.html:36
 #: competitions/templates/competitions/tournament_detail.html:49
-#: usergroups/templates/usergroups/group_detail.html:51
+#: usergroups/templates/usergroups/group_detail.html:53
 msgid "Leerstellen"
 msgstr "Vacancies"
 
 #: competitions/templates/competitions/match_detail.html:41
 #: competitions/templates/competitions/tournament_detail.html:54
-#: usergroups/templates/usergroups/group_detail.html:55
+#: usergroups/templates/usergroups/group_detail.html:57
 #: vacancies/templates/vacancies/create_vacancies.html:4
 msgid "Leerstellen hinzufügen"
 msgstr "Add vacancy"
 
 #: competitions/templates/competitions/match_detail.html:45
 #: competitions/templates/competitions/tournament_detail.html:58
-#: usergroups/templates/usergroups/group_detail.html:74
+#: usergroups/templates/usergroups/group_detail.html:76
 msgid "Jemanden einladen"
 msgstr "Invite somebody"
 
@@ -3739,7 +3739,7 @@ msgstr "Appointment on {start}"
 
 #: scheduling/templates/scheduling/create_appointment.html:5
 #: scheduling/templates/scheduling/create_appointment.html:8
-#: usergroups/templates/usergroups/group_detail.html:42
+#: usergroups/templates/usergroups/group_detail.html:43
 msgid "Termin erstellen"
 msgstr "Create appointment"
 
@@ -3891,12 +3891,12 @@ msgstr "Admin"
 msgid "Termine"
 msgstr "Appointments"
 
-#: usergroups/templates/usergroups/group_detail.html:63
+#: usergroups/templates/usergroups/group_detail.html:65
 msgid ""
 "Zurzeit gibt es keine Leerstellen. Der Administrator kann welche erstellen"
 msgstr "There are no vacancies at the moment. The admin can create some"
 
-#: usergroups/templates/usergroups/group_detail.html:70
+#: usergroups/templates/usergroups/group_detail.html:72
 #: vacancies/templates/vacancies/application_list.html:40
 msgid "Einladungen"
 msgstr "Invitations"
@@ -4366,14 +4366,12 @@ msgstr ""
 #~ msgid "Als Teilnehmer:"
 #~ msgstr "As member:"
 
-#, python-format
 #~ msgid "Die besten Orte in %s für \"%s\""
 #~ msgstr "Best locations in %s for „%s“"
 
 #~ msgid "Freundschaft beendet"
 #~ msgstr "Friendship terminated"
 
-#, python-format
 #~ msgid "Sie haben die Freundschaft mit %(name)s, aka %(username)s, beendet."
 #~ msgstr "You terminated your friendship with %(name)s, aka %(username)s."
 
@@ -4392,7 +4390,6 @@ msgstr ""
 #~ msgid "Freundschaftsanfrage abgelehnt"
 #~ msgstr "Friend request declined"
 
-#, python-format
 #~ msgid "Sie haben die Freundschaftsanfrage von %(v0)s abgelehnt."
 #~ msgstr "You declined the friend request by %(v0)s."
 
@@ -4477,7 +4474,6 @@ msgstr ""
 #~ msgid "Die Freundschaftsanfrage wurde erfolgreich gesendet."
 #~ msgstr "Successfully sent the friend request."
 
-#, python-format
 #~ msgid "Sortiert nach Charakterübereinstimmung in %%"
 #~ msgstr "Sorted by character congruence in %%"
 
@@ -4504,7 +4500,6 @@ msgstr ""
 #~ msgid "Hier eine Liste aller verfügbaren Kategorien"
 #~ msgstr "Here's a list of all available categories"
 
-#, python-brace-format
 #~ msgid "Match am {start}"
 #~ msgstr "Match on {start}"
 
