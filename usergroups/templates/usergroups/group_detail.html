@@ -39,7 +39,7 @@
     {% if is_member %}
         <div class="info-p">
             <h2>{% trans "Termine" %}</h2>
-                {% if user != group.admin %}
+                {% if user == group.admin %}
                     <div class="button-like" onclick=openLink("{% url 'scheduling:create_appointment' group.id %}")><img src="{% static 'icons/date.png' %}">{% trans "Termin erstellen" %}</div>
                     <br>
                 {% endif %}
