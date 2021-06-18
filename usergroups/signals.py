@@ -29,6 +29,9 @@ def members_changed(instance, action, model, pk_set, **kwargs):
         notify(instance.members.all(), instance, 'has_lost_member', member)
         for room in rooms:
             room.members.remove(member)
+        for appointment in instance.appointments.all():
+            appointment.participants.remove(member)
+            appointment.cancellations.remove(member)
 
 
 @receiver(post_save, sender=UserGroup)

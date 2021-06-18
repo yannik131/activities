@@ -4,6 +4,7 @@ from .models import Appointment
 from account.models import User
 from notify.utils import notify
 from django.utils.translation import gettext_lazy as _
+from shared.shared import log
 
 
 @receiver(m2m_changed, sender=Appointment.participants.through)

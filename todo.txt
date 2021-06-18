@@ -111,6 +111,7 @@ f f -> zahl
 1. Registrieren:
   -Formular
   -Aktivieren
+-----------------------------
 2. Charaktertest:
   -Zahlen
   -Empfehlungen:
