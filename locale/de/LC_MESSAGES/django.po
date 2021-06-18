@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-18 22:38+0200\n"
+"POT-Creation-Date: 2021-06-18 22:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1365,73 +1365,80 @@ msgstr ""
 msgid "Aktivierungs-E-Mail"
 msgstr ""
 
-#: account/views.py:78
+#: account/views.py:79
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
 "senden."
 msgstr ""
 
-#: account/views.py:81 account/views.py:106 account/views.py:122
+#: account/views.py:82 account/views.py:107 account/views.py:123
 msgid "Ihr seid bereits Freunde."
 msgstr ""
 
-#: account/views.py:88
+#: account/views.py:89
 msgid "Freundschaftsanfrage wurde verschickt."
 msgstr ""
 
-#: account/views.py:103
+#: account/views.py:104
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr ""
 
-#: account/views.py:143
+#: account/views.py:144
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr ""
 
-#: account/views.py:164
+#: account/views.py:165
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr ""
 
-#: account/views.py:171
+#: account/views.py:172
 #, python-brace-format
 msgid "Sie haben die Freundschaft mit {user} beendet."
 msgstr ""
 
-#: account/views.py:193
+#: account/views.py:194
 msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden."
 msgstr ""
 
-#: account/views.py:207
+#: account/views.py:208
 msgid "Änderungen gespeichert."
 msgstr ""
 
-#: account/views.py:221
+#: account/views.py:222
 msgid "Sie können den Ort nur höchstens alle 7 Tage wechseln."
 msgstr ""
 
-#: account/views.py:229
+#: account/views.py:230
 msgid "Neue Adresse gespeichert: "
 msgstr ""
 
-#: account/views.py:270
+#: account/views.py:252
+msgid ""
+"Sie sind noch Admin mindestens einer Gruppe. Löschen sie zuerst diese "
+"Gruppen oder legen Sie einen neuen Admin fest, bevor Sie Ihren Account "
+"löschen."
+msgstr ""
+
+#: account/views.py:275
 msgid ""
 "Der Aktivierungslink ist ungültig. Falls der Account noch inaktiv ist, "
 "können Sie durch erneutes Registrieren einen neuen anfordern!"
 msgstr ""
 
-#: account/views.py:288
+#: account/views.py:293
 msgid "Passwort erfolgreich geändert."
 msgstr ""
 
-#: account/views.py:292
+#: account/views.py:297
 msgid "Ihr Passwort wurde zurückgesetzt."
 msgstr ""
 
-#: account/views.py:325
+#: account/views.py:330
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr ""
 
-#: account/views.py:327
+#: account/views.py:332
 msgid "Markierung wurde nicht gefunden!"
 msgstr ""
 

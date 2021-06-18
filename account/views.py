@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from django.db import models
 from django.http.response import HttpResponse, HttpResponseForbidden
 from character.models import Suggestion
 from django.core.mail import message
@@ -245,9 +246,13 @@ def delete(request):
     if request.method == 'POST':
         delete_form = DeleteForm(request.POST)
         if delete_form.is_valid():
+            try:
+                request.user.delete()
+            except models.ProtectedError:
+                messages.add_message(request, messages.INFO, _('Sie sind noch Admin mindestens einer Gruppe. Löschen sie zuerst diese Gruppen oder legen Sie einen neuen Admin fest, bevor Sie Ihren Account löschen.'))
+                return HttpResponseRedirect(reverse('usergroups:group_list'))
+            Suggestion.objects.filter(character__user__id=request.user.id).delete()
             send_mail(f'Delete: {request.user}. Total: {User.objects.count()-1}')
-            Suggestion.objects.filter(character=request.user.character).delete()
-            request.user.delete()
             return HttpResponseRedirect(request.build_absolute_uri('/'))
     else:
         delete_form = DeleteForm()
