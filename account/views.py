@@ -1,3 +1,6 @@
+from django.core.exceptions import ValidationError
+from django.http.response import HttpResponse, HttpResponseForbidden
+from character.models import Suggestion
 from django.core.mail import message
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -20,6 +23,8 @@ from django.utils.encoding import force_text
 from django.contrib.auth import login as auth_login
 from django.urls import reverse
 from django.db.models import Q
+from django.contrib.auth.validators import UnicodeUsernameValidator
+#validator = UnicodeUsernameValidator()
 import logging
 logger = logging.getLogger('django')
 
@@ -29,6 +34,16 @@ def home(request):
     missing_fields = request.user.birth_year is None or request.user.sex is None
     return render(request, 'account/home.html', dict(missing_fields=missing_fields))
 
+
+def check_username(request, username):
+    try:
+        #validator(username)
+        User.objects.get(username=username)
+        return HttpResponseForbidden('exists')
+    #except ValidationError:
+    #    return HttpResponseForbidden('invalid')
+    except User.DoesNotExist:
+        return HttpResponse()
 
 def about(request):
     return render(request, 'account/about.html', dict(prefix=get_prefix(request)))
@@ -162,7 +177,7 @@ def register(request):
         return HttpResponseRedirect(request.build_absolute_uri('/account'))
     if request.method == 'POST':
         location_form = LocationForm(request.POST)
-        user_form = UserRegistrationForm(request.POST)
+        user_form = UserRegistrationForm(request.POST, files=request.FILES)
         if user_form.is_valid():
             if location_form.is_valid():
                 new_user = user_form.save(commit=False)
@@ -231,6 +246,7 @@ def delete(request):
         delete_form = AccountDeleteForm(request.POST)
         if delete_form.is_valid():
             send_mail(f'Delete: {request.user}. Total: {User.objects.count()-1}')
+            Suggestion.objects.filter(character=request.user.character).delete()
             request.user.delete()
             return HttpResponseRedirect(request.build_absolute_uri('/'))
     else:

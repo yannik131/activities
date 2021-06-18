@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-17 16:49+0200\n"
-"PO-Revision-Date: 2021-06-17 16:50+0200\n"
+"POT-Creation-Date: 2021-06-18 13:49+0200\n"
+"PO-Revision-Date: 2021-06-18 13:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -49,7 +49,7 @@ msgid ""
 "Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind."
 msgstr "It's statistically really unlikely that you are older than 120."
 
-#: account/forms.py:58 account/forms.py:147
+#: account/forms.py:58 account/forms.py:149
 msgid "Passwort"
 msgstr "Password"
 
@@ -57,36 +57,52 @@ msgstr "Password"
 msgid "Passwort (erneut)"
 msgstr "Password (again)"
 
-#: account/forms.py:67 account/forms.py:82
-msgid "Geschlecht (freiwillig)"
-msgstr "Gender (voluntary)"
+#: account/forms.py:67
+msgid "Geschlecht (optional)"
+msgstr "Gender (optional)"
 
-#: account/forms.py:68 account/forms.py:83
-msgid "Geburtsjahr (freiwillig)"
-msgstr "Birth year (voluntary)"
+#: account/forms.py:68
+msgid "Geburtsjahr (optional)"
+msgstr "Birth year (optional)"
 
 #: account/forms.py:69
 msgid "E-Mail Adresse"
 msgstr "E-mail address"
 
+#: account/forms.py:70
+msgid "Profilbild (optional): Bitte lächeln!"
+msgstr "Profile picture (optional): Say cheese!"
+
+#: account/forms.py:71
+msgid "Nutzername (max. 10 Zeichen)"
+msgstr "Username"
+
 #: account/forms.py:84
+msgid "Geschlecht (freiwillig)"
+msgstr "Gender (voluntary)"
+
+#: account/forms.py:85
+msgid "Geburtsjahr (freiwillig)"
+msgstr "Birth year (voluntary)"
+
+#: account/forms.py:86
 msgid "Profiltext"
 msgstr "Profile text"
 
-#: account/forms.py:85
+#: account/forms.py:87
 msgid "Profilbild"
 msgstr "Profile picture"
 
-#: account/forms.py:94
+#: account/forms.py:96
 msgid "Stadt, Bundesland"
 msgstr "City, State"
 
-#: account/forms.py:103 vacancies/forms.py:55 vacancies/forms.py:99
+#: account/forms.py:105 vacancies/forms.py:55 vacancies/forms.py:99
 #: wall/forms.py:47
 msgid "Nachricht"
 msgstr "Message"
 
-#: account/forms.py:109
+#: account/forms.py:111
 #, python-brace-format
 msgid ""
 "Die Nachricht darf nicht länger als 150 Zeichen sein, ist aber {l} Zeichen "
@@ -95,36 +111,36 @@ msgstr ""
 "The message can't be longer than 150 characters. It's {l} characters long. "
 "Fix this."
 
-#: account/forms.py:114
+#: account/forms.py:116
 msgid "Nutzername"
 msgstr "User name"
 
-#: account/forms.py:119
+#: account/forms.py:121
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr "There is no user with the user name {name}"
 
-#: account/forms.py:124
+#: account/forms.py:126
 msgid "Wirklich löschen?"
 msgstr "Really delete?"
 
-#: account/forms.py:129
+#: account/forms.py:131
 msgid "Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen."
 msgstr "Please confirm that you want to delete your account."
 
-#: account/forms.py:146
+#: account/forms.py:148
 msgid "E-Mail oder Nutzername"
 msgstr "E-mail or username"
 
-#: account/forms.py:153
+#: account/forms.py:155
 msgid "Nutzer nicht gefunden."
 msgstr "User not found."
 
-#: account/forms.py:155
+#: account/forms.py:157
 msgid "Passwort falsch."
 msgstr "Password incorrect."
 
-#: account/forms.py:157
+#: account/forms.py:159
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr "The account has not yet been activated! Check your e-mails."
 
@@ -386,16 +402,28 @@ msgstr ""
 msgid "Mir doch egal!"
 msgstr "I don't care!"
 
-#: account/templates/account/delete.html:4
+#: account/templates/account/delete.html:5
+#: account/templates/account/delete.html:8
 #: account/templates/account/edit.html:53
 msgid "Account löschen"
 msgstr "Delete your account"
 
-#: account/templates/account/delete.html:7
-msgid "Klicken Sie auf den Button, um Ihren Account zu löschen."
-msgstr "Click the button to delete your account."
+#: account/templates/account/delete.html:9
+msgid ""
+"Klicken Sie auf den Button, um Ihren Account zu löschen.<br>Alle zu Ihrem "
+"Account gehörigen Daten, inklusive aller Posts, Kommentare und Chateinträge, "
+"werden dadurch gelöscht. Sie werden automatisch aus allen Gruppen entfernt. "
+"Das Ergebnis Ihres Persönlichkeitstests, falls vorhanden, bleibt zur "
+"Normierung vorhanden, wird aber anonymisiert (kann also nicht mehr mit Ihnen "
+"in Verbindung gebracht werden)."
+msgstr ""
+"Click the button to delete your account.<br>All data associated with your "
+"account, including posts, comments and chat log entries, will be deleted. "
+"You are automatically removed from all groups. The result of your "
+"personality test, if present, is kept for normalising test results but will "
+"be anonymized (can't be associated with your account anymore). "
 
-#: account/templates/account/delete.html:11
+#: account/templates/account/delete.html:13
 #: account/templates/account/edit.html:31
 #: account/templates/account/friend_requests_list.html:54
 #: account/templates/account/friend_requests_list.html:77
@@ -1490,7 +1518,7 @@ msgid ""
 msgstr ""
 "You don't have any chats yet. Find friends, groups, activities etc. to chat!"
 
-#: account/templates/javascript/base.js:255
+#: account/templates/javascript/base.js:256
 msgid ""
 "Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie "
 "nur einen Tab für myactivities.net :)"
@@ -1498,7 +1526,7 @@ msgstr ""
 "Connection closed because a new tab was opened! Please only use one tab for "
 "myactivities.net :)"
 
-#: account/templates/javascript/base.js:287
+#: account/templates/javascript/base.js:288
 msgid ""
 "Es konnte keine Verbindung zum Server aufgebaut werden! Laden Sie die Seite "
 "bitte neu. Falls das nicht hilft, beschweren Sie sich gerne bei myactivities."
@@ -1675,6 +1703,18 @@ msgstr ""
 "Where do you currently live? Please specify the state and city to avoid "
 "ambiguous results. Determining your location may take several seconds."
 
+#: account/templates/registration/register.html:34
+msgid "Passwörter prüfen"
+msgstr "Check passwords"
+
+#: account/templates/registration/register.html:49
+msgid "Nutzername zu lang (max. 10 Zeichen, derzeitige Länge: "
+msgstr "Username too long (10 chars max, current length: "
+
+#: account/templates/registration/register.html:56
+msgid "Nutzername bereits vergeben: "
+msgstr "Username already taken: "
+
 #: account/templates/registration/register_done.html:5
 #: account/templates/registration/register_done.html:8
 msgid "Registriert"
@@ -1700,7 +1740,7 @@ msgstr ""
 msgid "Aktivierungs-E-Mail"
 msgstr "Activation email"
 
-#: account/views.py:63
+#: account/views.py:78
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
@@ -1709,48 +1749,48 @@ msgstr ""
 "You've already sent a friend request to this user. As long as he doesn't "
 "delete it you can't send another one."
 
-#: account/views.py:66 account/views.py:91 account/views.py:107
+#: account/views.py:81 account/views.py:106 account/views.py:122
 msgid "Ihr seid bereits Freunde."
 msgstr "You are already friends."
 
-#: account/views.py:73
+#: account/views.py:88
 msgid "Freundschaftsanfrage wurde verschickt."
 msgstr "Friend request sent."
 
-#: account/views.py:88
+#: account/views.py:103
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr "You can't send yourself a friend request."
 
-#: account/views.py:128
+#: account/views.py:143
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr "You can't delete this request."
 
-#: account/views.py:149
+#: account/views.py:164
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr "This friendship doesn't exist anymore."
 
-#: account/views.py:156
+#: account/views.py:171
 #, python-brace-format
 msgid "Sie haben die Freundschaft mit {user} beendet."
 msgstr "You terminated your friendship with {user}."
 
-#: account/views.py:178
+#: account/views.py:193
 msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden."
 msgstr "No e-mail could be sent to the specified address."
 
-#: account/views.py:192
+#: account/views.py:207
 msgid "Änderungen gespeichert."
 msgstr "Changes saved."
 
-#: account/views.py:206
+#: account/views.py:221
 msgid "Sie können den Ort nur höchstens alle 7 Tage wechseln."
 msgstr "You can change your location only once in 7 days."
 
-#: account/views.py:214
+#: account/views.py:229
 msgid "Neue Adresse gespeichert: "
 msgstr "New address saved: "
 
-#: account/views.py:254
+#: account/views.py:270
 msgid ""
 "Der Aktivierungslink ist ungültig. Falls der Account noch inaktiv ist, "
 "können Sie durch erneutes Registrieren einen neuen anfordern!"
@@ -1758,19 +1798,19 @@ msgstr ""
 "The activation link is invalid. If the account is still inactive, you can "
 "request another one by registering again!"
 
-#: account/views.py:272
+#: account/views.py:288
 msgid "Passwort erfolgreich geändert."
 msgstr "Your password was changed successfully."
 
-#: account/views.py:276
+#: account/views.py:292
 msgid "Ihr Passwort wurde zurückgesetzt."
 msgstr "Your password was successfully reset."
 
-#: account/views.py:309
+#: account/views.py:325
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr "Marker was successfully deleted."
 
-#: account/views.py:311
+#: account/views.py:327
 msgid "Markierung wurde nicht gefunden!"
 msgstr "Marker not found!"
 
@@ -2722,7 +2762,7 @@ msgstr "entered the chat."
 msgid "hat den Chat verlassen."
 msgstr "left the chat."
 
-#: chat/templates/javascript/room.js:92
+#: chat/templates/javascript/room.js:89
 #: multiplayer/templates/javascript/poker.js:63
 msgid "Sie"
 msgstr "You"
@@ -4263,6 +4303,9 @@ msgid ""
 msgstr ""
 "This post contains a media file. It's going to be visible once the admin "
 "takes a look at it."
+
+#~ msgid "Klicken Sie auf den Button, um Ihren Account zu löschen."
+#~ msgstr "Click the button to delete your account."
 
 #~ msgid "Wohnort"
 #~ msgstr "Location"

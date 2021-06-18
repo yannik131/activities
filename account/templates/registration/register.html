@@ -11,21 +11,58 @@
     <div class="login">
     <div style="float: left">{% trans 'Nutzer gesamt: ' %}{% total_count %}</div>
     <div style="float: right">{% trans 'Online: ' %} {% online_count %}</div>
-        <h1 class="h-img"><img src="{% static 'icons/registration.png' %}">{% blocktrans %}Registrieren{% endblocktrans %}</h1>
-        
+    <h1 class="h-img"><img src="{% static 'icons/registration.png' %}">{% blocktrans %}Registrieren{% endblocktrans %}</h1>
+    
+    <p class="info-p">
+        <strong>{% trans "Willkommen bei myactivities.net! :)" %}</strong><br><br>
+        {% trans "Finden Sie Hobbys und neue Freunde! Am besten geht das, wenn Sie auch Geschlecht und Alter angeben. Ihre E-Mail-Adresse wird ausschließlich für den Aktivierungslink und die Passwort-Zurücksetzung verwendet!" %}
+    </p>
+    <form class="login-form" method="post" enctype="multipart/form-data">
+        {{ user_form.as_p }}
+        {% csrf_token %}
         <p class="info-p">
-            <strong>{% trans "Willkommen bei myactivities.net! :)" %}</strong><br><br>
-            {% trans "Finden Sie Hobbys und neue Freunde! Am besten geht das, wenn Sie auch Geschlecht und Alter angeben. Ihre E-Mail-Adresse wird ausschließlich für den Aktivierungslink und die Passwort-Zurücksetzung verwendet!" %}
+            {% trans "Wo leben Sie derzeit? Zur eindeutigen Bestimmung bitte auch das Bundesland angeben. Das Bestimmen Ihres Ortes kann mehrere Sekunden in Anspruch nehmen." %}
         </p>
-            <form class="login-form" method="post">
-                {{ user_form.as_p }}
-                {% csrf_token %}
-                <p class="info-p">
-                    {% trans "Wo leben Sie derzeit? Zur eindeutigen Bestimmung bitte auch das Bundesland angeben. Das Bestimmen Ihres Ortes kann mehrere Sekunden in Anspruch nehmen." %}
-                </p>
-                {{ location_form.as_p }}
-                <input type="submit" value="{% trans "Registrieren" %}">
-            </form>
+        {{ location_form.as_p }}
+        <input id="register-button" type="submit" value="{% trans "Registrieren" %}">
+    </form>
+    <script>
+        const input1 = document.querySelector('input[name=password]');
+        const input2 = document.querySelector('input[name=password2]');
+        const username_input = document.querySelector('input[name=username]');
+        const button = document.getElementById('register-button');
+        const invalid_text = "{% trans 'Passwörter prüfen' %}";
+        const valid_text = button.value;
+        input2.addEventListener('keyup', function(e) {
+            if(input1.value != input2.value) {
+                button.style.backgroundColor = 'red';
+                button.value = invalid_text;
+            }
+            else {
+                button.style.backgroundColor = 'green';
+                button.value = valid_text;
+            }
+        });
+        username_input.addEventListener('blur', function(e) {
+            username_input.value = username_input.value.trim();
+            if(username_input.value.length > 10) {
+                alert("{% trans 'Nutzername zu lang (max. 10 Zeichen, derzeitige Länge: ' %}"+username_input.value.length+")");
+                username_input.value = '';
+            }
+            else if(username_input.value.length > 0) {
+                var request = new XMLHttpRequest();
+                request.onreadystatechange = function() {
+                    if(request.readyState == 4 && request.status == 403) {
+                        alert("{% trans 'Nutzername bereits vergeben: ' %}"+username_input.value);
+                        username_input.value = '';
+                    }
+                }
+                const url = "/account/check_username/" + username_input.value;
+                request.open("GET", url, true);
+                request.send();
+            }
+        });
+    </script>
     </div>
     </div>
 {% endblock %}

@@ -28,6 +28,7 @@ def friendship_saved(instance: Friendship, created, **kwargs):
 def friendship_destroyed(instance: Friendship, **kwargs):
     ChatRoom.get_for_target(instance).delete()
     
+
 @receiver(post_save, sender=Location)
 def location_created(instance: Location, created, **kwargs):
     if instance.parent:

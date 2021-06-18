@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans 'Account löschen' %}{% endblock %}
 
 {% block content %}
-<div>{% trans 'Klicken Sie auf den Button, um Ihren Account zu löschen.' %}</div>
+<h1 class="h-img"><img src="{% static 'icons/remove.png' %}">{% trans 'Account löschen' %}</h1>
+<p class="info-p">{% trans 'Klicken Sie auf den Button, um Ihren Account zu löschen.<br>Alle zu Ihrem Account gehörigen Daten, inklusive aller Posts, Kommentare und Chateinträge, werden dadurch gelöscht. Sie werden automatisch aus allen Gruppen entfernt. Das Ergebnis Ihres Persönlichkeitstests, falls vorhanden, bleibt zur Normierung vorhanden, wird aber anonymisiert (kann also nicht mehr mit Ihnen in Verbindung gebracht werden).' %}</p>
 <form class="login-form" method="post">
     {{ delete_form.as_p }}
     {% csrf_token %}

@@ -62,11 +62,13 @@ class UserRegistrationForm(UserForm):
 
     class Meta:
         model = get_user_model()
-        fields = ('email', 'username', 'sex', 'birth_year')
+        fields = ('email', 'username', 'sex', 'birth_year', 'image')
         labels = {
-            'sex': _('Geschlecht (freiwillig)'),
-            'birth_year': _('Geburtsjahr (freiwillig)'),
-            'email': _('E-Mail Adresse')
+            'sex': _('Geschlecht (optional)'),
+            'birth_year': _('Geburtsjahr (optional)'),
+            'email': _('E-Mail Adresse'),
+            'image': _('Profilbild (optional): Bitte lächeln!'),
+            'username': _('Nutzername (max. 10 Zeichen)')
         }
         
         help_texts = {
