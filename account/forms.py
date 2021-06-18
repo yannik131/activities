@@ -122,14 +122,8 @@ class CustomFriendRequestForm(FriendRequestForm):
         return cd
         
 
-class AccountDeleteForm(forms.Form):
-    okay = forms.BooleanField(label=_('Wirklich löschen?'))
-    
-    def clean(self):
-        cleaned_data = super().clean()
-        if not cleaned_data.get('okay'):
-            raise forms.ValidationError(_('Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen.'))
-        return cleaned_data
+class DeleteForm(forms.Form):
+    okay = forms.BooleanField(label=_('Wirklich löschen?'), required=True)
     
 
 def authenticate(user_input, password):

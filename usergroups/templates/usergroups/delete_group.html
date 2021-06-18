@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans 'Gruppe löschen' %}{% endblock %}
+
+{% block content %}
+<h1 class="h-img"><img src="{% static 'icons/remove.png' %}">{% trans 'Gruppe löschen' %}</h1>
+<p class="info-p">{% trans 'Klicken Sie auf den Button, um die Gruppe zu löschen.<br>Alle zur Gruppe gehörigen Daten, inklusive aller Chateinträge, Posts und Kommentare, werden dadurch gelöscht.' %}</p>
+<form class="login-form" method="post">
+    {{ delete_form.as_p }}
+    {% csrf_token %}
+    <input type="submit" value="{% blocktrans %}Löschen{% endblocktrans %}">
+</form>
+{% endblock %}
+

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-18 13:49+0200\n"
+"POT-Creation-Date: 2021-06-18 22:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgid ""
 "Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind."
 msgstr ""
 
-#: account/forms.py:58 account/forms.py:149
+#: account/forms.py:58 account/forms.py:143
 msgid "Passwort"
 msgstr ""
 
@@ -118,23 +118,19 @@ msgstr ""
 msgid "Wirklich löschen?"
 msgstr ""
 
-#: account/forms.py:131
-msgid "Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen."
-msgstr ""
-
-#: account/forms.py:148
+#: account/forms.py:142
 msgid "E-Mail oder Nutzername"
 msgstr ""
 
-#: account/forms.py:155
+#: account/forms.py:149
 msgid "Nutzer nicht gefunden."
 msgstr ""
 
-#: account/forms.py:157
+#: account/forms.py:151
 msgid "Passwort falsch."
 msgstr ""
 
-#: account/forms.py:159
+#: account/forms.py:153
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr ""
 
@@ -378,11 +374,11 @@ msgstr ""
 #: account/templates/account/delete.html:9
 msgid ""
 "Klicken Sie auf den Button, um Ihren Account zu löschen.<br>Alle zu Ihrem "
-"Account gehörigen Daten, inklusive aller Posts, Kommentare und Chateinträge, "
-"werden dadurch gelöscht. Sie werden automatisch aus allen Gruppen entfernt. "
-"Das Ergebnis Ihres Persönlichkeitstests, falls vorhanden, bleibt zur "
-"Normierung vorhanden, wird aber anonymisiert (kann also nicht mehr mit Ihnen "
-"in Verbindung gebracht werden)."
+"Account gehörigen Daten, inklusive aller Posts und Kommentare, werden "
+"dadurch gelöscht. Sie werden automatisch aus allen Gruppen entfernt. Das "
+"Ergebnis Ihres Persönlichkeitstests, falls vorhanden, bleibt zur Normierung "
+"vorhanden, wird aber anonymisiert (kann also nicht mehr mit Ihnen in "
+"Verbindung gebracht werden)."
 msgstr ""
 
 #: account/templates/account/delete.html:13
@@ -390,6 +386,7 @@ msgstr ""
 #: account/templates/account/friend_requests_list.html:54
 #: account/templates/account/friend_requests_list.html:77
 #: usergroups/templates/usergroups/appointment_list.html:48
+#: usergroups/templates/usergroups/delete_group.html:13
 #: usergroups/templates/usergroups/invitation_list.html:16
 #: vacancies/templates/vacancies/application_list.html:30
 #: vacancies/templates/vacancies/edit_vacancy.html:11
@@ -486,7 +483,7 @@ msgstr ""
 #: multiplayer/templates/javascript/durak.js:468
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:14
-#: usergroups/templates/usergroups/edit_group.html:13
+#: usergroups/templates/usergroups/edit_group.html:17
 #: vacancies/templates/vacancies/create_invitation.html:11
 #: vacancies/templates/vacancies/create_vacancies.html:11
 #: vacancies/templates/vacancies/edit_vacancy.html:16
@@ -2354,7 +2351,7 @@ msgstr ""
 
 #: competitions/templates/competitions/edit_match.html:19
 #: competitions/templates/competitions/edit_tournament.html:21
-#: usergroups/templates/usergroups/edit_group.html:20
+#: usergroups/templates/usergroups/edit_group.html:24
 msgid "Entfernen"
 msgstr ""
 
@@ -2368,7 +2365,7 @@ msgid "Turnier bearbeiten"
 msgstr ""
 
 #: competitions/templates/competitions/edit_tournament.html:14
-#: usergroups/templates/usergroups/edit_group.html:16
+#: usergroups/templates/usergroups/edit_group.html:20
 msgid "Mitglieder verwalten"
 msgstr ""
 
@@ -3206,7 +3203,7 @@ msgid "Gruppe erstellen"
 msgstr ""
 
 #: usergroups/templates/usergroups/create_group.html:8
-#: usergroups/templates/usergroups/edit_group.html:9
+#: usergroups/templates/usergroups/edit_group.html:13
 msgid "Gruppe gehört zu"
 msgstr ""
 
@@ -3221,6 +3218,19 @@ msgstr ""
 msgid "Erstellen"
 msgstr ""
 
+#: usergroups/templates/usergroups/delete_group.html:5
+#: usergroups/templates/usergroups/delete_group.html:8
+#: usergroups/templates/usergroups/edit_group.html:11
+msgid "Gruppe löschen"
+msgstr ""
+
+#: usergroups/templates/usergroups/delete_group.html:9
+msgid ""
+"Klicken Sie auf den Button, um die Gruppe zu löschen.<br>Alle zur Gruppe "
+"gehörigen Daten, inklusive aller Chateinträge, Posts und Kommentare, werden "
+"dadurch gelöscht."
+msgstr ""
+
 #: usergroups/templates/usergroups/edit_group.html:5
 #: usergroups/templates/usergroups/group_created.html:9
 msgid "Gruppe bearbeiten"
@@ -3228,10 +3238,6 @@ msgstr ""
 
 #: usergroups/templates/usergroups/edit_group.html:8
 msgid "Bearbeiten von"
-msgstr ""
-
-#: usergroups/templates/usergroups/edit_group.html:26
-msgid "Gruppe löschen"
 msgstr ""
 
 #: usergroups/templates/usergroups/group_created.html:4
@@ -3248,19 +3254,6 @@ msgstr ""
 
 #: usergroups/templates/usergroups/group_created.html:8
 msgid "Die Gruppe wurde erfolgreich erstellt"
-msgstr ""
-
-#: usergroups/templates/usergroups/group_deleted.html:4
-#: usergroups/templates/usergroups/group_deleted.html:7
-msgid "Gruppe gelöscht"
-msgstr ""
-
-#: usergroups/templates/usergroups/group_deleted.html:8
-msgid "Sie haben die Gruppe"
-msgstr ""
-
-#: usergroups/templates/usergroups/group_deleted.html:8
-msgid "erfolgreich gelöscht"
 msgstr ""
 
 #: usergroups/templates/usergroups/group_detail.html:32
@@ -3298,7 +3291,11 @@ msgid ""
 "oder mitmachen wollen. Sie können auch Termine verwalten und telefonieren!"
 msgstr ""
 
-#: usergroups/views.py:85
+#: usergroups/views.py:83
+msgid "Gruppe erfolgreich gelöscht."
+msgstr ""
+
+#: usergroups/views.py:94
 msgid ""
 "Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest "
 "oder löschen Sie die Gruppe."

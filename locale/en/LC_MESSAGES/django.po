@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-18 13:49+0200\n"
-"PO-Revision-Date: 2021-06-18 13:50+0200\n"
+"POT-Creation-Date: 2021-06-18 22:38+0200\n"
+"PO-Revision-Date: 2021-06-18 22:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -49,7 +49,7 @@ msgid ""
 "Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind."
 msgstr "It's statistically really unlikely that you are older than 120."
 
-#: account/forms.py:58 account/forms.py:149
+#: account/forms.py:58 account/forms.py:143
 msgid "Passwort"
 msgstr "Password"
 
@@ -124,23 +124,19 @@ msgstr "There is no user with the user name {name}"
 msgid "Wirklich löschen?"
 msgstr "Really delete?"
 
-#: account/forms.py:131
-msgid "Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen."
-msgstr "Please confirm that you want to delete your account."
-
-#: account/forms.py:148
+#: account/forms.py:142
 msgid "E-Mail oder Nutzername"
 msgstr "E-mail or username"
 
-#: account/forms.py:155
+#: account/forms.py:149
 msgid "Nutzer nicht gefunden."
 msgstr "User not found."
 
-#: account/forms.py:157
+#: account/forms.py:151
 msgid "Passwort falsch."
 msgstr "Password incorrect."
 
-#: account/forms.py:159
+#: account/forms.py:153
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr "The account has not yet been activated! Check your e-mails."
 
@@ -411,23 +407,24 @@ msgstr "Delete your account"
 #: account/templates/account/delete.html:9
 msgid ""
 "Klicken Sie auf den Button, um Ihren Account zu löschen.<br>Alle zu Ihrem "
-"Account gehörigen Daten, inklusive aller Posts, Kommentare und Chateinträge, "
-"werden dadurch gelöscht. Sie werden automatisch aus allen Gruppen entfernt. "
-"Das Ergebnis Ihres Persönlichkeitstests, falls vorhanden, bleibt zur "
-"Normierung vorhanden, wird aber anonymisiert (kann also nicht mehr mit Ihnen "
-"in Verbindung gebracht werden)."
+"Account gehörigen Daten, inklusive aller Posts und Kommentare, werden "
+"dadurch gelöscht. Sie werden automatisch aus allen Gruppen entfernt. Das "
+"Ergebnis Ihres Persönlichkeitstests, falls vorhanden, bleibt zur Normierung "
+"vorhanden, wird aber anonymisiert (kann also nicht mehr mit Ihnen in "
+"Verbindung gebracht werden)."
 msgstr ""
 "Click the button to delete your account.<br>All data associated with your "
-"account, including posts, comments and chat log entries, will be deleted. "
-"You are automatically removed from all groups. The result of your "
-"personality test, if present, is kept for normalising test results but will "
-"be anonymized (can't be associated with your account anymore). "
+"account, including posts and comments, will be deleted. You are "
+"automatically removed from all groups. The result of your personality test, "
+"if present, is kept for normalizing test results but will be anonymized "
+"(can't be associated with your account anymore)."
 
 #: account/templates/account/delete.html:13
 #: account/templates/account/edit.html:31
 #: account/templates/account/friend_requests_list.html:54
 #: account/templates/account/friend_requests_list.html:77
 #: usergroups/templates/usergroups/appointment_list.html:48
+#: usergroups/templates/usergroups/delete_group.html:13
 #: usergroups/templates/usergroups/invitation_list.html:16
 #: vacancies/templates/vacancies/application_list.html:30
 #: vacancies/templates/vacancies/edit_vacancy.html:11
@@ -528,7 +525,7 @@ msgstr "You can edit your account with the following form:"
 #: multiplayer/templates/javascript/durak.js:468
 #: multiplayer/templates/multiplayer/create_match.html:12
 #: scheduling/templates/scheduling/create_appointment.html:14
-#: usergroups/templates/usergroups/edit_group.html:13
+#: usergroups/templates/usergroups/edit_group.html:17
 #: vacancies/templates/vacancies/create_invitation.html:11
 #: vacancies/templates/vacancies/create_vacancies.html:11
 #: vacancies/templates/vacancies/edit_vacancy.html:16
@@ -2928,7 +2925,7 @@ msgstr "Please use the following form to edit the match"
 
 #: competitions/templates/competitions/edit_match.html:19
 #: competitions/templates/competitions/edit_tournament.html:21
-#: usergroups/templates/usergroups/edit_group.html:20
+#: usergroups/templates/usergroups/edit_group.html:24
 msgid "Entfernen"
 msgstr "Remove"
 
@@ -2942,7 +2939,7 @@ msgid "Turnier bearbeiten"
 msgstr "Edit tournament"
 
 #: competitions/templates/competitions/edit_tournament.html:14
-#: usergroups/templates/usergroups/edit_group.html:16
+#: usergroups/templates/usergroups/edit_group.html:20
 msgid "Mitglieder verwalten"
 msgstr "Manage members"
 
@@ -3861,7 +3858,7 @@ msgid "Gruppe erstellen"
 msgstr "Create group"
 
 #: usergroups/templates/usergroups/create_group.html:8
-#: usergroups/templates/usergroups/edit_group.html:9
+#: usergroups/templates/usergroups/edit_group.html:13
 msgid "Gruppe gehört zu"
 msgstr "Group belongs to"
 
@@ -3877,6 +3874,21 @@ msgstr ""
 msgid "Erstellen"
 msgstr "Create"
 
+#: usergroups/templates/usergroups/delete_group.html:5
+#: usergroups/templates/usergroups/delete_group.html:8
+#: usergroups/templates/usergroups/edit_group.html:11
+msgid "Gruppe löschen"
+msgstr "Delete group"
+
+#: usergroups/templates/usergroups/delete_group.html:9
+msgid ""
+"Klicken Sie auf den Button, um die Gruppe zu löschen.<br>Alle zur Gruppe "
+"gehörigen Daten, inklusive aller Chateinträge, Posts und Kommentare, werden "
+"dadurch gelöscht."
+msgstr ""
+"Click the button to delete this group.<br>Al data associated with this "
+"group, including posts, comments and chat log entries, will be deleted."
+
 #: usergroups/templates/usergroups/edit_group.html:5
 #: usergroups/templates/usergroups/group_created.html:9
 msgid "Gruppe bearbeiten"
@@ -3885,10 +3897,6 @@ msgstr "Edit group"
 #: usergroups/templates/usergroups/edit_group.html:8
 msgid "Bearbeiten von"
 msgstr "Editing of"
-
-#: usergroups/templates/usergroups/edit_group.html:26
-msgid "Gruppe löschen"
-msgstr "Delete group"
 
 #: usergroups/templates/usergroups/group_created.html:4
 msgid "Gruppe erstellt"
@@ -3905,19 +3913,6 @@ msgstr "created"
 #: usergroups/templates/usergroups/group_created.html:8
 msgid "Die Gruppe wurde erfolgreich erstellt"
 msgstr "Group was successfully created"
-
-#: usergroups/templates/usergroups/group_deleted.html:4
-#: usergroups/templates/usergroups/group_deleted.html:7
-msgid "Gruppe gelöscht"
-msgstr "Group deleted"
-
-#: usergroups/templates/usergroups/group_deleted.html:8
-msgid "Sie haben die Gruppe"
-msgstr "The group"
-
-#: usergroups/templates/usergroups/group_deleted.html:8
-msgid "erfolgreich gelöscht"
-msgstr "was successfully deleted"
 
 #: usergroups/templates/usergroups/group_detail.html:32
 msgid "Gruppe gehört zur"
@@ -3958,7 +3953,11 @@ msgstr ""
 "which people in your area can apply if they fulfill the requirements. You "
 "can also manage appointments and have audio conferences!"
 
-#: usergroups/views.py:85
+#: usergroups/views.py:83
+msgid "Gruppe erfolgreich gelöscht."
+msgstr "Group successfully deleted."
+
+#: usergroups/views.py:94
 msgid ""
 "Sie sind der Gruppenadmin. Bitte legen Sie zunächst einen neuen Admin fest "
 "oder löschen Sie die Gruppe."
@@ -4303,6 +4302,15 @@ msgid ""
 msgstr ""
 "This post contains a media file. It's going to be visible once the admin "
 "takes a look at it."
+
+#~ msgid "Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen."
+#~ msgstr "Please confirm that you want to delete your account."
+
+#~ msgid "Gruppe gelöscht"
+#~ msgstr "Group deleted"
+
+#~ msgid "Sie haben die Gruppe"
+#~ msgstr "The group"
 
 #~ msgid "Klicken Sie auf den Button, um Ihren Account zu löschen."
 #~ msgstr "Click the button to delete your account."

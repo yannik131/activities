@@ -10,6 +10,8 @@ from django.utils.translation import gettext_lazy as _
 from account.views import handler403
 from notify.utils import notify
 from django.contrib import messages
+from account.forms import DeleteForm
+from django.urls import reverse
 
 
 def group_list(request, id=None):
@@ -74,8 +76,15 @@ def delete_group(request, id):
     group = get_object_or_404(UserGroup, id=id)
     if request.user != group.admin:
         return handler403(request)
-    group.delete()
-    return render(request, 'usergroups/group_deleted.html', dict(group=group))
+    if request.method == 'POST':
+        form = DeleteForm(request.POST)
+        if form.is_valid():
+            group.delete()
+            messages.add_message(request, messages.INFO, _('Gruppe erfolgreich gelöscht.'))
+            return HttpResponseRedirect(reverse('usergroups:group_list'))
+    else:
+        form = DeleteForm()
+    return render(request, 'usergroups/delete_group.html', dict(delete_form=form))
 
 
 def leave_group(request, id):

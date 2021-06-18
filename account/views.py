@@ -4,7 +4,7 @@ from character.models import Suggestion
 from django.core.mail import message
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm, AccountDeleteForm, LoginForm
+from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm, DeleteForm, LoginForm
 from .models import FriendRequest, LocationMarker, User, Friendship, Location
 from django.http import HttpResponseRedirect
 from django.utils import timezone
@@ -243,14 +243,14 @@ def view_friendship(request, id):
 
 def delete(request):
     if request.method == 'POST':
-        delete_form = AccountDeleteForm(request.POST)
+        delete_form = DeleteForm(request.POST)
         if delete_form.is_valid():
             send_mail(f'Delete: {request.user}. Total: {User.objects.count()-1}')
             Suggestion.objects.filter(character=request.user.character).delete()
             request.user.delete()
             return HttpResponseRedirect(request.build_absolute_uri('/'))
     else:
-        delete_form = AccountDeleteForm()
+        delete_form = DeleteForm()
     return render(request, 'account/delete.html', dict(delete_form=delete_form))
     
 
