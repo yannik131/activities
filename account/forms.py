@@ -79,16 +79,12 @@ class UserEditForm(UserForm):
         
     class Meta:
         model = get_user_model()
-        fields = ('username', 'sex', 'birth_year', 'profile_text', 'image')
+        fields = ('sex', 'birth_year', 'profile_text', 'image')
         labels = {
             'sex': _('Geschlecht (freiwillig)'),
             'birth_year': _('Geburtsjahr (freiwillig)'),
             'profile_text': _('Profiltext'),
             'image': _('Profilbild'),
-        }
-        
-        help_texts = {
-            'username': ''
         }
 
 class LocationForm(forms.Form):

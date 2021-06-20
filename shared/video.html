@@ -1,0 +1,104 @@
+<html>
+<body>
+<style>
+    .text-field {
+        background-color: #2d2d2d;
+        width: 440px;
+        height: 100px;
+        text-align: center;
+        /*font-family: "Arial", "Verdana", "Helvectica";*/
+        font-family:'Courier New', Courier, monospace;
+        color: lightgreen;
+        font-size: 22px;
+        font-weight: bold;
+        padding: 10px 5px 5px 5px;
+        display: flex;
+        align-items:baseline;
+        justify-content: center;
+    }
+</style>
+<video autoplay>
+    <source src="/home/yannik/projects/activities ad/all.mkv">
+</video>
+<div class="text-field">
+</div>
+<br>
+<button onclick="v.play()">Play</button>
+<button onclick="location.href = location.href">Reload</button>
+<script type="text/javascript">
+const v = document.querySelector('video');
+const field = document.querySelector('.text-field');
+var timeout;
+
+var pauses = [
+    [0, 2],
+    [2.5, 1.5],
+    [31.6, 2],
+    [35, 2],
+    [38, 1],
+    [50, 2]
+];
+
+var texts = [
+    [0, "myactivities.net is a platform to find people and activities suited to your personality!"],
+    [2.5, "Registering is free and takes only a few seconds.", 5],
+    [31.6, "Once you've activated your account, it's time to determine your personality!"],
+    [35, "3 personality tests are available, ranging from a few minutes to half an hour."],
+    [38, "The questions are simple, yet make you think about who you really are.", 1.5],
+    [51, "After completing the test, check out your character traits compared to the average."],
+    [55, "Looks like I think myself to be quite conscientious!", 2],
+    [61, "I do read a lot, "]
+];
+
+v.currentTime = 0;
+while(pauses.length && pauses[0][0] < v.currentTime) {
+    pauses.shift();
+}
+while(texts.length && texts[0][0] < v.currentTime) {
+    texts.shift();
+}
+
+v.addEventListener('timeupdate', function() {
+    if(texts.length && this.currentTime > texts[0][0]) {
+        field.innerHTML = "";
+        clearTimeout(timeout);
+        showText(texts[0][1]);
+        if(texts[0].length < 3) {
+            v.playbackRate = 1;
+        }
+        else {
+            v.playbackRate = texts[0][2];
+        }
+        
+        texts.shift();
+    }
+    /*if(pauses.length && this.currentTime > pauses[0][0]) {
+        v.pause();
+        setTimeout(function() {
+            v.play();
+        }, pauses[0][1]*1000);
+        pauses.shift();
+    }*/
+});
+
+function showText(text, i=0) {
+    if(i == 0) {
+        v.pause();
+    }
+    if(text && i < text.length) {
+        field.innerHTML += text[i];
+        timeout = setTimeout(function() {
+            showText(text, i+1);
+        }, 20);
+    }
+    if(i == text.length-1) {
+        setTimeout(function() {
+            v.play();
+        }, 1000);
+    }
+    
+}
+
+</script>
+</body>
+</html>

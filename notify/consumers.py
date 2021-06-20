@@ -104,7 +104,11 @@ class NotificationConsumer(WebsocketConsumer):
                
     def distribute_chat_message(self, text_data):
         chat_room_id = text_data['id']
-        chat_room = ChatRoom.objects.only('members').get(id=chat_room_id) 
+        try:
+            chat_room = ChatRoom.objects.only('members').get(id=chat_room_id) 
+        except:
+            log('Could not find chat room with text_data=', text_data)
+            return
         timestamp = now()
         if 'update_check' in text_data:
             self.user.last_chat_checks.filter(room=chat_room).update(date=timestamp)
