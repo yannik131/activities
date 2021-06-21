@@ -18,13 +18,14 @@
     }
 </style>
 <video autoplay>
-    <source src="/home/yannik/projects/activities ad/all.mkv">
+    <source src="/home/yannik/projects/activities ad/all_5.mkv">
 </video>
 <div class="text-field">
 </div>
 <br>
-<button onclick="v.play()">Play</button>
+<button onclick="v.play(); check();">Play</button>
 <button onclick="location.href = location.href">Reload</button>
+<button onclick="v.pause()">Pause</button>
 <script type="text/javascript">
 const v = document.querySelector('video');
 const field = document.querySelector('.text-field');
@@ -38,17 +39,46 @@ var pauses = [
     [38, 1],
     [50, 2]
 ];
+const offset = 31.65;
 
 var texts = [
-    [0, "myactivities.net is a platform to find people and activities suited to your personality!"],
-    [2.5, "Registering is free and takes only a few seconds.", 5],
-    [31.6, "Once you've activated your account, it's time to determine your personality!"],
+    /*[0, "myactivities.net is a platform to find people and activities suited to your personality!"],
+    [2.5, "Registering is free and takes only a few seconds.", 5],*/
+    [31.7, "myactivities.net is a platform to find people and activities suited to your personality!"],
     [35, "3 personality tests are available, ranging from a few minutes to half an hour."],
     [38, "The questions are simple, yet make you think about who you really are.", 1.5],
-    [51, "After completing the test, check out your character traits compared to the average."],
-    [55, "Looks like I think myself to be quite conscientious!", 2],
-    [61, "I do read a lot, "]
+    [51, "Taking the shortest test took me just a few minutes!", 4],
+    [66, "After completing the test, check out your character traits compared to the average."],
+    [69, "Looks like I think myself to be quite a conscientious person!"],
+    [74.4, "These are suggestions in the category 'leisure'. Maybe I should try out handicraft?"],
+    [81.4, "Well, I did study physics, so that makes sense."],
+    [88, "I love playing guitar!"],
+    [93, "After the test you can sort people in your area by character congruence."],
+    [95, "Look for the best fit in your city, county, state or even country!"],
+    [99, "This individual has a similar character. Maybe we'll be friends?"],
+    [109.7, "Time to join some activities!"],
+    [119.9, "After joining, you can see locations that you or other users have marked on the map."],
+    [123.6, "You can also see where this activity is the most popular!"],
+    [127.9, "You can look for members and posts in this activity based on your location."],
+    [132.4, "Sort people in your area by number of common activities!"],
+    [135.9, "Another way of finding people are groups. Groups can be created in every category."],
+    [141.3, "Here's a list of all groups in the category 'instruments' in Oldenburg."],
+    [144.3, "Groups can have vacancies you can apply for. This one seems to be looking for a piano player!", 3],
+    [125.56+offset+18.7, "You get notified in real time if the status of an application or friend request changes.", 2],
+    [178.8, "With groups you can easily organize appointments, too!"],
+    [189.8, "Everything has a chat with a built-in audio conference.", 2],
+    [204, "You can play 4 different card games on myactivities.net."],
+    //[225.8, "Of course, every game has its own chat with an audio conference."]
 ];
+for(var i = 0; i < texts.length; i++) {
+    texts[i][0] -= offset;
+    if(texts[i][0] > 152-offset) {
+        texts[i][0] -= 18.7;
+    }
+    if(i > texts.length-3) {
+        texts[i][0] -= 6.1;
+    }
+}
 
 v.currentTime = 0;
 while(pauses.length && pauses[0][0] < v.currentTime) {
@@ -58,13 +88,14 @@ while(texts.length && texts[0][0] < v.currentTime) {
     texts.shift();
 }
 
-v.addEventListener('timeupdate', function() {
-    if(texts.length && this.currentTime > texts[0][0]) {
+function check() {
+    //console.log(v.currentTime);
+    if(texts.length && v.currentTime > texts[0][0]) {
         field.innerHTML = "";
         clearTimeout(timeout);
         showText(texts[0][1]);
         if(texts[0].length < 3) {
-            v.playbackRate = 1;
+            v.playbackRate = 2;
         }
         else {
             v.playbackRate = texts[0][2];
@@ -79,7 +110,8 @@ v.addEventListener('timeupdate', function() {
         }, pauses[0][1]*1000);
         pauses.shift();
     }*/
-});
+    setTimeout(check, 1000/100);
+}
 
 function showText(text, i=0) {
     if(i == 0) {
@@ -89,12 +121,15 @@ function showText(text, i=0) {
         field.innerHTML += text[i];
         timeout = setTimeout(function() {
             showText(text, i+1);
-        }, 20);
+        }, 30);
     }
     if(i == text.length-1) {
-        setTimeout(function() {
+        timeout = setTimeout(function() {
             v.play();
-        }, 1000);
+            timeout = setTimeout(function() {
+                field.innerHTML = "";
+            }, 1000);
+        }, 1500);
     }
     
 }

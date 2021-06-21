@@ -813,6 +813,10 @@ form label {
     font-weight: bold;
 }
 
+.logo img {
+    margin-right: 5px;
+}
+
 .logo a:hover {
     color: white;
 }
@@ -839,9 +843,20 @@ form label {
     float: left;
 }
 
-.topmenu a {
+.topmenu .lang-select a {
     text-decoration: none;
     float: right;
+    color: #ababab;
+    margin-right: 5px; 
+    font-size: 16px; 
+    display: flex; 
+    align-items: center; 
+    height: 40px; 
+    cursor: pointer;
+}
+
+.topmenu a:hover {
+   color: white;
 }
 
 .topmenu img {

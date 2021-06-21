@@ -8,7 +8,7 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
 
-    <link rel="stylesheet" href="{% static 'css/base4.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base5.css' %}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
     <link rel="shortcut icon" type="image/png" href="{% static 'icons/dog.png' %}">
@@ -82,7 +82,11 @@
             <a href="{% url 'account:home' %}"><img src="{% static 'icons/dog.png' %}">myactivities.net</a>
         </div>
         <div class="lang-select">
-            {% language_setter request %}
+            {% if request.LANGUAGE_CODE == 'de' %}
+            <a href="https://en.myactivities.net/">English: <img src="{% static 'icons/america.png' %}"></a>
+            {% else %}
+            <a href="https://de.myactivities.net/">Deutsch: <img src="{% static 'icons/germany.png' %}"></a>
+            {% endif %}
         </div>
     </div>
     <script>
