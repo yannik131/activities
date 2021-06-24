@@ -13,7 +13,7 @@
             {% trans 'Charakterübereinstimmung' %}: {{ score }}%
         </div>
     {% endif %}
-    {% if viewed_user.profile_text or age or sex %}
+    {% if viewed_user.profile_text or age and sex %}
         <p class="info-p">
             {% if age %}{{ age }} {% trans 'Jahre alt' %}{% if sex %}, {{ sex }}{% endif %}{% endif %}
             {% if viewed_user.profile_text %}
