@@ -11,7 +11,11 @@
 </div>
 <br>
 <div class="center-container">
-    <video controls autoplay src="{% static 'about/ad.mp4' %}"></video>
+    <video id="video" controls autoplay src="{% static 'about/ad.mp4' %}"></video>
+    <script>
+        var vid = document.getElementById('video');
+        vid.volume = 0.5;
+    </script>
 </div>
 <p style="clear: both"></p>
 <div class="center-container">
