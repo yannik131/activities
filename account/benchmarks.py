@@ -84,4 +84,17 @@ def test10():
             user = User.objects.get(pk=u)
     print((timer()-stamp)/10**6)
 
-
+def test11():
+    pks = list(User.objects.values_list('id', flat=True))
+    arr = [2, 5, 1, 2, 6, 3, 6, 8, 4, 1, 6, 8, 4]
+    stamp = timer()
+    for i in range(10**6):
+        try:
+            arr = sorted(arr)
+        except:
+            pass
+    print((timer()-stamp)/10**6)
+    stamp = timer()
+    for i in range(10**6):
+        arr = sorted(arr)
+    print((timer()-stamp)/10**6)

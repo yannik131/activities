@@ -71,7 +71,10 @@ class NotificationConsumer(WebsocketConsumer):
             )
         else:
             data['room_id'] = text_data.get('room_id', self.rtc_room_id)
-            chat_room = ChatRoom.objects.get(id=data['room_id'])
+            try:
+                chat_room = ChatRoom.objects.get(id=data['room_id'])
+            except ChatRoom.DoesNotExist:
+                return
             for member in chat_room.members.all():
                 if member.channel_name:
                     async_to_sync(self.channel_layer.send)(

@@ -411,6 +411,7 @@ def determine_winner_skat(data):
         if "s" in declarations and points < 91 or\
             ("b" in declarations or "o" in declarations) and len(tricks) < 10:
             result = "overbid"
+            game_value += 1
         elif game_value >= int(data[data["solist"]+"_bid"]):
             result = "won"
         else:
