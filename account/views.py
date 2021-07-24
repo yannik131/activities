@@ -311,7 +311,7 @@ def guest_access(request):
         except:
             continue
     auth_login(request, user)
-    messages.add_message(request, messages.INFO, _('Der Gastaccount ist nur für diese Sitzung gültig und wird nach {hours} Stunden automatisch gelöscht. Bis dahin können Sie sich jederzeit <a href="{register_link}">registrieren</a>, um Ihre Daten zu speichern.').format(hours=int(User.GUEST_LIFESPAN.total_seconds()/3600), register_link=reverse('account:register')))
+    messages.add_message(request, messages.INFO, _('Der Gastaccount wird ungültig wenn Sie sich ausloggen und wird nach {hours} Stunden automatisch gelöscht. Bis dahin können Sie sich jederzeit <a href="{register_link}">registrieren</a>, um Ihre Daten zu speichern.').format(hours=int(User.GUEST_LIFESPAN.total_seconds()/3600), register_link=reverse('account:register')))
     return HttpResponseRedirect(reverse('account:home'))
 
 

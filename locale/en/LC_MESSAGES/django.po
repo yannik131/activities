@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-24 12:50+0200\n"
-"PO-Revision-Date: 2021-07-24 12:54+0200\n"
+"POT-Creation-Date: 2021-07-24 14:57+0200\n"
+"PO-Revision-Date: 2021-07-24 14:57+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -18,25 +18,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0\n"
 
-#: account/forms.py:20
+#: account/forms.py:19
 msgid "Es gibt schon einen Nutzer mit dieser E-Mail-Adresse."
 msgstr "An account with this email already exists."
 
-#: account/forms.py:28
+#: account/forms.py:27
 msgid "Passwörter stimmen nicht überein!"
 msgstr "Passwords don't match!"
 
-#: account/forms.py:34
+#: account/forms.py:33
 msgid "Nutzername zu lang (max. 10 Zeichen)"
 msgstr "Username too long (10 chars max)."
 
-#: account/forms.py:39
+#: account/forms.py:38
 msgid "Ihr Nutzername kann keine E-Mail sein. Das wäre verwirrend, oder?"
 msgstr ""
 "Your username can't be an email address. That would be confusing, wouldn't "
 "it?"
 
-#: account/forms.py:47
+#: account/forms.py:46
 msgid ""
 "Sie müssen mindestens 3 Jahre alt sein, um diese Seite überhaupt nutzen zu "
 "können. Jüngere Menschen haben noch kein Gedächtnis."
@@ -44,65 +44,65 @@ msgstr ""
 "You need to be at least 3 years of age to use this site. Younger people "
 "don't have a memory yet."
 
-#: account/forms.py:49
+#: account/forms.py:48
 msgid ""
 "Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind."
 msgstr "It's statistically really unlikely that you are older than 120."
 
-#: account/forms.py:59 account/forms.py:140
+#: account/forms.py:58 account/forms.py:139
 msgid "Passwort"
 msgstr "Password"
 
-#: account/forms.py:61
+#: account/forms.py:60
 msgid "Passwort (erneut)"
 msgstr "Password (again)"
 
-#: account/forms.py:68
+#: account/forms.py:67
 msgid "Geschlecht (optional)"
 msgstr "Gender (optional)"
 
-#: account/forms.py:69
+#: account/forms.py:68
 msgid "Geburtsjahr (optional)"
 msgstr "Birth year (optional)"
 
-#: account/forms.py:70
+#: account/forms.py:69
 msgid "E-Mail Adresse"
 msgstr "E-mail address"
 
-#: account/forms.py:71
+#: account/forms.py:70
 msgid "Profilbild (optional): Bitte lächeln!"
 msgstr "Profile picture (optional): Say cheese!"
 
-#: account/forms.py:72
+#: account/forms.py:71
 msgid "Nutzername (max. 10 Zeichen)"
 msgstr "Username"
 
-#: account/forms.py:85
+#: account/forms.py:84
 msgid "Geschlecht (freiwillig)"
 msgstr "Gender (voluntary)"
 
-#: account/forms.py:86
+#: account/forms.py:85
 msgid "Geburtsjahr (freiwillig)"
 msgstr "Birth year (voluntary)"
 
-#: account/forms.py:87
+#: account/forms.py:86
 msgid "Profiltext"
 msgstr "Profile text"
 
-#: account/forms.py:88
+#: account/forms.py:87
 msgid "Profilbild"
 msgstr "Profile picture"
 
-#: account/forms.py:93
+#: account/forms.py:92
 msgid "Stadt, Bundesland"
 msgstr "City, State"
 
-#: account/forms.py:102 vacancies/forms.py:55 vacancies/forms.py:99
+#: account/forms.py:101 vacancies/forms.py:55 vacancies/forms.py:99
 #: wall/forms.py:47
 msgid "Nachricht"
 msgstr "Message"
 
-#: account/forms.py:108
+#: account/forms.py:107
 #, python-brace-format
 msgid ""
 "Die Nachricht darf nicht länger als 150 Zeichen sein, ist aber {l} Zeichen "
@@ -111,32 +111,32 @@ msgstr ""
 "The message can't be longer than 150 characters. It's {l} characters long. "
 "Fix this."
 
-#: account/forms.py:113
+#: account/forms.py:112
 msgid "Nutzername"
 msgstr "User name"
 
-#: account/forms.py:118
+#: account/forms.py:117
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr "There is no user with the user name {name}"
 
-#: account/forms.py:123
+#: account/forms.py:122
 msgid "Wirklich löschen?"
 msgstr "Really delete?"
 
-#: account/forms.py:139
+#: account/forms.py:138
 msgid "E-Mail oder Nutzername"
 msgstr "E-mail or username"
 
-#: account/forms.py:146
+#: account/forms.py:145
 msgid "Nutzer nicht gefunden."
 msgstr "User not found."
 
-#: account/forms.py:148
+#: account/forms.py:147
 msgid "Passwort falsch."
 msgstr "Password incorrect."
 
-#: account/forms.py:150
+#: account/forms.py:149
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr "The account has not yet been activated! Check your e-mails."
 
@@ -506,7 +506,7 @@ msgid "Posts"
 msgstr "Posts"
 
 #: account/templates/account/edit.html:5 account/templates/account/edit.html:8
-#: account/templates/account/sidemenu.html:16
+#: account/templates/account/sidemenu.html:19
 msgid "Account bearbeiten"
 msgstr "Edit account"
 
@@ -1485,6 +1485,14 @@ msgid "Bewerbungen & Einladungen"
 msgstr "Applications & Invitations"
 
 #: account/templates/account/sidemenu.html:17
+#: account/templates/registration/login.html:36
+#: account/templates/registration/register.html:7
+#: account/templates/registration/register.html:14
+#: account/templates/registration/register.html:30
+msgid "Registrieren"
+msgstr "Register"
+
+#: account/templates/account/sidemenu.html:21
 msgid "Ausloggen"
 msgstr "Log out"
 
@@ -1613,13 +1621,6 @@ msgstr "Guest access"
 #: account/templates/registration/password_reset_form.html:5
 msgid "Passwort zurücksetzen"
 msgstr "Reset password"
-
-#: account/templates/registration/login.html:36
-#: account/templates/registration/register.html:7
-#: account/templates/registration/register.html:14
-#: account/templates/registration/register.html:30
-msgid "Registrieren"
-msgstr "Register"
 
 #: account/templates/registration/password_change_form.html:9
 msgid "Benutzen Sie folgendes Formular zum Ändern des Passworts:"
@@ -1833,11 +1834,11 @@ msgstr "Guest"
 #: account/views.py:314
 #, python-brace-format
 msgid ""
-"Der Gastaccount ist nur für diese Sitzung gültig und wird nach {hours} "
+"Der Gastaccount wird ungültig wenn Sie sich ausloggen und wird nach {hours} "
 "Stunden automatisch gelöscht. Bis dahin können Sie sich jederzeit <a href="
 "\"{register_link}\">registrieren</a>, um Ihre Daten zu speichern."
 msgstr ""
-"The guest account is only valid for this session and will be deleted after "
+"The guest account becomes invalid if you log out and will be deleted after "
 "{hours} hours. Until then, you can <a href=\"{register_link}\">register</a> "
 "any time to save your data."
 
