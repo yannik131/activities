@@ -879,6 +879,32 @@ form label {
     color: white;
 }
 
+.hamburger-icon {
+    margin: 0;
+    display: inline-block;
+    position: absolute;
+    top: 7px;
+    left: 2px;
+}
+
+a.icon:hover span {
+    background-color: white;
+}
+
+.hamburger-icon span {
+    width: 30px;
+    background-color: #ababab;
+    height: 5px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.hamburger-number {
+    font-weight: bold;
+    margin-left: 35px;
+    color: orange;
+}
+
 .topright {
     position: absolute;
     color: orange;
@@ -1661,32 +1687,6 @@ td {
 
     .topmenu .logo .icon {
         display: block;
-    }
-    
-    .hamburger-icon {
-        margin: 0;
-        display: inline-block;
-        position: absolute;
-        top: 7px;
-        left: 2px;
-    }
-    
-    a.icon:hover span {
-        background-color: white;
-    }
-    
-    .hamburger-icon span {
-        width: 30px;
-        background-color: #ababab;
-        height: 5px;
-        display: block;
-        margin-bottom: 6px;
-    }
-    
-    .hamburger-number {
-        font-weight: bold;
-        margin-left: 35px;
-        color: orange;
     }
 
     .sidemenu {
