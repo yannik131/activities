@@ -15,17 +15,16 @@
         
         <p><strong>{% trans "Willkommen bei myactivities.net! :)" %}</strong></p>
         <div class="button-like" onclick=openLink("{% url 'account:about' %}")><img src="{% static 'icons/question.png' %}">{% trans "Was ist das hier?" %}</div>
-            <p>{% trans "Bitte nutzen Sie das folgende Formular zum Einloggen:" %}</p>
-            <form class="login-form" method="post" action="{% url 'account:login' %}" class="login-form">
-                {{ form.as_p }}
-                {% csrf_token %}
-                <input type="hidden" name="next" value="{{ next }}">
-                <div style="display: flex; align-items: center">
-                    <input type="submit" value="{% trans "Einloggen" %}">
-                    <input class="blue-button" type="button" value="{% trans 'Gastzugang' %}" onclick=openLink("{% url 'account:guest_access' %}")>
-                </div>
-                
-            </form>
+        <p>{% trans "Bitte nutzen Sie das folgende Formular zum Einloggen:" %}</p>
+        <form class="login-form" method="post" action="{% url 'account:login' %}" class="login-form">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}">
+            <div style="display: flex; align-items: center">
+                <input type="submit" value="{% trans "Einloggen" %}">
+                <input class="blue-button" style="background-color: green;" type="button" value="{% trans 'Gastzugang' %}" onclick=openLink("{% url 'account:guest_access' %}")>
+            </div>
+        </form>
         <div class="competitive" style="margin: 10px 0; font-size: 16px;">
             <div class="left" onclick=openLink("{% url 'account:password_reset' %}")>
                 <img src="{% static 'icons/password_reset.png' %}">

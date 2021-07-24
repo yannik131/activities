@@ -167,6 +167,11 @@ input[type=submit], a.button, .blue-button {
     margin: auto;
 }
 
+input[type=checkbox] {
+    width: 30px;
+    height: 30px;
+}
+
 input, textarea {
     font-family: "Arial", "Verdana", "Helvectica";
     background-color: #494949;

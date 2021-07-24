@@ -149,3 +149,6 @@ class LoginForm(forms.Form):
             raise forms.ValidationError(_('Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails.'))
         return cd
     
+    
+class GuestForm(forms.Form):
+    checkbox = forms.BooleanField(label=_('Ich bin kein Roboter!'))

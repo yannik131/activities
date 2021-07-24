@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% load cookielaw_tags %}
+{% load account_tags %}
+
+{% block title %}{% trans "Gastzugang" %}{% endblock %}
+
+{% block content %}
+    <div class="center-container">
+    <div class="login">
+    <div style="float: left">{% trans 'Nutzer gesamt: ' %}{% total_count %}</div>
+    <div style="float: right">{% trans 'Online: ' %} {% online_count %}</div>
+        <h1 class="h-img"><img src="{% static 'icons/guest.png' %}">{% blocktrans %}Gastzugang{% endblocktrans %}</h1>
+        
+        <p><strong>{% trans "Hier ist der Nebeneingang mit Türsteher!" %}</strong></p>
+        <p class="info-p" style="color: yellow">
+            {% blocktrans with hours=hours %}Der Gastaccount wird ungültig wenn Sie sich ausloggen und wird nach {{ hours }} Stunden automatisch gelöscht. Bis dahin können Sie sich jederzeit <a href="/account/register/">registrieren</a>, um Ihre Daten zu speichern.{% endblocktrans %}
+        </p>
+            <p>{% trans "Zwei Klicks noch und es kann losgehen!" %}</p>
+            <form class="login-form" method="post" class="login-form">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
+                <div style="display: flex; align-items: center">
+                    <input type="submit" value="{% trans "Los geht's!" %}">
+                </div>
+                
+            </form>
+    </div>
+    </div>
+{% endblock %}

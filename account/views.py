@@ -5,7 +5,7 @@ from character.models import Suggestion
 from django.core.mail import message
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm, DeleteForm, LoginForm
+from .forms import GuestForm, LocationForm, UserRegistrationForm, UserEditForm, FriendRequestForm, CustomFriendRequestForm, DeleteForm, LoginForm
 from .models import FriendRequest, LocationMarker, User, Friendship, Location
 from django.http import HttpResponseRedirect
 from django.utils import timezone
@@ -300,19 +300,24 @@ def guest_access(request):
     if request.user.is_authenticated:
         messages.add_message(request, messages.INFO, _('Sie sind doch schon eingeloggt! Was wollen Sie denn noch!?'))
         return HttpResponseRedirect(reverse('account:home'))
-    city = 'Berlin'
-    if request.LANGUAGE_CODE == 'en':
-        city = 'Washington, D. C.'
-    while True:
-        username = _('Gast')+str(random.randint(1, 1000000))
-        try:
-            user = User.objects.create(location=Location.determine_from(city), username=username, is_guest=True)
-            break
-        except:
-            continue
-    auth_login(request, user)
-    messages.add_message(request, messages.INFO, _('Der Gastaccount wird ungültig wenn Sie sich ausloggen und wird nach {hours} Stunden automatisch gelöscht. Bis dahin können Sie sich jederzeit <a href="{register_link}">registrieren</a>, um Ihre Daten zu speichern.').format(hours=int(User.GUEST_LIFESPAN.total_seconds()/3600), register_link=reverse('account:register')))
-    return HttpResponseRedirect(reverse('account:home'))
+    if request.method == 'POST':
+        form = GuestForm(request.POST)
+        if form.is_valid():
+            city = 'Berlin'
+            if request.LANGUAGE_CODE == 'en':
+                city = 'Washington, D. C.'
+            while True:
+                username = _('Gast')+str(random.randint(1, 1000000))
+                try:
+                    user = User.objects.create(location=Location.determine_from(city), username=username, is_guest=True)
+                    break
+                except:
+                    continue
+            auth_login(request, user)
+            return HttpResponseRedirect(reverse('account:home'))
+    else:
+        form = GuestForm()
+    return render(request, 'registration/guest_access.html', dict(form=form, hours=int(User.GUEST_LIFESPAN.total_seconds()/3600)))
 
 
 def login(request):
