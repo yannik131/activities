@@ -8,7 +8,7 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
 
-    <link rel="stylesheet" href="{% static 'css/base6.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base7.css' %}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
     <link rel="shortcut icon" type="image/png" href="{% static 'icons/dog.png' %}">
@@ -45,13 +45,21 @@
         </div>
     {% endfor %}
 {% endif %}
+
 {% if user.is_authenticated %}
 {% with latest_messages=user.get_latest_messages notifications=user.get_notifications count=user.notifications.count %}
     <script>new_messages = JSON.parse('{{ latest_messages|safe }}');</script>
     <div class="topmenu" id="topmenu">
         <div class="dropdown">
             <a class="icon" href="javascript:void(0);" onclick="activateMenu('sidemenu');">
-                &#9776;<sup><strong><span style="color: orange;" id="notifications-count">{% if count > 0 %}{{ count }}{% endif %}</span></strong></sup>
+                <div class="hamburger-icon">
+                    <span>&nbsp;</span>
+                    <span>&nbsp;</span>
+                    <span>&nbsp;</span>
+                </div>
+                <div class="hamburger-number" id="notifications-count">
+                    {% if count > 0 %}{{ count }}{% endif %}
+                </div>
             </a>
         </div>
         <div class="logo"></div>
