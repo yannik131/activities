@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-18 22:48+0200\n"
-"PO-Revision-Date: 2021-06-18 22:49+0200\n"
+"POT-Creation-Date: 2021-07-24 12:50+0200\n"
+"PO-Revision-Date: 2021-07-24 12:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -18,25 +18,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0\n"
 
-#: account/forms.py:19
+#: account/forms.py:20
 msgid "Es gibt schon einen Nutzer mit dieser E-Mail-Adresse."
 msgstr "An account with this email already exists."
 
-#: account/forms.py:27
+#: account/forms.py:28
 msgid "Passwörter stimmen nicht überein!"
 msgstr "Passwords don't match!"
 
-#: account/forms.py:33
+#: account/forms.py:34
 msgid "Nutzername zu lang (max. 10 Zeichen)"
 msgstr "Username too long (10 chars max)."
 
-#: account/forms.py:38
+#: account/forms.py:39
 msgid "Ihr Nutzername kann keine E-Mail sein. Das wäre verwirrend, oder?"
 msgstr ""
 "Your username can't be an email address. That would be confusing, wouldn't "
 "it?"
 
-#: account/forms.py:46
+#: account/forms.py:47
 msgid ""
 "Sie müssen mindestens 3 Jahre alt sein, um diese Seite überhaupt nutzen zu "
 "können. Jüngere Menschen haben noch kein Gedächtnis."
@@ -44,65 +44,65 @@ msgstr ""
 "You need to be at least 3 years of age to use this site. Younger people "
 "don't have a memory yet."
 
-#: account/forms.py:48
+#: account/forms.py:49
 msgid ""
 "Es ist statistisch doch sehr unwahrscheinlich, dass Sie älter als 120 sind."
 msgstr "It's statistically really unlikely that you are older than 120."
 
-#: account/forms.py:58 account/forms.py:143
+#: account/forms.py:59 account/forms.py:140
 msgid "Passwort"
 msgstr "Password"
 
-#: account/forms.py:60
+#: account/forms.py:61
 msgid "Passwort (erneut)"
 msgstr "Password (again)"
 
-#: account/forms.py:67
+#: account/forms.py:68
 msgid "Geschlecht (optional)"
 msgstr "Gender (optional)"
 
-#: account/forms.py:68
+#: account/forms.py:69
 msgid "Geburtsjahr (optional)"
 msgstr "Birth year (optional)"
 
-#: account/forms.py:69
+#: account/forms.py:70
 msgid "E-Mail Adresse"
 msgstr "E-mail address"
 
-#: account/forms.py:70
+#: account/forms.py:71
 msgid "Profilbild (optional): Bitte lächeln!"
 msgstr "Profile picture (optional): Say cheese!"
 
-#: account/forms.py:71
+#: account/forms.py:72
 msgid "Nutzername (max. 10 Zeichen)"
 msgstr "Username"
 
-#: account/forms.py:84
+#: account/forms.py:85
 msgid "Geschlecht (freiwillig)"
 msgstr "Gender (voluntary)"
 
-#: account/forms.py:85
+#: account/forms.py:86
 msgid "Geburtsjahr (freiwillig)"
 msgstr "Birth year (voluntary)"
 
-#: account/forms.py:86
+#: account/forms.py:87
 msgid "Profiltext"
 msgstr "Profile text"
 
-#: account/forms.py:87
+#: account/forms.py:88
 msgid "Profilbild"
 msgstr "Profile picture"
 
-#: account/forms.py:96
+#: account/forms.py:93
 msgid "Stadt, Bundesland"
 msgstr "City, State"
 
-#: account/forms.py:105 vacancies/forms.py:55 vacancies/forms.py:99
+#: account/forms.py:102 vacancies/forms.py:55 vacancies/forms.py:99
 #: wall/forms.py:47
 msgid "Nachricht"
 msgstr "Message"
 
-#: account/forms.py:111
+#: account/forms.py:108
 #, python-brace-format
 msgid ""
 "Die Nachricht darf nicht länger als 150 Zeichen sein, ist aber {l} Zeichen "
@@ -111,136 +111,136 @@ msgstr ""
 "The message can't be longer than 150 characters. It's {l} characters long. "
 "Fix this."
 
-#: account/forms.py:116
+#: account/forms.py:113
 msgid "Nutzername"
 msgstr "User name"
 
-#: account/forms.py:121
+#: account/forms.py:118
 #, python-brace-format
 msgid "Es gibt keinen Nutzer mit dem Nutzernamen {name}"
 msgstr "There is no user with the user name {name}"
 
-#: account/forms.py:126
+#: account/forms.py:123
 msgid "Wirklich löschen?"
 msgstr "Really delete?"
 
-#: account/forms.py:142
+#: account/forms.py:139
 msgid "E-Mail oder Nutzername"
 msgstr "E-mail or username"
 
-#: account/forms.py:149
+#: account/forms.py:146
 msgid "Nutzer nicht gefunden."
 msgstr "User not found."
 
-#: account/forms.py:151
+#: account/forms.py:148
 msgid "Passwort falsch."
 msgstr "Password incorrect."
 
-#: account/forms.py:153
+#: account/forms.py:150
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr "The account has not yet been activated! Check your e-mails."
 
-#: account/models.py:26
+#: account/models.py:27
 msgid "männlich"
 msgstr "male"
 
-#: account/models.py:27
+#: account/models.py:28
 msgid "weiblich"
 msgstr "female"
 
-#: account/models.py:38
+#: account/models.py:40
 msgid "hat erstellt"
 msgstr "created"
 
-#: account/models.py:39
+#: account/models.py:41
 msgid "ist jetzt befreundet mit"
 msgstr "is now friends with"
 
-#: account/models.py:40
+#: account/models.py:42
 msgid "ist nicht mehr befreundet mit"
 msgstr "isn't friends any more with"
 
-#: account/models.py:41
+#: account/models.py:43
 msgid "hat Ihnen eine Freundschaftsanfrage geschickt"
 msgstr "sent you a friend request"
 
-#: account/models.py:42
+#: account/models.py:44
 msgid "ist beigetreten"
 msgstr "entered"
 
-#: account/models.py:43
+#: account/models.py:45
 msgid "hat verlassen"
 msgstr "left"
 
-#: account/models.py:44
+#: account/models.py:46
 msgid "hat zugesagt"
 msgstr "confirmed"
 
-#: account/models.py:45
+#: account/models.py:47
 msgid "hat abgesagt"
 msgstr "declined"
 
-#: account/models.py:46
+#: account/models.py:48
 msgid "hat sich beworben"
 msgstr "applied for"
 
-#: account/models.py:47
+#: account/models.py:49
 msgid "hat etwas gepostet in"
 msgstr "posted something in"
 
-#: account/models.py:48
+#: account/models.py:50
 msgid "hat etwas gepostet"
 msgstr "posted something"
 
-#: account/models.py:49
+#: account/models.py:51
 msgid "hat etwas kommentiert"
 msgstr "commented something"
 
-#: account/models.py:50
+#: account/models.py:52
 msgid "hat eure Freundschaft beendet"
 msgstr "terminated your friendship"
 
-#: account/models.py:51
+#: account/models.py:53
 msgid "hat Sie eingeladen"
 msgstr "invited you"
 
-#: account/models.py:52
+#: account/models.py:54
 msgid "hat Ihre Freundschaftsanfrage angenommen"
 msgstr "accepted your friend request"
 
-#: account/models.py:53
+#: account/models.py:55
 msgid "hat Ihre Freundschaftsanfrage abgelehnt"
 msgstr "declined your friend request"
 
-#: account/models.py:54
+#: account/models.py:56
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr "rejected your friend request"
 
-#: account/models.py:55
+#: account/models.py:57
 msgid "gefällt"
 msgstr "likes"
 
-#: account/models.py:56
+#: account/models.py:58
 msgid "missfällt"
 msgstr "dislikes"
 
-#: account/models.py:199
+#: account/models.py:201
 msgid "Ausstehend"
 msgstr "Pending"
 
-#: account/models.py:200
+#: account/models.py:202
 msgid "Angenommen"
 msgstr "Accepted"
 
-#: account/models.py:201
+#: account/models.py:203
 msgid "Abgelehnt"
 msgstr "Declined"
 
-#: account/models.py:270
+#: account/models.py:275
 msgid "Diese Adresse konnte nicht gefunden werden."
 msgstr "This address could not be found."
 
-#: account/models.py:272
+#: account/models.py:277
 msgid ""
 "Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die "
 "Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
@@ -248,19 +248,19 @@ msgstr ""
 "There is no city connected to this address. Please explicitly give the "
 "city's name (villages/districts may not be recognised)."
 
-#: account/models.py:329 vacancies/models.py:29
+#: account/models.py:334 vacancies/models.py:29
 msgid "Land"
 msgstr "Country"
 
-#: account/models.py:330 vacancies/models.py:30
+#: account/models.py:335 vacancies/models.py:30
 msgid "Bundesland"
 msgstr "State"
 
-#: account/models.py:331 vacancies/models.py:31
+#: account/models.py:336 vacancies/models.py:31
 msgid "Landkreis"
 msgstr "County"
 
-#: account/models.py:332 vacancies/models.py:32
+#: account/models.py:337 vacancies/models.py:32
 msgid "Stadt"
 msgstr "City"
 
@@ -346,12 +346,12 @@ msgstr ""
 "li></ul>Maybe this site can help! After <a href=\"/account/register"
 "\">registering for free</a> you can do the following: "
 
-#: account/templates/account/about.html:13
+#: account/templates/account/about.html:22
 msgid ""
 "Ermitteln Sie Ihre Persönlichkeit in wenigen Minuten durch einfache Fragen!"
 msgstr "Determine your personality in minutes by answering easy questions!"
 
-#: account/templates/account/about.html:23
+#: account/templates/account/about.html:32
 msgid ""
 "Anschließend werden Ihnen Aktivitäten empfohlen, die zu Ihnen passen "
 "könnten. Sie können auch nach Leuten in Ihrer Nähe suchen, die einen "
@@ -360,7 +360,7 @@ msgstr ""
 "After the test you'll get activity suggestions tailored to your personality. "
 "You can even look for people in your area with a similar test score!"
 
-#: account/templates/account/about.html:29
+#: account/templates/account/about.html:38
 msgid ""
 "Sie können per Text und Audiokonferenz chatten und nebenbei sogar einige "
 "Kartenspiele spielen."
@@ -368,7 +368,7 @@ msgstr ""
 "You can chat and have audio conferences, and even play a few card games "
 "online!"
 
-#: account/templates/account/about.html:35
+#: account/templates/account/about.html:44
 msgid ""
 "Aktivitäten in Ihrer Nähe werden nach Mitgliederzahl sortiert. So können Sie "
 "sehen, was beliebt ist und was nicht. Und in jeder Aktivität kann jedes "
@@ -378,7 +378,7 @@ msgstr ""
 "popular and what isn't. Additionally, each activity has a map where members "
 "can mark locations, like in the activity strolling right here:"
 
-#: account/templates/account/about.html:41
+#: account/templates/account/about.html:50
 msgid ""
 "Außerdem können Sie Gruppen und Gruppentermine organisieren, Posts erstellen "
 "und vieles mehr!"
@@ -386,7 +386,7 @@ msgstr ""
 "You can also organize groups and meetings, share posts in every activity and "
 "much more!"
 
-#: account/templates/account/banner.html:29
+#: account/templates/account/banner.html:33
 msgid ""
 "Diese Seite nutzt Cookies für: Sessions, CSRF-Schutz und diesen Banner. "
 "Alles klar?"
@@ -394,7 +394,7 @@ msgstr ""
 "This site uses cookies for: sessions, CSRF-protection and this banner. All "
 "right?"
 
-#: account/templates/account/banner.html:32
+#: account/templates/account/banner.html:36
 msgid "Mir doch egal!"
 msgstr "I don't care!"
 
@@ -1543,7 +1543,7 @@ msgid "Wirklich?"
 msgstr "Really?"
 
 #: account/templates/registration/activation_email.html:3
-#: account/templates/registration/activation_email.html:5 account/utils.py:31
+#: account/templates/registration/activation_email.html:5 account/utils.py:37
 msgid "E-Mail Aktivierung"
 msgstr "E-mail activation"
 
@@ -1570,7 +1570,7 @@ msgstr ""
 
 #: account/templates/registration/login.html:7
 #: account/templates/registration/login.html:14
-#: account/templates/registration/login.html:23
+#: account/templates/registration/login.html:24
 msgid "Einloggen"
 msgstr "Login"
 
@@ -1599,7 +1599,11 @@ msgstr "What’s this about?"
 msgid "Bitte nutzen Sie das folgende Formular zum Einloggen:"
 msgstr "Please use the following form to log in:"
 
-#: account/templates/registration/login.html:28
+#: account/templates/registration/login.html:25
+msgid "Gastzugang"
+msgstr "Guest access"
+
+#: account/templates/registration/login.html:32
 #: account/templates/registration/password_reset_confirm.html:5
 #: account/templates/registration/password_reset_confirm.html:8
 #: account/templates/registration/password_reset_done.html:5
@@ -1610,10 +1614,10 @@ msgstr "Please use the following form to log in:"
 msgid "Passwort zurücksetzen"
 msgstr "Reset password"
 
-#: account/templates/registration/login.html:32
+#: account/templates/registration/login.html:36
 #: account/templates/registration/register.html:7
 #: account/templates/registration/register.html:14
-#: account/templates/registration/register.html:27
+#: account/templates/registration/register.html:30
 msgid "Registrieren"
 msgstr "Register"
 
@@ -1686,13 +1690,17 @@ msgstr "Send"
 msgid ""
 "Finden Sie Hobbys und neue Freunde! Am besten geht das, wenn Sie auch "
 "Geschlecht und Alter angeben. Ihre E-Mail-Adresse wird ausschließlich für "
-"den Aktivierungslink und die Passwort-Zurücksetzung verwendet!"
+"den Aktivierungslink und die Passwort-Zurücksetzung verwendet."
 msgstr ""
 "Find new hobbies and friends! Works best if you indicate age and gender. "
 "Your e-mail address is used only for the activation of your account and in "
 "case you need to reset your password."
 
-#: account/templates/registration/register.html:24
+#: account/templates/registration/register.html:21
+msgid "Die Daten Ihres Gastaccounts bleiben nach der Registrierung erhalten."
+msgstr "Data related to the guest account will persist after registering."
+
+#: account/templates/registration/register.html:27
 msgid ""
 "Wo leben Sie derzeit? Zur eindeutigen Bestimmung bitte auch das Bundesland "
 "angeben. Das Bestimmen Ihres Ortes kann mehrere Sekunden in Anspruch nehmen."
@@ -1700,15 +1708,15 @@ msgstr ""
 "Where do you currently live? Please specify the state and city to avoid "
 "ambiguous results. Determining your location may take several seconds."
 
-#: account/templates/registration/register.html:34
+#: account/templates/registration/register.html:37
 msgid "Passwörter prüfen"
 msgstr "Check passwords"
 
-#: account/templates/registration/register.html:49
+#: account/templates/registration/register.html:52
 msgid "Nutzername zu lang (max. 10 Zeichen, derzeitige Länge: "
 msgstr "Username too long (10 chars max, current length: "
 
-#: account/templates/registration/register.html:56
+#: account/templates/registration/register.html:59
 msgid "Nutzername bereits vergeben: "
 msgstr "Username already taken: "
 
@@ -1733,11 +1741,11 @@ msgstr ""
 "\"Edit account\" once you've logged in. Be sure to specify the state and "
 "country as well for best results."
 
-#: account/utils.py:31
+#: account/utils.py:37
 msgid "Aktivierungs-E-Mail"
 msgstr "Activation email"
 
-#: account/views.py:79
+#: account/views.py:80
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
@@ -1746,48 +1754,58 @@ msgstr ""
 "You've already sent a friend request to this user. As long as he doesn't "
 "delete it you can't send another one."
 
-#: account/views.py:82 account/views.py:107 account/views.py:123
+#: account/views.py:83 account/views.py:108 account/views.py:124
 msgid "Ihr seid bereits Freunde."
 msgstr "You are already friends."
 
-#: account/views.py:89
+#: account/views.py:90
 msgid "Freundschaftsanfrage wurde verschickt."
 msgstr "Friend request sent."
 
-#: account/views.py:104
+#: account/views.py:105
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr "You can't send yourself a friend request."
 
-#: account/views.py:144
+#: account/views.py:145
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr "You can't delete this request."
 
-#: account/views.py:165
+#: account/views.py:166
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr "This friendship doesn't exist anymore."
 
-#: account/views.py:172
+#: account/views.py:173
 #, python-brace-format
 msgid "Sie haben die Freundschaft mit {user} beendet."
 msgstr "You terminated your friendship with {user}."
 
-#: account/views.py:194
+#: account/views.py:207
 msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden."
 msgstr "No e-mail could be sent to the specified address."
 
-#: account/views.py:208
+#: account/views.py:219
+msgid ""
+"Sie müssen sich vorher registrieren, wenn Sie Ihren Account bearbeiten "
+"wollen."
+msgstr "You have to register to edit your account."
+
+#: account/views.py:225
 msgid "Änderungen gespeichert."
 msgstr "Changes saved."
 
-#: account/views.py:222
+#: account/views.py:239
+msgid "Sie müssen sich vorher registrieren, wenn Sie Ihren Ort ändern wollen."
+msgstr "You have to register to change your lecation."
+
+#: account/views.py:242
 msgid "Sie können den Ort nur höchstens alle 7 Tage wechseln."
 msgstr "You can change your location only once in 7 days."
 
-#: account/views.py:230
+#: account/views.py:250
 msgid "Neue Adresse gespeichert: "
 msgstr "New address saved: "
 
-#: account/views.py:252
+#: account/views.py:272
 msgid ""
 "Sie sind noch Admin mindestens einer Gruppe. Löschen sie zuerst diese "
 "Gruppen oder legen Sie einen neuen Admin fest, bevor Sie Ihren Account "
@@ -1796,7 +1814,7 @@ msgstr ""
 "You are the admin of at least one group. You have to either delete or assign "
 "a new admin for these groups before you can delete your account."
 
-#: account/views.py:275
+#: account/views.py:295
 msgid ""
 "Der Aktivierungslink ist ungültig. Falls der Account noch inaktiv ist, "
 "können Sie durch erneutes Registrieren einen neuen anfordern!"
@@ -1804,19 +1822,38 @@ msgstr ""
 "The activation link is invalid. If the account is still inactive, you can "
 "request another one by registering again!"
 
-#: account/views.py:293
+#: account/views.py:301
+msgid "Sie sind doch schon eingeloggt! Was wollen Sie denn noch!?"
+msgstr "You're already logged in! What else do you need!?"
+
+#: account/views.py:307
+msgid "Gast"
+msgstr "Guest"
+
+#: account/views.py:314
+#, python-brace-format
+msgid ""
+"Der Gastaccount ist nur für diese Sitzung gültig und wird nach {hours} "
+"Stunden automatisch gelöscht. Bis dahin können Sie sich jederzeit <a href="
+"\"{register_link}\">registrieren</a>, um Ihre Daten zu speichern."
+msgstr ""
+"The guest account is only valid for this session and will be deleted after "
+"{hours} hours. Until then, you can <a href=\"{register_link}\">register</a> "
+"any time to save your data."
+
+#: account/views.py:332
 msgid "Passwort erfolgreich geändert."
 msgstr "Your password was changed successfully."
 
-#: account/views.py:297
+#: account/views.py:336
 msgid "Ihr Passwort wurde zurückgesetzt."
 msgstr "Your password was successfully reset."
 
-#: account/views.py:330
+#: account/views.py:369
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr "Marker was successfully deleted."
 
-#: account/views.py:332
+#: account/views.py:371
 msgid "Markierung wurde nicht gefunden!"
 msgstr "Marker not found!"
 
@@ -4156,25 +4193,32 @@ msgstr "Age"
 msgid "Abwarten"
 msgstr "Wait"
 
-#: vacancies/views.py:94
+#: vacancies/views.py:95
+msgid ""
+"Sie müssen sich mit Geschlecht und Alter registrieren, wenn Sie sich auf "
+"eine Leerstelle bewerben wollen."
+msgstr ""
+"You have to register with gender and age to be able to apply to vacancies."
+
+#: vacancies/views.py:98
 msgid ""
 "Bitte ergänzen Sie Ihr Profil (Geburtsjahr und Geschlecht), um sich bewerben "
 "zu können."
 msgstr "Please complete your profile (birth year and gender) before you apply."
 
-#: vacancies/views.py:98
+#: vacancies/views.py:102
 msgid "Sie erfüllen die Voraussetzungen der Leerstelle nicht."
 msgstr "You don't fulfil the vacancy's criteria (location, age and/or gender)."
 
-#: vacancies/views.py:101
+#: vacancies/views.py:105
 msgid "Sie haben sich bereits beworben."
 msgstr "You already applied to this vacancy."
 
-#: vacancies/views.py:104
+#: vacancies/views.py:108
 msgid "Die Anmeldefrist ist bereits abgelaufen."
 msgstr "The application deadline has already expired."
 
-#: vacancies/views.py:107
+#: vacancies/views.py:111
 msgid "Sie sind bereits Mitglied."
 msgstr "You already are a member."
 

@@ -21,13 +21,14 @@ from django.utils.translation import gettext_lazy as _
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_text
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.urls import reverse
 from django.db.models import Q
 from django.contrib.auth.validators import UnicodeUsernameValidator
 #validator = UnicodeUsernameValidator()
 import logging
 logger = logging.getLogger('django')
+import random
 
 
 @login_required
@@ -174,33 +175,49 @@ def destroy_friendship(request, id):
 
 
 def register(request):
-    if request.user.is_authenticated:
-        return HttpResponseRedirect(request.build_absolute_uri('/account'))
+    if request.user.is_authenticated and not request.user.is_guest:
+        return HttpResponseRedirect(reverse('account:home'))
     if request.method == 'POST':
         location_form = LocationForm(request.POST)
         user_form = UserRegistrationForm(request.POST, files=request.FILES)
         if user_form.is_valid():
             if location_form.is_valid():
-                new_user = user_form.save(commit=False)
-                new_user.set_password(user_form.cleaned_data['password'])
-                new_user.location = location_form.location
-                new_user.is_active = False
-                new_user.save()
+                if request.user.is_guest:
+                    cd = user_form.cleaned_data
+                    user = request.user
+                    user.username = cd['username']
+                    user.email = cd['email']
+                    user.sex = cd.get('sex')
+                    user.birth_year = cd.get('birth_year')
+                    shared.log(cd)
+                    user.image = cd.get('image')
+                    user.is_guest = False
+                    auth_logout(request)
+                else:
+                    user = user_form.save(commit=False)
+                user.set_password(user_form.cleaned_data['password'])
+                user.location = location_form.location
+                user.is_active = False
+                user.save()
                 try:
-                    send_account_activation_email(request, new_user)
+                    send_account_activation_email(request, user)
                 except Exception as e:
-                    logger.log(logging.WARNING, 'Could not send activation e-mail', exc_info=True)
-                    new_user.delete()
+                    logger.log(logging.ERROR, 'Could not send activation e-mail', exc_info=True)
+                    user.delete()
                     messages.add_message(request, messages.INFO, _('An die E-Mail Adresse konnte keine E-Mail gesendet werden.'))
                     return render(request, 'registration/register.html', {'user_form': user_form, 'location_form': location_form})
-                return render(request, 'registration/register_done.html', {'new_user': new_user})
+                return render(request, 'registration/register_done.html', {'new_user': user})
     else:
         user_form = UserRegistrationForm()
         location_form = LocationForm()
     return render(request, 'registration/register.html', {'user_form': user_form, 'location_form': location_form})
 
+
 @login_required
 def edit(request):
+    if request.user.is_guest:
+        messages.add_message(request, messages.INFO, _('Sie müssen sich vorher registrieren, wenn Sie Ihren Account bearbeiten wollen.'))
+        return HttpResponseRedirect(reverse('account:register'))
     if request.method == 'POST':
         user_form = UserEditForm(instance=request.user, data=request.POST, files=request.FILES)
         if user_form.is_valid():
@@ -218,6 +235,9 @@ def edit(request):
 
 @login_required
 def edit_address(request):
+    if request.user.is_guest:
+        messages.add_message(request, messages.INFO, _('Sie müssen sich vorher registrieren, wenn Sie Ihren Ort ändern wollen.'))
+        return HttpResponseRedirect(reverse('account:register'))
     if request.user.last_location_change and (timezone.now() < request.user.last_location_change+timedelta(days=User.LOCATION_CHANGE_DAYS)):
         messages.add_message(request, messages.INFO, _('Sie können den Ort nur höchstens alle 7 Tage wechseln.'))
         return HttpResponseRedirect(reverse('account:edit'))
@@ -253,7 +273,7 @@ def delete(request):
                 return HttpResponseRedirect(reverse('usergroups:group_list'))
             Suggestion.objects.filter(character__user__id=request.user.id).delete()
             send_mail(f'Delete: {request.user}. Total: {User.objects.count()-1}')
-            return HttpResponseRedirect(request.build_absolute_uri('/'))
+            return HttpResponseRedirect(reverse('account:home'))
     else:
         delete_form = DeleteForm()
     return render(request, 'account/delete.html', dict(delete_form=delete_form))
@@ -270,10 +290,29 @@ def activate(request, uidb64=None, token=None):
         user.save()
         auth_login(request, user)
         send_mail(f'Registration {User.objects.count()}: {user}', f'Location: {user.location}, Inactive: {User.objects.filter(is_active=False).count()}')
-        return HttpResponseRedirect(request.build_absolute_uri('/'))
+        return HttpResponseRedirect(reverse('account:home'))
     else:
         messages.add_message(request, messages.INFO, _('Der Aktivierungslink ist ungültig. Falls der Account noch inaktiv ist, können Sie durch erneutes Registrieren einen neuen anfordern!'))
         return HttpResponseRedirect(reverse('account:register'))
+
+
+def guest_access(request):
+    if request.user.is_authenticated:
+        messages.add_message(request, messages.INFO, _('Sie sind doch schon eingeloggt! Was wollen Sie denn noch!?'))
+        return HttpResponseRedirect(reverse('account:home'))
+    city = 'Berlin'
+    if request.LANGUAGE_CODE == 'en':
+        city = 'Washington, D. C.'
+    while True:
+        username = _('Gast')+str(random.randint(1, 1000000))
+        try:
+            user = User.objects.create(location=Location.determine_from(city), username=username, is_guest=True)
+            break
+        except:
+            continue
+    auth_login(request, user)
+    messages.add_message(request, messages.INFO, _('Der Gastaccount ist nur für diese Sitzung gültig und wird nach {hours} Stunden automatisch gelöscht. Bis dahin können Sie sich jederzeit <a href="{register_link}">registrieren</a>, um Ihre Daten zu speichern.').format(hours=int(User.GUEST_LIFESPAN.total_seconds()/3600), register_link=reverse('account:register')))
+    return HttpResponseRedirect(reverse('account:home'))
 
 
 def login(request):
@@ -282,10 +321,10 @@ def login(request):
         if login_form.is_valid():
             user = login_form.user
             auth_login(request, user)
-            return HttpResponseRedirect(request.build_absolute_uri('/'))
+            return HttpResponseRedirect(reverse('account:home'))
     else:
         if request.user.is_authenticated:
-            return HttpResponseRedirect(request.build_absolute_uri('/'))
+            return HttpResponseRedirect(reverse('account:home'))
         login_form = LoginForm()
     return render(request, 'registration/login.html', dict(form=login_form))
     

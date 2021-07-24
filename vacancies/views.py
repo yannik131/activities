@@ -91,8 +91,12 @@ def accept_invitation(request, id):
 def apply_for_vacancy(request, id):
     vacancy = get_object_or_404(Vacancy, id=id)
     if not request.user.birth_year:
-        messages.add_message(request, messages.INFO, _('Bitte ergänzen Sie Ihr Profil (Geburtsjahr und Geschlecht), um sich bewerben zu können.'))
-        return HttpResponseRedirect(reverse('account:edit'))
+        if request.user.is_guest:
+            messages.add_message(request, messages.INFO, _('Sie müssen sich mit Geschlecht und Alter registrieren, wenn Sie sich auf eine Leerstelle bewerben wollen.'))
+            return HttpResponseRedirect(reverse('account:register'))
+        else:
+            messages.add_message(request, messages.INFO, _('Bitte ergänzen Sie Ihr Profil (Geburtsjahr und Geschlecht), um sich bewerben zu können.'))
+            return HttpResponseRedirect(reverse('account:edit'))
         
     elif not request.user.satisfies_requirements_of(vacancy):
         messages.add_message(request, messages.INFO, _('Sie erfüllen die Voraussetzungen der Leerstelle nicht.'))

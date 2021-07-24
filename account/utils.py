@@ -10,14 +10,20 @@ from django.template.loader import render_to_string
 from django.utils import translation
 from time import perf_counter_ns as timer
 import time
-geolocator = Nominatim(user_agent='activities')
 import logging
+from redis import StrictRedis
+import redis_lock
+from geopy.extra.rate_limiter import RateLimiter
+
+geolocator = Nominatim(user_agent='activities')
 logger = logging.getLogger('django')
+conn = StrictRedis(host="localhost", port=6655)
+_geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1)
 
 
 def geocode(*args, **kwargs):
-    location = geolocator.geocode(*args, **kwargs)
-    time.sleep(1)
+    with redis_lock.Lock(conn, 'geocode'):
+        location = _geocode(*args, **kwargs)
     return location
         
 

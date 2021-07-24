@@ -1,4 +1,4 @@
-from datetime import time
+from datetime import time, timedelta
 from notify.models import Notification
 from activity.models import Activity
 from django.db import models
@@ -17,6 +17,7 @@ from shared.shared import log
 import json
 
 class User(AbstractUser):
+    GUEST_LIFESPAN = timedelta(hours=24)
     profile_text = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True, null=True)
     location = models.ForeignKey("Location", on_delete=models.CASCADE, blank=True, related_name='population')
@@ -34,6 +35,7 @@ class User(AbstractUser):
     last_location_change = models.DateTimeField(null=True, blank=True)
     audio_room_id = models.PositiveIntegerField(null=True)
     LOCATION_CHANGE_DAYS = 7
+    is_guest = models.BooleanField(default=False)
     action_strings = {
         'created': _('hat erstellt'),
         'has_new_friend': _('ist jetzt befreundet mit'),
@@ -259,7 +261,10 @@ class Location(models.Model):
                 city, state = address.split(',')
                 city = city.lstrip().title()
                 state = state.lstrip().title()
-                location = Location.objects.get(city=city, state=state)
+                try:
+                    location = Location.objects.get(city=city, state=state)
+                except:
+                    location = Location.objects.get(city=address.lstrip().title())
             else:
                 location = Location.objects.get(city=address.lstrip().title())
             return location
