@@ -883,7 +883,7 @@ form label {
     margin: 0;
     display: inline-block;
     position: absolute;
-    top: 7px;
+    top: 10px;
     left: 2px;
 }
 
@@ -894,7 +894,7 @@ a.icon:hover span {
 .hamburger-icon span {
     width: 30px;
     background-color: #ababab;
-    height: 5px;
+    height: 3px;
     display: block;
     margin-bottom: 6px;
 }
