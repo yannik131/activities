@@ -19,7 +19,9 @@
         <form class="login-form" method="post" action="{% url 'account:login' %}" class="login-form">
             {{ form.as_p }}
             {% csrf_token %}
-            <input type="hidden" name="next" value="{{ next }}">
+            {% if next %}
+                <input type="hidden" name="next" value="{{ next }}">
+            {% endif %}
             <div style="display: flex; align-items: center">
                 <input type="submit" value="{% trans "Einloggen" %}">
                 <input class="blue-button" style="background-color: green;" type="button" value="{% trans 'Gastzugang' %}" onclick=openLink("{% url 'account:guest_access' %}")>
