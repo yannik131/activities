@@ -189,7 +189,6 @@ def register(request):
                     user.email = cd['email']
                     user.sex = cd.get('sex')
                     user.birth_year = cd.get('birth_year')
-                    shared.log(cd)
                     user.image = cd.get('image')
                     user.is_guest = False
                     auth_logout(request)
@@ -326,12 +325,15 @@ def login(request):
         if login_form.is_valid():
             user = login_form.user
             auth_login(request, user)
-            return HttpResponseRedirect(reverse('account:home'))
+            if request.POST.get('next'):
+                return HttpResponseRedirect(request.build_absolute_uri(request.POST['next']))
+            else:
+                return HttpResponseRedirect(reverse('account:home'))
     else:
         if request.user.is_authenticated:
             return HttpResponseRedirect(reverse('account:home'))
         login_form = LoginForm()
-    return render(request, 'registration/login.html', dict(form=login_form))
+    return render(request, 'registration/login.html', dict(form=login_form, next=request.GET.get('next')))
     
 def password_change_done(request):
     messages.add_message(request, messages.INFO, _('Passwort erfolgreich geändert.'))
