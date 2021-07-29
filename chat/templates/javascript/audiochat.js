@@ -94,7 +94,7 @@ function colorize(user_id, room_id, color) {
         else {
             new_color = color;
         }
-        user_span.style.color = new_color || color;
+        user_span.style.color = new_color;
     }
 }
 

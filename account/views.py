@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AnonymousUser
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.http.response import HttpResponse, HttpResponseForbidden
@@ -182,7 +183,9 @@ def register(request):
         user_form = UserRegistrationForm(request.POST, files=request.FILES)
         if user_form.is_valid():
             if location_form.is_valid():
-                if request.user.is_guest:
+                if isinstance(request.user, AnonymousUser):
+                    user = user_form.save(commit=False)
+                else:
                     cd = user_form.cleaned_data
                     user = request.user
                     user.username = cd['username']
@@ -192,8 +195,6 @@ def register(request):
                     user.image = cd.get('image')
                     user.is_guest = False
                     auth_logout(request)
-                else:
-                    user = user_form.save(commit=False)
                 user.set_password(user_form.cleaned_data['password'])
                 user.location = location_form.location
                 user.is_active = False
