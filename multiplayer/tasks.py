@@ -1,8 +1,11 @@
+from matplotlib.pyplot import plot
 from activities.celery import app
 from .models import MultiplayerMatch
 from account.models import User
 from django.utils import timezone
 from django.db.models import Q
+from scripts.visualize import plot_current_clicks
+from django.core.mail import EmailMultiAlternatives
 
 @app.task
 def clearMultiplayerMatches():
@@ -15,3 +18,9 @@ def clearMultiplayerMatches():
         
     delete_date = timezone.now()-User.GUEST_LIFESPAN
     User.objects.filter(is_guest=True, date_joined__lt=delete_date).delete()
+    
+@app.task 
+def send_plot_email():
+    plot_current_clicks()
+    email = EmailMultiAlternatives("Current plot", "", 'myactivities.net@web.de', ['yannik131@web.de'])
+    email.attach_file("logs/log.png")
