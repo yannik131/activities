@@ -60,6 +60,7 @@ def plot_current_clicks():
     fig = plt.gcf()
     fig.set_size_inches(10, 5.5)
     fig.savefig("logs/log.png")
+    return y[-1]
 
 if __name__ == "__main__":
     plot_current_clicks()
