@@ -23,6 +23,6 @@ def clearMultiplayerMatches():
 @app.task 
 def send_plot_email():
     yesterdays_clicks = plot_current_clicks()
-    email = EmailMultiAlternatives(f"{datetime.now().strftime('%d.%m.')} - Current plot ({yesterdays_clicks}", "", 'myactivities.net@web.de', ['yannik131@web.de'])
+    email = EmailMultiAlternatives(f"{datetime.now().strftime('%d.%m.')} - Current plot ({yesterdays_clicks})", "", 'myactivities.net@web.de', ['yannik131@web.de'])
     email.attach_file("logs/log.png")
     email.send()
