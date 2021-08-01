@@ -24,3 +24,4 @@ def send_plot_email():
     plot_current_clicks()
     email = EmailMultiAlternatives("Current plot", "", 'myactivities.net@web.de', ['yannik131@web.de'])
     email.attach_file("logs/log.png")
+    email.send()
