@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.db.models import Q
 from scripts.visualize import plot_current_clicks
 from django.core.mail import EmailMultiAlternatives
+from datetime import datetime
 
 @app.task
 def clearMultiplayerMatches():
@@ -22,6 +23,6 @@ def clearMultiplayerMatches():
 @app.task 
 def send_plot_email():
     plot_current_clicks()
-    email = EmailMultiAlternatives("Current plot", "", 'myactivities.net@web.de', ['yannik131@web.de'])
+    email = EmailMultiAlternatives(f"{datetime.now().strftime('%d.%m.')} - Current plot", "", 'myactivities.net@web.de', ['yannik131@web.de'])
     email.attach_file("logs/log.png")
     email.send()
