@@ -56,7 +56,7 @@ def plot_current_clicks():
                 i += 1
 
     plt.bar(x, y, tick_label=[str(i) for i in x])
-    plt.title(f"{now.strftime('%d.%m')} - Total: {total}")
+    plt.title(f"{now.strftime('%d.%m.')} - {datetime.now().strftime('%d.%m')} - Total: {total}")
     fig = plt.gcf()
     fig.set_size_inches(10, 5.5)
     fig.savefig("logs/log.png")
