@@ -308,6 +308,7 @@ function handleBid(data) {
 
 function loadGameField(data) {
     //game_type = data.game_type;
+    document.querySelector('.player5-info').style.display = "none";
     mode = data.mode;
     player_list = JSON.parse(data.players);
     solist = data.solist;
