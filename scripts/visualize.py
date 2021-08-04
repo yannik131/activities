@@ -3,6 +3,9 @@
 import re
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
+import os
+
+os.environ['MPLCONFIGDIR'] = '/tmp/'
 
 def plot_current_clicks():
     with open("logs/uwsgi.log") as f:

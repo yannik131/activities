@@ -6,3 +6,10 @@ daphne -u /tmp/daphne.sock activities.asgi:application --access-log /home/projec
 nginx
 celery -A activities beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler &
 celery -A activities worker --uid not_root &
+
+result=$(ps -e | grep turnserver)
+
+if ! [[ $result ]]
+then
+        turnserver
+fi
