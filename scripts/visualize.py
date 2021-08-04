@@ -32,8 +32,7 @@ def plot_current_clicks():
 
     x = []
     y = []
-    now = datetime.now()-timedelta(days=30)
-    i = now.day
+    now = datetime.now()-timedelta(days=28)
     result_str = ""
     total = 0
     for year in clicks:
@@ -42,13 +41,14 @@ def plot_current_clicks():
         for month in clicks[year]:
             if now.month != month:
                 continue
+            i = now.day
             for day in clicks[year][month]:
                 while day > i:
                     x.append(i)
                     y.append(0)
                     i += 1
                 if day < i:
-                    i = day
+                    continue
                 count = clicks[year][month][day]
                 total += count
                 result_str += f"{day}.{month}.{year}: {count}\n"
@@ -57,8 +57,9 @@ def plot_current_clicks():
                 x.append(i)
                 y.append(clicks[year][month][day])
                 i += 1
-
-    plt.bar(x, y, tick_label=[str(i) for i in x])
+                now += timedelta(days=1)
+    x = [str(v) for v in x]
+    plt.bar(x, y, tick_label=x)
     plt.title(f"{now.strftime('%d.%m.')} - {datetime.now().strftime('%d.%m')} - Total: {total}")
     fig = plt.gcf()
     fig.set_size_inches(10, 5.5)
