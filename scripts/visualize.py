@@ -33,6 +33,7 @@ def plot_current_clicks():
     x = []
     y = []
     now = datetime.now()-timedelta(days=28)
+    now_str = now.strftime('%d.%m.')
     result_str = ""
     total = 0
     for year in clicks:
@@ -60,7 +61,7 @@ def plot_current_clicks():
                 now += timedelta(days=1)
     x = [str(v) for v in x]
     plt.bar(x, y, tick_label=x)
-    plt.title(f"{now.strftime('%d.%m.')} - {datetime.now().strftime('%d.%m')} - Total: {total}")
+    plt.title(f"{now_str} - {datetime.now().strftime('%d.%m')} - Total: {total}")
     fig = plt.gcf()
     fig.set_size_inches(10, 5.5)
     fig.savefig("logs/log.png")
