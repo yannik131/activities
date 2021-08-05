@@ -3,7 +3,6 @@ from .models import MultiplayerMatch
 from account.models import User
 from django.utils import timezone
 from django.db.models import Q
-from scripts.visualize import plot_current_clicks
 from django.core.mail import EmailMultiAlternatives
 from datetime import datetime, timedelta
 import re
