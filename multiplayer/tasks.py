@@ -41,20 +41,21 @@ def plot_current_clicks():
     clicks = dict()
     parse_regex = "(.*), (.*): (?:GET|POST) \/(.*) -> \d+ms \((\d+)"
     banned = ["77.20.167.28", "34.140.175.20"]
-
+    file = open("logs/accepted_requests.txt", "w")
     for line in content:
         match = re.findall(parse_regex, line)
         if match:
             match = match[0]
             if match[3] == "302" or match[1] in banned or not match[2].endswith('/'):
                 continue
+            file.write(line+"\n")
             dt = datetime.strptime(match[0], "%c")
             year_clicks = clicks.setdefault(dt.year, dict())
             month_clicks = year_clicks.setdefault(dt.month, dict())
             if dt.day not in month_clicks:
                 month_clicks[dt.day] = 0
             month_clicks[dt.day] += 1
-
+    file.close()
     x = []
     y = []
     now = datetime.now()-timedelta(days=28)
