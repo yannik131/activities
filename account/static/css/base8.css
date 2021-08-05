@@ -1208,7 +1208,7 @@ margin-bottom: 20px;
     margin-bottom: 5px;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    background-color: #2d2d2d;
+    background-color: #3b3b3b;
 }
 .chat-middle::-webkit-scrollbar {
     display: none;
