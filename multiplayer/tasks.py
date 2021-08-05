@@ -36,17 +36,17 @@ def plot_current_clicks():
     with open("logs/uwsgi.log") as f:
         content = f.readlines()
 
-    allowed = ['activity', 'multiplayer', 'competitions', 'usergroups', 'vacancies', 'account', 'character', 'notify', 'scheduling', 'wall'];
+    allowed = ['activity', 'multiplayer', 'competitions', 'usergroups', 'vacancies', 'account', 'character', 'notify', 'scheduling', 'wall']
 
     clicks = dict()
-    parse_regex = "(.*), (.*): (?:GET|POST) /(.*) ->";
+    parse_regex = "(.*), (.*): (?:GET|POST) \/(.*) -> \d+ms \((\d+)"
     banned = ["77.20.167.28", "34.140.175.20"]
 
     for line in content:
         match = re.findall(parse_regex, line)
         if match:
             match = match[0]
-            if match[1] in banned or not match[2].endswith('/'):
+            if match[3] == "302" or match[1] in banned or not match[2].endswith('/'):
                 continue
             dt = datetime.strptime(match[0], "%c")
             year_clicks = clicks.setdefault(dt.year, dict())

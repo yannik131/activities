@@ -336,6 +336,7 @@ def login(request):
         login_form = LoginForm()
     return render(request, 'registration/login.html', dict(form=login_form, next=request.GET.get('next')))
     
+    
 def password_change_done(request):
     messages.add_message(request, messages.INFO, _('Passwort erfolgreich geändert.'))
     return HttpResponseRedirect(reverse('account:edit'))
