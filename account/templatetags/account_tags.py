@@ -43,4 +43,4 @@ def online_count():
 
 @register.simple_tag
 def total_count():
-    return User.objects.count()
+    return User.objects.filter(is_active=True).count()

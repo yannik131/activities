@@ -48,7 +48,7 @@ def plot_current_clicks():
             match = match[0]
             if match[3] == "302" or match[1] in banned or not match[2].endswith('/'):
                 continue
-            file.write(line+"\n")
+            file.write(line)
             dt = datetime.strptime(match[0], "%c")
             year_clicks = clicks.setdefault(dt.year, dict())
             month_clicks = year_clicks.setdefault(dt.month, dict())

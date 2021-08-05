@@ -272,7 +272,7 @@ def delete(request):
                 messages.add_message(request, messages.INFO, _('Sie sind noch Admin mindestens einer Gruppe. Löschen sie zuerst diese Gruppen oder legen Sie einen neuen Admin fest, bevor Sie Ihren Account löschen.'))
                 return HttpResponseRedirect(reverse('usergroups:group_list'))
             Suggestion.objects.filter(character__user__id=request.user.id).delete()
-            send_mail(f'Delete: {request.user}. Total: {User.objects.count()-1}')
+            send_mail(f'Delete: {request.user}. Total: {User.objects.filter(is_guest=False).count()-1}')
             return HttpResponseRedirect(reverse('account:home'))
     else:
         delete_form = DeleteForm()
@@ -289,7 +289,7 @@ def activate(request, uidb64=None, token=None):
         user.is_active = True
         user.save()
         auth_login(request, user)
-        send_mail(f'Registration {User.objects.count()}: {user}', f'Location: {user.location}, Inactive: {User.objects.filter(is_active=False).count()}')
+        send_mail(f'Registration {User.objects.filter(is_guest=False).count()}: {user}', f'Location: {user.location}, Inactive: {User.objects.filter(is_active=False).count()}')
         return HttpResponseRedirect(reverse('account:home'))
     else:
         messages.add_message(request, messages.INFO, _('Der Aktivierungslink ist ungültig. Falls der Account noch inaktiv ist, können Sie durch erneutes Registrieren einen neuen anfordern!'))
