@@ -7,7 +7,7 @@ from django.core.mail import EmailMultiAlternatives
 from datetime import datetime, timedelta
 import re
 import os
-os.environ['MPLCONFIGDIR'] = '/home/projects/activities/config/matplotlib/'
+os.environ['MPLCONFIGDIR'] = '/tmp/'
 
 import matplotlib.pyplot as plt
 
