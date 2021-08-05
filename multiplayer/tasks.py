@@ -6,12 +6,11 @@ from django.db.models import Q
 from django.core.mail import EmailMultiAlternatives
 from datetime import datetime, timedelta
 import re
-import matplotlib.pyplot as plt
 import os
-import logging
-logger = logging.getLogger('django')
-
 os.environ['MPLCONFIGDIR'] = '/home/projects/activities/config/matplotlib/'
+
+import matplotlib.pyplot as plt
+
 
 @app.task
 def clearMultiplayerMatches():
@@ -27,7 +26,6 @@ def clearMultiplayerMatches():
     
 @app.task 
 def send_plot_email():
-    logger.log(logging.WARNING, "Starting email crap")
     yesterdays_clicks = plot_current_clicks()
     email = EmailMultiAlternatives(f"{datetime.now().strftime('%d.%m.')} - Current plot ({yesterdays_clicks})", "", 'myactivities.net@web.de', ['yannik131@web.de'])
     email.attach_file("logs/log.png")
@@ -35,7 +33,6 @@ def send_plot_email():
 
 
 def plot_current_clicks():
-    logger.log(logging.WARNING, "Yeah you know")
     with open("logs/uwsgi.log") as f:
         content = f.readlines()
 
