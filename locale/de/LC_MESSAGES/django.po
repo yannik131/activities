@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-24 15:43+0200\n"
+"POT-Creation-Date: 2021-08-05 17:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,125 +138,125 @@ msgstr ""
 msgid "Ich bin kein Roboter!"
 msgstr ""
 
-#: account/models.py:27
+#: account/models.py:26
 msgid "männlich"
 msgstr ""
 
-#: account/models.py:28
+#: account/models.py:27
 msgid "weiblich"
 msgstr ""
 
-#: account/models.py:40
+#: account/models.py:39
 msgid "hat erstellt"
 msgstr ""
 
-#: account/models.py:41
+#: account/models.py:40
 msgid "ist jetzt befreundet mit"
 msgstr ""
 
-#: account/models.py:42
+#: account/models.py:41
 msgid "ist nicht mehr befreundet mit"
 msgstr ""
 
-#: account/models.py:43
+#: account/models.py:42
 msgid "hat Ihnen eine Freundschaftsanfrage geschickt"
 msgstr ""
 
-#: account/models.py:44
+#: account/models.py:43
 msgid "ist beigetreten"
 msgstr ""
 
-#: account/models.py:45
+#: account/models.py:44
 msgid "hat verlassen"
 msgstr ""
 
-#: account/models.py:46
+#: account/models.py:45
 msgid "hat zugesagt"
 msgstr ""
 
-#: account/models.py:47
+#: account/models.py:46
 msgid "hat abgesagt"
 msgstr ""
 
-#: account/models.py:48
+#: account/models.py:47
 msgid "hat sich beworben"
 msgstr ""
 
-#: account/models.py:49
+#: account/models.py:48
 msgid "hat etwas gepostet in"
 msgstr ""
 
-#: account/models.py:50
+#: account/models.py:49
 msgid "hat etwas gepostet"
 msgstr ""
 
-#: account/models.py:51
+#: account/models.py:50
 msgid "hat etwas kommentiert"
 msgstr ""
 
-#: account/models.py:52
+#: account/models.py:51
 msgid "hat eure Freundschaft beendet"
 msgstr ""
 
-#: account/models.py:53
+#: account/models.py:52
 msgid "hat Sie eingeladen"
 msgstr ""
 
-#: account/models.py:54
+#: account/models.py:53
 msgid "hat Ihre Freundschaftsanfrage angenommen"
 msgstr ""
 
-#: account/models.py:55
+#: account/models.py:54
 msgid "hat Ihre Freundschaftsanfrage abgelehnt"
 msgstr ""
 
-#: account/models.py:56
+#: account/models.py:55
 msgid "hat Ihre Bewerbung abgelehnt"
 msgstr ""
 
-#: account/models.py:57
+#: account/models.py:56
 msgid "gefällt"
 msgstr ""
 
-#: account/models.py:58
+#: account/models.py:57
 msgid "missfällt"
 msgstr ""
 
-#: account/models.py:201
+#: account/models.py:200
 msgid "Ausstehend"
 msgstr ""
 
-#: account/models.py:202
+#: account/models.py:201
 msgid "Angenommen"
 msgstr ""
 
-#: account/models.py:203
+#: account/models.py:202
 msgid "Abgelehnt"
 msgstr ""
 
-#: account/models.py:275
+#: account/models.py:274
 msgid "Diese Adresse konnte nicht gefunden werden."
 msgstr ""
 
-#: account/models.py:277
+#: account/models.py:276
 msgid ""
 "Aus der Adresse konnte die Stadt nicht ermittelt werden. Bitte geben Sie die "
 "Stadt explizit an (Dörfer/Ortsteile werden nicht erkannt)."
 msgstr ""
 
-#: account/models.py:334 vacancies/models.py:29
+#: account/models.py:333 vacancies/models.py:29
 msgid "Land"
 msgstr ""
 
-#: account/models.py:335 vacancies/models.py:30
+#: account/models.py:334 vacancies/models.py:30
 msgid "Bundesland"
 msgstr ""
 
-#: account/models.py:336 vacancies/models.py:31
+#: account/models.py:335 vacancies/models.py:31
 msgid "Landkreis"
 msgstr ""
 
-#: account/models.py:337 vacancies/models.py:32
+#: account/models.py:336 vacancies/models.py:32
 msgid "Stadt"
 msgstr ""
 
@@ -1148,10 +1148,10 @@ msgid "Bewerbungen & Einladungen"
 msgstr ""
 
 #: account/templates/account/sidemenu.html:17
-#: account/templates/registration/login.html:35
+#: account/templates/registration/login.html:37
 #: account/templates/registration/register.html:7
 #: account/templates/registration/register.html:14
-#: account/templates/registration/register.html:30
+#: account/templates/registration/register.html:32
 msgid "Registrieren"
 msgstr ""
 
@@ -1229,7 +1229,7 @@ msgstr ""
 
 #: account/templates/registration/guest_access.html:7
 #: account/templates/registration/guest_access.html:14
-#: account/templates/registration/login.html:25
+#: account/templates/registration/login.html:27
 msgid "Gastzugang"
 msgstr ""
 
@@ -1254,9 +1254,9 @@ msgstr ""
 #: account/templates/registration/guest_access.html:18
 #, python-format
 msgid ""
-"Der Gastaccount wird ungültig wenn Sie sich ausloggen und wird nach "
-"%(hours)s Stunden automatisch gelöscht. Bis dahin können Sie sich jederzeit "
-"<a href=\"/account/register/\">registrieren</a>, um Ihre Daten zu speichern."
+"Der Gastaccount wird ungültig wenn Sie sich ausloggen und wird nach %(days)s "
+"Tagen automatisch gelöscht. Bis dahin können Sie sich jederzeit <a href=\"/"
+"account/register/\">registrieren</a>, um Ihre Daten zu speichern."
 msgstr ""
 
 #: account/templates/registration/guest_access.html:20
@@ -1269,7 +1269,7 @@ msgstr ""
 
 #: account/templates/registration/login.html:7
 #: account/templates/registration/login.html:14
-#: account/templates/registration/login.html:24
+#: account/templates/registration/login.html:26
 msgid "Einloggen"
 msgstr ""
 
@@ -1286,7 +1286,7 @@ msgstr ""
 msgid "Bitte nutzen Sie das folgende Formular zum Einloggen:"
 msgstr ""
 
-#: account/templates/registration/login.html:31
+#: account/templates/registration/login.html:33
 #: account/templates/registration/password_reset_confirm.html:5
 #: account/templates/registration/password_reset_confirm.html:8
 #: account/templates/registration/password_reset_done.html:5
@@ -1360,25 +1360,25 @@ msgid ""
 "den Aktivierungslink und die Passwort-Zurücksetzung verwendet."
 msgstr ""
 
-#: account/templates/registration/register.html:21
+#: account/templates/registration/register.html:22
 msgid "Die Daten Ihres Gastaccounts bleiben nach der Registrierung erhalten."
 msgstr ""
 
-#: account/templates/registration/register.html:27
+#: account/templates/registration/register.html:29
 msgid ""
 "Wo leben Sie derzeit? Zur eindeutigen Bestimmung bitte auch das Bundesland "
 "angeben. Das Bestimmen Ihres Ortes kann mehrere Sekunden in Anspruch nehmen."
 msgstr ""
 
-#: account/templates/registration/register.html:37
+#: account/templates/registration/register.html:39
 msgid "Passwörter prüfen"
 msgstr ""
 
-#: account/templates/registration/register.html:52
+#: account/templates/registration/register.html:54
 msgid "Nutzername zu lang (max. 10 Zeichen, derzeitige Länge: "
 msgstr ""
 
-#: account/templates/registration/register.html:59
+#: account/templates/registration/register.html:61
 msgid "Nutzername bereits vergeben: "
 msgstr ""
 
@@ -1402,34 +1402,34 @@ msgstr ""
 msgid "Aktivierungs-E-Mail"
 msgstr ""
 
-#: account/views.py:80
+#: account/views.py:81
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
 "senden."
 msgstr ""
 
-#: account/views.py:83 account/views.py:108 account/views.py:124
+#: account/views.py:84 account/views.py:109 account/views.py:125
 msgid "Ihr seid bereits Freunde."
 msgstr ""
 
-#: account/views.py:90
+#: account/views.py:91
 msgid "Freundschaftsanfrage wurde verschickt."
 msgstr ""
 
-#: account/views.py:105
+#: account/views.py:106
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr ""
 
-#: account/views.py:145
+#: account/views.py:146
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr ""
 
-#: account/views.py:166
+#: account/views.py:167
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr ""
 
-#: account/views.py:173
+#: account/views.py:174
 #, python-brace-format
 msgid "Sie haben die Freundschaft mit {user} beendet."
 msgstr ""
@@ -1481,19 +1481,19 @@ msgstr ""
 msgid "Gast"
 msgstr ""
 
-#: account/views.py:337
+#: account/views.py:340
 msgid "Passwort erfolgreich geändert."
 msgstr ""
 
-#: account/views.py:341
+#: account/views.py:344
 msgid "Ihr Passwort wurde zurückgesetzt."
 msgstr ""
 
-#: account/views.py:374
+#: account/views.py:377
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr ""
 
-#: account/views.py:376
+#: account/views.py:379
 msgid "Markierung wurde nicht gefunden!"
 msgstr ""
 
@@ -2727,7 +2727,7 @@ msgid "Okay"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:6
-#: multiplayer/templates/javascript/doppelkopf.js:434
+#: multiplayer/templates/javascript/doppelkopf.js:435
 msgid "Gesund"
 msgstr ""
 
@@ -2799,7 +2799,7 @@ msgstr ""
 msgid "Normalspiel"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:360
+#: multiplayer/templates/javascript/doppelkopf.js:361
 #: multiplayer/templates/javascript/durak.js:187
 #: multiplayer/templates/javascript/skat.js:164
 #: multiplayer/templates/javascript/skat.js:201
