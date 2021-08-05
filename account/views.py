@@ -317,7 +317,7 @@ def guest_access(request):
             return HttpResponseRedirect(reverse('account:home'))
     else:
         form = GuestForm()
-    return render(request, 'registration/guest_access.html', dict(form=form, hours=int(User.GUEST_LIFESPAN.total_seconds()/3600)))
+    return render(request, 'registration/guest_access.html', dict(form=form, days=int(User.GUEST_LIFESPAN.total_seconds()/3600/24)))
 
 
 def login(request):

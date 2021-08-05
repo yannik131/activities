@@ -13,11 +13,10 @@ from django.utils.translation import gettext_lazy as _
 from character.models import Character
 from .utils import geocode
 from django.forms import ValidationError
-from shared.shared import log
 import json
 
 class User(AbstractUser):
-    GUEST_LIFESPAN = timedelta(hours=24)
+    GUEST_LIFESPAN = timedelta(days=3)
     profile_text = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True, null=True)
     location = models.ForeignKey("Location", on_delete=models.CASCADE, blank=True, related_name='population')

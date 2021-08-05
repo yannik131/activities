@@ -15,7 +15,7 @@
         
         <p><strong>{% trans "Hier ist der Nebeneingang mit Türsteher!" %}</strong></p>
         <p class="info-p" style="color: yellow">
-            {% blocktrans with hours=hours %}Der Gastaccount wird ungültig wenn Sie sich ausloggen und wird nach {{ hours }} Stunden automatisch gelöscht. Bis dahin können Sie sich jederzeit <a href="/account/register/">registrieren</a>, um Ihre Daten zu speichern.{% endblocktrans %}
+            {% blocktrans with days=days %}Der Gastaccount wird ungültig wenn Sie sich ausloggen und wird nach {{ days }} Tagen automatisch gelöscht. Bis dahin können Sie sich jederzeit <a href="/account/register/">registrieren</a>, um Ihre Daten zu speichern.{% endblocktrans %}
         </p>
             <p>{% trans "Zwei Klicks noch und es kann losgehen!" %}</p>
             <form class="login-form" method="post" class="login-form">
