@@ -29,6 +29,7 @@ def send_plot_email():
     yesterdays_clicks = plot_current_clicks()
     email = EmailMultiAlternatives(f"{datetime.now().strftime('%d.%m.')} - Current plot ({yesterdays_clicks})", "", 'myactivities.net@web.de', ['yannik131@web.de'])
     email.attach_file("logs/log.png")
+    email.attach_file("logs/accepted_requests.txt")
     email.send()
 
 
@@ -40,7 +41,7 @@ def plot_current_clicks():
 
     clicks = dict()
     parse_regex = "(.*), (.*): (?:GET|POST) \/(.*) -> \d+ms \((\d+)"
-    banned = ["77.20.167.28", "34.140.175.20"]
+    banned = ["77.20.167.28", "34.140.175.20", "5.188.62.214"]
     file = open("logs/accepted_requests.txt", "w")
     for line in content:
         match = re.findall(parse_regex, line)
