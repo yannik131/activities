@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.db.models import Q
 from django.core.mail import EmailMultiAlternatives
 from datetime import datetime, timedelta
+from shared.shared import log
 import re
 import os
 os.environ['MPLCONFIGDIR'] = '/tmp/'
@@ -74,9 +75,6 @@ def plot_current_clicks():
                 continue
             i = now.day
             for day in clicks[year][month]:
-                if day < now.day:
-                    i += 1
-                    continue
                 while day > i:
                     x.append(i)
                     y.append(0)
@@ -90,6 +88,7 @@ def plot_current_clicks():
                     result_str += ("#"*50)+"\n"
                 x.append(i)
                 y.append(clicks[year][month][day])
+                log(f"now.day = {now.day}, now.month = {now.month}, i = {i}")
                 i += 1
                 now += timedelta(days=1)
     x = [str(v) for v in x]
