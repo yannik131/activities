@@ -74,6 +74,9 @@ def plot_current_clicks():
                 continue
             i = now.day
             for day in clicks[year][month]:
+                if day < now.day:
+                    i += 1
+                    continue
                 while day > i:
                     x.append(i)
                     y.append(0)
