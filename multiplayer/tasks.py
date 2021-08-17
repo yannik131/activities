@@ -4,8 +4,9 @@ from account.models import User
 from django.utils import timezone
 from django.db.models import Q
 from django.core.mail import EmailMultiAlternatives
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from shared.shared import log
+import locale
 import re
 import os
 os.environ['MPLCONFIGDIR'] = '/tmp/'
@@ -37,9 +38,6 @@ def send_plot_email():
 def plot_current_clicks():
     with open("logs/uwsgi.log") as f:
         content = f.readlines()
-
-    allowed = ['activity', 'multiplayer', 'competitions', 'usergroups', 'vacancies', 'account', 'character', 'notify', 'scheduling', 'wall']
-
     clicks = dict()
     parse_regex = "(.*), (.*): (?:GET|POST) \/(.*) -> \d+ms \((\d+)"
     banned = ["77.20.167.28", "34.140.175.20", "5.188.62.214"]
@@ -51,49 +49,28 @@ def plot_current_clicks():
             if match[3] == "302" or match[1] in banned or not match[2].endswith('/'):
                 continue
             accepted_requests.append(line)
-            dt = datetime.strptime(match[0], "%c")
-            year_clicks = clicks.setdefault(dt.year, dict())
-            month_clicks = year_clicks.setdefault(dt.month, dict())
-            if dt.day not in month_clicks:
-                month_clicks[dt.day] = 0
-            month_clicks[dt.day] += 1
+            dt = datetime.strptime(match[0], "%a %b %d %H:%M:%S %Y")
+            d = date(dt.year, dt.month, dt.day)
+            if not d in clicks:
+                clicks[d] = 0
+            clicks[d] += 1
     with open("logs/accepted_requests.txt", "w") as file:
         for line in reversed(accepted_requests):
             file.write(line)
         file.close()
     x = []
     y = []
-    now = datetime.now()-timedelta(days=28)
-    now_str = now.strftime('%d.%m.')
-    result_str = ""
+    today = date.today()
+    start = today-timedelta(days=28)
     total = 0
-    for year in clicks:
-        if now.year != year:
+    for day in clicks:
+        if day < start:
             continue
-        for month in clicks[year]:
-            if now.month != month:
-                continue
-            i = now.day
-            for day in clicks[year][month]:
-                while day > i:
-                    x.append(i)
-                    y.append(0)
-                    i += 1
-                if day < i:
-                    continue
-                count = clicks[year][month][day]
-                total += count
-                result_str += f"{day}.{month}.{year}: {count}\n"
-                if count > 100:
-                    result_str += ("#"*50)+"\n"
-                x.append(i)
-                y.append(clicks[year][month][day])
-                log(f"now.day = {now.day}, now.month = {now.month}, i = {i}")
-                i += 1
-                now += timedelta(days=1)
-    x = [str(v) for v in x]
+        x.append(day.strftime('%d.'))
+        y.append(clicks[day])
+        total += clicks[day]
     plt.bar(x, y, tick_label=x)
-    plt.title(f"{now_str} - {datetime.now().strftime('%d.%m')} - Total: {total}")
+    plt.title(f"{start.strftime('%d.%m.%y')} - {today.strftime('%d.%m.%y')} - Total: {total}")
     fig = plt.gcf()
     fig.set_size_inches(10, 5.5)
     fig.savefig("logs/log.png")
