@@ -40,7 +40,7 @@ def plot_current_clicks():
     parse_regex = "(.*), (.*): (?:GET|POST) \/(.*) -> \d+ms \((\d+)"
     banned = ["77.20.167.28", "34.140.175.20", "5.188.62.214"]
     accepted_requests = []
-    today = date.today()-timedelta(days=20)
+    today = date.today()
     start = today-timedelta(days=28)
     for line in content:
         match = re.findall(parse_regex, line)
