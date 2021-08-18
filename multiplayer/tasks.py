@@ -5,8 +5,6 @@ from django.utils import timezone
 from django.db.models import Q
 from django.core.mail import EmailMultiAlternatives
 from datetime import datetime, timedelta, date
-from shared.shared import log
-import locale
 import re
 import os
 os.environ['MPLCONFIGDIR'] = '/tmp/'
@@ -42,15 +40,19 @@ def plot_current_clicks():
     parse_regex = "(.*), (.*): (?:GET|POST) \/(.*) -> \d+ms \((\d+)"
     banned = ["77.20.167.28", "34.140.175.20", "5.188.62.214"]
     accepted_requests = []
+    today = date.today()-timedelta(days=20)
+    start = today-timedelta(days=28)
     for line in content:
         match = re.findall(parse_regex, line)
         if match:
             match = match[0]
             if match[3] == "302" or match[1] in banned or not match[2].endswith('/'):
                 continue
-            accepted_requests.append(line)
             dt = datetime.strptime(match[0], "%a %b %d %H:%M:%S %Y")
             d = date(dt.year, dt.month, dt.day)
+            if d < start:
+                continue
+            accepted_requests.append(line)
             if not d in clicks:
                 clicks[d] = 0
             clicks[d] += 1
@@ -60,12 +62,8 @@ def plot_current_clicks():
         file.close()
     x = []
     y = []
-    today = date.today()
-    start = today-timedelta(days=28)
     total = 0
     for day in clicks:
-        if day < start:
-            continue
         x.append(day.strftime('%d.'))
         y.append(clicks[day])
         total += clicks[day]
@@ -74,4 +72,5 @@ def plot_current_clicks():
     fig = plt.gcf()
     fig.set_size_inches(10, 5.5)
     fig.savefig("logs/log.png")
+    plt.close()
     return y[-1]
