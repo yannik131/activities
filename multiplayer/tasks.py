@@ -67,6 +67,8 @@ def plot_current_clicks():
         x.append(day.strftime('%d.'))
         y.append(clicks[day])
         total += clicks[day]
+    plt.xlabel("Tag")
+    plt.ylabel("Aufrufe")
     plt.bar(x, y, tick_label=x)
     plt.title(f"{start.strftime('%d.%m.%y')} - {today.strftime('%d.%m.%y')} - Total: {total}")
     fig = plt.gcf()

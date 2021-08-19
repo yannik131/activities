@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 17:18+0200\n"
-"PO-Revision-Date: 2021-08-05 17:19+0200\n"
+"POT-Creation-Date: 2021-08-19 18:53+0200\n"
+"PO-Revision-Date: 2021-08-19 18:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -1862,19 +1862,19 @@ msgstr "You're already logged in! What else do you need!?"
 msgid "Gast"
 msgstr "Guest"
 
-#: account/views.py:340
+#: account/views.py:341
 msgid "Passwort erfolgreich geändert."
 msgstr "Your password was changed successfully."
 
-#: account/views.py:344
+#: account/views.py:345
 msgid "Ihr Passwort wurde zurückgesetzt."
 msgstr "Your password was successfully reset."
 
-#: account/views.py:377
+#: account/views.py:378
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr "Marker was successfully deleted."
 
-#: account/views.py:379
+#: account/views.py:380
 msgid "Markierung wurde nicht gefunden!"
 msgstr "Marker not found!"
 
@@ -2789,11 +2789,23 @@ msgstr "All question have been answered!"
 msgid "Hole Daten.."
 msgstr "Fetching data.."
 
-#: character/views.py:38
+#: character/views.py:18
+#, python-brace-format
+msgid ""
+"Wenn Sie sich nicht <a href='{register_link}'>registrieren</a>, werden Ihre "
+"Daten mit dem Logout oder spätestens nach {days} Tagen gelöscht. Sie können "
+"dann nicht mehr mit Ihrem Ergebnis in der Gegend nach Freunden oder "
+"passenden Aktivitäten suchen."
+msgstr ""
+"If you don't <a href='{register_link}'>register</a>, your results will be "
+"deleted in {days} days or when you log out. You won't be able to continue "
+"looking for friends or suitable activities in your area any if that happens."
+
+#: character/views.py:40
 msgid "Wählen Sie zuerst einen der drei Fragebogen aus, bevor Sie beginnen."
 msgstr "Please choose on of the three questionnaires before you start."
 
-#: character/views.py:43
+#: character/views.py:45
 msgid ""
 "Sie haben den Test bereits beendet. Wollen Sie ihn erneut machen, können Sie "
 "weiter unten Ihr Ergebnis zurücksetzen."

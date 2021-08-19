@@ -302,7 +302,14 @@ function connect() {
 }
 
 function send(message) {
-    user_websocket.send(JSON.stringify(message));
+    if(user_websocket.readyState == 1) {
+        user_websocket.send(JSON.stringify(message));
+    }
+    else {
+        user_websocket.addEventListener('open', function() {
+            send(message);
+        });
+    }
 }
 
 function parse(json_string) {
@@ -344,7 +351,7 @@ function footerResize(max) {
 
 footerResize();
 
-window.addEventListener('resize', footerResize);
+//window.addEventListener('resize', footerResize);
 
 function showChat(chat, id) {
     var chats = document.getElementsByClassName('chat-window');

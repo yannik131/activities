@@ -56,7 +56,7 @@ function next() {
         if(current_question == limit) {
             send({'type': 'character', 'action': 'done'});
             info.innerHTML = "{% trans 'Alle Fragen wurden beantwortet!' %}";
-            openLink("{% url 'character:overview' %}");
+            openLink("{% url 'character:overview' %}?finished=1");
         }
         else {
             button.onclick = next;
@@ -85,9 +85,7 @@ window.addEventListener('load', function() {
     counter = document.getElementById('counter');
     time = document.getElementById('time');
     question_span.innerHTML = "{% trans 'Hole Daten..' %}";
-    user_websocket.addEventListener('open', function() {
-        send({'type': 'character', 'action': 'current_question'});
-    });
+    send({'type': 'character', 'action': 'current_question'});
 });
 
 function handleCurrentQuestion(n) {

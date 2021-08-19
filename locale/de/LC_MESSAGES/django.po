@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 17:18+0200\n"
+"POT-Creation-Date: 2021-08-19 18:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1481,19 +1481,19 @@ msgstr ""
 msgid "Gast"
 msgstr ""
 
-#: account/views.py:340
+#: account/views.py:341
 msgid "Passwort erfolgreich geändert."
 msgstr ""
 
-#: account/views.py:344
+#: account/views.py:345
 msgid "Ihr Passwort wurde zurückgesetzt."
 msgstr ""
 
-#: account/views.py:377
+#: account/views.py:378
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr ""
 
-#: account/views.py:379
+#: account/views.py:380
 msgid "Markierung wurde nicht gefunden!"
 msgstr ""
 
@@ -2216,11 +2216,20 @@ msgstr ""
 msgid "Hole Daten.."
 msgstr ""
 
-#: character/views.py:38
+#: character/views.py:18
+#, python-brace-format
+msgid ""
+"Wenn Sie sich nicht <a href='{register_link}'>registrieren</a>, werden Ihre "
+"Daten mit dem Logout oder spätestens nach {days} Tagen gelöscht. Sie können "
+"dann nicht mehr mit Ihrem Ergebnis in der Gegend nach Freunden oder "
+"passenden Aktivitäten suchen."
+msgstr ""
+
+#: character/views.py:40
 msgid "Wählen Sie zuerst einen der drei Fragebogen aus, bevor Sie beginnen."
 msgstr ""
 
-#: character/views.py:43
+#: character/views.py:45
 msgid ""
 "Sie haben den Test bereits beendet. Wollen Sie ihn erneut machen, können Sie "
 "weiter unten Ihr Ergebnis zurücksetzen."
