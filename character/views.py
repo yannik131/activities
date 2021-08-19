@@ -14,7 +14,7 @@ from django.urls import reverse
 
 # Create your views here.
 def overview(request, category_name=None):
-    if request.GET.get('finished'):
+    if request.GET.get('finished') and request.user.is_guest:
         messages.add_message(request, messages.INFO, _("Wenn Sie sich nicht <a href='{register_link}'>registrieren</a>, werden Ihre Daten mit dem Logout oder spätestens nach {days} Tagen gelöscht. Sie können dann nicht mehr mit Ihrem Ergebnis in der Gegend nach Freunden oder passenden Aktivitäten suchen.").format(register_link=reverse('account:register'), days=User.GUEST_LIFESPAN.days))
         return HttpResponseRedirect(reverse('character:overview'))
     if not request.user.character:
