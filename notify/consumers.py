@@ -104,6 +104,26 @@ class NotificationConsumer(WebsocketConsumer):
             self.generate_chat_window(text_data)
         elif text_data['action'] == 'list':
             self.generate_chat_list(text_data)
+        elif text_data['action'] == 'typing':
+            self.distribute_typing_state(text_data, True)
+        elif text_data['action'] == 'stopped_typing':
+            self.distribute_typing_state(text_data, False)
+            
+    def distribute_typing_state(self, text_data, state):
+        #TODO: Decorator hierdraus machen!
+        chat_room_id = text_data['id']
+        try:
+            chat_room = ChatRoom.objects.only('members').get(id=chat_room_id) 
+        except:
+            log('Could not find chat room with text_data=', text_data)
+            return
+        broadcast(chat_room.members.all(), {
+            'type': 'chat_message',
+            'action': 'typing_state',
+            'room_id': chat_room_id,
+            'state': "1" if state else "",
+            'user_id': self.user.id
+        })
                
     def distribute_chat_message(self, text_data):
         chat_room_id = text_data['id']

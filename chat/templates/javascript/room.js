@@ -7,6 +7,8 @@ var whitespaceRegex = /\s/
 var kicked_out = false;
 var room_imgs_loaded = {};
 var audio_room_id;
+var is_typing = false;
+var stopped_typing_callback;
 
 function init_chat(pk) {
     if(room_imgs_loaded[pk] != undefined) {
@@ -19,6 +21,9 @@ function init_chat(pk) {
         if(e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             submitClick(this);
+        }
+        else {
+            sendIsTyping(this);
         }
     }
     var joinButton = document.getElementById('call-button-'+audio_room_id);
@@ -42,6 +47,40 @@ function init_chat(pk) {
         window.scrollTo(0, 0);
     });
     requestShow(pk);
+}
+
+function sendIsTyping(chat_input) {
+    var room_id = chat_input.id.split('-')[2];
+    if(stopped_typing_callback) {
+        clearTimeout(stopped_typing_callback);
+    }
+    else {
+        send({'type': 'chat', 'action': 'typing', 'id': room_id});
+    }
+    stopped_typing_callback = setTimeout(function() { sendStoppedTyping(room_id); }, 2000);
+}
+
+function sendStoppedTyping(room_id) {
+    send({'type': 'chat', 'action': 'stopped_typing', 'id': room_id});
+    stopped_typing_callback = null;
+}
+
+function handleTypingState(room_id, user_id, state) {
+    if(user_id == this_user_id) {
+        return;
+    }
+    var user_span = document.getElementById(room_id+'-member-name-'+user_id);
+    if(!user_span) {
+        return;
+    }
+    if(state) {
+        old_colors[user_id] = user_span.style.color;
+        user_span.style.color = "red";
+    }
+    //TODO: Farben! Grün, gelb, weiß, rot..
+    else {
+        user_span.style.color = old_colors[user_id];
+    }
 }
 
 function handleChatMessage(data) {

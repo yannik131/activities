@@ -4,6 +4,7 @@
 var user_websocket;
 var reconnect_count = 0;
 const this_user = "{{ user }}";
+const this_user_id = "{{ user.id }}";
 var unload_room_id;
 let current_room_id;
 {% if current_chat_room %}
@@ -246,6 +247,9 @@ function connect() {
                     case 'delete':
                         handleChatMessage(data);
                         manageChatWindows(data.action, data.room_id, data.target, data.username == this_user);
+                        break;
+                    case 'typing_state':
+                        handleTypingState(data.room_id, data.user_id, data.state)
                         break;
                     default:
                         console.error('Unknown chat action', data.action);
