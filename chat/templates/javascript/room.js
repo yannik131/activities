@@ -21,6 +21,10 @@ function init_chat(pk) {
         if(e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             submitClick(this);
+            if(stopped_typing_callback) {
+                sendStoppedTyping(chat_input.id.split('-')[2]);
+                clearTimeout(stopped_typing_callback);
+            }
         }
         else {
             sendIsTyping(this);
