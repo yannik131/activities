@@ -23,7 +23,6 @@ function init_chat(pk) {
             submitClick(this);
             if(stopped_typing_callback) {
                 sendStoppedTyping(chat_input.id.split('-')[2]);
-                clearTimeout(stopped_typing_callback);
             }
         }
         else {
@@ -65,8 +64,11 @@ function sendIsTyping(chat_input) {
 }
 
 function sendStoppedTyping(room_id) {
-    send({'type': 'chat', 'action': 'stopped_typing', 'id': room_id});
-    stopped_typing_callback = null;
+    if(stopped_typing_callback) {
+        send({'type': 'chat', 'action': 'stopped_typing', 'id': room_id});
+        clearTimeout(stopped_typing_callback);
+        stopped_typing_callback = null;
+    }
 }
 
 function handleTypingState(room_id, user_id, state) {
