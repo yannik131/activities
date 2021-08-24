@@ -1184,6 +1184,7 @@ margin-bottom: 20px;
     top: 0;
     left: 0;
     display: none;
+    color: black;
     font-weight: bold;
 }
 .chat-member:hover {
