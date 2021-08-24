@@ -83,9 +83,8 @@ function handleTypingState(room_id, user_id, state) {
         old_colors[user_id] = user_span.style.color;
         user_span.style.color = "red";
     }
-    //TODO: Farben! Grün, gelb, weiß, rot..
     else {
-        user_span.style.color = old_colors[user_id];
+        user_span.style.color = old_colors[user_id] == 'darkgreen'? 'darkgreen' : 'yellow';
     }
 }
 

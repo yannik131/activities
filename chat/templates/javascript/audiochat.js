@@ -39,7 +39,7 @@ function handleRTCMessage(data) {
             break;
         case 'leave':
         case 'disconnect':
-            colorize(data.user_id, data.room_id, 'white');
+            colorize(data.user_id, data.room_id, 'yellow');
             break;
         case 'request_show':
             if(data.room_id != audio_room_id) {
@@ -48,7 +48,7 @@ function handleRTCMessage(data) {
             send({'type': 'rtc', 'action': 'show', 'room_id': data.room_id, 'live': acceptingConnections});
             break;
         case 'show':
-            colorize(data.user_id, data.room_id, data.live? 'darkgreen': 'white');
+            colorize(data.user_id, data.room_id, data.live? 'darkgreen': 'black');
             break;
         default:
             break;
@@ -85,10 +85,10 @@ function colorize(user_id, room_id, color) {
         var old_color = old_colors[user_span.id];
         var new_color;
         if(!old_color) {
-            old_color = "white" || user_span.style.color;
+            old_color = "black" || user_span.style.color;
             old_colors[user_span.id] = old_color;
         }
-        if(color == "white") {
+        if(color == "black") {
             new_color = old_colors[user_span.id];
         }
         else {
@@ -266,7 +266,7 @@ function leaveAudio() {
     }
     send({'type': 'rtc', 'action': 'leave', 'room_id': audio_room_id});
     send({'type': 'chat', 'action': 'sent', 'message': this_user+" {% trans 'verlässt die Konferenz.' %}", 'id': audio_room_id});
-    colorize({{ user.id }}, audio_room_id, 'white');
+    colorize({{ user.id }}, audio_room_id, 'black');
     var button = document.getElementById('call-button-'+audio_room_id);
     if(button) {
         button.src = "{% static 'icons/call.png' %}";
