@@ -138,3 +138,30 @@ f f -> zahl
   -Lobby
   -Beitreten
   -Spielen (Durak)
+  
+  Seiten mit + haben gleiches Layout
+  Wichtige Seiten:
+  -Startseite (fehlt)
+  -Einloggen
+    +Loginseite
+    +Gastzugang
+    +Registrieren
+  -About
+  
+  Erstmal diese 3 Seiten machen. Dann mal gucken
+  Zunächst: Startseite
+  Registrieren einfacher:
+  Erst Registrieransicht, Loginansicht zum draufklicken
+  Hübsche Bildchens zuerst (Ansicht der Aktivitäten, Charakter da
+  irgendwie reinmachen)
+  Runterscrollen bzw. oben rechts für Registrieren
+  Oben rechts auch About, Einloggen
+  Registrieransicht: Nur E-Mail, Passwort, Alter 
+  Daten nach der Registrierung angeben mit separaten Fenstern für 
+  jede Information mit Text und Icons wie bei Pinterest:
+  Alter wegen weil
+  Geschlecht wegen warum
+  Stadt ermitteln weil deswegen
+  etc.
+  Dann Gastzugang weg 
+  Mit Google/Facebook registrieren
