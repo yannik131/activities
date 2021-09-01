@@ -16,7 +16,7 @@ from django.forms import ValidationError
 import json
 
 class User(AbstractUser):
-    GUEST_LIFESPAN = timedelta(days=14)
+    GUEST_LIFESPAN = timedelta(days=30)
     profile_text = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True, null=True)
     location = models.ForeignKey("Location", on_delete=models.CASCADE, blank=True, related_name='population')
