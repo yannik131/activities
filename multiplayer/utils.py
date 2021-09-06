@@ -637,8 +637,10 @@ def determine_winners_poker(data):
             summary += f'Side Pot {i}:\n'
         total_reward = pot[0]
         each = int(pot[0]/len(pot[1]))
-        if len(pot[1]) > 1:
+        
+        if len(pot[1]) > 1 or json.loads(data.show_list):
             summary += f'HAND{pot[1][0][1]}HAND\n'
+            
         for player in pot[1]:
             change(data, player[0]+'_stack', each)
             summary += f'{player[0]} +{each}\n'
