@@ -303,31 +303,32 @@ def determine_winner_doko(data, last_winner, charlie):
         data["solist"] = data["re_1"]
         data["re_1"] = ""
     if data["solist"]:
-        re = [data["solist"]]
+        re_players = [data["solist"]]
     else:
-        re = [data["re_1"], data["re_2"]]
-    contra = [p for p in json.loads(data["players"]) if p not in re]
+        re_players = [data["re_1"], data["re_2"]]
+    contra_players = [p for p in json.loads(data["players"]) if p not in re_players]
     if charlie:
-        if last_winner in re:
+        if last_winner in re_players:
             change(data, "re_extra", 1)
         else:
             change(data, "contra_extra", 1)
-    re_points, count = sum_tricks(data, re, "re")
-    _, _ = sum_tricks(data, contra, "contra")
+    re_points, count = sum_tricks(data, re_players, "re")
+    _, _ = sum_tricks(data, contra_players, "contra")
     
-    value = data["contra_value"]
-    if value == "s" and count == 12:
+    max_tricks = 10 if data['without_nines'] else 12
+    bid = data["contra_value"]
+    if bid == "s" and count == max_tricks:
         return "Kontra", 240
-    elif value == "s":
+    elif bid == "s":
         return "Re", re_points
-    if 240-re_points >= DOKO_GAME_VALUES[value]:
+    if 240-re_points >= DOKO_GAME_VALUES[bid]:
         return "Kontra", 240-re_points
-    value = data["re_value"]
-    if value == "s" and count == 12:
+    bid = data["re_value"]
+    if bid == "s" and count == max_tricks:
         return "Re", 240
-    elif value == "s":
+    elif bid == "s":
         return "Kontra", 240-re_points
-    if re_points >= DOKO_GAME_VALUES[value]:
+    if re_points >= DOKO_GAME_VALUES[bid]:
         return "Re", re_points
     else:
         return "Kontra", 240-re_points
