@@ -1,45 +1,38 @@
-{% extends 'base.html' %}
-{% load i18n %}
 {% load static %}
-{% load cookielaw_tags %}
-{% load account_tags %}
 
-{% block title %}{% trans "Einloggen" %}{% endblock %}
-
-{% block content %}
-    <div class="center-container">
-    <div class="login">
-    <div style="float: left">{% trans 'Nutzer gesamt: ' %}{% total_count %}</div>
-    <div style="float: right">{% trans 'Online: ' %} {% online_count %}</div>
-        <h1 class="h-img"><img src="{% static 'icons/login.png' %}">{% blocktrans %}Einloggen{% endblocktrans %}</h1>
-        
-        <p><strong>{% trans "Willkommen bei myactivities.net! :)" %}</strong></p>
-        <div class="button-like" onclick=openLink("{% url 'account:about' %}")><img src="{% static 'icons/question.png' %}">{% trans "Was ist das hier?" %}</div>
-        <p>{% trans "Bitte nutzen Sie das folgende Formular zum Einloggen:" %}</p>
-        <form class="login-form" method="post" action="{% url 'account:login' %}" class="login-form">
-            {{ form.as_p }}
-            {% csrf_token %}
-            {% if next %}
-                <input type="hidden" name="next" value="{{ next }}">
-            {% endif %}
-            <div style="display: flex; align-items: center">
-                <input type="submit" value="{% trans "Einloggen" %}">
-                <input class="blue-button" style="background-color: green;" type="button" value="{% trans 'Gastzugang' %}" onclick=openLink("{% url 'account:guest_access' %}")>
-            </div>
-        </form>
-        <div class="competitive" style="margin: 10px 0; font-size: 16px;">
-            <div class="left" onclick=openLink("{% url 'account:password_reset' %}")>
-                <img src="{% static 'icons/password_reset.png' %}">
-                {% trans "Passwort zurücksetzen" %}
-            </div>
-            <div class="right" onclick=openLink("{% url 'account:register' %}")>
-                <img src="{% static 'icons/registration.png' %}">
-                {% trans "Registrieren" %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'icons/dog.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+</head>
+<body>
+    <div class="container" style="min-height: 200px; background-color: blue;">
+        <div class="row">
+            <div class="col">
+                
             </div>
         </div>
     </div>
-    </div>
-    <a href="https://www.instagram.com/myactivities_net/" class="follow" style="color: white;">
-        <img src="{% static 'icons/instagram.png' %}"> Instagram
-    </a>
-{% endblock %}
+</body>
+</html>
