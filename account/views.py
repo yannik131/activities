@@ -25,8 +25,7 @@ from django.utils.encoding import force_text
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.urls import reverse
 from django.db.models import Q
-from django.contrib.auth.validators import UnicodeUsernameValidator
-#validator = UnicodeUsernameValidator()
+from activity.models import Activity
 import logging
 logger = logging.getLogger('django')
 import random
@@ -334,7 +333,10 @@ def login(request):
         if request.user.is_authenticated:
             return HttpResponseRedirect(reverse('account:home'))
         login_form = LoginForm()
-    return render(request, 'registration/login.html', dict(form=login_form, next=request.GET.get('next')))
+    return render(request, 'registration/login.html', dict(
+        activity=Activity.objects.get(pk=random.choice(Activity.objects.values_list('pk', flat=True))), 
+        form=login_form, 
+        next=request.GET.get('next')))
     
     
 def password_change_done(request):

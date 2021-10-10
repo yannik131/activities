@@ -1,4 +1,8 @@
 {
+    "emmet.includeLanguages": {
+        "django-html": "html",
+    },
+
     "restoreTerminals.terminals": [
         {
           "splitTerminals": [
