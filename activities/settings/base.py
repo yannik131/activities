@@ -92,6 +92,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
 
+
+
 ROOT_URLCONF = 'activities.urls'
 
 TEMPLATES = [
@@ -138,9 +140,13 @@ PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 #global login required exceptions
 PUBLIC_PATHS = [
-    r'^/account/.*'
+    r'^/account/.*',
+    '^%s' % MEDIA_URL
 ]
 
 
@@ -201,9 +207,6 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'myactivities.net@web.de'
 
 AUTH_USER_MODEL = 'account.User'
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 TEST_RUNNER = 'account.tests.TestRunner'
