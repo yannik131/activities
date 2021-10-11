@@ -4,7 +4,9 @@ from shared.shared import n_parenthesis
 from django.utils.safestring import mark_safe
 from activities.language_subdomain_middleware import get_prefix
 from account.models import User
+from activity.models import Activity, Category
 import random
+from easy_thumbnails.files import get_thumbnailer
 
 register = template.Library()
 
@@ -44,3 +46,13 @@ def online_count():
 @register.simple_tag
 def total_count():
     return User.objects.filter(is_active=True).count()
+
+@register.simple_tag
+def activity_image(name, size_in_pixels=400):
+    activity = Activity.objects.get(translations__language_code='en', translations__name=name)
+    return get_thumbnailer(activity.image).get_thumbnail(dict(size=(size_in_pixels, size_in_pixels))).url
+    
+@register.simple_tag
+def category_image(name, size_in_pixels=400):
+    category = Category.objects.get(translations__language_code='en', translations__name=name)
+    return get_thumbnailer(category.image).get_thumbnail(dict(size=(size_in_pixels, size_in_pixels))).url
