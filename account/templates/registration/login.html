@@ -19,11 +19,11 @@
     <style>
       html, body {
         height: 100%;
-        overflow: hidden;
+        
         font-family: "Solway";
       }
       h1 {
-        font-size: 3rem;
+        font-size: 5rem;
       }
       .round-item {
         border-radius: 40px;
@@ -33,18 +33,18 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row vh-25 mt-2">
-        <div class="col-12 text-center h-50">
-          <h1>my<span style="font-family: 'Finger Paint'; font-size: 5rem; color: #7A9DBA">activities</span>.net</h1>
+      <div class="row mb-4">
+        <div class="col-12 text-center shadow">
+          <img class="img-fluid mb-2" src="{% static 'Logo.png' %}">
         </div>
-        <hr class="w-75 mx-auto">
       </div>
-      <div class="row">
+      <div class="row position-relative">
         <div class="col-12 text-center">
-          <h2>Determine your personality! Find people matching your character! Find activities you might enjoy!</
+          <h2>Determine your personality! Find people and activities matching your character!</h2>
         </div>
       </div>
-      <div class="row vh-75" style="margin-top: 200px">
+      <div class="row position-relative" style="margin-top: 20px; ;">
+        
         <div class="col-3 d-flex flex-column">
           <img src="{% category_image 'Sports' %}" class="round-item">
           <img src="{% activity_image 'Running' %}" class="round-item">
