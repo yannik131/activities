@@ -135,6 +135,12 @@ def authenticate(user_input, password):
     return False
 
 class LoginForm(forms.Form):
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+           self.fields[field].widget.attrs['class'] = 'form-control'
+    
     user_input = forms.CharField(max_length=35, label=_('E-Mail oder Nutzername'))
     password = forms.CharField(max_length=100, label=_('Passwort'), widget=forms.PasswordInput())
     

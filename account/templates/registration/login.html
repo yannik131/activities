@@ -13,71 +13,70 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Solway">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Finger+Paint">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
     <title>myactivities.net</title>
     
     <style>
       html, body {
         height: 100%;
-        
         font-family: "Solway";
+        background-color: #C3C3C3;
       }
       h1 {
         font-size: 5rem;
+      }
+      .happy {
+        font-family: 'Finger Paint'; 
+        color: #7A9DBA;
       }
       .round-item {
         border-radius: 40px;
         margin-bottom: 10px;
       }
+      input {
+        max-width: 250px;
+        margin-left: auto;
+        margin-right: auto;
+      }
     </style>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row mb-4">
+    <div class="container-fluid h-100 d-flex flex-column">
+      <div class="row">
         <div class="col-12 text-center shadow">
-          <img class="img-fluid mb-2" src="{% static 'Logo.png' %}">
+          <img class="img-fluid" src="{% static 'Logo_b.png' %}">
         </div>
       </div>
-      <div class="row position-relative">
+      <div class="row flex-grow-1" style="background-image: url(/static/bg-4_b.png); background-size: cover; background-position: top">
         <div class="col-12 text-center">
-          <h2>Determine your personality! Find people and activities matching your character!</h2>
+          <div class="card card-body shadow-lg" style="border: 0px; max-width: 500px; margin-top: 40px; margin-left: auto; margin-right: auto; border-radius: 15px; background: rgba(255, 255, 255, 0.85)" data-wow-delay="0.3s">
+            <h3><b>Willkommen!</b></h3>
+            <h6 class="mb-3">
+              Bestimme deinen Charakter!<br/>
+              Finde Aktivitäten und Menschen passend zu deiner Persönlichkeit!
+            </h6>
+            <form method="post" class=" rounded p-2">
+              {% for field in form %}
+                <div class="mb-3">
+                  <label class="mb-2" for="{{ field.auto_id }}">{{ field.label }}</label>
+                  {{ field }}
+                </div>
+              {% endfor %}
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary">Anmelden</button>
+            </form>
+          </div>
         </div>
-      </div>
-      <div class="row position-relative" style="margin-top: 20px; ;">
-        
-        <div class="col-3 d-flex flex-column">
-          <img src="{% category_image 'Sports' %}" class="round-item">
-          <img src="{% activity_image 'Running' %}" class="round-item">
-          <img src="{% activity_image 'Swimming' %}" class="round-item">
-          <img src="{% activity_image 'Pool' %}" class="round-item">
-          <img src="{% activity_image 'Golf' %}" class="round-item">
-        </div>
-        <div class="col-3 d-flex flex-column">
-          <img src="{% category_image 'Chilling' %}" class="round-item">
-          <img src="{% activity_image 'Strolling' %}" class="round-item">
-          <img src="{% activity_image 'Yoga' %}" class="round-item">
-          <img src="{% activity_image 'Picnicking' %}" class="round-item">
-          <img src="{% activity_image 'Reading' %}" class="round-item">
-        </div>
-        <div class="col-3 d-flex flex-column">
-          <img src="{% category_image 'Card games' %}" class="round-item">
-          <img src="{% activity_image 'Poker' %}" class="round-item">
-          <img src="{% activity_image 'Skat' %}" class="round-item">
-          <img src="{% activity_image 'Durak' %}" class="round-item">
-        </div>
-        <div class="col-3 d-flex flex-column">
-          <img src="{% category_image 'Leisure' %}" class="round-item">
-          <img src="{% activity_image 'Gardening' %}" class="round-item">
-          <img src="{% activity_image 'Diving' %}" class="round-item">
-          <img src="{% activity_image 'Zoo' %}" class="round-item">
-          <img src="{% activity_image 'Knitting' %}" class="round-item">
-        </div>
-      </div>
+      </div> 
     </div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.boomcdn.com/libs/wow-js/1.3.0/wow.min.js"></script>
+    
+    <script>
+      new WOW().init();
+    </script>
   </body>
 </html>
