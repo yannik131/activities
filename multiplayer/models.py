@@ -297,6 +297,7 @@ class MultiplayerMatch(models.Model):
             self.game_data['without_nines'] = '1'
         else:
             players, _ = self.create_players(12, "9", "9", "10", "10", "A", "A", "J", "J", "K", "K", "Q", "Q")
+            self.game_data['without_nines'] = '0'
         self.game_data["game_type"] = ""
         self.game_data["re_value"] = ""
         self.game_data["contra_value"] = ""

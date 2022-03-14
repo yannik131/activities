@@ -315,7 +315,7 @@ def determine_winner_doko(data, last_winner, charlie):
     re_points, count = sum_tricks(data, re_players, "re")
     _, _ = sum_tricks(data, contra_players, "contra")
     
-    max_tricks = 10 if data['without_nines'] else 12
+    max_tricks = 10 if data['without_nines'] == '1' else 12
     bid = data["contra_value"]
     if bid == "s" and count == max_tricks:
         return "Kontra", 240
