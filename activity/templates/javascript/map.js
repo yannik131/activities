@@ -40,7 +40,7 @@ cancel_button.addEventListener('click', function() {
 var map = L.map('mapid').setView([51.0834196, 10.4234469], 5);
 
 // replace "toner" here with "terrain" or "watercolor" or 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
 
 {% if chosen %}
     location.href = "#mapid";

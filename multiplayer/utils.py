@@ -639,7 +639,7 @@ def determine_winners_poker(data):
         total_reward = pot[0]
         each = int(pot[0]/len(pot[1]))
         
-        if len(pot[1]) > 1 or json.loads(data.show_list):
+        if len(pot[1]) > 1 or show_list:
             summary += f'HAND{pot[1][0][1]}HAND\n'
             
         for player in pot[1]:
