@@ -144,6 +144,10 @@ function handleFold(data) {
     createInfoAlert(data.user+': fold', 1500);
     hideCardsOf(players[data.user]);
     if(data.new_game_data) {
+        if(data.user === this_user) {
+            active = null;
+            updateButtons();
+        }
         setTimeout(function() {
             createInfoAlert("{% trans 'Gewonnen: ' %}"+data.winner+"\nPot: "+data.pot, 1500);
             setTimeout(function() {
