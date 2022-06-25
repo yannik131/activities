@@ -150,5 +150,13 @@ class LoginForm(forms.Form):
         return cd
     
     
-class GuestForm(forms.Form):
+class GuestForm(UserForm):
+    class Meta:
+        model = get_user_model()
+        fields = ('username',)
+
+        help_texts = {
+            'username': ''
+        }
+    username = forms.CharField(label=_('Nutzername'))
     checkbox = forms.BooleanField(label=_('Ich bin kein Roboter!'))

@@ -1,3 +1,5 @@
+import random
+
 from shared.shared import log
 from geopy import Nominatim
 from django.utils.translation import gettext_lazy as _
@@ -14,6 +16,7 @@ import logging
 from redis import StrictRedis
 import redis_lock
 from geopy.extra.rate_limiter import RateLimiter
+from django.apps import apps
 
 geolocator = Nominatim(user_agent='activities')
 logger = logging.getLogger('django')
@@ -60,3 +63,10 @@ def set_result(user):
     c.question_limit = 60
     c.calculate_suggestions()
     c.save()
+
+def generate_username():
+    User = apps.get_model('account', 'User')
+    while True:
+        username = _('Gast') + str(random.randint(1, 1000000))
+        if not User.objects.filter(username=username):
+            return username

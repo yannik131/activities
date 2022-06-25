@@ -15,7 +15,7 @@ from .templatetags import account_tags
 from notify.utils import notify
 from wall.models import Post
 from shared import shared
-from .utils import send_account_activation_email, send_mail
+from .utils import send_account_activation_email, send_mail, generate_username
 from activities.language_subdomain_middleware import get_prefix
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
@@ -306,17 +306,13 @@ def guest_access(request):
             city = 'Berlin'
             if request.LANGUAGE_CODE == 'en':
                 city = 'Washington, D. C.'
-            while True:
-                username = _('Gast')+str(random.randint(1, 1000000))
-                try:
-                    user = User.objects.create(location=Location.determine_from(city), username=username, is_guest=True)
-                    break
-                except:
-                    continue
+            user = User.objects.create(location=Location.determine_from(city), username=form.cleaned_data['username'],
+                                       is_guest=True)
             auth_login(request, user)
             return HttpResponseRedirect(reverse('account:home'))
     else:
-        form = GuestForm()
+        username = generate_username()
+        form = GuestForm(initial={'username': username})
     return render(request, 'registration/guest_access.html', dict(form=form, days=int(User.GUEST_LIFESPAN.total_seconds()/3600/24)))
 
 
