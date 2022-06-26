@@ -128,13 +128,14 @@ function updateActive(data) {
 }
 
 function handleRaise(data) {
-    highest_bet_user = data.user;
-    highest_bet_value += parseInt(data.value);
-    var info = data.user+": raise: "+data.value+" -> "+highest_bet_value;
+    var info = data.user+": raise: "+data.value+" -> "+(highest_bet_value + parseInt(data.value));
     if(parseInt(data.stack) == 0) {
         info += ' (all in)';
     }
     createInfoAlert(info, 1500);
+    highest_bet_user = data.user;
+    highest_bet_value += parseInt(data.value);
+
     previous_raise = parseInt(data.value);
     changePokerInfoFor(players[data.user], data.user, data.stack);
     pot = parseInt(data.pot);
