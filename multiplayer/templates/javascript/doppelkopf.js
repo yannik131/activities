@@ -242,19 +242,19 @@ function createValueButtons() {
     }
     const allowed = (value_ncards && value_ncards-player1_cards.length <= 1);
     const n = hand_cards_for_value[last_bid];
-    if(last_bid == "" && (l >= n-m_show || allowed)) {
+    if(last_bid == "" && (l > n-m_show || allowed)) {
         value = "w";
     }
-    else if(last_bid == "w" && (l >= n-m_show || allowed)) {
+    else if(last_bid == "w" && (l > n-m_show || allowed)) {
         value = "9";
     }
-    else if(last_bid == "9" && (l >= n-m_show || allowed)) {
+    else if(last_bid == "9" && (l > n-m_show || allowed)) {
         value = "6";
     }
-    else if(last_bid == "6" && (l >= n-m_show || allowed)) {
+    else if(last_bid == "6" && (l > n-m_show || allowed)) {
         value = "3";
     }
-    else if(last_bid == "3" && (l >= n-m_show || allowed)) {
+    else if(last_bid == "3" && (l > n-m_show || allowed)) {
         value = "s";
     }
     if(value) {
