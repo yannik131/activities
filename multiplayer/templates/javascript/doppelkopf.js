@@ -318,7 +318,7 @@ function loadGameField(data) {
     m_show = parseInt(data.m_show);
     value_ncards = parseInt(data.value_ncards);
     last_trick = JSON.parse(data.last_trick);
-    if(data.without_nines) {
+    if(data.without_nines === '1') {
         hand_cards_for_value = {
             '': 9, 'w': 8, '9': 7, '6': 6, '3': 5
         };
