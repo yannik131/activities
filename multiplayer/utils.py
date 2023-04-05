@@ -592,11 +592,16 @@ def start_round(data):
     data['highest_bet_user'] = ''
     active = player_or(after, 'small_blind', data)
     data['active'] = no_fold(data, active)[0]
+
+def replace_10_with_1(cards):
+    return [card if len(card) == 2 else card[0] + card[-1] for card in cards]
     
 def showdown(data):
     winners = []
-    common_cards = json.loads(data.cards)
-    scores = [[user, round(highest_combo(common_cards, json.loads(data[user])))] for user in no_fold(data)]
+    common_cards = replace_10_with_1(json.loads(data.cards))
+    player_hand = replace_10_with_1(json.loads(data[user]))
+
+    scores = [[user, round(highest_combo(common_cards, player_hand))] for user in no_fold(data)]
     scores = sorted(scores, key=lambda t: t[1][0], reverse=True)
     winners.append(scores[0])
     for score in scores[1:]:
