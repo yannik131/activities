@@ -618,12 +618,12 @@ def determine_forced_player(data):
         
 def determine_winners_poker(data):
     players = [] #[bet, user, score, name]
-    common_cards = json.loads(data['cards'])
+    common_cards = replace_10_with_1(json.loads(data['cards']))
     show_list = json.loads(data['show_list'])
     total = 0
     for player in no_fold(data):
         if player in show_list:
-            hand = json.loads(data[player])
+            hand = replace_10_with_1(json.loads(data[player]))
             score, name = highest_combo(common_cards, hand)
         else:
             score, name = highest_combo(common_cards, [])
