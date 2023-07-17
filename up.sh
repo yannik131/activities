@@ -11,5 +11,5 @@ result=$(ps -e | grep turnserver)
 
 if ! [[ $result ]]
 then
-        turnserver
+        turnserver &
 fi
