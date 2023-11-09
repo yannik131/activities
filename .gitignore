@@ -14,3 +14,4 @@
 **/*_q85.*
 /dump.rdb
 /backup/*
+/env/*
