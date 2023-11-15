@@ -81,7 +81,7 @@ class MultiplayerMatch(models.Model):
     
     @staticmethod
     def match_list_for(activity_id):
-        matches = MultiplayerMatch.objects.filter(activity__id=activity_id, active=True)
+        matches = MultiplayerMatch.objects.filter(activity__id=activity_id, invisible=False)
         return [(match.id, [v for k, v in match.member_positions.items() if v], match.member_limit, match.created.isoformat()) for match in matches if not (match.is_full() or match.in_progress)]
         
     @staticmethod
