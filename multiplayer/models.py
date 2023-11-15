@@ -34,6 +34,7 @@ class MultiplayerMatch(models.Model):
     admin = models.ForeignKey(User, related_name='admin_matches', on_delete=models.CASCADE)
     options = HStoreField(default=dict, blank=True)
     over = models.BooleanField(default=False)
+    invisible = models.BooleanField(default=False)
     action_strings = {
         'is_full': _('ist voll')
     }
@@ -80,7 +81,7 @@ class MultiplayerMatch(models.Model):
     
     @staticmethod
     def match_list_for(activity_id):
-        matches = MultiplayerMatch.objects.filter(activity__id=activity_id)
+        matches = MultiplayerMatch.objects.filter(activity__id=activity_id, active=True)
         return [(match.id, [v for k, v in match.member_positions.items() if v], match.member_limit, match.created.isoformat()) for match in matches if not (match.is_full() or match.in_progress)]
         
     @staticmethod

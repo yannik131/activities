@@ -19,7 +19,7 @@ def clearMultiplayerMatches():
     MultiplayerMatch.objects.filter(
         Q(in_progress=False, created__lt=idle_delete_date) | 
         Q(in_progress=True, created__lt=running_delete_date) | 
-        Q(over=True, created__lt=idle_delete_date)).delete()
+        Q(over=True, created__lt=idle_delete_date)).update(active=False)
         
     delete_date = timezone.now()-User.GUEST_LIFESPAN
     User.objects.filter(is_guest=True, date_joined__lt=delete_date).delete()
