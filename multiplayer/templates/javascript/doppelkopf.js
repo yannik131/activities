@@ -216,15 +216,18 @@ function updateAllInfo() {
     }
 }
 
-function maxCardsForValue(value) {
-    if(without_nines) {
-        return values_cards[value]-m_show-1;
-    }
-    return values_cards[value]-m_show;
-}
 
 function createValueButtons() {
     clearButtons(lastTrickButton);
+    const l = player1_cards.length;
+    if(!m_show) {
+        const n_cards_played = hand_cards_for_value["w"] + 2 - l;
+        if(n_cards_played >= 3) {
+            //If 3 tricks have been played and the decisive trick in the marriage has not yet happened
+            //the 3rd trick is considered to have been the decisive trick
+            m_show = 3;
+        }
+    }
     if(this_user != active || game_type == "marriage" && !m_show) {
         return;
     }
@@ -235,26 +238,26 @@ function createValueButtons() {
     else {
         last_bid = contra_value;
     }
-    const l = player1_cards.length;
     var value;
     if(!m_show) {
         m_show = 0;
     }
     const allowed = (value_ncards && value_ncards-player1_cards.length <= 1);
     const n = hand_cards_for_value[last_bid];
-    if(last_bid == "" && (l >= n-m_show || allowed)) {
+    const create_button = (l >= n-m_show || allowed);
+    if(last_bid == "" && create_button) {
         value = "w";
     }
-    else if(last_bid == "w" && (l >= n-m_show || allowed)) {
+    else if(last_bid == "w" && create_button) {
         value = "9";
     }
-    else if(last_bid == "9" && (l >= n-m_show || allowed)) {
+    else if(last_bid == "9" && create_button) {
         value = "6";
     }
-    else if(last_bid == "6" && (l >= n-m_show || allowed)) {
+    else if(last_bid == "6" && create_button) {
         value = "3";
     }
-    else if(last_bid == "3" && (l >= n-m_show || allowed)) {
+    else if(last_bid == "3" && create_button) {
         value = "s";
     }
     if(value) {
@@ -307,7 +310,6 @@ function handleBid(data) {
 }
 
 function loadGameField(data) {
-    //game_type = data.game_type;
     document.querySelector('.player5-info').style.display = "none";
     mode = data.mode;
     player_list = JSON.parse(data.players);

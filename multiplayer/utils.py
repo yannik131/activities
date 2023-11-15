@@ -228,10 +228,11 @@ def handle_play(game, data, text_data, username, message, match):
         else:
             ouvert_null_lost = False
             if data["game_type"] == "marriage":
-                if winner != data["solist"] and len(json.loads(data[data["solist"]+"_tricks"])) < 3:
+                n_solist_tricks = len(json.loads(data[data["solist"]+"_tricks"]))
+                if winner != data["solist"] and n_solist_tricks < 3:
                     data["re_1"] = data["solist"]
                     data["re_2"] = winner
-                    data["m_show"] = len(tricks)
+                    data["m_show"] = n_solist_tricks + 1
                     data["game_type"] = "diamonds"
                     data["solist"] = ""
                     message["data"]["m_show"] = data["m_show"]
