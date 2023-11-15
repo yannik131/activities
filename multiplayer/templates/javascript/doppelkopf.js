@@ -216,11 +216,10 @@ function updateAllInfo() {
     }
 }
 
-
 function createValueButtons() {
     clearButtons(lastTrickButton);
     const l = player1_cards.length;
-    if(!m_show) {
+    if(game_type == "marriage" && !m_show) {
         const n_cards_played = hand_cards_for_value["w"] + 2 - l;
         if(n_cards_played >= 3) {
             //If 3 tricks have been played and the decisive trick in the marriage has not yet happened
