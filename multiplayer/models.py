@@ -1,3 +1,5 @@
+import logging
+
 from django.db import models
 from activity.models import Activity
 from account.models import User
@@ -19,6 +21,8 @@ from redis import StrictRedis
 conn = StrictRedis(host="localhost", port=6655)
 import redis_lock
 from datetime import timedelta
+
+logger = logging.getLogger('django')
 
 class MultiplayerMatch(models.Model):
     MAX_INSTANCES = 5
@@ -169,7 +173,7 @@ class MultiplayerMatch(models.Model):
         self.member_positions = positions
         self.member_limit = len(positions)
         self.save()
-        
+
     def broadcast_data(self, data, direct=False):
         channel_layer = get_channel_layer()
         data["type"] = "multiplayer"
@@ -244,6 +248,7 @@ class MultiplayerMatch(models.Model):
             players = []
             for k, v in self.member_positions.items():
                 players.append(v)
+            random.shuffle(players)
             self.game_data["players"] = json.dumps(players)
         else:
             players = json.loads(self.game_data['players'])
