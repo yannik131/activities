@@ -276,8 +276,9 @@ function handleTake(data) {
     removeCardsFromDeck(3);
     var deck = parse(data.deck);
     if(players[active] == 1) {
-        addCardTo(players[active], 1, deck[0]);
-        addCardTo(players[active], 1, deck[1]);
+        addStack(deck[0]);
+        addStack(deck[1]);
+        setStackCallbacks();
     }
     else {
         addCardTo(players[active], 2);
