@@ -1,3 +1,4 @@
+import logging
 from itertools import cycle
 import json
 from account.models import Location, User, LocationMarker
@@ -165,6 +166,8 @@ class NotificationConsumer(WebsocketConsumer):
                 return
             newest_date = chat_checks.first().date
             for check in chat_checks:
+                if type(check.room.target) is MultiplayerMatch and check.room.target.invisible:
+                    continue
                 entry = check.room.log_entries.last()
                 if entry and entry.created > newest_date:
                     rooms_with_news_count += 1
