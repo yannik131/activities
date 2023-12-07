@@ -4,6 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.urls import reverse
 from django.utils.timezone import now
+from multiplayer.models import MultiplayerMatch
 
 
 class ChatCheck(models.Model):
@@ -12,7 +13,10 @@ class ChatCheck(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def new_messages(self):
-        return self.room.log_entries.filter(created__gt=self.date).exclude(author=self.user)
+        return [message for message in self.room.log_entries.filter(created__gt=self.date).exclude(author=self.user)
+                if type(message.chat_room.target) is not MultiplayerMatch or
+                not message.chat_room.target.invisible]
+
 
     def update(self):
         self.date = now()
