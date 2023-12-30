@@ -239,19 +239,7 @@ class DokoScorer:
                     else:
                         utils.sum_change(self.data, player + "_points", points, summary)
         summary = sorted(summary, key=lambda t: t[1], reverse=True)
-        bid_descriptions = {
-            '': 'Nichts',
-            'Re': 'Re',
-            'Kontra': 'Kontra',
-            '9': 'Keine 90',
-            '6': 'Keine 60',
-            '3': 'Keine 30',
-            's': 'Schwarz'
-        }
-        re_bid_str = bid_descriptions['Re' if re_bid == "w" else re_bid]
-        contra_bid_str = bid_descriptions['Kontra' if contra_bid == "w" else contra_bid]
-        bid_str = f"Kontra: {contra_bid_str}, Re: {re_bid_str}"
-        summary_str = bid_str + "\n" + f"{result if not no_result else 'Niemand, ' + result}: {self.re_points if result == 'Re' else self.contra_points} Augen\n" + "".join(
+        summary_str = f"{result if not no_result else 'Niemand, ' + result}: {self.re_points if result == 'Re' else self.contra_points} Augen\n" + "".join(
             [t[0] for t in summary])[:-1] + "\n" + summary_str
 
         if result == "Re":
