@@ -2,11 +2,19 @@ import random
 import json
 from shared.shared import log
 from django.utils.translation import gettext as _
+
 from .poker_score import highest_combo
+from .doko_scorer import DokoScorer
+
 
 
 def change(dictionary, key, change):
     dictionary[key] = int(dictionary[key])+change
+
+def append(game_data, key, element):
+    arr = json.loads(game_data[key])
+    arr.append(element)
+    game_data[key] = json.dumps(arr)
 
 def create_deck(*ranks):
     colors = ["c", "h", "s", "d"]
@@ -217,11 +225,9 @@ def handle_play(game, data, text_data, username, message, match):
     }
     if game == "skat" and len(trick) == 3 or game == "doko" and len(trick) == 4:
         winner = players[int(text_data["index"])]
-        tricks = json.loads(data[winner+"_tricks"])
-        tricks.append(trick)
         data["last_trick"] = json.dumps(trick)
-        data[winner+"_tricks"] = json.dumps(tricks)
         if game == "skat":
+            append(data, winner + "_tricks", trick)
             data["forehand"] = winner
             message["data"]["forehand"] = winner
             ouvert_null_lost = (data["game_type"] == "n" and data["solist"] == winner) or (("o" in data["declarations"] or "b" in data["declarations"]) and (data["solist"] != winner and data["game_type"] != "n"))
@@ -238,17 +244,8 @@ def handle_play(game, data, text_data, username, message, match):
                     message["data"]["m_show"] = data["m_show"]
                     message["data"]["re_1"] = data["re_1"]
                     message["data"]["re_2"] = data["re_2"]
-            if not data["solist"] and "Ad" in trick:
-                winner_is_re = winner == data["re_1"] or winner == data["re_2"]
-                for i, card in enumerate(trick):
-                    if card != "Ad":
-                        continue
-                    fox_owner = players[i]
-                    owner_is_re = fox_owner == data["re_1"] or fox_owner == data["re_2"]
-                    if winner_is_re and not owner_is_re:
-                        change(data, "re_extra", 1)
-                    elif not winner_is_re and owner_is_re:
-                        change(data, "contra_extra", 1)
+            append(data, "tricks", (trick, winner, json.loads(data["players"]).index(players[0])))
+
         data["active"] = winner
         data["trick"] = json.dumps([])
         message["data"]["clear"] = "1"
@@ -258,12 +255,12 @@ def handle_play(game, data, text_data, username, message, match):
             if game == "skat":
                 result, points, game_value = determine_winner_skat(data)
                 points_summary = give_skat_points(data, players, result, game_value)
+                message["data"]["result"] = result
+                if points:
+                    message["data"]["points"] = points
             else:
-                result, points = determine_winner_doko(data, winner, "Jc" == tricks[-1][int(text_data["index"])])
-                points_summary = give_doko_points(data, players, result, points)
-            message["data"]["result"] = result
-            if points:
-                message["data"]["points"] = points
+                scorer = DokoScorer(data)
+                points_summary = scorer.calculate_score()
             message["data"]["summary"] = points_summary
             data["summary"] = points_summary
             data["started"] = after(data["started"], players)
@@ -277,63 +274,7 @@ def handle_play(game, data, text_data, username, message, match):
             message["data"]["game_number"] = data["game_number"]
             message["data"]["round"] = match.game_data
 
-DOKO_GAME_VALUES = {
-    "": 121, "w": 121, "9": 151, "6": 181, "3": 211, "s": 240
-}
 
-DOKO_VALUES = {
-    "w": 2, "9": 3, "6": 4, "3": 5, "s": 6
-}
-
-def sum_tricks(data, team, name):
-    count = 0
-    points = 0
-    for player in team:
-        for trick in json.loads(data[player+"_tricks"]):
-            count += 1
-            trick_points = 0
-            for card in trick:
-                points += CARD_VALUES[card[:-1]]
-                trick_points += CARD_VALUES[card[:-1]]
-            if not data["solist"] and trick_points >= 40:
-                change(data, name+"_extra", 1)
-    return points, count
-
-def determine_winner_doko(data, last_winner, charlie):
-    if data["re_1"] and not data["re_2"]:
-        data["solist"] = data["re_1"]
-        data["re_1"] = ""
-    if data["solist"]:
-        re_players = [data["solist"]]
-    else:
-        re_players = [data["re_1"], data["re_2"]]
-    contra_players = [p for p in json.loads(data["players"]) if p not in re_players]
-    if charlie:
-        if last_winner in re_players:
-            change(data, "re_extra", 1)
-        else:
-            change(data, "contra_extra", 1)
-    re_points, count = sum_tricks(data, re_players, "re")
-    _, _ = sum_tricks(data, contra_players, "contra")
-    
-    max_tricks = 10 if data['without_nines'] == '1' else 12
-    bid = data["contra_value"]
-    if bid == "s" and count == max_tricks:
-        return "Kontra", 240
-    elif bid == "s":
-        return "Re", re_points
-    if 240-re_points >= DOKO_GAME_VALUES[bid]:
-        return "Kontra", 240-re_points
-    bid = data["re_value"]
-    if bid == "s" and count == max_tricks:
-        return "Re", 240
-    elif bid == "s":
-        return "Kontra", 240-re_points
-    if re_points >= DOKO_GAME_VALUES[bid]:
-        return "Re", re_points
-    else:
-        return "Kontra", 240-re_points
-        
 def sum_change(dictionary, key, _change, summary):
     change(dictionary, key, _change)
     pre = ""
@@ -341,52 +282,6 @@ def sum_change(dictionary, key, _change, summary):
         pre = "+"
     summary.append([f"{key[:-7]}: {pre}{_change} -> {dictionary[key]}\n", dictionary[key]])
     
-def give_doko_points(data, players, result, winner_points):
-    points = 1 # somebody won, +1
-    re_extra = int(data["re_extra"])
-    contra_extra = int(data["contra_extra"])
-    if result == "Kontra":
-        if not data["solist"]:
-            points += 1 # gegen die alten
-    if data["contra_value"]:
-        points += DOKO_VALUES[data["contra_value"]]
-    if data["re_value"]:
-        points += DOKO_VALUES[data["re_value"]]
-    
-    for mark in [151, 181, 211, 240]:
-        if winner_points >= mark:
-            points += 1
-        else:
-            break
-    summary = []
-    if data["solist"]:
-        for player in players:
-            if player == data["solist"]:
-                if result == "Re":
-                    sum_change(data, player+"_points", 3*points, summary)
-                else:
-                    sum_change(data, player+"_points", -3*points, summary)
-            else:
-                if result == "Re":
-                    sum_change(data, player+"_points", -points, summary)
-                else:
-                    sum_change(data, player+"_points", points, summary)
-    else:
-        for player in players:
-            if result == "Re":
-                if player == data["re_1"] or player == data["re_2"]:
-                    sum_change(data, player+"_points", (points+re_extra-contra_extra), summary)
-                else:
-                    sum_change(data, player+"_points", -(points+re_extra-contra_extra), summary)
-            else:
-                if player == data["re_1"] or player == data["re_2"]:
-                    sum_change(data, player+"_points", -(points-re_extra+contra_extra), summary)
-                else:
-                    sum_change(data, player+"_points", (points-re_extra+contra_extra), summary)
-    summary = sorted(summary, key=lambda t: t[1], reverse=True)
-    return f"{result}: {winner_points}\n"+"".join([t[0] for t in summary])[:-1]
-    
-
 CARD_VALUES = {
     "7": 0, "8": 0, "9": 0, "J": 2, "Q": 3,
     "K": 4, "10": 10, "A": 11
@@ -597,20 +492,7 @@ def start_round(data):
 def replace_10_with_1(cards):
     return [card if len(card) == 2 else card[0] + card[-1] for card in cards]
     
-def showdown(data):
-    winners = []
-    common_cards = replace_10_with_1(json.loads(data.cards))
-    player_hand = replace_10_with_1(json.loads(data[user]))
 
-    scores = [[user, round(highest_combo(common_cards, player_hand))] for user in no_fold(data)]
-    scores = sorted(scores, key=lambda t: t[1][0], reverse=True)
-    winners.append(scores[0])
-    for score in scores[1:]:
-        if score[1][0] == winners[0][1][0]:
-            winners.append(score)
-        else:
-            break
-    
 def determine_forced_player(data):
     if data['highest_bet_user']:
         return data['highest_bet_user']
