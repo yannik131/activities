@@ -1,4 +1,4 @@
-from .doko_scorer import DokoScorer
+import multiplayer.doko_scorer as doko_scorer
 from itertools import product
 from copy import deepcopy
 
@@ -52,8 +52,9 @@ def test_normal_contra_wins():
     for combination in reversed(combinations):
         data_ = deepcopy(data)
         data_["re_value"], data_["contra_value"] = combination
-        scorer = DokoScorer(data_)
+        scorer = doko_scorer.DokoScorer(data_)
         result = scorer.calculate_score()
+        print(result)
         if expected_results[combination]:
             try:
                 assert_points(data_, expected_results[combination])
@@ -77,7 +78,7 @@ def test_extra_points():
                       '[["Jc", "9d", "Jd", "Kh"], "C", 1], [["Kc", "Jc", "Ad", "10c"], "B", 0]]',
             'A_points': '0', 'B_points': '0', 'C_points': '0', 'D_points': '0',
             'without_nines': '0'}
-    scorer = DokoScorer(data)
+    scorer = doko_scorer.DokoScorer(data)
     scorer.calculate_score()
     assert_points(data, [-2, -2, 2, 2])
 
@@ -91,7 +92,7 @@ def test_solo_contra_no_90_wins():
                       '[["Jc", "9d", "Jd", "Kh"], "A", 1], [["Kc", "Jc", "Ad", "10c"], "B", 0]]',
             'A_points': '0', 'B_points': '0', 'C_points': '0', 'D_points': '0',
             'without_nines': '0'}
-    scorer = DokoScorer(data)
+    scorer = doko_scorer.DokoScorer(data)
     scorer.calculate_score()
     assert_points(data, [12, -4, -4, -4])
 

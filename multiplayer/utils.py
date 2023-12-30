@@ -4,7 +4,8 @@ from shared.shared import log
 from django.utils.translation import gettext as _
 
 from .poker_score import highest_combo
-from .doko_scorer import DokoScorer
+import multiplayer.doko_scorer as doko_scorer
+
 
 
 
@@ -259,7 +260,7 @@ def handle_play(game, data, text_data, username, message, match):
                 if points:
                     message["data"]["points"] = points
             else:
-                scorer = DokoScorer(data)
+                scorer = doko_scorer.DokoScorer(data)
                 points_summary = scorer.calculate_score()
             message["data"]["summary"] = points_summary
             data["summary"] = points_summary
