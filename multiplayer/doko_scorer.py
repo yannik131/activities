@@ -1,10 +1,10 @@
 import json
 import multiplayer.utils as utils
 
-
 DOKO_GAME_VALUES = {
     "": 121, "w": 121, "9": 151, "6": 181, "3": 211, "s": 240
 }
+
 
 def calc_trick_points(trick):
     trick_points = 0
@@ -106,8 +106,6 @@ class DokoScorer:
         return re_points, re_trick_count, contra_points, contra_trick_count
 
     def __determine_winner_doko(self):
-        contra_return = "Kontra", self.contra_points
-        re_return = "Re", self.re_points
         re_bid, contra_bid = self.data["re_value"], self.data["contra_value"]
 
         re_goal_reached = (re_bid == "" and self.re_points >= 121 or
@@ -119,20 +117,20 @@ class DokoScorer:
 
         # Somebody won by reaching their goal
         if re_goal_reached:
-            return re_return
+            return "Re"
         if contra_goal_reached:
-            return contra_return
+            return "Kontra"
 
         # Somebody won because they didn't say anything and the other party didn't reach their goal
         if not re_goal_reached and contra_bid == "":
-            return contra_return
+            return "Kontra"
         if not contra_goal_reached and re_bid == "":
-            return re_return
+            return "Re"
 
         # Nobody won because neither party reached their goal
-        return None, self.re_points
+        return None
 
-    def __give_doko_points(self, result, winner_points):
+    def __give_doko_points(self, result):
         if result == "Re":
             self.re_extra.append("Gewonnen")
         elif result == "Kontra":
@@ -256,7 +254,7 @@ class DokoScorer:
         return summary_str
 
     def calculate_score(self):
-        result, winner_points = self.__determine_winner_doko()
-        summary_str = self.__give_doko_points(result, winner_points)
+        result = self.__determine_winner_doko()
+        summary_str = self.__give_doko_points(result)
 
         return summary_str

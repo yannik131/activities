@@ -54,7 +54,7 @@ def test_normal_contra_wins():
         data_["re_value"], data_["contra_value"] = combination
         scorer = doko_scorer.DokoScorer(data_)
         result = scorer.calculate_score()
-        print(result)
+        #print(result)
         if expected_results[combination]:
             try:
                 assert_points(data_, expected_results[combination])

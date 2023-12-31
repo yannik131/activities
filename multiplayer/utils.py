@@ -264,12 +264,14 @@ def handle_play(game, data, text_data, username, message, match):
                 points_summary = scorer.calculate_score()
             message["data"]["summary"] = points_summary
             data["summary"] = points_summary
-            data["started"] = after(data["started"], players)
             if game == "skat":
+                data["started"] = after(data["started"], players)
                 match.start_skat()
                 data["forehand"] = data["started"]
                 data["active"] = after(data["forehand"], players)
             else:
+                if not data["solist"]:
+                    data["started"] = after(data["started"], players)
                 match.start_doppelkopf()
                 data["active"] = data["started"]
             message["data"]["game_number"] = data["game_number"]
