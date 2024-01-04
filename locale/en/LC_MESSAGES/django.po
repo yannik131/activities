@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-19 18:53+0200\n"
+"POT-Creation-Date: 2024-01-04 22:53+0100\n"
 "PO-Revision-Date: 2021-08-19 18:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -111,7 +111,7 @@ msgstr ""
 "The message can't be longer than 150 characters. It's {l} characters long. "
 "Fix this."
 
-#: account/forms.py:112
+#: account/forms.py:112 account/forms.py:161
 msgid "Nutzername"
 msgstr "User name"
 
@@ -140,7 +140,7 @@ msgstr "Password incorrect."
 msgid "Der Account wurde noch nicht aktiviert! Checken Sie Ihre Mails."
 msgstr "The account has not yet been activated! Check your e-mails."
 
-#: account/forms.py:154
+#: account/forms.py:162
 msgid "Ich bin kein Roboter!"
 msgstr "I am not a robot!"
 
@@ -347,8 +347,8 @@ msgstr ""
 "Hi!<ul><li>You want to listen to some new music, but don't know which?</"
 "li><li>You'd like to do something on the weekend, but don't know what?</"
 "li><li>You've always wanted to learn an instrument, but don't know which?</"
-"li></ul>Maybe this site can help! After <a href=\"/account/register"
-"\">registering for free</a> you can do the following: "
+"li></ul>Maybe this site can help! After <a href=\"/account/"
+"register\">registering for free</a> you can do the following: "
 
 #: account/templates/account/about.html:22
 msgid ""
@@ -573,7 +573,7 @@ msgid "Gespeichert: "
 msgstr "Saved: "
 
 #: account/templates/account/edit.html:41 account/templates/base.html:44
-#: account/templates/javascript/base.js:76
+#: account/templates/javascript/base.js:77
 #: activity/templates/activity/detail.html:92
 msgid "OK!"
 msgstr "OK!"
@@ -621,19 +621,19 @@ msgstr "Your friends"
 #, python-format
 msgid ""
 "Freunde finden Sie z. B. über Mitglieder von gemeinsamen <a href=\"/activity/"
-"list\">Aktivitäten</a> oder über's <a href=\"/competitions/user_overview"
-"\">Zocken</a>. Kennen Sie den Nutzernamen, können Sie auch direkt eine "
-"Anfrage senden. Falls Sie den <a href=\"/character/overview"
-"\">Persönlichkeitstest</a> gemacht haben, können Sie sogar nach Leuten <a "
-"href=\"%(list)s\">in Ihrer Nähe suchen</a> und nach Übereinstimmung mit "
-"Ihrem Charakter sortieren!"
+"list\">Aktivitäten</a> oder über's <a href=\"/competitions/"
+"user_overview\">Zocken</a>. Kennen Sie den Nutzernamen, können Sie auch "
+"direkt eine Anfrage senden. Falls Sie den <a href=\"/character/"
+"overview\">Persönlichkeitstest</a> gemacht haben, können Sie sogar nach "
+"Leuten <a href=\"%(list)s\">in Ihrer Nähe suchen</a> und nach "
+"Übereinstimmung mit Ihrem Charakter sortieren!"
 msgstr ""
 "You can find friends by checking the member list of your <a href=\"/activity/"
 "list\">activities</a> or via <a href=\"/competitions/user_overview\">gaming</"
 "a>. If you know the username of someone you can also directly send a friend "
-"request. And if you’ve completed the <a href=\"/character/overview"
-"\">personality test</a>, you can even search for people <a href=\"%(list)s"
-"\">in your area</a> and sort them by character congruence!"
+"request. And if you’ve completed the <a href=\"/character/"
+"overview\">personality test</a>, you can even search for people <a "
+"href=\"%(list)s\">in your area</a> and sort them by character congruence!"
 
 #: account/templates/account/friend_requests_list.html:18
 msgid "Anfrage senden"
@@ -682,20 +682,20 @@ msgid ""
 "<br><ul style=\"text-align: left;\"><li>Oben links finden Sie das Dropdown-"
 "Menu. Über \"Aktivitäten\" und \"Kategorien\" können Sie sich anschauen, "
 "welche Aktivitäten es gibt und welche Ihnen vielleicht Spaß machen könnten.</"
-"li><li>Die Kartenspiele Durak, Skat, Doppelkopf und Poker können Sie <a href="
-"\"/competitions/user_overview\">gleich hier online spielen</a>.</li><li>Wenn "
-"Sie herausfinden wollen, welche Aktivitäten zu Ihnen passen, gibt es auch "
-"einen <a href=\"/character/overview\">Persönlichkeitstest für Sie</a>.</li></"
-"ul>"
+"li><li>Die Kartenspiele Durak, Skat, Doppelkopf und Poker können Sie <a "
+"href=\"/competitions/user_overview\">gleich hier online spielen</a>.</"
+"li><li>Wenn Sie herausfinden wollen, welche Aktivitäten zu Ihnen passen, "
+"gibt es auch einen <a href=\"/character/overview\">Persönlichkeitstest für "
+"Sie</a>.</li></ul>"
 msgstr ""
 "Since you haven't yet joined an activity, I'm assuming you're new here."
 "<br><ul style=\"text-align: left;\"><li>In the top left corner you can find "
 "the drop-down menu. Click on \"Activities\" or \"Categories\" to see which "
 "activities there are and which you might have fun doing.</li><li>The card "
-"games Durak, Skat, Doppelkopf and Texas Hold'em can be played online <a href="
-"\"/competitions/user_overview\">directly on this website</a>.</li><li>If you "
-"want to find out which activities might suit you, you can also complete <a "
-"href=\"/character/overview\">the personality test</a>.</li></ul>"
+"games Durak, Skat, Doppelkopf and Texas Hold'em can be played online <a "
+"href=\"/competitions/user_overview\">directly on this website</a>.</"
+"li><li>If you want to find out which activities might suit you, you can also "
+"complete <a href=\"/character/overview\">the personality test</a>.</li></ul>"
 
 #: account/templates/account/home.html:19
 msgid "Persönlichkeitstest & Empfehlungen"
@@ -946,42 +946,42 @@ msgid ""
 "rechtliche Schritte im Falle der unverlangten Zusendung von "
 "Werbeinformationen, etwa durch Spam-E-Mails, vor.</p>\n"
 "    <h2>4. Datenerfassung auf dieser Website</h2>\n"
-"    <h3>Cookies</h3> <p>Unsere Internetseiten verwenden so genannte \"Cookies"
-"\". Cookies sind kleine Textdateien und richten auf Ihrem Endgerät keinen "
-"Schaden an. Sie werden entweder vorübergehend für die Dauer einer Sitzung "
-"(Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät "
-"gespeichert. Session-Cookies werden nach Ende Ihres Besuchs automatisch "
-"gelöscht. Permanente Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie "
-"diese selbst löschen oder eine automatische Löschung durch Ihren Webbrowser "
-"erfolgt.</p> <p>Teilweise können auch Cookies von Drittunternehmen auf Ihrem "
-"Endgerät gespeichert werden, wenn Sie unsere Seite betreten (Third-Party-"
-"Cookies). Diese ermöglichen uns oder Ihnen die Nutzung bestimmter "
-"Dienstleistungen des Drittunternehmens (z. B. Cookies zur Abwicklung von "
-"Zahlungsdienstleistungen).</p> <p>Cookies haben verschiedene Funktionen. "
-"Zahlreiche Cookies sind technisch notwendig, da bestimmte Websitefunktionen "
-"ohne diese nicht funktionieren würden (z. B. die Warenkorbfunktion oder die "
-"Anzeige von Videos). Andere Cookies dienen dazu, das Nutzerverhalten "
-"auszuwerten oder Werbung anzuzeigen.</p> <p>Cookies, die zur Durchführung "
-"des elektronischen Kommunikationsvorgangs (notwendige Cookies) oder zur "
-"Bereitstellung bestimmter, von Ihnen erwünschter Funktionen (funktionale "
-"Cookies, z. B. für die Warenkorbfunktion) oder zur Optimierung der Website "
-"(z. B. Cookies zur Messung des Webpublikums) erforderlich sind, werden auf "
-"Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert, sofern keine andere "
-"Rechtsgrundlage angegeben wird. Der Websitebetreiber hat ein berechtigtes "
-"Interesse an der Speicherung von Cookies zur technisch fehlerfreien und "
-"optimierten Bereitstellung seiner Dienste. Sofern eine Einwilligung zur "
-"Speicherung von Cookies abgefragt wurde, erfolgt die Speicherung der "
-"betreffenden Cookies ausschließlich auf Grundlage dieser Einwilligung (Art. "
-"6 Abs. 1 lit. a DSGVO); die Einwilligung ist jederzeit widerrufbar.</p> "
-"<p>Sie können Ihren Browser so einstellen, dass Sie über das Setzen von "
-"Cookies informiert werden und Cookies nur im Einzelfall erlauben, die "
-"Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das "
-"automatische Löschen der Cookies beim Schließen des Browsers aktivieren. Bei "
-"der Deaktivierung von Cookies kann die Funktionalität dieser Website "
-"eingeschränkt sein.</p> <p>Soweit Cookies von Drittunternehmen oder zu "
-"Analysezwecken eingesetzt werden, werden wir Sie hierüber im Rahmen dieser "
-"Datenschutzerklärung gesondert informieren und ggf. eine Einwilligung "
-"abfragen.</p>\n"
+"    <h3>Cookies</h3> <p>Unsere Internetseiten verwenden so genannte "
+"\"Cookies\". Cookies sind kleine Textdateien und richten auf Ihrem Endgerät "
+"keinen Schaden an. Sie werden entweder vorübergehend für die Dauer einer "
+"Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem "
+"Endgerät gespeichert. Session-Cookies werden nach Ende Ihres Besuchs "
+"automatisch gelöscht. Permanente Cookies bleiben auf Ihrem Endgerät "
+"gespeichert, bis Sie diese selbst löschen oder eine automatische Löschung "
+"durch Ihren Webbrowser erfolgt.</p> <p>Teilweise können auch Cookies von "
+"Drittunternehmen auf Ihrem Endgerät gespeichert werden, wenn Sie unsere "
+"Seite betreten (Third-Party-Cookies). Diese ermöglichen uns oder Ihnen die "
+"Nutzung bestimmter Dienstleistungen des Drittunternehmens (z. B. Cookies zur "
+"Abwicklung von Zahlungsdienstleistungen).</p> <p>Cookies haben verschiedene "
+"Funktionen. Zahlreiche Cookies sind technisch notwendig, da bestimmte "
+"Websitefunktionen ohne diese nicht funktionieren würden (z. B. die "
+"Warenkorbfunktion oder die Anzeige von Videos). Andere Cookies dienen dazu, "
+"das Nutzerverhalten auszuwerten oder Werbung anzuzeigen.</p> <p>Cookies, die "
+"zur Durchführung des elektronischen Kommunikationsvorgangs (notwendige "
+"Cookies) oder zur Bereitstellung bestimmter, von Ihnen erwünschter "
+"Funktionen (funktionale Cookies, z. B. für die Warenkorbfunktion) oder zur "
+"Optimierung der Website (z. B. Cookies zur Messung des Webpublikums) "
+"erforderlich sind, werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO "
+"gespeichert, sofern keine andere Rechtsgrundlage angegeben wird. Der "
+"Websitebetreiber hat ein berechtigtes Interesse an der Speicherung von "
+"Cookies zur technisch fehlerfreien und optimierten Bereitstellung seiner "
+"Dienste. Sofern eine Einwilligung zur Speicherung von Cookies abgefragt "
+"wurde, erfolgt die Speicherung der betreffenden Cookies ausschließlich auf "
+"Grundlage dieser Einwilligung (Art. 6 Abs. 1 lit. a DSGVO); die Einwilligung "
+"ist jederzeit widerrufbar.</p> <p>Sie können Ihren Browser so einstellen, "
+"dass Sie über das Setzen von Cookies informiert werden und Cookies nur im "
+"Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle oder "
+"generell ausschließen sowie das automatische Löschen der Cookies beim "
+"Schließen des Browsers aktivieren. Bei der Deaktivierung von Cookies kann "
+"die Funktionalität dieser Website eingeschränkt sein.</p> <p>Soweit Cookies "
+"von Drittunternehmen oder zu Analysezwecken eingesetzt werden, werden wir "
+"Sie hierüber im Rahmen dieser Datenschutzerklärung gesondert informieren und "
+"ggf. eine Einwilligung abfragen.</p>\n"
 "    <h3>Kontaktformular</h3> <p>Wenn Sie uns per Kontaktformular Anfragen "
 "zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der "
 "von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und "
@@ -1090,13 +1090,13 @@ msgstr ""
 "Strato AG, Pascalstrasse 10, 10587 Berlin (hereinafter: \"Strato\"). When "
 "you visit our website, Strato records various log files including your IP "
 "addresses. </p> <p> Further information can be found in Strato's privacy "
-"policy: <a href = \"https://www.strato.de/datenschutz/\" target = \"_ blank"
-"\" rel = \"noopener noreferrer\"> https://www.strato.de/datenschutz/ </a>. </"
-"p> <p> Strato is used on the basis of Art. 6 Para. 1 lit.f GDPR. We have a "
-"legitimate interest in presenting our website as reliably as possible. If a "
-"corresponding consent has been requested, processing takes place exclusively "
-"on the basis of Art. 6 Para. 1 lit. a GDPR; the consent can be revoked at "
-"any time. </p>\n"
+"policy: <a href = \"https://www.strato.de/datenschutz/\" target = \"_ "
+"blank\" rel = \"noopener noreferrer\"> https://www.strato.de/datenschutz/ </"
+"a>. </p> <p> Strato is used on the basis of Art. 6 Para. 1 lit.f GDPR. We "
+"have a legitimate interest in presenting our website as reliably as "
+"possible. If a corresponding consent has been requested, processing takes "
+"place exclusively on the basis of Art. 6 Para. 1 lit. a GDPR; the consent "
+"can be revoked at any time. </p>\n"
 "    <h4> Conclusion of an order processing contract </h4> <p> We have "
 "concluded an order processing contract with Strato. This is a contract "
 "stipulated by data protection law, which ensures that Strato processes the "
@@ -1520,14 +1520,14 @@ msgstr ""
 "Posts are publicly visible on your profile page and the respective category "
 "or activity."
 
-#: account/templates/javascript/base.js:211
+#: account/templates/javascript/base.js:212
 msgid ""
 "Sie haben noch keine Chats. Finden Sie Freunde, Gruppen, Aktivitäten etc., "
 "um zu chatten!"
 msgstr ""
 "You don't have any chats yet. Find friends, groups, activities etc. to chat!"
 
-#: account/templates/javascript/base.js:256
+#: account/templates/javascript/base.js:260
 msgid ""
 "Verbindung getrennt, weil ein neuer Tab geöffnet wurde! Bitte verwenden Sie "
 "nur einen Tab für myactivities.net :)"
@@ -1535,7 +1535,7 @@ msgstr ""
 "Connection closed because a new tab was opened! Please only use one tab for "
 "myactivities.net :)"
 
-#: account/templates/javascript/base.js:288
+#: account/templates/javascript/base.js:292
 msgid ""
 "Es konnte keine Verbindung zum Server aufgebaut werden! Laden Sie die Seite "
 "bitte neu. Falls das nicht hilft, beschweren Sie sich gerne bei myactivities."
@@ -1555,7 +1555,7 @@ msgid "Wirklich?"
 msgstr "Really?"
 
 #: account/templates/registration/activation_email.html:3
-#: account/templates/registration/activation_email.html:5 account/utils.py:37
+#: account/templates/registration/activation_email.html:5 account/utils.py:40
 msgid "E-Mail Aktivierung"
 msgstr "E-mail activation"
 
@@ -1773,9 +1773,13 @@ msgstr ""
 "\"Edit account\" once you've logged in. Be sure to specify the state and "
 "country as well for best results."
 
-#: account/utils.py:37
+#: account/utils.py:40
 msgid "Aktivierungs-E-Mail"
 msgstr "Activation email"
+
+#: account/utils.py:70
+msgid "Gast"
+msgstr "Guest"
 
 #: account/views.py:81
 msgid ""
@@ -1858,23 +1862,19 @@ msgstr ""
 msgid "Sie sind doch schon eingeloggt! Was wollen Sie denn noch!?"
 msgstr "You're already logged in! What else do you need!?"
 
-#: account/views.py:310
-msgid "Gast"
-msgstr "Guest"
-
-#: account/views.py:341
+#: account/views.py:337
 msgid "Passwort erfolgreich geändert."
 msgstr "Your password was changed successfully."
 
-#: account/views.py:345
+#: account/views.py:341
 msgid "Ihr Passwort wurde zurückgesetzt."
 msgstr "Your password was successfully reset."
 
-#: account/views.py:378
+#: account/views.py:374
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr "Marker was successfully deleted."
 
-#: account/views.py:380
+#: account/views.py:376
 msgid "Markierung wurde nicht gefunden!"
 msgstr "Marker not found!"
 
@@ -2162,22 +2162,22 @@ msgstr "Find friends in your area"
 #: character/templates/character/overview.html:24
 msgid ""
 "Die hier angebotenen Persönlichkeitstests wurden in Anlehnung an den NEO-PI-"
-"R Test erstellt und basieren auf <a href=\"https://ipip.ori.org/newNEOKey.htm"
-"\" target=\"_blank\">frei verfügbaren Fragen</a>, die auf den <a href="
-"\"https://de.wikipedia.org/wiki/Big_Five_(Psychologie)\" target=\"_blank"
-"\">Big Five</a> der Persönlichkeitspsychologie fußen.<br><br>Der offizielle "
-"NEO-PI-R Persönlichkeitstest umfasst 240 Fragen. Weniger Fragen sind zwar "
-"schneller zu beantworten, liefern aber ein unter Wiederholung instabileres "
-"Testergebnis."
+"R Test erstellt und basieren auf <a href=\"https://ipip.ori.org/newNEOKey."
+"htm\" target=\"_blank\">frei verfügbaren Fragen</a>, die auf den <a "
+"href=\"https://de.wikipedia.org/wiki/Big_Five_(Psychologie)\" "
+"target=\"_blank\">Big Five</a> der Persönlichkeitspsychologie fußen."
+"<br><br>Der offizielle NEO-PI-R Persönlichkeitstest umfasst 240 Fragen. "
+"Weniger Fragen sind zwar schneller zu beantworten, liefern aber ein unter "
+"Wiederholung instabileres Testergebnis."
 msgstr ""
-"The offered personality tests are based on the NEO-PI-R test and use <a href="
-"\"https://ipip.ori.org/newNEOKey.htm\" target=\"_blank\">questions in public "
-"domain</a> which have been created in conjunction with the <a href=\"https://"
-"en.wikipedia.org/wiki/Big_Five_personality_traits\" target=\"_blank\">Big "
-"Five</a> of psychological trait theory.<br><br>The official NEO-PI-R "
-"personality test comprises 240 questions. Less questions don't take as much "
-"time to answer, but might yield less consistent results if the test is taken "
-"more than once."
+"The offered personality tests are based on the NEO-PI-R test and use <a "
+"href=\"https://ipip.ori.org/newNEOKey.htm\" target=\"_blank\">questions in "
+"public domain</a> which have been created in conjunction with the <a "
+"href=\"https://en.wikipedia.org/wiki/Big_Five_personality_traits\" "
+"target=\"_blank\">Big Five</a> of psychological trait theory.<br><br>The "
+"official NEO-PI-R personality test comprises 240 questions. Less questions "
+"don't take as much time to answer, but might yield less consistent results "
+"if the test is taken more than once."
 
 #: character/templates/character/overview.html:28
 msgid "Bitte wählen Sie eine der drei Optionen aus."
@@ -2801,11 +2801,11 @@ msgstr ""
 "deleted in {days} days or when you log out. You won't be able to continue "
 "looking for friends or suitable activities in your area any if that happens."
 
-#: character/views.py:40
+#: character/views.py:41
 msgid "Wählen Sie zuerst einen der drei Fragebogen aus, bevor Sie beginnen."
 msgstr "Please choose on of the three questionnaires before you start."
 
-#: character/views.py:45
+#: character/views.py:46
 msgid ""
 "Sie haben den Test bereits beendet. Wollen Sie ihn erneut machen, können Sie "
 "weiter unten Ihr Ergebnis zurücksetzen."
@@ -2830,15 +2830,15 @@ msgstr "is leaving the conference."
 msgid "tritt der Konferenz bei."
 msgstr "is joining the conference."
 
-#: chat/templates/javascript/room.js:52
+#: chat/templates/javascript/room.js:96
 msgid "ist dem Chat beigetreten."
 msgstr "entered the chat."
 
-#: chat/templates/javascript/room.js:62
+#: chat/templates/javascript/room.js:106
 msgid "hat den Chat verlassen."
 msgstr "left the chat."
 
-#: chat/templates/javascript/room.js:89
+#: chat/templates/javascript/room.js:133
 #: multiplayer/templates/javascript/poker.js:63
 msgid "Sie"
 msgstr "You"
@@ -3254,6 +3254,1530 @@ msgstr "No teams can be formed with this number of players."
 msgid "Es stehen noch Ergebnisse offen."
 msgstr "There are still matches without results."
 
+#: env/lib/python3.11/site-packages/click/_termui_impl.py:518
+#, python-brace-format
+msgid "{editor}: Editing failed"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/_termui_impl.py:522
+#, python-brace-format
+msgid "{editor}: Editing failed: {e}"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/core.py:1120
+msgid "Aborted!"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/core.py:1309
+#: env/lib/python3.11/site-packages/click/decorators.py:559
+msgid "Show this message and exit."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/core.py:1340
+#: env/lib/python3.11/site-packages/click/core.py:1370
+#, python-brace-format
+msgid "(Deprecated) {text}"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/core.py:1387
+#, fuzzy
+#| msgid "Aktion"
+msgid "Options"
+msgstr "Action"
+
+#: env/lib/python3.11/site-packages/click/core.py:1413
+#, python-brace-format
+msgid "Got unexpected extra argument ({args})"
+msgid_plural "Got unexpected extra arguments ({args})"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/click/core.py:1429
+msgid "DeprecationWarning: The command {name!r} is deprecated."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/core.py:1636
+msgid "Commands"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/core.py:1668
+msgid "Missing command."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/core.py:1746
+msgid "No such command {name!r}."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/core.py:2310
+msgid "Value must be an iterable."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/core.py:2331
+#, python-brace-format
+msgid "Takes {nargs} values but 1 was given."
+msgid_plural "Takes {nargs} values but {len} were given."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/click/core.py:2778
+#, python-brace-format
+msgid "env var: {var}"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/core.py:2808
+msgid "(dynamic)"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/core.py:2821
+#, python-brace-format
+msgid "default: {default}"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/core.py:2834
+msgid "required"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/decorators.py:465
+#, python-format
+msgid "%(prog)s, version %(version)s"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/decorators.py:528
+msgid "Show the version and exit."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/exceptions.py:44
+#: env/lib/python3.11/site-packages/click/exceptions.py:80
+#, python-brace-format
+msgid "Error: {message}"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/exceptions.py:72
+#, python-brace-format
+msgid "Try '{command} {option}' for help."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/exceptions.py:121
+#, python-brace-format
+msgid "Invalid value: {message}"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/exceptions.py:123
+#, python-brace-format
+msgid "Invalid value for {param_hint}: {message}"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/exceptions.py:179
+msgid "Missing argument"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/exceptions.py:181
+msgid "Missing option"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/exceptions.py:183
+msgid "Missing parameter"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/exceptions.py:185
+#, python-brace-format
+msgid "Missing {param_type}"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/exceptions.py:192
+#, python-brace-format
+msgid "Missing parameter: {param_name}"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/exceptions.py:212
+#, python-brace-format
+msgid "No such option: {name}"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/exceptions.py:224
+#, python-brace-format
+msgid "Did you mean {possibility}?"
+msgid_plural "(Possible options: {possibilities})"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/click/exceptions.py:262
+msgid "unknown error"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/exceptions.py:269
+msgid "Could not open file {filename!r}: {message}"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/parser.py:231
+msgid "Argument {name!r} takes {nargs} values."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/parser.py:413
+msgid "Option {name!r} does not take a value."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/parser.py:474
+msgid "Option {name!r} requires an argument."
+msgid_plural "Option {name!r} requires {nargs} arguments."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/click/shell_completion.py:319
+msgid "Shell completion is not supported for Bash versions older than 4.4."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/shell_completion.py:326
+msgid "Couldn't detect Bash version, shell completion is not supported."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/termui.py:158
+msgid "Repeat for confirmation"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/termui.py:174
+msgid "Error: The value you entered was invalid."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/termui.py:176
+#, python-brace-format
+msgid "Error: {e.message}"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/termui.py:187
+msgid "Error: The two entered values do not match."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/termui.py:243
+msgid "Error: invalid input"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/termui.py:773
+msgid "Press any key to continue..."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/types.py:266
+#, python-brace-format
+msgid ""
+"Choose from:\n"
+"\t{choices}"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/types.py:298
+msgid "{value!r} is not {choice}."
+msgid_plural "{value!r} is not one of {choices}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/click/types.py:392
+msgid "{value!r} does not match the format {format}."
+msgid_plural "{value!r} does not match the formats {formats}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/click/types.py:414
+msgid "{value!r} is not a valid {number_type}."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/types.py:470
+#, python-brace-format
+msgid "{value} is not in the range {range}."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/types.py:611
+msgid "{value!r} is not a valid boolean."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/types.py:635
+msgid "{value!r} is not a valid UUID."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/types.py:822
+msgid "file"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/types.py:824
+msgid "directory"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/types.py:826
+msgid "path"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/types.py:877
+msgid "{name} {filename!r} does not exist."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/types.py:886
+msgid "{name} {filename!r} is a file."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/types.py:894
+#, python-brace-format
+msgid "{name} '{filename}' is a directory."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/types.py:903
+msgid "{name} {filename!r} is not readable."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/types.py:912
+msgid "{name} {filename!r} is not writable."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/types.py:921
+msgid "{name} {filename!r} is not executable."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/click/types.py:988
+#, python-brace-format
+msgid "{len_type} values are required, but {len_value} was given."
+msgid_plural "{len_type} values are required, but {len_value} were given."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/contrib/messages/apps.py:7
+msgid "Messages"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/contrib/sitemaps/apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/contrib/staticfiles/apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/contrib/syndication/apps.py:7
+msgid "Syndication"
+msgstr ""
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: env/lib/python3.11/site-packages/django/core/paginator.py:30
+msgid "…"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/paginator.py:51
+msgid "That page number is not an integer"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/paginator.py:53
+msgid "That page number is less than 1"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/paginator.py:58
+msgid "That page contains no results"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:22
+msgid "Enter a valid value."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:93
+#: env/lib/python3.11/site-packages/django/forms/fields.py:664
+msgid "Enter a valid URL."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:147
+msgid "Enter a valid integer."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:158
+msgid "Enter a valid email address."
+msgstr ""
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: env/lib/python3.11/site-packages/django/core/validators.py:259
+msgid ""
+"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:266
+msgid ""
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:275
+#: env/lib/python3.11/site-packages/django/core/validators.py:295
+msgid "Enter a valid IPv4 address."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:280
+#: env/lib/python3.11/site-packages/django/core/validators.py:296
+msgid "Enter a valid IPv6 address."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:290
+#: env/lib/python3.11/site-packages/django/core/validators.py:294
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:324
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:330
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:363
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:372
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:382
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:397
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:416
+#: env/lib/python3.11/site-packages/django/forms/fields.py:292
+#: env/lib/python3.11/site-packages/django/forms/fields.py:327
+msgid "Enter a number."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:418
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:423
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:428
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:490
+#, python-format
+msgid ""
+"File extension “%(extension)s” is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/core/validators.py:543
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/base.py:1197
+#: env/lib/python3.11/site-packages/django/forms/models.py:768
+#, fuzzy
+#| msgid "Land"
+msgid "and"
+msgstr "Country"
+
+#: env/lib/python3.11/site-packages/django/db/models/base.py:1199
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:100
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:101
+msgid "This field cannot be null."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:102
+msgid "This field cannot be blank."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:103
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
+#. Eg: "Title must be unique for pub_date year"
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:107
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:126
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:958
+#, python-format
+msgid "“%(value)s” value must be either True or False."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:959
+#, python-format
+msgid "“%(value)s” value must be either True, False, or None."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:961
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1002
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1096
+msgid "Comma-separated integers"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1145
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1147
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1290
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1150
+msgid "Date (without time)"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1288
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1292
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1296
+msgid "Date (with time)"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1444
+#, python-format
+msgid "“%(value)s” value must be a decimal number."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1446
+msgid "Decimal number"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1585
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
+"uuuuuu] format."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1588
+#, fuzzy
+#| msgid "Durak"
+msgid "Duration"
+msgstr "Durak"
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1638
+#, fuzzy
+#| msgid "E-Mail Adresse"
+msgid "Email address"
+msgstr "E-mail address"
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1661
+msgid "File path"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1727
+#, python-format
+msgid "“%(value)s” value must be a float."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1729
+msgid "Floating point number"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1767
+#, python-format
+msgid "“%(value)s” value must be an integer."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1769
+#, fuzzy
+#| msgid "Intellekt"
+msgid "Integer"
+msgstr "Intellect"
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1852
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1867
+msgid "Small integer"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1875
+msgid "IPv4 address"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1906
+msgid "IP address"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1986
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1987
+#, python-format
+msgid "“%(value)s” value must be either None, True or False."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1989
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2043
+msgid "Positive big integer"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2056
+msgid "Positive integer"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2069
+msgid "Positive small integer"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2083
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2115
+msgid "Text"
+msgstr "Text"
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2181
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2183
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2186
+msgid "Time"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2312
+msgid "URL"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2334
+msgid "Raw binary data"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2399
+#, python-format
+msgid "“%(value)s” is not a valid UUID."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2401
+msgid "Universally unique identifier"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/files.py:225
+msgid "File"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/files.py:373
+msgid "Image"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/json.py:18
+msgid "A JSON object"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/json.py:20
+msgid "Value must be valid JSON."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/related.py:790
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r does not exist."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/related.py:792
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/related.py:1045
+msgid "One-to-one relationship"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/related.py:1099
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/related.py:1100
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/db/models/fields/related.py:1142
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: env/lib/python3.11/site-packages/django/forms/boundfield.py:150
+msgid ":?.!"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:54
+msgid "This field is required."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:247
+msgid "Enter a whole number."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:391
+#: env/lib/python3.11/site-packages/django/forms/fields.py:1132
+msgid "Enter a valid date."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:415
+#: env/lib/python3.11/site-packages/django/forms/fields.py:1133
+msgid "Enter a valid time."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:443
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:477
+msgid "Enter a valid duration."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:478
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:538
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:539
+msgid "No file was submitted."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:540
+msgid "The submitted file is empty."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:542
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:545
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:606
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:768
+#: env/lib/python3.11/site-packages/django/forms/fields.py:858
+#: env/lib/python3.11/site-packages/django/forms/models.py:1309
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:859
+#: env/lib/python3.11/site-packages/django/forms/fields.py:974
+#: env/lib/python3.11/site-packages/django/forms/models.py:1308
+msgid "Enter a list of values."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:975
+msgid "Enter a complete value."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:1191
+msgid "Enter a valid UUID."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/fields.py:1221
+msgid "Enter a valid JSON."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: env/lib/python3.11/site-packages/django/forms/forms.py:76
+msgid ":"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/forms.py:203
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/formsets.py:61
+#, python-format
+msgid ""
+"ManagementForm data is missing or has been tampered with. Missing fields: "
+"%(field_names)s. You may need to file a bug report if the issue persists."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/formsets.py:370
+#, python-format
+msgid "Please submit at most %d form."
+msgid_plural "Please submit at most %d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/forms/formsets.py:377
+#, python-format
+msgid "Please submit at least %d form."
+msgid_plural "Please submit at least %d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/forms/formsets.py:405
+#: env/lib/python3.11/site-packages/django/forms/formsets.py:412
+msgid "Order"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/formsets.py:417
+msgid "Delete"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/models.py:763
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/models.py:767
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/models.py:773
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/models.py:782
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/models.py:1109
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/models.py:1193
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/models.py:1311
+#, python-format
+msgid "“%(pk)s” is not a valid value."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/utils.py:172
+#, python-format
+msgid ""
+"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/widgets.py:403
+msgid "Clear"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/widgets.py:404
+msgid "Currently"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/widgets.py:405
+msgid "Change"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/widgets.py:714
+msgid "Unknown"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/widgets.py:715
+msgid "Yes"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/forms/widgets.py:716
+msgid "No"
+msgstr ""
+
+#. Translators: Please do not add spaces around commas.
+#: env/lib/python3.11/site-packages/django/template/defaultfilters.py:805
+msgid "yes,no,maybe"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/template/defaultfilters.py:834
+#: env/lib/python3.11/site-packages/django/template/defaultfilters.py:851
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/template/defaultfilters.py:853
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/template/defaultfilters.py:855
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/template/defaultfilters.py:857
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/template/defaultfilters.py:859
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/template/defaultfilters.py:861
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dateformat.py:66
+msgid "p.m."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dateformat.py:67
+msgid "a.m."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dateformat.py:72
+msgid "PM"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dateformat.py:73
+msgid "AM"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dateformat.py:146
+msgid "midnight"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dateformat.py:148
+msgid "noon"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:6
+msgid "Monday"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:6
+msgid "Tuesday"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:6
+msgid "Wednesday"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:6
+msgid "Thursday"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:6
+msgid "Friday"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:7
+msgid "Saturday"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:7
+msgid "Sunday"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:10
+#, fuzzy
+#| msgid "Von"
+msgid "Mon"
+msgstr "From"
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:10
+#, fuzzy
+#| msgid "Turnier"
+msgid "Tue"
+msgstr "Tournament"
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:10
+#, fuzzy
+#| msgid "Wer"
+msgid "Wed"
+msgstr "Who"
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:10
+msgid "Thu"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:10
+#, fuzzy
+#| msgid "Frei"
+msgid "Fri"
+msgstr "Free"
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:11
+#, fuzzy
+#| msgid "Skat"
+msgid "Sat"
+msgstr "Skat"
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:11
+msgid "Sun"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:14
+msgid "January"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:14
+msgid "February"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:14
+msgid "March"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:14
+msgid "April"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:14
+msgid "May"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:14
+msgid "June"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:15
+msgid "July"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:15
+msgid "August"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:15
+msgid "September"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:15
+msgid "October"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:15
+msgid "November"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:16
+msgid "December"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:19
+#, fuzzy
+#| msgid "an"
+msgid "jan"
+msgstr "to"
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:19
+msgid "feb"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:19
+msgid "mar"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:19
+msgid "apr"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:19
+msgid "may"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:19
+msgid "jun"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:20
+msgid "jul"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:20
+msgid "aug"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:20
+msgid "sep"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:20
+msgid "oct"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:20
+msgid "nov"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:20
+msgid "dec"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:23
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:24
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:25
+msgctxt "abbrev. month"
+msgid "March"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:26
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:27
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:28
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:29
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:30
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:31
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:32
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:33
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:34
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:37
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:38
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:39
+msgctxt "alt. month"
+msgid "March"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:40
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:41
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:42
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:43
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:44
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:45
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:46
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:47
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/dates.py:48
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/ipv6.py:8
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/text.py:70
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/text.py:236
+msgid "or"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: env/lib/python3.11/site-packages/django/utils/text.py:255
+#: env/lib/python3.11/site-packages/django/utils/timesince.py:94
+msgid ", "
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/utils/timesince.py:9
+#, python-format
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/utils/timesince.py:10
+#, python-format
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/utils/timesince.py:11
+#, python-format
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/utils/timesince.py:12
+#, python-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/utils/timesince.py:13
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/utils/timesince.py:14
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.11/site-packages/django/views/csrf.py:110
+msgid "Forbidden"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/csrf.py:111
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/csrf.py:115
+msgid ""
+"You are seeing this message because this HTTPS site requires a “Referer "
+"header” to be sent by your Web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/csrf.py:120
+msgid ""
+"If you have configured your browser to disable “Referer” headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for “same-"
+"origin” requests."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/csrf.py:124
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a "
+"rel=\"noreferrer\" …> for links to third-party sites."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/csrf.py:132
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/csrf.py:137
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for “same-origin” requests."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/csrf.py:142
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/generic/dates.py:41
+msgid "No year specified"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/generic/dates.py:61
+#: env/lib/python3.11/site-packages/django/views/generic/dates.py:111
+#: env/lib/python3.11/site-packages/django/views/generic/dates.py:208
+msgid "Date out of range"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/generic/dates.py:90
+msgid "No month specified"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/generic/dates.py:142
+msgid "No day specified"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/generic/dates.py:188
+msgid "No week specified"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/generic/dates.py:338
+#: env/lib/python3.11/site-packages/django/views/generic/dates.py:367
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/generic/dates.py:594
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/generic/dates.py:628
+#, python-format
+msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/generic/detail.py:54
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/generic/list.py:67
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/generic/list.py:72
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/generic/list.py:154
+#, python-format
+msgid "Empty list and “%(class_name)s.allow_empty” is False."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/static.py:40
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/static.py:42
+#, python-format
+msgid "“%(path)s” does not exist"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/static.py:80
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:7
+#: env/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:221
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:207
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:222
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
+"configured any URLs."
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:230
+msgid "Django Documentation"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:231
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:239
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:240
+msgid "Get started with Django"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:248
+msgid "Django Community"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:249
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/kombu/transport/qpid.py:1311
+#, python-format
+msgid "Attempting to connect to qpid with SASL mechanism %s"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/kombu/transport/qpid.py:1316
+#, python-format
+msgid "Connected to qpid with SASL mechanism %s"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/kombu/transport/qpid.py:1334
+#, python-format
+msgid "Unable to connect to qpid with SASL mechanism %s"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/tests/test_base.py:17
+msgid "COOKIE_INFO_HEADER"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/tests/test_base.py:18
+msgid "COOKIE_INFO_PARA"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/tests/test_base.py:19
+msgid "COOKIE_INFO_OK"
+msgstr ""
+
+#: env/lib/python3.11/site-packages/timezone_field/rest_framework.py:10
+msgid "A valid timezone is required."
+msgstr ""
+
 #: multiplayer/decorators.py:11
 msgid "Das Spiel existiert nicht mehr."
 msgstr "This game doesn't exist anymore."
@@ -3290,12 +4814,12 @@ msgstr "Without nines"
 msgid "Jeder kann dazuschmeißen"
 msgstr "All can help"
 
-#: multiplayer/models.py:38
+#: multiplayer/models.py:43
 msgid "ist voll"
 msgstr "is full"
 
 #: multiplayer/templates/javascript/cards.js:506
-#: multiplayer/templates/javascript/skat.js:566
+#: multiplayer/templates/javascript/skat.js:567
 msgid "Ja"
 msgstr "Yes"
 
@@ -3328,7 +4852,7 @@ msgid "Okay"
 msgstr "Okay"
 
 #: multiplayer/templates/javascript/doppelkopf.js:6
-#: multiplayer/templates/javascript/doppelkopf.js:435
+#: multiplayer/templates/javascript/doppelkopf.js:436
 msgid "Gesund"
 msgstr "Healthy"
 
@@ -3346,19 +4870,19 @@ msgstr "Jacks"
 
 #: multiplayer/templates/javascript/doppelkopf.js:10
 #: multiplayer/templates/javascript/skat.js:13
-#: multiplayer/templates/javascript/skat.js:359
+#: multiplayer/templates/javascript/skat.js:360
 msgid "Kreuz"
 msgstr "Clubs"
 
 #: multiplayer/templates/javascript/doppelkopf.js:11
 #: multiplayer/templates/javascript/skat.js:14
-#: multiplayer/templates/javascript/skat.js:360
+#: multiplayer/templates/javascript/skat.js:361
 msgid "Pik"
 msgstr "Spades"
 
 #: multiplayer/templates/javascript/doppelkopf.js:12
 #: multiplayer/templates/javascript/skat.js:15
-#: multiplayer/templates/javascript/skat.js:361
+#: multiplayer/templates/javascript/skat.js:362
 msgid "Herz"
 msgstr "Hearts"
 
@@ -3383,7 +4907,7 @@ msgid "Keine 30"
 msgstr "No 30"
 
 #: multiplayer/templates/javascript/doppelkopf.js:21
-#: multiplayer/templates/javascript/skat.js:393
+#: multiplayer/templates/javascript/skat.js:394
 msgid "Schwarz"
 msgstr "Black"
 
@@ -3392,7 +4916,7 @@ msgid "Re"
 msgstr "Re"
 
 #: multiplayer/templates/javascript/doppelkopf.js:25
-#: multiplayer/templates/javascript/doppelkopf.js:267
+#: multiplayer/templates/javascript/doppelkopf.js:269
 msgid "Kontra"
 msgstr "Contra"
 
@@ -3400,7 +4924,7 @@ msgstr "Contra"
 msgid "Normalspiel"
 msgstr "Normal game"
 
-#: multiplayer/templates/javascript/doppelkopf.js:361
+#: multiplayer/templates/javascript/doppelkopf.js:362
 #: multiplayer/templates/javascript/durak.js:187
 #: multiplayer/templates/javascript/skat.js:164
 #: multiplayer/templates/javascript/skat.js:201
@@ -3468,48 +4992,48 @@ msgstr "Straight Flush"
 msgid "Royal Flush"
 msgstr "Royal Flush"
 
-#: multiplayer/templates/javascript/poker.js:148
+#: multiplayer/templates/javascript/poker.js:153
 msgid "Gewonnen: "
 msgstr "Winner: "
 
-#: multiplayer/templates/javascript/poker.js:180
+#: multiplayer/templates/javascript/poker.js:185
 msgid "Gewinner: "
 msgstr "Winner: "
 
-#: multiplayer/templates/javascript/poker.js:250
+#: multiplayer/templates/javascript/poker.js:255
 msgid "Änderung um "
 msgstr "Change at "
 
-#: multiplayer/templates/javascript/poker.js:274
+#: multiplayer/templates/javascript/poker.js:279
 msgid "Sie können nicht zweimal hintereinander raisen."
 msgstr "You can't raise two times in a row."
 
-#: multiplayer/templates/javascript/poker.js:279
+#: multiplayer/templates/javascript/poker.js:284
 msgid "Mindesteinsatz: "
 msgstr "Minimum bet: "
 
-#: multiplayer/templates/javascript/poker.js:283
+#: multiplayer/templates/javascript/poker.js:288
 msgid "Geben Sie eine Zahl ein."
 msgstr "Enter a number."
 
-#: multiplayer/templates/javascript/poker.js:286
+#: multiplayer/templates/javascript/poker.js:291
 msgid "Beachten Sie den Mindesteinsatz."
 msgstr "That's below the minimum bet."
 
-#: multiplayer/templates/javascript/poker.js:289
+#: multiplayer/templates/javascript/poker.js:294
 msgid "So viel Kohle haben Sie nicht. Es fehlen: "
 msgstr "You don't have that much. You are missing: "
 
-#: multiplayer/templates/javascript/poker.js:335
+#: multiplayer/templates/javascript/poker.js:340
 msgid "Zeigen"
 msgstr "Show"
 
-#: multiplayer/templates/javascript/poker.js:336
+#: multiplayer/templates/javascript/poker.js:341
 msgid "Nicht zeigen"
 msgstr "Don't show"
 
 #: multiplayer/templates/javascript/skat.js:16
-#: multiplayer/templates/javascript/skat.js:362
+#: multiplayer/templates/javascript/skat.js:363
 msgid "Karo"
 msgstr "Diamonds"
 
@@ -3541,52 +5065,52 @@ msgstr "overbid"
 msgid "Augen"
 msgstr "Points"
 
-#: multiplayer/templates/javascript/skat.js:292
+#: multiplayer/templates/javascript/skat.js:293
 msgid "Drücken"
 msgstr "Put"
 
-#: multiplayer/templates/javascript/skat.js:379
+#: multiplayer/templates/javascript/skat.js:380
 msgid "Ouvert"
 msgstr "Ouvert"
 
-#: multiplayer/templates/javascript/skat.js:382
-#: multiplayer/templates/javascript/skat.js:387
+#: multiplayer/templates/javascript/skat.js:383
+#: multiplayer/templates/javascript/skat.js:388
 msgid "Normal"
 msgstr "Normal"
 
-#: multiplayer/templates/javascript/skat.js:390
+#: multiplayer/templates/javascript/skat.js:391
 msgid "Schneider"
 msgstr "Schneider"
 
-#: multiplayer/templates/javascript/skat.js:396
+#: multiplayer/templates/javascript/skat.js:397
 msgid "Offen"
 msgstr "Ouvert"
 
-#: multiplayer/templates/javascript/skat.js:416
+#: multiplayer/templates/javascript/skat.js:417
 msgid "Aufnehmen"
 msgstr "Take Skat"
 
-#: multiplayer/templates/javascript/skat.js:419
+#: multiplayer/templates/javascript/skat.js:420
 msgid "Hand spielen"
 msgstr "Hand"
 
-#: multiplayer/templates/javascript/skat.js:428
+#: multiplayer/templates/javascript/skat.js:429
 msgid "Eingepasst"
 msgstr "No bid, new game"
 
-#: multiplayer/templates/javascript/skat.js:571
+#: multiplayer/templates/javascript/skat.js:572
 msgid "Passe"
 msgstr "Nah fam"
 
-#: multiplayer/templates/javascript/skat.js:583
+#: multiplayer/templates/javascript/skat.js:584
 msgid "Vorhand"
 msgstr "Forehand"
 
-#: multiplayer/templates/javascript/skat.js:583
+#: multiplayer/templates/javascript/skat.js:584
 msgid "Mittelhand"
 msgstr "Middlehand"
 
-#: multiplayer/templates/javascript/skat.js:583
+#: multiplayer/templates/javascript/skat.js:584
 msgid "Hinterhand"
 msgstr "Rearhand"
 
@@ -3615,13 +5139,13 @@ msgstr "Blinds"
 #: multiplayer/templates/multiplayer/lobby.html:11
 #, python-format
 msgid ""
-"Hier können Sie %(activity)s online spielen (<a href=\"/multiplayer/rules"
-"\">Spielregeln finden Sie hier</a>). Als Ersteller eines Matches können Sie "
-"das Spiel starten, sobald die Mindestspieleranzahl anwesend ist. Durch Klick "
-"auf den Mülleimer schmeißen Sie Leute raus. Den Chat erreichen Sie im Spiel "
-"über den Chat-Button oben rechts.<br><span style=\"color: yellow\">Noch "
-"nicht begonnene Spiele werden nach %(t1)s Minuten, laufende nach %(t2)s "
-"Tagen automatisch gelöscht.</span>"
+"Hier können Sie %(activity)s online spielen (<a href=\"/multiplayer/"
+"rules\">Spielregeln finden Sie hier</a>). Als Ersteller eines Matches können "
+"Sie das Spiel starten, sobald die Mindestspieleranzahl anwesend ist. Durch "
+"Klick auf den Mülleimer schmeißen Sie Leute raus. Den Chat erreichen Sie im "
+"Spiel über den Chat-Button oben rechts.<br><span style=\"color: "
+"yellow\">Noch nicht begonnene Spiele werden nach %(t1)s Minuten, laufende "
+"nach %(t2)s Tagen automatisch gelöscht.</span>"
 msgstr ""
 "Here you can play %(activity)s online (<a href=\"/multiplayer/rules\">you "
 "can find the rules here</a>). If you've created a match, you can start it "
@@ -3705,12 +5229,50 @@ msgstr ""
 "        "
 
 #: multiplayer/templates/multiplayer/rules.html:32
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "        <h3><a href=\"https://de.wikipedia.org/wiki/"
+#| "Durak_(Kartenspiel)\">Durak auf Wikipedia</a></h3>\n"
+#| "            <ul>\n"
+#| "                <li>Karten: 6-Ass (2-3 Spieler), 4-Ass (4 Spieler), 3-Ass "
+#| "(5 Spieler)</li>\n"
+#| "                <li>Modus: Schieben erlaubt, ohne Nachschmeißen nach "
+#| "Schlucken</li>\n"
+#| "            </ul>\n"
+#| "            Ziel des Spiels: Keine Karten mehr zu haben. Erster ohne "
+#| "Karten erhält +2, letzter mit Karten -1, Rest +1 Punkte. Der Angreifer "
+#| "kann 1-4 Karten desselben Ranges auf den Verteidiger ausspielen. Der "
+#| "Verteidiger spielt mit seinen beiden Nachbarn und kann nach einem "
+#| "Angriff:\n"
+#| "            <ul>\n"
+#| "                <li>Aufnehmen (Schlucken). Nachbarn können anschließend "
+#| "insgesamt max. 6 Karten der Ränge dazulegen, die bereits gespielt worden "
+#| "sind und klicken dann auf \"Fertig\".</li>\n"
+#| "                <li>Schlagen. Eine Karte kann mit Trumpf bzw. einer Karte "
+#| "derselben Farbe, aber höheren Ranges geschlagen werden. Nachbarn "
+#| "verhalten sich wie beim Schlucken.</li>\n"
+#| "                <li>Schieben. Wurde weder geschlagen noch geschluckt "
+#| "können 1-3 Karten desselben Ranges dazugelegt und zum linken Nachbarn "
+#| "weitergeschoben werden. Dieser wird dann Verteidiger.</li>\n"
+#| "            </ul>\n"
+#| "        Hat ein Spieler weniger als 6 Karten, darf er mit maximal so "
+#| "vielen Karten angegriffen werden, wie er auf der Hand hat.<br>\n"
+#| "        Nach Schlucken/Schlagen füllen, beginnend mit dem ersten "
+#| "Angreifer, alle Spieler ihre Hände auf 6 Karten auf. Schlucken: Linker "
+#| "Nachbar kommt raus. Erfolgreiches Schlagen: Geschlagene Karten aus dem "
+#| "Spiel entfernen, Spieler kommt selbst raus.\n"
+#| "        Kartenränge (absteigend): Ass, König, Dame, Bube, 10, 9, 8, ..."
+#| "<br>\n"
+#| "        Die offene Deckkarte zeigt die Trumpffarbe an. Trumpfkarten sind "
+#| "höheren Ranges als alle Fehlkarten.\n"
+#| "        "
 msgid ""
 "\n"
 "        <h3><a href=\"https://de.wikipedia.org/wiki/"
 "Durak_(Kartenspiel)\">Durak auf Wikipedia</a></h3>\n"
 "            <ul>\n"
-"                <li>Karten: 6-Ass (2-3 Spieler), 4-Ass (4 Spieler), 3-Ass (5 "
+"                <li>Karten: 7-Ass (2-3 Spieler), 5-Ass (4 Spieler), 3-Ass (5 "
 "Spieler)</li>\n"
 "                <li>Modus: Schieben erlaubt, ohne Nachschmeißen nach "
 "Schlucken</li>\n"
@@ -3745,7 +5307,7 @@ msgstr ""
 "        <h3><a href=\"https://en.wikipedia.org/wiki/Durak\">Durak on "
 "Wikipedia</a></h3>\n"
 "            <ul>\n"
-"                <li>Cards: 6-Ace (2-3 players), 4-Ace (4 players), 3-Ace (5 "
+"                <li>Cards: 7-Ace (2-3 players), 5-Ace (4 players), 3-Ace (5 "
 "players)</li>\n"
 "                <li>Mode: With transfer</li>\n"
 "            </ul>\n"
@@ -4203,9 +5765,9 @@ msgstr "Belongs to"
 msgid ""
 "Hier finden Sie eine Liste aller Bewerbungen auf diese Leerstelle. Unterhalb "
 "des Nutzernamens stehen, in Gelb, die Stadt des Nutzers und, falls "
-"verfügbar, Alter und Geschlecht.<br><br><span style=\"font-style: italic"
-"\">Hinweis für den Admin: Wurde eine Bewerbung abgelehnt, kann sich der "
-"Nutzer erst dann erneut bewerben, wenn die Bewerbung vom Admin gelöscht "
+"verfügbar, Alter und Geschlecht.<br><br><span style=\"font-style: "
+"italic\">Hinweis für den Admin: Wurde eine Bewerbung abgelehnt, kann sich "
+"der Nutzer erst dann erneut bewerben, wenn die Bewerbung vom Admin gelöscht "
 "wurde.</span>"
 msgstr ""
 "Here's a list of all applications for this vacancy. Below the username the "
@@ -4407,9 +5969,6 @@ msgstr ""
 #~ msgid "Alter (Geschlecht"
 #~ msgstr "Age (gender)"
 
-#~ msgid "Aktion"
-#~ msgstr "Action"
-
 #~ msgid "Geburtsjahr"
 #~ msgstr "Birth year"
 
@@ -4539,9 +6098,6 @@ msgstr ""
 #~ msgid "Sie haben die Freundschaftsanfrage von"
 #~ msgstr "The friend request by"
 
-#~ msgid "an"
-#~ msgstr "to"
-
 #~ msgid "mit dem Status"
 #~ msgstr "with the status"
 
@@ -4571,9 +6127,6 @@ msgstr ""
 
 #~ msgid "Azul"
 #~ msgstr "Azul"
-
-#~ msgid "Skat"
-#~ msgstr "Skat"
 
 #~ msgid ""
 #~ "<..>: Link, *..*: Kursiv, **..**: Fett, ***..***: Kursiv+Fett, * ..: "
@@ -4663,9 +6216,6 @@ msgstr ""
 
 #~ msgid "Chat schließen"
 #~ msgstr "Close chat"
-
-#~ msgid "Durak"
-#~ msgstr "Durak"
 
 #~ msgid "Dieses Match gibt es nicht."
 #~ msgstr "This match doesn't exist."
@@ -4885,9 +6435,6 @@ msgstr ""
 #~ msgid "Leerstelle hinzufügen"
 #~ msgstr "Add vacancy"
 
-#~ msgid "Turnier"
-#~ msgstr "Tournament"
-
 #~ msgid "Match"
 #~ msgstr "Match"
 
@@ -4936,9 +6483,6 @@ msgstr ""
 #~ msgid "Leerstelle"
 #~ msgstr "Vacancy"
 
-#~ msgid "Text"
-#~ msgstr "Text"
-
 #~ msgid "Status"
 #~ msgstr "Status"
 
@@ -4963,9 +6507,6 @@ msgstr ""
 
 #~ msgid "Konferenz"
 #~ msgstr "Conference"
-
-#~ msgid "Frei"
-#~ msgstr "Free"
 
 #~ msgid "Kommentieren..."
 #~ msgstr "Comment..."
