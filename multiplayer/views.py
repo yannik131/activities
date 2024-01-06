@@ -27,7 +27,7 @@ def lobby(request, activity_name, extra=None):
 
 def create_match(request, activity_name):
     activity = get_object_or_404(Activity, translations__language_code=request.LANGUAGE_CODE, translations__name=activity_name)
-    if request.user.admin_matches.filter(activity=activity).count() > MultiplayerMatch.MAX_INSTANCES:
+    if request.user.admin_matches.filter(activity=activity, invisible=False).count() > MultiplayerMatch.MAX_INSTANCES:
         messages.add_message(request, messages.INFO, _('Sie können nicht mehr als {n} Matches erstellen.').format(n=MultiplayerMatch.MAX_INSTANCES))
         return HttpResponseRedirect(reverse('multiplayer:lobby', args=[activity]))
     match = None
