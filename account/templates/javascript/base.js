@@ -47,7 +47,9 @@ function activateMenu(element_id) {
         }
     }
     else {
-        if(window.innerWidth >= 1220) {
+        let visible = menu.offsetWidth || menu.offsetHeight || menu.getClientRects().length;
+        let clickedMenu = document.querySelector('.sidemenu.clicked');
+        if(window.innerWidth >= 1220 && visible && !clickedMenu) {
             return;
         }
         if(menu.className == element_id)
