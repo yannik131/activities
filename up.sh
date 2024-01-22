@@ -1,5 +1,6 @@
 #! /bin/bash
 
+source ./env/bin/activate
 uwsgi --ini config/uwsgi.ini &
 redis-server --port 6655 &
 daphne -u /tmp/daphne.sock activities.asgi:application --access-log /home/websites/activities/logs/daphne.log &
