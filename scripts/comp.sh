@@ -2,5 +2,5 @@
 if [[ "$OSTYPE" == "darwin"* ]]; then
         option=""
 else
-        option="-u postgres "
+        option="sudo -u postgres "
 fi
