@@ -57,7 +57,7 @@ function defineSortValues() {
 function getCardSortValue(type) {
     var vs = getVs(type);
     if(game_type == "diamonds" || game_type == "hearts" || game_type == "spades" || game_type == "clubs" || game_type == "marriage") {
-        if(vs.value == "10" && ((game_type == "marriage" || game_type == "diamonds") && vs.suit == "h")) {
+        if(vs.value == "10" && ((game_type == "marriage" || game_type == "diamonds" || game_type == "hearts" || game_type == "spades" || game_type == "clubs") && vs.suit == "h")) {
             return 101;
         }
         else if(vs.value == "Q") {
