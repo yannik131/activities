@@ -277,7 +277,11 @@ def handle_play(game, data, text_data, username, message, match):
             else:
                 for player in players:
                     message["data"][player + "_initial_hand"] = data[player+"_initial_hand"]
-                if not data["solist"]:
+                played_solo = json.loads(data["played_solo"])
+                if data["solist"] and not data["solist"] in played_solo:
+                    played_solo[data["solist"]] = True
+                    data["played_solo"] = json.dumps(played_solo)
+                else:
                     data["started"] = after(data["started"], players)
                 match.start_doppelkopf()
                 data["active"] = data["started"]

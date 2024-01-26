@@ -192,6 +192,8 @@ class SkatConsumer(GameConsumer):
 
 class DoppelkopfConsumer(GameConsumer):
     def handle_move(self, text_data, data, match, message):
+        if self.username != data["active"]:
+            return
         players = json.loads(data["players"])
         if text_data["action"] == "bid":
             data[self.username+"_bid"] = text_data["bid"]
@@ -223,8 +225,6 @@ class DoppelkopfConsumer(GameConsumer):
                     if game_type != "marriage":
                         played_solo = json.loads(data["played_solo"])
                         if player not in played_solo:
-                            played_solo[player] = 1
-                            data["played_solo"] = json.dumps(played_solo)
                             data["active"] = player
                             message["data"]["active"] = player
                 else:

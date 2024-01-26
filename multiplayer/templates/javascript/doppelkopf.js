@@ -31,7 +31,8 @@ var m_show;
 var re;
 var value_ncards;
 let hand_cards_for_value;
-let play_automatically = false;
+let play_automatically = true;
+let clearStacksTimeout;
 
 {% include 'javascript/common_sd.js' %}
 
@@ -116,6 +117,11 @@ function processMultiplayerData(data) {
     if(data.active) {
         active = data.active;
     }
+    if(clearStacksTimeout) {
+        clearTimeout(clearStacksTimeout);
+        clearStacksTimeout = undefined;
+        clearStacksTimeoutCallback();
+    }
     switch(data.action) {
         case "load_data":
             loadGameField(data);
@@ -184,6 +190,11 @@ function createNextRoundButton(new_data) {
     createButton("Weiter", "next_round", callback);
 }
 
+function clearStacksTimeoutCallback() {
+    clearStacks();
+    lastTrickButton();
+}
+
 function handlePlay(data) {
     var trick = JSON.parse(data.trick);
     if(trick.length) {
@@ -208,10 +219,7 @@ function handlePlay(data) {
     else {
         createValueButtons();
         if(data.clear) {
-            setTimeout(function() {
-                clearStacks();
-                lastTrickButton();
-            }, 500);
+            clearStacksTimeout = setTimeout(clearStacksTimeoutCallback, 500);
             last_trick = trick;
         }
     }
@@ -535,6 +543,7 @@ function sendBid(bid) {
         'bid': bid,
         're': getConvertedHand().includes("Qc")? "1" : "0"
     }));
+    showScore(true);
 }
 
 window.addEventListener('load', function() {

@@ -511,6 +511,10 @@ function createYesNoAlert(info, zIndex, callback) {
 }
 
 function createInfoAlert(info, timeout, no_button) {
+    var score_alert = document.getElementById("score-alert");
+    if(score_alert) {
+        score_alert.remove();
+    }
     const old = document.getElementById("info-alert");
     if(old) {
         var button = document.querySelector('.info-alert-button');
