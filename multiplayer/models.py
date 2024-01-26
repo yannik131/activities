@@ -299,6 +299,8 @@ class MultiplayerMatch(models.Model):
         
         
     def start_doppelkopf(self):
+        if "players" not in self.game_data: #game is being created for the first time
+            self.game_data["played_solo"] = json.dumps({})
         if self.options['without_nines'] == 'True':
             players, _ = self.create_players(10, "10", "10", "A", "A", "J", "J", "K", "K", "Q", "Q")
             self.game_data['without_nines'] = '1'

@@ -221,8 +221,12 @@ class DoppelkopfConsumer(GameConsumer):
                     data["re_1"] = ""
                     data["re_2"] = ""
                     if game_type != "marriage":
-                        data["active"] = player
-                        message["data"]["active"] = player
+                        played_solo = json.loads(data["played_solo"])
+                        if player not in played_solo:
+                            played_solo[player] = 1
+                            data["played_solo"] = json.dumps(played_solo)
+                            data["active"] = player
+                            message["data"]["active"] = player
                 else:
                     data["game_type"] = "diamonds"
                     message["data"]["game_type"] = "diamonds"

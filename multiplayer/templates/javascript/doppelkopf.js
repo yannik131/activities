@@ -31,6 +31,7 @@ var m_show;
 var re;
 var value_ncards;
 let hand_cards_for_value;
+let play_automatically = false;
 
 {% include 'javascript/common_sd.js' %}
 
@@ -215,6 +216,9 @@ function handlePlay(data) {
         }
     }
     updateAllInfo();
+    if(play_automatically) {
+        setTimeout(playAutomatically, data.clear? 600 : 100);
+    }
 }
 
 function handleStart() {
@@ -344,7 +348,6 @@ function playAutomatically() {
             player1_cards[i].click();
         }
     }
-    setTimeout(playAutomatically, 300);
 }
 
 function loadGameField(data) {
