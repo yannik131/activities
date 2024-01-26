@@ -31,7 +31,7 @@ var m_show;
 var re;
 var value_ncards;
 let hand_cards_for_value;
-let play_automatically = true;
+let play_automatically = false;
 let clearStacksTimeout;
 
 {% include 'javascript/common_sd.js' %}
@@ -113,7 +113,7 @@ function getCardSortValue(type) {
 }
 
 function processMultiplayerData(data) {
-    console.log("received: " + data.action + "(data: " + JSON.stringify(data) + ")");
+    //console.log("received: " + data.action + "(data: " + JSON.stringify(data) + ")");
     if(data.active) {
         active = data.active;
     }
@@ -343,7 +343,6 @@ function handleBid(data) {
         updateAllInfo();
     }
     else {
-        console.log("Creating bid buttons");
         createBidButtons();
         updatePlayerInfo(data.username, data.bid);
     }
@@ -412,7 +411,6 @@ function loadGameField(data) {
         summary = "{% trans 'Stand nach Spiel ' %}: "+data.game_number+":\n"+data.summary;
         showScore();
     }
-    console.log("Done loading game field");
 }
 
 function cardClicked(value, suit, card) {
