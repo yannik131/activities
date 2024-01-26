@@ -163,13 +163,24 @@ function setUpNewRound(new_data) {
 }
 
 function showInitialPlayerCards(data) {
-    var player_list = JSON.parse(data.players);
+    var player_list = JSON.parse(data.round.players);
     for(let i = 0; i < player_list.length; ++i) {
         var initial_cards = JSON.parse(data[player_list[i]+"_initial_hand"]);
         for(let j = 0; j < initial_cards.length; ++j) {
             addCardTo(players[player_list[i]], 1, initial_cards[j]);
         }
     }
+}
+
+function createNextRoundButton(new_data) {
+    deleteButton("last_trick");
+    function callback() {
+        deleteButton("next_round");
+        clearStacks();
+        setUpNewRound(new_data);
+        showScore(true);
+    }
+    createButton("Weiter", "next_round", callback);
 }
 
 function handlePlay(data) {
@@ -191,6 +202,7 @@ function handlePlay(data) {
         showInitialPlayerCards(data);
         summary = "{% trans 'Stand nach Spiel ' %}: "+data.game_number+":\n"+data.summary;
         showScore();
+        createNextRoundButton(data.round);
     }
     else {
         createValueButtons();
@@ -301,6 +313,11 @@ function setRe(data) {
 }
 
 function handleBid(data) {
+    let button = document.getElementById("next_round");
+    if(button) {
+        button.click();
+        active = data.active;
+    }
     if(data.game_type) {
         game_type = data.game_type;
         setRe(data);
@@ -314,10 +331,20 @@ function handleBid(data) {
         updateAllInfo();
     }
     else {
+        console.log("Creating bid buttons");
         createBidButtons();
         updatePlayerInfo(data.username, data.bid);
     }
-    
+}
+
+function playAutomatically() {
+    if(player1_cards.length != 0) {
+        let length = player1_cards.length;
+        for (let i = 0; player1_cards.length == length && i < player1_cards.length; ++i) {
+            player1_cards[i].click();
+        }
+    }
+    setTimeout(playAutomatically, 300);
 }
 
 function loadGameField(data) {
@@ -374,6 +401,7 @@ function loadGameField(data) {
         summary = "{% trans 'Stand nach Spiel ' %}: "+data.game_number+":\n"+data.summary;
         showScore();
     }
+    console.log("Done loading game field");
 }
 
 function cardClicked(value, suit, card) {
@@ -509,3 +537,4 @@ function sendBid(bid) {
 window.addEventListener('load', function() {
     gameConnect('doppelkopf', '{{ match.id }}', '{{ user.username }}');
 });
+

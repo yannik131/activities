@@ -8,6 +8,7 @@ import redis_lock
 from asgiref.sync import async_to_sync
 from shared.shared import log
 from account.models import User
+from . import utils
 
 
 class GameConsumer(WebsocketConsumer):
@@ -22,6 +23,7 @@ class GameConsumer(WebsocketConsumer):
                 f"match-{self.match_id}",
                 self.channel_name
             )
+            self.german_name = MultiplayerMatch.objects.get(pk=self.match_id).activity.german_name
             
             self.accept()
 
@@ -40,6 +42,8 @@ class GameConsumer(WebsocketConsumer):
         text_data = json.loads(text_data)
         if text_data['action'] == 'request_data':
             match = MultiplayerMatch.objects.get(pk=self.match_id)
+            if match.activity.german_name == "Doppelkopf":
+                utils.clean_doko_data(match.game_data, self.username)
             self.multiplayer(match.game_data)
             return
             

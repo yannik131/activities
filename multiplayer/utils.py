@@ -275,13 +275,25 @@ def handle_play(game, data, text_data, username, message, match):
                 data["forehand"] = data["started"]
                 data["active"] = after(data["forehand"], players)
             else:
+                for player in players:
+                    message["data"][player + "_initial_hand"] = data[player+"_initial_hand"]
                 if not data["solist"]:
                     data["started"] = after(data["started"], players)
                 match.start_doppelkopf()
                 data["active"] = data["started"]
             message["data"]["game_number"] = data["game_number"]
-            message["data"]["round"] = match.game_data
+            message["data"]["round"] = match.game_data.copy()
 
+
+def clean_doko_data(game_data, username):
+    players = json.loads(game_data["players"])
+    for player in players:
+        if player + "_initial_hand" in game_data:
+            del game_data[player + "_initial_hand"]
+        if player != username:
+            if player in game_data:
+                cards = json.loads(game_data[player])
+                game_data[player] = json.dumps([0] * len(cards))
 
 def sum_change(dictionary, key, _change, summary):
     change(dictionary, key, _change)
