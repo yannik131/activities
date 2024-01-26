@@ -28,7 +28,6 @@ var solist;
 var re_value;
 var contra_value;
 var m_show;
-var player_info = {};
 var re;
 var value_ncards;
 let hand_cards_for_value;
@@ -112,7 +111,7 @@ function getCardSortValue(type) {
 }
 
 function processMultiplayerData(data) {
-    //console.log("received: " + data.action + " active: " + data.active);
+    console.log("received: " + data.action + "(data: " + JSON.stringify(data) + ")");
     if(data.active) {
         active = data.active;
     }
@@ -156,6 +155,23 @@ function handleValue(data) {
     createInfoAlert(info);
 }
 
+function setUpNewRound(new_data) {
+    clearStacks();
+    active = new_data.active;
+    last_trick = null;
+    loadGameField(new_data);
+}
+
+function showInitialPlayerCards(data) {
+    var player_list = JSON.parse(data.players);
+    for(let i = 0; i < player_list.length; ++i) {
+        var initial_cards = JSON.parse(data[player_list[i]+"_initial_hand"]);
+        for(let j = 0; j < initial_cards.length; ++j) {
+            addCardTo(players[player_list[i]], 1, initial_cards[j]);
+        }
+    }
+}
+
 function handlePlay(data) {
     var trick = JSON.parse(data.trick);
     if(trick.length) {
@@ -172,13 +188,9 @@ function handlePlay(data) {
         createInfoAlert("Re: "+data.re_1+", "+data.re_2, info_duration);
     }
     if(data.round) {
-        setTimeout(function() {
-            clearStacks();
-            var new_data = data.round;
-            active = new_data.active;
-            last_trick = null;
-            loadGameField(new_data);
-        }, 1000);
+        showInitialPlayerCards(data);
+        summary = "{% trans 'Stand nach Spiel ' %}: "+data.game_number+":\n"+data.summary;
+        showScore();
     }
     else {
         createValueButtons();
@@ -359,7 +371,7 @@ function loadGameField(data) {
             break;
     }
     if(data.summary) {
-        summary = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary;
+        summary = "{% trans 'Stand nach Spiel ' %}: "+data.game_number+":\n"+data.summary;
         showScore();
     }
 }

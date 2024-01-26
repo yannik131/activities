@@ -254,6 +254,7 @@ class MultiplayerMatch(models.Model):
             players = json.loads(self.game_data['players'])
         for player in players:
             self.game_data[player] = json.dumps(deck[:n])
+            self.game_data[player + "_initial_hand"] = json.dumps(deck[:n])
             deck = deck[n:]
             if len(deck) < n:
                 break
