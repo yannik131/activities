@@ -163,7 +163,7 @@ function loadGameField(data) {
         if(game_type.length && solist.length) {
             info += solist + ": " + game_type_translations[game_type] + "\n";
         }
-        summary = info+"{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+data.summary;
+        summary = info+"{% trans 'Stand nach Spiel Nummer' %} "+data.game_number+":\n"+data.summary;
         showScore();
     }
     else if(game_type.length && solist.length) {

@@ -34,6 +34,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(os.path.join(__file__
 SECRET_KEY = '3%z&f40a$^688kmdjlf1&uwp2^-^%i998@5xuo&5j7!1g#wd@='
 
 ALLOWED_HOSTS = ['*']
+INTERNAL_IPS = ['127.0.0.1',]
 
 ASGI_APPLICATION = 'activities.routing.application'
 

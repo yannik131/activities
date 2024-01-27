@@ -388,7 +388,7 @@ def determine_factor(data):
     if data["game_type"] == "n":
         return 1
     highest = ["Js", "Jh", "Jd"]
-    cards = json.loads(data[data["solist"]])
+    cards = json.loads(data[data["solist"]]) + json.loads(data["deck"])
     with_j = "Jc" in cards
     for trump in highest:
         if with_j and trump in cards:
@@ -398,7 +398,7 @@ def determine_factor(data):
         else:
             break
     if data["game_type"] != "g" and factor == 4:
-        highest = ["A", "10", "K", "Q", "J", "9", "8", "7"]
+        highest = ["A", "10", "K", "Q", "9", "8", "7"]
         for trump in highest:
             if with_j and trump + data["game_type"] in cards:
                 factor += 1
