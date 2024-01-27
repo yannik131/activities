@@ -37,6 +37,7 @@ class DokoMatchForm(CreateMatchForm):
         self.fields['member_limit'].widget = forms.HiddenInput()
     
     without_nines = forms.BooleanField(label=_('Ohne Neunen'), required=False)
+    round_count = forms.ChoiceField(label=_('Rundenanzahl'), choices=[(i, str(i)) for i in range(1, 11)], initial="5", required=True)
     
 class DurakMatchForm(CreateMatchForm):
     all_help = forms.BooleanField(label=_('Jeder kann dazuschmeißen'), required=False)

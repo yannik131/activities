@@ -284,7 +284,10 @@ def handle_play(game, data, text_data, username, message, match):
                 else:
                     data["started"] = after(data["started"], players)
                 match.start_doppelkopf()
-                data["active"] = data["started"]
+                if data["mandatory_solo"]:
+                    data["active"] = data["mandatory_solo"]
+                else:
+                    data["active"] = data["started"]
             message["data"]["game_number"] = data["game_number"]
             message["data"]["round"] = match.game_data.copy()
 

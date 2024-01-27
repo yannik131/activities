@@ -301,6 +301,7 @@ class MultiplayerMatch(models.Model):
     def start_doppelkopf(self):
         if "players" not in self.game_data: #game is being created for the first time
             self.game_data["played_solo"] = json.dumps({})
+            self.game_data["round_count"] = self.options['round_count']
         if self.options['without_nines'] == 'True':
             players, _ = self.create_players(10, "10", "10", "A", "A", "J", "J", "K", "K", "Q", "Q")
             self.game_data['without_nines'] = '1'
@@ -322,9 +323,22 @@ class MultiplayerMatch(models.Model):
         self.game_data["active"] = players[0]
         self.game_data["last_trick"] = json.dumps([])
         self.game_data["tricks"] = json.dumps([]) #(trick, winner, index of who started)
+        self.game_data["mandatory_solo"] = ""
         for player in players:
             self.game_data[player+"_bid"] = ""
+
         change(self.game_data, "game_number", 1)
+        number_of_played_games = int(self.game_data['game_number'])
+        rounds = int(self.game_data['round_count'])
+        played_solo = json.loads(self.game_data['played_solo'])
+        number_of_played_solos = len(played_solo.keys())
+        if number_of_played_solos == 4:
+            return
+        if number_of_played_games >= rounds * 4 + number_of_played_solos:
+            for player in players:
+                if player not in played_solo.keys():
+                    self.game_data['mandatory_solo'] = player
+                    return
         
     def start_poker(self):
         players, deck = self.create_players(2, "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A")

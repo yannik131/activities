@@ -209,7 +209,19 @@ class DoppelkopfConsumer(GameConsumer):
                 'bid': text_data['bid'],
                 'active': data["active"]
             }
-            if data[data["active"]+"_bid"] or text_data["bid"] not in ["healthy", "marriage"]:
+            bidding_over = bool(data[data["active"]+"_bid"])
+            bid_is_solo = text_data["bid"] not in ["healthy", "marriage"]
+            played_solo = json.loads(data["played_solo"])
+
+            if bid_is_solo and self.username not in played_solo:
+                # mandatory solo
+                data["solist"] = self.username
+                data["game_type"] = text_data["bid"]
+                data["re_1"] = ""
+                data["re_2"] = ""
+                data["active"] = self.username
+                message["data"]["active"] = self.username
+            elif bidding_over:
                 solos = []
                 for player in cycle_slice(players.index(data["started"]), players):
                     if data[player+"_bid"] != "healthy":
@@ -222,20 +234,18 @@ class DoppelkopfConsumer(GameConsumer):
                     data["game_type"] = game_type
                     data["re_1"] = ""
                     data["re_2"] = ""
-                    if game_type != "marriage":
-                        played_solo = json.loads(data["played_solo"])
-                        if player not in played_solo:
-                            data["active"] = player
-                            message["data"]["active"] = player
                 else:
                     data["game_type"] = "diamonds"
                     message["data"]["game_type"] = "diamonds"
-                message["data"]["re_1"] = data["re_1"]
-                message["data"]["re_2"] = data["re_2"]
-                message["data"]["solist"] = data["solist"]
-                message["data"]["game_type"] = data["game_type"]
-                message["data"]["mode"] = "playing"
-                data["mode"] = "playing"
+            else:
+                return
+
+            message["data"]["re_1"] = data["re_1"]
+            message["data"]["re_2"] = data["re_2"]
+            message["data"]["solist"] = data["solist"]
+            message["data"]["game_type"] = data["game_type"]
+            message["data"]["mode"] = "playing"
+            data["mode"] = "playing"
         elif text_data["action"] == "play":
             handle_play("doko", data, text_data, self.username, message, match)
         elif text_data["action"] == "value":

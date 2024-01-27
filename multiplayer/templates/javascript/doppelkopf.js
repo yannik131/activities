@@ -31,7 +31,7 @@ var m_show;
 var re;
 var value_ncards;
 let hand_cards_for_value;
-let play_automatically = false;
+let play_automatically = true;
 let clearStacksTimeout;
 
 {% include 'javascript/common_sd.js' %}
@@ -190,8 +190,8 @@ function createNextRoundButton(new_data) {
     createButton("Weiter", "next-round", callback);
     let button = document.getElementById("next-round");
     let field_width = document.querySelector('.game-field').offsetWidth;
-    button.style.right = (field_width - button.offsetWidth) / 2 + "px";
     let score_alert = document.getElementById("score-alert");
+    button.style.right = (field_width - score_alert.offsetWidth - score_alert.offsetLeft) + "px";
     button.style.top = score_alert.offsetTop - button.offsetHeight - 5 + "px";
 }
 
@@ -217,7 +217,7 @@ function handlePlay(data) {
     }
     if(data.round) {
         showInitialPlayerCards(data);
-        summary = "{% trans 'Stand nach Spiel ' %}"+data.game_number+":\n"+data.summary;
+        summary = "{% trans 'Stand nach Spiel ' %}"+data.game_number+"/"+(4*(parseInt(data.round.round_count)+1))+":\n"+data.summary;
         showScore();
         createNextRoundButton(data.round);
     }
@@ -405,7 +405,10 @@ function loadGameField(data) {
     displayCards(data, player_list);
     switch(data.mode) {
         case "bidding":
-            createBidButtons();
+            if(data.mandatory_solo) {
+                createInfoAlert("Pflichtsolo: " + active, 1000);
+            }
+            createBidButtons(data.mandatory_solo !== "");
             break;
         case "playing":
             handleStart();
@@ -416,7 +419,7 @@ function loadGameField(data) {
             break;
     }
     if(data.summary) {
-        summary = "{% trans 'Stand nach Spiel ' %}"+data.game_number+":\n"+data.summary;
+        summary = "{% trans 'Stand nach Spiel ' %}"+data.game_number+"/"+(4*(parseInt(data.round_count)+1))+":\n"+data.summary;
     }
 }
 
@@ -484,21 +487,23 @@ function isTrump(value, suit) {
     return false;
 }
 
-function createBidButtons() {
+function createBidButtons(mandatory_solo) {
     if(active != this_user) {
         clearButtons(lastTrickButton);
         return;
     }
-    createButton("{% trans 'Gesund' %}", 'healthy', function() {
-        sendBid("healthy");
-    });
+    if(!mandatory_solo) {
+        createButton("{% trans 'Gesund' %}", 'healthy', function() {
+            sendBid("healthy");
+        });
+    }
     var count = 0;
     for(var i = 0; i < player1_cards.length; i++) {
         if(player1_cards[i].id == "Qc") {
             count++;
         }
     }
-    if(count == 2) {
+    if(count == 2 && !mandatory_solo) {
         createButton(bid_translations.marriage, 'marriage', function() {
             sendBid("marriage");
         });
@@ -533,7 +538,12 @@ function updatePlayerInfo(player, bid) {
         info += " (*) ";
     }
     if(bid) {
-        info += bid_translations[bid];
+        if(bid === "healthy") {
+            info += bid_translations[bid];
+        }
+        else {
+            info += "Vorbehalt";
+        }
     }
     if(game_type.length && player == solist) {
         info += bid_translations[game_type];
