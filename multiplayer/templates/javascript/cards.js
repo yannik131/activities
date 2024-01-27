@@ -809,6 +809,13 @@ function displayCards(data, player_list, except) {
     }
 }
 
+function removeScoreAlert() {
+    let score_alert = document.getElementById("score-alert");
+    if(score_alert) {
+        score_alert.remove();
+    }
+}
+
 function showScore(toggle) {
     var info_alert = document.getElementById("score-alert");
     if(info_alert) {

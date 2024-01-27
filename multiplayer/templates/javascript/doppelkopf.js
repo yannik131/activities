@@ -182,12 +182,17 @@ function showInitialPlayerCards(data) {
 function createNextRoundButton(new_data) {
     deleteButton("last_trick");
     function callback() {
-        deleteButton("next_round");
+        deleteButton("next-round");
         clearStacks();
         setUpNewRound(new_data);
-        showScore(true);
+        removeScoreAlert();
     }
-    createButton("Weiter", "next_round", callback);
+    createButton("Weiter", "next-round", callback);
+    let button = document.getElementById("next-round");
+    let field_width = document.querySelector('.game-field').offsetWidth;
+    button.style.right = (field_width - button.offsetWidth) / 2 + "px";
+    let score_alert = document.getElementById("score-alert");
+    button.style.top = score_alert.offsetTop - button.offsetHeight - 5 + "px";
 }
 
 function clearStacksTimeoutCallback() {
@@ -212,7 +217,7 @@ function handlePlay(data) {
     }
     if(data.round) {
         showInitialPlayerCards(data);
-        summary = "{% trans 'Stand nach Spiel ' %}: "+data.game_number+":\n"+data.summary;
+        summary = "{% trans 'Stand nach Spiel ' %}"+data.game_number+":\n"+data.summary;
         showScore();
         createNextRoundButton(data.round);
     }
@@ -325,10 +330,13 @@ function setRe(data) {
 }
 
 function handleBid(data) {
-    let button = document.getElementById("next_round");
+    let button = document.getElementById("next-round");
     if(button) {
         button.click();
         active = data.active;
+    }
+    else {
+        removeScoreAlert();
     }
     if(data.game_type) {
         game_type = data.game_type;
@@ -408,8 +416,7 @@ function loadGameField(data) {
             break;
     }
     if(data.summary) {
-        summary = "{% trans 'Stand nach Spiel ' %}: "+data.game_number+":\n"+data.summary;
-        showScore();
+        summary = "{% trans 'Stand nach Spiel ' %}"+data.game_number+":\n"+data.summary;
     }
 }
 
@@ -541,7 +548,6 @@ function sendBid(bid) {
         'bid': bid,
         're': getConvertedHand().includes("Qc")? "1" : "0"
     }));
-    showScore(true);
 }
 
 window.addEventListener('load', function() {
