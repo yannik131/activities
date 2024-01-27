@@ -271,6 +271,7 @@ def handle_play(game, data, text_data, username, message, match):
             data["summary"] = points_summary
             if game == "skat":
                 data["started"] = after(data["started"], players)
+                set_initial_data(message, data)
                 match.start_skat()
                 data["forehand"] = data["started"]
                 data["active"] = after(data["forehand"], players)
@@ -284,6 +285,15 @@ def handle_play(game, data, text_data, username, message, match):
                 else:
                     data["started"] = after(data["started"], players)
                 match.start_doppelkopf()
+                number_of_played_games = int(match.game_data['game_number'])
+                rounds = int(match.game_data['round_count'])
+                played_solo = json.loads(match.game_data['played_solo'])
+                number_of_played_solos = len(played_solo.keys())
+                if number_of_played_solos != 4 and number_of_played_games >= rounds * 4 + number_of_played_solos:
+                    for player in players:
+                        if player not in played_solo.keys():
+                            match.game_data['mandatory_solo'] = player
+                            break
                 if data["mandatory_solo"]:
                     data["active"] = data["mandatory_solo"]
                 else:
@@ -291,6 +301,13 @@ def handle_play(game, data, text_data, username, message, match):
             message["data"]["game_number"] = data["game_number"]
             message["data"]["round"] = match.game_data.copy()
 
+
+def set_initial_data(message, data):
+    players = json.loads(data["players"])
+    message["data"]["skat"] = data["skat"]
+    for player in players:
+        message["data"][player + "_initial_hand"] = data[player + "_initial_hand"]
+    message["data"]["players"] = data["players"]
 
 def clean_doko_data(game_data, username):
     players = json.loads(game_data["players"])

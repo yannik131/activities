@@ -65,9 +65,11 @@ function getCardSortValue(type) {
 }
 
 function processMultiplayerData(data) {
+    //console.log(JSON.stringify(data));
     if(data.active) {
         active = data.active;
     }
+    clearStacksSafety();
     switch(data.action) {
         case "load_data":
             loadGameField(data);
@@ -195,25 +197,6 @@ function handleStart(data) {
     createInfoAlert(solist + ": " + game_type_translations[game_type], info_duration);
 }
 
-function setUpNewRound(data) {
-    last_trick = null;
-    var new_data = data.round;
-    var info = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+solist+": ";
-    if(data.result == "won")
-        info += "{% trans 'gewonnen' %}"
-    else if(data.result == "lost")
-        info += "{% trans 'verloren' %}"
-    else
-        info += "{% trans 'überreizt' %}"
-    if(game_type != "n") {
-        info += ", {% trans 'Augen' %}: " + new_data.points;
-    }
-    summary = info+"\n"+data.summary;
-    createInfoAlert(summary);
-    active = new_data.active;
-    loadGameField(new_data);
-}
-
 function handlePlay(data) {
     var trick = JSON.parse(data.trick);
     if(trick.length) {
@@ -229,16 +212,27 @@ function handlePlay(data) {
     }
     updatePlayerPositions(data.forehand);
     if(data.round) {
-        setTimeout(function() {
-            setUpNewRound(data);
-        }, 1500);
+        showInitialPlayerCards(data);
+        var info = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+solist+": ";
+        if(data.result == "won")
+            info += "{% trans 'gewonnen' %}"
+        else if(data.result == "lost")
+            info += "{% trans 'verloren' %}"
+        else
+            info += "{% trans 'überreizt' %}"
+        if(game_type != "n") {
+            info += ", {% trans 'Augen' %}: " + data.round.points;
+        }
+        summary = info+"\n"+data.summary;
+        showScore();
+        createNextRoundButton(data.round, loadGameField);
     }
     else if(data.clear) {
-        setTimeout(function() {
-            clearStacks();
-            lastTrickButton();
-        }, 1500);
+        clearStacksTimeout = setTimeout(clearStacksTimeoutCallback, clearStacksTimeoutDuration);
         last_trick = trick;
+    }
+    if(play_automatically) {
+        setTimeout(playAutomatically, data.clear? clearStacksTimeoutDuration + 50 : 100);
     }
 }
 
@@ -424,10 +418,12 @@ function createTakeButtons() {
 }
 
 function handleBidding(data) {
+    handleBidGuard(data);
     clearButtons();
     if(data.round) {
         createInfoAlert("{% trans 'Eingepasst' %}", info_duration);
-        loadGameField(data.round);
+        showInitialPlayerCards(data.round);
+        createNextRoundButton(data.round, loadGameField);
         return;
     }
     var last_bid = parse(data.last_bid);

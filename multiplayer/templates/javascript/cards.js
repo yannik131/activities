@@ -313,6 +313,15 @@ function addBottomCardToDeck(type) {
     deck.splice(0, 0, card);
 }
 
+function addCardToDeck(type) {
+    let card = createCard(type);
+    card.style.left = "0px";
+    card.zIndex = deck.length;
+    deck.push(card);
+    updateDeck();
+    field.appendChild(card);
+}
+
 function addCardsToDeck(n, bottom_card) {
     if(bottom_card)
         addBottomCardToDeck(bottom_card);

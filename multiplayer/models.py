@@ -254,7 +254,8 @@ class MultiplayerMatch(models.Model):
             players = json.loads(self.game_data['players'])
         for player in players:
             self.game_data[player] = json.dumps(deck[:n])
-            self.game_data[player + "_initial_hand"] = json.dumps(deck[:n])
+            if self.activity.german_name in ["Doppelkopf", "Skat"]:
+                self.game_data[player + "_initial_hand"] = json.dumps(deck[:n])
             deck = deck[n:]
             if len(deck) < n:
                 break
@@ -278,6 +279,7 @@ class MultiplayerMatch(models.Model):
         self.game_data["declarations"] = ""
         self.game_data["passed"] = ""
         self.game_data["last_trick"] = json.dumps([])
+        self.game_data["skat"] = self.game_data["deck"]
         # bidding, taking, putting, declaring, playing
         self.game_data["mode"] = "bidding"
         change(self.game_data, "game_number", 1)
@@ -328,17 +330,7 @@ class MultiplayerMatch(models.Model):
             self.game_data[player+"_bid"] = ""
 
         change(self.game_data, "game_number", 1)
-        number_of_played_games = int(self.game_data['game_number'])
-        rounds = int(self.game_data['round_count'])
-        played_solo = json.loads(self.game_data['played_solo'])
-        number_of_played_solos = len(played_solo.keys())
-        if number_of_played_solos == 4:
-            return
-        if number_of_played_games >= rounds * 4 + number_of_played_solos:
-            for player in players:
-                if player not in played_solo.keys():
-                    self.game_data['mandatory_solo'] = player
-                    return
+
         
     def start_poker(self):
         players, deck = self.create_players(2, "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A")

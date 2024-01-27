@@ -31,8 +31,6 @@ var m_show;
 var re;
 var value_ncards;
 let hand_cards_for_value;
-let play_automatically = true;
-let clearStacksTimeout;
 
 {% include 'javascript/common_sd.js' %}
 
@@ -117,11 +115,7 @@ function processMultiplayerData(data) {
     if(data.active) {
         active = data.active;
     }
-    if(clearStacksTimeout) {
-        clearTimeout(clearStacksTimeout);
-        clearStacksTimeout = undefined;
-        clearStacksTimeoutCallback();
-    }
+    clearStacksSafety();
     switch(data.action) {
         case "load_data":
             loadGameField(data);
@@ -162,43 +156,6 @@ function handleValue(data) {
     createInfoAlert(info);
 }
 
-function setUpNewRound(new_data) {
-    clearStacks();
-    active = new_data.active;
-    last_trick = null;
-    loadGameField(new_data);
-}
-
-function showInitialPlayerCards(data) {
-    var player_list = JSON.parse(data.round.players);
-    for(let i = 0; i < player_list.length; ++i) {
-        var initial_cards = JSON.parse(data[player_list[i]+"_initial_hand"]);
-        for(let j = 0; j < initial_cards.length; ++j) {
-            addCardTo(players[player_list[i]], 1, initial_cards[j]);
-        }
-    }
-}
-
-function createNextRoundButton(new_data) {
-    deleteButton("last_trick");
-    function callback() {
-        deleteButton("next-round");
-        clearStacks();
-        setUpNewRound(new_data);
-        removeScoreAlert();
-    }
-    createButton("Weiter", "next-round", callback);
-    let button = document.getElementById("next-round");
-    let field_width = document.querySelector('.game-field').offsetWidth;
-    let score_alert = document.getElementById("score-alert");
-    button.style.right = (field_width - score_alert.offsetWidth - score_alert.offsetLeft) + "px";
-    button.style.top = score_alert.offsetTop - button.offsetHeight - 5 + "px";
-}
-
-function clearStacksTimeoutCallback() {
-    clearStacks();
-    lastTrickButton();
-}
 
 function handlePlay(data) {
     var trick = JSON.parse(data.trick);
@@ -216,21 +173,21 @@ function handlePlay(data) {
         createInfoAlert("Re: "+data.re_1+", "+data.re_2, info_duration);
     }
     if(data.round) {
-        showInitialPlayerCards(data);
+        showInitialPlayerCards(data.round);
         summary = "{% trans 'Stand nach Spiel ' %}"+data.game_number+"/"+(4*(parseInt(data.round.round_count)+1))+":\n"+data.summary;
         showScore();
-        createNextRoundButton(data.round);
+        createNextRoundButton(data.round, loadGameField);
     }
     else {
         createValueButtons();
         if(data.clear) {
-            clearStacksTimeout = setTimeout(clearStacksTimeoutCallback, 500);
+            clearStacksTimeout = setTimeout(clearStacksTimeoutCallback, clearStacksTimeoutDuration);
             last_trick = trick;
         }
     }
     updateAllInfo();
     if(play_automatically) {
-        setTimeout(playAutomatically, data.clear? 600 : 100);
+        setTimeout(playAutomatically, data.clear? clearStacksTimeoutDuration + 50 : 100);
     }
 }
 
@@ -330,14 +287,7 @@ function setRe(data) {
 }
 
 function handleBid(data) {
-    let button = document.getElementById("next-round");
-    if(button) {
-        button.click();
-        active = data.active;
-    }
-    else {
-        removeScoreAlert();
-    }
+    handleBidGuard(data);
     if(data.game_type) {
         game_type = data.game_type;
         setRe(data);
@@ -356,14 +306,6 @@ function handleBid(data) {
     }
 }
 
-function playAutomatically() {
-    if(player1_cards.length != 0) {
-        let length = player1_cards.length;
-        for (let i = 0; player1_cards.length == length && i < player1_cards.length; ++i) {
-            player1_cards[i].click();
-        }
-    }
-}
 
 function loadGameField(data) {
     document.querySelector('.player5-info').style.display = "none";

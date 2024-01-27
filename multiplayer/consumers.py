@@ -184,11 +184,14 @@ class SkatConsumer(GameConsumer):
                 message["data"]["mode"] = "taking"
             elif len(data["passed"]) == 3:
                 players = json.loads(data["players"])
+                set_initial_data(message, data)
                 match.start_skat()
                 data["started"] = after(data["started"], players)
                 data["forehand"] = data["started"]
                 data["active"] = after(data["forehand"], players)
                 message["data"]["round"] = match.game_data
+                message["data"]["players"] = data["players"]
+
 
 class DoppelkopfConsumer(GameConsumer):
     def handle_move(self, text_data, data, match, message):

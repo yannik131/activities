@@ -68,5 +68,5 @@ window.addEventListener('load', function() {
     user_websocket.onopen = function() {
         requestMatchList();
     }
-    setInterval(requestMatchList, 5000);
+    setInterval(requestMatchList, 3000);
 });
