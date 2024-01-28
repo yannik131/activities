@@ -213,7 +213,7 @@ function handlePlay(data) {
     updatePlayerPositions(data.forehand);
     if(data.round) {
         showInitialPlayerCards(data);
-        var info = "{% trans 'Spiel Nummer' %}: "+data.game_number+"\n"+solist+": ";
+        var info = "{% trans 'Stand nach Spiel Nummer' %} "+data.game_number+":\n"+solist+": ";
         if(data.result == "won")
             info += "{% trans 'gewonnen' %}"
         else if(data.result == "lost")

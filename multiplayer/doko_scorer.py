@@ -1,5 +1,6 @@
 import json
 import multiplayer.utils as utils
+from django.utils.translation import gettext as _
 
 DOKO_GAME_VALUES = {
     "": 121, "w": 121, "9": 151, "6": 181, "3": 211, "s": 240
@@ -55,17 +56,17 @@ class DokoScorer:
                 fox_owner = players[i]
                 owner_is_re = fox_owner == data["re_1"] or fox_owner == data["re_2"]
                 if winner_is_re and not owner_is_re:
-                    self.re_extra.append("Fuchs gefangen")
+                    self.re_extra.append(_("Fuchs gefangen"))
                 elif not winner_is_re and owner_is_re:
-                    self.contra_extra.append("Fuchs gefangen")
+                    self.contra_extra.append(_("Fuchs gefangen"))
 
     def __give_doppelkopf_points(self, trick, winner):
         if calc_trick_points(trick) < 40:
             return
         if winner in self.re_team:
-            self.re_extra.append("Doppelkopf")
+            self.re_extra.append(_("Doppelkopf"))
         else:
-            self.contra_extra.append("Doppelkopf")
+            self.contra_extra.append(_("Doppelkopf"))
 
     def __give_charlie_points(self, trick, winner, started):
         if "Jc" not in trick:
@@ -75,9 +76,9 @@ class DokoScorer:
         if not trick[winner_index] == "Jc":
             return
         if winner in self.re_team:
-            self.re_extra.append("Karlchen")
+            self.re_extra.append(_("Karlchen"))
         else:
-            self.contra_extra.append("Karlchen")
+            self.contra_extra.append(_("Karlchen"))
 
     def __give_extra_points(self, result):
         data = self.data
@@ -85,7 +86,7 @@ class DokoScorer:
             return
 
         if result == "Kontra":
-            self.contra_extra.append("Gegen die Alten")
+            self.contra_extra.append(_("Gegen die Alten"))
 
         for trick, winner, started in self.tricks:
             self.__give_fox_points(trick, winner, started)
@@ -132,9 +133,9 @@ class DokoScorer:
 
     def __give_doko_points(self, result):
         if result == "Re":
-            self.re_extra.append("Gewonnen")
+            self.re_extra.append(_("Gewonnen"))
         elif result == "Kontra":
-            self.contra_extra.append("Gewonnen")
+            self.contra_extra.append(_("Gewonnen"))
 
         for mark in [151, 181, 211]:
             if self.re_points >= mark:
@@ -145,23 +146,23 @@ class DokoScorer:
                 break
 
         if self.re_trick_count == self.max_tricks:
-            self.re_extra.append("Schwarz gespielt")
+            self.re_extra.append(_("Schwarz gespielt"))
         if self.contra_trick_count == self.max_tricks:
-            self.contra_extra.append("Schwarz gespielt")
+            self.contra_extra.append(_("Schwarz gespielt"))
 
         bids = ["9", "6", "3", "s"]
         contra_bid, re_bid = self.data["contra_value"], self.data["re_value"]
 
         messages_opposition = [
-            "120 gegen keine 90 erreicht",
-            "90 gegen keine 60 erreicht",
-            "60 gegen keine 30 erreicht",
-            "30 gegen schwarz erreicht"
+            _("120 gegen keine 90 erreicht"),
+            _("90 gegen keine 60 erreicht"),
+            _("60 gegen keine 30 erreicht"),
+            _("30 gegen schwarz erreicht")
         ]
         messages_winner = [
-            "Keine 90 abgesagt",
-            "Keine 60 abgesagt",
-            "Keine 30 abgesagt"
+            _("Keine 90 abgesagt"),
+            _("Keine 60 abgesagt"),
+            _("Keine 30 abgesagt")
         ]
         contra_bid_index, re_bid_index = index(bids, contra_bid), index(bids, re_bid)
         if contra_bid_index is not None:
@@ -184,9 +185,9 @@ class DokoScorer:
                     self.contra_extra.append(messages_winner[i])
 
         if result and self.re_trick_count == self.max_tricks and re_bid == "s":
-            self.re_extra.append("Schwarz abgesagt")
+            self.re_extra.append(_("Schwarz abgesagt"))
         if result and self.contra_trick_count == self.max_tricks and contra_bid == "s":
-            self.contra_extra.append("Schwarz abgesagt")
+            self.contra_extra.append(_("Schwarz abgesagt"))
 
         self.__give_extra_points(result)
 
@@ -207,10 +208,10 @@ class DokoScorer:
         if not no_result:
             if re_bid == "w" or re_bid in bids:
                 points += 2
-                summary_str += "+2: Re gesagt\n"
+                summary_str += _("+2: Re gesagt\n")
             if contra_bid == "w" or contra_bid in bids:
                 points += 2
-                summary_str += "+2: Kontra gesagt\n"
+                summary_str += _("+2: Kontra gesagt\n")
         summary = []
         if self.data["solist"]:
             for player in self.players:

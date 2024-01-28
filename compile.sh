@@ -1,3 +1,3 @@
 #! /bin/bash
 
-python3 manage.py compilemessages
+python3 manage.py compilemessages -i env
