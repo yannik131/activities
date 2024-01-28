@@ -210,7 +210,6 @@ function handlePlay(data) {
             removeCardFrom(players[data.username], 1);
         }
     }
-    updatePlayerPositions(data.forehand);
     if(data.round) {
         showInitialPlayerCards(data);
         var info = "{% trans 'Stand nach Spiel Nummer' %} "+data.game_number+":\n"+solist+": ";
@@ -230,6 +229,9 @@ function handlePlay(data) {
     else if(data.clear) {
         clearStacksTimeout = setTimeout(clearStacksTimeoutCallback, clearStacksTimeoutDuration);
         last_trick = trick;
+    }
+    else {
+        updatePlayerPositions(data.forehand);
     }
     if(play_automatically) {
         setTimeout(playAutomatically, data.clear? clearStacksTimeoutDuration + 50 : 100);

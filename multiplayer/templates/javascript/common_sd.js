@@ -119,7 +119,7 @@ function createNextRoundButton(new_data, clickCallback) {
     function callback() {
         deleteButton("next-round");
         clearStacks();
-        setUpNewRound(new_data, clickCallback)
+        setUpNewRound(new_data, clickCallback);
         removeScoreAlert();
     }
     createButton("Weiter", "next-round", callback);

@@ -184,8 +184,8 @@ function handlePlay(data) {
             clearStacksTimeout = setTimeout(clearStacksTimeoutCallback, clearStacksTimeoutDuration);
             last_trick = trick;
         }
+        updateAllInfo();
     }
-    updateAllInfo();
     if(play_automatically) {
         setTimeout(playAutomatically, data.clear? clearStacksTimeoutDuration + 50 : 100);
     }
@@ -348,7 +348,7 @@ function loadGameField(data) {
     switch(data.mode) {
         case "bidding":
             if(data.mandatory_solo) {
-                createInfoAlert("Pflichtsolo: " + active, 1000);
+                createInfoAlert("{% trans 'Pflichtsolo: ' %}" + active, 1000);
             }
             createBidButtons(data.mandatory_solo !== "");
             break;
@@ -484,7 +484,7 @@ function updatePlayerInfo(player, bid) {
             info += bid_translations[bid];
         }
         else {
-            info += "Vorbehalt";
+            info += "{% trans 'Vorbehalt' %}";
         }
     }
     if(game_type.length && player == solist) {
