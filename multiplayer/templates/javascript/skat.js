@@ -422,7 +422,7 @@ function handleBidding(data) {
     clearButtons();
     if(data.round) {
         createInfoAlert("{% trans 'Eingepasst' %}", info_duration);
-        showInitialPlayerCards(data.round);
+        showInitialPlayerCards(data);
         createNextRoundButton(data.round, loadGameField);
         return;
     }
