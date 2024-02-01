@@ -1,6 +1,7 @@
 import multiplayer.doko_scorer as doko_scorer
 from itertools import product
 from copy import deepcopy
+from django.conf import settings
 
 """
 Solo player is always A.
@@ -54,7 +55,7 @@ def test_normal_contra_wins():
         data_["re_value"], data_["contra_value"] = combination
         scorer = doko_scorer.DokoScorer(data_)
         result = scorer.calculate_score()
-        #print(result)
+        # print(result)
         if expected_results[combination]:
             try:
                 assert_points(data_, expected_results[combination])
@@ -82,7 +83,8 @@ def test_extra_points():
     scorer.calculate_score()
     assert_points(data, [-2, -2, 2, 2])
 
-def test_solo_contra_no_90_wins():
+
+def test_solo_contra_no_90_re_wins():
     data = {'re_1': '', 're_2': '', 'solist': 'A',
             'players': '["A", "B", "C", "D"]', 're_value': '', 'contra_value': '9',
             'tricks': '[[["10d", "10d", "Qd", "9c"], "A", 2], [["Qc", "Qs", "Qc", "10s"], "A", 4], [["Jh", "Ah", '
@@ -96,8 +98,23 @@ def test_solo_contra_no_90_wins():
     scorer.calculate_score()
     assert_points(data, [12, -4, -4, -4])
 
+def test_solo_contra_no_90_contra_wins():
+    data = {'re_1': '', 're_2': '', 'solist': 'A',
+            'players': '["A", "B", "C", "D"]', 're_value': '', 'contra_value': '9',
+            'tricks': '[[["10d", "10d", "Qd", "9c"], "B", 2], [["Qc", "Qs", "Qc", "10s"], "B", 4], [["Jh", "Ah", '
+                      '"Js", "Qd"], "B", 3], [["Kc", "9h", "9c", "Qh"], "B", 2], [["As", "Ac", "Kh", "9s"], "D", 1], '
+                      '[["10s", "9d", "Kd", "Ks"], "D", 3], [["Qs", "Js", "Ks", "Jh"], "B", 4], [["Kd", "Qh", "10h", '
+                      '"9s"], "C", 1], [["Ad", "Ac", "10c", "10h"], "A", 2], [["Ah", "As", "9h", "Jd"], "A", 0], '
+                      '[["Jc", "9d", "Jd", "Kh"], "A", 1], [["Kc", "Jc", "Ad", "10c"], "B", 0]]',
+            'A_points': '0', 'B_points': '0', 'C_points': '0', 'D_points': '0',
+            'without_nines': '0'}
+    scorer = doko_scorer.DokoScorer(data)
+    scorer.calculate_score()
+    assert_points(data, [-15, 5, 5, 5])
+
 if __name__ == "__main__":
+    settings.configure()
     test_normal_contra_wins()
     test_extra_points()
-    test_solo_contra_no_90_wins()
+    test_solo_contra_no_90_contra_wins()
     print("OK")

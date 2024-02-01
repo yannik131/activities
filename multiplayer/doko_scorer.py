@@ -1,6 +1,13 @@
 import json
 import multiplayer.utils as utils
-from django.utils.translation import gettext as _
+
+
+# from django.utils.translation import gettext_lazy as _
+
+# stupid hack until I get translations to work during tests
+def _(arg):
+    return arg
+
 
 DOKO_GAME_VALUES = {
     "": 121, "w": 121, "9": 151, "6": 181, "3": 211, "s": 240
@@ -176,11 +183,11 @@ class DokoScorer:
 
         # "Absagen"
         if result and re_bid_index is not None:
-            for i, mark in enumerate([151, 181, 211][:re_bid_index]):
+            for i, mark in enumerate([151, 181, 211][:re_bid_index + 1]):
                 if self.re_points >= mark:
                     self.re_extra.append(messages_winner[i])
         if result and contra_bid_index is not None:
-            for i, mark in enumerate([151, 181, 211][:contra_bid_index]):
+            for i, mark in enumerate([151, 181, 211][:contra_bid_index + 1]):
                 if self.contra_points >= mark:
                     self.contra_extra.append(messages_winner[i])
 
