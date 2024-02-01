@@ -276,6 +276,7 @@ def handle_play(game, data, text_data, username, message, match):
                 data["forehand"] = data["started"]
                 data["active"] = after(data["forehand"], players)
             else:
+                message["data"]["players"] = data["players"]
                 for player in players:
                     message["data"][player + "_initial_hand"] = data[player+"_initial_hand"]
                 played_solo = json.loads(data["played_solo"])

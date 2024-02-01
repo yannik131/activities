@@ -173,7 +173,7 @@ function handlePlay(data) {
         createInfoAlert("Re: "+data.re_1+", "+data.re_2, info_duration);
     }
     if(data.round) {
-        showInitialPlayerCards(data.round);
+        showInitialPlayerCards(data);
         summary = "{% trans 'Stand nach Spiel ' %}"+data.game_number+"/"+(4*(parseInt(data.round.round_count)+1))+":\n"+data.summary;
         showScore();
         createNextRoundButton(data.round, loadGameField);
