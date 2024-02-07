@@ -434,17 +434,35 @@ function createBidButtons(mandatory_solo) {
         clearButtons(lastTrickButton);
         return;
     }
-    if(!mandatory_solo) {
-        createButton("{% trans 'Gesund' %}", 'healthy', function() {
-            sendBid("healthy");
-        });
-    }
     var count = 0;
     for(var i = 0; i < player1_cards.length; i++) {
         if(player1_cards[i].id == "Qc") {
             count++;
         }
     }
+    let is_marriage = count === 2;
+    if(!mandatory_solo) {
+        createButton("{% trans 'Gesund' %}", 'healthy', function() {
+            if(is_marriage) {
+                let alerts = [
+                    "{% trans 'Eigentlich wäre auch eine Hochzeit drin. Fortfahren?' %}",
+                    "{% trans 'Bist Du bescheuert?!' %}",
+                    "{% trans 'Guck Dir Deine Karten doch nochmal GENAU an.. Bist Du sicher?' %}",
+                    "{% trans 'Du hast 2 Kreuz-Damen, Du Schlafmütze! Fortfahren?' %}",
+                    "{% trans 'Soo, jetzt atmen wir nochmal tief durch und schauen uns in Ruhe die Karten an.. Trotzdem gesund sagen?' %}"
+                ];
+                let randomIndex = Math.floor(Math.random() * alerts.length);
+                let randomAlert = alerts[randomIndex];
+                createYesNoAlert(randomAlert, 2, function() {
+                    sendBid("healthy");
+                })
+            }
+            else {
+                sendBid("healthy");
+            }
+        });
+    }
+
     if(count == 2 && !mandatory_solo) {
         createButton(bid_translations.marriage, 'marriage', function() {
             sendBid("marriage");
