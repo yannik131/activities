@@ -3,12 +3,12 @@
 
 const configuration = {
     "iceServers": [{
-        urls: 'turn:turn.myactivities.net:5349',
+        urls: 'turn:turn.myactivties.net:5349',
         credential: 'a cool password',
         username: 'guest'
     },
     {
-        urls: 'stun:stun.myactivities.net:5349',
+        urls: 'stun:stun.myactivties.net:5349',
         credential: 'a cool password',
         username: 'guest'
     }]
