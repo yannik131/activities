@@ -1,6 +1,19 @@
 {% load static %}
 {% load i18n %}
 
+const configuration = {
+    "iceServers": [{
+        urls: 'turn:turn.myactivities.net:5349',
+        credential: 'a cool password',
+        username: 'guest'
+    },
+    {
+        urls: 'stun:stun.myactivities.net:5349',
+        credential: 'a cool password',
+        username: 'guest'
+    }]
+};
+
 var peerConnections = {};
 var users = [];
 var remoteAudioElements = {};
@@ -102,7 +115,7 @@ function getOrCreatePeerConnection(sender) {
     var pc = peerConnections[sender];
     if(!pc) {
         //console.log("creating peer connection for", sender);
-        pc = new RTCPeerConnection();
+        pc = new RTCPeerConnection(configuration);
         colorize(sender, audio_room_id, 'darkgreen');
         peerConnections[sender] = pc;
         var mediaStream = new MediaStream();
