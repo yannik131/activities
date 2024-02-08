@@ -444,16 +444,7 @@ function createBidButtons(mandatory_solo) {
     if(!mandatory_solo) {
         createButton("{% trans 'Gesund' %}", 'healthy', function() {
             if(is_marriage) {
-                let alerts = [
-                    "{% trans 'Eigentlich wäre auch eine Hochzeit drin. Fortfahren?' %}",
-                    "{% trans 'Bist Du bescheuert?!' %}",
-                    "{% trans 'Guck Dir Deine Karten doch nochmal GENAU an.. Bist Du sicher?' %}",
-                    "{% trans 'Du hast 2 Kreuz-Damen, Du Schlafmütze! Fortfahren?' %}",
-                    "{% trans 'Soo, jetzt atmen wir nochmal tief durch und schauen uns in Ruhe die Karten an.. Trotzdem gesund sagen?' %}"
-                ];
-                let randomIndex = Math.floor(Math.random() * alerts.length);
-                let randomAlert = alerts[randomIndex];
-                createYesNoAlert(randomAlert, 2, function() {
+                createYesNoAlert("{% trans 'Bist Du bescheuert?!' %}", 2, function() {
                     sendBid("healthy");
                 })
             }
