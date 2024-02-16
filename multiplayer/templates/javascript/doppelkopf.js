@@ -56,7 +56,7 @@ function defineSortValues() {
 function getCardSortValue(type) {
     var vs = getVs(type);
     if(game_type == "diamonds" || game_type == "hearts" || game_type == "spades" || game_type == "clubs" || game_type == "marriage") {
-        if(vs.value == "10" && ((game_type == "marriage" || game_type == "diamonds" || game_type == "hearts" || game_type == "spades" || game_type == "clubs") && vs.suit == "h")) {
+        if(vs.value == "10" && vs.suit == "h") {
             return 101;
         }
         else if(vs.value == "Q") {
@@ -405,17 +405,16 @@ function playerHasTrump() {
     return false;
 }
 
-function isTrump(value, suit) {
+function isTrump(value, suit, game_type) {
     switch(game_type) {
         case "marriage":
         case "diamonds":
         case "clubs":
         case "hearts":
         case "spades":
-            if(value == "Q" || value == "J" || value == "10" && ((game_type == "marriage" || game_type == "diamonds") && suit == "h" || (game_type != "marriage" && game_type != "diamonds") && suit == game_type[0])) {
-                return true;
-            }
-            else if(game_type == "marriage" && suit == "d" || game_type[0] == suit) {
+            if(value == "Q" || value == "J" || (value + suit) == "10h"
+                || suit == "d" && game_type == "marriage"
+                || suit == game_type[0]) {
                 return true;
             }
             break;
