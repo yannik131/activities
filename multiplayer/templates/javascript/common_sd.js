@@ -4,7 +4,7 @@
 var info_duration = 1500;
 var last_trick;
 beat_right = true;
-let play_automatically = "{% settings_value "DEBUG" %}" === "True";
+let play_automatically = false;//"{% settings_value "DEBUG" %}" === "True";
 let clearStacksTimeout;
 const clearStacksTimeoutDuration = 700;
 

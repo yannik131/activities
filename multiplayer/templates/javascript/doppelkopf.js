@@ -405,7 +405,7 @@ function playerHasTrump() {
     return false;
 }
 
-function isTrump(value, suit, game_type) {
+function isTrump(value, suit) {
     switch(game_type) {
         case "marriage":
         case "diamonds":
