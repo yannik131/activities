@@ -326,6 +326,8 @@ class MultiplayerMatch(models.Model):
         self.game_data["last_trick"] = json.dumps([])
         self.game_data["tricks"] = json.dumps([]) #(trick, winner, index of who started)
         self.game_data["mandatory_solo"] = ""
+        self.game_data["re_bidders"] = json.dumps([])
+        self.game_data["contra_bidders"] = json.dumps([])
         for player in players:
             self.game_data[player+"_bid"] = ""
 

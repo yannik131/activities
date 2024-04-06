@@ -31,6 +31,8 @@ var m_show;
 var re;
 var value_ncards;
 let hand_cards_for_value;
+let re_bidders;
+let contra_bidders;
 
 {% include 'javascript/common_sd.js' %}
 
@@ -111,7 +113,7 @@ function getCardSortValue(type) {
 }
 
 function processMultiplayerData(data) {
-    //console.log("received: " + data.action + "(data: " + JSON.stringify(data) + ")");
+    console.log("received: " + data.action + "(data: " + JSON.stringify(data) + ")");
     if(data.active) {
         active = data.active;
     }
@@ -135,13 +137,20 @@ function processMultiplayerData(data) {
 }
 
 function handleValue(data) {
+    loadBidders(data);
     var info = data.username + ": ";
     value_ncards = parseInt(data.value_ncards);
     if(data.who == "re") {
         re_value = data.value;
+        for(let i = 0; i < re_bidders.length; ++i) {
+            updatePlayerInfo(re_bidders[i]);
+        }
     }
     else {
         contra_value = data.value;
+        for(let i = 0; i < contra_bidders.length; ++i) {
+            updatePlayerInfo(contra_bidders[i]);
+        }
     }
     if(data.value == "w") {
         info += team_translations[data.who];
@@ -306,6 +315,10 @@ function handleBid(data) {
     }
 }
 
+function loadBidders(data) {
+    re_bidders = JSON.parse(data.re_bidders);
+    contra_bidders = JSON.parse(data.contra_bidders);
+}
 
 function loadGameField(data) {
     document.querySelector('.player5-info').style.display = "none";
@@ -318,6 +331,8 @@ function loadGameField(data) {
     m_show = parseInt(data.m_show);
     value_ncards = parseInt(data.value_ncards);
     last_trick = JSON.parse(data.last_trick);
+    loadBidders(data);
+
     if(data.without_nines === '1') {
         hand_cards_for_value = {
             '': 9, 'w': 8, '9': 7, '6': 6, '3': 5
@@ -485,7 +500,23 @@ function updatePlayerInfo(player, bid) {
     var info = "";
     var important = player == active;
     if(important) {
-        info += " (*) ";
+        info += "*";
+    }
+    if(re_bidders.indexOf(player) !== -1 && re_value) {
+        if(re_value === "w") {
+            info += " (Re) ";
+        }
+        else {
+            info += " (Re, " + re_value + ") ";
+        }
+    }
+    else if(contra_bidders.indexOf(player) !== -1 && contra_value) {
+        if(contra_value === "w") {
+            info += " (Kontra) ";
+        }
+        else {
+            info += " (Kontra, " + contra_value + ") ";
+        }
     }
     if(bid) {
         if(bid === "healthy") {
