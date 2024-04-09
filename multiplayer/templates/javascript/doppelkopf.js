@@ -31,8 +31,8 @@ var m_show;
 var re;
 var value_ncards;
 let hand_cards_for_value;
-let re_bidders;
-let contra_bidders;
+let re_bids;
+let contra_bids;
 
 {% include 'javascript/common_sd.js' %}
 
@@ -142,14 +142,14 @@ function handleValue(data) {
     value_ncards = parseInt(data.value_ncards);
     if(data.who == "re") {
         re_value = data.value;
-        for(let i = 0; i < re_bidders.length; ++i) {
-            updatePlayerInfo(re_bidders[i]);
+        for(const [username, _] of Object.entries(re_bids)) {
+            updatePlayerInfo(username);
         }
     }
     else {
         contra_value = data.value;
-        for(let i = 0; i < contra_bidders.length; ++i) {
-            updatePlayerInfo(contra_bidders[i]);
+        for(const [username, _] of Object.entries(contra_bids)) {
+            updatePlayerInfo(username);
         }
     }
     if(data.value == "w") {
@@ -278,7 +278,7 @@ function createValueButtons() {
         }
         createButton(trans, value, function() {
             sendValue(value);
-        });
+        }, null, true);
     }
 }
 
@@ -316,8 +316,8 @@ function handleBid(data) {
 }
 
 function loadBidders(data) {
-    re_bidders = JSON.parse(data.re_bidders);
-    contra_bidders = JSON.parse(data.contra_bidders);
+    re_bids = JSON.parse(data.re_bids);
+    contra_bids = JSON.parse(data.contra_bids);
 }
 
 function loadGameField(data) {
@@ -502,20 +502,20 @@ function updatePlayerInfo(player, bid) {
     if(important) {
         info += "*";
     }
-    if(re_bidders.indexOf(player) !== -1 && re_value) {
-        if(re_value === "w") {
+    if(re_bids[player] && re_value) {
+        if(re_bids[player] === "w") {
             info += " (Re) ";
         }
         else {
-            info += " (Re, " + re_value + ") ";
+            info += " (Re, " + re_bids[player] + ") ";
         }
     }
-    else if(contra_bidders.indexOf(player) !== -1 && contra_value) {
-        if(contra_value === "w") {
+    else if(contra_bids[player] && contra_value) {
+        if(contra_bids[player] === "w") {
             info += " (Kontra) ";
         }
         else {
-            info += " (Kontra, " + contra_value + ") ";
+            info += " (Kontra, " + contra_bids[player] + ") ";
         }
     }
     if(bid) {

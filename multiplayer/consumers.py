@@ -254,10 +254,10 @@ class DoppelkopfConsumer(GameConsumer):
         elif text_data["action"] == "value":
             if text_data["who"] == "re":
                 data["re_value"] = text_data["value"]
-                data["re_bidders"] = json.dumps(json.loads(data["re_bidders"]) + [self.username])
+                data["re_bids"] = utils.create_json_dict_entry(data["re_bids"], self.username, text_data["value"])
             else:
                 data["contra_value"] = text_data["value"]
-                data["contra_bidders"] = json.dumps(json.loads(data["contra_bidders"]) + [self.username])
+                data["contra_bids"] = utils.create_json_dict_entry(data["contra_bids"], self.username, text_data["value"])
             data["value_ncards"] = text_data["value_ncards"]
             message["data"] = {
                 "action": "value",
@@ -265,8 +265,8 @@ class DoppelkopfConsumer(GameConsumer):
                 "value": text_data["value"],
                 "who": text_data["who"],
                 "value_ncards": data["value_ncards"],
-                "re_bidders": data["re_bidders"],
-                "contra_bidders": data["contra_bidders"]
+                "re_bids": data["re_bids"],
+                "contra_bids": data["contra_bids"]
             }
 
 class PokerConsumer(GameConsumer):
