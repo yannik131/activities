@@ -434,7 +434,10 @@ function getConvertedHand() {
     return converted;
 }
 
-function createButton(text, id, callback, color) {
+/**
+ * @brief Creates buttons on the right. Currently supports creating a single button on the left.
+ */
+function createButton(text, id, callback, color, left=false) {
     if(document.getElementById(id)) {
         return;
     }
@@ -449,7 +452,13 @@ function createButton(text, id, callback, color) {
     button.style.fontWeight = "bold";
     button.className = "game-button";
     button.innerHTML = text;
-    button.style.right = (buttons.length == 0? 0 : field.offsetWidth-buttons[buttons.length-1].offsetLeft+5) + "px";
+    if(left) {
+        button.style.left = "0px";
+        button.is_left = true;
+    }
+    else {
+        button.style.right = (buttons.filter(button => !button.is_left).length === 0? 0 : field.offsetWidth-buttons[buttons.length-1].offsetLeft+5) + "px";
+    }
     field.appendChild(button);
     if(button.offsetLeft < 0) {
         ++button_row;

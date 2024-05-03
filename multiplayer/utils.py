@@ -9,6 +9,12 @@ import multiplayer.doko_scorer as doko_scorer
 
 def change(dictionary, key, change):
     dictionary[key] = int(dictionary[key]) + change
+    
+    
+def create_json_dict_entry(dict_json, key, value):
+    data_dict = json.loads(dict_json)
+    data_dict[key] = value
+    return json.dumps(data_dict)
 
 
 def append(game_data, key, element):
