@@ -11,7 +11,8 @@ const bid_translations = {
     "spades": "{% trans 'Pik' %}",
     "hearts": "{% trans 'Herz' %}",
     "diamonds": "{% trans 'Trumpf' %}",
-    "without": "{% trans 'Fleischlos' %}"
+    "without": "{% trans 'Fleischlos' %}",
+    "poverty": "{% trans 'Armut' %}"
 };
 const values = ["w", "9", "6", "3", "s"];
 const value_translations = {
@@ -33,6 +34,7 @@ var value_ncards;
 let hand_cards_for_value;
 let re_bidders;
 let contra_bidders;
+let poverty_allowed = false;
 
 {% include 'javascript/common_sd.js' %}
 
@@ -113,7 +115,7 @@ function getCardSortValue(type) {
 }
 
 function processMultiplayerData(data) {
-    //console.log("received: " + data.action + "(data: " + JSON.stringify(data) + ")");
+    console.log("received: " + data.action + "(data: " + JSON.stringify(data) + ")");
     if(data.active) {
         active = data.active;
     }
@@ -182,10 +184,7 @@ function handlePlay(data) {
         createInfoAlert("Re: "+data.re_1+", "+data.re_2, info_duration);
     }
     if(data.round) {
-        showInitialPlayerCards(data);
-        summary = "{% trans 'Stand nach Spiel ' %}"+data.game_number+"/"+(4*(parseInt(data.round.round_count)+1))+":\n"+data.summary;
-        showScore();
-        createNextRoundButton(data.round, loadGameField);
+        endGame(data);
     }
     else {
         createValueButtons();
@@ -295,6 +294,20 @@ function setRe(data) {
     re = this_user == data.re_1 || this_user == data.re_2 || this_user == data.solist;
 }
 
+function endGame(data) {
+    showInitialPlayerCards(data);
+    if(data.bid !== "poverty") {
+        summary = "{% trans 'Stand nach Spiel ' %}"+data.game_number+"/"+(4*(parseInt(data.round.round_count)+1))+":\n"+data.summary;
+    }
+    else {
+        summary = data.username + ": " + bid_translations.poverty;
+    }
+    showScore();
+    summary = data.round.summary;
+    clearButtons();
+    createNextRoundButton(data.round, loadGameField);
+}
+
 function handleBid(data) {
     handleBidGuard(data);
     if(data.game_type) {
@@ -308,6 +321,9 @@ function handleBid(data) {
         }
         handleStart();
         updateAllInfo();
+    }
+    else if(data.bid === 'poverty') {
+        endGame(data);
     }
     else {
         createBidButtons();
@@ -343,6 +359,7 @@ function loadGameField(data) {
             '': 11, 'w': 10, '9': 9, '6': 8, '3': 7
         };
     }
+    poverty_allowed = data.poverty === '1';
     setRe(data);
     defineSortValues();
     clearButtons(lastTrickButton);
@@ -410,14 +427,19 @@ function cardClicked(value, suit, card) {
     sendMove();
 }
 
-function playerHasTrump() {
+function trumpCount() {
+    let count = 0;
     for(var i = 0; i < player1_cards.length; i++) {
         var vs = getVs(player1_cards[i].id);
         if(isTrump(vs.value, vs.suit)) {
-            return true;
+            ++count;
         }
     }
-    return false;
+    return count;
+}
+
+function playerHasTrump() {
+    return trumpCount() > 0;
 }
 
 function isTrump(value, suit) {
@@ -494,6 +516,12 @@ function createBidButtons(mandatory_solo) {
     createButton(bid_translations.without, 'without', function() {
         sendBid("without");
     });
+
+    if(trumpCount() <= 3) {
+        createButton(bid_translations.poverty, 'poverty', function() {
+            sendBid("poverty");
+        });
+    }
 }
 
 function updatePlayerInfo(player, bid) {

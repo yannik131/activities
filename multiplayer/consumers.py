@@ -199,6 +199,21 @@ class DoppelkopfConsumer(GameConsumer):
             return
         players = json.loads(data["players"])
         if text_data["action"] == "bid":
+            message["data"] = {
+                'action': 'bid',
+                'username': self.username,
+                'bid': text_data['bid'],
+                'players': data['players']
+            }
+            if text_data["bid"] == "poverty":
+                message["data"]["summary"] = f"{self.username}: Armut"
+                players = json.loads(data["players"])
+                for player in players:
+                    message["data"][player + "_initial_hand"] = data[player + "_initial_hand"]
+                match.start_doppelkopf()
+                change(data, "game_number", -1)
+                message["data"]["round"] = match.game_data.copy()
+                return
             data[self.username+"_bid"] = text_data["bid"]
             data["active"] = after(self.username, players)
             if text_data["re"] == "1":
@@ -206,12 +221,8 @@ class DoppelkopfConsumer(GameConsumer):
                     data["re_2"] = self.username
                 else:
                     data["re_1"] = self.username
-            message["data"] = {
-                'action': 'bid',
-                'username': self.username,
-                'bid': text_data['bid'],
-                'active': data["active"]
-            }
+
+            message["data"]['active'] = data["active"]
             bidding_over = bool(data[data["active"]+"_bid"])
             bid_is_solo = text_data["bid"] not in ["healthy", "marriage"]
             played_solo = json.loads(data["played_solo"])

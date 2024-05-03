@@ -53,6 +53,7 @@ def create_match(request, activity_name):
             elif name == 'Doppelkopf':
                 match.options['without_nines'] = form.cleaned_data['without_nines']
                 match.options['round_count'] = form.cleaned_data['round_count']
+                match.options['poverty'] = form.cleaned_data['poverty']
             elif name == 'Durak':
                 match.options['all_help'] = form.cleaned_data['all_help']
             match.save() 
