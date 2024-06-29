@@ -29,6 +29,12 @@
             {% blocktrans %}Poker-Lobby{% endblocktrans %}
         </div>
     </div>
+    <div class="competitive">
+        <div class="full" onclick=openLink("{% url 'multiplayer:lobby' guess.name 'guarded' %}")>
+            <img src="{% static 'icons/lobby.png' %}">
+            {% trans 'Stiche raten-Lobby' %}
+        </div>
+    </div>
     <h1 class="h-img"><img src="{% static 'icons/tournament.png' %}">{% trans 'Offline' %}</h1>
     <p class="info-p">
         {% blocktrans %}Erstellen und nehmen Sie Teil an Turnieren und Matches über den 'Offline spielen'-Button auf der entsprechenden <a href="/activity/list/">Aktivitätsseite</a>! Geht natürlich nur bei Aktivitäten, wo man einen Wettbewerb haben kann.{% endblocktrans %}

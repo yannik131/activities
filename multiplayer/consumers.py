@@ -192,7 +192,6 @@ class SkatConsumer(GameConsumer):
                 message["data"]["round"] = match.game_data
                 message["data"]["players"] = data["players"]
 
-
 class DoppelkopfConsumer(GameConsumer):
     def handle_move(self, text_data, data, match, message):
         if self.username != data["active"]:
@@ -396,3 +395,6 @@ class PokerConsumer(GameConsumer):
                 self.clean(event['new_game_data'])
         """
         self.send(text_data=json.dumps(event))
+        
+class GuessTheTricksConsumer(GameConsumer):
+    pass

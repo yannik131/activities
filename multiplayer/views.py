@@ -34,6 +34,8 @@ def create_match(request, activity_name):
     name = activity.german_name
     if name == "Skat":
         match = MultiplayerMatch.objects.create(activity=activity, member_limit=3, admin=request.user)
+    elif name == 'Stiche raten':
+        match = MultiplayerMatch.objects.create(activity=activity, member_limit=5, admin=request.user)
     if request.method == 'POST':
         if name == 'Poker':
             form = PokerMatchForm(request.POST)
@@ -41,8 +43,6 @@ def create_match(request, activity_name):
             form = DokoMatchForm(request.POST)
         elif name =='Durak':
             form = DurakMatchForm(request.POST)
-        else:
-            form = CreateMatchForm(request.POST)
         form.activity = activity
         if form.is_valid():
             match = form.save(commit=False)
@@ -64,8 +64,6 @@ def create_match(request, activity_name):
             form = DokoMatchForm(initial={'member_limit': 4})
         elif name == 'Durak':
             form = DurakMatchForm()
-        else:
-            form = CreateMatchForm()
     if match:
         match.init_positions()
         match.members.add(match.admin)
