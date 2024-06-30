@@ -12,6 +12,7 @@ class Model {
         this.mode = null; //Current game state: guessing or playing
         this.game_number = null; //Current game number
         this.trump_suit = null; //Trump suit of the current game
+        this.trick = []; //Current trick that is displayed
     }
     
     /**
@@ -31,12 +32,22 @@ class Model {
         this.trump_suit = getVs(this.deck[this.deck.length - 1]).suit;
         this.game_number = parseInt(data.game_number);
         this.mode = data.mode;
+        this.trick = JSON.parse(data.trick);
+        
+        beat_right = true; //Unfortunate global variable from cards.js
     }
     
     handleGuess(data) {
         this.trick_guesses[data['username']] = parseInt(data['guess']);
         this.active_player = data['active'];
         this.mode = data['mode'];
+    }
+    
+    handlePlay(data) {
+        this.trick = JSON.parse(data['trick']);
+        if(this_user !== data['username']) {
+            this.cards[data['username']].pop();
+        }
     }
 }
 
@@ -46,7 +57,7 @@ class View {
             let is_active = player === active_player;
             let info = is_active? " (*)" : "";
             if(trick_guesses[player]) {
-                info = " (" + trick_guesses[player] + ")" + info;
+                info = " (" + trick_counts[player] + "/" + trick_guesses[player] + ")" + info;
             }
             else {
                 info = " (?)" + info;
@@ -63,7 +74,18 @@ class View {
                 }
             }
             else {
-                addCardTo(player, cards[player].length);
+                let playerIndex = window.players[player];
+                let guiCards = player_cards[playerIndex];
+                
+                if(guiCards.length === 0) {
+                    addCardTo(player, cards[player].length);
+                    continue;
+                }
+                
+                while(guiCards.length !== cards[player].length) {
+                    //A card was removed
+                    removeCardFrom(playerIndex, 1);
+                }
             }
         }
     }
@@ -95,6 +117,12 @@ class View {
             return true;
         }, false);
     }
+    
+    displayTrick(trick) {
+        for(const card of trick) {
+            beatStack(1, card);
+        }
+    }
 }
 
 class Controller {
@@ -115,11 +143,17 @@ class Controller {
         this.view.updateCards(this.model.players, this.model.cards);
         this.view.createDeck(this.model.deck);
         
-        this.askForGuess();
+        if(this.model.mode === 'guessing') {
+            this.askForGuess();
+        }
+        else {
+            this.view.displayTrick(this.model.trick);
+            this.assignCallbacks();
+        }
     }
     
     askForGuess() {
-        if(this.model.mode !== 'guessing' || this_user !== this.model.active_player) {
+        if(this_user !== this.model.active_player) {
             return;
         }
         
@@ -138,6 +172,12 @@ class Controller {
         }
     }
     
+    handlePlay(data) {
+        this.model.handlePlay(data);
+        this.view.updateCards(this.model.players, this.model.cards);
+        this.view.updateUserInfo(this.model.players, this.model.active_player, this.model.trick_guesses);
+    }
+    
     assignCallbacks() {
         for(const card of player1_cards) {
             card.onclick = function() {
@@ -147,33 +187,124 @@ class Controller {
         }
     }
     
+    cardCanBePlayed(value, suit, stack) {
+        let first_vs = getVs(stack[0].id);
+        
+        //If the first card is a joker, we'll try to find the first card that is neither joker nor wizard
+        if(first_vs.value === 'J') {
+            for(let i = 1; i < stack.length; ++i) {
+                const card = stack[i];
+                let vs = getVs(card.id);
+                if(vs.value !== 'J' && vs.value !== 'A') {
+                    first_vs = vs;
+                    break;
+                }
+            }
+            
+            //If there is none, any card can be played
+            if(first_vs.value === 'J') {
+                return true;
+            }
+        }
+        
+        //If the first card is a wizard, any card can be played
+        if(first_vs.value === 'A') {
+            return true;
+        }
+
+        //There is actually a card that is neither a joker nor a wizard
+        if(this.isTrump(first_vs.suit) && this.playerHasTrump() && !this.isTrump(value, suit)) {
+            return false;
+        }
+        
+        if(!this.isTrump(first_vs.suit) && (suit != first_vs.suit || this.isTrump(suit))) {
+            let cards = getPlayerCards("x", first_vs.suit);
+            for(const card of cards) {
+                if(!this.isTrump(card.suit)) {
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+    
     cardClicked(value, suit, card) {
         if(this_user !== this.model.active_player) {
             return;
         }
         
-        if(stacks[0].length === 0) {
+        const stack = stacks[0];
+        
+        if(stack.length === 0) {
             addStack(card.id);
         }
         else {
-            let first_vs = getVs(stacks[0][0].id);
-            if(this.isTrump(first_vs.suit) && this.playerHasTrump() && !this.isTrump(value, suit)) {
+            if(!this.cardCanBePlayed(value, suit, stack)) {
                 return;
             }
-            else if(!this.isTrump(first_vs.suit) && (suit != first_vs.suit || this.isTrump(suit))) {
-                let cards = getPlayerCards("x", first_vs.suit);
-                for(const card of cards) {
-                    if(!this.isTrump(card.suit)) {
-                        return;
-                    }
-                }
-            }
-            beatStack(1, card.id, true);
+            beatStack(1, card.id);
         }
         
-        active = undefined;
+        this.model.active = undefined;
         removePlayerCard(card);
+        this.sendMove();
+    }
+    
+    sendMove() {
+        let response = {
+            "action": "play",
+            "trick": JSON.stringify(getConvertedStack()[0]),
+            "hand": JSON.stringify(getConvertedHand())
+        };
+        if(stacks[0].length == player_list.length) {
+            response["index"] = this.getIndexOfHighestCard();
+        }
+        game_send(response);
+    }
+    
+    getIndexOfHighestCard() {
+        const stack = stacks[0];
+        let highest_vs;
+        let index;
         
+        for(let i = 0; i < stack.length; ++i) {
+            const vs = getVs(stack[i].id);
+
+            //First wizard always wins
+            if(vs.value === 'A') {
+                return i;
+            }
+            
+            //Joker always loses
+            if(vs.value === 'J') {
+                continue;
+            }
+            
+            //First card that's neither joker nor wizard
+            if(!highest_vs) {
+                highest_vs = vs;
+                index = i;
+                continue;
+            }
+            
+            //Somebody discarded a card
+            if(!this.isTrump(highest_vs.suit) && !this.isTrump(vs.suit) && highest_vs.suit !== vs.suit) {
+                continue;
+            }
+            
+            //There is a new card that is better than the previous one
+            if(this.getCardSortValue(vs.value + vs.suit) > this.getCardSortValue(highest_vs.value + highest_vs.suit)) {
+                highest_vs = vs;
+                index = i;
+            }
+        }
+        
+        if(i === stack.length) {
+            return i - 1; //Only jokers, last player gets the trick
+        }
+        
+        return index;
     }
     
     isTrump(suit) {
@@ -235,6 +366,13 @@ function processMultiplayerData(data) {
             controller.handleGuess(data);
             break;
         case "play":
+            controller.handlePlay(data);
+            break;
+        case "next_trick":
+            controller.handleNextTrick(data);
+            break;
+        case "next_round":
+            controller.handleNextRound(data);
             break;
         case "abort":
             location.href = data.url;

@@ -411,4 +411,31 @@ class GuessTheTricksConsumer(GameConsumer):
                 'active': data['active'],
                 'mode': data['mode']
             }
+        if text_data['action'] == 'play':
+            players = cycle_slice(players.index(after(data["active"], players)), players)
+            data["trick"] = text_data["trick"]
+            trick = json.loads(data["trick"])
+            data[data["active"]] = text_data["hand"]
+            data["active"] = after(self.username, players)
             
+            message["data"] = {
+                "action": "play",
+                "trick": data["trick"],
+                "username": self.username,
+                "active": data["active"]
+            }
+            
+            if "index" in text_data:
+                winner = players[int(text_data["index"])]
+                data["last_trick"] = json.dumps(trick)
+                change(data, winner + "_tricks", 1)
+                
+                data["active"] = winner
+                data["trick"] = json.dumps([])
+                message["data"]["action"] = "next_trick"
+                message["data"]["active"] = winner
+                
+                if not json.loads(data[data["active"]]):
+                    match.start_guess_the_tricks()
+                    message['data']['action'] = 'next_round'
+                    message["data"]["round"] = match.game_data.copy()

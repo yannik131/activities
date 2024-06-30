@@ -379,4 +379,5 @@ class MultiplayerMatch(models.Model):
             self.game_data[user + "_tricks"] = 0
         self.game_data['active'] = players[0]
         self.game_data['mode'] = 'guessing'
+        self.game_data['trick'] = json.dumps([])
         
