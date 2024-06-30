@@ -566,7 +566,7 @@ function createInfoAlert(info, timeout, no_button) {
     return info_alert;
 }
 
-function createInputAlert(message, callback) {
+function createInputAlert(message, callback, cancel=true) {
     var info_alert = createInfoAlert(message, null, true);
     var input = document.createElement('input');
     input.addEventListener('keyup', function(event) {
@@ -584,6 +584,9 @@ function createInputAlert(message, callback) {
             input.parentElement.remove();
         }
     }, info_alert, true);
+    if(!cancel) {
+        return;
+    }
     createInfoButton('{% trans 'Abbrechen' %}', function() {
         input.parentElement.remove();
     }, info_alert, true);

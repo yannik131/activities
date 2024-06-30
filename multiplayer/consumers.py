@@ -397,4 +397,18 @@ class PokerConsumer(GameConsumer):
         self.send(text_data=json.dumps(event))
         
 class GuessTheTricksConsumer(GameConsumer):
-    pass
+    def handle_move(self, text_data, data, match, message):
+        if text_data['action'] == 'guess':
+            data[self.username + "_guess"] = text_data['guess']
+            players = json.loads(data["players"])
+            data["active"] = after(data["active"], players)
+            if data[data['active'] + '_guess'] is not None:
+                data['mode'] = 'playing'
+            message['data'] = {
+                'action': 'guess', 
+                'username': self.username, 
+                'guess': text_data['guess'],
+                'active': data['active'],
+                'mode': data['mode']
+            }
+            
