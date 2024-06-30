@@ -236,13 +236,13 @@ class MultiplayerMatch(models.Model):
         self.in_progress = True
         self.save()
         self.broadcast_data(
-                {
-                    'action': 'members_changed',
-                    "match_id": self.id,
-                    "info": "start"
-                }, 
-                direct=True
-            )
+            {
+                'action': 'members_changed',
+                "match_id": self.id,
+                "info": "start"
+            }, 
+            direct=True
+        )
             
     def create_players(self, n, *deck):
         deck = create_deck(*deck)
@@ -378,4 +378,5 @@ class MultiplayerMatch(models.Model):
             self.game_data[user + "_guess"] = None
             self.game_data[user + "_tricks"] = 0
         self.game_data['active'] = players[0]
+        self.game_data['mode'] = 'guessing'
         

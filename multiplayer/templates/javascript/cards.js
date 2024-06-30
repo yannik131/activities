@@ -220,6 +220,9 @@ function positionCard(player, card, i, n) {
 }
 
 function addCardTo(player, n, type, not_clickable) {
+    if(typeof player === 'string' || player instanceof String) {
+        player = players[player];
+    }
     var new_cards = [];
     const vars = getPlayerVariables(player);
     var card;
