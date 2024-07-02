@@ -378,6 +378,8 @@ class MultiplayerMatch(models.Model):
             self.game_data[user + "_guess"] = None
             self.game_data[user + "_tricks"] = 0
         self.game_data['active'] = players[0]
-        self.game_data['mode'] = 'guessing'
+        self.game_data['mode'] = 'guessing' # guessing or playing
         self.game_data['trick'] = json.dumps([])
+        self.game_data['last_trick'] = json.dumps([])
+        self.game_data['trump_suit_wizard'] = None # the trump suit in case of a wizard as the top card of the deck
         

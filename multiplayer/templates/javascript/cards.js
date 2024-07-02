@@ -285,6 +285,9 @@ function updateCardsFor(player) {
 }
 
 function removeCardFrom(player, n, type) {
+    if(typeof player === 'string' || player instanceof String) {
+        player = players[player];
+    }
     const vars = getPlayerVariables(player);
     for(var i = 0; (i < n && vars.cards.length > 0) || type; i++) {
         if(type) {
