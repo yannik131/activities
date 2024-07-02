@@ -3,52 +3,37 @@
 //These numbers are not in order because I frequently edit this 
 //Deal with it!
 const ACTIONS = {
-    updateTrick:            0,
-    removeTrick:            2, //Also show last trick button
-    updateUserInfo:         3,
-    updatePlayerCards:      4,
-    updateLastTrickButton:  5,
-    askForGuess:            6,
-    askForTrumpSuit:        7,
-    showStartNotification:  8,
-    clear:                  9,
-    sortPlayerCards:        10,
-    initializeGUI:          11,
-    updateDeck:             12,
-    sendMove:               13,
-    wait:                   14
+    updateTrick:            "updateTrick",
+    removeTrick:            "removeTrick", //Also show last trick button
+    updateUserInfo:         "updateUserInfo",
+    updatePlayerCards:      "updatePlayerCards",
+    updateLastTrickButton:  "updateLastTrickButton",
+    askForGuess:            "askForGuess",
+    askForTrumpSuit:        "askForTrumpSuit",
+    showStartNotification:  "showStartNotification",
+    clear:                  "clear",
+    sortPlayerCards:        "sortPlayerCards",
+    initializeGUI:          "initializeGUI",
+    updateDeck:             "updateDeck",
+    sendMove:               "sendMove",
+    wait:                   "wait"
 };
 
-/**
- * Defines the card sort values based on the trump suit
- * @param {string} trump_suit 
- */
 function defineSortValues(trump_suit) {
-    var suits = ["d", "h", "s", "c"];
-    for(var i = 0; i < suits.length; i++) {
-        suit_values[suits[i]] = i+1; //These are global variabled from cards.js
+    let suits = ["d", "h", "s", "c"];
+    for(let i = 0; i < suits.length; i++) {
+        suit_values[suits[i]] = (i + 1) * 100;
     }
-    if(trump_suit) {
-        suit_values[trump_suit] += 1000;
-    }
-    var values= ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "A"];
-    for(var i = 0; i < values.length; i++) {
-        value_values[values[i]] = (i+1)*50;
+    suit_values[trump_suit] += 1000;
+    value_values["A"] = -10000;
+    value_values["J"] = -5000;
+    let values= ["10", "9", "8", "7", "6", "5", "4", "3", "2"];
+    for(let i = 0; i < values.length; i++) {
+        value_values[values[i]] = i;
     }
 }
 
-/**
- * Used for sorting the cards based on trump suit
- * @param {string} type 
- * @param {string} trump_suit 
- * @returns 
- */
-function getCardSortValue(type, trump_suit) {
-    const vs = getVs(type);
-    const value = vs.value, suit = vs.suit;
-    if(vs.suit === trump_suit && (value === 'J' || value === 'A')) {
-        return value_values[value] + suit_values[suit] - 1000;
-    }
+function getCardSortValue(type) {
     return getCardSortValueDefault(type);
 }
 
@@ -57,13 +42,12 @@ function getCardSortValue(type, trump_suit) {
  * @param {string} trump_suit 
  * @returns Index of the best card
  */
-function getIndexOfHighestCard(trump_suit) {
-    const stack = stacks[0];
+function getIndexOfHighestCard(trump_suit, trick) { //TODO buggy
     let highest_vs;
     let index;
     
-    for(let i = 0; i < stack.length; ++i) {
-        const vs = getVs(stack[i].id);
+    for(let i = 0; i < trick.length; ++i) {
+        const vs = getVs(trick[i]);
 
         //First wizard always wins
         if(vs.value === 'A') {
@@ -88,13 +72,13 @@ function getIndexOfHighestCard(trump_suit) {
         }
         
         //There is a new card that is better than the previous one
-        if(this.getCardSortValue(vs.value + vs.suit) > this.getCardSortValue(highest_vs.value + highest_vs.suit)) {
+        if(getCardSortValue(vs.value + vs.suit) < getCardSortValue(highest_vs.value + highest_vs.suit)) {
             highest_vs = vs;
             index = i;
         }
     }
     
-    if(i === stack.length) {
+    if(i === trick.length) {
         return i - 1; //Only jokers, last player gets the trick
     }
     
@@ -205,7 +189,6 @@ class Model {
         this.game_number = null; //Current game number
         this.trump_suit = null; //Trump suit of the current game
         this.trick = []; //Current trick that is displayed
-        this.last_trick = null;
         
         this.commandQueue = [];
     }
@@ -240,6 +223,7 @@ class Model {
     }
     
     initRound(data) {
+        console.log("initRound");
         this.active_player = data.active;
         for(const player of this.players) {
             this.cards[player] = JSON.parse(data[player]);
@@ -248,12 +232,14 @@ class Model {
             this.trick_guesses[player] = JSON.parse(data[player + "_guess"]);
         }
         this.deck = JSON.parse(data.deck);
+        console.log("setting trump");
         this.#setTrumpSuit(data);
+        console.log("defining sort values");
         defineSortValues(this.trump_suit);
         this.game_number = parseInt(data.game_number);
         this.mode = data.mode;
         this.trick = JSON.parse(data.trick);
-        window.last_trick = data['last_trick'];
+        window.last_trick = JSON.parse(data['last_trick']);
         
         this.commandQueue.push(ACTIONS.updateUserInfo);
         this.commandQueue.push(ACTIONS.updateTrick);
@@ -267,8 +253,8 @@ class Model {
         else if(this.mode === 'guessing' && this_user === this.active_player) {
             this.commandQueue.push(ACTIONS.askForGuess);
         }
-        if(this.last_trick) {
-            this.commandQueue.push(ACTIONS.showLastTrickButton);
+        if(window.last_trick) {
+            this.commandQueue.push(ACTIONS.updateLastTrickButton);
         }
         if(this.mode === 'playing') {
             this.commandQueue.push(ACTIONS.showStartNotification);
@@ -295,8 +281,6 @@ class Model {
     }
     
     processClickedCard(value, suit, card) {
-        console.log("Clicked: " + value + suit);
-        
         if(this_user !== this.active_player || this.mode !== 'playing') {
             return;
         }
@@ -307,11 +291,11 @@ class Model {
         
         let index = this.cards[this.active_player].indexOf(card.id);
         this.cards[this.active_player].splice(index, 1);
+        this.trick.push(value + suit);
         
         this.active_player = undefined;
         
         this.commandQueue.push(ACTIONS.updatePlayerCards);
-        this.commandQueue.push(ACTIONS.updateTrick);
         this.commandQueue.push(ACTIONS.sendMove);
     }
     
@@ -321,10 +305,10 @@ class Model {
         
         this.commandQueue.push(ACTIONS.updateUserInfo);
         
-        if(data.mode === 'guessing') {
+        if(data.mode === 'guessing' && this_user === data['active']) {
             this.commandQueue.push(ACTIONS.askForGuess);
         }
-        else {
+        else if(data.mode === 'playing') {
             this.mode = data.mode;
             this.commandQueue.push(ACTIONS.showStartNotification);
         }
@@ -343,8 +327,10 @@ class Model {
     }
     
     handleNextTrick(data) {
+        this.trick_counts[data.active] = parseInt(data[data.active + "_tricks"]);
         this.handlePlay(data);
         last_trick = this.trick;
+        this.trick = [];
         
         this.commandQueue.push(ACTIONS.wait);
         this.commandQueue.push(ACTIONS.removeTrick);
@@ -368,11 +354,11 @@ class View {
         beat_right = true; //Unfortunate global variable from cards.js
     }
     
-    updateUserInfo(players, active_player, trick_guesses) {
+    updateUserInfo(players, active_player, trick_guesses, trick_counts) {
         for(const player of players) {
             let is_active = player === active_player;
             let info = is_active? " (*)" : "";
-            if(trick_guesses[player]) {
+            if(trick_guesses[player] !== null) {
                 info = " (" + trick_counts[player] + "/" + trick_guesses[player] + ")" + info;
             }
             else {
@@ -392,7 +378,7 @@ class View {
                     }
                     
                     for(const card of player1_cards) {
-                        card.onclick = () => {
+                        card.onclick = function() {
                             let vs = getVs(this.id);
                             callback(vs.value, vs.suit, this);
                         }
@@ -475,11 +461,15 @@ class View {
     }
     
     updateTrick(trick) {
-        if(stacks.length === 1) {
-            //There is a stack, we just need to add a card
+        if(stacks.length === 1 && trick.length > stacks[0].length) {
+            //There is a stack and the new card has not been displayed yet
             beatStack(1, trick[trick.length - 1]);
         }
-        else {
+        else if(stacks.length === 1 && trick.length === 0) {
+            //Next trick is already there, we want to display the old trick here
+            beatStack(1, window.last_trick[window.last_trick.length - 1]);
+        }
+        else if(stacks.length === 0 && trick.length > 0) {
             addStack(trick[0]);
             for(let i = 1; i < trick.length; ++i) {
                 beatStack(1, trick[i]);
@@ -489,7 +479,7 @@ class View {
     
     showStartNotification(trick_guesses, active_player) {
         let notification = "{% trans 'Es spielt aus: '%}" + active_player + "</br>";
-        for(const player of trick_guesses) {
+        for(const player in trick_guesses) {
             notification += player + ": " + trick_guesses[player] + "</br>";
         }
         createInfoAlert(notification, 2000);
@@ -508,9 +498,8 @@ class Controller {
         this.uiActionBindings = {
             [ACTIONS.updateTrick]:           () => { this.view.updateTrick(this.model.trick); },
             [ACTIONS.removeTrick]:           () => { this.view.removeTrick(); },
-            [ACTIONS.updateUserInfo]:        () => { this.view.updateUserInfo(this.model.players, this.model.active_player, this.model.trick_guesses)},
-            [ACTIONS.updatePlayerCards]:     () => { this.view.updatePlayerCards(this.model.players, this.model.cards, this.cardClicked) },
-            [ACTIONS.showLastTrickButton]:   () => { lastTrickButton(); },
+            [ACTIONS.updateUserInfo]:        () => { this.view.updateUserInfo(this.model.players, this.model.active_player, this.model.trick_guesses, this.model.trick_counts)},
+            [ACTIONS.updatePlayerCards]:     () => { this.view.updatePlayerCards(this.model.players, this.model.cards, (a, b, c) => { this.cardClicked(a, b, c); }) },
             [ACTIONS.askForGuess]:           () => { this.view.askForGuess(this.askForGuessCallback, 0, this.model.game_number + 1); },
             [ACTIONS.askForTrumpSuit]:       () => { this.askForTrumpSuit(); },
             [ACTIONS.showStartNotification]: () => { this.view.showStartNotification(this.model.trick_guesses, this.model.active_player); },
@@ -521,19 +510,30 @@ class Controller {
             [ACTIONS.updateLastTrickButton]: () => { lastTrickButton(); },
             [ACTIONS.wait]:                  null,
         }
+        
+        this.processEventsTimeout = null;
     }
     
     handleServerData(data) {
-        console.log(JSON.stringify(data));
+        console.log("received: " + JSON.stringify(data));
         this.model.processServerData(data);
         this.processEvents();
     }
     
-    processEvents() {
+    processEvents(endWait = false) {
+        console.log("processing events: " + this.model.commandQueue);
+        if(this.processEventsTimeout && endWait) {
+            this.processEventsTimeout = null;
+        }
+        else if(this.processEventsTimeout) {
+            return;
+        }
+        
         while(this.model.commandQueue.length > 0) {
             const action = this.model.commandQueue.shift();
+            console.log("calling: " + action);
             if(action === ACTIONS.wait) {
-                setTimeout(this.processEvents, 1000);
+                this.processEventsTimeout = setTimeout(() => { this.processEvents(true); }, 1000);
                 return;
             }
             this.uiActionBindings[action]();
@@ -556,11 +556,11 @@ class Controller {
     sendMove() {
         let response = {
             "action": "play",
-            "trick": JSON.stringify(getConvertedStack()[0]),
-            "hand": JSON.stringify(getConvertedHand())
+            "trick": JSON.stringify(this.model.trick),
+            "hand": JSON.stringify(this.model.cards[this_user])
         };
-        if(stacks[0].length == player_list.length) {
-            response["index"] = getIndexOfHighestCard(this.model.trump_suit);
+        if(this.model.trick.length === this.model.players.length) {
+            response["index"] = getIndexOfHighestCard(this.model.trump_suit, this.model.trick);
         }
         game_send(response);
     }  

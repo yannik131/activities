@@ -50,10 +50,12 @@ window.addEventListener('beforeunload', function() {
 });
 
 function game_send(message) {
+    console.log("sending: " + JSON.stringify(message));
     socket.send(JSON.stringify(message));
 }
 
 function sendAction(action) {
+    console.log("sending: " + action);
     socket.send(JSON.stringify({
         'action': action
     }));

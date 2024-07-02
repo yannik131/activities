@@ -398,9 +398,9 @@ class PokerConsumer(GameConsumer):
         
 class GuessTheTricksConsumer(GameConsumer):
     def handle_move(self, text_data, data, match, message):
+        players = json.loads(data["players"])
         if text_data['action'] == 'guess':
             data[self.username + "_guess"] = text_data['guess']
-            players = json.loads(data["players"])
             data["active"] = after(data["active"], players)
             if data[data['active'] + '_guess'] is not None:
                 data['mode'] = 'playing'
@@ -434,6 +434,7 @@ class GuessTheTricksConsumer(GameConsumer):
                 data["trick"] = json.dumps([])
                 message["data"]["action"] = "next_trick"
                 message["data"]["active"] = winner
+                message["data"][winner + "_tricks"] = data[winner + "_tricks"]
                 
                 if not json.loads(data[data["active"]]):
                     match.start_guess_the_tricks()

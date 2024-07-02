@@ -959,6 +959,51 @@ overlap of cards.*/
     }
 }
 
+function lastTrickButton() {
+    if(!last_trick || last_trick.length == 0) {
+        deleteButton("last_trick");
+        return;
+    }
+    var trick = document.getElementById("last_trick0");
+    var label = "{% trans 'Stich' %}";
+    if(trick) {
+        label = "{% trans 'Okay' %}";
+    }
+    var button = document.getElementById('last_trick');
+    function callback() {
+        toggleLastTrick();
+        lastTrickButton();
+    }
+    if(!button) {
+        createButton(label, "last_trick", callback);
+    }
+    else {
+        button.innerHTML = label;
+    }
+}
+
+function toggleLastTrick() {
+    if(document.getElementById("last_trick0")) {
+        for(var i = 0; i < last_trick.length; i++) {
+            var card = document.getElementById("last_trick"+i);
+            if(card) {
+                card.remove();
+            }
+        }
+    }
+    else {
+        for(var i = 0; i < last_trick.length; i++) {
+            var card = createCard(last_trick[i]);
+            card.id = "last_trick"+i;
+            card.type = last_trick[i];
+            card.style.position.top = "0px";
+            card.style.left = i*0.4*w+"px";
+            card.style.zIndex = 100;
+            field.appendChild(card);
+        }
+    }
+}
+
 function leaveGame() {
     createYesNoAlert(
         "{% trans 'Verlassen Sie das Spiel bitte nur, wenn Sie es auch später nicht mehr fortführen wollen. Spiel verlassen und dadurch zurücksetzen?' %}", 
