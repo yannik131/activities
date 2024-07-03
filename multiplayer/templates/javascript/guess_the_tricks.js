@@ -266,7 +266,7 @@ class View {
                  ["&hearts; {% trans 'Herz' %}", "h"],
                  ["&diams; {% trans 'Karo' %}", "d"]];
         beat_right = true; //Unfortunate global variable from cards.js
-        this.play_automatically = '{% settings_value "DEBUG" %}' === "True";
+        this.play_automatically = true;//'{% settings_value "DEBUG" %}' === "True";
     }
     
     updateUserInfo(players, active_player, trick_guesses, trick_counts) {
