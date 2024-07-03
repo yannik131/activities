@@ -235,6 +235,7 @@ class Model {
             this.last_scores = JSON.parse(data.last_scores);
             this.points = JSON.parse(data.points);
             this.game_number++;
+            this.active_player = data.round.active;
             this.commandQueue.push(ACTIONS.updateScore);
             this.commandQueue.push(ACTIONS.showScore);
             this.commandQueue.push(ACTIONS.showInitialPlayerCards);
@@ -266,7 +267,7 @@ class View {
                  ["&hearts; {% trans 'Herz' %}", "h"],
                  ["&diams; {% trans 'Karo' %}", "d"]];
         beat_right = true; //Unfortunate global variable from cards.js
-        this.play_automatically = true;//'{% settings_value "DEBUG" %}' === "True";
+        this.play_automatically = '{% settings_value "DEBUG" %}' === "True";
     }
     
     updateUserInfo(players, active_player, trick_guesses, trick_counts) {
