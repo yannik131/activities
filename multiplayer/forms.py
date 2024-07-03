@@ -11,6 +11,14 @@ class MultiplayerMatchForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['member_limit'].widget = forms.HiddenInput()
         
+        
+class GuessTheTricksMatchForm(MultiplayerMatchForm):
+    cant_add_up = forms.BooleanField(label=_('Es darf nicht aufgehen'), required=False)
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['member_limit'].initial = 5
+        
 
 class PokerMatchForm(MultiplayerMatchForm):
     blind_duration = forms.IntegerField(label=_('Blind-Dauer in Minuten'), initial=20)

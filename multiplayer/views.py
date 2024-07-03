@@ -34,8 +34,6 @@ def create_match(request, activity_name):
     name = activity.german_name
     if name == "Skat":
         match = MultiplayerMatch.objects.create(activity=activity, member_limit=3, admin=request.user)
-    elif name == 'Stiche raten':
-        match = MultiplayerMatch.objects.create(activity=activity, member_limit=5, admin=request.user)
     if request.method == 'POST':
         if name == 'Poker':
             form = PokerMatchForm(request.POST)
@@ -43,6 +41,8 @@ def create_match(request, activity_name):
             form = DokoMatchForm(request.POST)
         elif name =='Durak':
             form = DurakMatchForm(request.POST)
+        elif name == 'Stiche raten':
+            form = GuessTheTricksMatchForm(request.POST)
         form.activity = activity
         if form.is_valid():
             match = form.save(commit=False)
@@ -56,6 +56,8 @@ def create_match(request, activity_name):
                 match.options['poverty'] = form.cleaned_data['poverty']
             elif name == 'Durak':
                 match.options['all_help'] = form.cleaned_data['all_help']
+            elif name == 'Stiche raten':
+                match.options['cant_add_up'] = form.cleaned_data['cant_add_up']
             match.save() 
     else:
         if name == 'Poker':
@@ -64,6 +66,8 @@ def create_match(request, activity_name):
             form = DokoMatchForm(initial={'member_limit': 4})
         elif name == 'Durak':
             form = DurakMatchForm()
+        elif name == 'Stiche raten':
+            form = GuessTheTricksMatchForm()
     if match:
         match.init_positions()
         match.members.add(match.admin)

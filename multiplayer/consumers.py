@@ -411,7 +411,7 @@ class GuessTheTricksConsumer(GameConsumer):
                 'active': data['active'],
                 'mode': data['mode']
             }
-        if text_data['action'] == 'play':
+        elif text_data['action'] == 'play':
             players = cycle_slice(players.index(after(data["active"], players)), players)
             data["trick"] = text_data["trick"]
             trick = json.loads(data["trick"])
@@ -432,11 +432,26 @@ class GuessTheTricksConsumer(GameConsumer):
                 
                 data["active"] = winner
                 data["trick"] = json.dumps([])
-                message["data"]["action"] = "next_trick"
+                message["data"]["next_trick"] = 1
                 message["data"]["active"] = winner
                 message["data"][winner + "_tricks"] = data[winner + "_tricks"]
                 
                 if not json.loads(data[data["active"]]):
-                    match.start_guess_the_tricks()
-                    message['data']['action'] = 'next_round'
+                    utils.calculate_guess_the_tricks_score(data)
+                    if len(players) * (int(data['game_number']) + 1) > 11 * 4:
+                        # Currently only the cards 2-10 and J and A are used. So there are 4 * 11 cards in total
+                        message['data']['game_over'] = True
+                        data['game_over'] = True
+                    else:
+                        match.start_guess_the_tricks()
+                    del message['data']['next_trick']
+                    message['data']['last_scores'] = json.dumps({player: data[player + '_last_score'] for player in players})
+                    message['data']['points'] = json.dumps({player: data[player + '_points'] for player in players})
+                    message['data']['next_round'] = 1
                     message["data"]["round"] = match.game_data.copy()
+        elif text_data['action'] == 'set_trump_suit':
+            data['trump_suit_wizard'] = text_data['trump_suit']
+            message['data'] = {
+                'action': 'set_trump_suit',
+                'trump_suit': text_data['trump_suit']
+            }

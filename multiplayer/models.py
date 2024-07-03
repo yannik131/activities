@@ -374,12 +374,23 @@ class MultiplayerMatch(models.Model):
         change(self.game_data, 'game_number', 1)
         n_cards = int(self.game_data['game_number']) + 1
         players, _ = self.create_players(n_cards, "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "A")
+        
         for user in players:
             self.game_data[user + "_guess"] = None
             self.game_data[user + "_tricks"] = 0
-        self.game_data['active'] = players[0]
+            self.game_data.setdefault(user + "_points", 0)
+            self.game_data.setdefault(user + "_last_score", 0)
+
+        if 'started' not in self.game_data:
+            self.game_data['started'] = players[0]
+            self.game_data['cant_add_up'] = 1 if self.options['cant_add_up'] == 'True' else 0
+        else:
+            self.game_data['started'] = after(self.game_data['started'], players)
+        self.game_data['active'] = self.game_data['started']
+        
         self.game_data['mode'] = 'guessing' # guessing or playing
         self.game_data['trick'] = json.dumps([])
         self.game_data['last_trick'] = json.dumps([])
         self.game_data['trump_suit_wizard'] = None # the trump suit in case of a wizard as the top card of the deck
+        self.game_data['game_over'] = False
         

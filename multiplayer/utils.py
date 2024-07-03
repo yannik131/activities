@@ -625,3 +625,18 @@ def create_pot(players, ignore_score=False):
         if ignore_score or player[2] == max_score:
             pot[1].append([player[1], player[3]])
     return pot
+    
+    
+def calculate_guess_the_tricks_score(data):
+    players = json.loads(data['players'])
+    for player in players:
+        guess = int(data[player + '_guess'])
+        count = int(data[player + '_tricks'])
+        if guess == count:
+            score = 20 + 10 * count
+        else:
+            score = -10 * abs(guess - count)
+
+        change(data, player + "_points", score)
+        data[player + "_last_score"] = score
+
