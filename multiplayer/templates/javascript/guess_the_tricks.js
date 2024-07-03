@@ -273,6 +273,7 @@ class View {
                  ["&diams; {% trans 'Karo' %}", "d"]];
         beat_right = true; //Unfortunate global variable from cards.js
         this.play_automatically = '{% settings_value "DEBUG" %}' === "True";
+        this.resizeEventlistenerAssigned = false;
     }
     
     updateUserInfo(players, active_player, trick_guesses, trick_counts) {
@@ -289,6 +290,20 @@ class View {
         }
     }
     
+    /**
+     * cards.js defines a callback when resizing the window which deletes the cards and adds them again, removing the onclick callback
+     * To fix this, this function will be added as a resize event listener as well
+     * @param callback the onclick callback for the cards
+     */
+    #assignCardCallbacks(callback) {
+        for(const card of player1_cards) {
+            card.onclick = function() {
+                let vs = getVs(this.id);
+                callback(vs.value, vs.suit, this);
+            }
+        }
+    }
+    
     updatePlayerCards(players, cards, callback) {
         for(const player of players) {
             if(player === this_user) {
@@ -298,11 +313,11 @@ class View {
                         addCardTo(player, 1, card);
                     }
                     
-                    for(const card of player1_cards) {
-                        card.onclick = function() {
-                            let vs = getVs(this.id);
-                            callback(vs.value, vs.suit, this);
-                        }
+                    this.#assignCardCallbacks(callback);
+                    if(!this.resizeEventlistenerAssigned) {
+                        //Since cards.js is executed first, the first resize listener will be executed before this one
+                        window.addEventListener('resize', () => { this.#assignCardCallbacks(callback); });
+                        this.resizeEventlistenerAssigned = true;
                     }
                     continue;
                 }
