@@ -500,7 +500,6 @@ class View {
             const player = score[0];
             const change = last_scores[player];
             let result = "";
-            console.log(last_guesses, last_counts);
             if(last_guesses && last_counts) {
                 result = ` (${last_counts[player]}/${last_guesses[player]})`;
             }
