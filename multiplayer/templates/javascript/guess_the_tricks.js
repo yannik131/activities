@@ -46,6 +46,8 @@ class Model {
         this.trick_counts = {}; //Number of tricks each player has
         this.trick_guesses = {}; //Number of tricks each player has guessed he will get
         this.last_scores = {}; //Score change from the last game for each player
+        this.last_counts = null; //Helper to store the last counts for the score
+        this.last_guesses = null; //Same as above for guesses
         this.points = {}; //Current scores for each player
         this.deck = []; //The remaining cards in the deck, top card is trump
         this.mode = null; //Current game state: guessing or playing
@@ -233,9 +235,12 @@ class Model {
         }
         else if(data.next_round) {
             this.last_scores = JSON.parse(data.last_scores);
+            
             this.points = JSON.parse(data.points);
             this.game_number++;
             this.active_player = data.round.active;
+            this.last_counts = { ...this.trick_counts };
+            this.last_guesses = { ...this.trick_guesses };
             this.commandQueue.push(ACTIONS.updateScore);
             this.commandQueue.push(ACTIONS.showScore);
             this.commandQueue.push(ACTIONS.showInitialPlayerCards);
@@ -486,18 +491,28 @@ class View {
         }
     }
     
-    updateScore(last_scores, points, game_number) {
+    updateScore(last_scores, points, game_number, last_guesses, last_counts) {
         const scoresArray = Object.entries(points);
         scoresArray.sort((a, b) => b[1] - a[1]);
         
         summary = "{% trans 'Stand nach Spiel ' %}" + (game_number - 1) + "/" + Math.floor(44 / scoresArray.length) + "</br>";
         for(const score of scoresArray) {
-            const change = last_scores[score[0]];
-            summary += score[0] + ": " + (change < 0? "" : "+") + change + " -> " + score[1] + "</br>";
+            const player = score[0];
+            const change = last_scores[player];
+            let result = "";
+            console.log(last_guesses, last_counts);
+            if(last_guesses && last_counts) {
+                result = ` (${last_counts[player]}/${last_guesses[player]})`;
+            }
+            summary += player + result + ": " + (change < 0? "" : "+") + change + " -> " + score[1] + "</br>";
         }
     }
     
     showScore() {
+        const scoreAlert = document.getElementById("score-alert");
+        if(scoreAlert) {
+            scoreAlert.remove();
+        }
         window.showScore();
     }
     
@@ -536,7 +551,7 @@ class Controller {
             [ACTIONS.removeNextButton]:      () => { this.view.removeNextButton(); },
             [ACTIONS.sortPlayerCards]:       () => { this.view.sortPlayerCards(this.model.trump_suit); },
             [ACTIONS.trumpSuitNotification]: () => { if(this.model.active_player === this_user) return; this.view.createTrumpSuitNotification(this.model.trump_suit); },
-            [ACTIONS.updateScore]:           () => { this.view.updateScore(this.model.last_scores, this.model.points, this.model.game_number); },
+            [ACTIONS.updateScore]:           () => { this.view.updateScore(this.model.last_scores, this.model.points, this.model.game_number, this.model.last_guesses, this.model.last_counts); },
             [ACTIONS.showScore]:             () => { this.view.showScore(); }
         }
         
