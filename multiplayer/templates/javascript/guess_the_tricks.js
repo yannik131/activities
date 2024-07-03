@@ -1,4 +1,7 @@
 {% load i18n %}
+{% load multiplayer_tags %}
+
+{% include 'javascript/guess_the_tricks_card_logic.js' %}
 
 const ACTIONS = {
     updateTrick:              "updateTrick",
@@ -25,166 +28,8 @@ const ACTIONS = {
     trumpSuitNotification:    "trumpSuitNotification",
     waitingDummy:             "waitingDummy",
     showScore:                "showScore",
-    updateScore:              "updateScore",
+    updateScore:              "updateScore"
 };
-
-function defineSortValues(trump_suit) {
-    let suits = ["d", "h", "s", "c"];
-    for(let i = 0; i < suits.length; i++) {
-        suit_values[suits[i]] = (i + 1) * 100;
-    }
-    suit_values[trump_suit] += 1000;
-    value_values["A"] = -10000;
-    value_values["J"] = -5000;
-    let values= ["10", "9", "8", "7", "6", "5", "4", "3", "2"];
-    for(let i = 0; i < values.length; i++) {
-        value_values[values[i]] = i;
-    }
-}
-
-function getCardSortValue(type) {
-    return getCardSortValueDefault(type);
-}
-
-/**
- * Determines the winning card of the trick
- * @param {string} trump_suit 
- * @returns Index of the best card
- */
-function getIndexOfHighestCard(trump_suit, trick) {
-    let highest_vs;
-    let index = null;
-    
-    for(let i = 0; i < trick.length; ++i) {
-        const vs = getVs(trick[i]);
-
-        //First wizard always wins
-        if(vs.value === 'A') {
-            return i;
-        }
-        
-        //Joker always loses
-        if(vs.value === 'J') {
-            continue;
-        }
-        
-        //First card that's neither joker nor wizard
-        if(!highest_vs) {
-            highest_vs = vs;
-            index = i;
-            continue;
-        }
-        
-        //Somebody discarded a card
-        if(highest_vs.suit !== trump_suit && vs.suit !== trump_suit && highest_vs.suit !== vs.suit ||
-            highest_vs.suit === trump_suit && vs.suit !== trump_suit) {
-            continue;
-        }
-        
-        //Trump was not called
-        if(highest_vs.suit === trump_suit && vs.suit !== trump_suit) {
-            continue;
-        }
-        
-        //There is a new card that is better than the previous one (higher values represent weaker cards since they are sorted in ascending order)
-        if(highest_vs.suit !== trump_suit && vs.suit === trump_suit ||
-             getCardSortValue(vs.value + vs.suit) < getCardSortValue(highest_vs.value + highest_vs.suit)) {
-            highest_vs = vs;
-            index = i;
-        }
-    }
-    
-    if(index === null) {
-        return i - 1; //Only jokers, last player gets the trick
-    }
-    
-    return index;
-}
-
-/**
- * Checks if a player still has trump cards
- * @param {string} trump_suit 
- * @returns 
- */
-function playerHasTrump(trump_suit) {
-    if(!trump_suit) {
-        return false;
-    }
-    
-    for(const card of player1_cards) {
-        const vs = getVs(card.id);
-        if(vs.suit === trump_suit) {
-            return true;
-        }
-    }
-    
-    return false;
-}
-
-function cardCanBePlayed(value, suit, stack, trump_suit) {
-    if(value === 'J' || value === 'A') {
-        //jokers and wizards are always allowed
-        return true;
-    }
-    let first_vs = getVs(stack[0].id);
-    
-    //If the first card is a joker, we'll try to find the first card that is neither joker nor wizard
-    if(first_vs.value === 'J') {
-        for(let i = 1; i < stack.length; ++i) {
-            const card = stack[i];
-            let vs = getVs(card.id);
-            if(vs.value !== 'J' && vs.value !== 'A') {
-                first_vs = vs;
-                break;
-            }
-        }
-        
-        //If there is none, any card can be played
-        if(first_vs.value === 'J') {
-            return true;
-        }
-    }
-    
-    //If the first card is a wizard, any card can be played
-    if(first_vs.value === 'A') {
-        return true;
-    }
-    
-    //Check if trump was not called
-    if(first_vs.suit === trump_suit && playerHasTrump(trump_suit) && suit !== trump_suit) {
-        return false;
-    }
-    
-    //Check if suit was not called
-    if(first_vs.suit !== trump_suit && suit != first_vs.suit) {
-        let cards = getPlayerCards("x", first_vs.suit, ["J", "A"]);
-        if(cards.length > 0) {
-            return false;
-        }
-    }
-    
-    return true;
-}
-
-/**
- * Used for updateCards to see if a card was added to or removed from the player
- * @param {*} arr1 
- * @param {*} arr2 
- * @returns 
- */
-function arrayDiff(arr1, arr2) {
-    // Create a copy of arr2 to keep track of used elements
-    let arr2Copy = arr2.slice();
-
-    return arr1.filter(item => {
-        const index = arr2Copy.indexOf(item);
-        if (index !== -1) {
-            arr2Copy.splice(index, 1); // Remove the element from arr2Copy
-            return false; // Exclude the item from the result
-        }
-        return true; // Include the item in the result
-    });
-}
 
 /**
  * Manages the data and game logic
@@ -220,71 +65,16 @@ class Model {
                 this.#loadData(data);
                 break;
             case "set_trump_suit":
-                this.handleTrumpSuit(data);
+                this.#handleTrumpSuit(data);
                 break;
             case "guess":
-                this.handleGuess(data);
+                this.#handleGuess(data);
                 break;
             case "play":
-                this.handlePlay(data);
+                this.#handlePlay(data);
                 break;
             case "abort":
                 location.href = data.url;
-        }
-    }
-    
-
-    #loadData(data) {
-        this.players = JSON.parse(data.players);
-        this.commandQueue.push(ACTIONS.initializeGUI);
-        this.initRound(data);
-    }
-    
-    initRound(data) {
-        console.log("initRound");
-        this.active_player = data.active;
-        for(const player of this.players) {
-            this.cards[player] = JSON.parse(data[player]);
-            this.initial_cards[player] = JSON.parse(data[player + "_initial_hand"]);
-            this.trick_counts[player] = JSON.parse(data[player + "_tricks"]);
-            this.trick_guesses[player] = JSON.parse(data[player + "_guess"]);
-            this.last_scores[player] = JSON.parse(data[player + '_last_score']);
-            this.points[player] = JSON.parse(data[player + '_points']);
-        }
-        this.deck = JSON.parse(data.deck);
-        console.log("setting trump");
-        this.#setTrumpSuit(data);
-        this.game_number = parseInt(data.game_number);
-        this.mode = data.mode;
-        this.trick = JSON.parse(data.trick);
-        this.last_trick = JSON.parse(data['last_trick']);
-        this.cant_add_up = JSON.parse(data.cant_add_up)
-        console.log("Can't add up: " + this.cant_add_up);
-        
-        if(this.game_number > 0) {
-            this.commandQueue.push(ACTIONS.updateScore);
-        }
-        this.commandQueue.push(ACTIONS.sortPlayerCards);
-        this.commandQueue.push(ACTIONS.removeNextButton);
-        this.commandQueue.push(ACTIONS.updateUserInfo);
-        this.commandQueue.push(ACTIONS.updateTrick);
-        this.commandQueue.push(ACTIONS.updatePlayerCards);
-        this.commandQueue.push(ACTIONS.updateDeck);
-        
-        if(this.trump_suit === 'wizard' && this_user === this.active_player) {
-            this.commandQueue.push(ACTIONS.askForTrumpSuit); //This will also ask for the guess after
-            this.commandQueue.push(ACTIONS.sortPlayerCards);
-            this.commandQueue.push(ACTIONS.askForGuess);
-            this.trump_suit = undefined;
-        }
-        else if(this.mode === 'guessing' && this_user === this.active_player) {
-            this.commandQueue.push(ACTIONS.askForGuess);
-        }
-        if(this.last_trick) {
-            this.commandQueue.push(ACTIONS.updateLastTrickButton);
-        }
-        if(this.mode === 'playing') {
-            this.commandQueue.push(ACTIONS.showStartNotification);
         }
     }
     
@@ -293,28 +83,8 @@ class Model {
             console.error("Called initNextRound without next round data");
             return;
         }
-        this.initRound(this.next_round_data);
+        this.#initRound(this.next_round_data);
         this.next_round_data = null;
-    }
-    
-    #setTrumpSuit(data) {
-        if(data.trump_suit_wizard) {
-            this.trump_suit = data.trump_suit_wizard;
-            this.commandQueue.push(ACTIONS.trumpSuitNotification);
-            return;
-        }
-        let top_card = getVs(this.deck[this.deck.length - 1]);
-        if(top_card.value === 'A') {
-            //Wizard, player needs to determine trump suit
-            this.trump_suit = "wizard";
-        }
-        else if(top_card.value === 'J') {
-            //Joker, no trump
-            this.trump_suit = null;
-        }
-        else {
-            this.trump_suit = top_card.suit;
-        }
     }
     
     processClickedCard(value, suit, card) {
@@ -335,8 +105,92 @@ class Model {
         this.commandQueue.push(ACTIONS.updatePlayerCards);
         this.commandQueue.push(ACTIONS.sendMove);
     }
+
+    #loadData(data) {
+        this.players = JSON.parse(data.players);
+        this.commandQueue.push(ACTIONS.initializeGUI);
+        this.#initRound(data);
+    }
     
-    handleGuess(data) {
+    #initRound(data) {
+        this.active_player = data.active;
+        for(const player of this.players) {
+            this.cards[player] = JSON.parse(data[player]);
+            this.initial_cards[player] = JSON.parse(data[player + "_initial_hand"]);
+            this.trick_counts[player] = JSON.parse(data[player + "_tricks"]);
+            this.trick_guesses[player] = JSON.parse(data[player + "_guess"]);
+            this.last_scores[player] = JSON.parse(data[player + '_last_score']);
+            this.points[player] = JSON.parse(data[player + '_points']);
+        }
+        this.deck = JSON.parse(data.deck);
+        this.#setTrumpSuit(data);
+        this.game_number = parseInt(data.game_number);
+        this.mode = data.mode;
+        this.trick = JSON.parse(data.trick);
+        this.last_trick = JSON.parse(data['last_trick']);
+        this.cant_add_up = JSON.parse(data.cant_add_up)
+        
+        if(this.game_number > 1) {
+            this.commandQueue.push(ACTIONS.updateScore);
+        }
+        
+        if(JSON.parse(data.game_over)) {
+            this.commandQueue.push(ACTIONS.showScore);
+            return;
+        }
+        
+        this.commandQueue.push(ACTIONS.sortPlayerCards);
+        this.commandQueue.push(ACTIONS.removeNextButton);
+        this.commandQueue.push(ACTIONS.updateUserInfo);
+        this.commandQueue.push(ACTIONS.updateTrick);
+        this.commandQueue.push(ACTIONS.updatePlayerCards);
+        this.commandQueue.push(ACTIONS.updateDeck);
+        
+        if(this.trump_suit === 'wizard' && this_user === this.active_player) {
+            this.commandQueue.push(ACTIONS.askForTrumpSuit); 
+            this.commandQueue.push(ACTIONS.sortPlayerCards);
+            this.commandQueue.push(ACTIONS.askForGuess);
+            this.trump_suit = undefined;
+        }
+        else if(this.mode === 'guessing' && this_user === this.active_player) {
+            this.commandQueue.push(ACTIONS.askForGuess);
+        }
+        
+        if(this.last_trick) {
+            this.commandQueue.push(ACTIONS.updateLastTrickButton);
+        }
+        if(this.mode === 'playing') {
+            this.commandQueue.push(ACTIONS.showStartNotification);
+        }
+    }
+    
+    #setTrumpSuit(data) {
+        if(data.trump_suit_wizard) {
+            this.trump_suit = data.trump_suit_wizard;
+            this.commandQueue.push(ACTIONS.trumpSuitNotification);
+            return;
+        }
+
+        if(this.deck.length === 0) {
+            this.trump_suit = null;
+            return;
+        }
+        
+        let top_card = getVs(this.deck[this.deck.length - 1]);
+        if(top_card.value === 'A') {
+            //Wizard, player needs to determine trump suit
+            this.trump_suit = "wizard";
+        }
+        else if(top_card.value === 'J') {
+            //Joker, no trump
+            this.trump_suit = null;
+        }
+        else {
+            this.trump_suit = top_card.suit;
+        }
+    }
+    
+    #handleGuess(data) {
         this.trick_guesses[data['username']] = parseInt(data['guess']);
         this.active_player = data['active'];
         
@@ -351,7 +205,7 @@ class Model {
         }
     }
     
-    handlePlay(data) {
+    #handlePlay(data) {
         this.trick = JSON.parse(data['trick']);
         if(this_user !== data['username']) {
             this.cards[data['username']].pop();
@@ -397,7 +251,7 @@ class Model {
         }
     }
     
-    handleTrumpSuit(data) {
+    #handleTrumpSuit(data) {
         this.trump_suit = data.trump_suit;
         defineSortValues(this.trump_suit);
         this.commandQueue.push(ACTIONS.sortPlayerCards);
@@ -412,6 +266,7 @@ class View {
                  ["&hearts; {% trans 'Herz' %}", "h"],
                  ["&diams; {% trans 'Karo' %}", "d"]];
         beat_right = true; //Unfortunate global variable from cards.js
+        this.play_automatically = '{% settings_value "DEBUG" %}' === "True";
     }
     
     updateUserInfo(players, active_player, trick_guesses, trick_counts) {
@@ -433,12 +288,10 @@ class View {
             if(player === this_user) {
                 if(player1_cards.length === 0) {
                     //Player has no cards, give them to him
-                    console.log("Adding cards to player");
                     for(const card of cards[player]) {
                         addCardTo(player, 1, card);
                     }
                     
-                    console.log("Setting callbacks");
                     for(const card of player1_cards) {
                         card.onclick = function() {
                             let vs = getVs(this.id);
@@ -448,11 +301,11 @@ class View {
                     continue;
                 }
                 
-                //cards[player] will contain one less card than the gui, we need to get and remove it
-                let diff = arrayDiff(player1_cards.map((card) => card.id), cards[player]);
-                while(diff.length > 0) {
-                    console.log("Removing " + diff[0]);
-                    removeCardFrom(player, 1, diff.shift());
+                //A card was played
+                if(player1_cards.length - cards[player].length === 1) {
+                    const playerCards = player1_cards.map((card) => card.id);
+                    const diff = arrayDiff(playerCards, cards[player]);
+                    removeCardFrom(player, 1, diff[0]);
                 }
             }
             else {
@@ -464,8 +317,8 @@ class View {
                     continue;
                 }
                 
-                while(guiCards.length !== cards[player].length) {
-                    //A card was removed
+                //A card was removed
+                if(guiCards.length - cards[player].length === 1) {
                     removeCardFrom(playerIndex, 1);
                 }
             }
@@ -500,6 +353,9 @@ class View {
             }
             if(undecided_count === 1) {
                 notAllowedValue = max_value - total_guesses;
+                if(notAllowedValue < 0) {
+                    notAllowedValue = null;
+                }
             }
         }
         
@@ -530,7 +386,12 @@ class View {
             showScoreButton.onclick = () => { window.showScore(true); }
             callback(value);
             return true;
-        }, false);
+        }, false, "send-button");
+        
+        if(this.play_automatically) {
+            document.getElementById("input-alert-input").value = notAllowedValue? notAllowedValue + 1 : 1;
+            document.getElementById("send-button").click();
+        }
     }
     
     askForTrumpSuit(callback) {
@@ -557,6 +418,10 @@ class View {
         
         while(stacks[0].length < trick.length) {
             beatStack(1, trick[stacks[0].length]);
+        }
+        
+        if(this.play_automatically) {
+            this.clickAllCards();
         }
     }
     
@@ -615,7 +480,7 @@ class View {
     createTrumpSuitNotification(trump_suit) {
         for(const game of this.suits) {
             if(game[1] === trump_suit) {
-                createInfoAlert("{% trans 'Trumpf ist: ' %}" + game[0], 1000);
+                createInfoAlert("{% trans 'Trumpf ist: ' %}" + game[0], null, false);
             }
         }
     }
@@ -624,7 +489,7 @@ class View {
         const scoresArray = Object.entries(points);
         scoresArray.sort((a, b) => b[1] - a[1]);
         
-        summary = "{% trans 'Stand nach Spiel ' %}" + game_number + "/" + Math.floor(44 / scoresArray.length) + "</br>";
+        summary = "{% trans 'Stand nach Spiel ' %}" + (game_number - 1) + "/" + Math.floor(44 / scoresArray.length) + "</br>";
         for(const score of scoresArray) {
             const change = last_scores[score[0]];
             summary += score[0] + ": " + (change < 0? "" : "+") + change + " -> " + score[1] + "</br>";
@@ -633,6 +498,12 @@ class View {
     
     showScore() {
         window.showScore();
+    }
+    
+    clickAllCards() {
+        for(const card of player1_cards) {
+            card.click();
+        }
     }
 }
 
@@ -646,7 +517,7 @@ class Controller {
             [ACTIONS.updateTrickWithLastTrick]: () => { this.view.updateTrick(this.model.last_trick); },
             [ACTIONS.updateUserInfo]:        () => { this.view.updateUserInfo(this.model.players, this.model.active_player, this.model.trick_guesses, this.model.trick_counts)},
             [ACTIONS.updatePlayerCards]:     () => { this.view.updatePlayerCards(this.model.players, this.model.cards, (a, b, c) => { this.cardClicked(a, b, c); }) },
-            [ACTIONS.askForGuess]:           () => { this.view.askForGuess(this.askForGuessCallback, this.model.game_number + 1, this.model.cant_add_up, this.model.trick_guesses); },
+            [ACTIONS.askForGuess]:           () => { this.view.askForGuess(this.askForGuessCallback, this.model.game_number, this.model.cant_add_up, this.model.trick_guesses); },
             [ACTIONS.askForTrumpSuit]:       () => { this.view.askForTrumpSuit(() => { this.processEvents(); }); },
             [ACTIONS.showStartNotification]: () => { this.view.showStartNotification(this.model.trick_guesses, this.model.active_player); },
             [ACTIONS.sortPlayerCards]:       () => { this.view.sortPlayerCards(this.model.cards); },
@@ -674,10 +545,10 @@ class Controller {
     
     handleServerData(data) {
         console.log("received: " + JSON.stringify(data));
-        if(this.model.commandQueue.indexOf(ACTIONS.waitingDummy) !== -1) {
-            //If we are still waiting on the user to click next, we need to process the events first
+        if(this.model.commandQueue.indexOf(ACTIONS.waitingDummy) !== -1 || this.processEventsTimeout) {
+            //If we are still waiting on the user to click next or delaying the trick disappearance, we need to process the events first
             console.log("There are still items in the queue: " + this.model.commandQueue + ", processing them first..");
-            this.processEvents();
+            this.processEvents(true);
             console.log("Done. Handling data");
         }
         this.model.processServerData(data);
@@ -686,11 +557,12 @@ class Controller {
     
     processEvents(endWait = false) {
         if(this.processingEvents) {
+            //This can happen if ther user clicks a card while something is still being updated
+            //Shouldn't be an issue because the loop will catch the new card events
             console.error("Processing already in progress, aborting");
             return;
         }
         this.processingEvents = true;
-        console.log("processing events: " + this.model.commandQueue);
         
         if(this.processEventsTimeout && endWait) {
             this.processEventsTimeout = null;
@@ -701,12 +573,14 @@ class Controller {
         
         while(this.model.commandQueue.length > 0) {
             const action = this.model.commandQueue.shift();
-            console.log("calling: " + action);
+            console.log("calling: " + action + ", queue: " + this.model.commandQueue);
             if(action === ACTIONS.wait) {
                 this.processEventsTimeout = setTimeout(() => { this.processEvents(true); }, 1000);
                 break;
             }
+            
             this.uiActionBindings[action]();
+            
             if(action == ACTIONS.waitForNextButton) {
                 this.model.commandQueue.unshift(ACTIONS.waitingDummy);
                 break;

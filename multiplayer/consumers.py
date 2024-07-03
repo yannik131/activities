@@ -440,8 +440,8 @@ class GuessTheTricksConsumer(GameConsumer):
                     utils.calculate_guess_the_tricks_score(data)
                     if len(players) * (int(data['game_number']) + 1) > 11 * 4:
                         # Currently only the cards 2-10 and J and A are used. So there are 4 * 11 cards in total
-                        message['data']['game_over'] = True
-                        data['game_over'] = True
+                        message['data']['game_over'] = json.dumps(True)
+                        data['game_over'] = json.dumps(True)
                     else:
                         match.start_guess_the_tricks()
                     del message['data']['next_trick']

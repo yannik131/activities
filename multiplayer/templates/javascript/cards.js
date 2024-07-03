@@ -27,6 +27,7 @@ const poker_rotation = {1: 0, 2: 90, 3: 90, 4: 0, 5: 0, 6: 0, 7: -90, 8: -90, 9:
 if('{% settings_value "DEBUG" %}' === "False") {
     console.log = () => {};
     console.info = () => {};
+    console.warn = () => {};
     console.error = () => {};
 }
 
@@ -576,9 +577,10 @@ function createInfoAlert(info, timeout, no_button) {
     return info_alert;
 }
 
-function createInputAlert(message, callback, cancel=true) {
+function createInputAlert(message, callback, cancel=true, button_id) {
     var info_alert = createInfoAlert(message, null, true);
     var input = document.createElement('input');
+    input.id = "input-alert-input";
     input.addEventListener('keyup', function(event) {
         if(event.which == 13) {
             if(callback(input.value)) {
@@ -593,7 +595,7 @@ function createInputAlert(message, callback, cancel=true) {
         if(callback(input.value)) {
             input.parentElement.remove();
         }
-    }, info_alert, true);
+    }, info_alert, true, button_id);
     if(!cancel) {
         return;
     }
@@ -602,7 +604,7 @@ function createInputAlert(message, callback, cancel=true) {
     }, info_alert, true);
 }
 
-function createInfoButton(text, button_callback, info_alert, no_auto_remove) {
+function createInfoButton(text, button_callback, info_alert, no_auto_remove, id) {
     var button = document.createElement("button");
     button.type = "button";
     button.onclick = function() {
@@ -614,6 +616,9 @@ function createInfoButton(text, button_callback, info_alert, no_auto_remove) {
         }
     }
     button.className = "info-alert-button";
+    if(id) {
+        button.id = id;
+    }
     if(window.screen.width < 768) {
         button.style.fontSize = "10pt";
     }

@@ -226,6 +226,7 @@ class MultiplayerMatch(models.Model):
         elif self.activity.german_name == 'Poker':
             self.start_poker()
         elif self.activity.german_name == 'Stiche raten':
+            self.game_data['game_number'] = 0
             self.start_guess_the_tricks()
         # if self.in_progress return? TODO
         players = json.loads(self.game_data["players"])
@@ -372,7 +373,7 @@ class MultiplayerMatch(models.Model):
         
     def start_guess_the_tricks(self):
         change(self.game_data, 'game_number', 1)
-        n_cards = int(self.game_data['game_number']) + 1
+        n_cards = int(self.game_data['game_number'])
         players, _ = self.create_players(n_cards, "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "A")
         
         for user in players:
@@ -392,5 +393,5 @@ class MultiplayerMatch(models.Model):
         self.game_data['trick'] = json.dumps([])
         self.game_data['last_trick'] = json.dumps([])
         self.game_data['trump_suit_wizard'] = None # the trump suit in case of a wizard as the top card of the deck
-        self.game_data['game_over'] = False
+        self.game_data['game_over'] = json.dumps(False)
         
