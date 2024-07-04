@@ -994,7 +994,7 @@ function lastTrickButton() {
     }
 }
 
-function toggleLastTrick() {
+function toggleLastTrick(hide = false) {
     if(document.getElementById("last_trick0")) {
         for(var i = 0; i < last_trick.length; i++) {
             var card = document.getElementById("last_trick"+i);
@@ -1003,7 +1003,7 @@ function toggleLastTrick() {
             }
         }
     }
-    else {
+    else if(!hide) {
         for(var i = 0; i < last_trick.length; i++) {
             var card = createCard(last_trick[i]);
             card.id = "last_trick"+i;

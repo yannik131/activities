@@ -272,7 +272,7 @@ class View {
                  ["&hearts; {% trans 'Herz' %}", "h"],
                  ["&diams; {% trans 'Karo' %}", "d"]];
         beat_right = true; //Unfortunate global variable from cards.js
-        this.play_automatically = '{% settings_value "DEBUG" %}' === "True";
+        this.play_automatically = false;//'{% settings_value "DEBUG" %}' === "True";
         this.resizeEventlistenerAssigned = false;
     }
     
@@ -489,6 +489,7 @@ class View {
     }
     
     removeLastTrickButton() {
+        toggleLastTrick(true); //Remove the last trick from the ui if it's there
         window.last_trick = null;
         lastTrickButton();
     }
