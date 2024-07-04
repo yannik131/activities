@@ -1,3 +1,7 @@
+/**
+ * Determines how the cards are sorted in the gui
+ * @param {string} trump_suit 
+ */
 function defineSortValues(trump_suit) {
     let suits = ["d", "h", "s", "c"];
     for(let i = 0; i < suits.length; i++) {
@@ -83,6 +87,10 @@ function playerHasTrump(trump_suit) {
     
     for(const card of player1_cards) {
         const vs = getVs(card.id);
+        if(vs.value === 'J' || vs.value === 'A') {
+            //jokers and wizards are not trump
+            continue;
+        }
         if(vs.suit === trump_suit) {
             return true;
         }

@@ -54,13 +54,17 @@ class Model {
         this.game_number = null; //Current game number
         this.trump_suit = null; //Trump suit of the current game
         this.trick = []; //Current trick that is displayed
-        this.last_trick = [];
-        this.cant_add_up = false;
+        this.last_trick = []; //The previously displayed trick
+        this.cant_add_up = false; //If total amount of guesses can be equal to player count
         
         this.commandQueue = [];
         this.next_round_data = null;
     }
     
+    /**
+     * Handles data from the server
+     * @param {Object} data 
+     */
     processServerData(data) {
         switch(data.action) {
             case "load_data":
@@ -80,6 +84,10 @@ class Model {
         }
     }
     
+    /**
+     * Used to delay the initialization of the next round at the end of a round so that the player
+     * cards and the trick can be displayed until the player clicks next or receives new server data
+     */
     initNextRound() {
         if(!this.next_round_data) {
             console.error("Called initNextRound without next round data");
@@ -89,6 +97,9 @@ class Model {
         this.next_round_data = null;
     }
     
+    /**
+     * Called by the controller if a user clicks a card
+     */
     processClickedCard(value, suit, card) {
         if(this_user !== this.active_player || this.mode !== 'playing') {
             return;
@@ -108,11 +119,16 @@ class Model {
         this.commandQueue.push(ACTIONS.sendMove);
     }
 
+    /**
+     * Called at the beginning of the game to initialize everything
+     * @param {*} data 
+     */
     #loadData(data) {
         this.players = JSON.parse(data.players);
         this.commandQueue.push(ACTIONS.initializeGUI);
         this.#initRound(data);
     }
+    
     
     #initRound(data) {
         this.active_player = data.active;
@@ -167,12 +183,14 @@ class Model {
     }
     
     #setTrumpSuit(data) {
+        //Trump was set previously by a player because top deck card is a wizard
         if(data.trump_suit_wizard) {
             this.trump_suit = data.trump_suit_wizard;
             this.commandQueue.push(ACTIONS.trumpSuitNotification);
             return;
         }
 
+        //No deck - no trump
         if(this.deck.length === 0) {
             this.trump_suit = null;
             return;
@@ -273,7 +291,6 @@ class View {
                  ["&diams; {% trans 'Karo' %}", "d"]];
         beat_right = true; //Unfortunate global variable from cards.js
         this.play_automatically = false;//'{% settings_value "DEBUG" %}' === "True";
-        this.resizeEventlistenerAssigned = false;
     }
     
     updateUserInfo(players, active_player, trick_guesses, trick_counts) {
@@ -314,11 +331,6 @@ class View {
                     }
                     
                     this.#assignCardCallbacks(callback);
-                    if(!this.resizeEventlistenerAssigned) {
-                        //Since cards.js is executed first, the first resize listener will be executed before this one
-                        window.addEventListener('resize', () => { this.#assignCardCallbacks(callback); });
-                        this.resizeEventlistenerAssigned = true;
-                    }
                     continue;
                 }
                 

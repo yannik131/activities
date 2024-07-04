@@ -251,6 +251,8 @@ function addCardTo(player, n, type, not_clickable) {
     for(var i = 0; i < new_cards.length; i++) {
         field.appendChild(new_cards[i]);
     }
+    
+    return new_cards;
 }
 
 function removePlayerCard(card) {
@@ -639,7 +641,7 @@ function before(el, arr) {
     return arr[((arr.indexOf(el)-1)%arr.length+arr.length)%arr.length];
 }
 
-function getPlayerCards(value, suit, except_values) {
+function getPlayerCards(value, suit, except_values=[]) {
     var cards = [];
     for(var i = 0; i < player1_cards.length; i++) {
         const vs = getVs(player1_cards[i].id);
@@ -889,14 +891,19 @@ overlap of cards.*/
         var cards = player_cards[i];
         var types = [];
         var hidden = cards.length && cards[0].style.display == 'none';
+        let onclicks = {};
         while(cards.length) {
             var card = cards.pop();
+            onclicks[card.id] = card.onclick;
             card.remove();
             types.push(card.id);
         }
         while(types.length) {
             var type = types.pop();
-            addCardTo(i, 1, type != "rear"? type : null, is_poker);
+            const newCard = addCardTo(i, 1, type != "rear"? type : null, is_poker)[0];
+            if(onclicks[type]) {
+                newCard.onclick = onclicks[type];
+            }
         }
         if(hidden) {
             hideCardsOf(i);
