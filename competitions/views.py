@@ -12,18 +12,12 @@ import datetime
 import json
 from django.utils.translation import gettext_lazy as _
 from account.views import handler403
-from usergroups.models import UserGroup
 from django.contrib import messages
 
 
 def user_overview(request):
-    durak = Activity.objects.get(translations__language_code='de', translations__name='Durak')
-    skat = Activity.objects.get(translations__language_code='de', translations__name='Skat')
-    doko = Activity.objects.get(translations__language_code='de', translations__name='Doppelkopf')
-    poker = Activity.objects.get(translations__language_code='de', translations__name='Poker')
-    guess = Activity.objects.get(translations__language_code='de', translations__name='Stiche raten')
     tournaments = dict.fromkeys(request.user.tournaments.all() | request.user.owned_tournaments.all()).keys()
-    return render(request, 'competitions/user_overview.html', dict(durak=durak, skat=skat, doko=doko, poker=poker, guess=guess, tournaments=tournaments))
+    return render(request, 'competitions/user_overview.html', dict(**utils.get_online_games_dict(), tournaments=tournaments))
 
 
 def test(request):

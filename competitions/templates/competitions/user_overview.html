@@ -9,32 +9,7 @@
     <p class="info-p">
         {% trans 'Hier finden Sie die Lobbys der Spiele, die Sie gleich hier online spielen können. Durch das Betreten der Lobby treten Sie der entsprechenden Aktivität bei, falls Sie das noch nicht gemacht haben.' %}
     </p>
-    <div class="competitive">
-        <div class="left" onclick=openLink("{% url 'multiplayer:lobby' durak.name 'guarded' %}")>
-            <img src="{% static 'icons/lobby.png' %}">
-            {% blocktrans %}Durak-Lobby{% endblocktrans %}
-        </div>
-        <div class="right" onclick=openLink("{% url 'multiplayer:lobby' skat.name 'guarded' %}")>
-            <img src="{% static 'icons/lobby.png' %}">
-            {% trans 'Skat-Lobby' %}
-        </div>
-    </div>
-    <div class="competitive">
-        <div class="left" onclick=openLink("{% url 'multiplayer:lobby' doko.name 'guarded' %}")>
-            <img src="{% static 'icons/lobby.png' %}">
-            {% trans 'Doko-Lobby' %}
-        </div>
-        <div class="right" onclick=openLink("{% url 'multiplayer:lobby' poker.name 'guarded' %}")>
-            <img src="{% static 'icons/lobby.png' %}">
-            {% blocktrans %}Poker-Lobby{% endblocktrans %}
-        </div>
-    </div>
-    <div class="competitive">
-        <div class="full" onclick=openLink("{% url 'multiplayer:lobby' guess.name 'guarded' %}")>
-            <img src="{% static 'icons/lobby.png' %}">
-            {% trans 'Stiche raten-Lobby' %}
-        </div>
-    </div>
+    {% include 'competitions/online_games.html' %}   
     <h1 class="h-img"><img src="{% static 'icons/tournament.png' %}">{% trans 'Offline' %}</h1>
     <p class="info-p">
         {% blocktrans %}Erstellen und nehmen Sie Teil an Turnieren und Matches über den 'Offline spielen'-Button auf der entsprechenden <a href="/activity/list/">Aktivitätsseite</a>! Geht natürlich nur bei Aktivitäten, wo man einen Wettbewerb haben kann.{% endblocktrans %}
