@@ -3532,7 +3532,7 @@ msgstr "Diamonds"
 
 #: multiplayer/templates/javascript/guess_the_tricks.js:383
 msgid "Wie viele Stiche? Maximum: "
-msgstr "How many tricks? Maximum:"
+msgstr "How many tricks? Maximum: "
 
 #: multiplayer/templates/javascript/guess_the_tricks.js:385
 msgid "Verboten: "
@@ -3549,7 +3549,7 @@ msgstr "Smallest possible value: "
 
 #: multiplayer/templates/javascript/guess_the_tricks.js:399
 msgid "Größtmöglicher Wert: "
-msgstr "Largest possible value:"
+msgstr "Largest possible value: "
 
 #: multiplayer/templates/javascript/guess_the_tricks.js:450
 msgid "Es spielt aus: "
