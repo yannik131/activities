@@ -902,7 +902,7 @@ overlap of cards.*/
             var type = types.pop();
             const newCard = addCardTo(i, 1, type != "rear"? type : null, is_poker)[0];
             if(onclicks[type]) {
-                newCard.onclick = onclicks[type];
+                newCard.onclick = onclicks[type]; //This assumes that callbacks are the same for same types
             }
         }
         if(hidden) {
