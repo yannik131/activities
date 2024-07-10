@@ -1,6 +1,8 @@
 {% load static %}
 {% load i18n %}
 
+{% include "javascript/logging.js" %}
+
 const configuration = {
     "iceServers": [{
         urls: 'turn:turn.myactivities.net:5349',
@@ -114,7 +116,7 @@ function setOnIceCandidate(pc, sender) {
 function getOrCreatePeerConnection(sender) {
     var pc = peerConnections[sender];
     if(!pc) {
-        //console.log("creating peer connection for", sender);
+        console.log("creating peer connection for", sender);
         pc = new RTCPeerConnection(configuration);
         colorize(sender, audio_room_id, 'darkgreen');
         peerConnections[sender] = pc;
@@ -127,11 +129,33 @@ function getOrCreatePeerConnection(sender) {
         if(localTrack) {
             pc.addTrack(localTrack);
         }
+        else {
+            console.warn("No local track!");
+        }
         pc.ontrack = function(event) {
             remoteMediaStreams[sender].addTrack(event.track);
             tracks[sender] = event.track;
-            remoteAudioElements[sender].play(); //some browsers deactivate autoplay
+            remoteAudioElements[sender].play().catch(error => {
+                console.error("Error playing audio: ", error);
+            }); //some browsers deactivate autoplay
         }
+        
+        pc.oniceconnectionstatechange = () => {
+            console.log('ICE Connection State:', pc.iceConnectionState);
+        };
+
+        pc.onconnectionstatechange = () => {
+            console.log('Connection State:', pc.connectionState);
+        };
+        
+        setTimeout(() => {
+            pc.getStats(null).then((stats) => {
+                stats.forEach((report) => {
+                    console.log(report);
+                });
+            });
+        }, 1000);
+        
         users.push(sender);
     }
     return pc;
@@ -246,9 +270,12 @@ function joinAudio(room_id, clicked) {
     if(navigator.mediaDevices) {
         navigator.mediaDevices.getUserMedia({audio: true}).then(function(mediaStream) {
             negotiate(mediaStream)
+        }).catch(function (error) {
+            console.error("Error accessing media devices: ", error);
         });
     }
     else {
+        console.error("navigator.mediaDevices is not supported in this browser");
         negotiate();
     }
     if(clicked) {

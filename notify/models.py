@@ -4,6 +4,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.utils import timezone
 from datetime import timedelta
 from django.urls import reverse
+from django.utils.timezone import now
 
 
 class Notification(models.Model):
@@ -43,3 +44,9 @@ class Notification(models.Model):
         if self.action_object:
             return repr + f": {self.action_object.verbose()}"
         return repr
+
+class LogMessage(models.Model):
+    user = models.ForeignKey('account.User', on_delete=models.CASCADE, related_name='log_messages')
+    message = models.TextField()
+    created = models.DateTimeField(default=now)
+    level = models.CharField(max_length=10)

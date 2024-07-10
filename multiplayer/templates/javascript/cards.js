@@ -24,12 +24,13 @@ let is_viewer;
 const default_rotation = {1: 0, 2: 90, 3: 0, 4: -90, 5: -90};
 const poker_rotation = {1: 0, 2: 90, 3: 90, 4: 0, 5: 0, 6: 0, 7: -90, 8: -90, 9: -90, 10: 0};
 
-if('{% settings_value "DEBUG" %}' === "False") {
+/*if('{% settings_value "DEBUG" %}' === "False") {
     console.log = () => {};
     console.info = () => {};
     console.warn = () => {};
     console.error = () => {};
-}
+}*/
+//TODO 
 
 function getGridPosition(value, suit) {
     var x, y;
