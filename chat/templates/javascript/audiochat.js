@@ -141,17 +141,17 @@ function getOrCreatePeerConnection(sender) {
         }
         
         pc.oniceconnectionstatechange = () => {
-            console.log('ICE Connection State:', pc.iceConnectionState);
+            console.log('ICE Connection State:', JSON.stringify(pc.iceConnectionState));
         };
 
         pc.onconnectionstatechange = () => {
-            console.log('Connection State:', pc.connectionState);
+            console.log('Connection State:', JSON.stringify(pc.connectionState));
         };
         
         setTimeout(() => {
             pc.getStats(null).then((stats) => {
                 stats.forEach((report) => {
-                    console.log(report);
+                    console.log(JSON.stringify(report));
                 });
             });
         }, 1000);
@@ -174,7 +174,7 @@ function handleJoin(data) {
         });
         setOnIceCandidate(pc, data.user_id);
     }).catch(function(reason) {
-        console.log('Error setting local sd from local offer?', reason);
+        console.log('Error setting local sd from local offer?', JSON.stringify(reason));
     });
 }
 
@@ -197,7 +197,7 @@ function handleOffer(data) {
         setOnIceCandidate(pc, data.user_id);
     })
     .catch(function(reason) {
-        console.log('Error setting local sd after answer to', data.user_id, ':', reason, pc.signalingState);
+        console.log('Error setting local sd after answer to', data.user_id, ':', JSON.stringify(reason), JSON.stringify(pc.signalingState));
     });
 }
 
@@ -205,7 +205,7 @@ function handleAnswer(data) {
     const pc = peerConnections[data.user_id];
     pc.setRemoteDescription(new RTCSessionDescription(data.answer))
     .catch(function(reason) {
-        console.log('Error handling answer from', data.user_id, ':', reason);
+        console.log('Error handling answer from', data.user_id, ':', JSON.stringify(reason));
     })
 }
 
@@ -213,7 +213,7 @@ function handleCandidate(data) {
     const pc = peerConnections[data.user_id];
     pc.addIceCandidate(new RTCIceCandidate(data.candidate))
     .catch(function(reason) {
-        console.log('Error handling candidate from', data.user_id, ':', reason);
+        console.log('Error handling candidate from', data.user_id, ':', JSON.stringify(reason));
     });
 }
 
@@ -271,7 +271,7 @@ function joinAudio(room_id, clicked) {
         navigator.mediaDevices.getUserMedia({audio: true}).then(function(mediaStream) {
             negotiate(mediaStream)
         }).catch(function (error) {
-            console.error("Error accessing media devices: ", error);
+            console.error("Error accessing media devices: ", JSON.stringify(error));
         });
     }
     else {
