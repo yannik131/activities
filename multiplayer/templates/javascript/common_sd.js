@@ -6,7 +6,7 @@ var last_trick;
 beat_right = true;
 let play_automatically = false;//"{% settings_value "DEBUG" %}" === "True";
 let clearStacksTimeout;
-const clearStacksTimeoutDuration = 700;
+const clearStacksTimeoutDuration = 1000;
 
 function compare(vs1, vs2) {
     return getCardSortValue(vs1.value+vs1.suit) > getCardSortValue(vs2.value+vs2.suit);
