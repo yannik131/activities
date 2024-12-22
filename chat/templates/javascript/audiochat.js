@@ -1,8 +1,6 @@
 {% load static %}
 {% load i18n %}
 
-{% include "javascript/logging.js" %}
-
 const configuration = {
     "iceServers": [{
         urls: 'turn:turn.myactivities.net:5349',
