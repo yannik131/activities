@@ -32,7 +32,7 @@ var m_show;
 var re;
 var value_ncards;
 let hand_cards_for_value;
-let poverty_allowed = false;
+let povertyAllowed = false;
 let re_bids;
 let contra_bids;
 
@@ -359,7 +359,7 @@ function loadGameField(data) {
             '': 11, 'w': 10, '9': 9, '6': 8, '3': 7
         };
     }
-    poverty_allowed = data.poverty === '1';
+    povertyAllowed = data.poverty === '1';
     setRe(data);
     defineSortValues();
     clearButtons(lastTrickButton);
@@ -517,7 +517,7 @@ function createBidButtons(mandatory_solo) {
         sendBid("without");
     });
 
-    if(trumpCount() <= 3) {
+    if(trumpCount() <= 3 && povertyAllowed) {
         createButton(bid_translations.poverty, 'poverty', function() {
             sendBid("poverty");
         });
