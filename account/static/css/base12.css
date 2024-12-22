@@ -472,6 +472,20 @@ form label {
     background-color: #404040;
 }
 
+.competitive .full {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.competitive .full:hover {
+    background-color: #404040;
+}
+
 .pagination {
     text-align: center;
     display: block;

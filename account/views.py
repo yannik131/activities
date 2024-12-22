@@ -25,17 +25,16 @@ from django.utils.encoding import force_text
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.urls import reverse
 from django.db.models import Q
-from django.contrib.auth.validators import UnicodeUsernameValidator
+from competitions.utils import get_online_games_dict
 #validator = UnicodeUsernameValidator()
 import logging
 logger = logging.getLogger('django')
-import random
 
 
 @login_required
 def home(request):
     missing_fields = request.user.birth_year is None or request.user.sex is None
-    return render(request, 'account/home.html', dict(missing_fields=missing_fields))
+    return render(request, 'account/home.html', dict(missing_fields=missing_fields, **get_online_games_dict()))
 
 
 def check_username(request, username):

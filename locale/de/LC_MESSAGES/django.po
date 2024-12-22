@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-28 12:34+0100\n"
+"POT-Creation-Date: 2024-07-04 12:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -617,7 +617,11 @@ msgstr ""
 msgid "Willkommen, %(v0)s."
 msgstr ""
 
-#: account/templates/account/home.html:14
+#: account/templates/account/home.html:13
+msgid "Hier geht's direkt zu den Kartenspielen: "
+msgstr ""
+
+#: account/templates/account/home.html:18
 msgid ""
 "Da Sie noch keiner Aktivität beigetreten sind, müssen Sie wohl neu hier sein."
 "<br><ul style=\"text-align: left;\"><li>Oben links finden Sie das Dropdown-"
@@ -630,25 +634,29 @@ msgid ""
 "Sie</a>.</li></ul>"
 msgstr ""
 
-#: account/templates/account/home.html:19
+#: account/templates/account/home.html:21
+msgid "Hier geht's zum Persönlichkeitstest und ihren Posts:"
+msgstr ""
+
+#: account/templates/account/home.html:24
 msgid "Persönlichkeitstest & Empfehlungen"
 msgstr ""
 
-#: account/templates/account/home.html:21
+#: account/templates/account/home.html:26
 msgid "Zu Ihren Posts"
 msgstr ""
 
-#: account/templates/account/home.html:22
+#: account/templates/account/home.html:27
 msgid ""
 "Bei Fragen und Anregungen können Sie einfach eine Freundschaftsanfrage "
 "schicken an:"
 msgstr ""
 
-#: account/templates/account/home.html:24
+#: account/templates/account/home.html:29
 msgid "Ihre Aktivitäten:"
 msgstr ""
 
-#: account/templates/account/home.html:28
+#: account/templates/account/home.html:33
 msgid ""
 "Hier ist noch nichts! <a href=\"/activity/list\">Hier</a> finden Sie eine "
 "Liste aller Aktivitäten und <a href=\"/character/overview\">hier</a> geht's "
@@ -1346,7 +1354,7 @@ msgstr ""
 
 #: account/templates/registration/password_reset_form.html:13
 #: activity/templates/activity/detail.html:98
-#: multiplayer/templates/javascript/cards.js:570
+#: multiplayer/templates/javascript/cards.js:594
 #: vacancies/templates/vacancies/apply_for_vacancy.html:15
 #: wall/templates/wall/post/create_comment.html:15
 #: wall/templates/wall/post/create_post.html:14
@@ -1406,94 +1414,94 @@ msgstr ""
 msgid "Gast"
 msgstr ""
 
-#: account/views.py:81
+#: account/views.py:80
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
 "senden."
 msgstr ""
 
-#: account/views.py:84 account/views.py:109 account/views.py:125
+#: account/views.py:83 account/views.py:108 account/views.py:124
 msgid "Ihr seid bereits Freunde."
 msgstr ""
 
-#: account/views.py:91
+#: account/views.py:90
 msgid "Freundschaftsanfrage wurde verschickt."
 msgstr ""
 
-#: account/views.py:106
+#: account/views.py:105
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr ""
 
-#: account/views.py:146
+#: account/views.py:145
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr ""
 
-#: account/views.py:167
+#: account/views.py:166
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr ""
 
-#: account/views.py:174
+#: account/views.py:173
 #, python-brace-format
 msgid "Sie haben die Freundschaft mit {user} beendet."
 msgstr ""
 
-#: account/views.py:207
+#: account/views.py:206
 msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden."
 msgstr ""
 
-#: account/views.py:219
+#: account/views.py:218
 msgid ""
 "Sie müssen sich vorher registrieren, wenn Sie Ihren Account bearbeiten "
 "wollen."
 msgstr ""
 
-#: account/views.py:225
+#: account/views.py:224
 msgid "Änderungen gespeichert."
 msgstr ""
 
-#: account/views.py:239
+#: account/views.py:238
 msgid "Sie müssen sich vorher registrieren, wenn Sie Ihren Ort ändern wollen."
 msgstr ""
 
-#: account/views.py:242
+#: account/views.py:241
 msgid "Sie können den Ort nur höchstens alle 7 Tage wechseln."
 msgstr ""
 
-#: account/views.py:250
+#: account/views.py:249
 msgid "Neue Adresse gespeichert: "
 msgstr ""
 
-#: account/views.py:272
+#: account/views.py:271
 msgid ""
 "Sie sind noch Admin mindestens einer Gruppe. Löschen sie zuerst diese "
 "Gruppen oder legen Sie einen neuen Admin fest, bevor Sie Ihren Account "
 "löschen."
 msgstr ""
 
-#: account/views.py:295
+#: account/views.py:294
 msgid ""
 "Der Aktivierungslink ist ungültig. Falls der Account noch inaktiv ist, "
 "können Sie durch erneutes Registrieren einen neuen anfordern!"
 msgstr ""
 
-#: account/views.py:301
+#: account/views.py:300
 msgid "Sie sind doch schon eingeloggt! Was wollen Sie denn noch!?"
 msgstr ""
 
-#: account/views.py:337
+#: account/views.py:336
 msgid "Passwort erfolgreich geändert."
 msgstr ""
 
-#: account/views.py:341
+#: account/views.py:340
 msgid "Ihr Passwort wurde zurückgesetzt."
 msgstr ""
 
-#: account/views.py:374
+#: account/views.py:373
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr ""
 
-#: account/views.py:376
+#: account/views.py:375
 msgid "Markierung wurde nicht gefunden!"
 msgstr ""
 
@@ -1641,7 +1649,7 @@ msgid "Wie heißt der Ort, an dem Sie sich befinden?"
 msgstr ""
 
 #: activity/templates/activity/detail.html:98
-#: multiplayer/templates/javascript/cards.js:575
+#: multiplayer/templates/javascript/cards.js:602
 #: multiplayer/templates/multiplayer/game.html:48
 #: multiplayer/templates/multiplayer/game.html:76
 #: multiplayer/templates/multiplayer/match.html:25
@@ -1844,6 +1852,7 @@ msgid "Zurück"
 msgstr ""
 
 #: character/templates/character/quiz.html:24
+#: multiplayer/templates/javascript/guess_the_tricks.js:473
 msgid "Weiter"
 msgstr ""
 
@@ -2260,7 +2269,7 @@ msgstr ""
 msgid "hat den Chat verlassen."
 msgstr ""
 
-#: chat/templates/javascript/room.js:133
+#: chat/templates/javascript/room.js:136
 #: multiplayer/templates/javascript/poker.js:63
 msgid "Sie"
 msgstr ""
@@ -2548,6 +2557,26 @@ msgstr ""
 msgid "Jemanden einladen"
 msgstr ""
 
+#: competitions/templates/competitions/online_games.html:7
+msgid "Durak-Lobby"
+msgstr ""
+
+#: competitions/templates/competitions/online_games.html:11
+msgid "Skat-Lobby"
+msgstr ""
+
+#: competitions/templates/competitions/online_games.html:17
+msgid "Doko-Lobby"
+msgstr ""
+
+#: competitions/templates/competitions/online_games.html:21
+msgid "Poker-Lobby"
+msgstr ""
+
+#: competitions/templates/competitions/online_games.html:27
+msgid "Stiche raten-Lobby"
+msgstr ""
+
 #: competitions/templates/competitions/overview.html:5
 #, python-format
 msgid "%(v0)s: Matches & Turniere "
@@ -2559,7 +2588,7 @@ msgid "%(v0)s: Matches & Turniere"
 msgstr ""
 
 #: competitions/templates/competitions/overview.html:11
-#: competitions/templates/competitions/user_overview.html:38
+#: competitions/templates/competitions/user_overview.html:19
 msgid "Turniere"
 msgstr ""
 
@@ -2600,27 +2629,11 @@ msgid ""
 "bei, falls Sie das noch nicht gemacht haben."
 msgstr ""
 
-#: competitions/templates/competitions/user_overview.html:15
-msgid "Durak-Lobby"
-msgstr ""
-
-#: competitions/templates/competitions/user_overview.html:19
-msgid "Skat-Lobby"
-msgstr ""
-
-#: competitions/templates/competitions/user_overview.html:25
-msgid "Doko-Lobby"
-msgstr ""
-
-#: competitions/templates/competitions/user_overview.html:29
-msgid "Poker-Lobby"
-msgstr ""
-
-#: competitions/templates/competitions/user_overview.html:32
+#: competitions/templates/competitions/user_overview.html:13
 msgid "Offline"
 msgstr ""
 
-#: competitions/templates/competitions/user_overview.html:34
+#: competitions/templates/competitions/user_overview.html:15
 msgid ""
 "Erstellen und nehmen Sie Teil an Turnieren und Matches über den 'Offline "
 "spielen'-Button auf der entsprechenden <a href=\"/activity/list/"
@@ -2628,40 +2641,2014 @@ msgid ""
 "Wettbewerb haben kann."
 msgstr ""
 
-#: competitions/templates/competitions/user_overview.html:36
+#: competitions/templates/competitions/user_overview.html:17
 msgid "Matches"
 msgstr ""
 
-#: competitions/utils.py:66
+#: competitions/utils.py:67
 msgid "Nicht genug Spieler"
 msgstr ""
 
-#: competitions/utils.py:78
+#: competitions/utils.py:79
 msgid ""
 "Für dieses Spiel wurde noch kein Rundenalgorithmus geschrieben. Schicken Sie "
 "doch admin eine Freundschaftsanfrage und fragen Sie ihn, ob das noch "
 "implementiert werden könnte!"
 msgstr ""
 
-#: competitions/views.py:93
+#: competitions/views.py:88
 #, python-brace-format
 msgid "{act}-Turnier"
 msgstr ""
 
-#: competitions/views.py:167
+#: competitions/views.py:162
 msgid "Es wurde noch keine Runde erstellt."
 msgstr ""
 
-#: competitions/views.py:180
+#: competitions/views.py:175
 msgid "Es stehen noch Ergebnisse der letzten Runde offen."
 msgstr ""
 
-#: competitions/views.py:188
+#: competitions/views.py:183
 msgid "Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden."
 msgstr ""
 
-#: competitions/views.py:201
+#: competitions/views.py:196
 msgid "Es stehen noch Ergebnisse offen."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/_termui_impl.py:518
+#, python-brace-format
+msgid "{editor}: Editing failed"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/_termui_impl.py:522
+#, python-brace-format
+msgid "{editor}: Editing failed: {e}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/core.py:1120
+msgid "Aborted!"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/core.py:1309
+#: env/lib/python3.10/site-packages/click/decorators.py:559
+msgid "Show this message and exit."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/core.py:1340
+#: env/lib/python3.10/site-packages/click/core.py:1370
+#, python-brace-format
+msgid "(Deprecated) {text}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/core.py:1387
+msgid "Options"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/core.py:1413
+#, python-brace-format
+msgid "Got unexpected extra argument ({args})"
+msgid_plural "Got unexpected extra arguments ({args})"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/click/core.py:1429
+msgid "DeprecationWarning: The command {name!r} is deprecated."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/core.py:1636
+msgid "Commands"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/core.py:1668
+msgid "Missing command."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/core.py:1746
+msgid "No such command {name!r}."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/core.py:2310
+msgid "Value must be an iterable."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/core.py:2331
+#, python-brace-format
+msgid "Takes {nargs} values but 1 was given."
+msgid_plural "Takes {nargs} values but {len} were given."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/click/core.py:2778
+#, python-brace-format
+msgid "env var: {var}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/core.py:2808
+msgid "(dynamic)"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/core.py:2821
+#, python-brace-format
+msgid "default: {default}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/core.py:2834
+msgid "required"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/decorators.py:465
+#, python-format
+msgid "%(prog)s, version %(version)s"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/decorators.py:528
+msgid "Show the version and exit."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/exceptions.py:44
+#: env/lib/python3.10/site-packages/click/exceptions.py:80
+#, python-brace-format
+msgid "Error: {message}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/exceptions.py:72
+#, python-brace-format
+msgid "Try '{command} {option}' for help."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/exceptions.py:121
+#, python-brace-format
+msgid "Invalid value: {message}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/exceptions.py:123
+#, python-brace-format
+msgid "Invalid value for {param_hint}: {message}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/exceptions.py:179
+msgid "Missing argument"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/exceptions.py:181
+msgid "Missing option"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/exceptions.py:183
+msgid "Missing parameter"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/exceptions.py:185
+#, python-brace-format
+msgid "Missing {param_type}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/exceptions.py:192
+#, python-brace-format
+msgid "Missing parameter: {param_name}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/exceptions.py:212
+#, python-brace-format
+msgid "No such option: {name}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/exceptions.py:224
+#, python-brace-format
+msgid "Did you mean {possibility}?"
+msgid_plural "(Possible options: {possibilities})"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/click/exceptions.py:262
+msgid "unknown error"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/exceptions.py:269
+msgid "Could not open file {filename!r}: {message}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/parser.py:231
+msgid "Argument {name!r} takes {nargs} values."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/parser.py:413
+msgid "Option {name!r} does not take a value."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/parser.py:474
+msgid "Option {name!r} requires an argument."
+msgid_plural "Option {name!r} requires {nargs} arguments."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/click/shell_completion.py:319
+msgid "Shell completion is not supported for Bash versions older than 4.4."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/shell_completion.py:326
+msgid "Couldn't detect Bash version, shell completion is not supported."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/termui.py:158
+msgid "Repeat for confirmation"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/termui.py:174
+msgid "Error: The value you entered was invalid."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/termui.py:176
+#, python-brace-format
+msgid "Error: {e.message}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/termui.py:187
+msgid "Error: The two entered values do not match."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/termui.py:243
+msgid "Error: invalid input"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/termui.py:773
+msgid "Press any key to continue..."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/types.py:266
+#, python-brace-format
+msgid ""
+"Choose from:\n"
+"\t{choices}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/types.py:298
+msgid "{value!r} is not {choice}."
+msgid_plural "{value!r} is not one of {choices}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/click/types.py:392
+msgid "{value!r} does not match the format {format}."
+msgid_plural "{value!r} does not match the formats {formats}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/click/types.py:414
+msgid "{value!r} is not a valid {number_type}."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/types.py:470
+#, python-brace-format
+msgid "{value} is not in the range {range}."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/types.py:611
+msgid "{value!r} is not a valid boolean."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/types.py:635
+msgid "{value!r} is not a valid UUID."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/types.py:822
+msgid "file"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/types.py:824
+msgid "directory"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/types.py:826
+msgid "path"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/types.py:877
+msgid "{name} {filename!r} does not exist."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/types.py:886
+msgid "{name} {filename!r} is a file."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/types.py:894
+#, python-brace-format
+msgid "{name} '{filename}' is a directory."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/types.py:903
+msgid "{name} {filename!r} is not readable."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/types.py:912
+msgid "{name} {filename!r} is not writable."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/types.py:921
+msgid "{name} {filename!r} is not executable."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/click/types.py:988
+#, python-brace-format
+msgid "{len_type} values are required, but {len_value} was given."
+msgid_plural "{len_type} values are required, but {len_value} were given."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/contrib/messages/apps.py:7
+msgid "Messages"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/contrib/sitemaps/apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/contrib/staticfiles/apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/contrib/syndication/apps.py:7
+msgid "Syndication"
+msgstr ""
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: env/lib/python3.10/site-packages/django/core/paginator.py:30
+msgid "…"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/paginator.py:51
+msgid "That page number is not an integer"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/paginator.py:53
+msgid "That page number is less than 1"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/paginator.py:58
+msgid "That page contains no results"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:22
+msgid "Enter a valid value."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:93
+#: env/lib/python3.10/site-packages/django/forms/fields.py:678
+msgid "Enter a valid URL."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:151
+msgid "Enter a valid integer."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:162
+msgid "Enter a valid email address."
+msgstr ""
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: env/lib/python3.10/site-packages/django/core/validators.py:265
+msgid ""
+"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:272
+msgid ""
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:281
+#: env/lib/python3.10/site-packages/django/core/validators.py:291
+#: env/lib/python3.10/site-packages/django/core/validators.py:314
+msgid "Enter a valid IPv4 address."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:299
+#: env/lib/python3.10/site-packages/django/core/validators.py:315
+msgid "Enter a valid IPv6 address."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:309
+#: env/lib/python3.10/site-packages/django/core/validators.py:313
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:343
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:349
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:382
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:391
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:401
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:416
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:435
+#: env/lib/python3.10/site-packages/django/forms/fields.py:292
+#: env/lib/python3.10/site-packages/django/forms/fields.py:327
+msgid "Enter a number."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:437
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:442
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:447
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:509
+#, python-format
+msgid ""
+"File extension “%(extension)s” is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/core/validators.py:562
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/base.py:1210
+#: env/lib/python3.10/site-packages/django/forms/models.py:768
+msgid "and"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/base.py:1212
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:100
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:101
+msgid "This field cannot be null."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:102
+msgid "This field cannot be blank."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:103
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
+#. Eg: "Title must be unique for pub_date year"
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:107
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:126
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:958
+#, python-format
+msgid "“%(value)s” value must be either True or False."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:959
+#, python-format
+msgid "“%(value)s” value must be either True, False, or None."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:961
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1002
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1096
+msgid "Comma-separated integers"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1145
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1147
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1290
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1150
+msgid "Date (without time)"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1288
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1292
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1296
+msgid "Date (with time)"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1444
+#, python-format
+msgid "“%(value)s” value must be a decimal number."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1446
+msgid "Decimal number"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1585
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
+"uuuuuu] format."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1588
+msgid "Duration"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1638
+msgid "Email address"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1661
+msgid "File path"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1727
+#, python-format
+msgid "“%(value)s” value must be a float."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1729
+msgid "Floating point number"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1767
+#, python-format
+msgid "“%(value)s” value must be an integer."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1769
+msgid "Integer"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1852
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1867
+msgid "Small integer"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1875
+msgid "IPv4 address"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1906
+msgid "IP address"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1986
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1987
+#, python-format
+msgid "“%(value)s” value must be either None, True or False."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1989
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:2043
+msgid "Positive big integer"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:2056
+msgid "Positive integer"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:2069
+msgid "Positive small integer"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:2083
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:2115
+msgid "Text"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:2181
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:2183
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:2186
+msgid "Time"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:2312
+msgid "URL"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:2334
+msgid "Raw binary data"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:2399
+#, python-format
+msgid "“%(value)s” is not a valid UUID."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/__init__.py:2401
+msgid "Universally unique identifier"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/files.py:226
+msgid "File"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/files.py:375
+msgid "Image"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/json.py:18
+msgid "A JSON object"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/json.py:20
+msgid "Value must be valid JSON."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/related.py:790
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r does not exist."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/related.py:792
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/related.py:1045
+msgid "One-to-one relationship"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/related.py:1099
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/related.py:1100
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/db/models/fields/related.py:1142
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: env/lib/python3.10/site-packages/django/forms/boundfield.py:150
+msgid ":?.!"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:54
+msgid "This field is required."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:247
+msgid "Enter a whole number."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:402
+#: env/lib/python3.10/site-packages/django/forms/fields.py:1146
+msgid "Enter a valid date."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:426
+#: env/lib/python3.10/site-packages/django/forms/fields.py:1147
+msgid "Enter a valid time."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:454
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:488
+msgid "Enter a valid duration."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:489
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:552
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:553
+msgid "No file was submitted."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:554
+msgid "The submitted file is empty."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:556
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:559
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:620
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:782
+#: env/lib/python3.10/site-packages/django/forms/fields.py:872
+#: env/lib/python3.10/site-packages/django/forms/models.py:1309
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:873
+#: env/lib/python3.10/site-packages/django/forms/fields.py:988
+#: env/lib/python3.10/site-packages/django/forms/models.py:1308
+msgid "Enter a list of values."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:989
+msgid "Enter a complete value."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:1205
+msgid "Enter a valid UUID."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/fields.py:1235
+msgid "Enter a valid JSON."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: env/lib/python3.10/site-packages/django/forms/forms.py:76
+msgid ":"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/forms.py:203
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/formsets.py:61
+#, python-format
+msgid ""
+"ManagementForm data is missing or has been tampered with. Missing fields: "
+"%(field_names)s. You may need to file a bug report if the issue persists."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/formsets.py:370
+#, python-format
+msgid "Please submit at most %d form."
+msgid_plural "Please submit at most %d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/forms/formsets.py:377
+#, python-format
+msgid "Please submit at least %d form."
+msgid_plural "Please submit at least %d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/forms/formsets.py:405
+#: env/lib/python3.10/site-packages/django/forms/formsets.py:412
+msgid "Order"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/formsets.py:417
+msgid "Delete"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/models.py:763
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/models.py:767
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/models.py:773
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/models.py:782
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/models.py:1109
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/models.py:1193
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/models.py:1311
+#, python-format
+msgid "“%(pk)s” is not a valid value."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/utils.py:172
+#, python-format
+msgid ""
+"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/widgets.py:427
+msgid "Clear"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/widgets.py:428
+msgid "Currently"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/widgets.py:429
+msgid "Change"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/widgets.py:738
+msgid "Unknown"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/widgets.py:739
+msgid "Yes"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/forms/widgets.py:740
+msgid "No"
+msgstr ""
+
+#. Translators: Please do not add spaces around commas.
+#: env/lib/python3.10/site-packages/django/template/defaultfilters.py:817
+msgid "yes,no,maybe"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/template/defaultfilters.py:846
+#: env/lib/python3.10/site-packages/django/template/defaultfilters.py:863
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/template/defaultfilters.py:865
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/template/defaultfilters.py:867
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/template/defaultfilters.py:869
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/template/defaultfilters.py:871
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/template/defaultfilters.py:873
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dateformat.py:66
+msgid "p.m."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dateformat.py:67
+msgid "a.m."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dateformat.py:72
+msgid "PM"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dateformat.py:73
+msgid "AM"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dateformat.py:146
+msgid "midnight"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dateformat.py:148
+msgid "noon"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:6
+msgid "Monday"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:6
+msgid "Tuesday"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:6
+msgid "Wednesday"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:6
+msgid "Thursday"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:6
+msgid "Friday"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:7
+msgid "Saturday"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:7
+msgid "Sunday"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:10
+msgid "Mon"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:10
+msgid "Tue"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:10
+msgid "Wed"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:10
+msgid "Thu"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:10
+msgid "Fri"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:11
+msgid "Sat"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:11
+msgid "Sun"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:14
+msgid "January"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:14
+msgid "February"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:14
+msgid "March"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:14
+msgid "April"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:14
+msgid "May"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:14
+msgid "June"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:15
+msgid "July"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:15
+msgid "August"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:15
+msgid "September"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:15
+msgid "October"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:15
+msgid "November"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:16
+msgid "December"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:19
+msgid "jan"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:19
+msgid "feb"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:19
+msgid "mar"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:19
+msgid "apr"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:19
+msgid "may"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:19
+msgid "jun"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:20
+msgid "jul"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:20
+msgid "aug"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:20
+msgid "sep"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:20
+msgid "oct"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:20
+msgid "nov"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:20
+msgid "dec"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:23
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:24
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:25
+msgctxt "abbrev. month"
+msgid "March"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:26
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:27
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:28
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:29
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:30
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:31
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:32
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:33
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:34
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:37
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:38
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:39
+msgctxt "alt. month"
+msgid "March"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:40
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:41
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:42
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:43
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:44
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:45
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:46
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:47
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/dates.py:48
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/ipv6.py:8
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/text.py:131
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/text.py:309
+msgid "or"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: env/lib/python3.10/site-packages/django/utils/text.py:328
+#: env/lib/python3.10/site-packages/django/utils/timesince.py:94
+msgid ", "
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/utils/timesince.py:9
+#, python-format
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/utils/timesince.py:10
+#, python-format
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/utils/timesince.py:11
+#, python-format
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/utils/timesince.py:12
+#, python-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/utils/timesince.py:13
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/utils/timesince.py:14
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.10/site-packages/django/views/csrf.py:110
+msgid "Forbidden"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/csrf.py:111
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/csrf.py:115
+msgid ""
+"You are seeing this message because this HTTPS site requires a “Referer "
+"header” to be sent by your Web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/csrf.py:120
+msgid ""
+"If you have configured your browser to disable “Referer” headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for “same-"
+"origin” requests."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/csrf.py:124
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a "
+"rel=\"noreferrer\" …> for links to third-party sites."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/csrf.py:132
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/csrf.py:137
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for “same-origin” requests."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/csrf.py:142
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/generic/dates.py:41
+msgid "No year specified"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/generic/dates.py:61
+#: env/lib/python3.10/site-packages/django/views/generic/dates.py:111
+#: env/lib/python3.10/site-packages/django/views/generic/dates.py:208
+msgid "Date out of range"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/generic/dates.py:90
+msgid "No month specified"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/generic/dates.py:142
+msgid "No day specified"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/generic/dates.py:188
+msgid "No week specified"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/generic/dates.py:338
+#: env/lib/python3.10/site-packages/django/views/generic/dates.py:367
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/generic/dates.py:594
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/generic/dates.py:628
+#, python-format
+msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/generic/detail.py:54
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/generic/list.py:67
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/generic/list.py:72
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/generic/list.py:154
+#, python-format
+msgid "Empty list and “%(class_name)s.allow_empty” is False."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/static.py:40
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/static.py:42
+#, python-format
+msgid "“%(path)s” does not exist"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/static.py:80
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/templates/default_urlconf.html:7
+#: env/lib/python3.10/site-packages/django/views/templates/default_urlconf.html:221
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/templates/default_urlconf.html:207
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/templates/default_urlconf.html:222
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
+"configured any URLs."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/templates/default_urlconf.html:230
+msgid "Django Documentation"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/templates/default_urlconf.html:231
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/templates/default_urlconf.html:239
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/templates/default_urlconf.html:240
+msgid "Get started with Django"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/templates/default_urlconf.html:248
+msgid "Django Community"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django/views/templates/default_urlconf.html:249
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/admin.py:64
+msgid "Task (registered)"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/admin.py:68
+msgid "Task (custom)"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/admin.py:85
+msgid "Need name of task"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/admin.py:91
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:589
+msgid "Only one can be set, in expires and expire_seconds"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/admin.py:101
+#, python-format
+msgid "Unable to parse JSON: %s"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/admin.py:167
+#, python-brace-format
+msgid "{0} task{1} {2} successfully {3}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/admin.py:170
+#: env/lib/python3.10/site-packages/django_celery_beat/admin.py:232
+msgid "was,were"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/admin.py:179
+msgid "Enable selected tasks"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/admin.py:185
+msgid "Disable selected tasks"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/admin.py:197
+msgid "Toggle activity of selected tasks"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/admin.py:217
+#, python-brace-format
+msgid "task \"{0}\" not found"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/admin.py:229
+#, python-brace-format
+msgid "{0} task{1} {2} successfully run"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/admin.py:235
+msgid "Run selected tasks"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/apps.py:13
+msgid "Periodic Tasks"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:26
+msgid "Days"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:27
+msgid "Hours"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:28
+msgid "Minutes"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:29
+msgid "Seconds"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:30
+msgid "Microseconds"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:34
+msgid "Day"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:35
+msgid "Hour"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:36
+msgid "Minute"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:37
+msgid "Second"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:38
+msgid "Microsecond"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:42
+msgid "Astronomical dawn"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:43
+msgid "Civil dawn"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:44
+msgid "Nautical dawn"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:45
+msgid "Astronomical dusk"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:46
+msgid "Civil dusk"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:47
+msgid "Nautical dusk"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:48
+msgid "Solar noon"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:49
+msgid "Sunrise"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:50
+msgid "Sunset"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:84
+msgid "Solar Event"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:85
+msgid "The type of solar event when the job should run"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:89
+msgid "Latitude"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:90
+msgid "Run the task when the event happens at this latitude"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:95
+msgid "Longitude"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:96
+msgid "Run the task when the event happens at this longitude"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:103
+msgid "solar event"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:104
+msgid "solar events"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:153
+msgid "Number of Periods"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:154
+msgid "Number of interval periods to wait before running the task again"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:160
+msgid "Interval Period"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:161
+msgid "The type of period between task runs (Example: days)"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:167
+msgid "interval"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:168
+msgid "intervals"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:196
+msgid "every {}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:201
+msgid "every {} {}"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:212
+msgid "Clock Time"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:213
+msgid "Run the task at clocked time"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:219
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:220
+msgid "clocked"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:260
+msgid "Minute(s)"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:262
+msgid "Cron Minutes to Run. Use \"*\" for \"all\". (Example: \"0,30\")"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:267
+msgid "Hour(s)"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:269
+msgid "Cron Hours to Run. Use \"*\" for \"all\". (Example: \"8,20\")"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:274
+msgid "Day(s) Of The Week"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:276
+msgid "Cron Days Of The Week to Run. Use \"*\" for \"all\". (Example: \"0,5\")"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:282
+msgid "Day(s) Of The Month"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:284
+msgid ""
+"Cron Days Of The Month to Run. Use \"*\" for \"all\". (Example: \"1,15\")"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:290
+msgid "Month(s) Of The Year"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:292
+msgid ""
+"Cron Months Of The Year to Run. Use \"*\" for \"all\". (Example: \"0,6\")"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:299
+msgid "Cron Timezone"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:301
+msgid "Timezone to Run the Cron Schedule on. Default is UTC."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:307
+msgid "crontab"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:308
+msgid "crontabs"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:393
+#: scheduling/forms.py:17 usergroups/forms.py:22
+msgid "Name"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:394
+msgid "Short Description For This Task"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:399
+msgid ""
+"The Name of the Celery Task that Should be Run.  (Example: \"proj.tasks."
+"import_contacts\")"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:407
+msgid "Interval Schedule"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:408
+msgid ""
+"Interval Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:413
+msgid "Crontab Schedule"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:414
+msgid ""
+"Crontab Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:419
+msgid "Solar Schedule"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:420
+msgid ""
+"Solar Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:425
+msgid "Clocked Schedule"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:426
+msgid ""
+"Clocked Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:432
+msgid "Positional Arguments"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:434
+msgid "JSON encoded positional arguments (Example: [\"arg1\", \"arg2\"])"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:439
+msgid "Keyword Arguments"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:441
+msgid "JSON encoded keyword arguments (Example: {\"argument\": \"value\"})"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:447
+msgid "Queue Override"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:449
+msgid "Queue defined in CELERY_TASK_QUEUES. Leave None for default queuing."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:458
+msgid "Exchange"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:459
+msgid "Override Exchange for low-level AMQP routing"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:463
+msgid "Routing Key"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:464
+msgid "Override Routing Key for low-level AMQP routing"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:468
+msgid "AMQP Message Headers"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:469
+msgid "JSON encoded message headers for the AMQP message."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:475
+msgid "Priority"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:477
+msgid ""
+"Priority Number between 0 and 255. Supported by: RabbitMQ, Redis (priority "
+"reversed, 0 is highest)."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:482
+msgid "Expires Datetime"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:484
+msgid ""
+"Datetime after which the schedule will no longer trigger the task to run"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:489
+msgid "Expires timedelta with seconds"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:491
+msgid ""
+"Timedelta with seconds which the schedule will no longer trigger the task to "
+"run"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:497
+msgid "One-off Task"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:499
+msgid "If True, the schedule will only run the task a single time"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:503
+msgid "Start Datetime"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:505
+msgid "Datetime when the schedule should begin triggering the task to run"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:510
+msgid "Enabled"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:511
+msgid "Set to False to disable the schedule"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:516
+msgid "Last Run Datetime"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:518
+msgid ""
+"Datetime that the schedule last triggered the task to run. Reset to None if "
+"enabled is set to False."
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:523
+msgid "Total Run Count"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:525
+msgid "Running count of how many times the schedule has triggered the task"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:530
+msgid "Last Modified"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:531
+msgid "Datetime that this PeriodicTask was last modified"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:535
+msgid "Description"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:537
+msgid "Detailed description about the details of this Periodic Task"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:546
+msgid "periodic task"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/django_celery_beat/models.py:547
+msgid "periodic tasks"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/kombu/transport/qpid.py:1311
+#, python-format
+msgid "Attempting to connect to qpid with SASL mechanism %s"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/kombu/transport/qpid.py:1316
+#, python-format
+msgid "Connected to qpid with SASL mechanism %s"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/kombu/transport/qpid.py:1334
+#, python-format
+msgid "Unable to connect to qpid with SASL mechanism %s"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/tests/test_base.py:22
+msgid "COOKIE_INFO_HEADER"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/tests/test_base.py:23
+msgid "COOKIE_INFO_PARA"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/tests/test_base.py:24
+msgid "COOKIE_INFO_OK"
+msgstr ""
+
+#: env/lib/python3.10/site-packages/timezone_field/rest_framework.py:9
+msgid "A valid timezone is required."
 msgstr ""
 
 #: multiplayer/decorators.py:11
@@ -2672,99 +4659,96 @@ msgstr ""
 msgid "Sie sind kein Mitglied dieses Spiels."
 msgstr ""
 
-#: multiplayer/doko_scorer.py:59 multiplayer/doko_scorer.py:61
+#: multiplayer/doko_scorer.py:66 multiplayer/doko_scorer.py:68
 msgid "Fuchs gefangen"
 msgstr ""
 
-#: multiplayer/doko_scorer.py:67 multiplayer/doko_scorer.py:69
+#: multiplayer/doko_scorer.py:74 multiplayer/doko_scorer.py:76
 msgid "Doppelkopf"
 msgstr ""
 
-#: multiplayer/doko_scorer.py:79 multiplayer/doko_scorer.py:81
+#: multiplayer/doko_scorer.py:86 multiplayer/doko_scorer.py:88
 msgid "Karlchen"
 msgstr ""
 
-#: multiplayer/doko_scorer.py:89
+#: multiplayer/doko_scorer.py:96
 msgid "Gegen die Alten"
 msgstr ""
 
-#: multiplayer/doko_scorer.py:136 multiplayer/doko_scorer.py:138
+#: multiplayer/doko_scorer.py:143 multiplayer/doko_scorer.py:145
 msgid "Gewonnen"
 msgstr ""
 
-#: multiplayer/doko_scorer.py:149 multiplayer/doko_scorer.py:151
+#: multiplayer/doko_scorer.py:156 multiplayer/doko_scorer.py:158
 msgid "Schwarz gespielt"
 msgstr ""
 
-#: multiplayer/doko_scorer.py:157
+#: multiplayer/doko_scorer.py:164
 msgid "120 gegen keine 90 erreicht"
 msgstr ""
 
-#: multiplayer/doko_scorer.py:158
+#: multiplayer/doko_scorer.py:165
 msgid "90 gegen keine 60 erreicht"
 msgstr ""
 
-#: multiplayer/doko_scorer.py:159
+#: multiplayer/doko_scorer.py:166
 msgid "60 gegen keine 30 erreicht"
 msgstr ""
 
-#: multiplayer/doko_scorer.py:160
+#: multiplayer/doko_scorer.py:167
 msgid "30 gegen schwarz erreicht"
 msgstr ""
 
-#: multiplayer/doko_scorer.py:163
+#: multiplayer/doko_scorer.py:170
 msgid "Keine 90 abgesagt"
 msgstr ""
 
-#: multiplayer/doko_scorer.py:164
+#: multiplayer/doko_scorer.py:171
 msgid "Keine 60 abgesagt"
 msgstr ""
 
-#: multiplayer/doko_scorer.py:165
+#: multiplayer/doko_scorer.py:172
 msgid "Keine 30 abgesagt"
 msgstr ""
 
-#: multiplayer/doko_scorer.py:188 multiplayer/doko_scorer.py:190
+#: multiplayer/doko_scorer.py:195 multiplayer/doko_scorer.py:197
 msgid "Schwarz abgesagt"
 msgstr ""
 
-#: multiplayer/doko_scorer.py:211
+#: multiplayer/doko_scorer.py:218
 msgid "+2: Re gesagt\n"
 msgstr ""
 
-#: multiplayer/doko_scorer.py:214
+#: multiplayer/doko_scorer.py:221
 msgid "+2: Kontra gesagt\n"
 msgstr ""
 
-#: multiplayer/forms.py:11
-msgid "Maximale Spieleranzahl"
+#: multiplayer/forms.py:16
+#: multiplayer/templates/javascript/guess_the_tricks.js:403
+msgid "Es darf nicht aufgehen"
 msgstr ""
 
-#: multiplayer/forms.py:19
-msgid "Unterstützt werden 2-5 Spieler"
-msgstr ""
-
-#: multiplayer/forms.py:22
-msgid "Unterstützt werden 2-10 Spieler"
-msgstr ""
-
-#: multiplayer/forms.py:26
+#: multiplayer/forms.py:24
 msgid "Blind-Dauer in Minuten"
 msgstr ""
 
-#: multiplayer/forms.py:31
+#: multiplayer/forms.py:33
 msgid "Blind-Dauer muss zwischen 5 und 20 Minuten liegen"
 msgstr ""
 
-#: multiplayer/forms.py:39
+#: multiplayer/forms.py:41
 msgid "Ohne Neunen"
 msgstr ""
 
-#: multiplayer/forms.py:40
+#: multiplayer/forms.py:42
 msgid "Rundenanzahl"
 msgstr ""
 
-#: multiplayer/forms.py:43
+#: multiplayer/forms.py:43 multiplayer/templates/javascript/doppelkopf.js:15
+msgid "Armut"
+msgstr ""
+
+#: multiplayer/forms.py:46
 msgid "Jeder kann dazuschmeißen"
 msgstr ""
 
@@ -2772,39 +4756,39 @@ msgstr ""
 msgid "ist voll"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:515
-#: multiplayer/templates/javascript/skat.js:563
+#: multiplayer/templates/javascript/cards.js:538
+#: multiplayer/templates/javascript/skat.js:565
 msgid "Ja"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:517
+#: multiplayer/templates/javascript/cards.js:540
 msgid "Nein"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:840
+#: multiplayer/templates/javascript/cards.js:870
 msgid "Es wurde noch kein Spiel beendet."
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:946
+#: multiplayer/templates/javascript/cards.js:980
+msgid "Stich"
+msgstr ""
+
+#: multiplayer/templates/javascript/cards.js:982
+msgid "Okay"
+msgstr ""
+
+#: multiplayer/templates/javascript/cards.js:1021
 msgid ""
 "Verlassen Sie das Spiel bitte nur, wenn Sie es auch später nicht mehr "
 "fortführen wollen. Spiel verlassen und dadurch zurücksetzen?"
 msgstr ""
 
-#: multiplayer/templates/javascript/cards.js:957
+#: multiplayer/templates/javascript/cards.js:1032
 msgid "Internet Explorer wird nicht unterstützt!"
 msgstr ""
 
-#: multiplayer/templates/javascript/common_sd.js:49
-msgid "Stich"
-msgstr ""
-
-#: multiplayer/templates/javascript/common_sd.js:51
-msgid "Okay"
-msgstr ""
-
 #: multiplayer/templates/javascript/doppelkopf.js:6
-#: multiplayer/templates/javascript/doppelkopf.js:438
+#: multiplayer/templates/javascript/doppelkopf.js:481
 msgid "Gesund"
 msgstr ""
 
@@ -2821,20 +4805,23 @@ msgid "Buben"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:10
+#: multiplayer/templates/javascript/guess_the_tricks.js:270
 #: multiplayer/templates/javascript/skat.js:13
-#: multiplayer/templates/javascript/skat.js:354
+#: multiplayer/templates/javascript/skat.js:356
 msgid "Kreuz"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:11
+#: multiplayer/templates/javascript/guess_the_tricks.js:271
 #: multiplayer/templates/javascript/skat.js:14
-#: multiplayer/templates/javascript/skat.js:355
+#: multiplayer/templates/javascript/skat.js:357
 msgid "Pik"
 msgstr ""
 
 #: multiplayer/templates/javascript/doppelkopf.js:12
+#: multiplayer/templates/javascript/guess_the_tricks.js:272
 #: multiplayer/templates/javascript/skat.js:15
-#: multiplayer/templates/javascript/skat.js:356
+#: multiplayer/templates/javascript/skat.js:358
 msgid "Herz"
 msgstr ""
 
@@ -2846,39 +4833,52 @@ msgstr ""
 msgid "Fleischlos"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:18
+#: multiplayer/templates/javascript/doppelkopf.js:19
 msgid "Keine 90"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:19
+#: multiplayer/templates/javascript/doppelkopf.js:20
 msgid "Keine 60"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:20
+#: multiplayer/templates/javascript/doppelkopf.js:21
 msgid "Keine 30"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:21
-#: multiplayer/templates/javascript/skat.js:388
+#: multiplayer/templates/javascript/doppelkopf.js:22
+#: multiplayer/templates/javascript/skat.js:390
 msgid "Schwarz"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:24
+#: multiplayer/templates/javascript/doppelkopf.js:25
 msgid "Re"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:25
-#: multiplayer/templates/javascript/doppelkopf.js:267
+#: multiplayer/templates/javascript/doppelkopf.js:26
+#: multiplayer/templates/javascript/doppelkopf.js:275
 msgid "Kontra"
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:177
-#: multiplayer/templates/javascript/doppelkopf.js:364
+#: multiplayer/templates/javascript/doppelkopf.js:215
+msgid "Normalspiel"
+msgstr ""
+
+#: multiplayer/templates/javascript/doppelkopf.js:300
+#: multiplayer/templates/javascript/doppelkopf.js:396
+#: multiplayer/templates/javascript/guess_the_tricks.js:514
 msgid "Stand nach Spiel "
 msgstr ""
 
-#: multiplayer/templates/javascript/doppelkopf.js:207
-msgid "Normalspiel"
+#: multiplayer/templates/javascript/doppelkopf.js:383
+msgid "Pflichtsolo: "
+msgstr ""
+
+#: multiplayer/templates/javascript/doppelkopf.js:483
+msgid "Bist Du bescheuert?!"
+msgstr ""
+
+#: multiplayer/templates/javascript/doppelkopf.js:554
+msgid "Vorbehalt"
 msgstr ""
 
 #: multiplayer/templates/javascript/durak.js:87
@@ -2904,6 +4904,41 @@ msgstr ""
 
 #: multiplayer/templates/javascript/durak.js:440
 msgid "Schieben"
+msgstr ""
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:273
+#: multiplayer/templates/javascript/skat.js:16
+#: multiplayer/templates/javascript/skat.js:359
+msgid "Karo"
+msgstr ""
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:383
+msgid "Wie viele Stiche? Maximum: "
+msgstr ""
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:385
+msgid "Verboten: "
+msgstr ""
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:391
+#: multiplayer/templates/javascript/poker.js:288
+msgid "Geben Sie eine Zahl ein."
+msgstr ""
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:395
+msgid "Kleinstmöglicher Wert: "
+msgstr ""
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:399
+msgid "Größtmöglicher Wert: "
+msgstr ""
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:450
+msgid "Es spielt aus: "
+msgstr ""
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:505
+msgid "Trumpf ist: "
 msgstr ""
 
 #: multiplayer/templates/javascript/poker.js:10
@@ -2966,10 +5001,6 @@ msgstr ""
 msgid "Mindesteinsatz: "
 msgstr ""
 
-#: multiplayer/templates/javascript/poker.js:288
-msgid "Geben Sie eine Zahl ein."
-msgstr ""
-
 #: multiplayer/templates/javascript/poker.js:291
 msgid "Beachten Sie den Mindesteinsatz."
 msgstr ""
@@ -2986,11 +5017,6 @@ msgstr ""
 msgid "Nicht zeigen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:16
-#: multiplayer/templates/javascript/skat.js:357
-msgid "Karo"
-msgstr ""
-
 #: multiplayer/templates/javascript/skat.js:17
 msgid "Grand"
 msgstr ""
@@ -3004,72 +5030,72 @@ msgid "Nö"
 msgstr ""
 
 #: multiplayer/templates/javascript/skat.js:166
-#: multiplayer/templates/javascript/skat.js:216
+#: multiplayer/templates/javascript/skat.js:215
 msgid "Stand nach Spiel Nummer"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:218
+#: multiplayer/templates/javascript/skat.js:217
 msgid "gewonnen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:220
+#: multiplayer/templates/javascript/skat.js:219
 msgid "verloren"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:222
+#: multiplayer/templates/javascript/skat.js:221
 msgid "überreizt"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:224
+#: multiplayer/templates/javascript/skat.js:223
 msgid "Augen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:287
+#: multiplayer/templates/javascript/skat.js:289
 msgid "Drücken"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:374
+#: multiplayer/templates/javascript/skat.js:376
 msgid "Ouvert"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:377
-#: multiplayer/templates/javascript/skat.js:382
+#: multiplayer/templates/javascript/skat.js:379
+#: multiplayer/templates/javascript/skat.js:384
 msgid "Normal"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:385
+#: multiplayer/templates/javascript/skat.js:387
 msgid "Schneider"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:391
+#: multiplayer/templates/javascript/skat.js:393
 msgid "Offen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:411
+#: multiplayer/templates/javascript/skat.js:413
 msgid "Aufnehmen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:414
+#: multiplayer/templates/javascript/skat.js:416
 msgid "Hand spielen"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:424
+#: multiplayer/templates/javascript/skat.js:426
 msgid "Eingepasst"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:568
+#: multiplayer/templates/javascript/skat.js:570
 msgid "Passe"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:580
+#: multiplayer/templates/javascript/skat.js:582
 msgid "Vorhand"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:580
+#: multiplayer/templates/javascript/skat.js:582
 msgid "Mittelhand"
 msgstr ""
 
-#: multiplayer/templates/javascript/skat.js:580
+#: multiplayer/templates/javascript/skat.js:582
 msgid "Hinterhand"
 msgstr ""
 
@@ -3154,8 +5180,8 @@ msgid ""
 "auf Wikipedia</a></h3>\n"
 "        <ul>\n"
 "            <li>Blatt: Mit/Ohne Neunen</li>\n"
-"            <li>Soli: Ohne Pflichtsolo. Solospieler kommt raus. Erstes "
-"angesagtes Solo zählt. Mit Fleischloser.</li>\n"
+"            <li>Soli: Mit Pflichtsoli und vorgeführten Pflichtsoli. Lustsolo "
+"kommt nicht raus, Pflichtsolo schon.</li>\n"
 "            <li>Hochzeit: Erster fremde Stich.</li>\n"
 "            <li>Sonderpunkte: Doppelkopf, Fuchs gefangen, Karlchen</li>\n"
 "            <li>Ohne: Armut, Schweinchen, zweite Dulle sticht erste, "
@@ -3240,16 +5266,12 @@ msgstr ""
 msgid "Sie können nicht mehr als {n} Matches erstellen."
 msgstr ""
 
-#: multiplayer/views.py:88
+#: multiplayer/views.py:91
 msgid "Spiel ist bereits voll"
 msgstr ""
 
-#: multiplayer/views.py:98
+#: multiplayer/views.py:101
 msgid "Sie waren zu langsam, das Match war bereits voll."
-msgstr ""
-
-#: scheduling/forms.py:17 usergroups/forms.py:22
-msgid "Name"
 msgstr ""
 
 #: scheduling/forms.py:18

@@ -107,6 +107,9 @@ function handleChatMessage(data) {
             changeMembersCount(-1, data.room_id);
             addMessageToChat(data);
             break;
+        case 'delete':
+            console.log("todo: delete");
+            break;
         default:
             console.error('Unknown action', data.action);
     }

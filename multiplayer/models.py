@@ -31,7 +31,7 @@ class MultiplayerMatch(models.Model):
     created = models.DateTimeField(default=timezone.now)
     activity = models.ForeignKey(Activity, related_name='multiplayer_matches', on_delete=models.CASCADE)
     members = models.ManyToManyField(User, related_name='multiplayer_matches')
-    member_limit = models.PositiveSmallIntegerField()
+    member_limit = models.PositiveSmallIntegerField(blank=True)
     member_positions = HStoreField(default=dict, blank=True)
     game_data = HStoreField(default=dict, blank=True)
     in_progress = models.BooleanField(default=False)
@@ -60,7 +60,7 @@ class MultiplayerMatch(models.Model):
     @property
     def start_member_limit(self):
         name = self.activity.german_name
-        if name in ['Poker', 'Durak']:
+        if name in ['Poker', 'Durak', 'Stiche raten']:
             return 2
         else:
             return self.member_limit
@@ -225,6 +225,9 @@ class MultiplayerMatch(models.Model):
             self.start_doppelkopf()
         elif self.activity.german_name == 'Poker':
             self.start_poker()
+        elif self.activity.german_name == 'Stiche raten':
+            self.game_data['game_number'] = 0
+            self.start_guess_the_tricks()
         # if self.in_progress return? TODO
         players = json.loads(self.game_data["players"])
         self.game_data["started"] = players[0]
@@ -234,13 +237,13 @@ class MultiplayerMatch(models.Model):
         self.in_progress = True
         self.save()
         self.broadcast_data(
-                {
-                    'action': 'members_changed',
-                    "match_id": self.id,
-                    "info": "start"
-                }, 
-                direct=True
-            )
+            {
+                'action': 'members_changed',
+                "match_id": self.id,
+                "info": "start"
+            }, 
+            direct=True
+        )
             
     def create_players(self, n, *deck):
         deck = create_deck(*deck)
@@ -254,7 +257,7 @@ class MultiplayerMatch(models.Model):
             players = json.loads(self.game_data['players'])
         for player in players:
             self.game_data[player] = json.dumps(deck[:n])
-            if self.activity.german_name in ["Doppelkopf", "Skat"]:
+            if self.activity.german_name in ["Doppelkopf", "Skat", "Stiche raten"]:
                 self.game_data[player + "_initial_hand"] = json.dumps(deck[:n])
             deck = deck[n:]
             if len(deck) < n:
@@ -367,3 +370,28 @@ class MultiplayerMatch(models.Model):
         set_blinds(self.game_data, blinds)
         change(self.game_data, 'game_number', 1)
         self.game_data['active'] = after(self.game_data['big_blind'], alive)
+        
+    def start_guess_the_tricks(self):
+        change(self.game_data, 'game_number', 1)
+        n_cards = int(self.game_data['game_number'])
+        players, _ = self.create_players(n_cards, "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "A")
+        
+        for user in players:
+            self.game_data[user + "_guess"] = None
+            self.game_data[user + "_tricks"] = 0
+            self.game_data.setdefault(user + "_points", 0)
+            self.game_data.setdefault(user + "_last_score", 0)
+
+        if 'started' not in self.game_data:
+            self.game_data['started'] = players[0]
+            self.game_data['cant_add_up'] = 1 if self.options['cant_add_up'] == 'True' else 0
+        else:
+            self.game_data['started'] = after(self.game_data['started'], players)
+        self.game_data['active'] = self.game_data['started']
+        
+        self.game_data['mode'] = 'guessing' # guessing or playing
+        self.game_data['trick'] = json.dumps([])
+        self.game_data['last_trick'] = json.dumps([])
+        self.game_data['trump_suit_wizard'] = None # the trump suit in case of a wizard as the top card of the deck
+        self.game_data['game_over'] = json.dumps(False)
+        

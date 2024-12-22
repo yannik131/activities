@@ -19,6 +19,7 @@ from redis import StrictRedis
 conn = StrictRedis(host="localhost", port=6655)
 import redis_lock
 import datetime
+from .models import LogMessage
 
 
 class NotificationConsumer(WebsocketConsumer):
@@ -97,6 +98,8 @@ class NotificationConsumer(WebsocketConsumer):
             self.handle_wall_message(text_data)
         elif text_data['type'] == 'map':
             self.handle_map_message(text_data)
+        elif text_data['type'] == 'log':
+            self.handle_log_message(text_data)
 
     def handle_chat_message(self, text_data):
         if text_data['action'] == 'sent':
@@ -297,6 +300,9 @@ class NotificationConsumer(WebsocketConsumer):
                 )
             except:
                 pass
+            
+    def handle_log_message(self, text_data):
+        LogMessage.objects.create(user=self.user, message=text_data['message'], level=text_data['level'])
             
     
     def wall_message(self, post, action):

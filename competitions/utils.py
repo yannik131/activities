@@ -1,5 +1,6 @@
 from shared.shared import add
 from django.utils.translation import gettext_lazy as _
+from activity.models import Activity
 
 
 def create_pairings(players, points, tie_breaks=None, team_size=2):
@@ -76,3 +77,14 @@ def get_pairings_for(activity_name, tournament):
         return swiss_pairings_danish_skat(tournament.points, team_sizes=[3, 4])
     else:
         raise NotImplementedError(_('Für dieses Spiel wurde noch kein Rundenalgorithmus geschrieben. Schicken Sie doch admin eine Freundschaftsanfrage und fragen Sie ihn, ob das noch implementiert werden könnte!'))
+        
+def get_online_games_dict():
+    return {
+        'durak': Activity.objects.get(translations__language_code='de', translations__name='Durak'),
+        'skat': Activity.objects.get(translations__language_code='de', translations__name='Skat'),
+        'doko': Activity.objects.get(translations__language_code='de', translations__name='Doppelkopf'),
+        'poker': Activity.objects.get(translations__language_code='de', translations__name='Poker'),
+        'guess': Activity.objects.get(translations__language_code='de', translations__name='Stiche raten')
+    }
+    
+    

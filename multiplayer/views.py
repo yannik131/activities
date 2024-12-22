@@ -41,8 +41,8 @@ def create_match(request, activity_name):
             form = DokoMatchForm(request.POST)
         elif name =='Durak':
             form = DurakMatchForm(request.POST)
-        else:
-            form = CreateMatchForm(request.POST)
+        elif name == 'Stiche raten':
+            form = GuessTheTricksMatchForm(request.POST)
         form.activity = activity
         if form.is_valid():
             match = form.save(commit=False)
@@ -56,6 +56,8 @@ def create_match(request, activity_name):
                 match.options['poverty'] = form.cleaned_data['poverty']
             elif name == 'Durak':
                 match.options['all_help'] = form.cleaned_data['all_help']
+            elif name == 'Stiche raten':
+                match.options['cant_add_up'] = form.cleaned_data['cant_add_up']
             match.save() 
     else:
         if name == 'Poker':
@@ -64,8 +66,8 @@ def create_match(request, activity_name):
             form = DokoMatchForm(initial={'member_limit': 4})
         elif name == 'Durak':
             form = DurakMatchForm()
-        else:
-            form = CreateMatchForm()
+        elif name == 'Stiche raten':
+            form = GuessTheTricksMatchForm()
     if match:
         match.init_positions()
         match.members.add(match.admin)

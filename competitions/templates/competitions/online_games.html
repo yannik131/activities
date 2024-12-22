@@ -1,0 +1,29 @@
+{% load i18n %}
+{% load static %}
+
+<div class="competitive">
+    <div class="left" onclick=openLink("{% url 'multiplayer:lobby' durak.name 'guarded' %}")>
+        <img src="{% static 'icons/lobby.png' %}">
+        {% blocktrans %}Durak-Lobby{% endblocktrans %}
+    </div>
+    <div class="right" onclick=openLink("{% url 'multiplayer:lobby' skat.name 'guarded' %}")>
+        <img src="{% static 'icons/lobby.png' %}">
+        {% trans 'Skat-Lobby' %}
+    </div>
+</div>
+<div class="competitive">
+    <div class="left" onclick=openLink("{% url 'multiplayer:lobby' doko.name 'guarded' %}")>
+        <img src="{% static 'icons/lobby.png' %}">
+        {% trans 'Doko-Lobby' %}
+    </div>
+    <div class="right" onclick=openLink("{% url 'multiplayer:lobby' poker.name 'guarded' %}")>
+        <img src="{% static 'icons/lobby.png' %}">
+        {% blocktrans %}Poker-Lobby{% endblocktrans %}
+    </div>
+</div>
+<div class="competitive">
+    <div class="full" onclick=openLink("{% url 'multiplayer:lobby' guess.name 'guarded' %}")>
+        <img src="{% static 'icons/lobby.png' %}">
+        {% trans 'Stiche raten-Lobby' %}
+    </div>
+</div>

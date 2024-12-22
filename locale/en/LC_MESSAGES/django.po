@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-28 12:34+0100\n"
-"PO-Revision-Date: 2024-01-28 12:32+0100\n"
+"POT-Creation-Date: 2024-07-04 12:30+0200\n"
+"PO-Revision-Date: 2024-07-04 12:39+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: account/forms.py:19
 msgid "Es gibt schon einen Nutzer mit dieser E-Mail-Adresse."
@@ -664,7 +664,11 @@ msgstr "Home"
 msgid "Willkommen, %(v0)s."
 msgstr "Welcome, %(v0)s."
 
-#: account/templates/account/home.html:14
+#: account/templates/account/home.html:13
+msgid "Hier geht's direkt zu den Kartenspielen: "
+msgstr "Click here to go directly to the card games:"
+
+#: account/templates/account/home.html:18
 msgid ""
 "Da Sie noch keiner Aktivität beigetreten sind, müssen Sie wohl neu hier sein."
 "<br><ul style=\"text-align: left;\"><li>Oben links finden Sie das Dropdown-"
@@ -685,26 +689,30 @@ msgstr ""
 "li><li>If you want to find out which activities might suit you, you can also "
 "complete <a href=\"/character/overview\">the personality test</a>.</li></ul>"
 
-#: account/templates/account/home.html:19
+#: account/templates/account/home.html:21
+msgid "Hier geht's zum Persönlichkeitstest und ihren Posts:"
+msgstr "Click here for the personality test and posts:"
+
+#: account/templates/account/home.html:24
 msgid "Persönlichkeitstest & Empfehlungen"
 msgstr "Personality test & suggestions"
 
-#: account/templates/account/home.html:21
+#: account/templates/account/home.html:26
 msgid "Zu Ihren Posts"
 msgstr "Your posts"
 
-#: account/templates/account/home.html:22
+#: account/templates/account/home.html:27
 msgid ""
 "Bei Fragen und Anregungen können Sie einfach eine Freundschaftsanfrage "
 "schicken an:"
 msgstr ""
 "If you have questions or suggestions, you can send a friend request to:"
 
-#: account/templates/account/home.html:24
+#: account/templates/account/home.html:29
 msgid "Ihre Aktivitäten:"
 msgstr "Your activities:"
 
-#: account/templates/account/home.html:28
+#: account/templates/account/home.html:33
 msgid ""
 "Hier ist noch nichts! <a href=\"/activity/list\">Hier</a> finden Sie eine "
 "Liste aller Aktivitäten und <a href=\"/character/overview\">hier</a> geht's "
@@ -1711,7 +1719,7 @@ msgstr "Enter your email address to reset your password."
 
 #: account/templates/registration/password_reset_form.html:13
 #: activity/templates/activity/detail.html:98
-#: multiplayer/templates/javascript/cards.js:570
+#: multiplayer/templates/javascript/cards.js:594
 #: vacancies/templates/vacancies/apply_for_vacancy.html:15
 #: wall/templates/wall/post/create_comment.html:15
 #: wall/templates/wall/post/create_post.html:14
@@ -1781,7 +1789,7 @@ msgstr "Activation email"
 msgid "Gast"
 msgstr "Guest"
 
-#: account/views.py:81
+#: account/views.py:80
 msgid ""
 "Sie haben diesem Nutzer bereits früher eine Freundschaftsanfrage gesendet. "
 "Solange diese nicht von ihm gelöscht wird, können Sie keine weitere Anfrage "
@@ -1790,58 +1798,58 @@ msgstr ""
 "You've already sent a friend request to this user. As long as he doesn't "
 "delete it you can't send another one."
 
-#: account/views.py:84 account/views.py:109 account/views.py:125
+#: account/views.py:83 account/views.py:108 account/views.py:124
 msgid "Ihr seid bereits Freunde."
 msgstr "You are already friends."
 
-#: account/views.py:91
+#: account/views.py:90
 msgid "Freundschaftsanfrage wurde verschickt."
 msgstr "Friend request sent."
 
-#: account/views.py:106
+#: account/views.py:105
 msgid "Sie können sich nicht selbst eine Freundschaftsanfrage schicken."
 msgstr "You can't send yourself a friend request."
 
-#: account/views.py:146
+#: account/views.py:145
 msgid "Sie können diese Anfrage nicht löschen."
 msgstr "You can't delete this request."
 
-#: account/views.py:167
+#: account/views.py:166
 msgid "Diese Freundschaft existiert nicht mehr."
 msgstr "This friendship doesn't exist anymore."
 
-#: account/views.py:174
+#: account/views.py:173
 #, python-brace-format
 msgid "Sie haben die Freundschaft mit {user} beendet."
 msgstr "You terminated your friendship with {user}."
 
-#: account/views.py:207
+#: account/views.py:206
 msgid "An die E-Mail Adresse konnte keine E-Mail gesendet werden."
 msgstr "No e-mail could be sent to the specified address."
 
-#: account/views.py:219
+#: account/views.py:218
 msgid ""
 "Sie müssen sich vorher registrieren, wenn Sie Ihren Account bearbeiten "
 "wollen."
 msgstr "You have to register to edit your account."
 
-#: account/views.py:225
+#: account/views.py:224
 msgid "Änderungen gespeichert."
 msgstr "Changes saved."
 
-#: account/views.py:239
+#: account/views.py:238
 msgid "Sie müssen sich vorher registrieren, wenn Sie Ihren Ort ändern wollen."
 msgstr "You have to register to change your lecation."
 
-#: account/views.py:242
+#: account/views.py:241
 msgid "Sie können den Ort nur höchstens alle 7 Tage wechseln."
 msgstr "You can change your location only once in 7 days."
 
-#: account/views.py:250
+#: account/views.py:249
 msgid "Neue Adresse gespeichert: "
 msgstr "New address saved: "
 
-#: account/views.py:272
+#: account/views.py:271
 msgid ""
 "Sie sind noch Admin mindestens einer Gruppe. Löschen sie zuerst diese "
 "Gruppen oder legen Sie einen neuen Admin fest, bevor Sie Ihren Account "
@@ -1850,7 +1858,7 @@ msgstr ""
 "You are the admin of at least one group. You have to either delete or assign "
 "a new admin for these groups before you can delete your account."
 
-#: account/views.py:295
+#: account/views.py:294
 msgid ""
 "Der Aktivierungslink ist ungültig. Falls der Account noch inaktiv ist, "
 "können Sie durch erneutes Registrieren einen neuen anfordern!"
@@ -1858,23 +1866,23 @@ msgstr ""
 "The activation link is invalid. If the account is still inactive, you can "
 "request another one by registering again!"
 
-#: account/views.py:301
+#: account/views.py:300
 msgid "Sie sind doch schon eingeloggt! Was wollen Sie denn noch!?"
 msgstr "You're already logged in! What else do you need!?"
 
-#: account/views.py:337
+#: account/views.py:336
 msgid "Passwort erfolgreich geändert."
 msgstr "Your password was changed successfully."
 
-#: account/views.py:341
+#: account/views.py:340
 msgid "Ihr Passwort wurde zurückgesetzt."
 msgstr "Your password was successfully reset."
 
-#: account/views.py:374
+#: account/views.py:373
 msgid "Markierung wurde erfolgreich gelöscht."
 msgstr "Marker was successfully deleted."
 
-#: account/views.py:376
+#: account/views.py:375
 msgid "Markierung wurde nicht gefunden!"
 msgstr "Marker not found!"
 
@@ -2029,7 +2037,7 @@ msgid "Wie heißt der Ort, an dem Sie sich befinden?"
 msgstr "What’s the name of your location?"
 
 #: activity/templates/activity/detail.html:98
-#: multiplayer/templates/javascript/cards.js:575
+#: multiplayer/templates/javascript/cards.js:602
 #: multiplayer/templates/multiplayer/game.html:48
 #: multiplayer/templates/multiplayer/game.html:76
 #: multiplayer/templates/multiplayer/match.html:25
@@ -2252,6 +2260,7 @@ msgid "Zurück"
 msgstr "Back"
 
 #: character/templates/character/quiz.html:24
+#: multiplayer/templates/javascript/guess_the_tricks.js:473
 msgid "Weiter"
 msgstr "Next"
 
@@ -2838,7 +2847,7 @@ msgstr "entered the chat."
 msgid "hat den Chat verlassen."
 msgstr "left the chat."
 
-#: chat/templates/javascript/room.js:133
+#: chat/templates/javascript/room.js:136
 #: multiplayer/templates/javascript/poker.js:63
 msgid "Sie"
 msgstr "You"
@@ -3130,6 +3139,26 @@ msgstr "Add vacancy"
 msgid "Jemanden einladen"
 msgstr "Invite somebody"
 
+#: competitions/templates/competitions/online_games.html:7
+msgid "Durak-Lobby"
+msgstr "Durak lobby"
+
+#: competitions/templates/competitions/online_games.html:11
+msgid "Skat-Lobby"
+msgstr "Skat lobby"
+
+#: competitions/templates/competitions/online_games.html:17
+msgid "Doko-Lobby"
+msgstr "Doko lobby"
+
+#: competitions/templates/competitions/online_games.html:21
+msgid "Poker-Lobby"
+msgstr "Poker lobby"
+
+#: competitions/templates/competitions/online_games.html:27
+msgid "Stiche raten-Lobby"
+msgstr "Guess the tricks-lobby"
+
 #: competitions/templates/competitions/overview.html:5
 #, python-format
 msgid "%(v0)s: Matches & Turniere "
@@ -3141,7 +3170,7 @@ msgid "%(v0)s: Matches & Turniere"
 msgstr "%(v0)s: Matches & Tournaments"
 
 #: competitions/templates/competitions/overview.html:11
-#: competitions/templates/competitions/user_overview.html:38
+#: competitions/templates/competitions/user_overview.html:19
 msgid "Turniere"
 msgstr "Tournaments"
 
@@ -3184,27 +3213,11 @@ msgstr ""
 "Here's a list of all the games you can play online right here. By entering "
 "the lobby you automatically join its activity, if you haven't done so yet."
 
-#: competitions/templates/competitions/user_overview.html:15
-msgid "Durak-Lobby"
-msgstr "Durak lobby"
-
-#: competitions/templates/competitions/user_overview.html:19
-msgid "Skat-Lobby"
-msgstr "Skat lobby"
-
-#: competitions/templates/competitions/user_overview.html:25
-msgid "Doko-Lobby"
-msgstr "Doko lobby"
-
-#: competitions/templates/competitions/user_overview.html:29
-msgid "Poker-Lobby"
-msgstr "Poker lobby"
-
-#: competitions/templates/competitions/user_overview.html:32
+#: competitions/templates/competitions/user_overview.html:13
 msgid "Offline"
 msgstr "Offline"
 
-#: competitions/templates/competitions/user_overview.html:34
+#: competitions/templates/competitions/user_overview.html:15
 msgid ""
 "Erstellen und nehmen Sie Teil an Turnieren und Matches über den 'Offline "
 "spielen'-Button auf der entsprechenden <a href=\"/activity/list/"
@@ -3216,15 +3229,15 @@ msgstr ""
 "a>! Logically, this is only available for activities that can actually be "
 "played."
 
-#: competitions/templates/competitions/user_overview.html:36
+#: competitions/templates/competitions/user_overview.html:17
 msgid "Matches"
 msgstr "Matches"
 
-#: competitions/utils.py:66
+#: competitions/utils.py:67
 msgid "Nicht genug Spieler"
 msgstr "Not enough players"
 
-#: competitions/utils.py:78
+#: competitions/utils.py:79
 msgid ""
 "Für dieses Spiel wurde noch kein Rundenalgorithmus geschrieben. Schicken Sie "
 "doch admin eine Freundschaftsanfrage und fragen Sie ihn, ob das noch "
@@ -3233,24 +3246,24 @@ msgstr ""
 "There has not yet been written a round algorithm for this game. Send admin a "
 "friend request and ask him if he can write one :)"
 
-#: competitions/views.py:93
+#: competitions/views.py:88
 #, python-brace-format
 msgid "{act}-Turnier"
 msgstr "{act}-tournament"
 
-#: competitions/views.py:167
+#: competitions/views.py:162
 msgid "Es wurde noch keine Runde erstellt."
 msgstr "No rounds have been created."
 
-#: competitions/views.py:180
+#: competitions/views.py:175
 msgid "Es stehen noch Ergebnisse der letzten Runde offen."
 msgstr "There are still matches without results in the last round."
 
-#: competitions/views.py:188
+#: competitions/views.py:183
 msgid "Mit der Spieleranzahl lassen sich keine vernünftigen Teams bilden."
 msgstr "No teams can be formed with this number of players."
 
-#: competitions/views.py:201
+#: competitions/views.py:196
 msgid "Es stehen noch Ergebnisse offen."
 msgstr "There are still matches without results."
 
@@ -3262,99 +3275,96 @@ msgstr "This game doesn't exist anymore."
 msgid "Sie sind kein Mitglied dieses Spiels."
 msgstr "You are a not a member of this game."
 
-#: multiplayer/doko_scorer.py:59 multiplayer/doko_scorer.py:61
+#: multiplayer/doko_scorer.py:66 multiplayer/doko_scorer.py:68
 msgid "Fuchs gefangen"
 msgstr "Fox caught"
 
-#: multiplayer/doko_scorer.py:67 multiplayer/doko_scorer.py:69
+#: multiplayer/doko_scorer.py:74 multiplayer/doko_scorer.py:76
 msgid "Doppelkopf"
 msgstr "Doppelkopf"
 
-#: multiplayer/doko_scorer.py:79 multiplayer/doko_scorer.py:81
+#: multiplayer/doko_scorer.py:86 multiplayer/doko_scorer.py:88
 msgid "Karlchen"
 msgstr "Charlie"
 
-#: multiplayer/doko_scorer.py:89
+#: multiplayer/doko_scorer.py:96
 msgid "Gegen die Alten"
 msgstr "Against the Old"
 
-#: multiplayer/doko_scorer.py:136 multiplayer/doko_scorer.py:138
+#: multiplayer/doko_scorer.py:143 multiplayer/doko_scorer.py:145
 msgid "Gewonnen"
 msgstr "Won"
 
-#: multiplayer/doko_scorer.py:149 multiplayer/doko_scorer.py:151
+#: multiplayer/doko_scorer.py:156 multiplayer/doko_scorer.py:158
 msgid "Schwarz gespielt"
 msgstr "Played black"
 
-#: multiplayer/doko_scorer.py:157
+#: multiplayer/doko_scorer.py:164
 msgid "120 gegen keine 90 erreicht"
 msgstr "Reached 120 against no 90"
 
-#: multiplayer/doko_scorer.py:158
+#: multiplayer/doko_scorer.py:165
 msgid "90 gegen keine 60 erreicht"
 msgstr "Reached 90 against no 60"
 
-#: multiplayer/doko_scorer.py:159
+#: multiplayer/doko_scorer.py:166
 msgid "60 gegen keine 30 erreicht"
 msgstr "Reached 60 against no 30"
 
-#: multiplayer/doko_scorer.py:160
+#: multiplayer/doko_scorer.py:167
 msgid "30 gegen schwarz erreicht"
 msgstr "Reached 30 against black"
 
-#: multiplayer/doko_scorer.py:163
+#: multiplayer/doko_scorer.py:170
 msgid "Keine 90 abgesagt"
 msgstr "Reached no 90"
 
-#: multiplayer/doko_scorer.py:164
+#: multiplayer/doko_scorer.py:171
 msgid "Keine 60 abgesagt"
 msgstr "Reached no 60"
 
-#: multiplayer/doko_scorer.py:165
+#: multiplayer/doko_scorer.py:172
 msgid "Keine 30 abgesagt"
 msgstr "Reached no 30"
 
-#: multiplayer/doko_scorer.py:188 multiplayer/doko_scorer.py:190
+#: multiplayer/doko_scorer.py:195 multiplayer/doko_scorer.py:197
 msgid "Schwarz abgesagt"
 msgstr "Reached black"
 
-#: multiplayer/doko_scorer.py:211
+#: multiplayer/doko_scorer.py:218
 msgid "+2: Re gesagt\n"
 msgstr "+2: Said re\n"
 
-#: multiplayer/doko_scorer.py:214
+#: multiplayer/doko_scorer.py:221
 msgid "+2: Kontra gesagt\n"
 msgstr "+2: Said kontra\n"
 
-#: multiplayer/forms.py:11
-msgid "Maximale Spieleranzahl"
-msgstr "Player limit"
+#: multiplayer/forms.py:16
+#: multiplayer/templates/javascript/guess_the_tricks.js:403
+msgid "Es darf nicht aufgehen"
+msgstr "It can't add up"
 
-#: multiplayer/forms.py:19
-msgid "Unterstützt werden 2-5 Spieler"
-msgstr "2-5 players are supported"
-
-#: multiplayer/forms.py:22
-msgid "Unterstützt werden 2-10 Spieler"
-msgstr "2-10 players are supported"
-
-#: multiplayer/forms.py:26
+#: multiplayer/forms.py:24
 msgid "Blind-Dauer in Minuten"
 msgstr "Blind duration in minutes"
 
-#: multiplayer/forms.py:31
+#: multiplayer/forms.py:33
 msgid "Blind-Dauer muss zwischen 5 und 20 Minuten liegen"
 msgstr "The blind duration has to be between 5 and 20 minutes"
 
-#: multiplayer/forms.py:39
+#: multiplayer/forms.py:41
 msgid "Ohne Neunen"
 msgstr "Without nines"
 
-#: multiplayer/forms.py:40
+#: multiplayer/forms.py:42
 msgid "Rundenanzahl"
 msgstr "Number of rounds"
 
-#: multiplayer/forms.py:43
+#: multiplayer/forms.py:43 multiplayer/templates/javascript/doppelkopf.js:15
+msgid "Armut"
+msgstr "Poverty"
+
+#: multiplayer/forms.py:46
 msgid "Jeder kann dazuschmeißen"
 msgstr "All can help"
 
@@ -3362,20 +3372,28 @@ msgstr "All can help"
 msgid "ist voll"
 msgstr "is full"
 
-#: multiplayer/templates/javascript/cards.js:515
-#: multiplayer/templates/javascript/skat.js:563
+#: multiplayer/templates/javascript/cards.js:538
+#: multiplayer/templates/javascript/skat.js:565
 msgid "Ja"
 msgstr "Yes"
 
-#: multiplayer/templates/javascript/cards.js:517
+#: multiplayer/templates/javascript/cards.js:540
 msgid "Nein"
 msgstr "No"
 
-#: multiplayer/templates/javascript/cards.js:840
+#: multiplayer/templates/javascript/cards.js:870
 msgid "Es wurde noch kein Spiel beendet."
 msgstr "No game has been completed."
 
-#: multiplayer/templates/javascript/cards.js:946
+#: multiplayer/templates/javascript/cards.js:980
+msgid "Stich"
+msgstr "Trick"
+
+#: multiplayer/templates/javascript/cards.js:982
+msgid "Okay"
+msgstr "Okay"
+
+#: multiplayer/templates/javascript/cards.js:1021
 msgid ""
 "Verlassen Sie das Spiel bitte nur, wenn Sie es auch später nicht mehr "
 "fortführen wollen. Spiel verlassen und dadurch zurücksetzen?"
@@ -3383,20 +3401,12 @@ msgstr ""
 "Please only leave the game if you don't want to return to this particular "
 "match. Leave and reset the match?"
 
-#: multiplayer/templates/javascript/cards.js:957
+#: multiplayer/templates/javascript/cards.js:1032
 msgid "Internet Explorer wird nicht unterstützt!"
 msgstr "Internet Explorer is not supported!"
 
-#: multiplayer/templates/javascript/common_sd.js:49
-msgid "Stich"
-msgstr "Trick"
-
-#: multiplayer/templates/javascript/common_sd.js:51
-msgid "Okay"
-msgstr "Okay"
-
 #: multiplayer/templates/javascript/doppelkopf.js:6
-#: multiplayer/templates/javascript/doppelkopf.js:438
+#: multiplayer/templates/javascript/doppelkopf.js:481
 msgid "Gesund"
 msgstr "Healthy"
 
@@ -3413,20 +3423,23 @@ msgid "Buben"
 msgstr "Jacks"
 
 #: multiplayer/templates/javascript/doppelkopf.js:10
+#: multiplayer/templates/javascript/guess_the_tricks.js:270
 #: multiplayer/templates/javascript/skat.js:13
-#: multiplayer/templates/javascript/skat.js:354
+#: multiplayer/templates/javascript/skat.js:356
 msgid "Kreuz"
 msgstr "Clubs"
 
 #: multiplayer/templates/javascript/doppelkopf.js:11
+#: multiplayer/templates/javascript/guess_the_tricks.js:271
 #: multiplayer/templates/javascript/skat.js:14
-#: multiplayer/templates/javascript/skat.js:355
+#: multiplayer/templates/javascript/skat.js:357
 msgid "Pik"
 msgstr "Spades"
 
 #: multiplayer/templates/javascript/doppelkopf.js:12
+#: multiplayer/templates/javascript/guess_the_tricks.js:272
 #: multiplayer/templates/javascript/skat.js:15
-#: multiplayer/templates/javascript/skat.js:356
+#: multiplayer/templates/javascript/skat.js:358
 msgid "Herz"
 msgstr "Hearts"
 
@@ -3438,40 +3451,53 @@ msgstr "Trump"
 msgid "Fleischlos"
 msgstr "Aces"
 
-#: multiplayer/templates/javascript/doppelkopf.js:18
+#: multiplayer/templates/javascript/doppelkopf.js:19
 msgid "Keine 90"
 msgstr "No 90"
 
-#: multiplayer/templates/javascript/doppelkopf.js:19
+#: multiplayer/templates/javascript/doppelkopf.js:20
 msgid "Keine 60"
 msgstr "No 60"
 
-#: multiplayer/templates/javascript/doppelkopf.js:20
+#: multiplayer/templates/javascript/doppelkopf.js:21
 msgid "Keine 30"
 msgstr "No 30"
 
-#: multiplayer/templates/javascript/doppelkopf.js:21
-#: multiplayer/templates/javascript/skat.js:388
+#: multiplayer/templates/javascript/doppelkopf.js:22
+#: multiplayer/templates/javascript/skat.js:390
 msgid "Schwarz"
 msgstr "Black"
 
-#: multiplayer/templates/javascript/doppelkopf.js:24
+#: multiplayer/templates/javascript/doppelkopf.js:25
 msgid "Re"
 msgstr "Re"
 
-#: multiplayer/templates/javascript/doppelkopf.js:25
-#: multiplayer/templates/javascript/doppelkopf.js:267
+#: multiplayer/templates/javascript/doppelkopf.js:26
+#: multiplayer/templates/javascript/doppelkopf.js:275
 msgid "Kontra"
 msgstr "Contra"
 
-#: multiplayer/templates/javascript/doppelkopf.js:177
-#: multiplayer/templates/javascript/doppelkopf.js:364
+#: multiplayer/templates/javascript/doppelkopf.js:215
+msgid "Normalspiel"
+msgstr "Normal game"
+
+#: multiplayer/templates/javascript/doppelkopf.js:300
+#: multiplayer/templates/javascript/doppelkopf.js:396
+#: multiplayer/templates/javascript/guess_the_tricks.js:514
 msgid "Stand nach Spiel "
 msgstr "Standings after game "
 
-#: multiplayer/templates/javascript/doppelkopf.js:207
-msgid "Normalspiel"
-msgstr "Normal game"
+#: multiplayer/templates/javascript/doppelkopf.js:383
+msgid "Pflichtsolo: "
+msgstr "Mandatory solo:"
+
+#: multiplayer/templates/javascript/doppelkopf.js:483
+msgid "Bist Du bescheuert?!"
+msgstr "Are you stupid?!"
+
+#: multiplayer/templates/javascript/doppelkopf.js:554
+msgid "Vorbehalt"
+msgstr "Reservation"
 
 #: multiplayer/templates/javascript/durak.js:87
 #: multiplayer/templates/javascript/durak.js:244
@@ -3497,6 +3523,41 @@ msgstr "Gobble"
 #: multiplayer/templates/javascript/durak.js:440
 msgid "Schieben"
 msgstr "Transfer"
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:273
+#: multiplayer/templates/javascript/skat.js:16
+#: multiplayer/templates/javascript/skat.js:359
+msgid "Karo"
+msgstr "Diamonds"
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:383
+msgid "Wie viele Stiche? Maximum: "
+msgstr "How many tricks? Maximum: "
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:385
+msgid "Verboten: "
+msgstr "Not allowed: "
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:391
+#: multiplayer/templates/javascript/poker.js:288
+msgid "Geben Sie eine Zahl ein."
+msgstr "Enter a number."
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:395
+msgid "Kleinstmöglicher Wert: "
+msgstr "Smallest possible value: "
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:399
+msgid "Größtmöglicher Wert: "
+msgstr "Largest possible value: "
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:450
+msgid "Es spielt aus: "
+msgstr "Lead out: "
+
+#: multiplayer/templates/javascript/guess_the_tricks.js:505
+msgid "Trumpf ist: "
+msgstr "Trump: "
 
 #: multiplayer/templates/javascript/poker.js:10
 msgid "High Card"
@@ -3558,10 +3619,6 @@ msgstr "You can't raise two times in a row."
 msgid "Mindesteinsatz: "
 msgstr "Minimum bet: "
 
-#: multiplayer/templates/javascript/poker.js:288
-msgid "Geben Sie eine Zahl ein."
-msgstr "Enter a number."
-
 #: multiplayer/templates/javascript/poker.js:291
 msgid "Beachten Sie den Mindesteinsatz."
 msgstr "That's below the minimum bet."
@@ -3578,11 +3635,6 @@ msgstr "Show"
 msgid "Nicht zeigen"
 msgstr "Don't show"
 
-#: multiplayer/templates/javascript/skat.js:16
-#: multiplayer/templates/javascript/skat.js:357
-msgid "Karo"
-msgstr "Diamonds"
-
 #: multiplayer/templates/javascript/skat.js:17
 msgid "Grand"
 msgstr "Grand"
@@ -3596,72 +3648,72 @@ msgid "Nö"
 msgstr "Nah fam"
 
 #: multiplayer/templates/javascript/skat.js:166
-#: multiplayer/templates/javascript/skat.js:216
+#: multiplayer/templates/javascript/skat.js:215
 msgid "Stand nach Spiel Nummer"
 msgstr "Standings after game number"
 
-#: multiplayer/templates/javascript/skat.js:218
+#: multiplayer/templates/javascript/skat.js:217
 msgid "gewonnen"
 msgstr "won"
 
-#: multiplayer/templates/javascript/skat.js:220
+#: multiplayer/templates/javascript/skat.js:219
 msgid "verloren"
 msgstr "lost"
 
-#: multiplayer/templates/javascript/skat.js:222
+#: multiplayer/templates/javascript/skat.js:221
 msgid "überreizt"
 msgstr "overbid"
 
-#: multiplayer/templates/javascript/skat.js:224
+#: multiplayer/templates/javascript/skat.js:223
 msgid "Augen"
 msgstr "Points"
 
-#: multiplayer/templates/javascript/skat.js:287
+#: multiplayer/templates/javascript/skat.js:289
 msgid "Drücken"
 msgstr "Put"
 
-#: multiplayer/templates/javascript/skat.js:374
+#: multiplayer/templates/javascript/skat.js:376
 msgid "Ouvert"
 msgstr "Ouvert"
 
-#: multiplayer/templates/javascript/skat.js:377
-#: multiplayer/templates/javascript/skat.js:382
+#: multiplayer/templates/javascript/skat.js:379
+#: multiplayer/templates/javascript/skat.js:384
 msgid "Normal"
 msgstr "Normal"
 
-#: multiplayer/templates/javascript/skat.js:385
+#: multiplayer/templates/javascript/skat.js:387
 msgid "Schneider"
 msgstr "Schneider"
 
-#: multiplayer/templates/javascript/skat.js:391
+#: multiplayer/templates/javascript/skat.js:393
 msgid "Offen"
 msgstr "Ouvert"
 
-#: multiplayer/templates/javascript/skat.js:411
+#: multiplayer/templates/javascript/skat.js:413
 msgid "Aufnehmen"
 msgstr "Take Skat"
 
-#: multiplayer/templates/javascript/skat.js:414
+#: multiplayer/templates/javascript/skat.js:416
 msgid "Hand spielen"
 msgstr "Hand"
 
-#: multiplayer/templates/javascript/skat.js:424
+#: multiplayer/templates/javascript/skat.js:426
 msgid "Eingepasst"
 msgstr "No bid, new game"
 
-#: multiplayer/templates/javascript/skat.js:568
+#: multiplayer/templates/javascript/skat.js:570
 msgid "Passe"
 msgstr "Nah fam"
 
-#: multiplayer/templates/javascript/skat.js:580
+#: multiplayer/templates/javascript/skat.js:582
 msgid "Vorhand"
 msgstr "Forehand"
 
-#: multiplayer/templates/javascript/skat.js:580
+#: multiplayer/templates/javascript/skat.js:582
 msgid "Mittelhand"
 msgstr "Middlehand"
 
-#: multiplayer/templates/javascript/skat.js:580
+#: multiplayer/templates/javascript/skat.js:582
 msgid "Hinterhand"
 msgstr "Rearhand"
 
@@ -3756,8 +3808,8 @@ msgid ""
 "auf Wikipedia</a></h3>\n"
 "        <ul>\n"
 "            <li>Blatt: Mit/Ohne Neunen</li>\n"
-"            <li>Soli: Ohne Pflichtsolo. Solospieler kommt raus. Erstes "
-"angesagtes Solo zählt. Mit Fleischloser.</li>\n"
+"            <li>Soli: Mit Pflichtsoli und vorgeführten Pflichtsoli. Lustsolo "
+"kommt nicht raus, Pflichtsolo schon.</li>\n"
 "            <li>Hochzeit: Erster fremde Stich.</li>\n"
 "            <li>Sonderpunkte: Doppelkopf, Fuchs gefangen, Karlchen</li>\n"
 "            <li>Ohne: Armut, Schweinchen, zweite Dulle sticht erste, "
@@ -3780,44 +3832,6 @@ msgstr ""
 "        "
 
 #: multiplayer/templates/multiplayer/rules.html:32
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "        <h3><a href=\"https://de.wikipedia.org/wiki/"
-#| "Durak_(Kartenspiel)\">Durak auf Wikipedia</a></h3>\n"
-#| "            <ul>\n"
-#| "                <li>Karten: 6-Ass (2-3 Spieler), 4-Ass (4 Spieler), 3-Ass "
-#| "(5 Spieler)</li>\n"
-#| "                <li>Modus: Schieben erlaubt, ohne Nachschmeißen nach "
-#| "Schlucken</li>\n"
-#| "            </ul>\n"
-#| "            Ziel des Spiels: Keine Karten mehr zu haben. Erster ohne "
-#| "Karten erhält +2, letzter mit Karten -1, Rest +1 Punkte. Der Angreifer "
-#| "kann 1-4 Karten desselben Ranges auf den Verteidiger ausspielen. Der "
-#| "Verteidiger spielt mit seinen beiden Nachbarn und kann nach einem "
-#| "Angriff:\n"
-#| "            <ul>\n"
-#| "                <li>Aufnehmen (Schlucken). Nachbarn können anschließend "
-#| "insgesamt max. 6 Karten der Ränge dazulegen, die bereits gespielt worden "
-#| "sind und klicken dann auf \"Fertig\".</li>\n"
-#| "                <li>Schlagen. Eine Karte kann mit Trumpf bzw. einer Karte "
-#| "derselben Farbe, aber höheren Ranges geschlagen werden. Nachbarn "
-#| "verhalten sich wie beim Schlucken.</li>\n"
-#| "                <li>Schieben. Wurde weder geschlagen noch geschluckt "
-#| "können 1-3 Karten desselben Ranges dazugelegt und zum linken Nachbarn "
-#| "weitergeschoben werden. Dieser wird dann Verteidiger.</li>\n"
-#| "            </ul>\n"
-#| "        Hat ein Spieler weniger als 6 Karten, darf er mit maximal so "
-#| "vielen Karten angegriffen werden, wie er auf der Hand hat.<br>\n"
-#| "        Nach Schlucken/Schlagen füllen, beginnend mit dem ersten "
-#| "Angreifer, alle Spieler ihre Hände auf 6 Karten auf. Schlucken: Linker "
-#| "Nachbar kommt raus. Erfolgreiches Schlagen: Geschlagene Karten aus dem "
-#| "Spiel entfernen, Spieler kommt selbst raus.\n"
-#| "        Kartenränge (absteigend): Ass, König, Dame, Bube, 10, 9, 8, ..."
-#| "<br>\n"
-#| "        Die offene Deckkarte zeigt die Trumpffarbe an. Trumpfkarten sind "
-#| "höheren Ranges als alle Fehlkarten.\n"
-#| "        "
 msgid ""
 "\n"
 "        <h3><a href=\"https://de.wikipedia.org/wiki/"
@@ -3941,17 +3955,13 @@ msgstr ""
 msgid "Sie können nicht mehr als {n} Matches erstellen."
 msgstr "You can't create more than {n} matches."
 
-#: multiplayer/views.py:88
+#: multiplayer/views.py:91
 msgid "Spiel ist bereits voll"
 msgstr "Game is full"
 
-#: multiplayer/views.py:98
+#: multiplayer/views.py:101
 msgid "Sie waren zu langsam, das Match war bereits voll."
 msgstr "Too slow. Match is already full."
-
-#: scheduling/forms.py:17 usergroups/forms.py:22
-msgid "Name"
-msgstr "Name"
 
 #: scheduling/forms.py:18
 msgid "Datum & Uhrzeit"
@@ -4502,63 +4512,14 @@ msgstr ""
 "This post contains a media file. It's going to be visible once the admin "
 "takes a look at it."
 
-#, fuzzy
-#~| msgid "Aktion"
-#~ msgid "Options"
-#~ msgstr "Action"
+#~ msgid "Maximale Spieleranzahl"
+#~ msgstr "Player limit"
 
-#, fuzzy
-#~| msgid "Land"
-#~ msgid "and"
-#~ msgstr "Country"
+#~ msgid "Unterstützt werden 2-5 Spieler"
+#~ msgstr "2-5 players are supported"
 
-#, fuzzy
-#~| msgid "Durak"
-#~ msgid "Duration"
-#~ msgstr "Durak"
-
-#, fuzzy
-#~| msgid "E-Mail Adresse"
-#~ msgid "Email address"
-#~ msgstr "E-mail address"
-
-#, fuzzy
-#~| msgid "Intellekt"
-#~ msgid "Integer"
-#~ msgstr "Intellect"
-
-#~ msgid "Text"
-#~ msgstr "Text"
-
-#, fuzzy
-#~| msgid "Von"
-#~ msgid "Mon"
-#~ msgstr "From"
-
-#, fuzzy
-#~| msgid "Turnier"
-#~ msgid "Tue"
-#~ msgstr "Tournament"
-
-#, fuzzy
-#~| msgid "Wer"
-#~ msgid "Wed"
-#~ msgstr "Who"
-
-#, fuzzy
-#~| msgid "Frei"
-#~ msgid "Fri"
-#~ msgstr "Free"
-
-#, fuzzy
-#~| msgid "Skat"
-#~ msgid "Sat"
-#~ msgstr "Skat"
-
-#, fuzzy
-#~| msgid "an"
-#~ msgid "jan"
-#~ msgstr "to"
+#~ msgid "Unterstützt werden 2-10 Spieler"
+#~ msgstr "2-10 players are supported"
 
 #~ msgid "Bitte bestätigen Sie, dass Sie Ihren Account löschen wollen."
 #~ msgstr "Please confirm that you want to delete your account."

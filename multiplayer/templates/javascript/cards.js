@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load multiplayer_tags %}
 
 var player_cards = {1: [], 2: [], 3: [], 4: [],
                     5: [], 6: [], 7: [], 8: [],
@@ -22,6 +23,14 @@ let is_viewer;
 
 const default_rotation = {1: 0, 2: 90, 3: 0, 4: -90, 5: -90};
 const poker_rotation = {1: 0, 2: 90, 3: 90, 4: 0, 5: 0, 6: 0, 7: -90, 8: -90, 9: -90, 10: 0};
+
+/*if('{% settings_value "DEBUG" %}' === "False") {
+    console.log = () => {};
+    console.info = () => {};
+    console.warn = () => {};
+    console.error = () => {};
+}*/
+//TODO 
 
 function getGridPosition(value, suit) {
     var x, y;
@@ -220,6 +229,9 @@ function positionCard(player, card, i, n) {
 }
 
 function addCardTo(player, n, type, not_clickable) {
+    if(typeof player === 'string' || player instanceof String) {
+        player = players[player];
+    }
     var new_cards = [];
     const vars = getPlayerVariables(player);
     var card;
@@ -240,6 +252,8 @@ function addCardTo(player, n, type, not_clickable) {
     for(var i = 0; i < new_cards.length; i++) {
         field.appendChild(new_cards[i]);
     }
+    
+    return new_cards;
 }
 
 function removePlayerCard(card) {
@@ -282,6 +296,9 @@ function updateCardsFor(player) {
 }
 
 function removeCardFrom(player, n, type) {
+    if(typeof player === 'string' || player instanceof String) {
+        player = players[player];
+    }
     const vars = getPlayerVariables(player);
     for(var i = 0; (i < n && vars.cards.length > 0) || type; i++) {
         if(type) {
@@ -563,9 +580,10 @@ function createInfoAlert(info, timeout, no_button) {
     return info_alert;
 }
 
-function createInputAlert(message, callback) {
+function createInputAlert(message, callback, cancel=true, button_id) {
     var info_alert = createInfoAlert(message, null, true);
     var input = document.createElement('input');
+    input.id = "input-alert-input";
     input.addEventListener('keyup', function(event) {
         if(event.which == 13) {
             if(callback(input.value)) {
@@ -580,13 +598,16 @@ function createInputAlert(message, callback) {
         if(callback(input.value)) {
             input.parentElement.remove();
         }
-    }, info_alert, true);
+    }, info_alert, true, button_id);
+    if(!cancel) {
+        return;
+    }
     createInfoButton('{% trans 'Abbrechen' %}', function() {
         input.parentElement.remove();
     }, info_alert, true);
 }
 
-function createInfoButton(text, button_callback, info_alert, no_auto_remove) {
+function createInfoButton(text, button_callback, info_alert, no_auto_remove, id) {
     var button = document.createElement("button");
     button.type = "button";
     button.onclick = function() {
@@ -598,6 +619,9 @@ function createInfoButton(text, button_callback, info_alert, no_auto_remove) {
         }
     }
     button.className = "info-alert-button";
+    if(id) {
+        button.id = id;
+    }
     if(window.screen.width < 768) {
         button.style.fontSize = "10pt";
     }
@@ -618,12 +642,12 @@ function before(el, arr) {
     return arr[((arr.indexOf(el)-1)%arr.length+arr.length)%arr.length];
 }
 
-function getPlayerCards(value, suit, except_value) {
+function getPlayerCards(value, suit, except_values=[]) {
     var cards = [];
     for(var i = 0; i < player1_cards.length; i++) {
         const vs = getVs(player1_cards[i].id);
         if(vs.value == value || vs.suit == suit) {
-            if(vs.value == except_value) {
+            if(except_values.indexOf(vs.value) !== -1) {
                 continue;
             }
             cards.push(vs);
@@ -868,14 +892,19 @@ overlap of cards.*/
         var cards = player_cards[i];
         var types = [];
         var hidden = cards.length && cards[0].style.display == 'none';
+        let onclicks = {};
         while(cards.length) {
             var card = cards.pop();
+            onclicks[card.id] = card.onclick;
             card.remove();
             types.push(card.id);
         }
         while(types.length) {
             var type = types.pop();
-            addCardTo(i, 1, type != "rear"? type : null, is_poker);
+            const newCard = addCardTo(i, 1, type != "rear"? type : null, is_poker)[0];
+            if(onclicks[type]) {
+                newCard.onclick = onclicks[type]; //This assumes that callbacks are the same for same types
+            }
         }
         if(hidden) {
             hideCardsOf(i);
@@ -946,6 +975,51 @@ overlap of cards.*/
             const important = info_divs[i].style.color == 'red';
             info_divs[i].remove();
             changeInfoFor(username, info, important);
+        }
+    }
+}
+
+function lastTrickButton() {
+    if(!last_trick || last_trick.length == 0) {
+        deleteButton("last_trick");
+        return;
+    }
+    var trick = document.getElementById("last_trick0");
+    var label = "{% trans 'Stich' %}";
+    if(trick) {
+        label = "{% trans 'Okay' %}";
+    }
+    var button = document.getElementById('last_trick');
+    function callback() {
+        toggleLastTrick();
+        lastTrickButton();
+    }
+    if(!button) {
+        createButton(label, "last_trick", callback);
+    }
+    else {
+        button.innerHTML = label;
+    }
+}
+
+function toggleLastTrick(hide = false) {
+    if(document.getElementById("last_trick0")) {
+        for(var i = 0; i < last_trick.length; i++) {
+            var card = document.getElementById("last_trick"+i);
+            if(card) {
+                card.remove();
+            }
+        }
+    }
+    else if(!hide) {
+        for(var i = 0; i < last_trick.length; i++) {
+            var card = createCard(last_trick[i]);
+            card.id = "last_trick"+i;
+            card.type = last_trick[i];
+            card.style.position.top = "0px";
+            card.style.left = i*0.4*w+"px";
+            card.style.zIndex = 100;
+            field.appendChild(card);
         }
     }
 }
