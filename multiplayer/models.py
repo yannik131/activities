@@ -307,6 +307,7 @@ class MultiplayerMatch(models.Model):
         if "players" not in self.game_data: #game is being created for the first time
             self.game_data["played_solo"] = json.dumps({})
             self.game_data["round_count"] = self.options['round_count']
+            self.game_data["poverty"] = '1' if self.options['poverty'] == 'True' else '0'
         if self.options['without_nines'] == 'True':
             players, _ = self.create_players(10, "10", "10", "A", "A", "J", "J", "K", "K", "Q", "Q")
             self.game_data['without_nines'] = '1'

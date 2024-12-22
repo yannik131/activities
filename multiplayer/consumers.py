@@ -210,6 +210,7 @@ class DoppelkopfConsumer(GameConsumer):
                 for player in players:
                     message["data"][player + "_initial_hand"] = data[player + "_initial_hand"]
                 match.start_doppelkopf()
+                data['active'] = data['started']
                 change(data, "game_number", -1)
                 message["data"]["round"] = match.game_data.copy()
                 return

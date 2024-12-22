@@ -1,1 +1,1 @@
-scp root@myactivities.net:/home/projects/activities/backup/backup.db backup/backup.db
+scp root@myactivities.net:/home/websites/activities/backup/backup.db backup/backup.db

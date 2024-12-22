@@ -2,9 +2,11 @@ import random
 import json
 from shared.shared import log
 from django.utils.translation import gettext as _
-
+import logging
 from .poker_score import highest_combo
 import multiplayer.doko_scorer as doko_scorer
+
+logger = logging.getLogger('django')
 
 
 def change(dictionary, key, change):
