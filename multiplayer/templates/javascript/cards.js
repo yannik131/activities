@@ -24,14 +24,6 @@ let is_viewer;
 const default_rotation = {1: 0, 2: 90, 3: 0, 4: -90, 5: -90};
 const poker_rotation = {1: 0, 2: 90, 3: 90, 4: 0, 5: 0, 6: 0, 7: -90, 8: -90, 9: -90, 10: 0};
 
-/*if('{% settings_value "DEBUG" %}' === "False") {
-    console.log = () => {};
-    console.info = () => {};
-    console.warn = () => {};
-    console.error = () => {};
-}*/
-//TODO 
-
 function getGridPosition(value, suit) {
     var x, y;
     switch(value) {
@@ -543,6 +535,13 @@ function createYesNoAlert(info, zIndex, callback) {
     var button = createInfoButton("{% trans 'Nein' %}", null, info_alert);
     button.style.marginLeft = "5px";
     field.appendChild(info_alert);
+}
+
+function clearYesNoAlert() {
+    let div = document.getElementById("yesno-alert");
+    if (div) {
+        div.remove();
+    }
 }
 
 function createInfoAlert(info, timeout, no_button) {

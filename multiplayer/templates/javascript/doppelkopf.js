@@ -312,6 +312,7 @@ function handleBid(data) {
     handleBidGuard(data);
     if(data.game_type) {
         game_type = data.game_type;
+        clearYesNoAlert();
         setRe(data);
         if(data.solist.length) {
             updatePlayerInfo(data.solist, undefined, data.game_type);
@@ -480,7 +481,7 @@ function createBidButtons(mandatory_solo) {
     if(!mandatory_solo) {
         createButton("{% trans 'Gesund' %}", 'healthy', function() {
             if(is_marriage) {
-                createYesNoAlert("{% trans 'Bist Du bescheuert?!' %}", 2, function() {
+                createYesNoAlert("{% trans 'Willst du eine stille Hochzeit spielen?' %}", 2, function() {
                     sendBid("healthy");
                 })
             }
