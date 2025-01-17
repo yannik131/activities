@@ -537,6 +537,13 @@ function createYesNoAlert(info, zIndex, callback) {
     field.appendChild(info_alert);
 }
 
+function clearYesNoAlert() {
+    let div = document.getElementById("yesno-alert");
+    if (div) {
+        div.remove();
+    }
+}
+
 function createInfoAlert(info, timeout, no_button) {
     var score_alert = document.getElementById("score-alert");
     if(score_alert) {
